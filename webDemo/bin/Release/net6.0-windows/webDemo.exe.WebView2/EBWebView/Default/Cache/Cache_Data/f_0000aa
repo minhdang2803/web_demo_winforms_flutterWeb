@@ -1,0 +1,950 @@
+define(['dart_sdk', 'packages/image/src/exif_data.dart', 'packages/image/src/color.dart', 'packages/image/src/util/interpolation.dart', 'packages/image/src/icc_profile_data.dart'], (function load__packages__image__src__image_dart(dart_sdk, packages__image__src__exif_data$46dart, packages__image__src__color$46dart, packages__image__src__util__interpolation$46dart, packages__image__src__icc_profile_data$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const collection = dart_sdk.collection;
+  const typed_data = dart_sdk.typed_data;
+  const math = dart_sdk.math;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const exif_data = packages__image__src__exif_data$46dart.src__exif_data;
+  const color = packages__image__src__color$46dart.src__color;
+  const interpolation$ = packages__image__src__util__interpolation$46dart.src__util__interpolation;
+  const icc_profile_data = packages__image__src__icc_profile_data$46dart.src__icc_profile_data;
+  var image = Object.create(dart.library);
+  var $sublist = dartx.sublist;
+  var $buffer = dartx.buffer;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $fillRange = dartx.fillRange;
+  var $modulo = dartx['%'];
+  var $toInt = dartx.toInt;
+  var $keys = dartx.keys;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    LinkedHashMapOfString$String: () => (T.LinkedHashMapOfString$String = dart.constFn(collection.LinkedHashMap$(core.String, core.String)))(),
+    intAndintAndint__Toint: () => (T.intAndintAndint__Toint = dart.constFn(dart.fnType(core.int, [core.int, core.int, core.int, core.int])))(),
+    numAndnumAndnum__Tonum: () => (T.numAndnumAndnum__Tonum = dart.constFn(dart.fnType(core.num, [core.num, core.num, core.num, core.num, core.num])))(),
+    IdentityMapOfString$String: () => (T.IdentityMapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "argb",
+        [_Enum_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "abgr",
+        [_Enum_index]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "rgba",
+        [_Enum_index]: 2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "bgra",
+        [_Enum_index]: 3
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "rgb",
+        [_Enum_index]: 4
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "bgr",
+        [_Enum_index]: 5
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: image.Format.prototype,
+        [_Enum__name]: "luminance",
+        [_Enum_index]: 6
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7], image.Format);
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: image.Channels.prototype,
+        [_Enum__name]: "rgb",
+        [_Enum_index]: 0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: image.Channels.prototype,
+        [_Enum__name]: "rgba",
+        [_Enum_index]: 1
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9, C[10] || CT.C10], image.Channels);
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: image.BlendMode.prototype,
+        [_Enum__name]: "source",
+        [_Enum_index]: 0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: image.BlendMode.prototype,
+        [_Enum__name]: "over",
+        [_Enum_index]: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], image.BlendMode);
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: image.DisposeMode.prototype,
+        [_Enum__name]: "none",
+        [_Enum_index]: 0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: image.DisposeMode.prototype,
+        [_Enum__name]: "clear",
+        [_Enum_index]: 1
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: image.DisposeMode.prototype,
+        [_Enum__name]: "previous",
+        [_Enum_index]: 2
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17], image.DisposeMode);
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: interpolation$.Interpolation.prototype,
+        [_Enum__name]: "linear",
+        [_Enum_index]: 1
+      });
+    }
+  }, false);
+  var C = Array(19).fill(void 0);
+  var I = ["package:image/src/image.dart"];
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  image.Format = class Format extends core._Enum {
+    toString() {
+      return "Format." + this[_name];
+    }
+  };
+  (image.Format.new = function(index, name) {
+    image.Format.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = image.Format.prototype;
+  dart.addTypeTests(image.Format);
+  dart.addTypeCaches(image.Format);
+  dart.setLibraryUri(image.Format, I[0]);
+  dart.setStaticFieldSignature(image.Format, () => ['values', 'argb', 'abgr', 'rgba', 'bgra', 'rgb', 'bgr', 'luminance']);
+  dart.defineExtensionMethods(image.Format, ['toString']);
+  dart.defineLazy(image.Format, {
+    /*image.Format.values*/get values() {
+      return C[0] || CT.C0;
+    },
+    /*image.Format.argb*/get argb() {
+      return C[1] || CT.C1;
+    },
+    /*image.Format.abgr*/get abgr() {
+      return C[2] || CT.C2;
+    },
+    /*image.Format.rgba*/get rgba() {
+      return C[3] || CT.C3;
+    },
+    /*image.Format.bgra*/get bgra() {
+      return C[4] || CT.C4;
+    },
+    /*image.Format.rgb*/get rgb() {
+      return C[5] || CT.C5;
+    },
+    /*image.Format.bgr*/get bgr() {
+      return C[6] || CT.C6;
+    },
+    /*image.Format.luminance*/get luminance() {
+      return C[7] || CT.C7;
+    }
+  }, false);
+  image.Channels = class Channels extends core._Enum {
+    toString() {
+      return "Channels." + this[_name];
+    }
+  };
+  (image.Channels.new = function(index, name) {
+    image.Channels.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = image.Channels.prototype;
+  dart.addTypeTests(image.Channels);
+  dart.addTypeCaches(image.Channels);
+  dart.setLibraryUri(image.Channels, I[0]);
+  dart.setStaticFieldSignature(image.Channels, () => ['values', 'rgb', 'rgba']);
+  dart.defineExtensionMethods(image.Channels, ['toString']);
+  dart.defineLazy(image.Channels, {
+    /*image.Channels.values*/get values() {
+      return C[8] || CT.C8;
+    },
+    /*image.Channels.rgb*/get rgb() {
+      return C[9] || CT.C9;
+    },
+    /*image.Channels.rgba*/get rgba() {
+      return C[10] || CT.C10;
+    }
+  }, false);
+  image.BlendMode = class BlendMode extends core._Enum {
+    toString() {
+      return "BlendMode." + this[_name];
+    }
+  };
+  (image.BlendMode.new = function(index, name) {
+    image.BlendMode.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = image.BlendMode.prototype;
+  dart.addTypeTests(image.BlendMode);
+  dart.addTypeCaches(image.BlendMode);
+  dart.setLibraryUri(image.BlendMode, I[0]);
+  dart.setStaticFieldSignature(image.BlendMode, () => ['values', 'source', 'over']);
+  dart.defineExtensionMethods(image.BlendMode, ['toString']);
+  dart.defineLazy(image.BlendMode, {
+    /*image.BlendMode.values*/get values() {
+      return C[11] || CT.C11;
+    },
+    /*image.BlendMode.source*/get source() {
+      return C[12] || CT.C12;
+    },
+    /*image.BlendMode.over*/get over() {
+      return C[13] || CT.C13;
+    }
+  }, false);
+  image.DisposeMode = class DisposeMode extends core._Enum {
+    toString() {
+      return "DisposeMode." + this[_name];
+    }
+  };
+  (image.DisposeMode.new = function(index, name) {
+    image.DisposeMode.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = image.DisposeMode.prototype;
+  dart.addTypeTests(image.DisposeMode);
+  dart.addTypeCaches(image.DisposeMode);
+  dart.setLibraryUri(image.DisposeMode, I[0]);
+  dart.setStaticFieldSignature(image.DisposeMode, () => ['values', 'none', 'clear', 'previous']);
+  dart.defineExtensionMethods(image.DisposeMode, ['toString']);
+  dart.defineLazy(image.DisposeMode, {
+    /*image.DisposeMode.values*/get values() {
+      return C[14] || CT.C14;
+    },
+    /*image.DisposeMode.none*/get none() {
+      return C[15] || CT.C15;
+    },
+    /*image.DisposeMode.clear*/get clear() {
+      return C[16] || CT.C16;
+    },
+    /*image.DisposeMode.previous*/get previous() {
+      return C[17] || CT.C17;
+    }
+  }, false);
+  var width$ = dart.privateName(image, "Image.width");
+  var height$ = dart.privateName(image, "Image.height");
+  var channels$ = dart.privateName(image, "Image.channels");
+  var xOffset = dart.privateName(image, "Image.xOffset");
+  var yOffset = dart.privateName(image, "Image.yOffset");
+  var duration = dart.privateName(image, "Image.duration");
+  var disposeMethod = dart.privateName(image, "Image.disposeMethod");
+  var blendMethod = dart.privateName(image, "Image.blendMethod");
+  var data = dart.privateName(image, "Image.data");
+  var exif$ = dart.privateName(image, "Image.exif");
+  var iccProfile = dart.privateName(image, "Image.iccProfile");
+  var textData$ = dart.privateName(image, "Image.textData");
+  image.Image = class Image extends core.Object {
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get channels() {
+      return this[channels$];
+    }
+    set channels(value) {
+      this[channels$] = value;
+    }
+    get xOffset() {
+      return this[xOffset];
+    }
+    set xOffset(value) {
+      this[xOffset] = value;
+    }
+    get yOffset() {
+      return this[yOffset];
+    }
+    set yOffset(value) {
+      this[yOffset] = value;
+    }
+    get duration() {
+      return this[duration];
+    }
+    set duration(value) {
+      this[duration] = value;
+    }
+    get disposeMethod() {
+      return this[disposeMethod];
+    }
+    set disposeMethod(value) {
+      this[disposeMethod] = value;
+    }
+    get blendMethod() {
+      return this[blendMethod];
+    }
+    set blendMethod(value) {
+      this[blendMethod] = value;
+    }
+    get data() {
+      return this[data];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    get exif() {
+      return this[exif$];
+    }
+    set exif(value) {
+      this[exif$] = value;
+    }
+    get iccProfile() {
+      return this[iccProfile];
+    }
+    set iccProfile(value) {
+      this[iccProfile] = value;
+    }
+    get textData() {
+      return this[textData$];
+    }
+    set textData(value) {
+      this[textData$] = value;
+    }
+    static ['_#new#tearOff'](width, height, opts) {
+      let channels = opts && 'channels' in opts ? opts.channels : C[10] || CT.C10;
+      let exif = opts && 'exif' in opts ? opts.exif : null;
+      let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+      let textData = opts && 'textData' in opts ? opts.textData : null;
+      return new image.Image.new(width, height, {channels: channels, exif: exif, iccp: iccp, textData: textData});
+    }
+    static ['_#rgb#tearOff'](width, height, opts) {
+      let exif = opts && 'exif' in opts ? opts.exif : null;
+      let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+      let textData = opts && 'textData' in opts ? opts.textData : null;
+      return new image.Image.rgb(width, height, {exif: exif, iccp: iccp, textData: textData});
+    }
+    static ['_#from#tearOff'](other) {
+      return new image.Image.from(other);
+    }
+    static ['_#fromBytes#tearOff'](width, height, bytes, opts) {
+      let exif = opts && 'exif' in opts ? opts.exif : null;
+      let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+      let format = opts && 'format' in opts ? opts.format : C[3] || CT.C3;
+      let channels = opts && 'channels' in opts ? opts.channels : C[10] || CT.C10;
+      let textData = opts && 'textData' in opts ? opts.textData : null;
+      return new image.Image.fromBytes(width, height, bytes, {exif: exif, iccp: iccp, format: format, channels: channels, textData: textData});
+    }
+    clone() {
+      return new image.Image.from(this);
+    }
+    get numberOfChannels() {
+      return this.channels === image.Channels.rgba ? 4 : 3;
+    }
+    getBytes(opts) {
+      let format = opts && 'format' in opts ? opts.format : C[3] || CT.C3;
+      let rgba = typed_data.Uint8List.view(this.data[$buffer]);
+      switch (format) {
+        case C[3] || CT.C3:
+          {
+            return rgba;
+          }
+        case C[4] || CT.C4:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height * 4);
+            for (let i = 0, len = bytes[$length]; i < len; i = i + 4) {
+              bytes[$_set](i + 0, rgba[$_get](i + 2));
+              bytes[$_set](i + 1, rgba[$_get](i + 1));
+              bytes[$_set](i + 2, rgba[$_get](i + 0));
+              bytes[$_set](i + 3, rgba[$_get](i + 3));
+            }
+            return bytes;
+          }
+        case C[2] || CT.C2:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height * 4);
+            for (let i = 0, len = bytes[$length]; i < len; i = i + 4) {
+              bytes[$_set](i + 0, rgba[$_get](i + 3));
+              bytes[$_set](i + 1, rgba[$_get](i + 2));
+              bytes[$_set](i + 2, rgba[$_get](i + 1));
+              bytes[$_set](i + 3, rgba[$_get](i + 0));
+            }
+            return bytes;
+          }
+        case C[1] || CT.C1:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height * 4);
+            for (let i = 0, len = bytes[$length]; i < len; i = i + 4) {
+              bytes[$_set](i + 0, rgba[$_get](i + 3));
+              bytes[$_set](i + 1, rgba[$_get](i + 0));
+              bytes[$_set](i + 2, rgba[$_get](i + 1));
+              bytes[$_set](i + 3, rgba[$_get](i + 2));
+            }
+            return bytes;
+          }
+        case C[5] || CT.C5:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height * 3);
+            for (let i = 0, j = 0, len = bytes[$length]; j < len; i = i + 4, j = j + 3) {
+              bytes[$_set](j + 0, rgba[$_get](i + 0));
+              bytes[$_set](j + 1, rgba[$_get](i + 1));
+              bytes[$_set](j + 2, rgba[$_get](i + 2));
+            }
+            return bytes;
+          }
+        case C[6] || CT.C6:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height * 3);
+            for (let i = 0, j = 0, len = bytes[$length]; j < len; i = i + 4, j = j + 3) {
+              bytes[$_set](j + 0, rgba[$_get](i + 2));
+              bytes[$_set](j + 1, rgba[$_get](i + 1));
+              bytes[$_set](j + 2, rgba[$_get](i + 0));
+            }
+            return bytes;
+          }
+        case C[7] || CT.C7:
+          {
+            let bytes = _native_typed_data.NativeUint8List.new(this.width * this.height);
+            for (let i = 0, len = this.length; i < len; i = i + 1) {
+              bytes[$_set](i, color.getLuminance(this.data[$_get](i)));
+            }
+            return bytes;
+          }
+      }
+    }
+    fill(color) {
+      this.data[$fillRange](0, this.data[$length], color);
+      return this;
+    }
+    fillBackground(color) {
+      for (let i = 0; i < this.length; i = i + 1) {
+        if (this.data[$_get](i) === 0) {
+          this.data[$_set](i, color);
+        }
+      }
+    }
+    ['+'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor(r1 + r2, g1 + g2, b1 + b2, a1 + a2));
+        }
+      }
+      return this;
+    }
+    ['-'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor(r1 - r2, g1 - g2, b1 - b2, a1 - a2));
+        }
+      }
+      return this;
+    }
+    ['*'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor(r1 * r2, g1 * g2, b1 * b2, a1 * a2));
+        }
+      }
+      return this;
+    }
+    ['|'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor((r1 | r2) >>> 0, (g1 | g2) >>> 0, (b1 | b2) >>> 0, (a1 | a2) >>> 0));
+        }
+      }
+      return this;
+    }
+    ['&'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor((r1 & r2) >>> 0, (g1 & g2) >>> 0, (b1 & b2) >>> 0, (a1 & a2) >>> 0));
+        }
+      }
+      return this;
+    }
+    ['%'](other) {
+      let h = math.min(core.int, this.height, other.height);
+      let w = math.min(core.int, this.width, other.width);
+      for (let y = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          let c1 = this.getPixel(x, y);
+          let r1 = color.getRed(c1);
+          let g1 = color.getGreen(c1);
+          let b1 = color.getBlue(c1);
+          let a1 = color.getAlpha(c1);
+          let c2 = other.getPixel(x, y);
+          let r2 = color.getRed(c2);
+          let g2 = color.getGreen(c2);
+          let b2 = color.getBlue(c2);
+          let a2 = color.getAlpha(c2);
+          this.setPixel(x, y, color.getColor(r1[$modulo](r2), g1[$modulo](g2), b1[$modulo](b2), a1[$modulo](a2)));
+        }
+      }
+      return this;
+    }
+    get length() {
+      return this.data[$length];
+    }
+    _get(index) {
+      return this.data[$_get](index);
+    }
+    _set(index, color$) {
+      let color = color$;
+      this.data[$_set](index, color);
+      return color$;
+    }
+    index(x, y) {
+      return y * this.width + x;
+    }
+    boundsSafe(x, y) {
+      return x >= 0 && x < this.width && y >= 0 && y < this.height;
+    }
+    getPixel(x, y) {
+      return this.data[$_get](y * this.width + x);
+    }
+    getPixelSafe(x, y) {
+      return this.boundsSafe(x, y) ? this.data[$_get](y * this.width + x) : 0;
+    }
+    getPixelInterpolate(fx, fy, interpolation = C[18] || CT.C18) {
+      if (interpolation === interpolation$.Interpolation.cubic) {
+        return this.getPixelCubic(fx, fy);
+      } else if (interpolation === interpolation$.Interpolation.linear) {
+        return this.getPixelLinear(fx, fy);
+      }
+      return this.getPixelSafe(fx[$toInt](), fy[$toInt]());
+    }
+    getPixelLinear(fx, fy) {
+      let x = fx[$toInt]() - (fx >= 0 ? 0 : 1);
+      let nx = x + 1;
+      let y = fy[$toInt]() - (fy >= 0 ? 0 : 1);
+      let ny = y + 1;
+      let dx = fx - x;
+      let dy = fy - y;
+      function _linear(Icc, Inc, Icn, Inn) {
+        return (Icc + dx * (Inc - Icc + dy * (Icc + Inn - Icn - Inc)) + dy * (Icn - Icc))[$toInt]();
+      }
+      dart.fn(_linear, T.intAndintAndint__Toint());
+      let Icc = this.getPixelSafe(x, y);
+      let Icn = ny >= this.height ? Icc : this.getPixelSafe(x, ny);
+      let Inc = nx >= this.width ? Icc : this.getPixelSafe(nx, y);
+      let Inn = nx >= this.width || ny >= this.height ? Icc : this.getPixelSafe(nx, ny);
+      return color.getColor(_linear(color.getRed(Icc), color.getRed(Inc), color.getRed(Icn), color.getRed(Inn)), _linear(color.getGreen(Icc), color.getGreen(Inc), color.getGreen(Icn), color.getGreen(Inn)), _linear(color.getBlue(Icc), color.getBlue(Inc), color.getBlue(Icn), color.getBlue(Inn)), _linear(color.getAlpha(Icc), color.getAlpha(Inc), color.getAlpha(Icn), color.getAlpha(Inn)));
+    }
+    getPixelCubic(fx, fy) {
+      let x = fx[$toInt]() - (fx >= 0.0 ? 0 : 1);
+      let px = x - 1;
+      let nx = x + 1;
+      let ax = x + 2;
+      let y = fy[$toInt]() - (fy >= 0.0 ? 0 : 1);
+      let py = y - 1;
+      let ny = y + 1;
+      let ay = y + 2;
+      let dx = fx - x;
+      let dy = fy - y;
+      function _cubic(dx, Ipp, Icp, Inp, Iap) {
+        return Icp + 0.5 * (dx * (-Ipp + Inp) + dx * dx * (2 * Ipp - 5 * Icp + 4 * Inp - Iap) + dx * dx * dx * (-Ipp + 3 * Icp - 3 * Inp + Iap));
+      }
+      dart.fn(_cubic, T.numAndnumAndnum__Tonum());
+      let Icc = this.getPixelSafe(x, y);
+      let Ipp = px < 0 || py < 0 ? Icc : this.getPixelSafe(px, py);
+      let Icp = px < 0 ? Icc : this.getPixelSafe(x, py);
+      let Inp = py < 0 || nx >= this.width ? Icc : this.getPixelSafe(nx, py);
+      let Iap = ax >= this.width || py < 0 ? Icc : this.getPixelSafe(ax, py);
+      let Ip0 = _cubic(dx, color.getRed(Ipp), color.getRed(Icp), color.getRed(Inp), color.getRed(Iap));
+      let Ip1 = _cubic(dx, color.getGreen(Ipp), color.getGreen(Icp), color.getGreen(Inp), color.getGreen(Iap));
+      let Ip2 = _cubic(dx, color.getBlue(Ipp), color.getBlue(Icp), color.getBlue(Inp), color.getBlue(Iap));
+      let Ip3 = _cubic(dx, color.getAlpha(Ipp), color.getAlpha(Icp), color.getAlpha(Inp), color.getAlpha(Iap));
+      let Ipc = px < 0 ? Icc : this.getPixelSafe(px, y);
+      let Inc = nx >= this.width ? Icc : this.getPixelSafe(nx, y);
+      let Iac = ax >= this.width ? Icc : this.getPixelSafe(ax, y);
+      let Ic0 = _cubic(dx, color.getRed(Ipc), color.getRed(Icc), color.getRed(Inc), color.getRed(Iac));
+      let Ic1 = _cubic(dx, color.getGreen(Ipc), color.getGreen(Icc), color.getGreen(Inc), color.getGreen(Iac));
+      let Ic2 = _cubic(dx, color.getBlue(Ipc), color.getBlue(Icc), color.getBlue(Inc), color.getBlue(Iac));
+      let Ic3 = _cubic(dx, color.getAlpha(Ipc), color.getAlpha(Icc), color.getAlpha(Inc), color.getAlpha(Iac));
+      let Ipn = px < 0 || ny >= this.height ? Icc : this.getPixelSafe(px, ny);
+      let Icn = ny >= this.height ? Icc : this.getPixelSafe(x, ny);
+      let Inn = nx >= this.width || ny >= this.height ? Icc : this.getPixelSafe(nx, ny);
+      let Ian = ax >= this.width || ny >= this.height ? Icc : this.getPixelSafe(ax, ny);
+      let In0 = _cubic(dx, color.getRed(Ipn), color.getRed(Icn), color.getRed(Inn), color.getRed(Ian));
+      let In1 = _cubic(dx, color.getGreen(Ipn), color.getGreen(Icn), color.getGreen(Inn), color.getGreen(Ian));
+      let In2 = _cubic(dx, color.getBlue(Ipn), color.getBlue(Icn), color.getBlue(Inn), color.getBlue(Ian));
+      let In3 = _cubic(dx, color.getAlpha(Ipn), color.getAlpha(Icn), color.getAlpha(Inn), color.getAlpha(Ian));
+      let Ipa = px < 0 || ay >= this.height ? Icc : this.getPixelSafe(px, ay);
+      let Ica = ay >= this.height ? Icc : this.getPixelSafe(x, ay);
+      let Ina = nx >= this.width || ay >= this.height ? Icc : this.getPixelSafe(nx, ay);
+      let Iaa = ax >= this.width || ay >= this.height ? Icc : this.getPixelSafe(ax, ay);
+      let Ia0 = _cubic(dx, color.getRed(Ipa), color.getRed(Ica), color.getRed(Ina), color.getRed(Iaa));
+      let Ia1 = _cubic(dx, color.getGreen(Ipa), color.getGreen(Ica), color.getGreen(Ina), color.getGreen(Iaa));
+      let Ia2 = _cubic(dx, color.getBlue(Ipa), color.getBlue(Ica), color.getBlue(Ina), color.getBlue(Iaa));
+      let Ia3 = _cubic(dx, color.getAlpha(Ipa), color.getAlpha(Ica), color.getAlpha(Ina), color.getAlpha(Iaa));
+      let c0 = _cubic(dy, Ip0, Ic0, In0, Ia0);
+      let c1 = _cubic(dy, Ip1, Ic1, In1, Ia1);
+      let c2 = _cubic(dy, Ip2, Ic2, In2, Ia2);
+      let c3 = _cubic(dy, Ip3, Ic3, In3, Ia3);
+      return color.getColor(c0[$toInt](), c1[$toInt](), c2[$toInt](), c3[$toInt]());
+    }
+    setPixel(x, y, color) {
+      this.data[$_set](y * this.width + x, color);
+    }
+    setPixelSafe(x, y, color) {
+      if (this.boundsSafe(x, y)) {
+        this.data[$_set](y * this.width + x, color);
+      }
+    }
+    setPixelRgba(x, y, r, g, b, a = 255) {
+      this.data[$_set](y * this.width + x, color.getColor(r, g, b, a));
+    }
+    getWhiteBalance(opts) {
+      let asDouble = opts && 'asDouble' in opts ? opts.asDouble : false;
+      let len = this.data[$length];
+      let r = 0.0;
+      let g = 0.0;
+      let b = 0.0;
+      let t = 1;
+      for (let i = 0; i < len; i = i + 1) {
+        r = r + (color.getRed(this.data[$_get](i)) - r) / t;
+        g = g + (color.getGreen(this.data[$_get](i)) - g) / t;
+        b = b + (color.getBlue(this.data[$_get](i)) - b) / t;
+        t = t + 1;
+      }
+      let averageGray = (r + g + b) / 3.0;
+      return asDouble ? averageGray : averageGray[$toInt]();
+    }
+    addTextData(data) {
+      if (this.textData == null) {
+        this.textData = new (T.IdentityMapOfString$String()).new();
+      }
+      for (let key of data[$keys]) {
+        dart.nullCheck(this.textData)[$_set](key, dart.nullCheck(data[$_get](key)));
+      }
+    }
+    static _convertData(width, height, bytes, format) {
+      if (format === image.Format.rgba) {
+        return typed_data.Uint32List.is(bytes) ? bytes[$sublist](0) : typed_data.Uint8List.is(bytes) ? typed_data.Uint32List.view(bytes[$buffer])[$sublist](0) : typed_data.Uint32List.view(_native_typed_data.NativeUint8List.fromList(bytes)[$buffer]);
+      }
+      let input = typed_data.Uint32List.is(bytes) ? typed_data.Uint8List.view(bytes[$buffer]) : bytes;
+      let data = _native_typed_data.NativeUint32List.new(width * height);
+      let rgba = typed_data.Uint8List.view(data[$buffer]);
+      switch (format) {
+        case C[3] || CT.C3:
+          {
+            for (let i = 0, len = input[$length]; i < len; i = i + 1) {
+              rgba[$_set](i, input[$_get](i));
+            }
+            break;
+          }
+        case C[4] || CT.C4:
+          {
+            for (let i = 0, len = input[$length]; i < len; i = i + 4) {
+              rgba[$_set](i + 0, input[$_get](i + 2));
+              rgba[$_set](i + 1, input[$_get](i + 1));
+              rgba[$_set](i + 2, input[$_get](i + 0));
+              rgba[$_set](i + 3, input[$_get](i + 3));
+            }
+            break;
+          }
+        case C[2] || CT.C2:
+          {
+            for (let i = 0, len = input[$length]; i < len; i = i + 4) {
+              rgba[$_set](i + 0, input[$_get](i + 3));
+              rgba[$_set](i + 1, input[$_get](i + 2));
+              rgba[$_set](i + 2, input[$_get](i + 1));
+              rgba[$_set](i + 3, input[$_get](i + 0));
+            }
+            break;
+          }
+        case C[1] || CT.C1:
+          {
+            for (let i = 0, len = input[$length]; i < len; i = i + 4) {
+              rgba[$_set](i + 0, input[$_get](i + 1));
+              rgba[$_set](i + 1, input[$_get](i + 2));
+              rgba[$_set](i + 2, input[$_get](i + 3));
+              rgba[$_set](i + 3, input[$_get](i + 0));
+            }
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            for (let i = 0, j = 0, len = input[$length]; j < len; i = i + 4, j = j + 3) {
+              rgba[$_set](i + 0, input[$_get](j + 2));
+              rgba[$_set](i + 1, input[$_get](j + 1));
+              rgba[$_set](i + 2, input[$_get](j + 0));
+              rgba[$_set](i + 3, 255);
+            }
+            break;
+          }
+        case C[5] || CT.C5:
+          {
+            for (let i = 0, j = 0, len = input[$length]; j < len; i = i + 4, j = j + 3) {
+              rgba[$_set](i + 0, input[$_get](j + 0));
+              rgba[$_set](i + 1, input[$_get](j + 1));
+              rgba[$_set](i + 2, input[$_get](j + 2));
+              rgba[$_set](i + 3, 255);
+            }
+            break;
+          }
+        case C[7] || CT.C7:
+          {
+            for (let i = 0, j = 0, len = input[$length]; j < len; i = i + 4, j = j + 1) {
+              rgba[$_set](i + 0, input[$_get](j));
+              rgba[$_set](i + 1, input[$_get](j));
+              rgba[$_set](i + 2, input[$_get](j));
+              rgba[$_set](i + 3, 255);
+            }
+            break;
+          }
+      }
+      return data;
+    }
+  };
+  (image.Image.new = function(width, height, opts) {
+    let channels = opts && 'channels' in opts ? opts.channels : C[10] || CT.C10;
+    let exif = opts && 'exif' in opts ? opts.exif : null;
+    let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+    let textData = opts && 'textData' in opts ? opts.textData : null;
+    this[xOffset] = 0;
+    this[yOffset] = 0;
+    this[duration] = 0;
+    this[disposeMethod] = image.DisposeMode.clear;
+    this[blendMethod] = image.BlendMode.over;
+    this[width$] = width;
+    this[height$] = height;
+    this[channels$] = channels;
+    this[textData$] = textData;
+    this[data] = _native_typed_data.NativeUint32List.new(width * height);
+    this[exif$] = new exif_data.ExifData.from(exif);
+    this[iccProfile] = iccp;
+    ;
+  }).prototype = image.Image.prototype;
+  (image.Image.rgb = function(width, height, opts) {
+    let exif = opts && 'exif' in opts ? opts.exif : null;
+    let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+    let textData = opts && 'textData' in opts ? opts.textData : null;
+    this[xOffset] = 0;
+    this[yOffset] = 0;
+    this[duration] = 0;
+    this[disposeMethod] = image.DisposeMode.clear;
+    this[blendMethod] = image.BlendMode.over;
+    this[width$] = width;
+    this[height$] = height;
+    this[textData$] = textData;
+    this[channels$] = image.Channels.rgb;
+    this[data] = _native_typed_data.NativeUint32List.new(width * height);
+    this[exif$] = new exif_data.ExifData.from(exif);
+    this[iccProfile] = iccp;
+    ;
+  }).prototype = image.Image.prototype;
+  (image.Image.from = function(other) {
+    this[xOffset] = 0;
+    this[yOffset] = 0;
+    this[duration] = 0;
+    this[disposeMethod] = image.DisposeMode.clear;
+    this[blendMethod] = image.BlendMode.over;
+    this[textData$] = null;
+    this[width$] = other.width;
+    this[height$] = other.height;
+    this[xOffset] = other.xOffset;
+    this[yOffset] = other.yOffset;
+    this[duration] = other.duration;
+    this[disposeMethod] = other.disposeMethod;
+    this[blendMethod] = other.blendMethod;
+    this[channels$] = other.channels;
+    this[data] = other.data[$sublist](0);
+    this[exif$] = new exif_data.ExifData.from(other.exif);
+    this[iccProfile] = other.iccProfile;
+    if (other.textData != null) {
+      this.textData = T.LinkedHashMapOfString$String().from(dart.nullCheck(other.textData));
+    }
+  }).prototype = image.Image.prototype;
+  (image.Image.fromBytes = function(width, height, bytes, opts) {
+    let exif = opts && 'exif' in opts ? opts.exif : null;
+    let iccp = opts && 'iccp' in opts ? opts.iccp : null;
+    let format = opts && 'format' in opts ? opts.format : C[3] || CT.C3;
+    let channels = opts && 'channels' in opts ? opts.channels : C[10] || CT.C10;
+    let textData = opts && 'textData' in opts ? opts.textData : null;
+    this[xOffset] = 0;
+    this[yOffset] = 0;
+    this[duration] = 0;
+    this[disposeMethod] = image.DisposeMode.clear;
+    this[blendMethod] = image.BlendMode.over;
+    this[width$] = width;
+    this[height$] = height;
+    this[channels$] = channels;
+    this[textData$] = textData;
+    this[data] = image.Image._convertData(width, height, bytes, format);
+    this[exif$] = new exif_data.ExifData.from(exif);
+    this[iccProfile] = iccp;
+    ;
+  }).prototype = image.Image.prototype;
+  dart.addTypeTests(image.Image);
+  dart.addTypeCaches(image.Image);
+  dart.setMethodSignature(image.Image, () => ({
+    __proto__: dart.getMethods(image.Image.__proto__),
+    clone: dart.fnType(image.Image, []),
+    getBytes: dart.fnType(typed_data.Uint8List, [], {format: image.Format}, {}),
+    fill: dart.fnType(image.Image, [core.int]),
+    fillBackground: dart.fnType(dart.void, [core.int]),
+    '+': dart.fnType(image.Image, [image.Image]),
+    '-': dart.fnType(image.Image, [image.Image]),
+    '*': dart.fnType(image.Image, [image.Image]),
+    '|': dart.fnType(image.Image, [image.Image]),
+    '&': dart.fnType(image.Image, [image.Image]),
+    '%': dart.fnType(image.Image, [image.Image]),
+    _get: dart.fnType(core.int, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.int]),
+    index: dart.fnType(core.int, [core.int, core.int]),
+    boundsSafe: dart.fnType(core.bool, [core.int, core.int]),
+    getPixel: dart.fnType(core.int, [core.int, core.int]),
+    getPixelSafe: dart.fnType(core.int, [core.int, core.int]),
+    getPixelInterpolate: dart.fnType(core.int, [core.num, core.num], [interpolation$.Interpolation]),
+    getPixelLinear: dart.fnType(core.int, [core.num, core.num]),
+    getPixelCubic: dart.fnType(core.int, [core.num, core.num]),
+    setPixel: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    setPixelSafe: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    setPixelRgba: dart.fnType(dart.void, [core.int, core.int, core.int, core.int, core.int], [core.int]),
+    getWhiteBalance: dart.fnType(dart.dynamic, [], {asDouble: core.bool}, {}),
+    addTextData: dart.fnType(dart.void, [core.Map$(core.String, core.String)])
+  }));
+  dart.setStaticMethodSignature(image.Image, () => ['_convertData']);
+  dart.setGetterSignature(image.Image, () => ({
+    __proto__: dart.getGetters(image.Image.__proto__),
+    numberOfChannels: core.int,
+    length: core.int
+  }));
+  dart.setLibraryUri(image.Image, I[0]);
+  dart.setFieldSignature(image.Image, () => ({
+    __proto__: dart.getFields(image.Image.__proto__),
+    width: dart.finalFieldType(core.int),
+    height: dart.finalFieldType(core.int),
+    channels: dart.fieldType(image.Channels),
+    xOffset: dart.fieldType(core.int),
+    yOffset: dart.fieldType(core.int),
+    duration: dart.fieldType(core.int),
+    disposeMethod: dart.fieldType(image.DisposeMode),
+    blendMethod: dart.fieldType(image.BlendMode),
+    data: dart.finalFieldType(typed_data.Uint32List),
+    exif: dart.fieldType(exif_data.ExifData),
+    iccProfile: dart.fieldType(dart.nullable(icc_profile_data.ICCProfileData)),
+    textData: dart.fieldType(dart.nullable(core.Map$(core.String, core.String)))
+  }));
+  dart.trackLibraries("packages/image/src/image.dart", {
+    "package:image/src/image.dart": image
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["image.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/image/src/image.dart.lib.js"}');
+  // Exports:
+  return {
+    src__image: image
+  };
+}));
+
+//# sourceMappingURL=image.dart.lib.js.map

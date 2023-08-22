@@ -1,0 +1,378 @@
+define(['dart_sdk', 'packages/crypto/src/hash_sink.dart'], (function load__packages__crypto__src__sha512_slowsinks_dart(dart_sdk, packages__crypto__src__hash_sink$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const hash_sink = packages__crypto__src__hash_sink$46dart.src__hash_sink;
+  var sha512_slowsinks = Object.create(dart.library);
+  var $buffer = dartx.buffer;
+  var $rightShift = dartx['>>'];
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $leftShift = dartx['<<'];
+  var $length = dartx.length;
+  var $setRange = dartx.setRange;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/crypto-3.0.1/lib/src/sha512_slowsinks.dart",
+    "package:crypto/src/sha512_slowsinks.dart"
+  ];
+  var _extended = dart.privateName(sha512_slowsinks, "_extended");
+  var _nums = dart.privateName(sha512_slowsinks, "_nums");
+  var _digest$ = dart.privateName(sha512_slowsinks, "_digest");
+  var _shr = dart.privateName(sha512_slowsinks, "_shr");
+  var _shl = dart.privateName(sha512_slowsinks, "_shl");
+  var _or = dart.privateName(sha512_slowsinks, "_or");
+  var _xor = dart.privateName(sha512_slowsinks, "_xor");
+  var _add = dart.privateName(sha512_slowsinks, "_add");
+  var _addTo2 = dart.privateName(sha512_slowsinks, "_addTo2");
+  var _rotr = dart.privateName(sha512_slowsinks, "_rotr");
+  var _bsig0 = dart.privateName(sha512_slowsinks, "_bsig0");
+  var _bsig1 = dart.privateName(sha512_slowsinks, "_bsig1");
+  var _ssig0 = dart.privateName(sha512_slowsinks, "_ssig0");
+  var _ssig1 = dart.privateName(sha512_slowsinks, "_ssig1");
+  var _ch = dart.privateName(sha512_slowsinks, "_ch");
+  var _maj = dart.privateName(sha512_slowsinks, "_maj");
+  sha512_slowsinks._Sha64BitSink = class _Sha64BitSink extends hash_sink.HashSink {
+    get digest() {
+      return typed_data.Uint32List.view(this[_digest$][$buffer], 0, this.digestBytes);
+    }
+    [_shr](bits, word, offset, ret, offsetR) {
+      ret[$_set](0 + offsetR, bits < 32 && bits >= 0 ? word[$_get](0 + offset)[$rightShift](bits) : 0);
+      ret[$_set](1 + offsetR, bits > 32 ? word[$_get](0 + offset)[$rightShift](bits - 32) : bits === 32 ? word[$_get](0 + offset) : bits >= 0 ? (word[$_get](0 + offset)[$leftShift](32 - bits) | word[$_get](1 + offset)[$rightShift](bits)) >>> 0 : 0);
+    }
+    [_shl](bits, word, offset, ret, offsetR) {
+      ret[$_set](0 + offsetR, bits > 32 ? word[$_get](1 + offset)[$leftShift](bits - 32) : bits === 32 ? word[$_get](1 + offset) : bits >= 0 ? (word[$_get](0 + offset)[$leftShift](bits) | word[$_get](1 + offset)[$rightShift](32 - bits)) >>> 0 : 0);
+      ret[$_set](1 + offsetR, bits < 32 && bits >= 0 ? word[$_get](1 + offset)[$leftShift](bits) : 0);
+    }
+    [_or](word1, offset1, word2, offset2, ret, offsetR) {
+      ret[$_set](0 + offsetR, (word1[$_get](0 + offset1) | word2[$_get](0 + offset2)) >>> 0);
+      ret[$_set](1 + offsetR, (word1[$_get](1 + offset1) | word2[$_get](1 + offset2)) >>> 0);
+    }
+    [_xor](word1, offset1, word2, offset2, ret, offsetR) {
+      ret[$_set](0 + offsetR, (word1[$_get](0 + offset1) ^ word2[$_get](0 + offset2)) >>> 0);
+      ret[$_set](1 + offsetR, (word1[$_get](1 + offset1) ^ word2[$_get](1 + offset2)) >>> 0);
+    }
+    [_add](word1, offset1, word2, offset2, ret, offsetR) {
+      ret[$_set](1 + offsetR, word1[$_get](1 + offset1) + word2[$_get](1 + offset2));
+      ret[$_set](0 + offsetR, word1[$_get](0 + offset1) + word2[$_get](0 + offset2) + (ret[$_get](1 + offsetR) < word1[$_get](1 + offset1) ? 1 : 0));
+    }
+    [_addTo2](word1, offset1, word2, offset2) {
+      let t1, t0, t1$, t0$;
+      let _addTemp = null;
+      _addTemp = word1[$_get](1 + offset1);
+      t0 = word1;
+      t1 = 1 + offset1;
+      t0[$_set](t1, t0[$_get](t1) + word2[$_get](1 + offset2));
+      t0$ = word1;
+      t1$ = 0 + offset1;
+      t0$[$_set](t1$, t0$[$_get](t1$) + (word2[$_get](0 + offset2) + (word1[$_get](1 + offset1) < _addTemp ? 1 : 0)));
+    }
+    [_rotr](bits, word, offset, ret, offsetR) {
+      this[_shr](bits, word, offset, this[_nums], 0);
+      this[_shl](64 - bits, word, offset, this[_nums], 2);
+      this[_or](this[_nums], 0, this[_nums], 2, ret, offsetR);
+    }
+    [_bsig0](word, offset, ret, offsetR) {
+      this[_rotr](28, word, offset, this[_nums], 4);
+      this[_rotr](34, word, offset, this[_nums], 6);
+      this[_rotr](39, word, offset, this[_nums], 8);
+      this[_xor](this[_nums], 6, this[_nums], 8, this[_nums], 10);
+      this[_xor](this[_nums], 4, this[_nums], 10, ret, offsetR);
+    }
+    [_bsig1](word, offset, ret, offsetR) {
+      this[_rotr](14, word, offset, this[_nums], 4);
+      this[_rotr](18, word, offset, this[_nums], 6);
+      this[_rotr](41, word, offset, this[_nums], 8);
+      this[_xor](this[_nums], 6, this[_nums], 8, this[_nums], 10);
+      this[_xor](this[_nums], 4, this[_nums], 10, ret, offsetR);
+    }
+    [_ssig0](word, offset, ret, offsetR) {
+      this[_rotr](1, word, offset, this[_nums], 4);
+      this[_rotr](8, word, offset, this[_nums], 6);
+      this[_shr](7, word, offset, this[_nums], 8);
+      this[_xor](this[_nums], 6, this[_nums], 8, this[_nums], 10);
+      this[_xor](this[_nums], 4, this[_nums], 10, ret, offsetR);
+    }
+    [_ssig1](word, offset, ret, offsetR) {
+      this[_rotr](19, word, offset, this[_nums], 4);
+      this[_rotr](61, word, offset, this[_nums], 6);
+      this[_shr](6, word, offset, this[_nums], 8);
+      this[_xor](this[_nums], 6, this[_nums], 8, this[_nums], 10);
+      this[_xor](this[_nums], 4, this[_nums], 10, ret, offsetR);
+    }
+    [_ch](x, offsetX, y, offsetY, z, offsetZ, ret, offsetR) {
+      ret[$_set](0 + offsetR, (x[$_get](0 + offsetX) & (y[$_get](0 + offsetY) ^ z[$_get](0 + offsetZ)) >>> 0 ^ z[$_get](0 + offsetZ)) >>> 0);
+      ret[$_set](1 + offsetR, (x[$_get](1 + offsetX) & (y[$_get](1 + offsetY) ^ z[$_get](1 + offsetZ)) >>> 0 ^ z[$_get](1 + offsetZ)) >>> 0);
+    }
+    [_maj](x, offsetX, y, offsetY, z, offsetZ, ret, offsetR) {
+      ret[$_set](0 + offsetR, (x[$_get](0 + offsetX) & (y[$_get](0 + offsetY) | z[$_get](0 + offsetZ)) >>> 0 | (y[$_get](0 + offsetY) & z[$_get](0 + offsetZ)) >>> 0) >>> 0);
+      ret[$_set](1 + offsetR, (x[$_get](1 + offsetX) & (y[$_get](1 + offsetY) | z[$_get](1 + offsetZ)) >>> 0 | (y[$_get](1 + offsetY) & z[$_get](1 + offsetZ)) >>> 0) >>> 0);
+    }
+    updateHash(chunk) {
+      if (!(chunk[$length] === 32)) dart.assertFailed(null, I[0], 214, 12, "chunk.length == 32");
+      for (let i = 0; i < 32; i = i + 1) {
+        this[_extended][$_set](i, chunk[$_get](i));
+      }
+      for (let i = 32; i < 160; i = i + 2) {
+        this[_ssig1](this[_extended], i - 2 * 2, this[_nums], 28);
+        this[_add](this[_nums], 28, this[_extended], i - 7 * 2, this[_nums], 30);
+        this[_ssig0](this[_extended], i - 15 * 2, this[_nums], 28);
+        this[_add](this[_nums], 28, this[_extended], i - 16 * 2, this[_nums], 32);
+        this[_add](this[_nums], 30, this[_nums], 32, this[_extended], i);
+      }
+      this[_nums][$setRange](12, 26 + 2, this[_digest$]);
+      for (let i = 0; i < 160; i = i + 2) {
+        this[_bsig1](this[_nums], 20, this[_nums], 28);
+        this[_add](this[_nums], 26, this[_nums], 28, this[_nums], 30);
+        this[_ch](this[_nums], 20, this[_nums], 22, this[_nums], 24, this[_nums], 32);
+        this[_add](this[_nums], 30, this[_nums], 32, this[_nums], 34);
+        this[_add](sha512_slowsinks._noise32, i, this[_extended], i, this[_nums], 36);
+        this[_add](this[_nums], 34, this[_nums], 36, this[_nums], 28);
+        this[_bsig0](this[_nums], 12, this[_nums], 32);
+        this[_maj](this[_nums], 12, this[_nums], 14, this[_nums], 16, this[_nums], 34);
+        this[_add](this[_nums], 32, this[_nums], 34, this[_nums], 30);
+        this[_nums][$_set](26, this[_nums][$_get](24));
+        this[_nums][$_set](26 + 1, this[_nums][$_get](24 + 1));
+        this[_nums][$_set](24, this[_nums][$_get](22));
+        this[_nums][$_set](24 + 1, this[_nums][$_get](22 + 1));
+        this[_nums][$_set](22, this[_nums][$_get](20));
+        this[_nums][$_set](22 + 1, this[_nums][$_get](20 + 1));
+        this[_add](this[_nums], 18, this[_nums], 28, this[_nums], 20);
+        this[_nums][$_set](18, this[_nums][$_get](16));
+        this[_nums][$_set](18 + 1, this[_nums][$_get](16 + 1));
+        this[_nums][$_set](16, this[_nums][$_get](14));
+        this[_nums][$_set](16 + 1, this[_nums][$_get](14 + 1));
+        this[_nums][$_set](14, this[_nums][$_get](12));
+        this[_nums][$_set](14 + 1, this[_nums][$_get](12 + 1));
+        this[_add](this[_nums], 28, this[_nums], 30, this[_nums], 12);
+      }
+      this[_addTo2](this[_digest$], 0, this[_nums], 12);
+      this[_addTo2](this[_digest$], 2, this[_nums], 14);
+      this[_addTo2](this[_digest$], 4, this[_nums], 16);
+      this[_addTo2](this[_digest$], 6, this[_nums], 18);
+      this[_addTo2](this[_digest$], 8, this[_nums], 20);
+      this[_addTo2](this[_digest$], 10, this[_nums], 22);
+      this[_addTo2](this[_digest$], 12, this[_nums], 24);
+      this[_addTo2](this[_digest$], 14, this[_nums], 26);
+    }
+  };
+  (sha512_slowsinks._Sha64BitSink.new = function(sink, _digest) {
+    this[_extended] = _native_typed_data.NativeUint32List.new(160);
+    this[_nums] = _native_typed_data.NativeUint32List.new(12 + 16 + 10);
+    this[_digest$] = _digest;
+    sha512_slowsinks._Sha64BitSink.__proto__.new.call(this, sink, 32, {signatureBytes: 16});
+    ;
+  }).prototype = sha512_slowsinks._Sha64BitSink.prototype;
+  dart.addTypeTests(sha512_slowsinks._Sha64BitSink);
+  dart.addTypeCaches(sha512_slowsinks._Sha64BitSink);
+  dart.setMethodSignature(sha512_slowsinks._Sha64BitSink, () => ({
+    __proto__: dart.getMethods(sha512_slowsinks._Sha64BitSink.__proto__),
+    [_shr]: dart.fnType(dart.void, [core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_shl]: dart.fnType(dart.void, [core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_or]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_xor]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_add]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_addTo2]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_rotr]: dart.fnType(dart.void, [core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_bsig0]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_bsig1]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_ssig0]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_ssig1]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_ch]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    [_maj]: dart.fnType(dart.void, [typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    updateHash: dart.fnType(dart.void, [typed_data.Uint32List])
+  }));
+  dart.setGetterSignature(sha512_slowsinks._Sha64BitSink, () => ({
+    __proto__: dart.getGetters(sha512_slowsinks._Sha64BitSink.__proto__),
+    digest: typed_data.Uint32List
+  }));
+  dart.setLibraryUri(sha512_slowsinks._Sha64BitSink, I[1]);
+  dart.setFieldSignature(sha512_slowsinks._Sha64BitSink, () => ({
+    __proto__: dart.getFields(sha512_slowsinks._Sha64BitSink.__proto__),
+    [_digest$]: dart.finalFieldType(typed_data.Uint32List),
+    [_extended]: dart.finalFieldType(typed_data.Uint32List),
+    [_nums]: dart.finalFieldType(typed_data.Uint32List)
+  }));
+  dart.setStaticFieldSignature(sha512_slowsinks._Sha64BitSink, () => ['_rotrIndex1', '_rotrIndex2', '_sigIndex1', '_sigIndex2', '_sigIndex3', '_sigIndex4', '_aIndex', '_bIndex', '_cIndex', '_dIndex', '_eIndex', '_fIndex', '_gIndex', '_hIndex', '_tmp1', '_tmp2', '_tmp3', '_tmp4', '_tmp5']);
+  dart.defineLazy(sha512_slowsinks._Sha64BitSink, {
+    /*sha512_slowsinks._Sha64BitSink._rotrIndex1*/get _rotrIndex1() {
+      return 0;
+    },
+    /*sha512_slowsinks._Sha64BitSink._rotrIndex2*/get _rotrIndex2() {
+      return 2;
+    },
+    /*sha512_slowsinks._Sha64BitSink._sigIndex1*/get _sigIndex1() {
+      return 4;
+    },
+    /*sha512_slowsinks._Sha64BitSink._sigIndex2*/get _sigIndex2() {
+      return 6;
+    },
+    /*sha512_slowsinks._Sha64BitSink._sigIndex3*/get _sigIndex3() {
+      return 8;
+    },
+    /*sha512_slowsinks._Sha64BitSink._sigIndex4*/get _sigIndex4() {
+      return 10;
+    },
+    /*sha512_slowsinks._Sha64BitSink._aIndex*/get _aIndex() {
+      return 12;
+    },
+    /*sha512_slowsinks._Sha64BitSink._bIndex*/get _bIndex() {
+      return 14;
+    },
+    /*sha512_slowsinks._Sha64BitSink._cIndex*/get _cIndex() {
+      return 16;
+    },
+    /*sha512_slowsinks._Sha64BitSink._dIndex*/get _dIndex() {
+      return 18;
+    },
+    /*sha512_slowsinks._Sha64BitSink._eIndex*/get _eIndex() {
+      return 20;
+    },
+    /*sha512_slowsinks._Sha64BitSink._fIndex*/get _fIndex() {
+      return 22;
+    },
+    /*sha512_slowsinks._Sha64BitSink._gIndex*/get _gIndex() {
+      return 24;
+    },
+    /*sha512_slowsinks._Sha64BitSink._hIndex*/get _hIndex() {
+      return 26;
+    },
+    /*sha512_slowsinks._Sha64BitSink._tmp1*/get _tmp1() {
+      return 28;
+    },
+    /*sha512_slowsinks._Sha64BitSink._tmp2*/get _tmp2() {
+      return 30;
+    },
+    /*sha512_slowsinks._Sha64BitSink._tmp3*/get _tmp3() {
+      return 32;
+    },
+    /*sha512_slowsinks._Sha64BitSink._tmp4*/get _tmp4() {
+      return 34;
+    },
+    /*sha512_slowsinks._Sha64BitSink._tmp5*/get _tmp5() {
+      return 36;
+    }
+  }, false);
+  var digestBytes = dart.privateName(sha512_slowsinks, "Sha384Sink.digestBytes");
+  sha512_slowsinks.Sha384Sink = class Sha384Sink extends sha512_slowsinks._Sha64BitSink {
+    get digestBytes() {
+      return this[digestBytes];
+    }
+    set digestBytes(value) {
+      super.digestBytes = value;
+    }
+    static ['_#new#tearOff'](sink) {
+      return new sha512_slowsinks.Sha384Sink.new(sink);
+    }
+  };
+  (sha512_slowsinks.Sha384Sink.new = function(sink) {
+    this[digestBytes] = 12;
+    sha512_slowsinks.Sha384Sink.__proto__.new.call(this, sink, _native_typed_data.NativeUint32List.fromList(T.JSArrayOfint().of([3418070365, 3238371032, 1654270250, 914150663, 2438529370, 812702999, 355462360, 4144912697, 1731405415, 4290775857, 2394180231, 1750603025, 3675008525, 1694076839, 1203062813, 3204075428])));
+    ;
+  }).prototype = sha512_slowsinks.Sha384Sink.prototype;
+  dart.addTypeTests(sha512_slowsinks.Sha384Sink);
+  dart.addTypeCaches(sha512_slowsinks.Sha384Sink);
+  dart.setLibraryUri(sha512_slowsinks.Sha384Sink, I[1]);
+  dart.setFieldSignature(sha512_slowsinks.Sha384Sink, () => ({
+    __proto__: dart.getFields(sha512_slowsinks.Sha384Sink.__proto__),
+    digestBytes: dart.finalFieldType(core.int)
+  }));
+  var digestBytes$ = dart.privateName(sha512_slowsinks, "Sha512Sink.digestBytes");
+  sha512_slowsinks.Sha512Sink = class Sha512Sink extends sha512_slowsinks._Sha64BitSink {
+    get digestBytes() {
+      return this[digestBytes$];
+    }
+    set digestBytes(value) {
+      super.digestBytes = value;
+    }
+    static ['_#new#tearOff'](sink) {
+      return new sha512_slowsinks.Sha512Sink.new(sink);
+    }
+  };
+  (sha512_slowsinks.Sha512Sink.new = function(sink) {
+    this[digestBytes$] = 16;
+    sha512_slowsinks.Sha512Sink.__proto__.new.call(this, sink, _native_typed_data.NativeUint32List.fromList(T.JSArrayOfint().of([1779033703, 4089235720, 3144134277, 2227873595, 1013904242, 4271175723, 2773480762, 1595750129, 1359893119, 2917565137, 2600822924, 725511199, 528734635, 4215389547, 1541459225, 327033209])));
+    ;
+  }).prototype = sha512_slowsinks.Sha512Sink.prototype;
+  dart.addTypeTests(sha512_slowsinks.Sha512Sink);
+  dart.addTypeCaches(sha512_slowsinks.Sha512Sink);
+  dart.setLibraryUri(sha512_slowsinks.Sha512Sink, I[1]);
+  dart.setFieldSignature(sha512_slowsinks.Sha512Sink, () => ({
+    __proto__: dart.getFields(sha512_slowsinks.Sha512Sink.__proto__),
+    digestBytes: dart.finalFieldType(core.int)
+  }));
+  var digestBytes$0 = dart.privateName(sha512_slowsinks, "Sha512224Sink.digestBytes");
+  sha512_slowsinks.Sha512224Sink = class Sha512224Sink extends sha512_slowsinks._Sha64BitSink {
+    get digestBytes() {
+      return this[digestBytes$0];
+    }
+    set digestBytes(value) {
+      super.digestBytes = value;
+    }
+    static ['_#new#tearOff'](sink) {
+      return new sha512_slowsinks.Sha512224Sink.new(sink);
+    }
+  };
+  (sha512_slowsinks.Sha512224Sink.new = function(sink) {
+    this[digestBytes$0] = 7;
+    sha512_slowsinks.Sha512224Sink.__proto__.new.call(this, sink, _native_typed_data.NativeUint32List.fromList(T.JSArrayOfint().of([2352822216, 424955298, 1944164710, 2312950998, 502970286, 855612546, 1738396948, 1479516111, 258812777, 2077511080, 2011393907, 79989058, 1067287976, 1780299464, 286451373, 2446758561])));
+    ;
+  }).prototype = sha512_slowsinks.Sha512224Sink.prototype;
+  dart.addTypeTests(sha512_slowsinks.Sha512224Sink);
+  dart.addTypeCaches(sha512_slowsinks.Sha512224Sink);
+  dart.setLibraryUri(sha512_slowsinks.Sha512224Sink, I[1]);
+  dart.setFieldSignature(sha512_slowsinks.Sha512224Sink, () => ({
+    __proto__: dart.getFields(sha512_slowsinks.Sha512224Sink.__proto__),
+    digestBytes: dart.finalFieldType(core.int)
+  }));
+  var digestBytes$1 = dart.privateName(sha512_slowsinks, "Sha512256Sink.digestBytes");
+  sha512_slowsinks.Sha512256Sink = class Sha512256Sink extends sha512_slowsinks._Sha64BitSink {
+    get digestBytes() {
+      return this[digestBytes$1];
+    }
+    set digestBytes(value) {
+      super.digestBytes = value;
+    }
+    static ['_#new#tearOff'](sink) {
+      return new sha512_slowsinks.Sha512256Sink.new(sink);
+    }
+  };
+  (sha512_slowsinks.Sha512256Sink.new = function(sink) {
+    this[digestBytes$1] = 8;
+    sha512_slowsinks.Sha512256Sink.__proto__.new.call(this, sink, _native_typed_data.NativeUint32List.fromList(T.JSArrayOfint().of([573645204, 4230739756, 2673172387, 3360449730, 596883563, 1867755857, 2520282905, 1497426621, 2519219938, 2827943907, 3193839141, 1401305490, 721525244, 746961066, 246885852, 2177182882])));
+    ;
+  }).prototype = sha512_slowsinks.Sha512256Sink.prototype;
+  dart.addTypeTests(sha512_slowsinks.Sha512256Sink);
+  dart.addTypeCaches(sha512_slowsinks.Sha512256Sink);
+  dart.setLibraryUri(sha512_slowsinks.Sha512256Sink, I[1]);
+  dart.setFieldSignature(sha512_slowsinks.Sha512256Sink, () => ({
+    __proto__: dart.getFields(sha512_slowsinks.Sha512256Sink.__proto__),
+    digestBytes: dart.finalFieldType(core.int)
+  }));
+  dart.defineLazy(sha512_slowsinks, {
+    /*sha512_slowsinks._noise32*/get _noise32() {
+      return _native_typed_data.NativeUint32List.fromList(T.JSArrayOfint().of([1116352408, 3609767458, 1899447441, 602891725, 3049323471, 3964484399, 3921009573, 2173295548, 961987163, 4081628472, 1508970993, 3053834265, 2453635748, 2937671579, 2870763221, 3664609560, 3624381080, 2734883394, 310598401, 1164996542, 607225278, 1323610764, 1426881987, 3590304994, 1925078388, 4068182383, 2162078206, 991336113, 2614888103, 633803317, 3248222580, 3479774868, 3835390401, 2666613458, 4022224774, 944711139, 264347078, 2341262773, 604807628, 2007800933, 770255983, 1495990901, 1249150122, 1856431235, 1555081692, 3175218132, 1996064986, 2198950837, 2554220882, 3999719339, 2821834349, 766784016, 2952996808, 2566594879, 3210313671, 3203337956, 3336571891, 1034457026, 3584528711, 2466948901, 113926993, 3758326383, 338241895, 168717936, 666307205, 1188179964, 773529912, 1546045734, 1294757372, 1522805485, 1396182291, 2643833823, 1695183700, 2343527390, 1986661051, 1014477480, 2177026350, 1206759142, 2456956037, 344077627, 2730485921, 1290863460, 2820302411, 3158454273, 3259730800, 3505952657, 3345764771, 106217008, 3516065817, 3606008344, 3600352804, 1432725776, 4094571909, 1467031594, 275423344, 851169720, 430227734, 3100823752, 506948616, 1363258195, 659060556, 3750685593, 883997877, 3785050280, 958139571, 3318307427, 1322822218, 3812723403, 1537002063, 2003034995, 1747873779, 3602036899, 1955562222, 1575990012, 2024104815, 1125592928, 2227730452, 2716904306, 2361852424, 442776044, 2428436474, 593698344, 2756734187, 3733110249, 3204031479, 2999351573, 3329325298, 3815920427, 3391569614, 3928383900, 3515267271, 566280711, 3940187606, 3454069534, 4118630271, 4000239992, 116418474, 1914138554, 174292421, 2731055270, 289380356, 3203993006, 460393269, 320620315, 685471733, 587496836, 852142971, 1086792851, 1017036298, 365543100, 1126000580, 2618297676, 1288033470, 3409855158, 1501505948, 4234509866, 1607167915, 987167468, 1816402316, 1246189591]));
+    }
+  }, false);
+  dart.trackLibraries("packages/crypto/src/sha512_slowsinks.dart", {
+    "package:crypto/src/sha512_slowsinks.dart": sha512_slowsinks
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["sha512_slowsinks.dart"],"names":[],"mappings":"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AAY,YACpC,YAAY,YAAY,YAAY,WACpC,WAAY,YAAY,WAAY,YACpC,WAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,WACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,WAAY,YAAY,WAAY,WACpC,WAAY,YAAY,WAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,WACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,WACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,WAAY,WACpC,WAAY,YAAY,WAAY,YACpC,WAAY,YAAY,WAAY,YACpC,WAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,WACpC,YAAY,WAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,YAAY,YAAY,WACpC,YAAY,YAAY,YAAY,YACpC,WAAY,YAAY,WAAY,YACpC,WAAY,YAAY,WAAY,WACpC,WAAY,WAAY,WAAY,YACpC,YAAY,WAAY,YAAY,YACpC,YAAY,YAAY,YAAY,YACpC,YAAY,WAAY,YAAY","file":"../../../../../../../../../../../packages/crypto/src/sha512_slowsinks.dart.lib.js"}');
+  // Exports:
+  return {
+    src__sha512_slowsinks: sha512_slowsinks
+  };
+}));
+
+//# sourceMappingURL=sha512_slowsinks.dart.lib.js.map

@@ -1,0 +1,509 @@
+define(['dart_sdk', 'packages/flutter/src/painting/box_shadow.dart'], (function load__packages__flutter__src__material__shadows_dart(dart_sdk, packages__flutter__src__painting__box_shadow$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const box_shadow = packages__flutter__src__painting__box_shadow$46dart.src__painting__box_shadow;
+  var shadows = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfBoxShadow: () => (T.ListOfBoxShadow = dart.constFn(core.List$(box_shadow.BoxShadow)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([], box_shadow.BoxShadow);
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 2,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 855638016
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.BlurStyle.prototype,
+        [_Enum__name]: "normal",
+        [_Enum_index]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 1,
+        [Shadow_offset]: C[4] || CT.C4,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -1
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 1,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 603979776
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 1,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 520093696
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 3,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[7] || CT.C7, C[10] || CT.C10], box_shadow.BoxShadow);
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 3,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 1,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -2
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 2,
+        [Shadow_offset]: C[4] || CT.C4,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 5,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C12() {
+      return C[12] = dart.constList([C[13] || CT.C13, C[15] || CT.C15, C[16] || CT.C16], box_shadow.BoxShadow);
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 3,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -2
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 4,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 8,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], box_shadow.BoxShadow);
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 4,
+        [Shadow_offset]: C[4] || CT.C4,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -1
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 4,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 5,
+        [Shadow_offset]: C[24] || CT.C24,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 10,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22, C[23] || CT.C23, C[25] || CT.C25], box_shadow.BoxShadow);
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 5,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -1
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 6,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 10,
+        [Shadow_offset]: C[29] || CT.C29,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 18,
+        [Shadow_offset]: C[8] || CT.C8,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 0
+      });
+    },
+    get C26() {
+      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28, C[30] || CT.C30], box_shadow.BoxShadow);
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 5,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 5,
+        [Shadow_offset]: C[33] || CT.C33,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -3
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 8,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 10,
+        [Shadow_offset]: C[35] || CT.C35,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 1
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 14,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 2
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32, C[34] || CT.C34, C[36] || CT.C36], box_shadow.BoxShadow);
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 6,
+        [Shadow_offset]: C[33] || CT.C33,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -3
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 9,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 12,
+        [Shadow_offset]: C[40] || CT.C40,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 1
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 16,
+        [Shadow_offset]: C[14] || CT.C14,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 2
+      });
+    },
+    get C37() {
+      return C[37] = dart.constList([C[38] || CT.C38, C[39] || CT.C39, C[41] || CT.C41], box_shadow.BoxShadow);
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 7,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 8,
+        [Shadow_offset]: C[44] || CT.C44,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -4
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 12,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 17,
+        [Shadow_offset]: C[46] || CT.C46,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 2
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 22,
+        [Shadow_offset]: C[33] || CT.C33,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 4
+      });
+    },
+    get C42() {
+      return C[42] = dart.constList([C[43] || CT.C43, C[45] || CT.C45, C[47] || CT.C47], box_shadow.BoxShadow);
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 10,
+        [Shadow_offset]: C[35] || CT.C35,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -5
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 16,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 24,
+        [Shadow_offset]: C[51] || CT.C51,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 2
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 30,
+        [Shadow_offset]: C[29] || CT.C29,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 5
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50, C[52] || CT.C52], box_shadow.BoxShadow);
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 11,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 15,
+        [Shadow_offset]: C[55] || CT.C55,
+        [Shadow_color]: C[5] || CT.C5,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: -7
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 24,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 38,
+        [Shadow_offset]: C[57] || CT.C57,
+        [Shadow_color]: C[9] || CT.C9,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 3
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: box_shadow.BoxShadow.prototype,
+        [Shadow_blurRadius]: 46,
+        [Shadow_offset]: C[40] || CT.C40,
+        [Shadow_color]: C[11] || CT.C11,
+        [BoxShadow_blurStyle]: C[6] || CT.C6,
+        [BoxShadow_spreadRadius]: 8
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[56] || CT.C56, C[58] || CT.C58], box_shadow.BoxShadow);
+    },
+    get C0() {
+      return C[0] = dart.constMap(core.int, T.ListOfBoxShadow(), [0, C[1] || CT.C1, 1, C[2] || CT.C2, 2, C[12] || CT.C12, 3, C[17] || CT.C17, 4, C[21] || CT.C21, 6, C[26] || CT.C26, 8, C[31] || CT.C31, 9, C[37] || CT.C37, 12, C[42] || CT.C42, 16, C[48] || CT.C48, 24, C[53] || CT.C53]);
+    }
+  }, false);
+  var C = Array(59).fill(void 0);
+  var Shadow_blurRadius = dart.privateName(ui, "Shadow.blurRadius");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  var Shadow_offset = dart.privateName(ui, "Shadow.offset");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var Shadow_color = dart.privateName(ui, "Shadow.color");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var BoxShadow_blurStyle = dart.privateName(box_shadow, "BoxShadow.blurStyle");
+  var BoxShadow_spreadRadius = dart.privateName(box_shadow, "BoxShadow.spreadRadius");
+  dart.defineLazy(shadows, {
+    /*shadows.kElevationToShadow*/get kElevationToShadow() {
+      return C[0] || CT.C0;
+    },
+    /*shadows._kKeyUmbraOpacity*/get _kKeyUmbraOpacity() {
+      return C[5] || CT.C5;
+    },
+    /*shadows._kKeyPenumbraOpacity*/get _kKeyPenumbraOpacity() {
+      return C[9] || CT.C9;
+    },
+    /*shadows._kAmbientShadowOpacity*/get _kAmbientShadowOpacity() {
+      return C[11] || CT.C11;
+    },
+    /*shadows._elevationToShadow*/get _elevationToShadow() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/material/shadows.dart", {
+    "package:flutter/src/material/shadows.dart": shadows
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["shadows.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAyBgC,0BAAkB;;;MAEtC,yBAAiB;;;MACjB,4BAAoB;;;MACpB,8BAAsB;;;MACF,0BAAkB","file":"../../../../../../../../../packages/flutter/src/material/shadows.dart.lib.js"}');
+  // Exports:
+  return {
+    src__material__shadows: shadows
+  };
+}));
+
+//# sourceMappingURL=shadows.dart.lib.js.map

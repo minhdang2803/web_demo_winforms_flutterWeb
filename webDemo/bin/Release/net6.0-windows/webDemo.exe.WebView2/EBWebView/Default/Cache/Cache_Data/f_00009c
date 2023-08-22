@@ -1,0 +1,398 @@
+define(['dart_sdk', 'packages/device_info_plus_platform_interface/model/base_device_info.dart'], (function load__packages__device_info_plus_platform_interface__model__android_device_info_dart(dart_sdk, packages__device_info_plus_platform_interface__model__base_device_info$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const base_device_info = packages__device_info_plus_platform_interface__model__base_device_info$46dart.model__base_device_info;
+  var android_device_info = Object.create(dart.library);
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    ListOfStringN: () => (T.ListOfStringN = dart.constFn(core.List$(T.StringN())))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:device_info_plus_platform_interface/model/android_device_info.dart"];
+  var version$ = dart.privateName(android_device_info, "AndroidDeviceInfo.version");
+  var board$ = dart.privateName(android_device_info, "AndroidDeviceInfo.board");
+  var bootloader$ = dart.privateName(android_device_info, "AndroidDeviceInfo.bootloader");
+  var brand$ = dart.privateName(android_device_info, "AndroidDeviceInfo.brand");
+  var device$ = dart.privateName(android_device_info, "AndroidDeviceInfo.device");
+  var display$ = dart.privateName(android_device_info, "AndroidDeviceInfo.display");
+  var fingerprint$ = dart.privateName(android_device_info, "AndroidDeviceInfo.fingerprint");
+  var hardware$ = dart.privateName(android_device_info, "AndroidDeviceInfo.hardware");
+  var host$ = dart.privateName(android_device_info, "AndroidDeviceInfo.host");
+  var id$ = dart.privateName(android_device_info, "AndroidDeviceInfo.id");
+  var manufacturer$ = dart.privateName(android_device_info, "AndroidDeviceInfo.manufacturer");
+  var model$ = dart.privateName(android_device_info, "AndroidDeviceInfo.model");
+  var product$ = dart.privateName(android_device_info, "AndroidDeviceInfo.product");
+  var supported32BitAbis$ = dart.privateName(android_device_info, "AndroidDeviceInfo.supported32BitAbis");
+  var supported64BitAbis$ = dart.privateName(android_device_info, "AndroidDeviceInfo.supported64BitAbis");
+  var supportedAbis$ = dart.privateName(android_device_info, "AndroidDeviceInfo.supportedAbis");
+  var tags$ = dart.privateName(android_device_info, "AndroidDeviceInfo.tags");
+  var type$ = dart.privateName(android_device_info, "AndroidDeviceInfo.type");
+  var isPhysicalDevice$ = dart.privateName(android_device_info, "AndroidDeviceInfo.isPhysicalDevice");
+  var androidId$ = dart.privateName(android_device_info, "AndroidDeviceInfo.androidId");
+  var systemFeatures$ = dart.privateName(android_device_info, "AndroidDeviceInfo.systemFeatures");
+  android_device_info.AndroidDeviceInfo = class AndroidDeviceInfo extends core.Object {
+    get version() {
+      return this[version$];
+    }
+    set version(value) {
+      super.version = value;
+    }
+    get board() {
+      return this[board$];
+    }
+    set board(value) {
+      super.board = value;
+    }
+    get bootloader() {
+      return this[bootloader$];
+    }
+    set bootloader(value) {
+      super.bootloader = value;
+    }
+    get brand() {
+      return this[brand$];
+    }
+    set brand(value) {
+      super.brand = value;
+    }
+    get device() {
+      return this[device$];
+    }
+    set device(value) {
+      super.device = value;
+    }
+    get display() {
+      return this[display$];
+    }
+    set display(value) {
+      super.display = value;
+    }
+    get fingerprint() {
+      return this[fingerprint$];
+    }
+    set fingerprint(value) {
+      super.fingerprint = value;
+    }
+    get hardware() {
+      return this[hardware$];
+    }
+    set hardware(value) {
+      super.hardware = value;
+    }
+    get host() {
+      return this[host$];
+    }
+    set host(value) {
+      super.host = value;
+    }
+    get id() {
+      return this[id$];
+    }
+    set id(value) {
+      super.id = value;
+    }
+    get manufacturer() {
+      return this[manufacturer$];
+    }
+    set manufacturer(value) {
+      super.manufacturer = value;
+    }
+    get model() {
+      return this[model$];
+    }
+    set model(value) {
+      super.model = value;
+    }
+    get product() {
+      return this[product$];
+    }
+    set product(value) {
+      super.product = value;
+    }
+    get supported32BitAbis() {
+      return this[supported32BitAbis$];
+    }
+    set supported32BitAbis(value) {
+      super.supported32BitAbis = value;
+    }
+    get supported64BitAbis() {
+      return this[supported64BitAbis$];
+    }
+    set supported64BitAbis(value) {
+      super.supported64BitAbis = value;
+    }
+    get supportedAbis() {
+      return this[supportedAbis$];
+    }
+    set supportedAbis(value) {
+      super.supportedAbis = value;
+    }
+    get tags() {
+      return this[tags$];
+    }
+    set tags(value) {
+      super.tags = value;
+    }
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+    get isPhysicalDevice() {
+      return this[isPhysicalDevice$];
+    }
+    set isPhysicalDevice(value) {
+      super.isPhysicalDevice = value;
+    }
+    get androidId() {
+      return this[androidId$];
+    }
+    set androidId(value) {
+      super.androidId = value;
+    }
+    get systemFeatures() {
+      return this[systemFeatures$];
+    }
+    set systemFeatures(value) {
+      super.systemFeatures = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let version = opts && 'version' in opts ? opts.version : null;
+      let board = opts && 'board' in opts ? opts.board : null;
+      let bootloader = opts && 'bootloader' in opts ? opts.bootloader : null;
+      let brand = opts && 'brand' in opts ? opts.brand : null;
+      let device = opts && 'device' in opts ? opts.device : null;
+      let display = opts && 'display' in opts ? opts.display : null;
+      let fingerprint = opts && 'fingerprint' in opts ? opts.fingerprint : null;
+      let hardware = opts && 'hardware' in opts ? opts.hardware : null;
+      let host = opts && 'host' in opts ? opts.host : null;
+      let id = opts && 'id' in opts ? opts.id : null;
+      let manufacturer = opts && 'manufacturer' in opts ? opts.manufacturer : null;
+      let model = opts && 'model' in opts ? opts.model : null;
+      let product = opts && 'product' in opts ? opts.product : null;
+      let supported32BitAbis = opts && 'supported32BitAbis' in opts ? opts.supported32BitAbis : null;
+      let supported64BitAbis = opts && 'supported64BitAbis' in opts ? opts.supported64BitAbis : null;
+      let supportedAbis = opts && 'supportedAbis' in opts ? opts.supportedAbis : null;
+      let tags = opts && 'tags' in opts ? opts.tags : null;
+      let type = opts && 'type' in opts ? opts.type : null;
+      let isPhysicalDevice = opts && 'isPhysicalDevice' in opts ? opts.isPhysicalDevice : null;
+      let androidId = opts && 'androidId' in opts ? opts.androidId : null;
+      let systemFeatures = opts && 'systemFeatures' in opts ? opts.systemFeatures : null;
+      return new android_device_info.AndroidDeviceInfo.new({version: version, board: board, bootloader: bootloader, brand: brand, device: device, display: display, fingerprint: fingerprint, hardware: hardware, host: host, id: id, manufacturer: manufacturer, model: model, product: product, supported32BitAbis: supported32BitAbis, supported64BitAbis: supported64BitAbis, supportedAbis: supportedAbis, tags: tags, type: type, isPhysicalDevice: isPhysicalDevice, androidId: androidId, systemFeatures: systemFeatures});
+    }
+    toMap() {
+      return new (T.IdentityMapOfString$dynamic()).from(["id", this.id, "host", this.host, "tags", this.tags, "type", this.type, "model", this.model, "board", this.board, "brand", this.brand, "device", this.device, "product", this.product, "display", this.display, "hardware", this.hardware, "androidId", this.androidId, "bootloader", this.bootloader, "version", this.version.toMap(), "fingerprint", this.fingerprint, "manufacturer", this.manufacturer, "supportedAbis", this.supportedAbis, "systemFeatures", this.systemFeatures, "isPhysicalDevice", this.isPhysicalDevice, "supported32BitAbis", this.supported32BitAbis, "supported64BitAbis", this.supported64BitAbis]);
+    }
+    static fromMap(map) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      return new android_device_info.AndroidDeviceInfo.new({version: android_device_info.AndroidBuildVersion._fromMap(T.MapOfString$dynamic().as((t0$ = (t0 = map[$_get]("version"), t0 == null ? null : dart.dgsend(t0, [core.String, dart.dynamic], 'cast', [])), t0$ == null ? new (T.IdentityMapOfString$dynamic()).new() : t0$))), board: T.StringN().as(map[$_get]("board")), bootloader: T.StringN().as(map[$_get]("bootloader")), brand: T.StringN().as(map[$_get]("brand")), device: T.StringN().as(map[$_get]("device")), display: T.StringN().as(map[$_get]("display")), fingerprint: T.StringN().as(map[$_get]("fingerprint")), hardware: T.StringN().as(map[$_get]("hardware")), host: T.StringN().as(map[$_get]("host")), id: T.StringN().as(map[$_get]("id")), manufacturer: T.StringN().as(map[$_get]("manufacturer")), model: T.StringN().as(map[$_get]("model")), product: T.StringN().as(map[$_get]("product")), supported32BitAbis: android_device_info.AndroidDeviceInfo._fromList((t0$0 = map[$_get]("supported32BitAbis"), t0$0 == null ? [] : t0$0)), supported64BitAbis: android_device_info.AndroidDeviceInfo._fromList((t0$1 = map[$_get]("supported64BitAbis"), t0$1 == null ? [] : t0$1)), supportedAbis: android_device_info.AndroidDeviceInfo._fromList((t0$2 = map[$_get]("supportedAbis"), t0$2 == null ? [] : t0$2)), tags: T.StringN().as(map[$_get]("tags")), type: T.StringN().as(map[$_get]("type")), isPhysicalDevice: T.boolN().as(map[$_get]("isPhysicalDevice")), androidId: T.StringN().as(map[$_get]("androidId")), systemFeatures: android_device_info.AndroidDeviceInfo._fromList((t0$3 = map[$_get]("systemFeatures"), t0$3 == null ? [] : t0$3))});
+    }
+    static _fromList(message) {
+      let list = core.List.as(message);
+      return T.ListOfStringN().from(list);
+    }
+  };
+  (android_device_info.AndroidDeviceInfo.new = function(opts) {
+    let version = opts && 'version' in opts ? opts.version : null;
+    let board = opts && 'board' in opts ? opts.board : null;
+    let bootloader = opts && 'bootloader' in opts ? opts.bootloader : null;
+    let brand = opts && 'brand' in opts ? opts.brand : null;
+    let device = opts && 'device' in opts ? opts.device : null;
+    let display = opts && 'display' in opts ? opts.display : null;
+    let fingerprint = opts && 'fingerprint' in opts ? opts.fingerprint : null;
+    let hardware = opts && 'hardware' in opts ? opts.hardware : null;
+    let host = opts && 'host' in opts ? opts.host : null;
+    let id = opts && 'id' in opts ? opts.id : null;
+    let manufacturer = opts && 'manufacturer' in opts ? opts.manufacturer : null;
+    let model = opts && 'model' in opts ? opts.model : null;
+    let product = opts && 'product' in opts ? opts.product : null;
+    let supported32BitAbis = opts && 'supported32BitAbis' in opts ? opts.supported32BitAbis : null;
+    let supported64BitAbis = opts && 'supported64BitAbis' in opts ? opts.supported64BitAbis : null;
+    let supportedAbis = opts && 'supportedAbis' in opts ? opts.supportedAbis : null;
+    let tags = opts && 'tags' in opts ? opts.tags : null;
+    let type = opts && 'type' in opts ? opts.type : null;
+    let isPhysicalDevice = opts && 'isPhysicalDevice' in opts ? opts.isPhysicalDevice : null;
+    let androidId = opts && 'androidId' in opts ? opts.androidId : null;
+    let systemFeatures = opts && 'systemFeatures' in opts ? opts.systemFeatures : null;
+    this[version$] = version;
+    this[board$] = board;
+    this[bootloader$] = bootloader;
+    this[brand$] = brand;
+    this[device$] = device;
+    this[display$] = display;
+    this[fingerprint$] = fingerprint;
+    this[hardware$] = hardware;
+    this[host$] = host;
+    this[id$] = id;
+    this[manufacturer$] = manufacturer;
+    this[model$] = model;
+    this[product$] = product;
+    this[tags$] = tags;
+    this[type$] = type;
+    this[isPhysicalDevice$] = isPhysicalDevice;
+    this[androidId$] = androidId;
+    this[supported32BitAbis$] = T.ListOfStringN().unmodifiable(supported32BitAbis);
+    this[supported64BitAbis$] = T.ListOfStringN().unmodifiable(supported64BitAbis);
+    this[supportedAbis$] = T.ListOfStringN().unmodifiable(supportedAbis);
+    this[systemFeatures$] = T.ListOfStringN().unmodifiable(systemFeatures);
+    ;
+  }).prototype = android_device_info.AndroidDeviceInfo.prototype;
+  dart.addTypeTests(android_device_info.AndroidDeviceInfo);
+  dart.addTypeCaches(android_device_info.AndroidDeviceInfo);
+  android_device_info.AndroidDeviceInfo[dart.implements] = () => [base_device_info.BaseDeviceInfo];
+  dart.setMethodSignature(android_device_info.AndroidDeviceInfo, () => ({
+    __proto__: dart.getMethods(android_device_info.AndroidDeviceInfo.__proto__),
+    toMap: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setStaticMethodSignature(android_device_info.AndroidDeviceInfo, () => ['fromMap', '_fromList']);
+  dart.setLibraryUri(android_device_info.AndroidDeviceInfo, I[0]);
+  dart.setFieldSignature(android_device_info.AndroidDeviceInfo, () => ({
+    __proto__: dart.getFields(android_device_info.AndroidDeviceInfo.__proto__),
+    version: dart.finalFieldType(android_device_info.AndroidBuildVersion),
+    board: dart.finalFieldType(dart.nullable(core.String)),
+    bootloader: dart.finalFieldType(dart.nullable(core.String)),
+    brand: dart.finalFieldType(dart.nullable(core.String)),
+    device: dart.finalFieldType(dart.nullable(core.String)),
+    display: dart.finalFieldType(dart.nullable(core.String)),
+    fingerprint: dart.finalFieldType(dart.nullable(core.String)),
+    hardware: dart.finalFieldType(dart.nullable(core.String)),
+    host: dart.finalFieldType(dart.nullable(core.String)),
+    id: dart.finalFieldType(dart.nullable(core.String)),
+    manufacturer: dart.finalFieldType(dart.nullable(core.String)),
+    model: dart.finalFieldType(dart.nullable(core.String)),
+    product: dart.finalFieldType(dart.nullable(core.String)),
+    supported32BitAbis: dart.finalFieldType(core.List$(dart.nullable(core.String))),
+    supported64BitAbis: dart.finalFieldType(core.List$(dart.nullable(core.String))),
+    supportedAbis: dart.finalFieldType(core.List$(dart.nullable(core.String))),
+    tags: dart.finalFieldType(dart.nullable(core.String)),
+    type: dart.finalFieldType(dart.nullable(core.String)),
+    isPhysicalDevice: dart.finalFieldType(dart.nullable(core.bool)),
+    androidId: dart.finalFieldType(dart.nullable(core.String)),
+    systemFeatures: dart.finalFieldType(core.List$(dart.nullable(core.String)))
+  }));
+  var baseOS$ = dart.privateName(android_device_info, "AndroidBuildVersion.baseOS");
+  var codename$ = dart.privateName(android_device_info, "AndroidBuildVersion.codename");
+  var incremental$ = dart.privateName(android_device_info, "AndroidBuildVersion.incremental");
+  var previewSdkInt$ = dart.privateName(android_device_info, "AndroidBuildVersion.previewSdkInt");
+  var release$ = dart.privateName(android_device_info, "AndroidBuildVersion.release");
+  var sdkInt$ = dart.privateName(android_device_info, "AndroidBuildVersion.sdkInt");
+  var securityPatch$ = dart.privateName(android_device_info, "AndroidBuildVersion.securityPatch");
+  android_device_info.AndroidBuildVersion = class AndroidBuildVersion extends core.Object {
+    get baseOS() {
+      return this[baseOS$];
+    }
+    set baseOS(value) {
+      super.baseOS = value;
+    }
+    get codename() {
+      return this[codename$];
+    }
+    set codename(value) {
+      super.codename = value;
+    }
+    get incremental() {
+      return this[incremental$];
+    }
+    set incremental(value) {
+      super.incremental = value;
+    }
+    get previewSdkInt() {
+      return this[previewSdkInt$];
+    }
+    set previewSdkInt(value) {
+      super.previewSdkInt = value;
+    }
+    get release() {
+      return this[release$];
+    }
+    set release(value) {
+      super.release = value;
+    }
+    get sdkInt() {
+      return this[sdkInt$];
+    }
+    set sdkInt(value) {
+      super.sdkInt = value;
+    }
+    get securityPatch() {
+      return this[securityPatch$];
+    }
+    set securityPatch(value) {
+      super.securityPatch = value;
+    }
+    static ['_#_#tearOff'](opts) {
+      let baseOS = opts && 'baseOS' in opts ? opts.baseOS : null;
+      let codename = opts && 'codename' in opts ? opts.codename : null;
+      let incremental = opts && 'incremental' in opts ? opts.incremental : null;
+      let previewSdkInt = opts && 'previewSdkInt' in opts ? opts.previewSdkInt : null;
+      let release = opts && 'release' in opts ? opts.release : null;
+      let sdkInt = opts && 'sdkInt' in opts ? opts.sdkInt : null;
+      let securityPatch = opts && 'securityPatch' in opts ? opts.securityPatch : null;
+      return new android_device_info.AndroidBuildVersion.__({baseOS: baseOS, codename: codename, incremental: incremental, previewSdkInt: previewSdkInt, release: release, sdkInt: sdkInt, securityPatch: securityPatch});
+    }
+    toMap() {
+      return new (T.IdentityMapOfString$dynamic()).from(["baseOS", this.baseOS, "sdkInt", this.sdkInt, "release", this.release, "codename", this.codename, "incremental", this.incremental, "previewSdkInt", this.previewSdkInt, "securityPatch", this.securityPatch]);
+    }
+    static _fromMap(map) {
+      return new android_device_info.AndroidBuildVersion.__({baseOS: T.StringN().as(map[$_get]("baseOS")), codename: T.StringN().as(map[$_get]("codename")), incremental: T.StringN().as(map[$_get]("incremental")), previewSdkInt: T.intN().as(map[$_get]("previewSdkInt")), release: T.StringN().as(map[$_get]("release")), sdkInt: T.intN().as(map[$_get]("sdkInt")), securityPatch: T.StringN().as(map[$_get]("securityPatch"))});
+    }
+  };
+  (android_device_info.AndroidBuildVersion.__ = function(opts) {
+    let baseOS = opts && 'baseOS' in opts ? opts.baseOS : null;
+    let codename = opts && 'codename' in opts ? opts.codename : null;
+    let incremental = opts && 'incremental' in opts ? opts.incremental : null;
+    let previewSdkInt = opts && 'previewSdkInt' in opts ? opts.previewSdkInt : null;
+    let release = opts && 'release' in opts ? opts.release : null;
+    let sdkInt = opts && 'sdkInt' in opts ? opts.sdkInt : null;
+    let securityPatch = opts && 'securityPatch' in opts ? opts.securityPatch : null;
+    this[baseOS$] = baseOS;
+    this[codename$] = codename;
+    this[incremental$] = incremental;
+    this[previewSdkInt$] = previewSdkInt;
+    this[release$] = release;
+    this[sdkInt$] = sdkInt;
+    this[securityPatch$] = securityPatch;
+    ;
+  }).prototype = android_device_info.AndroidBuildVersion.prototype;
+  dart.addTypeTests(android_device_info.AndroidBuildVersion);
+  dart.addTypeCaches(android_device_info.AndroidBuildVersion);
+  dart.setMethodSignature(android_device_info.AndroidBuildVersion, () => ({
+    __proto__: dart.getMethods(android_device_info.AndroidBuildVersion.__proto__),
+    toMap: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setStaticMethodSignature(android_device_info.AndroidBuildVersion, () => ['_fromMap']);
+  dart.setLibraryUri(android_device_info.AndroidBuildVersion, I[0]);
+  dart.setFieldSignature(android_device_info.AndroidBuildVersion, () => ({
+    __proto__: dart.getFields(android_device_info.AndroidBuildVersion.__proto__),
+    baseOS: dart.finalFieldType(dart.nullable(core.String)),
+    codename: dart.finalFieldType(dart.nullable(core.String)),
+    incremental: dart.finalFieldType(dart.nullable(core.String)),
+    previewSdkInt: dart.finalFieldType(dart.nullable(core.int)),
+    release: dart.finalFieldType(dart.nullable(core.String)),
+    sdkInt: dart.finalFieldType(dart.nullable(core.int)),
+    securityPatch: dart.finalFieldType(dart.nullable(core.String))
+  }));
+  dart.trackLibraries("packages/device_info_plus_platform_interface/model/android_device_info.dart", {
+    "package:device_info_plus_platform_interface/model/android_device_info.dart": android_device_info
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["android_device_info.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAuC4B;;;;;;IAGZ;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGM;;;;;;IAGA;;;;;;IAGA;;;;;;IAGN;;;;;;IAGA;;;;;;IAGF;;;;;;IAGE;;;;;;IAgBM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAKlB,YAAO,6CACL,MAAM,SACN,QAAQ,WACR,QAAQ,WACR,QAAQ,WACR,SAAS,YACT,SAAS,YACT,SAAS,YACT,UAAU,aACV,WAAW,cACX,WAAW,cACX,YAAY,eACZ,aAAa,gBACb,cAAc,iBACd,WAAW,AAAQ,sBACnB,eAAe,kBACf,gBAAgB,mBAChB,iBAAiB,oBACjB,kBAAkB,qBAClB,oBAAoB,uBACpB,sBAAsB,yBACtB,sBAAsB;IAE1B;mBAGsD;;AACpD,YAAO,yDACwB,6EACe,YAAxC,AAAG,GAAA,QAAC,yBAAD,OAAa,2DAAb,cAAwC,4EACxC,AAAG,GAAA,QAAC,sCACC,AAAG,GAAA,QAAC,sCACT,AAAG,GAAA,QAAC,kCACH,AAAG,GAAA,QAAC,oCACH,AAAG,GAAA,QAAC,yCACA,AAAG,GAAA,QAAC,0CACP,AAAG,GAAA,QAAC,mCACR,AAAG,GAAA,QAAC,6BACN,AAAG,GAAA,QAAC,qCACM,AAAG,GAAA,QAAC,wCACX,AAAG,GAAA,QAAC,mCACF,AAAG,GAAA,QAAC,iCACO,iDAAoC,OAA1B,AAAG,GAAA,QAAC,uBAAD,eAA0B,iCACvC,iDAAoC,OAA1B,AAAG,GAAA,QAAC,uBAAD,eAA0B,4BAC5C,iDAA+B,OAArB,AAAG,GAAA,QAAC,kBAAD,eAAqB,kCAC3C,AAAG,GAAA,QAAC,+BACJ,AAAG,GAAA,QAAC,yCACQ,AAAG,GAAA,QAAC,gDACX,AAAG,GAAA,QAAC,+BACC,iDAAgC,OAAtB,AAAG,GAAA,QAAC,mBAAD,eAAsB;IAEvD;qBAGuC;AACjB,8BAAO,OAAO;AAClC,YAAO,wBAAmB,IAAI;IAChC;;;QAlKgB;QACT;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACkB;QACA;QACA;QAClB;QACA;QACA;QACA;QACkB;IApBT;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IAIA;IACA;IACA;IACA;IAEkB,4BAAE,+BAA2B,kBAAkB;IAC/C,4BAAE,+BAA2B,kBAAkB;IACpD,uBAAE,+BAA2B,aAAa;IACzC,wBAAE,+BAA2B,cAAc;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA6JnD;;;;;;IAGA;;;;;;IAGA;;;;;;IAGH;;;;;;IAGG;;;;;;IAKH;;;;;;IAGG;;;;;;;;;;;;;;;;;AAIZ,YAAO,6CACL,UAAU,aACV,UAAU,aACV,WAAW,cACX,YAAY,eACZ,eAAe,kBACf,iBAAiB,oBACjB,iBAAiB;IAErB;oBAGyD;AACvD,YAA2B,wEACjB,AAAG,GAAA,QAAC,qCACF,AAAG,GAAA,QAAC,0CACD,AAAG,GAAA,QAAC,4CACF,AAAG,GAAA,QAAC,2CACV,AAAG,GAAA,QAAC,iCACL,AAAG,GAAA,QAAC,0CACG,AAAG,GAAA,QAAC;IAEvB;;;QAxDO;QACA;QACA;QACA;QACA;QACA;QACA;IANA;IACA;IACA;IACA;IACA;IACA;IACA;;EACL","file":"../../../../../../../../../../../packages/device_info_plus_platform_interface/model/android_device_info.dart.lib.js"}');
+  // Exports:
+  return {
+    model__android_device_info: android_device_info
+  };
+}));
+
+//# sourceMappingURL=android_device_info.dart.lib.js.map

@@ -1,0 +1,289 @@
+define(['dart_sdk'], (function load__packages__barcode__src__barcode_maps_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var barcode_maps = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constMap(core.int, core.int, [48, 2917, 49, 3403, 50, 3405, 51, 2715, 52, 3429, 53, 2763, 54, 2765, 55, 3493, 56, 2891, 57, 2893, 65, 3371, 66, 3373, 67, 2651, 68, 3381, 69, 2667, 70, 2669, 71, 3477, 72, 2859, 73, 2861, 74, 2869, 75, 3243, 76, 3245, 77, 2395, 78, 3253, 79, 2411, 80, 2413, 81, 3285, 82, 2475, 83, 2477, 84, 2485, 85, 3411, 86, 3417, 87, 2739, 88, 3433, 89, 2771, 90, 2777, 45, 3497, 46, 2899, 32, 2905, 36, 2633, 47, 2377, 43, 2345, 37, 2341]);
+    },
+    get C1() {
+      return C[1] = dart.constMap(core.int, core.int, [48, 81, 49, 37, 50, 69, 51, 133, 52, 41, 53, 73, 54, 137, 55, 21, 56, 145, 57, 161, 65, 43, 66, 75, 67, 139, 68, 83, 69, 147, 70, 163, 71, 45, 72, 77, 73, 141, 74, 89, 75, 177, 76, 53, 77, 101, 78, 197, 79, 105, 80, 209, 81, 91, 82, 155, 83, 107, 84, 203, 85, 211, 86, 179, 87, 109, 88, 205, 89, 217, 90, 185, 45, 233, 46, 87, 32, 151, 36, 167, 47, 237, 43, 221, 37, 235, -1, 201, -2, 183, -3, 215, -4, 153, -5, 245, -6, 189]);
+    },
+    get C2() {
+      return C[2] = dart.constMap(core.int, core.int, [32, 0, 33, 1, 34, 2, 35, 3, 36, 4, 37, 5, 38, 6, 39, 7, 40, 8, 41, 9, 42, 10, 43, 11, 44, 12, 45, 13, 46, 14, 47, 15, 48, 16, 49, 17, 50, 18, 51, 19, 52, 20, 53, 21, 54, 22, 55, 23, 56, 24, 57, 25, 58, 26, 59, 27, 60, 28, 61, 29, 62, 30, 63, 31, 64, 32, 65, 33, 66, 34, 67, 35, 68, 36, 69, 37, 70, 38, 71, 39, 72, 40, 73, 41, 74, 42, 75, 43, 76, 44, 77, 45, 78, 46, 79, 47, 80, 48, 81, 49, 82, 50, 83, 51, 84, 52, 85, 53, 86, 54, 87, 55, 88, 56, 89, 57, 90, 58, 91, 59, 92, 60, 93, 61, 94, 62, 95, 63, 0, 64, 1, 65, 2, 66, 3, 67, 4, 68, 5, 69, 6, 70, 7, 71, 8, 72, 9, 73, 10, 74, 11, 75, 12, 76, 13, 77, 14, 78, 15, 79, 16, 80, 17, 81, 18, 82, 19, 83, 20, 84, 21, 85, 22, 86, 23, 87, 24, 88, 25, 89, 26, 90, 27, 91, 28, 92, 29, 93, 30, 94, 31, 95, 252, 96, 251, 97, -6, 98, -9, 99, -8, 100, 253, 101, 250, 102]);
+    },
+    get C3() {
+      return C[3] = dart.constMap(core.int, core.int, [32, 0, 33, 1, 34, 2, 35, 3, 36, 4, 37, 5, 38, 6, 39, 7, 40, 8, 41, 9, 42, 10, 43, 11, 44, 12, 45, 13, 46, 14, 47, 15, 48, 16, 49, 17, 50, 18, 51, 19, 52, 20, 53, 21, 54, 22, 55, 23, 56, 24, 57, 25, 58, 26, 59, 27, 60, 28, 61, 29, 62, 30, 63, 31, 64, 32, 65, 33, 66, 34, 67, 35, 68, 36, 69, 37, 70, 38, 71, 39, 72, 40, 73, 41, 74, 42, 75, 43, 76, 44, 77, 45, 78, 46, 79, 47, 80, 48, 81, 49, 82, 50, 83, 51, 84, 52, 85, 53, 86, 54, 87, 55, 88, 56, 89, 57, 90, 58, 91, 59, 92, 60, 93, 61, 94, 62, 95, 63, 96, 64, 97, 65, 98, 66, 99, 67, 100, 68, 101, 69, 102, 70, 103, 71, 104, 72, 105, 73, 106, 74, 107, 75, 108, 76, 109, 77, 110, 78, 111, 79, 112, 80, 113, 81, 114, 82, 115, 83, 116, 84, 117, 85, 118, 86, 119, 87, 120, 88, 121, 89, 122, 90, 123, 91, 124, 92, 125, 93, 126, 94, 127, 95, 252, 96, 251, 97, -5, 98, -9, 99, 253, 100, -7, 101, 250, 102]);
+    },
+    get C4() {
+      return C[4] = dart.constMap(core.int, core.int, [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 30, 30, 31, 31, 32, 32, 33, 33, 34, 34, 35, 35, 36, 36, 37, 37, 38, 38, 39, 39, 40, 40, 41, 41, 42, 42, 43, 43, 44, 44, 45, 45, 46, 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 52, 52, 53, 53, 54, 54, 55, 55, 56, 56, 57, 57, 58, 58, 59, 59, 60, 60, 61, 61, 62, 62, 63, 63, 64, 64, 65, 65, 66, 66, 67, 67, 68, 68, 69, 69, 70, 70, 71, 71, 72, 72, 73, 73, 74, 74, 75, 75, 76, 76, 77, 77, 78, 78, 79, 79, 80, 80, 81, 81, 82, 82, 83, 83, 84, 84, 85, 85, 86, 86, 87, 87, 88, 88, 89, 89, 90, 90, 91, 91, 92, 92, 93, 93, 94, 94, 95, 95, 96, 96, 97, 97, 98, 98, 99, 99, -8, 100, -7, 101, 250, 102]);
+    },
+    get C5() {
+      return C[5] = dart.constMap(core.int, core.int, [0, 411, 1, 435, 2, 819, 3, 201, 4, 393, 5, 401, 6, 153, 7, 281, 8, 305, 9, 147, 10, 275, 11, 291, 12, 461, 13, 473, 14, 921, 15, 413, 16, 441, 17, 825, 18, 627, 19, 467, 20, 915, 21, 315, 22, 371, 23, 951, 24, 407, 25, 423, 26, 807, 27, 311, 28, 359, 29, 615, 30, 219, 31, 795, 32, 867, 33, 197, 34, 209, 35, 785, 36, 141, 37, 177, 38, 561, 39, 139, 40, 163, 41, 547, 42, 237, 43, 909, 44, 945, 45, 221, 46, 797, 47, 881, 48, 887, 49, 907, 50, 931, 51, 187, 52, 571, 53, 955, 54, 215, 55, 791, 56, 839, 57, 183, 58, 567, 59, 711, 60, 759, 61, 531, 62, 655, 63, 101, 64, 389, 65, 105, 66, 777, 67, 417, 68, 801, 69, 77, 70, 269, 71, 89, 72, 537, 73, 353, 74, 609, 75, 579, 76, 83, 77, 751, 78, 323, 79, 753, 80, 485, 81, 489, 82, 969, 83, 317, 84, 377, 85, 633, 86, 303, 87, 335, 88, 591, 89, 987, 90, 891, 91, 879, 92, 245, 93, 965, 94, 977, 95, 189, 96, 573, 97, 175, 98, 559, 99, 989, 100, 957, 101, 983, 102, 943, 103, 267, 104, 75, 105, 459, 106, 739, 107, 235, 108, 6883]);
+    },
+    get C7() {
+      return C[7] = dart.constList([88, 114, 39], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([76, 102, 51], core.int);
+    },
+    get C9() {
+      return C[9] = dart.constList([100, 108, 27], core.int);
+    },
+    get C10() {
+      return C[10] = dart.constList([94, 66, 33], core.int);
+    },
+    get C11() {
+      return C[11] = dart.constList([98, 92, 29], core.int);
+    },
+    get C12() {
+      return C[12] = dart.constList([70, 78, 57], core.int);
+    },
+    get C13() {
+      return C[13] = dart.constList([122, 80, 5], core.int);
+    },
+    get C14() {
+      return C[14] = dart.constList([110, 68, 17], core.int);
+    },
+    get C15() {
+      return C[15] = dart.constList([118, 72, 9], core.int);
+    },
+    get C16() {
+      return C[16] = dart.constList([104, 116, 23], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constMap(core.int, T.ListOfint(), [48, C[7] || CT.C7, 49, C[8] || CT.C8, 50, C[9] || CT.C9, 51, C[10] || CT.C10, 52, C[11] || CT.C11, 53, C[12] || CT.C12, 54, C[13] || CT.C13, 55, C[14] || CT.C14, 56, C[15] || CT.C15, 57, C[16] || CT.C16]);
+    },
+    get C17() {
+      return C[17] = dart.constMap(core.int, core.int, [48, 0, 49, 52, 50, 44, 51, 28, 52, 50, 53, 38, 54, 14, 55, 42, 56, 26, 57, 22]);
+    },
+    get C18() {
+      return C[18] = dart.constMap(core.int, core.int, [48, 3, 49, 5, 50, 9, 51, 17, 52, 6, 53, 12, 54, 24, 55, 10, 56, 18, 57, 20]);
+    },
+    get C19() {
+      return C[19] = dart.constMap(core.int, core.int, [48, 56, 49, 52, 50, 44, 51, 28, 52, 50, 53, 38, 54, 14, 55, 42, 56, 26, 57, 22]);
+    },
+    get C20() {
+      return C[20] = dart.constMap(core.int, core.int, [48, 12, 49, 17, 50, 18, 51, 3, 52, 20, 53, 5, 54, 6, 55, 24, 56, 9, 57, 10]);
+    },
+    get C21() {
+      return C[21] = dart.constList([30583, 24029, 24007, 30581, 24023, 30493, 30481, 24021, 23671, 30557, 30535, 23669, 30551, 23621, 23633, 30549, 23927, 29149, 29127, 23925, 29143, 23837, 23825, 29141, 28951, 23901, 23879, 28949, 23895, 28997, 29009, 23893, 18295, 30173, 30151, 18293, 30167, 18205, 18193, 30165, 29815, 18269, 18247, 29813, 18263, 29765, 29777, 18261, 30071, 17501, 17479, 30069, 17495, 29981, 29969, 17493, 17687, 30045, 30023, 17685, 30039, 17733, 17745, 30037, 22391, 7645, 7623, 22389, 7639, 22301, 22289, 7637, 7287, 22365, 22343, 7285, 22359, 7237, 7249, 22357, 7543, 20957, 20935, 7541, 20951, 7453, 7441, 20949, 20759, 7517, 7495, 20757, 7511, 20805, 20817, 7509, 4471, 21981, 21959, 4469, 21975, 4381, 4369, 21973, 21623, 4445, 4423, 21621, 4439, 21573, 21585, 4437, 21879, 5213, 5191, 21877, 5207, 21789, 21777, 5205, 5399, 21853, 21831, 5397, 21847, 5445, 5457, 21845], core.int);
+    },
+    get C22() {
+      return C[22] = dart.constMap(core.int, core.int, [48, 405, 49, 309, 52, 301, 53, 299, 50, 421, 45, 357, 36, 333, 57, 331, 54, 425, 55, 361, 56, 345, 51, 339, 46, 731, 47, 859, 58, 875, 43, 877, 67, 805, 68, 613, 65, 589, 66, 841]);
+    },
+    get C23() {
+      return C[23] = dart.constMap(core.int, core.int, [48, 9, 49, 9, 52, 9, 53, 9, 50, 9, 45, 9, 36, 9, 57, 9, 54, 9, 55, 9, 56, 9, 51, 9, 46, 10, 47, 10, 58, 10, 43, 10, 67, 10, 68, 10, 65, 10, 66, 10]);
+    },
+    get C24() {
+      return C[24] = dart.constMap(core.int, core.int, [48, 240, 49, 216, 50, 120, 51, 210, 52, 114, 53, 90, 54, 228, 55, 204, 56, 108, 57, 198, 65, 102, 66, 78, 67, 180, 68, 156, 69, 60, 70, 150, 71, 54, 72, 30, 73, 225, 74, 201, 75, 105, 76, 195, 77, 99, 78, 75, 79, 177, 80, 153, 81, 57, 82, 147, 83, 51, 84, 27, 85, 165, 86, 141, 87, 45, 88, 135, 89, 39, 90, 15]);
+    }
+  }, false);
+  var C = Array(25).fill(void 0);
+  var I = ["package:barcode/src/barcode_maps.dart"];
+  barcode_maps.BarcodeMaps = class BarcodeMaps extends core.Object {
+    static ['_#new#tearOff']() {
+      return new barcode_maps.BarcodeMaps.new();
+    }
+  };
+  (barcode_maps.BarcodeMaps.new = function() {
+    ;
+  }).prototype = barcode_maps.BarcodeMaps.prototype;
+  dart.addTypeTests(barcode_maps.BarcodeMaps);
+  dart.addTypeCaches(barcode_maps.BarcodeMaps);
+  dart.setLibraryUri(barcode_maps.BarcodeMaps, I[0]);
+  dart.setStaticFieldSignature(barcode_maps.BarcodeMaps, () => ['code39', 'code39StartStop', 'code39Len', 'code93', 'code93Dollar', 'code93Percent', 'code93Slash', 'code93Plus', 'code93StartStop', 'code93ReverseStop', 'code93Len', 'code128A', 'code128B', 'code128C', 'code128', 'code128StartCodeA', 'code128StartCodeB', 'code128StartCodeC', 'code128Stop', 'code128ReverseStop', 'code128StopPattern', 'code128FNC1', 'code128FNC1String', 'code128FNC2', 'code128FNC2String', 'code128FNC3', 'code128FNC3String', 'code128FNC4', 'code128FNC4String', 'code128ShiftA', 'code128ShiftB', 'code128CodeA', 'code128CodeB', 'code128CodeC', 'code128Len', 'ean', 'eanFirst', 'ean5Checksum', 'upce', 'eanStartEnd', 'eanCenter', 'eanEndUpcE', 'eanStartEan2', 'eanCenterEan2', 'itf', 'itfStart', 'itfEnd', 'telepen', 'telepenStart', 'telepenEnd', 'telepenLen', 'codabar', 'codabarLen', 'rm4scc', 'rm4sccLen', 'rm4sccStart', 'rm4sccStop']);
+  dart.defineLazy(barcode_maps.BarcodeMaps, {
+    /*barcode_maps.BarcodeMaps.code39*/get code39() {
+      return C[0] || CT.C0;
+    },
+    /*barcode_maps.BarcodeMaps.code39StartStop*/get code39StartStop() {
+      return 2921;
+    },
+    /*barcode_maps.BarcodeMaps.code39Len*/get code39Len() {
+      return 13;
+    },
+    /*barcode_maps.BarcodeMaps.code93*/get code93() {
+      return C[1] || CT.C1;
+    },
+    /*barcode_maps.BarcodeMaps.code93Dollar*/get code93Dollar() {
+      return 201;
+    },
+    /*barcode_maps.BarcodeMaps.code93Percent*/get code93Percent() {
+      return 183;
+    },
+    /*barcode_maps.BarcodeMaps.code93Slash*/get code93Slash() {
+      return 215;
+    },
+    /*barcode_maps.BarcodeMaps.code93Plus*/get code93Plus() {
+      return 153;
+    },
+    /*barcode_maps.BarcodeMaps.code93StartStop*/get code93StartStop() {
+      return 245;
+    },
+    /*barcode_maps.BarcodeMaps.code93ReverseStop*/get code93ReverseStop() {
+      return 189;
+    },
+    /*barcode_maps.BarcodeMaps.code93Len*/get code93Len() {
+      return 9;
+    },
+    /*barcode_maps.BarcodeMaps.code128A*/get code128A() {
+      return C[2] || CT.C2;
+    },
+    /*barcode_maps.BarcodeMaps.code128B*/get code128B() {
+      return C[3] || CT.C3;
+    },
+    /*barcode_maps.BarcodeMaps.code128C*/get code128C() {
+      return C[4] || CT.C4;
+    },
+    /*barcode_maps.BarcodeMaps.code128*/get code128() {
+      return C[5] || CT.C5;
+    },
+    /*barcode_maps.BarcodeMaps.code128StartCodeA*/get code128StartCodeA() {
+      return 103;
+    },
+    /*barcode_maps.BarcodeMaps.code128StartCodeB*/get code128StartCodeB() {
+      return 104;
+    },
+    /*barcode_maps.BarcodeMaps.code128StartCodeC*/get code128StartCodeC() {
+      return 105;
+    },
+    /*barcode_maps.BarcodeMaps.code128Stop*/get code128Stop() {
+      return 106;
+    },
+    /*barcode_maps.BarcodeMaps.code128ReverseStop*/get code128ReverseStop() {
+      return 107;
+    },
+    /*barcode_maps.BarcodeMaps.code128StopPattern*/get code128StopPattern() {
+      return 108;
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC1*/get code128FNC1() {
+      return 250;
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC1String*/get code128FNC1String() {
+      return "ú";
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC2*/get code128FNC2() {
+      return 251;
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC2String*/get code128FNC2String() {
+      return "û";
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC3*/get code128FNC3() {
+      return 252;
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC3String*/get code128FNC3String() {
+      return "ü";
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC4*/get code128FNC4() {
+      return 253;
+    },
+    /*barcode_maps.BarcodeMaps.code128FNC4String*/get code128FNC4String() {
+      return "ý";
+    },
+    /*barcode_maps.BarcodeMaps.code128ShiftA*/get code128ShiftA() {
+      return -5;
+    },
+    /*barcode_maps.BarcodeMaps.code128ShiftB*/get code128ShiftB() {
+      return -6;
+    },
+    /*barcode_maps.BarcodeMaps.code128CodeA*/get code128CodeA() {
+      return -7;
+    },
+    /*barcode_maps.BarcodeMaps.code128CodeB*/get code128CodeB() {
+      return -8;
+    },
+    /*barcode_maps.BarcodeMaps.code128CodeC*/get code128CodeC() {
+      return -9;
+    },
+    /*barcode_maps.BarcodeMaps.code128Len*/get code128Len() {
+      return 11;
+    },
+    /*barcode_maps.BarcodeMaps.ean*/get ean() {
+      return C[6] || CT.C6;
+    },
+    /*barcode_maps.BarcodeMaps.eanFirst*/get eanFirst() {
+      return C[17] || CT.C17;
+    },
+    /*barcode_maps.BarcodeMaps.ean5Checksum*/get ean5Checksum() {
+      return C[18] || CT.C18;
+    },
+    /*barcode_maps.BarcodeMaps.upce*/get upce() {
+      return C[19] || CT.C19;
+    },
+    /*barcode_maps.BarcodeMaps.eanStartEnd*/get eanStartEnd() {
+      return 5;
+    },
+    /*barcode_maps.BarcodeMaps.eanCenter*/get eanCenter() {
+      return 10;
+    },
+    /*barcode_maps.BarcodeMaps.eanEndUpcE*/get eanEndUpcE() {
+      return 42;
+    },
+    /*barcode_maps.BarcodeMaps.eanStartEan2*/get eanStartEan2() {
+      return 26;
+    },
+    /*barcode_maps.BarcodeMaps.eanCenterEan2*/get eanCenterEan2() {
+      return 2;
+    },
+    /*barcode_maps.BarcodeMaps.itf*/get itf() {
+      return C[20] || CT.C20;
+    },
+    /*barcode_maps.BarcodeMaps.itfStart*/get itfStart() {
+      return 5;
+    },
+    /*barcode_maps.BarcodeMaps.itfEnd*/get itfEnd() {
+      return 23;
+    },
+    /*barcode_maps.BarcodeMaps.telepen*/get telepen() {
+      return C[21] || CT.C21;
+    },
+    /*barcode_maps.BarcodeMaps.telepenStart*/get telepenStart() {
+      return 7509;
+    },
+    /*barcode_maps.BarcodeMaps.telepenEnd*/get telepenEnd() {
+      return 21831;
+    },
+    /*barcode_maps.BarcodeMaps.telepenLen*/get telepenLen() {
+      return 16;
+    },
+    /*barcode_maps.BarcodeMaps.codabar*/get codabar() {
+      return C[22] || CT.C22;
+    },
+    /*barcode_maps.BarcodeMaps.codabarLen*/get codabarLen() {
+      return C[23] || CT.C23;
+    },
+    /*barcode_maps.BarcodeMaps.rm4scc*/get rm4scc() {
+      return C[24] || CT.C24;
+    },
+    /*barcode_maps.BarcodeMaps.rm4sccLen*/get rm4sccLen() {
+      return 4;
+    },
+    /*barcode_maps.BarcodeMaps.rm4sccStart*/get rm4sccStart() {
+      return 1;
+    },
+    /*barcode_maps.BarcodeMaps.rm4sccStop*/get rm4sccStop() {
+      return 3;
+    }
+  }, false);
+  dart.trackLibraries("packages/barcode/src/barcode_maps.dart", {
+    "package:barcode/src/barcode_maps.dart": barcode_maps
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["barcode_maps.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAi4BA;;;;;;MA72Be,+BAAM;;;MA+CN,wCAAe;;;MACX,kCAAS;;;MAGb,+BAAM;;;MAqDN,qCAAY;;;MACZ,sCAAa;;;MACb,oCAAW;;;MACX,mCAAU;;;MACV,wCAAe;;;MACf,0CAAiB;;;MACjB,kCAAS;;;MAGT,iCAAQ;;;MA2GR,iCAAQ;;;MA2GR,iCAAQ;;;MA2GR,gCAAO;;;MAiHP,0CAAiB;;;MACjB,0CAAiB;;;MACjB,0CAAiB;;;MACjB,oCAAW;;;MACX,2CAAkB;;;MAClB,2CAAkB;;;MAClB,oCAAW;;;MACX,0CAAiB;;;MACjB,oCAAW;;;MACX,0CAAiB;;;MACjB,oCAAW;;;MACX,0CAAiB;;;MACjB,oCAAW;;;MACX,0CAAiB;;;MACjB,sCAAa;;;MACb,sCAAa;;;MACb,qCAAY;;;MACZ,qCAAY;;;MACZ,qCAAY;;;MACZ,mCAAU;;;MAGV,4BAAG;;;MAcH,iCAAQ;;;MAcR,qCAAY;;;MAcZ,6BAAI;;;MAcJ,oCAAW;;;MACX,kCAAS;;;MACT,mCAAU;;;MACV,qCAAY;;;MACZ,sCAAa;;;MAGb,4BAAG;;;MAcH,iCAAQ;;;MACR,+BAAM;;;MAGN,gCAAO;;;MAoIP,qCAAY;;;MACZ,mCAAU;;;MACV,mCAAU;;;MAGV,gCAAO;;;MAuBP,mCAAU;;;MAwBV,+BAAM;;;MAwCN,kCAAS;;;MACT,oCAAW;;;MACX,mCAAU","file":"../../../../../../../../../../../packages/barcode/src/barcode_maps.dart.lib.js"}');
+  // Exports:
+  return {
+    src__barcode_maps: barcode_maps
+  };
+}));
+
+//# sourceMappingURL=barcode_maps.dart.lib.js.map

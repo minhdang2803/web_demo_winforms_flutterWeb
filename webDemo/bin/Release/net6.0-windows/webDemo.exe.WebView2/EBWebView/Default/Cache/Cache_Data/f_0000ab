@@ -1,0 +1,334 @@
+define(['dart_sdk', 'packages/image/src/internal/bit_operators.dart', 'packages/image/src/image_exception.dart'], (function load__packages__image__src__util__input_buffer_dart(dart_sdk, packages__image__src__internal__bit_operators$46dart, packages__image__src__image_exception$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const typed_data = dart_sdk.typed_data;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const bit_operators = packages__image__src__internal__bit_operators$46dart.src__internal__bit_operators;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  var input_buffer = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $setRange = dartx.setRange;
+  var $fillRange = dartx.fillRange;
+  var $add = dartx.add;
+  var $leftShift = dartx['<<'];
+  var $sublist = dartx.sublist;
+  var $buffer = dartx.buffer;
+  var $offsetInBytes = dartx.offsetInBytes;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:image/src/util/input_buffer.dart"];
+  var buffer$ = dart.privateName(input_buffer, "InputBuffer.buffer");
+  var start = dart.privateName(input_buffer, "InputBuffer.start");
+  var end = dart.privateName(input_buffer, "InputBuffer.end");
+  var offset$ = dart.privateName(input_buffer, "InputBuffer.offset");
+  var bigEndian$ = dart.privateName(input_buffer, "InputBuffer.bigEndian");
+  input_buffer.InputBuffer = class InputBuffer extends core.Object {
+    get buffer() {
+      return this[buffer$];
+    }
+    set buffer(value) {
+      this[buffer$] = value;
+    }
+    get start() {
+      return this[start];
+    }
+    set start(value) {
+      super.start = value;
+    }
+    get end() {
+      return this[end];
+    }
+    set end(value) {
+      super.end = value;
+    }
+    get offset() {
+      return this[offset$];
+    }
+    set offset(value) {
+      this[offset$] = value;
+    }
+    get bigEndian() {
+      return this[bigEndian$];
+    }
+    set bigEndian(value) {
+      this[bigEndian$] = value;
+    }
+    static ['_#new#tearOff'](buffer, opts) {
+      let bigEndian = opts && 'bigEndian' in opts ? opts.bigEndian : false;
+      let offset = opts && 'offset' in opts ? opts.offset : 0;
+      let length = opts && 'length' in opts ? opts.length : null;
+      return new input_buffer.InputBuffer.new(buffer, {bigEndian: bigEndian, offset: offset, length: length});
+    }
+    static ['_#from#tearOff'](other, opts) {
+      let offset = opts && 'offset' in opts ? opts.offset : 0;
+      let length = opts && 'length' in opts ? opts.length : null;
+      return new input_buffer.InputBuffer.from(other, {offset: offset, length: length});
+    }
+    get position() {
+      return this.offset - this.start;
+    }
+    get length() {
+      return this.end - this.offset;
+    }
+    get isEOS() {
+      return this.offset >= this.end;
+    }
+    rewind() {
+      this.offset = this.start;
+    }
+    _get(index) {
+      return this.buffer[$_get](this.offset + index);
+    }
+    _set(index, value$) {
+      let value = value$;
+      let t2, t1, t0;
+      t0 = this.buffer;
+      t1 = this.offset + index;
+      t2 = value;
+      t0[$_set](t1, t2);
+      t2;
+      return value$;
+    }
+    memcpy(start, length, other, offset = 0) {
+      if (input_buffer.InputBuffer.is(other)) {
+        this.buffer[$setRange](this.offset + start, this.offset + start + length, other.buffer, other.offset + offset);
+      } else {
+        this.buffer[$setRange](this.offset + start, this.offset + start + length, T.ListOfint().as(other), offset);
+      }
+    }
+    memset(start, length, value) {
+      this.buffer[$fillRange](this.offset + start, this.offset + start + length, value);
+    }
+    subset(count, opts) {
+      let position = opts && 'position' in opts ? opts.position : null;
+      let offset = opts && 'offset' in opts ? opts.offset : 0;
+      let pos = position != null ? this.start + dart.notNull(position) : this.offset;
+      pos = pos + offset;
+      return new input_buffer.InputBuffer.new(this.buffer, {bigEndian: this.bigEndian, offset: pos, length: count});
+    }
+    indexOf(value, offset = 0) {
+      for (let i = this.offset + offset, end = this.offset + this.length; i < end; i = i + 1) {
+        if (this.buffer[$_get](i) === value) {
+          return i - this.start;
+        }
+      }
+      return -1;
+    }
+    peekBytes(count, offset = 0) {
+      return this.subset(count, {offset: offset});
+    }
+    skip(count) {
+      this.offset = this.offset + count;
+    }
+    readByte() {
+      let t0;
+      return this.buffer[$_get]((t0 = this.offset, this.offset = t0 + 1, t0));
+    }
+    readInt8() {
+      return bit_operators.uint8ToInt8(this.readByte());
+    }
+    readBytes(count) {
+      let bytes = this.subset(count);
+      this.offset = this.offset + bytes.length;
+      return bytes;
+    }
+    readString(len = null) {
+      if (len == null) {
+        let codes = T.JSArrayOfint().of([]);
+        while (!this.isEOS) {
+          let c = this.readByte();
+          if (c === 0) {
+            return core.String.fromCharCodes(codes);
+          }
+          codes[$add](c);
+        }
+        dart.throw(new image_exception.ImageException.new("EOF reached without finding string terminator"));
+      }
+      let s = this.readBytes(len);
+      let bytes = s.toUint8List();
+      let str = core.String.fromCharCodes(bytes);
+      return str;
+    }
+    readStringUtf8() {
+      let codes = T.JSArrayOfint().of([]);
+      while (!this.isEOS) {
+        let c = this.readByte();
+        if (c === 0) {
+          return convert.utf8.decode(codes, {allowMalformed: true});
+        }
+        codes[$add](c);
+      }
+      dart.throw(new image_exception.ImageException.new("EOF reached without finding string terminator"));
+    }
+    readUint16() {
+      let t0, t0$;
+      let b1 = this.buffer[$_get]((t0 = this.offset, this.offset = t0 + 1, t0)) & 255;
+      let b2 = this.buffer[$_get]((t0$ = this.offset, this.offset = t0$ + 1, t0$)) & 255;
+      if (this.bigEndian) {
+        return (b1 << 8 | b2) >>> 0;
+      }
+      return (b2 << 8 | b1) >>> 0;
+    }
+    readInt16() {
+      return bit_operators.uint16ToInt16(this.readUint16());
+    }
+    readUint24() {
+      let t0, t0$, t0$0;
+      let b1 = this.buffer[$_get]((t0 = this.offset, this.offset = t0 + 1, t0)) & 255;
+      let b2 = this.buffer[$_get]((t0$ = this.offset, this.offset = t0$ + 1, t0$)) & 255;
+      let b3 = this.buffer[$_get]((t0$0 = this.offset, this.offset = t0$0 + 1, t0$0)) & 255;
+      if (this.bigEndian) {
+        return (b3 | b2 << 8 >>> 0 | b1 << 16 >>> 0) >>> 0;
+      }
+      return (b1 | b2 << 8 >>> 0 | b3 << 16 >>> 0) >>> 0;
+    }
+    readUint32() {
+      let t0, t0$, t0$0, t0$1;
+      let b1 = this.buffer[$_get]((t0 = this.offset, this.offset = t0 + 1, t0)) & 255;
+      let b2 = this.buffer[$_get]((t0$ = this.offset, this.offset = t0$ + 1, t0$)) & 255;
+      let b3 = this.buffer[$_get]((t0$0 = this.offset, this.offset = t0$0 + 1, t0$0)) & 255;
+      let b4 = this.buffer[$_get]((t0$1 = this.offset, this.offset = t0$1 + 1, t0$1)) & 255;
+      if (this.bigEndian) {
+        return (b1 << 24 | b2 << 16 >>> 0 | b3 << 8 >>> 0 | b4) >>> 0;
+      }
+      return (b4 << 24 | b3 << 16 >>> 0 | b2 << 8 >>> 0 | b1) >>> 0;
+    }
+    readInt32() {
+      return bit_operators.uint32ToInt32(this.readUint32());
+    }
+    readFloat32() {
+      return bit_operators.uint32ToFloat32(this.readUint32());
+    }
+    readFloat64() {
+      return bit_operators.uint64ToFloat64(this.readUint64());
+    }
+    readUint64() {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5;
+      let b1 = this.buffer[$_get]((t0 = this.offset, this.offset = t0 + 1, t0)) & 255;
+      let b2 = this.buffer[$_get]((t0$ = this.offset, this.offset = t0$ + 1, t0$)) & 255;
+      let b3 = this.buffer[$_get]((t0$0 = this.offset, this.offset = t0$0 + 1, t0$0)) & 255;
+      let b4 = this.buffer[$_get]((t0$1 = this.offset, this.offset = t0$1 + 1, t0$1)) & 255;
+      let b5 = this.buffer[$_get]((t0$2 = this.offset, this.offset = t0$2 + 1, t0$2)) & 255;
+      let b6 = this.buffer[$_get]((t0$3 = this.offset, this.offset = t0$3 + 1, t0$3)) & 255;
+      let b7 = this.buffer[$_get]((t0$4 = this.offset, this.offset = t0$4 + 1, t0$4)) & 255;
+      let b8 = this.buffer[$_get]((t0$5 = this.offset, this.offset = t0$5 + 1, t0$5)) & 255;
+      if (this.bigEndian) {
+        return (b1[$leftShift](56) | b2[$leftShift](48) | b3[$leftShift](40) | b4[$leftShift](32) | b5 << 24 >>> 0 | b6 << 16 >>> 0 | b7 << 8 >>> 0 | b8) >>> 0;
+      }
+      return (b8[$leftShift](56) | b7[$leftShift](48) | b6[$leftShift](40) | b5[$leftShift](32) | b4 << 24 >>> 0 | b3 << 16 >>> 0 | b2 << 8 >>> 0 | b1) >>> 0;
+    }
+    toList(offset = 0, length = 0) {
+      if (typed_data.Uint8List.is(this.buffer)) {
+        return this.toUint8List(offset, length);
+      }
+      let s = this.start + offset + offset;
+      let e = length <= 0 ? this.end : s + length;
+      return this.buffer[$sublist](s, e);
+    }
+    toUint8List(offset = 0, length = null) {
+      let t0;
+      let len = (t0 = length, t0 == null ? this.length - offset : t0);
+      if (typed_data.Uint8List.is(this.buffer)) {
+        let b = typed_data.Uint8List.as(this.buffer);
+        return typed_data.Uint8List.view(b[$buffer], b[$offsetInBytes] + this.offset + offset, len);
+      }
+      return typed_data.Uint8List.is(this.buffer) ? typed_data.Uint8List.as(this.buffer)[$sublist](this.offset + offset, this.offset + offset + len) : _native_typed_data.NativeUint8List.fromList(this.buffer[$sublist](this.offset + offset, this.offset + offset + len));
+    }
+    toUint32List(offset = 0) {
+      if (typed_data.Uint8List.is(this.buffer)) {
+        let b = typed_data.Uint8List.as(this.buffer);
+        return typed_data.Uint32List.view(b[$buffer], b[$offsetInBytes] + this.offset + offset);
+      }
+      return typed_data.Uint32List.view(this.toUint8List()[$buffer]);
+    }
+  };
+  (input_buffer.InputBuffer.new = function(buffer, opts) {
+    let bigEndian = opts && 'bigEndian' in opts ? opts.bigEndian : false;
+    let offset = opts && 'offset' in opts ? opts.offset : 0;
+    let length = opts && 'length' in opts ? opts.length : null;
+    this[buffer$] = buffer;
+    this[bigEndian$] = bigEndian;
+    this[offset$] = offset;
+    this[start] = offset;
+    this[end] = length == null ? buffer[$length] : offset + dart.notNull(length);
+    ;
+  }).prototype = input_buffer.InputBuffer.prototype;
+  (input_buffer.InputBuffer.from = function(other, opts) {
+    let offset = opts && 'offset' in opts ? opts.offset : 0;
+    let length = opts && 'length' in opts ? opts.length : null;
+    this[buffer$] = other.buffer;
+    this[offset$] = other.offset + offset;
+    this[start] = other.start;
+    this[end] = length == null ? other.end : other.offset + offset + dart.notNull(length);
+    this[bigEndian$] = other.bigEndian;
+    ;
+  }).prototype = input_buffer.InputBuffer.prototype;
+  dart.addTypeTests(input_buffer.InputBuffer);
+  dart.addTypeCaches(input_buffer.InputBuffer);
+  dart.setMethodSignature(input_buffer.InputBuffer, () => ({
+    __proto__: dart.getMethods(input_buffer.InputBuffer.__proto__),
+    rewind: dart.fnType(dart.void, []),
+    _get: dart.fnType(core.int, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.int]),
+    memcpy: dart.fnType(dart.void, [core.int, core.int, dart.dynamic], [core.int]),
+    memset: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    subset: dart.fnType(input_buffer.InputBuffer, [core.int], {offset: core.int, position: dart.nullable(core.int)}, {}),
+    indexOf: dart.fnType(core.int, [core.int], [core.int]),
+    peekBytes: dart.fnType(input_buffer.InputBuffer, [core.int], [core.int]),
+    skip: dart.fnType(dart.void, [core.int]),
+    readByte: dart.fnType(core.int, []),
+    readInt8: dart.fnType(core.int, []),
+    readBytes: dart.fnType(input_buffer.InputBuffer, [core.int]),
+    readString: dart.fnType(core.String, [], [dart.nullable(core.int)]),
+    readStringUtf8: dart.fnType(core.String, []),
+    readUint16: dart.fnType(core.int, []),
+    readInt16: dart.fnType(core.int, []),
+    readUint24: dart.fnType(core.int, []),
+    readUint32: dart.fnType(core.int, []),
+    readInt32: dart.fnType(core.int, []),
+    readFloat32: dart.fnType(core.double, []),
+    readFloat64: dart.fnType(core.double, []),
+    readUint64: dart.fnType(core.int, []),
+    toList: dart.fnType(core.List$(core.int), [], [core.int, core.int]),
+    toUint8List: dart.fnType(typed_data.Uint8List, [], [core.int, dart.nullable(core.int)]),
+    toUint32List: dart.fnType(typed_data.Uint32List, [], [core.int])
+  }));
+  dart.setGetterSignature(input_buffer.InputBuffer, () => ({
+    __proto__: dart.getGetters(input_buffer.InputBuffer.__proto__),
+    position: core.int,
+    length: core.int,
+    isEOS: core.bool
+  }));
+  dart.setLibraryUri(input_buffer.InputBuffer, I[0]);
+  dart.setFieldSignature(input_buffer.InputBuffer, () => ({
+    __proto__: dart.getFields(input_buffer.InputBuffer.__proto__),
+    buffer: dart.fieldType(core.List$(core.int)),
+    start: dart.finalFieldType(core.int),
+    end: dart.finalFieldType(core.int),
+    offset: dart.fieldType(core.int),
+    bigEndian: dart.fieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/image/src/util/input_buffer.dart", {
+    "package:image/src/util/input_buffer.dart": input_buffer
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["input_buffer.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/util/input_buffer.dart.lib.js"}');
+  // Exports:
+  return {
+    src__util__input_buffer: input_buffer
+  };
+}));
+
+//# sourceMappingURL=input_buffer.dart.lib.js.map

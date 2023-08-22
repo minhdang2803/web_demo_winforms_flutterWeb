@@ -1,0 +1,2247 @@
+define(['dart_sdk', 'packages/archive/src/util/input_stream.dart', 'packages/archive/src/util/output_stream.dart', 'packages/archive/src/util/archive_exception.dart', 'packages/archive/src/util/crc32.dart'], (function load__packages__archive__src__zlib__deflate_dart(dart_sdk, packages__archive__src__util__input_stream$46dart, packages__archive__src__util__output_stream$46dart, packages__archive__src__util__archive_exception$46dart, packages__archive__src__util__crc32$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const input_stream = packages__archive__src__util__input_stream$46dart.src__util__input_stream;
+  const output_stream = packages__archive__src__util__output_stream$46dart.src__util__output_stream;
+  const archive_exception = packages__archive__src__util__archive_exception$46dart.src__util__archive_exception;
+  const crc32 = packages__archive__src__util__crc32$46dart.src__util__crc32;
+  var deflate = Object.create(dart.library);
+  var $leftShift = dartx['<<'];
+  var $truncate = dartx.truncate;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $setRange = dartx.setRange;
+  var $rightShift = dartx['>>'];
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0], core.int);
+    },
+    get C1() {
+      return C[1] = dart.constList([0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13], core.int);
+    },
+    get C2() {
+      return C[2] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7], core.int);
+    },
+    get C3() {
+      return C[3] = dart.constList([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], core.int);
+    },
+    get C4() {
+      return C[4] = dart.constList([0, 1, 2, 3, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 0, 0, 16, 17, 18, 18, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29], core.int);
+    },
+    get C5() {
+      return C[5] = dart.constList([0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 28], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constList([0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 0], core.int);
+    },
+    get C7() {
+      return C[7] = dart.constList([0, 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192, 12288, 16384, 24576], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([12, 8, 140, 8, 76, 8, 204, 8, 44, 8, 172, 8, 108, 8, 236, 8, 28, 8, 156, 8, 92, 8, 220, 8, 60, 8, 188, 8, 124, 8, 252, 8, 2, 8, 130, 8, 66, 8, 194, 8, 34, 8, 162, 8, 98, 8, 226, 8, 18, 8, 146, 8, 82, 8, 210, 8, 50, 8, 178, 8, 114, 8, 242, 8, 10, 8, 138, 8, 74, 8, 202, 8, 42, 8, 170, 8, 106, 8, 234, 8, 26, 8, 154, 8, 90, 8, 218, 8, 58, 8, 186, 8, 122, 8, 250, 8, 6, 8, 134, 8, 70, 8, 198, 8, 38, 8, 166, 8, 102, 8, 230, 8, 22, 8, 150, 8, 86, 8, 214, 8, 54, 8, 182, 8, 118, 8, 246, 8, 14, 8, 142, 8, 78, 8, 206, 8, 46, 8, 174, 8, 110, 8, 238, 8, 30, 8, 158, 8, 94, 8, 222, 8, 62, 8, 190, 8, 126, 8, 254, 8, 1, 8, 129, 8, 65, 8, 193, 8, 33, 8, 161, 8, 97, 8, 225, 8, 17, 8, 145, 8, 81, 8, 209, 8, 49, 8, 177, 8, 113, 8, 241, 8, 9, 8, 137, 8, 73, 8, 201, 8, 41, 8, 169, 8, 105, 8, 233, 8, 25, 8, 153, 8, 89, 8, 217, 8, 57, 8, 185, 8, 121, 8, 249, 8, 5, 8, 133, 8, 69, 8, 197, 8, 37, 8, 165, 8, 101, 8, 229, 8, 21, 8, 149, 8, 85, 8, 213, 8, 53, 8, 181, 8, 117, 8, 245, 8, 13, 8, 141, 8, 77, 8, 205, 8, 45, 8, 173, 8, 109, 8, 237, 8, 29, 8, 157, 8, 93, 8, 221, 8, 61, 8, 189, 8, 125, 8, 253, 8, 19, 9, 275, 9, 147, 9, 403, 9, 83, 9, 339, 9, 211, 9, 467, 9, 51, 9, 307, 9, 179, 9, 435, 9, 115, 9, 371, 9, 243, 9, 499, 9, 11, 9, 267, 9, 139, 9, 395, 9, 75, 9, 331, 9, 203, 9, 459, 9, 43, 9, 299, 9, 171, 9, 427, 9, 107, 9, 363, 9, 235, 9, 491, 9, 27, 9, 283, 9, 155, 9, 411, 9, 91, 9, 347, 9, 219, 9, 475, 9, 59, 9, 315, 9, 187, 9, 443, 9, 123, 9, 379, 9, 251, 9, 507, 9, 7, 9, 263, 9, 135, 9, 391, 9, 71, 9, 327, 9, 199, 9, 455, 9, 39, 9, 295, 9, 167, 9, 423, 9, 103, 9, 359, 9, 231, 9, 487, 9, 23, 9, 279, 9, 151, 9, 407, 9, 87, 9, 343, 9, 215, 9, 471, 9, 55, 9, 311, 9, 183, 9, 439, 9, 119, 9, 375, 9, 247, 9, 503, 9, 15, 9, 271, 9, 143, 9, 399, 9, 79, 9, 335, 9, 207, 9, 463, 9, 47, 9, 303, 9, 175, 9, 431, 9, 111, 9, 367, 9, 239, 9, 495, 9, 31, 9, 287, 9, 159, 9, 415, 9, 95, 9, 351, 9, 223, 9, 479, 9, 63, 9, 319, 9, 191, 9, 447, 9, 127, 9, 383, 9, 255, 9, 511, 9, 0, 7, 64, 7, 32, 7, 96, 7, 16, 7, 80, 7, 48, 7, 112, 7, 8, 7, 72, 7, 40, 7, 104, 7, 24, 7, 88, 7, 56, 7, 120, 7, 4, 7, 68, 7, 36, 7, 100, 7, 20, 7, 84, 7, 52, 7, 116, 7, 3, 8, 131, 8, 67, 8, 195, 8, 35, 8, 163, 8, 99, 8, 227, 8], core.int);
+    },
+    get C9() {
+      return C[9] = dart.constList([0, 5, 16, 5, 8, 5, 24, 5, 4, 5, 20, 5, 12, 5, 28, 5, 2, 5, 18, 5, 10, 5, 26, 5, 6, 5, 22, 5, 14, 5, 30, 5, 1, 5, 17, 5, 9, 5, 25, 5, 5, 5, 21, 5, 13, 5, 29, 5, 3, 5, 19, 5, 11, 5, 27, 5, 7, 5, 23, 5], core.int);
+    }
+  }, false);
+  var C = Array(10).fill(void 0);
+  var I = ["package:archive/src/zlib/deflate.dart"];
+  var crc32$ = dart.privateName(deflate, "Deflate.crc32");
+  var total = dart.privateName(deflate, "Deflate.total");
+  var _status = dart.privateName(deflate, "_status");
+  var __Deflate__pendingBuffer = dart.privateName(deflate, "_#Deflate#_pendingBuffer");
+  var __Deflate__pendingBufferSize = dart.privateName(deflate, "_#Deflate#_pendingBufferSize");
+  var __Deflate__pendingOut = dart.privateName(deflate, "_#Deflate#_pendingOut");
+  var __Deflate__pending = dart.privateName(deflate, "_#Deflate#_pending");
+  var _dataType = dart.privateName(deflate, "_dataType");
+  var __Deflate__method = dart.privateName(deflate, "_#Deflate#_method");
+  var __Deflate__lastFlush = dart.privateName(deflate, "_#Deflate#_lastFlush");
+  var __Deflate__windowSize = dart.privateName(deflate, "_#Deflate#_windowSize");
+  var __Deflate__windowBits = dart.privateName(deflate, "_#Deflate#_windowBits");
+  var __Deflate__windowMask = dart.privateName(deflate, "_#Deflate#_windowMask");
+  var __Deflate__window = dart.privateName(deflate, "_#Deflate#_window");
+  var __Deflate__actualWindowSize = dart.privateName(deflate, "_#Deflate#_actualWindowSize");
+  var __Deflate__prev = dart.privateName(deflate, "_#Deflate#_prev");
+  var __Deflate__head = dart.privateName(deflate, "_#Deflate#_head");
+  var __Deflate__insertHash = dart.privateName(deflate, "_#Deflate#_insertHash");
+  var __Deflate__hashSize = dart.privateName(deflate, "_#Deflate#_hashSize");
+  var __Deflate__hashBits = dart.privateName(deflate, "_#Deflate#_hashBits");
+  var __Deflate__hashMask = dart.privateName(deflate, "_#Deflate#_hashMask");
+  var __Deflate__hashShift = dart.privateName(deflate, "_#Deflate#_hashShift");
+  var __Deflate__blockStart = dart.privateName(deflate, "_#Deflate#_blockStart");
+  var __Deflate__matchLength = dart.privateName(deflate, "_#Deflate#_matchLength");
+  var __Deflate__prevMatch = dart.privateName(deflate, "_#Deflate#_prevMatch");
+  var __Deflate__matchAvailable = dart.privateName(deflate, "_#Deflate#_matchAvailable");
+  var __Deflate__strStart = dart.privateName(deflate, "_#Deflate#_strStart");
+  var _matchStart = dart.privateName(deflate, "_matchStart");
+  var __Deflate__lookAhead = dart.privateName(deflate, "_#Deflate#_lookAhead");
+  var __Deflate__prevLength = dart.privateName(deflate, "_#Deflate#_prevLength");
+  var __Deflate__level = dart.privateName(deflate, "_#Deflate#_level");
+  var __Deflate__strategy = dart.privateName(deflate, "_#Deflate#_strategy");
+  var __Deflate__dynamicLengthTree = dart.privateName(deflate, "_#Deflate#_dynamicLengthTree");
+  var __Deflate__dynamicDistTree = dart.privateName(deflate, "_#Deflate#_dynamicDistTree");
+  var __Deflate__bitLengthTree = dart.privateName(deflate, "_#Deflate#_bitLengthTree");
+  var _lDesc = dart.privateName(deflate, "_lDesc");
+  var _dDesc = dart.privateName(deflate, "_dDesc");
+  var _blDesc = dart.privateName(deflate, "_blDesc");
+  var _bitLengthCount = dart.privateName(deflate, "_bitLengthCount");
+  var _heap = dart.privateName(deflate, "_heap");
+  var __Deflate__heapLen = dart.privateName(deflate, "_#Deflate#_heapLen");
+  var __Deflate__heapMax = dart.privateName(deflate, "_#Deflate#_heapMax");
+  var _depth = dart.privateName(deflate, "_depth");
+  var __Deflate__lbuf = dart.privateName(deflate, "_#Deflate#_lbuf");
+  var __Deflate__litBufferSize = dart.privateName(deflate, "_#Deflate#_litBufferSize");
+  var __Deflate__lastLit = dart.privateName(deflate, "_#Deflate#_lastLit");
+  var __Deflate__dbuf = dart.privateName(deflate, "_#Deflate#_dbuf");
+  var __Deflate__optimalLen = dart.privateName(deflate, "_#Deflate#_optimalLen");
+  var __Deflate__staticLen = dart.privateName(deflate, "_#Deflate#_staticLen");
+  var __Deflate__matches = dart.privateName(deflate, "_#Deflate#_matches");
+  var __Deflate__lastEOBLen = dart.privateName(deflate, "_#Deflate#_lastEOBLen");
+  var __Deflate__bitBuffer = dart.privateName(deflate, "_#Deflate#_bitBuffer");
+  var __Deflate__numValidBits = dart.privateName(deflate, "_#Deflate#_numValidBits");
+  var _input$ = dart.privateName(deflate, "_input");
+  var _output = dart.privateName(deflate, "_output");
+  var _init = dart.privateName(deflate, "_init");
+  var _deflate = dart.privateName(deflate, "_deflate");
+  var _flushPending = dart.privateName(deflate, "_flushPending");
+  var _level = dart.privateName(deflate, "_level");
+  var _getConfig = dart.privateName(deflate, "_getConfig");
+  var _dynamicLengthTree = dart.privateName(deflate, "_dynamicLengthTree");
+  var _dynamicDistTree = dart.privateName(deflate, "_dynamicDistTree");
+  var _bitLengthTree = dart.privateName(deflate, "_bitLengthTree");
+  var _windowBits = dart.privateName(deflate, "_windowBits");
+  var _windowSize = dart.privateName(deflate, "_windowSize");
+  var _windowMask = dart.privateName(deflate, "_windowMask");
+  var _hashBits = dart.privateName(deflate, "_hashBits");
+  var _hashSize = dart.privateName(deflate, "_hashSize");
+  var _hashMask = dart.privateName(deflate, "_hashMask");
+  var _hashShift = dart.privateName(deflate, "_hashShift");
+  var _window = dart.privateName(deflate, "_window");
+  var _prev = dart.privateName(deflate, "_prev");
+  var _head = dart.privateName(deflate, "_head");
+  var _litBufferSize = dart.privateName(deflate, "_litBufferSize");
+  var _pendingBuffer = dart.privateName(deflate, "_pendingBuffer");
+  var _pendingBufferSize = dart.privateName(deflate, "_pendingBufferSize");
+  var _dbuf = dart.privateName(deflate, "_dbuf");
+  var _lbuf = dart.privateName(deflate, "_lbuf");
+  var _strategy = dart.privateName(deflate, "_strategy");
+  var _method = dart.privateName(deflate, "_method");
+  var _pending = dart.privateName(deflate, "_pending");
+  var _pendingOut = dart.privateName(deflate, "_pendingOut");
+  var _lastFlush = dart.privateName(deflate, "_lastFlush");
+  var _trInit = dart.privateName(deflate, "_trInit");
+  var _lmInit = dart.privateName(deflate, "_lmInit");
+  var _lookAhead = dart.privateName(deflate, "_lookAhead");
+  var _deflateStored = dart.privateName(deflate, "_deflateStored");
+  var _deflateFast = dart.privateName(deflate, "_deflateFast");
+  var _deflateSlow = dart.privateName(deflate, "_deflateSlow");
+  var _trAlign = dart.privateName(deflate, "_trAlign");
+  var _trStoredBlock = dart.privateName(deflate, "_trStoredBlock");
+  var _actualWindowSize = dart.privateName(deflate, "_actualWindowSize");
+  var _strStart = dart.privateName(deflate, "_strStart");
+  var _blockStart = dart.privateName(deflate, "_blockStart");
+  var _matchLength = dart.privateName(deflate, "_matchLength");
+  var _prevLength = dart.privateName(deflate, "_prevLength");
+  var _matchAvailable = dart.privateName(deflate, "_matchAvailable");
+  var _insertHash = dart.privateName(deflate, "_insertHash");
+  var _bitBuffer = dart.privateName(deflate, "_bitBuffer");
+  var _numValidBits = dart.privateName(deflate, "_numValidBits");
+  var _lastEOBLen = dart.privateName(deflate, "_lastEOBLen");
+  var _initBlock = dart.privateName(deflate, "_initBlock");
+  var _optimalLen = dart.privateName(deflate, "_optimalLen");
+  var _staticLen = dart.privateName(deflate, "_staticLen");
+  var _lastLit = dart.privateName(deflate, "_lastLit");
+  var _matches = dart.privateName(deflate, "_matches");
+  var _heapLen = dart.privateName(deflate, "_heapLen");
+  var _pqdownheap = dart.privateName(deflate, "_pqdownheap");
+  var _scanTree = dart.privateName(deflate, "_scanTree");
+  var _buildTree = dart.privateName(deflate, "_buildTree");
+  var _buildBitLengthTree = dart.privateName(deflate, "_buildBitLengthTree");
+  var _sendBits = dart.privateName(deflate, "_sendBits");
+  var _sendTree = dart.privateName(deflate, "_sendTree");
+  var _sendAllTrees = dart.privateName(deflate, "_sendAllTrees");
+  var _sendCode = dart.privateName(deflate, "_sendCode");
+  var _putBytes = dart.privateName(deflate, "_putBytes");
+  var _putByte = dart.privateName(deflate, "_putByte");
+  var _putShort = dart.privateName(deflate, "_putShort");
+  var _trTally = dart.privateName(deflate, "_trTally");
+  var _compressBlock = dart.privateName(deflate, "_compressBlock");
+  var _biWindup = dart.privateName(deflate, "_biWindup");
+  var _copyBlock = dart.privateName(deflate, "_copyBlock");
+  var _trFlushBlock = dart.privateName(deflate, "_trFlushBlock");
+  var _flushBlockOnly = dart.privateName(deflate, "_flushBlockOnly");
+  var _fillWindow = dart.privateName(deflate, "_fillWindow");
+  var _readBuf = dart.privateName(deflate, "_readBuf");
+  var _longestMatch = dart.privateName(deflate, "_longestMatch");
+  var _prevMatch = dart.privateName(deflate, "_prevMatch");
+  var _heapMax = dart.privateName(deflate, "_heapMax");
+  deflate.Deflate = class Deflate extends core.Object {
+    get crc32() {
+      return this[crc32$];
+    }
+    set crc32(value) {
+      this[crc32$] = value;
+    }
+    get total() {
+      return this[total];
+    }
+    set total(value) {
+      this[total] = value;
+    }
+    static ['_#new#tearOff'](bytes, opts) {
+      let level = opts && 'level' in opts ? opts.level : 6;
+      let flush = opts && 'flush' in opts ? opts.flush : 4;
+      let output = opts && 'output' in opts ? opts.output : null;
+      return new deflate.Deflate.new(bytes, {level: level, flush: flush, output: output});
+    }
+    static ['_#buffer#tearOff'](_input, opts) {
+      let level = opts && 'level' in opts ? opts.level : 6;
+      let flush = opts && 'flush' in opts ? opts.flush : 4;
+      let output = opts && 'output' in opts ? opts.output : null;
+      return new deflate.Deflate.buffer(_input, {level: level, flush: flush, output: output});
+    }
+    finish() {
+      this[_flushPending]();
+    }
+    getBytes() {
+      this[_flushPending]();
+      return T.ListOfint().as(dart.dsend(this[_output], 'getBytes', []));
+    }
+    takeBytes() {
+      this[_flushPending]();
+      let bytes = T.ListOfint().as(dart.dsend(this[_output], 'getBytes', []));
+      dart.dsend(this[_output], 'clear', []);
+      return bytes;
+    }
+    addBytes(bytes, opts) {
+      let flush = opts && 'flush' in opts ? opts.flush : 4;
+      this[_input$] = new input_stream.InputStream.new(bytes);
+      this[_deflate](flush);
+    }
+    addBuffer(buffer, opts) {
+      let flush = opts && 'flush' in opts ? opts.flush : 4;
+      this[_input$] = buffer;
+      this[_deflate](flush);
+    }
+    get level() {
+      return this[_level];
+    }
+    [_init](level, opts) {
+      let method = opts && 'method' in opts ? opts.method : 8;
+      let windowBits = opts && 'windowBits' in opts ? opts.windowBits : 15;
+      let memLevel = opts && 'memLevel' in opts ? opts.memLevel : 8;
+      let strategy = opts && 'strategy' in opts ? opts.strategy : 0;
+      if (level == null || level === -1) {
+        level = 6;
+      }
+      if (memLevel < 1 || memLevel > 9 || method !== 8 || windowBits < 9 || windowBits > 15 || dart.notNull(level) < 0 || dart.notNull(level) > 9 || strategy < 0 || strategy > 2) {
+        dart.throw(new archive_exception.ArchiveException.new("Invalid Deflate parameter"));
+      }
+      deflate.Deflate._config = this[_getConfig](level);
+      this[_dynamicLengthTree] = _native_typed_data.NativeUint16List.new(573 * 2);
+      this[_dynamicDistTree] = _native_typed_data.NativeUint16List.new((2 * 30 + 1) * 2);
+      this[_bitLengthTree] = _native_typed_data.NativeUint16List.new((2 * 19 + 1) * 2);
+      this[_windowBits] = windowBits;
+      this[_windowSize] = (1)[$leftShift](this[_windowBits]);
+      this[_windowMask] = this[_windowSize] - 1;
+      this[_hashBits] = memLevel + 7;
+      this[_hashSize] = (1)[$leftShift](this[_hashBits]);
+      this[_hashMask] = this[_hashSize] - 1;
+      this[_hashShift] = ((this[_hashBits] + 3 - 1) / 3)[$truncate]();
+      this[_window] = _native_typed_data.NativeUint8List.new(this[_windowSize] * 2);
+      this[_prev] = _native_typed_data.NativeUint16List.new(this[_windowSize]);
+      this[_head] = _native_typed_data.NativeUint16List.new(this[_hashSize]);
+      this[_litBufferSize] = (1)[$leftShift](memLevel + 6);
+      this[_pendingBuffer] = _native_typed_data.NativeUint8List.new(this[_litBufferSize] * 4);
+      this[_pendingBufferSize] = this[_litBufferSize] * 4;
+      this[_dbuf] = this[_litBufferSize];
+      this[_lbuf] = (1 + 2) * this[_litBufferSize];
+      this[_level] = level;
+      this[_strategy] = strategy;
+      this[_method] = method;
+      this[_pending] = 0;
+      this[_pendingOut] = 0;
+      this[_status] = 113;
+      this[_lastFlush] = 0;
+      this.crc32 = 0;
+      this[_trInit]();
+      this[_lmInit]();
+    }
+    [_deflate](flush) {
+      if (flush > 4 || flush < 0) {
+        dart.throw(new archive_exception.ArchiveException.new("Invalid Deflate Parameter"));
+      }
+      this[_lastFlush] = flush;
+      if (this[_pending] !== 0) {
+        this[_flushPending]();
+      }
+      if (!this[_input$].isEOS || this[_lookAhead] !== 0 || flush !== 0 && this[_status] !== 666) {
+        let bstate = -1;
+        switch (deflate.Deflate._config.function) {
+          case 0:
+            {
+              bstate = this[_deflateStored](flush);
+              break;
+            }
+          case 1:
+            {
+              bstate = this[_deflateFast](flush);
+              break;
+            }
+          case 2:
+            {
+              bstate = this[_deflateSlow](flush);
+              break;
+            }
+          default:
+            {
+              break;
+            }
+        }
+        if (bstate === 2 || bstate === 3) {
+          this[_status] = 666;
+        }
+        if (bstate === 0 || bstate === 2) {
+          return 0;
+        }
+        if (bstate === 1) {
+          if (flush === 1) {
+            this[_trAlign]();
+          } else {
+            this[_trStoredBlock](0, 0, false);
+            if (flush === 3) {
+              for (let i = 0; i < this[_hashSize]; i = i + 1) {
+                this[_head][$_set](i, 0);
+              }
+            }
+          }
+          this[_flushPending]();
+        }
+      }
+      if (flush !== 4) {
+        return 0;
+      }
+      return 1;
+    }
+    [_lmInit]() {
+      this[_actualWindowSize] = 2 * this[_windowSize];
+      this[_head][$_set](this[_hashSize] - 1, 0);
+      for (let i = 0; i < this[_hashSize] - 1; i = i + 1) {
+        this[_head][$_set](i, 0);
+      }
+      this[_strStart] = 0;
+      this[_blockStart] = 0;
+      this[_lookAhead] = 0;
+      this[_matchLength] = this[_prevLength] = 3 - 1;
+      this[_matchAvailable] = 0;
+      this[_insertHash] = 0;
+    }
+    [_trInit]() {
+      this[_lDesc].dynamicTree = this[_dynamicLengthTree];
+      this[_lDesc].staticDesc = deflate._StaticTree.staticLDesc;
+      this[_dDesc].dynamicTree = this[_dynamicDistTree];
+      this[_dDesc].staticDesc = deflate._StaticTree.staticDDesc;
+      this[_blDesc].dynamicTree = this[_bitLengthTree];
+      this[_blDesc].staticDesc = deflate._StaticTree.staticBlDesc;
+      this[_bitBuffer] = 0;
+      this[_numValidBits] = 0;
+      this[_lastEOBLen] = 8;
+      this[_initBlock]();
+    }
+    [_initBlock]() {
+      for (let i = 0; i < 286; i = i + 1) {
+        this[_dynamicLengthTree][$_set](i * 2, 0);
+      }
+      for (let i = 0; i < 30; i = i + 1) {
+        this[_dynamicDistTree][$_set](i * 2, 0);
+      }
+      for (let i = 0; i < 19; i = i + 1) {
+        this[_bitLengthTree][$_set](i * 2, 0);
+      }
+      this[_dynamicLengthTree][$_set](256 * 2, 1);
+      this[_optimalLen] = this[_staticLen] = 0;
+      this[_lastLit] = this[_matches] = 0;
+    }
+    [_pqdownheap](tree, k) {
+      let v = this[_heap][$_get](k);
+      let j = k << 1 >>> 0;
+      while (j <= this[_heapLen]) {
+        if (j < this[_heapLen] && deflate.Deflate._smaller(tree, this[_heap][$_get](j + 1), this[_heap][$_get](j), this[_depth])) {
+          j = j + 1;
+        }
+        if (deflate.Deflate._smaller(tree, v, this[_heap][$_get](j), this[_depth])) {
+          break;
+        }
+        this[_heap][$_set](k, this[_heap][$_get](j));
+        k = j;
+        j = j << 1 >>> 0;
+      }
+      this[_heap][$_set](k, v);
+    }
+    static _smaller(tree, n, m, depth) {
+      return tree[$_get](n * 2) < tree[$_get](m * 2) || tree[$_get](n * 2) === tree[$_get](m * 2) && depth[$_get](n) <= depth[$_get](m);
+    }
+    [_scanTree](tree, max_code) {
+      let t2, t1, t2$, t1$, t2$0, t1$0, t2$1, t1$1;
+      let n = null;
+      let prevlen = -1;
+      let curlen = null;
+      let nextlen = tree[$_get](0 * 2 + 1);
+      let count = 0;
+      let max_count = 7;
+      let min_count = 4;
+      if (nextlen === 0) {
+        max_count = 138;
+        min_count = 3;
+      }
+      tree[$_set]((max_code + 1) * 2 + 1, 65535);
+      for (let t0 = n = 0; n <= max_code; n = n + 1) {
+        curlen = nextlen;
+        nextlen = tree[$_get]((n + 1) * 2 + 1);
+        if ((count = count + 1) < max_count && curlen === nextlen) {
+          continue;
+        } else if (count < min_count) {
+          this[_bitLengthTree][$_set](curlen * 2, this[_bitLengthTree][$_get](curlen * 2) + count);
+        } else if (curlen !== 0) {
+          if (curlen !== prevlen) {
+            t1 = this[_bitLengthTree];
+            t2 = curlen * 2;
+            t1[$_set](t2, t1[$_get](t2) + 1);
+          }
+          t1$ = this[_bitLengthTree];
+          t2$ = 16 * 2;
+          t1$[$_set](t2$, t1$[$_get](t2$) + 1);
+        } else if (count <= 10) {
+          t1$0 = this[_bitLengthTree];
+          t2$0 = 17 * 2;
+          t1$0[$_set](t2$0, t1$0[$_get](t2$0) + 1);
+        } else {
+          t1$1 = this[_bitLengthTree];
+          t2$1 = 18 * 2;
+          t1$1[$_set](t2$1, t1$1[$_get](t2$1) + 1);
+        }
+        count = 0;
+        prevlen = curlen;
+        if (nextlen === 0) {
+          max_count = 138;
+          min_count = 3;
+        } else if (curlen === nextlen) {
+          max_count = 6;
+          min_count = 3;
+        } else {
+          max_count = 7;
+          min_count = 4;
+        }
+      }
+    }
+    [_buildBitLengthTree]() {
+      let max_blindex = null;
+      this[_scanTree](this[_dynamicLengthTree], this[_lDesc].maxCode);
+      this[_scanTree](this[_dynamicDistTree], this[_dDesc].maxCode);
+      this[_blDesc][_buildTree](this);
+      for (let t1 = max_blindex = 19 - 1; max_blindex >= 3; max_blindex = max_blindex - 1) {
+        if (this[_bitLengthTree][$_get](deflate._HuffmanTree.BL_ORDER[$_get](max_blindex) * 2 + 1) !== 0) {
+          break;
+        }
+      }
+      this[_optimalLen] = this[_optimalLen] + (3 * (max_blindex + 1) + 5 + 5 + 4);
+      return max_blindex;
+    }
+    [_sendAllTrees](lcodes, dcodes, blcodes) {
+      let rank = null;
+      this[_sendBits](lcodes - 257, 5);
+      this[_sendBits](dcodes - 1, 5);
+      this[_sendBits](blcodes - 4, 4);
+      for (let t2 = rank = 0; rank < blcodes; rank = rank + 1) {
+        this[_sendBits](this[_bitLengthTree][$_get](deflate._HuffmanTree.BL_ORDER[$_get](rank) * 2 + 1), 3);
+      }
+      this[_sendTree](this[_dynamicLengthTree], lcodes - 1);
+      this[_sendTree](this[_dynamicDistTree], dcodes - 1);
+    }
+    [_sendTree](tree, max_code) {
+      let n = null;
+      let prevlen = -1;
+      let curlen = null;
+      let nextlen = tree[$_get](0 * 2 + 1);
+      let count = 0;
+      let max_count = 7;
+      let min_count = 4;
+      if (nextlen === 0) {
+        max_count = 138;
+        min_count = 3;
+      }
+      for (let t3 = n = 0; n <= max_code; n = n + 1) {
+        curlen = nextlen;
+        nextlen = tree[$_get]((n + 1) * 2 + 1);
+        if ((count = count + 1) < max_count && curlen === nextlen) {
+          continue;
+        } else if (count < min_count) {
+          do {
+            this[_sendCode](curlen, this[_bitLengthTree]);
+          } while ((count = count - 1) !== 0);
+        } else if (curlen !== 0) {
+          if (curlen !== prevlen) {
+            this[_sendCode](curlen, this[_bitLengthTree]);
+            count = count - 1;
+          }
+          this[_sendCode](16, this[_bitLengthTree]);
+          this[_sendBits](count - 3, 2);
+        } else if (count <= 10) {
+          this[_sendCode](17, this[_bitLengthTree]);
+          this[_sendBits](count - 3, 3);
+        } else {
+          this[_sendCode](18, this[_bitLengthTree]);
+          this[_sendBits](count - 11, 7);
+        }
+        count = 0;
+        prevlen = curlen;
+        if (nextlen === 0) {
+          max_count = 138;
+          min_count = 3;
+        } else if (curlen === nextlen) {
+          max_count = 6;
+          min_count = 3;
+        } else {
+          max_count = 7;
+          min_count = 4;
+        }
+      }
+    }
+    [_putBytes](p, start, len) {
+      if (len === 0) {
+        return;
+      }
+      this[_pendingBuffer][$setRange](this[_pending], this[_pending] + len, p, start);
+      this[_pending] = this[_pending] + len;
+    }
+    [_putByte](c) {
+      let t4;
+      this[_pendingBuffer][$_set]((t4 = this[_pending], this[_pending] = t4 + 1, t4), c);
+    }
+    [_putShort](w) {
+      this[_putByte](w);
+      this[_putByte](deflate._rshift(w, 8));
+    }
+    [_sendCode](c, tree) {
+      this[_sendBits](tree[$_get](c * 2) & 65535, tree[$_get](c * 2 + 1) & 65535);
+    }
+    [_sendBits](value_Renamed, length) {
+      let len = length;
+      if (this[_numValidBits] > 16 - len) {
+        let val = value_Renamed;
+        this[_bitBuffer] = (this[_bitBuffer] | val[$leftShift](this[_numValidBits]) & 65535) >>> 0;
+        this[_putShort](this[_bitBuffer]);
+        this[_bitBuffer] = deflate._rshift(val, 16 - this[_numValidBits]);
+        this[_numValidBits] = this[_numValidBits] + (len - 16);
+      } else {
+        this[_bitBuffer] = (this[_bitBuffer] | value_Renamed[$leftShift](this[_numValidBits]) & 65535) >>> 0;
+        this[_numValidBits] = this[_numValidBits] + len;
+      }
+    }
+    [_trAlign]() {
+      this[_sendBits](1 << 1 >>> 0, 3);
+      this[_sendCode](256, deflate._StaticTree.STATIC_LTREE);
+      this.biFlush();
+      if (1 + this[_lastEOBLen] + 10 - this[_numValidBits] < 9) {
+        this[_sendBits](1 << 1 >>> 0, 3);
+        this[_sendCode](256, deflate._StaticTree.STATIC_LTREE);
+        this.biFlush();
+      }
+      this[_lastEOBLen] = 7;
+    }
+    [_trTally](dist, lc) {
+      let t5, t4, t5$, t4$, t5$0, t4$0;
+      this[_pendingBuffer][$_set](this[_dbuf] + this[_lastLit] * 2, deflate._rshift(dist, 8));
+      this[_pendingBuffer][$_set](this[_dbuf] + this[_lastLit] * 2 + 1, dist);
+      this[_pendingBuffer][$_set](this[_lbuf] + this[_lastLit], lc);
+      this[_lastLit] = this[_lastLit] + 1;
+      if (dist === 0) {
+        t4 = this[_dynamicLengthTree];
+        t5 = lc * 2;
+        t4[$_set](t5, t4[$_get](t5) + 1);
+      } else {
+        this[_matches] = this[_matches] + 1;
+        dist = dist - 1;
+        t4$ = this[_dynamicLengthTree];
+        t5$ = (deflate._HuffmanTree.LENGTH_CODE[$_get](lc) + 256 + 1) * 2;
+        t4$[$_set](t5$, t4$[$_get](t5$) + 1);
+        t4$0 = this[_dynamicDistTree];
+        t5$0 = deflate._HuffmanTree._dCode(dist) * 2;
+        t4$0[$_set](t5$0, t4$0[$_get](t5$0) + 1);
+      }
+      if ((this[_lastLit] & 8191) === 0 && this[_level] > 2) {
+        let out_length = this[_lastLit] * 8;
+        let in_length = this[_strStart] - this[_blockStart];
+        let dcode = null;
+        for (let t4$1 = dcode = 0; dcode < 30; dcode = dcode + 1) {
+          out_length = out_length + this[_dynamicDistTree][$_get](dcode * 2) * (5 + deflate._HuffmanTree.EXTRA_D_BITS[$_get](dcode));
+        }
+        out_length = deflate._rshift(out_length, 3);
+        if (this[_matches] < this[_lastLit] / 2 && out_length < in_length / 2) {
+          return true;
+        }
+      }
+      return this[_lastLit] === this[_litBufferSize] - 1;
+    }
+    [_compressBlock](ltree, dtree) {
+      let dist = null;
+      let lc = null;
+      let lx = 0;
+      let code = null;
+      let extra = null;
+      if (this[_lastLit] !== 0) {
+        do {
+          dist = this[_pendingBuffer][$_get](this[_dbuf] + lx * 2) << 8 & 65280 | this[_pendingBuffer][$_get](this[_dbuf] + lx * 2 + 1) & 255;
+          lc = this[_pendingBuffer][$_get](this[_lbuf] + lx) & 255;
+          lx = lx + 1;
+          if (dist === 0) {
+            this[_sendCode](lc, ltree);
+          } else {
+            code = deflate._HuffmanTree.LENGTH_CODE[$_get](lc);
+            this[_sendCode](code + 256 + 1, ltree);
+            extra = deflate._HuffmanTree.EXTRA_L_BITS[$_get](code);
+            if (extra !== 0) {
+              lc = lc - deflate._HuffmanTree.BASE_LENGTH[$_get](code);
+              this[_sendBits](lc, extra);
+            }
+            dist = dist - 1;
+            code = deflate._HuffmanTree._dCode(dist);
+            this[_sendCode](code, dtree);
+            extra = deflate._HuffmanTree.EXTRA_D_BITS[$_get](code);
+            if (extra !== 0) {
+              dist = dist - deflate._HuffmanTree.BASE_DIST[$_get](code);
+              this[_sendBits](dist, extra);
+            }
+          }
+        } while (lx < this[_lastLit]);
+      }
+      this[_sendCode](256, ltree);
+      this[_lastEOBLen] = ltree[$_get](256 * 2 + 1);
+    }
+    setDataType() {
+      let n = 0;
+      let ascii_freq = 0;
+      let bin_freq = 0;
+      while (n < 7) {
+        bin_freq = bin_freq + this[_dynamicLengthTree][$_get](n * 2);
+        n = n + 1;
+      }
+      while (n < 128) {
+        ascii_freq = ascii_freq + this[_dynamicLengthTree][$_get](n * 2);
+        n = n + 1;
+      }
+      while (n < 256) {
+        bin_freq = bin_freq + this[_dynamicLengthTree][$_get](n * 2);
+        n = n + 1;
+      }
+      this[_dataType] = bin_freq > deflate._rshift(ascii_freq, 2) ? 0 : 1;
+    }
+    biFlush() {
+      if (this[_numValidBits] === 16) {
+        this[_putShort](this[_bitBuffer]);
+        this[_bitBuffer] = 0;
+        this[_numValidBits] = 0;
+      } else if (this[_numValidBits] >= 8) {
+        this[_putByte](this[_bitBuffer]);
+        this[_bitBuffer] = deflate._rshift(this[_bitBuffer], 8);
+        this[_numValidBits] = this[_numValidBits] - 8;
+      }
+    }
+    [_biWindup]() {
+      if (this[_numValidBits] > 8) {
+        this[_putShort](this[_bitBuffer]);
+      } else if (this[_numValidBits] > 0) {
+        this[_putByte](this[_bitBuffer]);
+      }
+      this[_bitBuffer] = 0;
+      this[_numValidBits] = 0;
+    }
+    [_copyBlock](buf, len, header) {
+      this[_biWindup]();
+      this[_lastEOBLen] = 8;
+      if (header) {
+        this[_putShort](len);
+        this[_putShort]((~len >>> 0) + 65536 & 65535);
+      }
+      this[_putBytes](this[_window], buf, len);
+    }
+    [_flushBlockOnly](eof) {
+      this[_trFlushBlock](this[_blockStart] >= 0 ? this[_blockStart] : -1, this[_strStart] - this[_blockStart], eof);
+      this[_blockStart] = this[_strStart];
+      this[_flushPending]();
+    }
+    [_deflateStored](flush) {
+      let maxBlockSize = 65535;
+      if (maxBlockSize > this[_pendingBufferSize] - 5) {
+        maxBlockSize = this[_pendingBufferSize] - 5;
+      }
+      while (true) {
+        if (this[_lookAhead] <= 1) {
+          this[_fillWindow]();
+          if (this[_lookAhead] === 0 && flush === 0) {
+            return 0;
+          }
+          if (this[_lookAhead] === 0) {
+            break;
+          }
+        }
+        this[_strStart] = this[_strStart] + this[_lookAhead];
+        this[_lookAhead] = 0;
+        let maxStart = this[_blockStart] + maxBlockSize;
+        if (this[_strStart] >= maxStart) {
+          this[_lookAhead] = this[_strStart] - maxStart;
+          this[_strStart] = maxStart;
+          this[_flushBlockOnly](false);
+        }
+        if (this[_strStart] - this[_blockStart] >= this[_windowSize] - 262) {
+          this[_flushBlockOnly](false);
+        }
+      }
+      this[_flushBlockOnly](flush === 4);
+      return flush === 4 ? 3 : 1;
+    }
+    [_trStoredBlock](buf, storedLen, eof) {
+      this[_sendBits]((0 << 1 >>> 0) + (eof ? 1 : 0), 3);
+      this[_copyBlock](buf, storedLen, true);
+    }
+    [_trFlushBlock](buf, storedLen, eof) {
+      let optLenb = null;
+      let staticLenb = null;
+      let max_blindex = 0;
+      if (this[_level] > 0) {
+        if (this[_dataType] === 2) {
+          this.setDataType();
+        }
+        this[_lDesc][_buildTree](this);
+        this[_dDesc][_buildTree](this);
+        max_blindex = this[_buildBitLengthTree]();
+        optLenb = deflate._rshift(this[_optimalLen] + 3 + 7, 3);
+        staticLenb = deflate._rshift(this[_staticLen] + 3 + 7, 3);
+        if (staticLenb <= optLenb) {
+          optLenb = staticLenb;
+        }
+      } else {
+        optLenb = staticLenb = storedLen + 5;
+      }
+      if (storedLen + 4 <= optLenb && buf !== -1) {
+        this[_trStoredBlock](buf, storedLen, eof);
+      } else if (staticLenb === optLenb) {
+        this[_sendBits]((1 << 1 >>> 0) + (eof ? 1 : 0), 3);
+        this[_compressBlock](deflate._StaticTree.STATIC_LTREE, deflate._StaticTree.STATIC_DTREE);
+      } else {
+        this[_sendBits]((2 << 1 >>> 0) + (eof ? 1 : 0), 3);
+        this[_sendAllTrees](this[_lDesc].maxCode + 1, this[_dDesc].maxCode + 1, max_blindex + 1);
+        this[_compressBlock](this[_dynamicLengthTree], this[_dynamicDistTree]);
+      }
+      this[_initBlock]();
+      if (eof) {
+        this[_biWindup]();
+      }
+    }
+    [_fillWindow]() {
+      do {
+        let more = this[_actualWindowSize] - this[_lookAhead] - this[_strStart];
+        if (more === 0 && this[_strStart] === 0 && this[_lookAhead] === 0) {
+          more = this[_windowSize];
+        } else if (this[_strStart] >= this[_windowSize] + this[_windowSize] - 262) {
+          this[_window][$setRange](0, this[_windowSize], this[_window], this[_windowSize]);
+          this[_matchStart] = this[_matchStart] - this[_windowSize];
+          this[_strStart] = this[_strStart] - this[_windowSize];
+          this[_blockStart] = this[_blockStart] - this[_windowSize];
+          let n = this[_hashSize];
+          let p = n;
+          do {
+            let m = this[_head][$_get](p = p - 1) & 65535;
+            this[_head][$_set](p, m >= this[_windowSize] ? m - this[_windowSize] : 0);
+          } while ((n = n - 1) !== 0);
+          n = this[_windowSize];
+          p = n;
+          do {
+            let m = this[_prev][$_get](p = p - 1) & 65535;
+            this[_prev][$_set](p, m >= this[_windowSize] ? m - this[_windowSize] : 0);
+          } while ((n = n - 1) !== 0);
+          more = more + this[_windowSize];
+        }
+        if (this[_input$].isEOS) {
+          return;
+        }
+        let n = this[_readBuf](this[_window], this[_strStart] + this[_lookAhead], more);
+        this[_lookAhead] = this[_lookAhead] + n;
+        if (this[_lookAhead] >= 3) {
+          this[_insertHash] = this[_window][$_get](this[_strStart]) & 255;
+          this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + 1) & 255) & this[_hashMask]) >>> 0;
+        }
+      } while (this[_lookAhead] < 262 && !this[_input$].isEOS);
+    }
+    [_deflateFast](flush) {
+      let hash_head = 0;
+      let bflush = null;
+      while (true) {
+        if (this[_lookAhead] < 262) {
+          this[_fillWindow]();
+          if (this[_lookAhead] < 262 && flush === 0) {
+            return 0;
+          }
+          if (this[_lookAhead] === 0) {
+            break;
+          }
+        }
+        if (this[_lookAhead] >= 3) {
+          this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + (3 - 1)) & 255) & this[_hashMask]) >>> 0;
+          hash_head = this[_head][$_get](this[_insertHash]) & 65535;
+          this[_prev][$_set]((this[_strStart] & this[_windowMask]) >>> 0, this[_head][$_get](this[_insertHash]));
+          this[_head][$_set](this[_insertHash], this[_strStart]);
+        }
+        if (hash_head !== 0 && (this[_strStart] - hash_head & 65535) <= this[_windowSize] - 262) {
+          if (this[_strategy] !== 2) {
+            this[_matchLength] = this[_longestMatch](hash_head);
+          }
+        }
+        if (this[_matchLength] >= 3) {
+          bflush = this[_trTally](this[_strStart] - this[_matchStart], this[_matchLength] - 3);
+          this[_lookAhead] = this[_lookAhead] - this[_matchLength];
+          if (this[_matchLength] <= deflate.Deflate._config.maxLazy && this[_lookAhead] >= 3) {
+            this[_matchLength] = this[_matchLength] - 1;
+            do {
+              this[_strStart] = this[_strStart] + 1;
+              this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + (3 - 1)) & 255) & this[_hashMask]) >>> 0;
+              hash_head = this[_head][$_get](this[_insertHash]) & 65535;
+              this[_prev][$_set]((this[_strStart] & this[_windowMask]) >>> 0, this[_head][$_get](this[_insertHash]));
+              this[_head][$_set](this[_insertHash], this[_strStart]);
+            } while ((this[_matchLength] = this[_matchLength] - 1) !== 0);
+            this[_strStart] = this[_strStart] + 1;
+          } else {
+            this[_strStart] = this[_strStart] + this[_matchLength];
+            this[_matchLength] = 0;
+            this[_insertHash] = this[_window][$_get](this[_strStart]) & 255;
+            this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + 1) & 255) & this[_hashMask]) >>> 0;
+          }
+        } else {
+          bflush = this[_trTally](0, this[_window][$_get](this[_strStart]) & 255);
+          this[_lookAhead] = this[_lookAhead] - 1;
+          this[_strStart] = this[_strStart] + 1;
+        }
+        if (bflush) {
+          this[_flushBlockOnly](false);
+        }
+      }
+      this[_flushBlockOnly](flush === 4);
+      return flush === 4 ? 3 : 1;
+    }
+    [_deflateSlow](flush) {
+      let hash_head = 0;
+      let bflush = null;
+      while (true) {
+        if (this[_lookAhead] < 262) {
+          this[_fillWindow]();
+          if (this[_lookAhead] < 262 && flush === 0) {
+            return 0;
+          }
+          if (this[_lookAhead] === 0) {
+            break;
+          }
+        }
+        if (this[_lookAhead] >= 3) {
+          this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + (3 - 1)) & 255) & this[_hashMask]) >>> 0;
+          hash_head = this[_head][$_get](this[_insertHash]) & 65535;
+          this[_prev][$_set]((this[_strStart] & this[_windowMask]) >>> 0, this[_head][$_get](this[_insertHash]));
+          this[_head][$_set](this[_insertHash], this[_strStart]);
+        }
+        this[_prevLength] = this[_matchLength];
+        this[_prevMatch] = this[_matchStart];
+        this[_matchLength] = 3 - 1;
+        if (hash_head !== 0 && this[_prevLength] < deflate.Deflate._config.maxLazy && (this[_strStart] - hash_head & 65535) <= this[_windowSize] - 262) {
+          if (this[_strategy] !== 2) {
+            this[_matchLength] = this[_longestMatch](hash_head);
+          }
+          if (this[_matchLength] <= 5 && (this[_strategy] === 1 || this[_matchLength] === 3 && this[_strStart] - this[_matchStart] > 4096)) {
+            this[_matchLength] = 3 - 1;
+          }
+        }
+        if (this[_prevLength] >= 3 && this[_matchLength] <= this[_prevLength]) {
+          let max_insert = this[_strStart] + this[_lookAhead] - 3;
+          bflush = this[_trTally](this[_strStart] - 1 - this[_prevMatch], this[_prevLength] - 3);
+          this[_lookAhead] = this[_lookAhead] - (this[_prevLength] - 1);
+          this[_prevLength] = this[_prevLength] - 2;
+          do {
+            if ((this[_strStart] = this[_strStart] + 1) <= max_insert) {
+              this[_insertHash] = ((this[_insertHash][$leftShift](this[_hashShift]) ^ this[_window][$_get](this[_strStart] + (3 - 1)) & 255) & this[_hashMask]) >>> 0;
+              hash_head = this[_head][$_get](this[_insertHash]) & 65535;
+              this[_prev][$_set]((this[_strStart] & this[_windowMask]) >>> 0, this[_head][$_get](this[_insertHash]));
+              this[_head][$_set](this[_insertHash], this[_strStart]);
+            }
+          } while ((this[_prevLength] = this[_prevLength] - 1) !== 0);
+          this[_matchAvailable] = 0;
+          this[_matchLength] = 3 - 1;
+          this[_strStart] = this[_strStart] + 1;
+          if (bflush) {
+            this[_flushBlockOnly](false);
+          }
+        } else if (this[_matchAvailable] !== 0) {
+          bflush = this[_trTally](0, this[_window][$_get](this[_strStart] - 1) & 255);
+          if (bflush) {
+            this[_flushBlockOnly](false);
+          }
+          this[_strStart] = this[_strStart] + 1;
+          this[_lookAhead] = this[_lookAhead] - 1;
+        } else {
+          this[_matchAvailable] = 1;
+          this[_strStart] = this[_strStart] + 1;
+          this[_lookAhead] = this[_lookAhead] - 1;
+        }
+      }
+      if (this[_matchAvailable] !== 0) {
+        bflush = this[_trTally](0, this[_window][$_get](this[_strStart] - 1) & 255);
+        this[_matchAvailable] = 0;
+      }
+      this[_flushBlockOnly](flush === 4);
+      return flush === 4 ? 3 : 1;
+    }
+    [_longestMatch](cur_match) {
+      let chain_length = deflate.Deflate._config.maxChain;
+      let scan = this[_strStart];
+      let match = null;
+      let len = null;
+      let best_len = this[_prevLength];
+      let limit = this[_strStart] > this[_windowSize] - 262 ? this[_strStart] - (this[_windowSize] - 262) : 0;
+      let nice_match = deflate.Deflate._config.niceLength;
+      let wmask = this[_windowMask];
+      let strend = this[_strStart] + 258;
+      let scan_end1 = this[_window][$_get](scan + best_len - 1);
+      let scan_end = this[_window][$_get](scan + best_len);
+      if (this[_prevLength] >= deflate.Deflate._config.goodLength) {
+        chain_length = chain_length[$rightShift](2);
+      }
+      if (nice_match > this[_lookAhead]) {
+        nice_match = this[_lookAhead];
+      }
+      do {
+        match = cur_match;
+        if (this[_window][$_get](match + best_len) !== scan_end || this[_window][$_get](match + best_len - 1) !== scan_end1 || this[_window][$_get](match) !== this[_window][$_get](scan) || this[_window][$_get](match = match + 1) !== this[_window][$_get](scan + 1)) {
+          continue;
+        }
+        scan = scan + 2;
+        match = match + 1;
+        do {
+        } while (this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && this[_window][$_get](scan = scan + 1) === this[_window][$_get](match = match + 1) && scan < strend);
+        len = 258 - (strend - scan);
+        scan = strend - 258;
+        if (len > best_len) {
+          this[_matchStart] = cur_match;
+          best_len = len;
+          if (len >= nice_match) {
+            break;
+          }
+          scan_end1 = this[_window][$_get](scan + best_len - 1);
+          scan_end = this[_window][$_get](scan + best_len);
+        }
+      } while ((cur_match = this[_prev][$_get]((cur_match & wmask) >>> 0) & 65535) > limit && (chain_length = chain_length - 1) !== 0);
+      if (best_len <= this[_lookAhead]) {
+        return best_len;
+      }
+      return this[_lookAhead];
+    }
+    [_readBuf](buf, start, size) {
+      if (size === 0 || this[_input$].isEOS) {
+        return 0;
+      }
+      let data = this[_input$].readBytes(size);
+      let len = data.length;
+      if (len === 0) {
+        return 0;
+      }
+      let bytes = data.toUint8List();
+      if (len > bytes[$length]) {
+        len = bytes[$length];
+      }
+      buf[$setRange](start, start + len, bytes);
+      this.total = this.total + len;
+      this.crc32 = crc32.getCrc32(bytes, this.crc32);
+      return len;
+    }
+    [_flushPending]() {
+      let len = this[_pending];
+      dart.dsend(this[_output], 'writeBytes', [this[_pendingBuffer], len]);
+      this[_pendingOut] = this[_pendingOut] + len;
+      this[_pending] = this[_pending] - len;
+      if (this[_pending] === 0) {
+        this[_pendingOut] = 0;
+      }
+    }
+    [_getConfig](level) {
+      switch (level) {
+        case 0:
+          {
+            return new deflate._DeflaterConfig.new(0, 0, 0, 0, 0);
+          }
+        case 1:
+          {
+            return new deflate._DeflaterConfig.new(4, 4, 8, 4, 1);
+          }
+        case 2:
+          {
+            return new deflate._DeflaterConfig.new(4, 5, 16, 8, 1);
+          }
+        case 3:
+          {
+            return new deflate._DeflaterConfig.new(4, 6, 32, 32, 1);
+          }
+        case 4:
+          {
+            return new deflate._DeflaterConfig.new(4, 4, 16, 16, 2);
+          }
+        case 5:
+          {
+            return new deflate._DeflaterConfig.new(8, 16, 32, 32, 2);
+          }
+        case 6:
+          {
+            return new deflate._DeflaterConfig.new(8, 16, 128, 128, 2);
+          }
+        case 7:
+          {
+            return new deflate._DeflaterConfig.new(8, 32, 128, 256, 2);
+          }
+        case 8:
+          {
+            return new deflate._DeflaterConfig.new(32, 128, 258, 1024, 2);
+          }
+        case 9:
+          {
+            return new deflate._DeflaterConfig.new(32, 258, 258, 4096, 2);
+          }
+      }
+      dart.throw(new archive_exception.ArchiveException.new("Invalid Deflate parameter"));
+    }
+    static get _config() {
+      let t5;
+      t5 = deflate.Deflate['_#_config'];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_config")) : t5;
+    }
+    static set _config(library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_config$35param) {
+      deflate.Deflate['_#_config'] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_config$35param;
+    }
+    get [_pendingBuffer]() {
+      let t5;
+      t5 = this[__Deflate__pendingBuffer];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_pendingBuffer")) : t5;
+    }
+    set [_pendingBuffer](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingBuffer$35param) {
+      this[__Deflate__pendingBuffer] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingBuffer$35param;
+    }
+    set [_pendingBufferSize](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingBufferSize$35param) {
+      this[__Deflate__pendingBufferSize] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingBufferSize$35param;
+    }
+    get [_pendingBufferSize]() {
+      let t5;
+      t5 = this[__Deflate__pendingBufferSize];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_pendingBufferSize")) : t5;
+    }
+    get [_pendingOut]() {
+      let t5;
+      t5 = this[__Deflate__pendingOut];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_pendingOut")) : t5;
+    }
+    set [_pendingOut](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingOut$35param) {
+      this[__Deflate__pendingOut] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pendingOut$35param;
+    }
+    get [_pending]() {
+      let t5;
+      t5 = this[__Deflate__pending];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_pending")) : t5;
+    }
+    set [_pending](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pending$35param) {
+      this[__Deflate__pending] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_pending$35param;
+    }
+    get [_method]() {
+      let t5;
+      t5 = this[__Deflate__method];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_method")) : t5;
+    }
+    set [_method](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_method$35param) {
+      this[__Deflate__method] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_method$35param;
+    }
+    get [_lastFlush]() {
+      let t5;
+      t5 = this[__Deflate__lastFlush];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_lastFlush")) : t5;
+    }
+    set [_lastFlush](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastFlush$35param) {
+      this[__Deflate__lastFlush] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastFlush$35param;
+    }
+    get [_windowSize]() {
+      let t5;
+      t5 = this[__Deflate__windowSize];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_windowSize")) : t5;
+    }
+    set [_windowSize](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowSize$35param) {
+      this[__Deflate__windowSize] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowSize$35param;
+    }
+    get [_windowBits]() {
+      let t5;
+      t5 = this[__Deflate__windowBits];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_windowBits")) : t5;
+    }
+    set [_windowBits](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowBits$35param) {
+      this[__Deflate__windowBits] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowBits$35param;
+    }
+    get [_windowMask]() {
+      let t5;
+      t5 = this[__Deflate__windowMask];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_windowMask")) : t5;
+    }
+    set [_windowMask](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowMask$35param) {
+      this[__Deflate__windowMask] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_windowMask$35param;
+    }
+    set [_window](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_window$35param) {
+      this[__Deflate__window] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_window$35param;
+    }
+    get [_window]() {
+      let t5;
+      t5 = this[__Deflate__window];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_window")) : t5;
+    }
+    get [_actualWindowSize]() {
+      let t5;
+      t5 = this[__Deflate__actualWindowSize];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_actualWindowSize")) : t5;
+    }
+    set [_actualWindowSize](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_actualWindowSize$35param) {
+      this[__Deflate__actualWindowSize] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_actualWindowSize$35param;
+    }
+    get [_prev]() {
+      let t5;
+      t5 = this[__Deflate__prev];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_prev")) : t5;
+    }
+    set [_prev](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prev$35param) {
+      this[__Deflate__prev] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prev$35param;
+    }
+    get [_head]() {
+      let t5;
+      t5 = this[__Deflate__head];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_head")) : t5;
+    }
+    set [_head](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_head$35param) {
+      this[__Deflate__head] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_head$35param;
+    }
+    get [_insertHash]() {
+      let t5;
+      t5 = this[__Deflate__insertHash];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_insertHash")) : t5;
+    }
+    set [_insertHash](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_insertHash$35param) {
+      this[__Deflate__insertHash] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_insertHash$35param;
+    }
+    get [_hashSize]() {
+      let t5;
+      t5 = this[__Deflate__hashSize];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_hashSize")) : t5;
+    }
+    set [_hashSize](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashSize$35param) {
+      this[__Deflate__hashSize] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashSize$35param;
+    }
+    set [_hashBits](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashBits$35param) {
+      this[__Deflate__hashBits] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashBits$35param;
+    }
+    get [_hashBits]() {
+      let t5;
+      t5 = this[__Deflate__hashBits];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_hashBits")) : t5;
+    }
+    get [_hashMask]() {
+      let t5;
+      t5 = this[__Deflate__hashMask];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_hashMask")) : t5;
+    }
+    set [_hashMask](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashMask$35param) {
+      this[__Deflate__hashMask] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashMask$35param;
+    }
+    get [_hashShift]() {
+      let t5;
+      t5 = this[__Deflate__hashShift];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_hashShift")) : t5;
+    }
+    set [_hashShift](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashShift$35param) {
+      this[__Deflate__hashShift] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_hashShift$35param;
+    }
+    get [_blockStart]() {
+      let t5;
+      t5 = this[__Deflate__blockStart];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_blockStart")) : t5;
+    }
+    set [_blockStart](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_blockStart$35param) {
+      this[__Deflate__blockStart] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_blockStart$35param;
+    }
+    get [_matchLength]() {
+      let t5;
+      t5 = this[__Deflate__matchLength];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_matchLength")) : t5;
+    }
+    set [_matchLength](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matchLength$35param) {
+      this[__Deflate__matchLength] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matchLength$35param;
+    }
+    get [_prevMatch]() {
+      let t5;
+      t5 = this[__Deflate__prevMatch];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_prevMatch")) : t5;
+    }
+    set [_prevMatch](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prevMatch$35param) {
+      this[__Deflate__prevMatch] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prevMatch$35param;
+    }
+    set [_matchAvailable](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matchAvailable$35param) {
+      this[__Deflate__matchAvailable] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matchAvailable$35param;
+    }
+    get [_matchAvailable]() {
+      let t5;
+      t5 = this[__Deflate__matchAvailable];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_matchAvailable")) : t5;
+    }
+    get [_strStart]() {
+      let t5;
+      t5 = this[__Deflate__strStart];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_strStart")) : t5;
+    }
+    set [_strStart](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_strStart$35param) {
+      this[__Deflate__strStart] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_strStart$35param;
+    }
+    set [_lookAhead](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lookAhead$35param) {
+      this[__Deflate__lookAhead] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lookAhead$35param;
+    }
+    get [_lookAhead]() {
+      let t5;
+      t5 = this[__Deflate__lookAhead];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_lookAhead")) : t5;
+    }
+    get [_prevLength]() {
+      let t5;
+      t5 = this[__Deflate__prevLength];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_prevLength")) : t5;
+    }
+    set [_prevLength](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prevLength$35param) {
+      this[__Deflate__prevLength] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_prevLength$35param;
+    }
+    get [_level]() {
+      let t5;
+      t5 = this[__Deflate__level];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_level")) : t5;
+    }
+    set [_level](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_level$35param) {
+      this[__Deflate__level] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_level$35param;
+    }
+    get [_strategy]() {
+      let t5;
+      t5 = this[__Deflate__strategy];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_strategy")) : t5;
+    }
+    set [_strategy](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_strategy$35param) {
+      this[__Deflate__strategy] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_strategy$35param;
+    }
+    get [_dynamicLengthTree]() {
+      let t5;
+      t5 = this[__Deflate__dynamicLengthTree];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_dynamicLengthTree")) : t5;
+    }
+    set [_dynamicLengthTree](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dynamicLengthTree$35param) {
+      this[__Deflate__dynamicLengthTree] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dynamicLengthTree$35param;
+    }
+    get [_dynamicDistTree]() {
+      let t5;
+      t5 = this[__Deflate__dynamicDistTree];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_dynamicDistTree")) : t5;
+    }
+    set [_dynamicDistTree](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dynamicDistTree$35param) {
+      this[__Deflate__dynamicDistTree] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dynamicDistTree$35param;
+    }
+    set [_bitLengthTree](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_bitLengthTree$35param) {
+      this[__Deflate__bitLengthTree] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_bitLengthTree$35param;
+    }
+    get [_bitLengthTree]() {
+      let t5;
+      t5 = this[__Deflate__bitLengthTree];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_bitLengthTree")) : t5;
+    }
+    set [_heapLen](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_heapLen$35param) {
+      this[__Deflate__heapLen] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_heapLen$35param;
+    }
+    get [_heapLen]() {
+      let t5;
+      t5 = this[__Deflate__heapLen];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_heapLen")) : t5;
+    }
+    get [_heapMax]() {
+      let t5;
+      t5 = this[__Deflate__heapMax];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_heapMax")) : t5;
+    }
+    set [_heapMax](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_heapMax$35param) {
+      this[__Deflate__heapMax] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_heapMax$35param;
+    }
+    get [_lbuf]() {
+      let t5;
+      t5 = this[__Deflate__lbuf];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_lbuf")) : t5;
+    }
+    set [_lbuf](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lbuf$35param) {
+      this[__Deflate__lbuf] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lbuf$35param;
+    }
+    get [_litBufferSize]() {
+      let t5;
+      t5 = this[__Deflate__litBufferSize];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_litBufferSize")) : t5;
+    }
+    set [_litBufferSize](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_litBufferSize$35param) {
+      this[__Deflate__litBufferSize] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_litBufferSize$35param;
+    }
+    get [_lastLit]() {
+      let t5;
+      t5 = this[__Deflate__lastLit];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_lastLit")) : t5;
+    }
+    set [_lastLit](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastLit$35param) {
+      this[__Deflate__lastLit] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastLit$35param;
+    }
+    get [_dbuf]() {
+      let t5;
+      t5 = this[__Deflate__dbuf];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_dbuf")) : t5;
+    }
+    set [_dbuf](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dbuf$35param) {
+      this[__Deflate__dbuf] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_dbuf$35param;
+    }
+    get [_optimalLen]() {
+      let t5;
+      t5 = this[__Deflate__optimalLen];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_optimalLen")) : t5;
+    }
+    set [_optimalLen](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_optimalLen$35param) {
+      this[__Deflate__optimalLen] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_optimalLen$35param;
+    }
+    get [_staticLen]() {
+      let t5;
+      t5 = this[__Deflate__staticLen];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_staticLen")) : t5;
+    }
+    set [_staticLen](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_staticLen$35param) {
+      this[__Deflate__staticLen] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_staticLen$35param;
+    }
+    get [_matches]() {
+      let t5;
+      t5 = this[__Deflate__matches];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_matches")) : t5;
+    }
+    set [_matches](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matches$35param) {
+      this[__Deflate__matches] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_matches$35param;
+    }
+    get [_lastEOBLen]() {
+      let t5;
+      t5 = this[__Deflate__lastEOBLen];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_lastEOBLen")) : t5;
+    }
+    set [_lastEOBLen](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastEOBLen$35param) {
+      this[__Deflate__lastEOBLen] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_lastEOBLen$35param;
+    }
+    get [_bitBuffer]() {
+      let t5;
+      t5 = this[__Deflate__bitBuffer];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_bitBuffer")) : t5;
+    }
+    set [_bitBuffer](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_bitBuffer$35param) {
+      this[__Deflate__bitBuffer] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_bitBuffer$35param;
+    }
+    get [_numValidBits]() {
+      let t5;
+      t5 = this[__Deflate__numValidBits];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_numValidBits")) : t5;
+    }
+    set [_numValidBits](library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_numValidBits$35param) {
+      this[__Deflate__numValidBits] = library$32package$58archive$47src$47zlib$47deflate$46dart$58$58_numValidBits$35param;
+    }
+  };
+  (deflate.Deflate.new = function(bytes, opts) {
+    let t0;
+    let level = opts && 'level' in opts ? opts.level : 6;
+    let flush = opts && 'flush' in opts ? opts.flush : 4;
+    let output = opts && 'output' in opts ? opts.output : null;
+    this[crc32$] = 0;
+    this[total] = 0;
+    this[_status] = null;
+    this[__Deflate__pendingBuffer] = null;
+    this[__Deflate__pendingBufferSize] = null;
+    this[__Deflate__pendingOut] = null;
+    this[__Deflate__pending] = null;
+    this[_dataType] = 2;
+    this[__Deflate__method] = null;
+    this[__Deflate__lastFlush] = null;
+    this[__Deflate__windowSize] = null;
+    this[__Deflate__windowBits] = null;
+    this[__Deflate__windowMask] = null;
+    this[__Deflate__window] = null;
+    this[__Deflate__actualWindowSize] = null;
+    this[__Deflate__prev] = null;
+    this[__Deflate__head] = null;
+    this[__Deflate__insertHash] = null;
+    this[__Deflate__hashSize] = null;
+    this[__Deflate__hashBits] = null;
+    this[__Deflate__hashMask] = null;
+    this[__Deflate__hashShift] = null;
+    this[__Deflate__blockStart] = null;
+    this[__Deflate__matchLength] = null;
+    this[__Deflate__prevMatch] = null;
+    this[__Deflate__matchAvailable] = null;
+    this[__Deflate__strStart] = null;
+    this[_matchStart] = 0;
+    this[__Deflate__lookAhead] = null;
+    this[__Deflate__prevLength] = null;
+    this[__Deflate__level] = null;
+    this[__Deflate__strategy] = null;
+    this[__Deflate__dynamicLengthTree] = null;
+    this[__Deflate__dynamicDistTree] = null;
+    this[__Deflate__bitLengthTree] = null;
+    this[_lDesc] = new deflate._HuffmanTree.new();
+    this[_dDesc] = new deflate._HuffmanTree.new();
+    this[_blDesc] = new deflate._HuffmanTree.new();
+    this[_bitLengthCount] = _native_typed_data.NativeUint16List.new(15 + 1);
+    this[_heap] = _native_typed_data.NativeUint32List.new(2 * 286 + 1);
+    this[__Deflate__heapLen] = null;
+    this[__Deflate__heapMax] = null;
+    this[_depth] = _native_typed_data.NativeUint8List.new(2 * 286 + 1);
+    this[__Deflate__lbuf] = null;
+    this[__Deflate__litBufferSize] = null;
+    this[__Deflate__lastLit] = null;
+    this[__Deflate__dbuf] = null;
+    this[__Deflate__optimalLen] = null;
+    this[__Deflate__staticLen] = null;
+    this[__Deflate__matches] = null;
+    this[__Deflate__lastEOBLen] = null;
+    this[__Deflate__bitBuffer] = null;
+    this[__Deflate__numValidBits] = null;
+    this[_input$] = new input_stream.InputStream.new(bytes);
+    this[_output] = (t0 = output, t0 == null ? new output_stream.OutputStream.new() : t0);
+    this[_init](level);
+    this[_deflate](flush);
+  }).prototype = deflate.Deflate.prototype;
+  (deflate.Deflate.buffer = function(_input, opts) {
+    let t0;
+    let level = opts && 'level' in opts ? opts.level : 6;
+    let flush = opts && 'flush' in opts ? opts.flush : 4;
+    let output = opts && 'output' in opts ? opts.output : null;
+    this[crc32$] = 0;
+    this[total] = 0;
+    this[_status] = null;
+    this[__Deflate__pendingBuffer] = null;
+    this[__Deflate__pendingBufferSize] = null;
+    this[__Deflate__pendingOut] = null;
+    this[__Deflate__pending] = null;
+    this[_dataType] = 2;
+    this[__Deflate__method] = null;
+    this[__Deflate__lastFlush] = null;
+    this[__Deflate__windowSize] = null;
+    this[__Deflate__windowBits] = null;
+    this[__Deflate__windowMask] = null;
+    this[__Deflate__window] = null;
+    this[__Deflate__actualWindowSize] = null;
+    this[__Deflate__prev] = null;
+    this[__Deflate__head] = null;
+    this[__Deflate__insertHash] = null;
+    this[__Deflate__hashSize] = null;
+    this[__Deflate__hashBits] = null;
+    this[__Deflate__hashMask] = null;
+    this[__Deflate__hashShift] = null;
+    this[__Deflate__blockStart] = null;
+    this[__Deflate__matchLength] = null;
+    this[__Deflate__prevMatch] = null;
+    this[__Deflate__matchAvailable] = null;
+    this[__Deflate__strStart] = null;
+    this[_matchStart] = 0;
+    this[__Deflate__lookAhead] = null;
+    this[__Deflate__prevLength] = null;
+    this[__Deflate__level] = null;
+    this[__Deflate__strategy] = null;
+    this[__Deflate__dynamicLengthTree] = null;
+    this[__Deflate__dynamicDistTree] = null;
+    this[__Deflate__bitLengthTree] = null;
+    this[_lDesc] = new deflate._HuffmanTree.new();
+    this[_dDesc] = new deflate._HuffmanTree.new();
+    this[_blDesc] = new deflate._HuffmanTree.new();
+    this[_bitLengthCount] = _native_typed_data.NativeUint16List.new(15 + 1);
+    this[_heap] = _native_typed_data.NativeUint32List.new(2 * 286 + 1);
+    this[__Deflate__heapLen] = null;
+    this[__Deflate__heapMax] = null;
+    this[_depth] = _native_typed_data.NativeUint8List.new(2 * 286 + 1);
+    this[__Deflate__lbuf] = null;
+    this[__Deflate__litBufferSize] = null;
+    this[__Deflate__lastLit] = null;
+    this[__Deflate__dbuf] = null;
+    this[__Deflate__optimalLen] = null;
+    this[__Deflate__staticLen] = null;
+    this[__Deflate__matches] = null;
+    this[__Deflate__lastEOBLen] = null;
+    this[__Deflate__bitBuffer] = null;
+    this[__Deflate__numValidBits] = null;
+    this[_input$] = _input;
+    this[_output] = (t0 = output, t0 == null ? new output_stream.OutputStream.new() : t0);
+    this[_init](level);
+    this[_deflate](flush);
+  }).prototype = deflate.Deflate.prototype;
+  dart.addTypeTests(deflate.Deflate);
+  dart.addTypeCaches(deflate.Deflate);
+  dart.setMethodSignature(deflate.Deflate, () => ({
+    __proto__: dart.getMethods(deflate.Deflate.__proto__),
+    finish: dart.fnType(dart.void, []),
+    getBytes: dart.fnType(core.List$(core.int), []),
+    takeBytes: dart.fnType(core.List$(core.int), []),
+    addBytes: dart.fnType(dart.void, [core.List$(core.int)], {flush: core.int}, {}),
+    addBuffer: dart.fnType(dart.void, [input_stream.InputStream], {flush: core.int}, {}),
+    [_init]: dart.fnType(dart.void, [dart.nullable(core.int)], {memLevel: core.int, method: core.int, strategy: core.int, windowBits: core.int}, {}),
+    [_deflate]: dart.fnType(core.int, [core.int]),
+    [_lmInit]: dart.fnType(dart.void, []),
+    [_trInit]: dart.fnType(dart.void, []),
+    [_initBlock]: dart.fnType(dart.void, []),
+    [_pqdownheap]: dart.fnType(dart.void, [typed_data.Uint16List, core.int]),
+    [_scanTree]: dart.fnType(dart.void, [typed_data.Uint16List, core.int]),
+    [_buildBitLengthTree]: dart.fnType(core.int, []),
+    [_sendAllTrees]: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    [_sendTree]: dart.fnType(dart.void, [typed_data.Uint16List, core.int]),
+    [_putBytes]: dart.fnType(dart.void, [typed_data.Uint8List, core.int, core.int]),
+    [_putByte]: dart.fnType(dart.void, [core.int]),
+    [_putShort]: dart.fnType(dart.void, [core.int]),
+    [_sendCode]: dart.fnType(dart.void, [core.int, core.List$(core.int)]),
+    [_sendBits]: dart.fnType(dart.void, [core.int, core.int]),
+    [_trAlign]: dart.fnType(dart.void, []),
+    [_trTally]: dart.fnType(core.bool, [core.int, core.int]),
+    [_compressBlock]: dart.fnType(dart.void, [core.List$(core.int), core.List$(core.int)]),
+    setDataType: dart.fnType(dart.void, []),
+    biFlush: dart.fnType(dart.void, []),
+    [_biWindup]: dart.fnType(dart.void, []),
+    [_copyBlock]: dart.fnType(dart.void, [core.int, core.int, core.bool]),
+    [_flushBlockOnly]: dart.fnType(dart.void, [core.bool]),
+    [_deflateStored]: dart.fnType(core.int, [core.int]),
+    [_trStoredBlock]: dart.fnType(dart.void, [core.int, core.int, core.bool]),
+    [_trFlushBlock]: dart.fnType(dart.void, [core.int, core.int, core.bool]),
+    [_fillWindow]: dart.fnType(dart.void, []),
+    [_deflateFast]: dart.fnType(core.int, [core.int]),
+    [_deflateSlow]: dart.fnType(core.int, [core.int]),
+    [_longestMatch]: dart.fnType(core.int, [core.int]),
+    [_readBuf]: dart.fnType(core.int, [typed_data.Uint8List, core.int, core.int]),
+    [_flushPending]: dart.fnType(dart.void, []),
+    [_getConfig]: dart.fnType(deflate._DeflaterConfig, [core.int])
+  }));
+  dart.setStaticMethodSignature(deflate.Deflate, () => ['_smaller']);
+  dart.setGetterSignature(deflate.Deflate, () => ({
+    __proto__: dart.getGetters(deflate.Deflate.__proto__),
+    level: dart.nullable(core.int),
+    [_pendingBuffer]: typed_data.Uint8List,
+    [_pendingBufferSize]: core.int,
+    [_pendingOut]: core.int,
+    [_pending]: core.int,
+    [_method]: core.int,
+    [_lastFlush]: core.int,
+    [_windowSize]: core.int,
+    [_windowBits]: core.int,
+    [_windowMask]: core.int,
+    [_window]: typed_data.Uint8List,
+    [_actualWindowSize]: core.int,
+    [_prev]: typed_data.Uint16List,
+    [_head]: typed_data.Uint16List,
+    [_insertHash]: core.int,
+    [_hashSize]: core.int,
+    [_hashBits]: core.int,
+    [_hashMask]: core.int,
+    [_hashShift]: core.int,
+    [_blockStart]: core.int,
+    [_matchLength]: core.int,
+    [_prevMatch]: core.int,
+    [_matchAvailable]: core.int,
+    [_strStart]: core.int,
+    [_lookAhead]: core.int,
+    [_prevLength]: core.int,
+    [_level]: core.int,
+    [_strategy]: core.int,
+    [_dynamicLengthTree]: typed_data.Uint16List,
+    [_dynamicDistTree]: typed_data.Uint16List,
+    [_bitLengthTree]: typed_data.Uint16List,
+    [_heapLen]: core.int,
+    [_heapMax]: core.int,
+    [_lbuf]: core.int,
+    [_litBufferSize]: core.int,
+    [_lastLit]: core.int,
+    [_dbuf]: core.int,
+    [_optimalLen]: core.int,
+    [_staticLen]: core.int,
+    [_matches]: core.int,
+    [_lastEOBLen]: core.int,
+    [_bitBuffer]: core.int,
+    [_numValidBits]: core.int
+  }));
+  dart.setSetterSignature(deflate.Deflate, () => ({
+    __proto__: dart.getSetters(deflate.Deflate.__proto__),
+    [_pendingBuffer]: typed_data.Uint8List,
+    [_pendingBufferSize]: core.int,
+    [_pendingOut]: core.int,
+    [_pending]: core.int,
+    [_method]: core.int,
+    [_lastFlush]: core.int,
+    [_windowSize]: core.int,
+    [_windowBits]: core.int,
+    [_windowMask]: core.int,
+    [_window]: typed_data.Uint8List,
+    [_actualWindowSize]: core.int,
+    [_prev]: typed_data.Uint16List,
+    [_head]: typed_data.Uint16List,
+    [_insertHash]: core.int,
+    [_hashSize]: core.int,
+    [_hashBits]: core.int,
+    [_hashMask]: core.int,
+    [_hashShift]: core.int,
+    [_blockStart]: core.int,
+    [_matchLength]: core.int,
+    [_prevMatch]: core.int,
+    [_matchAvailable]: core.int,
+    [_strStart]: core.int,
+    [_lookAhead]: core.int,
+    [_prevLength]: core.int,
+    [_level]: core.int,
+    [_strategy]: core.int,
+    [_dynamicLengthTree]: typed_data.Uint16List,
+    [_dynamicDistTree]: typed_data.Uint16List,
+    [_bitLengthTree]: typed_data.Uint16List,
+    [_heapLen]: core.int,
+    [_heapMax]: core.int,
+    [_lbuf]: core.int,
+    [_litBufferSize]: core.int,
+    [_lastLit]: core.int,
+    [_dbuf]: core.int,
+    [_optimalLen]: core.int,
+    [_staticLen]: core.int,
+    [_matches]: core.int,
+    [_lastEOBLen]: core.int,
+    [_bitBuffer]: core.int,
+    [_numValidBits]: core.int
+  }));
+  dart.setStaticGetterSignature(deflate.Deflate, () => ['_config']);
+  dart.setStaticSetterSignature(deflate.Deflate, () => ['_config']);
+  dart.setLibraryUri(deflate.Deflate, I[0]);
+  dart.setFieldSignature(deflate.Deflate, () => ({
+    __proto__: dart.getFields(deflate.Deflate.__proto__),
+    crc32: dart.fieldType(core.int),
+    total: dart.fieldType(core.int),
+    [_input$]: dart.fieldType(input_stream.InputStreamBase),
+    [_output]: dart.finalFieldType(dart.dynamic),
+    [_status]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__pendingBuffer]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [__Deflate__pendingBufferSize]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__pendingOut]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__pending]: dart.fieldType(dart.nullable(core.int)),
+    [_dataType]: dart.fieldType(core.int),
+    [__Deflate__method]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__lastFlush]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__windowSize]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__windowBits]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__windowMask]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__window]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [__Deflate__actualWindowSize]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__prev]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [__Deflate__head]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [__Deflate__insertHash]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__hashSize]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__hashBits]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__hashMask]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__hashShift]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__blockStart]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__matchLength]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__prevMatch]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__matchAvailable]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__strStart]: dart.fieldType(dart.nullable(core.int)),
+    [_matchStart]: dart.fieldType(core.int),
+    [__Deflate__lookAhead]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__prevLength]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__level]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__strategy]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__dynamicLengthTree]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [__Deflate__dynamicDistTree]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [__Deflate__bitLengthTree]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [_lDesc]: dart.finalFieldType(deflate._HuffmanTree),
+    [_dDesc]: dart.finalFieldType(deflate._HuffmanTree),
+    [_blDesc]: dart.finalFieldType(deflate._HuffmanTree),
+    [_bitLengthCount]: dart.finalFieldType(typed_data.Uint16List),
+    [_heap]: dart.finalFieldType(typed_data.Uint32List),
+    [__Deflate__heapLen]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__heapMax]: dart.fieldType(dart.nullable(core.int)),
+    [_depth]: dart.finalFieldType(typed_data.Uint8List),
+    [__Deflate__lbuf]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__litBufferSize]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__lastLit]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__dbuf]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__optimalLen]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__staticLen]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__matches]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__lastEOBLen]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__bitBuffer]: dart.fieldType(dart.nullable(core.int)),
+    [__Deflate__numValidBits]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.setStaticFieldSignature(deflate.Deflate, () => ['DEFAULT_COMPRESSION', 'BEST_COMPRESSION', 'BEST_SPEED', 'NO_COMPRESSION', 'NO_FLUSH', 'PARTIAL_FLUSH', 'SYNC_FLUSH', 'FULL_FLUSH', 'FINISH', 'MAX_MEM_LEVEL', 'Z_DEFAULT_COMPRESSION', 'MAX_WBITS', 'DEF_MEM_LEVEL', 'STORED', 'FAST', 'SLOW', '_#_config', 'NEED_MORE', 'BLOCK_DONE', 'FINISH_STARTED', 'FINISH_DONE', 'Z_FILTERED', 'Z_HUFFMAN_ONLY', 'Z_DEFAULT_STRATEGY', 'Z_OK', 'Z_STREAM_END', 'Z_NEED_DICT', 'Z_ERRNO', 'Z_STREAM_ERROR', 'Z_DATA_ERROR', 'Z_MEM_ERROR', 'Z_BUF_ERROR', 'Z_VERSION_ERROR', 'INIT_STATE', 'BUSY_STATE', 'FINISH_STATE', 'Z_DEFLATED', 'STORED_BLOCK', 'STATIC_TREES', 'DYN_TREES', 'Z_BINARY', 'Z_ASCII', 'Z_UNKNOWN', 'BUF_SIZE', 'REP_3_6', 'REPZ_3_10', 'REPZ_11_138', 'MIN_MATCH', 'MAX_MATCH', 'MIN_LOOKAHEAD', 'MAX_BITS', 'D_CODES', 'BL_CODES', 'LENGTH_CODES', 'LITERALS', 'L_CODES', 'HEAP_SIZE', 'END_BLOCK']);
+  dart.defineLazy(deflate.Deflate, {
+    /*deflate.Deflate.DEFAULT_COMPRESSION*/get DEFAULT_COMPRESSION() {
+      return 6;
+    },
+    /*deflate.Deflate.BEST_COMPRESSION*/get BEST_COMPRESSION() {
+      return 9;
+    },
+    /*deflate.Deflate.BEST_SPEED*/get BEST_SPEED() {
+      return 1;
+    },
+    /*deflate.Deflate.NO_COMPRESSION*/get NO_COMPRESSION() {
+      return 0;
+    },
+    /*deflate.Deflate.NO_FLUSH*/get NO_FLUSH() {
+      return 0;
+    },
+    /*deflate.Deflate.PARTIAL_FLUSH*/get PARTIAL_FLUSH() {
+      return 1;
+    },
+    /*deflate.Deflate.SYNC_FLUSH*/get SYNC_FLUSH() {
+      return 2;
+    },
+    /*deflate.Deflate.FULL_FLUSH*/get FULL_FLUSH() {
+      return 3;
+    },
+    /*deflate.Deflate.FINISH*/get FINISH() {
+      return 4;
+    },
+    /*deflate.Deflate.MAX_MEM_LEVEL*/get MAX_MEM_LEVEL() {
+      return 9;
+    },
+    /*deflate.Deflate.Z_DEFAULT_COMPRESSION*/get Z_DEFAULT_COMPRESSION() {
+      return -1;
+    },
+    /*deflate.Deflate.MAX_WBITS*/get MAX_WBITS() {
+      return 15;
+    },
+    /*deflate.Deflate.DEF_MEM_LEVEL*/get DEF_MEM_LEVEL() {
+      return 8;
+    },
+    /*deflate.Deflate.STORED*/get STORED() {
+      return 0;
+    },
+    /*deflate.Deflate.FAST*/get FAST() {
+      return 1;
+    },
+    /*deflate.Deflate.SLOW*/get SLOW() {
+      return 2;
+    },
+    /*deflate.Deflate['_#_config']*/get ['_#_config']() {
+      return null;
+    },
+    set ['_#_config'](_) {},
+    /*deflate.Deflate.NEED_MORE*/get NEED_MORE() {
+      return 0;
+    },
+    /*deflate.Deflate.BLOCK_DONE*/get BLOCK_DONE() {
+      return 1;
+    },
+    /*deflate.Deflate.FINISH_STARTED*/get FINISH_STARTED() {
+      return 2;
+    },
+    /*deflate.Deflate.FINISH_DONE*/get FINISH_DONE() {
+      return 3;
+    },
+    /*deflate.Deflate.Z_FILTERED*/get Z_FILTERED() {
+      return 1;
+    },
+    /*deflate.Deflate.Z_HUFFMAN_ONLY*/get Z_HUFFMAN_ONLY() {
+      return 2;
+    },
+    /*deflate.Deflate.Z_DEFAULT_STRATEGY*/get Z_DEFAULT_STRATEGY() {
+      return 0;
+    },
+    /*deflate.Deflate.Z_OK*/get Z_OK() {
+      return 0;
+    },
+    /*deflate.Deflate.Z_STREAM_END*/get Z_STREAM_END() {
+      return 1;
+    },
+    /*deflate.Deflate.Z_NEED_DICT*/get Z_NEED_DICT() {
+      return 2;
+    },
+    /*deflate.Deflate.Z_ERRNO*/get Z_ERRNO() {
+      return -1;
+    },
+    /*deflate.Deflate.Z_STREAM_ERROR*/get Z_STREAM_ERROR() {
+      return -2;
+    },
+    /*deflate.Deflate.Z_DATA_ERROR*/get Z_DATA_ERROR() {
+      return -3;
+    },
+    /*deflate.Deflate.Z_MEM_ERROR*/get Z_MEM_ERROR() {
+      return -4;
+    },
+    /*deflate.Deflate.Z_BUF_ERROR*/get Z_BUF_ERROR() {
+      return -5;
+    },
+    /*deflate.Deflate.Z_VERSION_ERROR*/get Z_VERSION_ERROR() {
+      return -6;
+    },
+    /*deflate.Deflate.INIT_STATE*/get INIT_STATE() {
+      return 42;
+    },
+    /*deflate.Deflate.BUSY_STATE*/get BUSY_STATE() {
+      return 113;
+    },
+    /*deflate.Deflate.FINISH_STATE*/get FINISH_STATE() {
+      return 666;
+    },
+    /*deflate.Deflate.Z_DEFLATED*/get Z_DEFLATED() {
+      return 8;
+    },
+    /*deflate.Deflate.STORED_BLOCK*/get STORED_BLOCK() {
+      return 0;
+    },
+    /*deflate.Deflate.STATIC_TREES*/get STATIC_TREES() {
+      return 1;
+    },
+    /*deflate.Deflate.DYN_TREES*/get DYN_TREES() {
+      return 2;
+    },
+    /*deflate.Deflate.Z_BINARY*/get Z_BINARY() {
+      return 0;
+    },
+    /*deflate.Deflate.Z_ASCII*/get Z_ASCII() {
+      return 1;
+    },
+    /*deflate.Deflate.Z_UNKNOWN*/get Z_UNKNOWN() {
+      return 2;
+    },
+    /*deflate.Deflate.BUF_SIZE*/get BUF_SIZE() {
+      return 16;
+    },
+    /*deflate.Deflate.REP_3_6*/get REP_3_6() {
+      return 16;
+    },
+    /*deflate.Deflate.REPZ_3_10*/get REPZ_3_10() {
+      return 17;
+    },
+    /*deflate.Deflate.REPZ_11_138*/get REPZ_11_138() {
+      return 18;
+    },
+    /*deflate.Deflate.MIN_MATCH*/get MIN_MATCH() {
+      return 3;
+    },
+    /*deflate.Deflate.MAX_MATCH*/get MAX_MATCH() {
+      return 258;
+    },
+    /*deflate.Deflate.MIN_LOOKAHEAD*/get MIN_LOOKAHEAD() {
+      return 262;
+    },
+    /*deflate.Deflate.MAX_BITS*/get MAX_BITS() {
+      return 15;
+    },
+    /*deflate.Deflate.D_CODES*/get D_CODES() {
+      return 30;
+    },
+    /*deflate.Deflate.BL_CODES*/get BL_CODES() {
+      return 19;
+    },
+    /*deflate.Deflate.LENGTH_CODES*/get LENGTH_CODES() {
+      return 29;
+    },
+    /*deflate.Deflate.LITERALS*/get LITERALS() {
+      return 256;
+    },
+    /*deflate.Deflate.L_CODES*/get L_CODES() {
+      return 286;
+    },
+    /*deflate.Deflate.HEAP_SIZE*/get HEAP_SIZE() {
+      return 573;
+    },
+    /*deflate.Deflate.END_BLOCK*/get END_BLOCK() {
+      return 256;
+    }
+  }, false);
+  deflate._DeflaterConfig = class _DeflaterConfig extends core.Object {
+    static ['_#new#tearOff'](goodLength, maxLazy, niceLength, maxChain, $function) {
+      return new deflate._DeflaterConfig.new(goodLength, maxLazy, niceLength, maxChain, $function);
+    }
+  };
+  (deflate._DeflaterConfig.new = function(goodLength, maxLazy, niceLength, maxChain, $function) {
+    this.goodLength = goodLength;
+    this.maxLazy = maxLazy;
+    this.niceLength = niceLength;
+    this.maxChain = maxChain;
+    this.function = $function;
+    ;
+  }).prototype = deflate._DeflaterConfig.prototype;
+  dart.addTypeTests(deflate._DeflaterConfig);
+  dart.addTypeCaches(deflate._DeflaterConfig);
+  dart.setLibraryUri(deflate._DeflaterConfig, I[0]);
+  dart.setFieldSignature(deflate._DeflaterConfig, () => ({
+    __proto__: dart.getFields(deflate._DeflaterConfig.__proto__),
+    goodLength: dart.fieldType(core.int),
+    maxLazy: dart.fieldType(core.int),
+    niceLength: dart.fieldType(core.int),
+    maxChain: dart.fieldType(core.int),
+    function: dart.fieldType(core.int)
+  }));
+  var ___HuffmanTree_dynamicTree = dart.privateName(deflate, "_#_HuffmanTree#dynamicTree");
+  var ___HuffmanTree_maxCode = dart.privateName(deflate, "_#_HuffmanTree#maxCode");
+  var ___HuffmanTree_staticDesc = dart.privateName(deflate, "_#_HuffmanTree#staticDesc");
+  var _genBitlen = dart.privateName(deflate, "_genBitlen");
+  deflate._HuffmanTree = class _HuffmanTree extends core.Object {
+    get dynamicTree() {
+      let t5;
+      t5 = this[___HuffmanTree_dynamicTree];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("dynamicTree")) : t5;
+    }
+    set dynamicTree(dynamicTree$35param) {
+      this[___HuffmanTree_dynamicTree] = dynamicTree$35param;
+    }
+    get maxCode() {
+      let t5;
+      t5 = this[___HuffmanTree_maxCode];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("maxCode")) : t5;
+    }
+    set maxCode(maxCode$35param) {
+      this[___HuffmanTree_maxCode] = maxCode$35param;
+    }
+    get staticDesc() {
+      let t5;
+      t5 = this[___HuffmanTree_staticDesc];
+      return t5 == null ? dart.throw(new _internal.LateError.fieldNI("staticDesc")) : t5;
+    }
+    set staticDesc(staticDesc$35param) {
+      this[___HuffmanTree_staticDesc] = staticDesc$35param;
+    }
+    [_genBitlen](s) {
+      let t8, t7, t7$, t7$0, t8$, t7$1, t7$2;
+      let tree = this.dynamicTree;
+      let stree = this.staticDesc.staticTree;
+      let extra = this.staticDesc.extraBits;
+      let base_Renamed = this.staticDesc.extraBase;
+      let max_length = this.staticDesc.maxLength;
+      let h = null;
+      let n = null;
+      let m = null;
+      let bits = null;
+      let xbits = null;
+      let f = null;
+      let overflow = 0;
+      for (let t5 = bits = 0; bits <= 15; bits = bits + 1) {
+        s[_bitLengthCount][$_set](bits, 0);
+      }
+      tree[$_set](s[_heap][$_get](s[_heapMax]) * 2 + 1, 0);
+      for (let t6 = h = s[_heapMax] + 1; h < 573; h = h + 1) {
+        n = s[_heap][$_get](h);
+        bits = tree[$_get](tree[$_get](n * 2 + 1) * 2 + 1) + 1;
+        if (bits > max_length) {
+          bits = max_length;
+          overflow = overflow + 1;
+        }
+        tree[$_set](n * 2 + 1, bits);
+        if (n > this.maxCode) {
+          continue;
+        }
+        t7 = s[_bitLengthCount];
+        t8 = bits;
+        t7[$_set](t8, t7[$_get](t8) + 1);
+        xbits = 0;
+        if (n >= base_Renamed) {
+          xbits = extra[$_get](n - base_Renamed);
+        }
+        f = tree[$_get](n * 2);
+        t7$ = s;
+        t7$[_optimalLen] = t7$[_optimalLen] + f * (bits + xbits);
+        if (stree != null) {
+          t7$0 = s;
+          t7$0[_staticLen] = t7$0[_staticLen] + f * (stree[$_get](n * 2 + 1) + xbits);
+        }
+      }
+      if (overflow === 0) {
+        return;
+      }
+      do {
+        bits = max_length - 1;
+        while (s[_bitLengthCount][$_get](bits) === 0) {
+          bits = bits - 1;
+        }
+        t7$1 = s[_bitLengthCount];
+        t8$ = bits;
+        t7$1[$_set](t8$, t7$1[$_get](t8$) - 1);
+        s[_bitLengthCount][$_set](bits + 1, s[_bitLengthCount][$_get](bits + 1) + 2);
+        t7$2 = s[_bitLengthCount];
+        t7$2[$_set](max_length, t7$2[$_get](max_length) - 1);
+        overflow = overflow - 2;
+      } while (overflow > 0);
+      for (let t7$3 = bits = max_length; bits !== 0; bits = bits - 1) {
+        n = s[_bitLengthCount][$_get](bits);
+        while (n !== 0) {
+          m = s[_heap][$_get](h = h - 1);
+          if (m > this.maxCode) {
+            continue;
+          }
+          if (tree[$_get](m * 2 + 1) !== bits) {
+            s[_optimalLen] = s[_optimalLen] + (bits - tree[$_get](m * 2 + 1)) * tree[$_get](m * 2);
+            tree[$_set](m * 2 + 1, bits);
+          }
+          n = n - 1;
+        }
+      }
+    }
+    [_buildTree](s) {
+      let t9, t9$, t11, t10, t9$0, t9$1, t9$2, t11$, t10$, t10$0, t10$1, t11$0, t10$2, t10$3, t10$4;
+      let tree = this.dynamicTree;
+      let stree = this.staticDesc.staticTree;
+      let elems = this.staticDesc.numElements;
+      let n = null;
+      let m = null;
+      let max_code = -1;
+      let node = null;
+      s[_heapLen] = 0;
+      s[_heapMax] = 573;
+      for (let t8 = n = 0; n < elems; n = n + 1) {
+        if (tree[$_get](n * 2) !== 0) {
+          s[_heap][$_set]((t9 = s, t9[_heapLen] = t9[_heapLen] + 1), max_code = n);
+          s[_depth][$_set](n, 0);
+        } else {
+          tree[$_set](n * 2 + 1, 0);
+        }
+      }
+      while (s[_heapLen] < 2) {
+        node = (t9$0 = s[_heap], t10 = (t9$ = s, t9$[_heapLen] = t9$[_heapLen] + 1), t11 = max_code < 2 ? max_code = max_code + 1 : 0, t9$0[$_set](t10, t11), t11);
+        tree[$_set](dart.notNull(node) * 2, 1);
+        s[_depth][$_set](node, 0);
+        t9$1 = s;
+        t9$1[_optimalLen] = t9$1[_optimalLen] - 1;
+        if (stree != null) {
+          t9$2 = s;
+          t9$2[_staticLen] = t9$2[_staticLen] - stree[$_get](dart.notNull(node) * 2 + 1);
+        }
+      }
+      this.maxCode = max_code;
+      for (let t9$3 = n = (s[_heapLen] / 2)[$truncate](); n >= 1; n = n - 1) {
+        s[_pqdownheap](tree, n);
+      }
+      node = elems;
+      do {
+        n = s[_heap][$_get](1);
+        s[_heap][$_set](1, s[_heap][$_get]((t10$ = s, t11$ = t10$[_heapLen], t10$[_heapLen] = t11$ - 1, t11$)));
+        s[_pqdownheap](tree, 1);
+        m = s[_heap][$_get](1);
+        s[_heap][$_set]((t10$0 = s, t10$0[_heapMax] = t10$0[_heapMax] - 1), n);
+        s[_heap][$_set]((t10$1 = s, t10$1[_heapMax] = t10$1[_heapMax] - 1), m);
+        tree[$_set](dart.notNull(node) * 2, tree[$_get](n * 2) + tree[$_get](m * 2));
+        s[_depth][$_set](node, deflate._HuffmanTree._max(s[_depth][$_get](n), s[_depth][$_get](m)) + 1);
+        tree[$_set](n * 2 + 1, (t10$2 = m * 2 + 1, t11$0 = node, tree[$_set](t10$2, t11$0), t11$0));
+        s[_heap][$_set](1, (t10$3 = node, node = t10$3 + 1, t10$3));
+        s[_pqdownheap](tree, 1);
+      } while (s[_heapLen] >= 2);
+      s[_heap][$_set]((t10$4 = s, t10$4[_heapMax] = t10$4[_heapMax] - 1), s[_heap][$_get](1));
+      this[_genBitlen](s);
+      deflate._HuffmanTree._genCodes(tree, max_code, s[_bitLengthCount]);
+    }
+    static _max(a, b) {
+      return a > b ? a : b;
+    }
+    static _genCodes(tree, max_code, bl_count) {
+      let t12;
+      let next_code = _native_typed_data.NativeUint16List.new(15 + 1);
+      let code = 0;
+      let bits = null;
+      let n = null;
+      for (let t10 = bits = 1; bits <= 15; bits = bits + 1) {
+        next_code[$_set](bits, code = code + bl_count[$_get](bits - 1) << 1 >>> 0);
+      }
+      for (let t11 = n = 0; n <= max_code; n = n + 1) {
+        let len = tree[$_get](n * 2 + 1);
+        if (len === 0) {
+          continue;
+        }
+        tree[$_set](n * 2, deflate._HuffmanTree._reverseBits((t12 = next_code[$_get](len), next_code[$_set](len, t12 + 1), t12), len));
+      }
+    }
+    static _reverseBits(code, len) {
+      let res = 0;
+      do {
+        res = (res | code & 1) >>> 0;
+        code = deflate._rshift(code, 1);
+        res = res << 1 >>> 0;
+      } while ((len = len - 1) > 0);
+      return deflate._rshift(res, 1);
+    }
+    static _dCode(dist) {
+      return dist < 256 ? deflate._HuffmanTree._DIST_CODE[$_get](dist) : deflate._HuffmanTree._DIST_CODE[$_get](256 + deflate._rshift(dist, 7));
+    }
+    static ['_#new#tearOff']() {
+      return new deflate._HuffmanTree.new();
+    }
+  };
+  (deflate._HuffmanTree.new = function() {
+    this[___HuffmanTree_dynamicTree] = null;
+    this[___HuffmanTree_maxCode] = null;
+    this[___HuffmanTree_staticDesc] = null;
+    ;
+  }).prototype = deflate._HuffmanTree.prototype;
+  dart.addTypeTests(deflate._HuffmanTree);
+  dart.addTypeCaches(deflate._HuffmanTree);
+  dart.setMethodSignature(deflate._HuffmanTree, () => ({
+    __proto__: dart.getMethods(deflate._HuffmanTree.__proto__),
+    [_genBitlen]: dart.fnType(dart.void, [deflate.Deflate]),
+    [_buildTree]: dart.fnType(dart.void, [deflate.Deflate])
+  }));
+  dart.setStaticMethodSignature(deflate._HuffmanTree, () => ['_max', '_genCodes', '_reverseBits', '_dCode']);
+  dart.setGetterSignature(deflate._HuffmanTree, () => ({
+    __proto__: dart.getGetters(deflate._HuffmanTree.__proto__),
+    dynamicTree: typed_data.Uint16List,
+    maxCode: core.int,
+    staticDesc: deflate._StaticTree
+  }));
+  dart.setSetterSignature(deflate._HuffmanTree, () => ({
+    __proto__: dart.getSetters(deflate._HuffmanTree.__proto__),
+    dynamicTree: typed_data.Uint16List,
+    maxCode: core.int,
+    staticDesc: deflate._StaticTree
+  }));
+  dart.setLibraryUri(deflate._HuffmanTree, I[0]);
+  dart.setFieldSignature(deflate._HuffmanTree, () => ({
+    __proto__: dart.getFields(deflate._HuffmanTree.__proto__),
+    [___HuffmanTree_dynamicTree]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [___HuffmanTree_maxCode]: dart.fieldType(dart.nullable(core.int)),
+    [___HuffmanTree_staticDesc]: dart.fieldType(dart.nullable(deflate._StaticTree))
+  }));
+  dart.setStaticFieldSignature(deflate._HuffmanTree, () => ['MAX_BITS', 'LITERALS', 'LENGTH_CODES', 'L_CODES', 'HEAP_SIZE', 'EXTRA_L_BITS', 'EXTRA_D_BITS', 'EXTRA_BL_BITS', 'BL_ORDER', '_DIST_CODE', 'LENGTH_CODE', 'BASE_LENGTH', 'BASE_DIST']);
+  dart.defineLazy(deflate._HuffmanTree, {
+    /*deflate._HuffmanTree.MAX_BITS*/get MAX_BITS() {
+      return 15;
+    },
+    /*deflate._HuffmanTree.LITERALS*/get LITERALS() {
+      return 256;
+    },
+    /*deflate._HuffmanTree.LENGTH_CODES*/get LENGTH_CODES() {
+      return 29;
+    },
+    /*deflate._HuffmanTree.L_CODES*/get L_CODES() {
+      return 286;
+    },
+    /*deflate._HuffmanTree.HEAP_SIZE*/get HEAP_SIZE() {
+      return 573;
+    },
+    /*deflate._HuffmanTree.EXTRA_L_BITS*/get EXTRA_L_BITS() {
+      return C[0] || CT.C0;
+    },
+    /*deflate._HuffmanTree.EXTRA_D_BITS*/get EXTRA_D_BITS() {
+      return C[1] || CT.C1;
+    },
+    /*deflate._HuffmanTree.EXTRA_BL_BITS*/get EXTRA_BL_BITS() {
+      return C[2] || CT.C2;
+    },
+    /*deflate._HuffmanTree.BL_ORDER*/get BL_ORDER() {
+      return C[3] || CT.C3;
+    },
+    /*deflate._HuffmanTree._DIST_CODE*/get _DIST_CODE() {
+      return C[4] || CT.C4;
+    },
+    /*deflate._HuffmanTree.LENGTH_CODE*/get LENGTH_CODE() {
+      return C[5] || CT.C5;
+    },
+    /*deflate._HuffmanTree.BASE_LENGTH*/get BASE_LENGTH() {
+      return C[6] || CT.C6;
+    },
+    /*deflate._HuffmanTree.BASE_DIST*/get BASE_DIST() {
+      return C[7] || CT.C7;
+    }
+  }, false);
+  deflate._StaticTree = class _StaticTree extends core.Object {
+    static ['_#new#tearOff'](staticTree, extraBits, extraBase, numElements, maxLength) {
+      return new deflate._StaticTree.new(staticTree, extraBits, extraBase, numElements, maxLength);
+    }
+  };
+  (deflate._StaticTree.new = function(staticTree, extraBits, extraBase, numElements, maxLength) {
+    this.staticTree = staticTree;
+    this.extraBits = extraBits;
+    this.extraBase = extraBase;
+    this.numElements = numElements;
+    this.maxLength = maxLength;
+    ;
+  }).prototype = deflate._StaticTree.prototype;
+  dart.addTypeTests(deflate._StaticTree);
+  dart.addTypeCaches(deflate._StaticTree);
+  dart.setLibraryUri(deflate._StaticTree, I[0]);
+  dart.setFieldSignature(deflate._StaticTree, () => ({
+    __proto__: dart.getFields(deflate._StaticTree.__proto__),
+    staticTree: dart.fieldType(dart.nullable(core.List$(core.int))),
+    extraBits: dart.fieldType(core.List$(core.int)),
+    extraBase: dart.fieldType(core.int),
+    numElements: dart.fieldType(core.int),
+    maxLength: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(deflate._StaticTree, () => ['MAX_BITS', 'BL_CODES', 'D_CODES', 'LITERALS', 'LENGTH_CODES', 'L_CODES', 'MAX_BL_BITS', 'STATIC_LTREE', 'STATIC_DTREE', 'staticLDesc', 'staticDDesc', 'staticBlDesc']);
+  dart.defineLazy(deflate._StaticTree, {
+    /*deflate._StaticTree.MAX_BITS*/get MAX_BITS() {
+      return 15;
+    },
+    /*deflate._StaticTree.BL_CODES*/get BL_CODES() {
+      return 19;
+    },
+    /*deflate._StaticTree.D_CODES*/get D_CODES() {
+      return 30;
+    },
+    /*deflate._StaticTree.LITERALS*/get LITERALS() {
+      return 256;
+    },
+    /*deflate._StaticTree.LENGTH_CODES*/get LENGTH_CODES() {
+      return 29;
+    },
+    /*deflate._StaticTree.L_CODES*/get L_CODES() {
+      return 286;
+    },
+    /*deflate._StaticTree.MAX_BL_BITS*/get MAX_BL_BITS() {
+      return 7;
+    },
+    /*deflate._StaticTree.STATIC_LTREE*/get STATIC_LTREE() {
+      return C[8] || CT.C8;
+    },
+    /*deflate._StaticTree.STATIC_DTREE*/get STATIC_DTREE() {
+      return C[9] || CT.C9;
+    },
+    /*deflate._StaticTree.staticLDesc*/get staticLDesc() {
+      return new deflate._StaticTree.new(deflate._StaticTree.STATIC_LTREE, deflate._HuffmanTree.EXTRA_L_BITS, 256 + 1, 286, 15);
+    },
+    /*deflate._StaticTree.staticDDesc*/get staticDDesc() {
+      return new deflate._StaticTree.new(deflate._StaticTree.STATIC_DTREE, deflate._HuffmanTree.EXTRA_D_BITS, 0, 30, 15);
+    },
+    /*deflate._StaticTree.staticBlDesc*/get staticBlDesc() {
+      return new deflate._StaticTree.new(null, deflate._HuffmanTree.EXTRA_BL_BITS, 0, 19, 7);
+    }
+  }, false);
+  deflate._rshift = function _rshift(number, bits) {
+    if (number >= 0) {
+      return number[$rightShift](bits);
+    } else {
+      let nbits = (~bits >>> 0) + 65536 & 65535;
+      return number[$rightShift](bits) + (2)[$leftShift](nbits);
+    }
+  };
+  dart.trackLibraries("packages/archive/src/zlib/deflate.dart", {
+    "package:archive/src/zlib/deflate.dart": deflate
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["deflate.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/archive/src/zlib/deflate.dart.lib.js"}');
+  // Exports:
+  return {
+    src__zlib__deflate: deflate
+  };
+}));
+
+//# sourceMappingURL=deflate.dart.lib.js.map

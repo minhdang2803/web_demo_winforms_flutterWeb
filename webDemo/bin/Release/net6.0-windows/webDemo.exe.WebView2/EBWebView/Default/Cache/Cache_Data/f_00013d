@@ -1,0 +1,1188 @@
+define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/foundation/math.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/gestures/scale.dart', 'packages/flutter/src/rendering/box.dart', 'packages/flutter/src/physics/friction_simulation.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__widgets__interactive_viewer_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__foundation__math$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__gestures__scale$46dart, packages__flutter__src__rendering__box$46dart, packages__flutter__src__physics__friction_simulation$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__title$46dart.src__widgets__gesture_detector;
+  const ticker_provider = packages__flutter__src__widgets__title$46dart.src__widgets__ticker_provider;
+  const math$ = packages__flutter__src__foundation__math$46dart.src__foundation__math;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const scale = packages__flutter__src__gestures__scale$46dart.src__gestures__scale;
+  const box = packages__flutter__src__rendering__box$46dart.src__rendering__box;
+  const friction_simulation = packages__flutter__src__physics__friction_simulation$46dart.src__physics__friction_simulation;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var interactive_viewer = Object.create(dart.library);
+  var $isFinite = dartx.isFinite;
+  var $isNaN = dartx.isNaN;
+  var $isInfinite = dartx.isInfinite;
+  var $toDouble = dartx.toDouble;
+  var $abs = dartx.abs;
+  var $round = dartx.round;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfVector3: () => (T.JSArrayOfVector3 = dart.constFn(_interceptors.JSArray$(vector_math_64.Vector3)))(),
+    VoidToVector3: () => (T.VoidToVector3 = dart.constFn(dart.fnType(vector_math_64.Vector3, [])))(),
+    Vector3Todynamic: () => (T.Vector3Todynamic = dart.constFn(dart.fnType(dart.dynamic, [vector_math_64.Vector3])))(),
+    StateOfStatefulWidget: () => (T.StateOfStatefulWidget = dart.constFn(framework.State$(framework.StatefulWidget)))(),
+    GlobalKeyOfStateOfStatefulWidget: () => (T.GlobalKeyOfStateOfStatefulWidget = dart.constFn(framework.GlobalKey$(T.StateOfStatefulWidget())))(),
+    TweenOfOffset: () => (T.TweenOfOffset = dart.constFn(tween.Tween$(ui.Offset)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    BuildContextAndBoxConstraintsTo_InteractiveViewerBuilt: () => (T.BuildContextAndBoxConstraintsTo_InteractiveViewerBuilt = dart.constFn(dart.fnType(interactive_viewer._InteractiveViewerBuilt, [framework.BuildContext, box.BoxConstraints])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_Enum__name]: "hardEdge",
+        [_Enum_index]: 1
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InteractiveViewer",
+        [_Location_column]: 3,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InteractiveViewer",
+        [_Location_column]: 3,
+        [_Location_line]: 108,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: interactive_viewer._GestureType.prototype,
+        [_Enum__name]: "rotate",
+        [_Enum_index]: 2
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: interactive_viewer._GestureType.prototype,
+        [_Enum__name]: "scale",
+        [_Enum_index]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: interactive_viewer._GestureType.prototype,
+        [_Enum__name]: "pan",
+        [_Enum_index]: 0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_InteractiveViewerBuilt",
+        [_Location_column]: 15,
+        [_Location_line]: 1023,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_InteractiveViewerBuilt",
+        [_Location_column]: 18,
+        [_Location_line]: 1038,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "LayoutBuilder",
+        [_Location_column]: 15,
+        [_Location_line]: 1035,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 14,
+        [_Location_line]: 1055,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Listener",
+        [_Location_column]: 12,
+        [_Location_line]: 1052,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_InteractiveViewerBuilt",
+        [_Location_column]: 9,
+        [_Location_line]: 1069,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "KeyedSubtree",
+        [_Location_column]: 14,
+        [_Location_line]: 1087,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Transform",
+        [_Location_column]: 20,
+        [_Location_line]: 1085,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "OverflowBox",
+        [_Location_column]: 15,
+        [_Location_line]: 1094,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ClipRect",
+        [_Location_column]: 12,
+        [_Location_line]: 1104,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[6] || CT.C6, C[5] || CT.C5, C[4] || CT.C4], interactive_viewer._GestureType);
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_Enum__name]: "horizontal",
+        [_Enum_index]: 0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_Enum__name]: "vertical",
+        [_Enum_index]: 1
+      });
+    }
+  }, false);
+  var C = Array(20).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/interactive_viewer.dart",
+    "package:flutter/src/widgets/interactive_viewer.dart"
+  ];
+  var clipBehavior$ = dart.privateName(interactive_viewer, "InteractiveViewer.clipBehavior");
+  var alignPanAxis$ = dart.privateName(interactive_viewer, "InteractiveViewer.alignPanAxis");
+  var boundaryMargin$ = dart.privateName(interactive_viewer, "InteractiveViewer.boundaryMargin");
+  var builder$ = dart.privateName(interactive_viewer, "InteractiveViewer.builder");
+  var child$ = dart.privateName(interactive_viewer, "InteractiveViewer.child");
+  var constrained$ = dart.privateName(interactive_viewer, "InteractiveViewer.constrained");
+  var panEnabled$ = dart.privateName(interactive_viewer, "InteractiveViewer.panEnabled");
+  var scaleEnabled$ = dart.privateName(interactive_viewer, "InteractiveViewer.scaleEnabled");
+  var scaleFactor$ = dart.privateName(interactive_viewer, "InteractiveViewer.scaleFactor");
+  var maxScale$ = dart.privateName(interactive_viewer, "InteractiveViewer.maxScale");
+  var minScale$ = dart.privateName(interactive_viewer, "InteractiveViewer.minScale");
+  var onInteractionEnd$ = dart.privateName(interactive_viewer, "InteractiveViewer.onInteractionEnd");
+  var onInteractionStart$ = dart.privateName(interactive_viewer, "InteractiveViewer.onInteractionStart");
+  var onInteractionUpdate$ = dart.privateName(interactive_viewer, "InteractiveViewer.onInteractionUpdate");
+  var transformationController$ = dart.privateName(interactive_viewer, "InteractiveViewer.transformationController");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  interactive_viewer.InteractiveViewer = class InteractiveViewer extends framework.StatefulWidget {
+    get clipBehavior() {
+      return this[clipBehavior$];
+    }
+    set clipBehavior(value) {
+      super.clipBehavior = value;
+    }
+    get alignPanAxis() {
+      return this[alignPanAxis$];
+    }
+    set alignPanAxis(value) {
+      super.alignPanAxis = value;
+    }
+    get boundaryMargin() {
+      return this[boundaryMargin$];
+    }
+    set boundaryMargin(value) {
+      super.boundaryMargin = value;
+    }
+    get builder() {
+      return this[builder$];
+    }
+    set builder(value) {
+      super.builder = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get constrained() {
+      return this[constrained$];
+    }
+    set constrained(value) {
+      super.constrained = value;
+    }
+    get panEnabled() {
+      return this[panEnabled$];
+    }
+    set panEnabled(value) {
+      super.panEnabled = value;
+    }
+    get scaleEnabled() {
+      return this[scaleEnabled$];
+    }
+    set scaleEnabled(value) {
+      super.scaleEnabled = value;
+    }
+    get scaleFactor() {
+      return this[scaleFactor$];
+    }
+    set scaleFactor(value) {
+      super.scaleFactor = value;
+    }
+    get maxScale() {
+      return this[maxScale$];
+    }
+    set maxScale(value) {
+      super.maxScale = value;
+    }
+    get minScale() {
+      return this[minScale$];
+    }
+    set minScale(value) {
+      super.minScale = value;
+    }
+    get onInteractionEnd() {
+      return this[onInteractionEnd$];
+    }
+    set onInteractionEnd(value) {
+      super.onInteractionEnd = value;
+    }
+    get onInteractionStart() {
+      return this[onInteractionStart$];
+    }
+    set onInteractionStart(value) {
+      super.onInteractionStart = value;
+    }
+    get onInteractionUpdate() {
+      return this[onInteractionUpdate$];
+    }
+    set onInteractionUpdate(value) {
+      super.onInteractionUpdate = value;
+    }
+    get transformationController() {
+      return this[transformationController$];
+    }
+    set transformationController(value) {
+      super.transformationController = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[0] || CT.C0;
+      let alignPanAxis = opts && 'alignPanAxis' in opts ? opts.alignPanAxis : false;
+      let boundaryMargin = opts && 'boundaryMargin' in opts ? opts.boundaryMargin : C[1] || CT.C1;
+      let constrained = opts && 'constrained' in opts ? opts.constrained : true;
+      let maxScale = opts && 'maxScale' in opts ? opts.maxScale : 2.5;
+      let minScale = opts && 'minScale' in opts ? opts.minScale : 0.8;
+      let onInteractionEnd = opts && 'onInteractionEnd' in opts ? opts.onInteractionEnd : null;
+      let onInteractionStart = opts && 'onInteractionStart' in opts ? opts.onInteractionStart : null;
+      let onInteractionUpdate = opts && 'onInteractionUpdate' in opts ? opts.onInteractionUpdate : null;
+      let panEnabled = opts && 'panEnabled' in opts ? opts.panEnabled : true;
+      let scaleEnabled = opts && 'scaleEnabled' in opts ? opts.scaleEnabled : true;
+      let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 200;
+      let transformationController = opts && 'transformationController' in opts ? opts.transformationController : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      return new interactive_viewer.InteractiveViewer.new({key: key, clipBehavior: clipBehavior, alignPanAxis: alignPanAxis, boundaryMargin: boundaryMargin, constrained: constrained, maxScale: maxScale, minScale: minScale, onInteractionEnd: onInteractionEnd, onInteractionStart: onInteractionStart, onInteractionUpdate: onInteractionUpdate, panEnabled: panEnabled, scaleEnabled: scaleEnabled, scaleFactor: scaleFactor, transformationController: transformationController, child: child, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    static ['_#builder#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[0] || CT.C0;
+      let alignPanAxis = opts && 'alignPanAxis' in opts ? opts.alignPanAxis : false;
+      let boundaryMargin = opts && 'boundaryMargin' in opts ? opts.boundaryMargin : C[1] || CT.C1;
+      let maxScale = opts && 'maxScale' in opts ? opts.maxScale : 2.5;
+      let minScale = opts && 'minScale' in opts ? opts.minScale : 0.8;
+      let onInteractionEnd = opts && 'onInteractionEnd' in opts ? opts.onInteractionEnd : null;
+      let onInteractionStart = opts && 'onInteractionStart' in opts ? opts.onInteractionStart : null;
+      let onInteractionUpdate = opts && 'onInteractionUpdate' in opts ? opts.onInteractionUpdate : null;
+      let panEnabled = opts && 'panEnabled' in opts ? opts.panEnabled : true;
+      let scaleEnabled = opts && 'scaleEnabled' in opts ? opts.scaleEnabled : true;
+      let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 200;
+      let transformationController = opts && 'transformationController' in opts ? opts.transformationController : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      return new interactive_viewer.InteractiveViewer.builder({key: key, clipBehavior: clipBehavior, alignPanAxis: alignPanAxis, boundaryMargin: boundaryMargin, maxScale: maxScale, minScale: minScale, onInteractionEnd: onInteractionEnd, onInteractionStart: onInteractionStart, onInteractionUpdate: onInteractionUpdate, panEnabled: panEnabled, scaleEnabled: scaleEnabled, scaleFactor: scaleFactor, transformationController: transformationController, builder: builder, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+    }
+    static getNearestPointOnLine(point, l1, l2) {
+      let lengthSquared = math.pow(l2.x - l1.x, 2.0)[$toDouble]() + math.pow(l2.y - l1.y, 2.0)[$toDouble]();
+      if (lengthSquared === 0) {
+        return l1;
+      }
+      let l1P = point['-'](l1);
+      let l1L2 = l2['-'](l1);
+      let fraction = math$.clampDouble(l1P.dot(l1L2) / lengthSquared, 0.0, 1.0);
+      return l1['+'](l1L2['*'](fraction));
+    }
+    static getAxisAlignedBoundingBox(quad) {
+      let minX = math.min(core.double, quad.point0.x, math.min(core.double, quad.point1.x, math.min(core.double, quad.point2.x, quad.point3.x)));
+      let minY = math.min(core.double, quad.point0.y, math.min(core.double, quad.point1.y, math.min(core.double, quad.point2.y, quad.point3.y)));
+      let maxX = math.max(core.double, quad.point0.x, math.max(core.double, quad.point1.x, math.max(core.double, quad.point2.x, quad.point3.x)));
+      let maxY = math.max(core.double, quad.point0.y, math.max(core.double, quad.point1.y, math.max(core.double, quad.point2.y, quad.point3.y)));
+      return new vector_math_64.Quad.points(vector_math_64.Vector3.new(minX, minY, 0.0), vector_math_64.Vector3.new(maxX, minY, 0.0), vector_math_64.Vector3.new(maxX, maxY, 0.0), vector_math_64.Vector3.new(minX, maxY, 0.0));
+    }
+    static pointIsInside(point, quad) {
+      let aM = point['-'](quad.point0);
+      let aB = quad.point1['-'](quad.point0);
+      let aD = quad.point3['-'](quad.point0);
+      let aMAB = aM.dot(aB);
+      let aBAB = aB.dot(aB);
+      let aMAD = aM.dot(aD);
+      let aDAD = aD.dot(aD);
+      return 0 <= aMAB && aMAB <= aBAB && 0 <= aMAD && aMAD <= aDAD;
+    }
+    static getNearestPointInside(point, quad) {
+      if (interactive_viewer.InteractiveViewer.pointIsInside(point, quad)) {
+        return point;
+      }
+      let closestPoints = T.JSArrayOfVector3().of([interactive_viewer.InteractiveViewer.getNearestPointOnLine(point, quad.point0, quad.point1), interactive_viewer.InteractiveViewer.getNearestPointOnLine(point, quad.point1, quad.point2), interactive_viewer.InteractiveViewer.getNearestPointOnLine(point, quad.point2, quad.point3), interactive_viewer.InteractiveViewer.getNearestPointOnLine(point, quad.point3, quad.point0)]);
+      let minDistance = 1 / 0;
+      let closestOverall = null;
+      function closestOverall$35get() {
+        let t1;
+        t1 = closestOverall;
+        return t1 == null ? dart.throw(new _internal.LateError.localNI("closestOverall")) : t1;
+      }
+      dart.fn(closestOverall$35get, T.VoidToVector3());
+      function closestOverall$35set(closestOverall$35param) {
+        return closestOverall = closestOverall$35param;
+      }
+      dart.fn(closestOverall$35set, T.Vector3Todynamic());
+      for (let closePoint of closestPoints) {
+        let distance = math.sqrt(math.pow(point.x - closePoint.x, 2) + math.pow(point.y - closePoint.y, 2));
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestOverall$35set(closePoint);
+        }
+      }
+      return closestOverall$35get();
+    }
+    createState() {
+      return new interactive_viewer._InteractiveViewerState.new();
+    }
+  };
+  (interactive_viewer.InteractiveViewer.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[0] || CT.C0;
+    let alignPanAxis = opts && 'alignPanAxis' in opts ? opts.alignPanAxis : false;
+    let boundaryMargin = opts && 'boundaryMargin' in opts ? opts.boundaryMargin : C[1] || CT.C1;
+    let constrained = opts && 'constrained' in opts ? opts.constrained : true;
+    let maxScale = opts && 'maxScale' in opts ? opts.maxScale : 2.5;
+    let minScale = opts && 'minScale' in opts ? opts.minScale : 0.8;
+    let onInteractionEnd = opts && 'onInteractionEnd' in opts ? opts.onInteractionEnd : null;
+    let onInteractionStart = opts && 'onInteractionStart' in opts ? opts.onInteractionStart : null;
+    let onInteractionUpdate = opts && 'onInteractionUpdate' in opts ? opts.onInteractionUpdate : null;
+    let panEnabled = opts && 'panEnabled' in opts ? opts.panEnabled : true;
+    let scaleEnabled = opts && 'scaleEnabled' in opts ? opts.scaleEnabled : true;
+    let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 200;
+    let transformationController = opts && 'transformationController' in opts ? opts.transformationController : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[clipBehavior$] = clipBehavior;
+    this[alignPanAxis$] = alignPanAxis;
+    this[boundaryMargin$] = boundaryMargin;
+    this[constrained$] = constrained;
+    this[maxScale$] = maxScale;
+    this[minScale$] = minScale;
+    this[onInteractionEnd$] = onInteractionEnd;
+    this[onInteractionStart$] = onInteractionStart;
+    this[onInteractionUpdate$] = onInteractionUpdate;
+    this[panEnabled$] = panEnabled;
+    this[scaleEnabled$] = scaleEnabled;
+    this[scaleFactor$] = scaleFactor;
+    this[transformationController$] = transformationController;
+    this[child$] = child;
+    if (!(alignPanAxis !== null)) dart.assertFailed(null, I[0], 79, 15, "alignPanAxis != null");
+    if (!(child !== null)) dart.assertFailed(null, I[0], 80, 15, "child != null");
+    if (!(constrained !== null)) dart.assertFailed(null, I[0], 81, 15, "constrained != null");
+    if (!(minScale !== null)) dart.assertFailed(null, I[0], 82, 15, "minScale != null");
+    if (!(minScale > 0)) dart.assertFailed(null, I[0], 83, 15, "minScale > 0");
+    if (!minScale[$isFinite]) dart.assertFailed(null, I[0], 84, 15, "minScale.isFinite");
+    if (!(maxScale !== null)) dart.assertFailed(null, I[0], 85, 15, "maxScale != null");
+    if (!(maxScale > 0)) dart.assertFailed(null, I[0], 86, 15, "maxScale > 0");
+    if (!!maxScale[$isNaN]) dart.assertFailed(null, I[0], 87, 15, "!maxScale.isNaN");
+    if (!(maxScale >= minScale)) dart.assertFailed(null, I[0], 88, 15, "maxScale >= minScale");
+    if (!(panEnabled !== null)) dart.assertFailed(null, I[0], 89, 15, "panEnabled != null");
+    if (!(scaleEnabled !== null)) dart.assertFailed(null, I[0], 90, 15, "scaleEnabled != null");
+    if (!(boundaryMargin.horizontal[$isInfinite] && boundaryMargin.vertical[$isInfinite] || boundaryMargin.top[$isFinite] && boundaryMargin.right[$isFinite] && boundaryMargin.bottom[$isFinite] && boundaryMargin.left[$isFinite])) dart.assertFailed(null, I[0], 94, 10, "(boundaryMargin.horizontal.isInfinite\n           && boundaryMargin.vertical.isInfinite) || (boundaryMargin.top.isFinite\n           && boundaryMargin.right.isFinite && boundaryMargin.bottom.isFinite\n           && boundaryMargin.left.isFinite)");
+    this[builder$] = null;
+    interactive_viewer.InteractiveViewer.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = interactive_viewer.InteractiveViewer.prototype;
+  (interactive_viewer.InteractiveViewer.builder = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[0] || CT.C0;
+    let alignPanAxis = opts && 'alignPanAxis' in opts ? opts.alignPanAxis : false;
+    let boundaryMargin = opts && 'boundaryMargin' in opts ? opts.boundaryMargin : C[1] || CT.C1;
+    let maxScale = opts && 'maxScale' in opts ? opts.maxScale : 2.5;
+    let minScale = opts && 'minScale' in opts ? opts.minScale : 0.8;
+    let onInteractionEnd = opts && 'onInteractionEnd' in opts ? opts.onInteractionEnd : null;
+    let onInteractionStart = opts && 'onInteractionStart' in opts ? opts.onInteractionStart : null;
+    let onInteractionUpdate = opts && 'onInteractionUpdate' in opts ? opts.onInteractionUpdate : null;
+    let panEnabled = opts && 'panEnabled' in opts ? opts.panEnabled : true;
+    let scaleEnabled = opts && 'scaleEnabled' in opts ? opts.scaleEnabled : true;
+    let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 200;
+    let transformationController = opts && 'transformationController' in opts ? opts.transformationController : null;
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[clipBehavior$] = clipBehavior;
+    this[alignPanAxis$] = alignPanAxis;
+    this[boundaryMargin$] = boundaryMargin;
+    this[maxScale$] = maxScale;
+    this[minScale$] = minScale;
+    this[onInteractionEnd$] = onInteractionEnd;
+    this[onInteractionStart$] = onInteractionStart;
+    this[onInteractionUpdate$] = onInteractionUpdate;
+    this[panEnabled$] = panEnabled;
+    this[scaleEnabled$] = scaleEnabled;
+    this[scaleFactor$] = scaleFactor;
+    this[transformationController$] = transformationController;
+    this[builder$] = builder;
+    if (!(alignPanAxis !== null)) dart.assertFailed(null, I[0], 125, 15, "alignPanAxis != null");
+    if (!(builder !== null)) dart.assertFailed(null, I[0], 126, 15, "builder != null");
+    if (!(minScale !== null)) dart.assertFailed(null, I[0], 127, 15, "minScale != null");
+    if (!(minScale > 0)) dart.assertFailed(null, I[0], 128, 15, "minScale > 0");
+    if (!minScale[$isFinite]) dart.assertFailed(null, I[0], 129, 15, "minScale.isFinite");
+    if (!(maxScale !== null)) dart.assertFailed(null, I[0], 130, 15, "maxScale != null");
+    if (!(maxScale > 0)) dart.assertFailed(null, I[0], 131, 15, "maxScale > 0");
+    if (!!maxScale[$isNaN]) dart.assertFailed(null, I[0], 132, 15, "!maxScale.isNaN");
+    if (!(maxScale >= minScale)) dart.assertFailed(null, I[0], 133, 15, "maxScale >= minScale");
+    if (!(panEnabled !== null)) dart.assertFailed(null, I[0], 134, 15, "panEnabled != null");
+    if (!(scaleEnabled !== null)) dart.assertFailed(null, I[0], 135, 15, "scaleEnabled != null");
+    if (!(boundaryMargin.horizontal[$isInfinite] && boundaryMargin.vertical[$isInfinite] || boundaryMargin.top[$isFinite] && boundaryMargin.right[$isFinite] && boundaryMargin.bottom[$isFinite] && boundaryMargin.left[$isFinite])) dart.assertFailed(null, I[0], 139, 10, "(boundaryMargin.horizontal.isInfinite && boundaryMargin.vertical.isInfinite) ||\n             (boundaryMargin.top.isFinite &&\n                 boundaryMargin.right.isFinite &&\n                 boundaryMargin.bottom.isFinite &&\n                 boundaryMargin.left.isFinite)");
+    this[constrained$] = false;
+    this[child$] = null;
+    interactive_viewer.InteractiveViewer.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = interactive_viewer.InteractiveViewer.prototype;
+  dart.addTypeTests(interactive_viewer.InteractiveViewer);
+  dart.addTypeCaches(interactive_viewer.InteractiveViewer);
+  dart.setMethodSignature(interactive_viewer.InteractiveViewer, () => ({
+    __proto__: dart.getMethods(interactive_viewer.InteractiveViewer.__proto__),
+    createState: dart.fnType(framework.State$(interactive_viewer.InteractiveViewer), [])
+  }));
+  dart.setStaticMethodSignature(interactive_viewer.InteractiveViewer, () => ['getNearestPointOnLine', 'getAxisAlignedBoundingBox', 'pointIsInside', 'getNearestPointInside']);
+  dart.setLibraryUri(interactive_viewer.InteractiveViewer, I[1]);
+  dart.setFieldSignature(interactive_viewer.InteractiveViewer, () => ({
+    __proto__: dart.getFields(interactive_viewer.InteractiveViewer.__proto__),
+    clipBehavior: dart.finalFieldType(ui.Clip),
+    alignPanAxis: dart.finalFieldType(core.bool),
+    boundaryMargin: dart.finalFieldType(edge_insets.EdgeInsets),
+    builder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, vector_math_64.Quad]))),
+    child: dart.finalFieldType(dart.nullable(framework.Widget)),
+    constrained: dart.finalFieldType(core.bool),
+    panEnabled: dart.finalFieldType(core.bool),
+    scaleEnabled: dart.finalFieldType(core.bool),
+    scaleFactor: dart.finalFieldType(core.double),
+    maxScale: dart.finalFieldType(core.double),
+    minScale: dart.finalFieldType(core.double),
+    onInteractionEnd: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [scale.ScaleEndDetails]))),
+    onInteractionStart: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [scale.ScaleStartDetails]))),
+    onInteractionUpdate: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [scale.ScaleUpdateDetails]))),
+    transformationController: dart.finalFieldType(dart.nullable(interactive_viewer.TransformationController))
+  }));
+  var _transformationController = dart.privateName(interactive_viewer, "_transformationController");
+  var _childKey = dart.privateName(interactive_viewer, "_childKey");
+  var _parentKey = dart.privateName(interactive_viewer, "_parentKey");
+  var _animation = dart.privateName(interactive_viewer, "_animation");
+  var ___InteractiveViewerState__controller = dart.privateName(interactive_viewer, "_#_InteractiveViewerState#_controller");
+  var _panAxis = dart.privateName(interactive_viewer, "_panAxis");
+  var _referenceFocalPoint = dart.privateName(interactive_viewer, "_referenceFocalPoint");
+  var _scaleStart = dart.privateName(interactive_viewer, "_scaleStart");
+  var _rotationStart = dart.privateName(interactive_viewer, "_rotationStart");
+  var _currentRotation = dart.privateName(interactive_viewer, "_currentRotation");
+  var _gestureType = dart.privateName(interactive_viewer, "_gestureType");
+  var _rotateEnabled = dart.privateName(interactive_viewer, "_rotateEnabled");
+  var _controller = dart.privateName(interactive_viewer, "_controller");
+  var _boundaryRect = dart.privateName(interactive_viewer, "_boundaryRect");
+  var _viewport = dart.privateName(interactive_viewer, "_viewport");
+  var _matrixTranslate = dart.privateName(interactive_viewer, "_matrixTranslate");
+  var _matrixScale = dart.privateName(interactive_viewer, "_matrixScale");
+  var _matrixRotate = dart.privateName(interactive_viewer, "_matrixRotate");
+  var _gestureIsSupported = dart.privateName(interactive_viewer, "_gestureIsSupported");
+  var _getGestureType = dart.privateName(interactive_viewer, "_getGestureType");
+  var _onAnimate = dart.privateName(interactive_viewer, "_onAnimate");
+  var _onScaleStart = dart.privateName(interactive_viewer, "_onScaleStart");
+  var _onScaleUpdate = dart.privateName(interactive_viewer, "_onScaleUpdate");
+  var _onScaleEnd = dart.privateName(interactive_viewer, "_onScaleEnd");
+  var _receivedPointerSignal = dart.privateName(interactive_viewer, "_receivedPointerSignal");
+  var _onTransformationControllerChange = dart.privateName(interactive_viewer, "_onTransformationControllerChange");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(interactive_viewer.InteractiveViewer) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(interactive_viewer.InteractiveViewer)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(interactive_viewer.InteractiveViewer));
+  interactive_viewer._InteractiveViewerState = class _InteractiveViewerState extends State_TickerProviderStateMixin$36 {
+    get [_controller]() {
+      let t3;
+      t3 = this[___InteractiveViewerState__controller];
+      return t3 == null ? dart.throw(new _internal.LateError.fieldNI("_controller")) : t3;
+    }
+    set [_controller](library$32package$58flutter$47src$47widgets$47interactive_viewer$46dart$58$58_controller$35param) {
+      this[___InteractiveViewerState__controller] = library$32package$58flutter$47src$47widgets$47interactive_viewer$46dart$58$58_controller$35param;
+    }
+    get [_boundaryRect]() {
+      if (!(this[_childKey].currentContext != null)) dart.assertFailed(null, I[0], 523, 12, "_childKey.currentContext != null");
+      if (!!this.widget.boundaryMargin.left[$isNaN]) dart.assertFailed(null, I[0], 524, 12, "!widget.boundaryMargin.left.isNaN");
+      if (!!this.widget.boundaryMargin.right[$isNaN]) dart.assertFailed(null, I[0], 525, 12, "!widget.boundaryMargin.right.isNaN");
+      if (!!this.widget.boundaryMargin.top[$isNaN]) dart.assertFailed(null, I[0], 526, 12, "!widget.boundaryMargin.top.isNaN");
+      if (!!this.widget.boundaryMargin.bottom[$isNaN]) dart.assertFailed(null, I[0], 527, 12, "!widget.boundaryMargin.bottom.isNaN");
+      let childRenderBox = box.RenderBox.as(dart.nullCheck(dart.nullCheck(this[_childKey].currentContext).findRenderObject()));
+      let childSize = childRenderBox.size;
+      let boundaryRect = this.widget.boundaryMargin.inflateRect(ui.Offset.zero['&'](childSize));
+      if (!!boundaryRect.isEmpty) dart.assertFailed("InteractiveViewer's child must have nonzero dimensions.", I[0], 533, 7, "!boundaryRect.isEmpty");
+      if (!(boundaryRect.isFinite || boundaryRect.left[$isInfinite] && boundaryRect.top[$isInfinite] && boundaryRect.right[$isInfinite] && boundaryRect.bottom[$isInfinite])) dart.assertFailed("boundaryRect must either be infinite in all directions or finite in all directions.", I[0], 539, 7, "boundaryRect.isFinite ||\n        (boundaryRect.left.isInfinite\n        && boundaryRect.top.isInfinite\n        && boundaryRect.right.isInfinite\n        && boundaryRect.bottom.isInfinite)");
+      return boundaryRect;
+    }
+    get [_viewport]() {
+      if (!(this[_parentKey].currentContext != null)) dart.assertFailed(null, I[0], 551, 12, "_parentKey.currentContext != null");
+      let parentRenderBox = box.RenderBox.as(dart.nullCheck(dart.nullCheck(this[_parentKey].currentContext).findRenderObject()));
+      return ui.Offset.zero['&'](parentRenderBox.size);
+    }
+    [_matrixTranslate](matrix, translation) {
+      let t3, t3$, t3$0;
+      if (translation._equals(ui.Offset.zero)) {
+        return matrix.clone();
+      }
+      let alignedTranslation = this.widget.alignPanAxis && this[_panAxis] != null ? interactive_viewer._alignAxis(translation, dart.nullCheck(this[_panAxis])) : translation;
+      let nextMatrix = (t3 = matrix.clone(), (() => {
+        t3.translate(alignedTranslation.dx, alignedTranslation.dy);
+        return t3;
+      })());
+      let nextViewport = interactive_viewer._transformViewport(nextMatrix, this[_viewport]);
+      if (this[_boundaryRect].isInfinite) {
+        return nextMatrix;
+      }
+      let boundariesAabbQuad = interactive_viewer._getAxisAlignedBoundingBoxWithRotation(this[_boundaryRect], this[_currentRotation]);
+      let offendingDistance = interactive_viewer._exceedsBy(boundariesAabbQuad, nextViewport);
+      if (offendingDistance._equals(ui.Offset.zero)) {
+        return nextMatrix;
+      }
+      let nextTotalTranslation = interactive_viewer._getMatrixTranslation(nextMatrix);
+      let currentScale = matrix.getMaxScaleOnAxis();
+      let correctedTotalTranslation = new ui.Offset.new(nextTotalTranslation.dx - offendingDistance.dx * currentScale, nextTotalTranslation.dy - offendingDistance.dy * currentScale);
+      let correctedMatrix = (t3$ = matrix.clone(), (() => {
+        t3$.setTranslation(vector_math_64.Vector3.new(correctedTotalTranslation.dx, correctedTotalTranslation.dy, 0.0));
+        return t3$;
+      })());
+      let correctedViewport = interactive_viewer._transformViewport(correctedMatrix, this[_viewport]);
+      let offendingCorrectedDistance = interactive_viewer._exceedsBy(boundariesAabbQuad, correctedViewport);
+      if (offendingCorrectedDistance._equals(ui.Offset.zero)) {
+        return correctedMatrix;
+      }
+      if (offendingCorrectedDistance.dx !== 0.0 && offendingCorrectedDistance.dy !== 0.0) {
+        return matrix.clone();
+      }
+      let unidirectionalCorrectedTotalTranslation = new ui.Offset.new(offendingCorrectedDistance.dx === 0.0 ? correctedTotalTranslation.dx : 0.0, offendingCorrectedDistance.dy === 0.0 ? correctedTotalTranslation.dy : 0.0);
+      t3$0 = matrix.clone();
+      return (() => {
+        t3$0.setTranslation(vector_math_64.Vector3.new(unidirectionalCorrectedTotalTranslation.dx, unidirectionalCorrectedTotalTranslation.dy, 0.0));
+        return t3$0;
+      })();
+    }
+    [_matrixScale](matrix, scale) {
+      let t3;
+      if (scale === 1.0) {
+        return matrix.clone();
+      }
+      if (!(scale !== 0.0)) dart.assertFailed(null, I[0], 649, 12, "scale != 0.0");
+      let currentScale = dart.nullCheck(this[_transformationController]).value.getMaxScaleOnAxis();
+      let totalScale = math.max(core.double, currentScale * scale, math.max(core.double, this[_viewport].width / this[_boundaryRect].width, this[_viewport].height / this[_boundaryRect].height));
+      let clampedTotalScale = math$.clampDouble(totalScale, this.widget.minScale, this.widget.maxScale);
+      let clampedScale = clampedTotalScale / currentScale;
+      t3 = matrix.clone();
+      return (() => {
+        t3.scale(clampedScale);
+        return t3;
+      })();
+    }
+    [_matrixRotate](matrix, rotation, focalPoint) {
+      let t3;
+      if (rotation === 0) {
+        return matrix.clone();
+      }
+      let focalPointScene = dart.nullCheck(this[_transformationController]).toScene(focalPoint);
+      t3 = matrix.clone();
+      return (() => {
+        t3.translate(focalPointScene.dx, focalPointScene.dy);
+        t3.rotateZ(-rotation);
+        t3.translate(-focalPointScene.dx, -focalPointScene.dy);
+        return t3;
+      })();
+    }
+    [_gestureIsSupported](gestureType) {
+      switch (gestureType) {
+        case C[4] || CT.C4:
+          {
+            return this[_rotateEnabled];
+          }
+        case C[5] || CT.C5:
+          {
+            return this.widget.scaleEnabled;
+          }
+        case C[6] || CT.C6:
+        case null:
+          {
+            return this.widget.panEnabled;
+          }
+      }
+    }
+    [_getGestureType](details) {
+      let scale = !this.widget.scaleEnabled ? 1.0 : details.scale;
+      let rotation = !this[_rotateEnabled] ? 0.0 : details.rotation;
+      if ((scale - 1)[$abs]() > rotation[$abs]()) {
+        return interactive_viewer._GestureType.scale;
+      } else if (rotation !== 0.0) {
+        return interactive_viewer._GestureType.rotate;
+      } else {
+        return interactive_viewer._GestureType.pan;
+      }
+    }
+    [_onScaleStart](details) {
+      let t3, t3$;
+      t3 = this.widget.onInteractionStart;
+      t3 == null ? null : t3(details);
+      if (this[_controller].isAnimating) {
+        this[_controller].stop();
+        this[_controller].reset();
+        t3$ = this[_animation];
+        t3$ == null ? null : t3$.removeListener(dart.bind(this, _onAnimate));
+        this[_animation] = null;
+      }
+      this[_gestureType] = null;
+      this[_panAxis] = null;
+      this[_scaleStart] = dart.nullCheck(this[_transformationController]).value.getMaxScaleOnAxis();
+      this[_referenceFocalPoint] = dart.nullCheck(this[_transformationController]).toScene(details.localFocalPoint);
+      this[_rotationStart] = this[_currentRotation];
+    }
+    [_onScaleUpdate](details) {
+      let t3, t3$, t3$0, t3$1;
+      let scale = dart.nullCheck(this[_transformationController]).value.getMaxScaleOnAxis();
+      let focalPointScene = dart.nullCheck(this[_transformationController]).toScene(details.localFocalPoint);
+      if (this[_gestureType] === interactive_viewer._GestureType.pan) {
+        this[_gestureType] = this[_getGestureType](details);
+      } else {
+        this[_gestureType] == null ? this[_gestureType] = this[_getGestureType](details) : null;
+      }
+      if (!this[_gestureIsSupported](this[_gestureType])) {
+        t3 = this.widget.onInteractionUpdate;
+        t3 == null ? null : t3(details);
+        return;
+      }
+      switch (dart.nullCheck(this[_gestureType])) {
+        case C[5] || CT.C5:
+          {
+            if (!(this[_scaleStart] != null)) dart.assertFailed(null, I[0], 763, 16, "_scaleStart != null");
+            let desiredScale = dart.nullCheck(this[_scaleStart]) * details.scale;
+            let scaleChange = desiredScale / scale;
+            dart.nullCheck(this[_transformationController]).value = this[_matrixScale](dart.nullCheck(this[_transformationController]).value, scaleChange);
+            let focalPointSceneScaled = dart.nullCheck(this[_transformationController]).toScene(details.localFocalPoint);
+            dart.nullCheck(this[_transformationController]).value = this[_matrixTranslate](dart.nullCheck(this[_transformationController]).value, focalPointSceneScaled['-'](dart.nullCheck(this[_referenceFocalPoint])));
+            let focalPointSceneCheck = dart.nullCheck(this[_transformationController]).toScene(details.localFocalPoint);
+            if (!interactive_viewer._round(dart.nullCheck(this[_referenceFocalPoint]))._equals(interactive_viewer._round(focalPointSceneCheck))) {
+              this[_referenceFocalPoint] = focalPointSceneCheck;
+            }
+            break;
+          }
+        case C[4] || CT.C4:
+          {
+            if (details.rotation === 0.0) {
+              t3$ = this.widget.onInteractionUpdate;
+              t3$ == null ? null : t3$(details);
+              return;
+            }
+            let desiredRotation = dart.nullCheck(this[_rotationStart]) + details.rotation;
+            dart.nullCheck(this[_transformationController]).value = this[_matrixRotate](dart.nullCheck(this[_transformationController]).value, this[_currentRotation] - desiredRotation, details.localFocalPoint);
+            this[_currentRotation] = desiredRotation;
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            if (!(this[_referenceFocalPoint] != null)) dart.assertFailed(null, I[0], 814, 16, "_referenceFocalPoint != null");
+            if (details.scale !== 1.0) {
+              t3$0 = this.widget.onInteractionUpdate;
+              t3$0 == null ? null : t3$0(details);
+              return;
+            }
+            this[_panAxis] == null ? this[_panAxis] = interactive_viewer._getPanAxis(dart.nullCheck(this[_referenceFocalPoint]), focalPointScene) : null;
+            let translationChange = focalPointScene['-'](dart.nullCheck(this[_referenceFocalPoint]));
+            dart.nullCheck(this[_transformationController]).value = this[_matrixTranslate](dart.nullCheck(this[_transformationController]).value, translationChange);
+            this[_referenceFocalPoint] = dart.nullCheck(this[_transformationController]).toScene(details.localFocalPoint);
+            break;
+          }
+      }
+      t3$1 = this.widget.onInteractionUpdate;
+      t3$1 == null ? null : t3$1(details);
+    }
+    [_onScaleEnd](details) {
+      let t3, t3$;
+      t3 = this.widget.onInteractionEnd;
+      t3 == null ? null : t3(details);
+      this[_scaleStart] = null;
+      this[_rotationStart] = null;
+      this[_referenceFocalPoint] = null;
+      t3$ = this[_animation];
+      t3$ == null ? null : t3$.removeListener(dart.bind(this, _onAnimate));
+      this[_controller].reset();
+      if (!this[_gestureIsSupported](this[_gestureType])) {
+        this[_panAxis] = null;
+        return;
+      }
+      if (this[_gestureType] !== interactive_viewer._GestureType.pan || details.velocity.pixelsPerSecond.distance < 50) {
+        this[_panAxis] = null;
+        return;
+      }
+      let translationVector = dart.nullCheck(this[_transformationController]).value.getTranslation();
+      let translation = new ui.Offset.new(translationVector.x, translationVector.y);
+      let frictionSimulationX = new friction_simulation.FrictionSimulation.new(0.0000135, translation.dx, details.velocity.pixelsPerSecond.dx);
+      let frictionSimulationY = new friction_simulation.FrictionSimulation.new(0.0000135, translation.dy, details.velocity.pixelsPerSecond.dy);
+      let tFinal = interactive_viewer._getFinalTime(details.velocity.pixelsPerSecond.distance, 0.0000135);
+      this[_animation] = new (T.TweenOfOffset()).new({begin: translation, end: new ui.Offset.new(frictionSimulationX.finalX, frictionSimulationY.finalX)}).animate(new animations.CurvedAnimation.new({parent: this[_controller], curve: curves.Curves.decelerate}));
+      this[_controller].duration = new core.Duration.new({milliseconds: (tFinal * 1000)[$round]()});
+      dart.nullCheck(this[_animation]).addListener(dart.bind(this, _onAnimate));
+      this[_controller].forward();
+    }
+    [_receivedPointerSignal](event) {
+      let t3, t3$, t3$0, t3$1, t3$2;
+      if (events.PointerScrollEvent.is(event)) {
+        if (event.scrollDelta.dy === 0.0) {
+          return;
+        }
+        t3 = this.widget.onInteractionStart;
+        t3 == null ? null : t3(new scale.ScaleStartDetails.new({focalPoint: event.position, localFocalPoint: event.localPosition}));
+        let scaleChange = math.exp(-event.scrollDelta.dy / this.widget.scaleFactor);
+        if (!this[_gestureIsSupported](interactive_viewer._GestureType.scale)) {
+          t3$ = this.widget.onInteractionUpdate;
+          t3$ == null ? null : t3$(new scale.ScaleUpdateDetails.new({focalPoint: event.position, localFocalPoint: event.localPosition, scale: scaleChange}));
+          t3$0 = this.widget.onInteractionEnd;
+          t3$0 == null ? null : t3$0(new scale.ScaleEndDetails.new());
+          return;
+        }
+        let focalPointScene = dart.nullCheck(this[_transformationController]).toScene(event.localPosition);
+        dart.nullCheck(this[_transformationController]).value = this[_matrixScale](dart.nullCheck(this[_transformationController]).value, scaleChange);
+        let focalPointSceneScaled = dart.nullCheck(this[_transformationController]).toScene(event.localPosition);
+        dart.nullCheck(this[_transformationController]).value = this[_matrixTranslate](dart.nullCheck(this[_transformationController]).value, focalPointSceneScaled['-'](focalPointScene));
+        t3$1 = this.widget.onInteractionUpdate;
+        t3$1 == null ? null : t3$1(new scale.ScaleUpdateDetails.new({focalPoint: event.position, localFocalPoint: event.localPosition, scale: scaleChange}));
+        t3$2 = this.widget.onInteractionEnd;
+        t3$2 == null ? null : t3$2(new scale.ScaleEndDetails.new());
+      }
+    }
+    [_onAnimate]() {
+      let t3;
+      if (!this[_controller].isAnimating) {
+        this[_panAxis] = null;
+        t3 = this[_animation];
+        t3 == null ? null : t3.removeListener(dart.bind(this, _onAnimate));
+        this[_animation] = null;
+        this[_controller].reset();
+        return;
+      }
+      let translationVector = dart.nullCheck(this[_transformationController]).value.getTranslation();
+      let translation = new ui.Offset.new(translationVector.x, translationVector.y);
+      let translationScene = dart.nullCheck(this[_transformationController]).toScene(translation);
+      let animationScene = dart.nullCheck(this[_transformationController]).toScene(dart.nullCheck(this[_animation]).value);
+      let translationChangeScene = animationScene['-'](translationScene);
+      dart.nullCheck(this[_transformationController]).value = this[_matrixTranslate](dart.nullCheck(this[_transformationController]).value, translationChangeScene);
+    }
+    [_onTransformationControllerChange]() {
+      this.setState(dart.fn(() => {
+      }, T.VoidTovoid()));
+    }
+    initState() {
+      let t3;
+      super.initState();
+      this[_transformationController] = (t3 = this.widget.transformationController, t3 == null ? new interactive_viewer.TransformationController.new() : t3);
+      dart.nullCheck(this[_transformationController]).addListener(dart.bind(this, _onTransformationControllerChange));
+      this[_controller] = new animation_controller.AnimationController.new({vsync: this});
+    }
+    didUpdateWidget(oldWidget) {
+      interactive_viewer.InteractiveViewer.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (oldWidget.transformationController == null) {
+        if (this.widget.transformationController != null) {
+          dart.nullCheck(this[_transformationController]).removeListener(dart.bind(this, _onTransformationControllerChange));
+          dart.nullCheck(this[_transformationController]).dispose();
+          this[_transformationController] = this.widget.transformationController;
+          dart.nullCheck(this[_transformationController]).addListener(dart.bind(this, _onTransformationControllerChange));
+        }
+      } else {
+        if (this.widget.transformationController == null) {
+          dart.nullCheck(this[_transformationController]).removeListener(dart.bind(this, _onTransformationControllerChange));
+          this[_transformationController] = new interactive_viewer.TransformationController.new();
+          dart.nullCheck(this[_transformationController]).addListener(dart.bind(this, _onTransformationControllerChange));
+        } else if (!dart.equals(this.widget.transformationController, oldWidget.transformationController)) {
+          dart.nullCheck(this[_transformationController]).removeListener(dart.bind(this, _onTransformationControllerChange));
+          this[_transformationController] = this.widget.transformationController;
+          dart.nullCheck(this[_transformationController]).addListener(dart.bind(this, _onTransformationControllerChange));
+        }
+      }
+    }
+    dispose() {
+      this[_controller].dispose();
+      dart.nullCheck(this[_transformationController]).removeListener(dart.bind(this, _onTransformationControllerChange));
+      if (this.widget.transformationController == null) {
+        dart.nullCheck(this[_transformationController]).dispose();
+      }
+      super.dispose();
+    }
+    build(context) {
+      let child = null;
+      if (this.widget.child != null) {
+        child = new interactive_viewer._InteractiveViewerBuilt.new({childKey: this[_childKey], clipBehavior: this.widget.clipBehavior, constrained: this.widget.constrained, matrix: dart.nullCheck(this[_transformationController]).value, child: dart.nullCheck(this.widget.child), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+      } else {
+        if (!(this.widget.builder != null)) dart.assertFailed(null, I[0], 1033, 14, "widget.builder != null");
+        if (!!this.widget.constrained) dart.assertFailed(null, I[0], 1034, 14, "!widget.constrained");
+        child = new layout_builder.LayoutBuilder.new({builder: dart.fn((context, constraints) => {
+            let matrix = dart.nullCheck(this[_transformationController]).value;
+            return new interactive_viewer._InteractiveViewerBuilt.new({childKey: this[_childKey], clipBehavior: this.widget.clipBehavior, constrained: this.widget.constrained, matrix: matrix, child: dart.nullCheck(this.widget.builder)(context, interactive_viewer._transformViewport(matrix, ui.Offset.zero['&'](constraints.biggest))), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+          }, T.BuildContextAndBoxConstraintsTo_InteractiveViewerBuilt()), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+      }
+      return new basic.Listener.new({key: this[_parentKey], onPointerSignal: dart.bind(this, _receivedPointerSignal), child: new gesture_detector.GestureDetector.new({behavior: proxy_box.HitTestBehavior.opaque, onScaleEnd: dart.bind(this, _onScaleEnd), onScaleStart: dart.bind(this, _onScaleStart), onScaleUpdate: dart.bind(this, _onScaleUpdate), child: child, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11});
+    }
+    static ['_#new#tearOff']() {
+      return new interactive_viewer._InteractiveViewerState.new();
+    }
+  };
+  (interactive_viewer._InteractiveViewerState.new = function() {
+    this[_transformationController] = null;
+    this[_childKey] = T.GlobalKeyOfStateOfStatefulWidget().new();
+    this[_parentKey] = T.GlobalKeyOfStateOfStatefulWidget().new();
+    this[_animation] = null;
+    this[___InteractiveViewerState__controller] = null;
+    this[_panAxis] = null;
+    this[_referenceFocalPoint] = null;
+    this[_scaleStart] = null;
+    this[_rotationStart] = 0.0;
+    this[_currentRotation] = 0.0;
+    this[_gestureType] = null;
+    this[_rotateEnabled] = false;
+    interactive_viewer._InteractiveViewerState.__proto__.new.call(this);
+    ;
+  }).prototype = interactive_viewer._InteractiveViewerState.prototype;
+  dart.addTypeTests(interactive_viewer._InteractiveViewerState);
+  dart.addTypeCaches(interactive_viewer._InteractiveViewerState);
+  dart.setMethodSignature(interactive_viewer._InteractiveViewerState, () => ({
+    __proto__: dart.getMethods(interactive_viewer._InteractiveViewerState.__proto__),
+    [_matrixTranslate]: dart.fnType(vector_math_64.Matrix4, [vector_math_64.Matrix4, ui.Offset]),
+    [_matrixScale]: dart.fnType(vector_math_64.Matrix4, [vector_math_64.Matrix4, core.double]),
+    [_matrixRotate]: dart.fnType(vector_math_64.Matrix4, [vector_math_64.Matrix4, core.double, ui.Offset]),
+    [_gestureIsSupported]: dart.fnType(core.bool, [dart.nullable(interactive_viewer._GestureType)]),
+    [_getGestureType]: dart.fnType(interactive_viewer._GestureType, [scale.ScaleUpdateDetails]),
+    [_onScaleStart]: dart.fnType(dart.void, [scale.ScaleStartDetails]),
+    [_onScaleUpdate]: dart.fnType(dart.void, [scale.ScaleUpdateDetails]),
+    [_onScaleEnd]: dart.fnType(dart.void, [scale.ScaleEndDetails]),
+    [_receivedPointerSignal]: dart.fnType(dart.void, [events.PointerSignalEvent]),
+    [_onAnimate]: dart.fnType(dart.void, []),
+    [_onTransformationControllerChange]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(interactive_viewer._InteractiveViewerState, () => ({
+    __proto__: dart.getGetters(interactive_viewer._InteractiveViewerState.__proto__),
+    [_controller]: animation_controller.AnimationController,
+    [_boundaryRect]: ui.Rect,
+    [_viewport]: ui.Rect
+  }));
+  dart.setSetterSignature(interactive_viewer._InteractiveViewerState, () => ({
+    __proto__: dart.getSetters(interactive_viewer._InteractiveViewerState.__proto__),
+    [_controller]: animation_controller.AnimationController
+  }));
+  dart.setLibraryUri(interactive_viewer._InteractiveViewerState, I[1]);
+  dart.setFieldSignature(interactive_viewer._InteractiveViewerState, () => ({
+    __proto__: dart.getFields(interactive_viewer._InteractiveViewerState.__proto__),
+    [_transformationController]: dart.fieldType(dart.nullable(interactive_viewer.TransformationController)),
+    [_childKey]: dart.finalFieldType(framework.GlobalKey$(framework.State$(framework.StatefulWidget))),
+    [_parentKey]: dart.finalFieldType(framework.GlobalKey$(framework.State$(framework.StatefulWidget))),
+    [_animation]: dart.fieldType(dart.nullable(animation.Animation$(ui.Offset))),
+    [___InteractiveViewerState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [_panAxis]: dart.fieldType(dart.nullable(basic_types.Axis)),
+    [_referenceFocalPoint]: dart.fieldType(dart.nullable(ui.Offset)),
+    [_scaleStart]: dart.fieldType(dart.nullable(core.double)),
+    [_rotationStart]: dart.fieldType(dart.nullable(core.double)),
+    [_currentRotation]: dart.fieldType(core.double),
+    [_gestureType]: dart.fieldType(dart.nullable(interactive_viewer._GestureType)),
+    [_rotateEnabled]: dart.finalFieldType(core.bool)
+  }));
+  dart.setStaticFieldSignature(interactive_viewer._InteractiveViewerState, () => ['_kDrag']);
+  dart.defineLazy(interactive_viewer._InteractiveViewerState, {
+    /*interactive_viewer._InteractiveViewerState._kDrag*/get _kDrag() {
+      return 0.0000135;
+    }
+  }, false);
+  var child$0 = dart.privateName(interactive_viewer, "_InteractiveViewerBuilt.child");
+  var childKey$ = dart.privateName(interactive_viewer, "_InteractiveViewerBuilt.childKey");
+  var clipBehavior$0 = dart.privateName(interactive_viewer, "_InteractiveViewerBuilt.clipBehavior");
+  var constrained$0 = dart.privateName(interactive_viewer, "_InteractiveViewerBuilt.constrained");
+  var matrix$ = dart.privateName(interactive_viewer, "_InteractiveViewerBuilt.matrix");
+  interactive_viewer._InteractiveViewerBuilt = class _InteractiveViewerBuilt extends framework.StatelessWidget {
+    get child() {
+      return this[child$0];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get childKey() {
+      return this[childKey$];
+    }
+    set childKey(value) {
+      super.childKey = value;
+    }
+    get clipBehavior() {
+      return this[clipBehavior$0];
+    }
+    set clipBehavior(value) {
+      super.clipBehavior = value;
+    }
+    get constrained() {
+      return this[constrained$0];
+    }
+    set constrained(value) {
+      super.constrained = value;
+    }
+    get matrix() {
+      return this[matrix$];
+    }
+    set matrix(value) {
+      super.matrix = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let childKey = opts && 'childKey' in opts ? opts.childKey : null;
+      let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : null;
+      let constrained = opts && 'constrained' in opts ? opts.constrained : null;
+      let matrix = opts && 'matrix' in opts ? opts.matrix : null;
+      return new interactive_viewer._InteractiveViewerBuilt.new({child: child, childKey: childKey, clipBehavior: clipBehavior, constrained: constrained, matrix: matrix, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+    }
+    build(context) {
+      let child = new basic.Transform.new({transform: this.matrix, child: new basic.KeyedSubtree.new({key: this.childKey, child: this.child, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+      if (!this.constrained) {
+        child = new basic.OverflowBox.new({alignment: alignment.Alignment.topLeft, minWidth: 0.0, minHeight: 0.0, maxWidth: 1 / 0, maxHeight: 1 / 0, child: child, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+      }
+      return new basic.ClipRect.new({clipBehavior: this.clipBehavior, child: child, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+    }
+  };
+  (interactive_viewer._InteractiveViewerBuilt.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let childKey = opts && 'childKey' in opts ? opts.childKey : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : null;
+    let constrained = opts && 'constrained' in opts ? opts.constrained : null;
+    let matrix = opts && 'matrix' in opts ? opts.matrix : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$0] = child;
+    this[childKey$] = childKey;
+    this[clipBehavior$0] = clipBehavior;
+    this[constrained$0] = constrained;
+    this[matrix$] = matrix;
+    interactive_viewer._InteractiveViewerBuilt.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = interactive_viewer._InteractiveViewerBuilt.prototype;
+  dart.addTypeTests(interactive_viewer._InteractiveViewerBuilt);
+  dart.addTypeCaches(interactive_viewer._InteractiveViewerBuilt);
+  dart.setMethodSignature(interactive_viewer._InteractiveViewerBuilt, () => ({
+    __proto__: dart.getMethods(interactive_viewer._InteractiveViewerBuilt.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(interactive_viewer._InteractiveViewerBuilt, I[1]);
+  dart.setFieldSignature(interactive_viewer._InteractiveViewerBuilt, () => ({
+    __proto__: dart.getFields(interactive_viewer._InteractiveViewerBuilt.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    childKey: dart.finalFieldType(framework.GlobalKey$(framework.State$(framework.StatefulWidget))),
+    clipBehavior: dart.finalFieldType(ui.Clip),
+    constrained: dart.finalFieldType(core.bool),
+    matrix: dart.finalFieldType(vector_math_64.Matrix4)
+  }));
+  interactive_viewer.TransformationController = class TransformationController extends change_notifier.ValueNotifier$(vector_math_64.Matrix4) {
+    static ['_#new#tearOff'](value = null) {
+      return new interactive_viewer.TransformationController.new(value);
+    }
+    toScene(viewportPoint) {
+      let inverseMatrix = vector_math_64.Matrix4.inverted(this.value);
+      let untransformed = inverseMatrix.transform3(vector_math_64.Vector3.new(viewportPoint.dx, viewportPoint.dy, 0.0));
+      return new ui.Offset.new(untransformed.x, untransformed.y);
+    }
+  };
+  (interactive_viewer.TransformationController.new = function(value = null) {
+    let t3;
+    interactive_viewer.TransformationController.__proto__.new.call(this, (t3 = value, t3 == null ? vector_math_64.Matrix4.identity() : t3));
+    ;
+  }).prototype = interactive_viewer.TransformationController.prototype;
+  dart.addTypeTests(interactive_viewer.TransformationController);
+  dart.addTypeCaches(interactive_viewer.TransformationController);
+  dart.setMethodSignature(interactive_viewer.TransformationController, () => ({
+    __proto__: dart.getMethods(interactive_viewer.TransformationController.__proto__),
+    toScene: dart.fnType(ui.Offset, [ui.Offset])
+  }));
+  dart.setLibraryUri(interactive_viewer.TransformationController, I[1]);
+  var _name = dart.privateName(core, "_name");
+  interactive_viewer._GestureType = class _GestureType extends core._Enum {
+    toString() {
+      return "_GestureType." + this[_name];
+    }
+  };
+  (interactive_viewer._GestureType.new = function(index, name) {
+    interactive_viewer._GestureType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = interactive_viewer._GestureType.prototype;
+  dart.addTypeTests(interactive_viewer._GestureType);
+  dart.addTypeCaches(interactive_viewer._GestureType);
+  dart.setLibraryUri(interactive_viewer._GestureType, I[1]);
+  dart.setStaticFieldSignature(interactive_viewer._GestureType, () => ['values', 'pan', 'scale', 'rotate']);
+  dart.defineExtensionMethods(interactive_viewer._GestureType, ['toString']);
+  dart.defineLazy(interactive_viewer._GestureType, {
+    /*interactive_viewer._GestureType.values*/get values() {
+      return C[17] || CT.C17;
+    },
+    /*interactive_viewer._GestureType.pan*/get pan() {
+      return C[6] || CT.C6;
+    },
+    /*interactive_viewer._GestureType.scale*/get scale() {
+      return C[5] || CT.C5;
+    },
+    /*interactive_viewer._GestureType.rotate*/get rotate() {
+      return C[4] || CT.C4;
+    }
+  }, false);
+  interactive_viewer._getFinalTime = function _getFinalTime(velocity, drag) {
+    return math.log(10 / velocity) / math.log(drag / 100);
+  };
+  interactive_viewer._getMatrixTranslation = function _getMatrixTranslation(matrix) {
+    let nextTranslation = matrix.getTranslation();
+    return new ui.Offset.new(nextTranslation.x, nextTranslation.y);
+  };
+  interactive_viewer._transformViewport = function _transformViewport(matrix, viewport) {
+    let t5;
+    let inverseMatrix = (t5 = matrix.clone(), (() => {
+      t5.invert();
+      return t5;
+    })());
+    return new vector_math_64.Quad.points(inverseMatrix.transform3(vector_math_64.Vector3.new(viewport.topLeft.dx, viewport.topLeft.dy, 0.0)), inverseMatrix.transform3(vector_math_64.Vector3.new(viewport.topRight.dx, viewport.topRight.dy, 0.0)), inverseMatrix.transform3(vector_math_64.Vector3.new(viewport.bottomRight.dx, viewport.bottomRight.dy, 0.0)), inverseMatrix.transform3(vector_math_64.Vector3.new(viewport.bottomLeft.dx, viewport.bottomLeft.dy, 0.0)));
+  };
+  interactive_viewer._getAxisAlignedBoundingBoxWithRotation = function _getAxisAlignedBoundingBoxWithRotation(rect, rotation) {
+    let t5;
+    let rotationMatrix = (t5 = vector_math_64.Matrix4.identity(), (() => {
+      t5.translate(rect.size.width / 2, rect.size.height / 2);
+      t5.rotateZ(rotation);
+      t5.translate(-rect.size.width / 2, -rect.size.height / 2);
+      return t5;
+    })());
+    let boundariesRotated = new vector_math_64.Quad.points(rotationMatrix.transform3(vector_math_64.Vector3.new(rect.left, rect.top, 0.0)), rotationMatrix.transform3(vector_math_64.Vector3.new(rect.right, rect.top, 0.0)), rotationMatrix.transform3(vector_math_64.Vector3.new(rect.right, rect.bottom, 0.0)), rotationMatrix.transform3(vector_math_64.Vector3.new(rect.left, rect.bottom, 0.0)));
+    return interactive_viewer.InteractiveViewer.getAxisAlignedBoundingBox(boundariesRotated);
+  };
+  interactive_viewer._exceedsBy = function _exceedsBy(boundary, viewport) {
+    let viewportPoints = T.JSArrayOfVector3().of([viewport.point0, viewport.point1, viewport.point2, viewport.point3]);
+    let largestExcess = ui.Offset.zero;
+    for (let point of viewportPoints) {
+      let pointInside = interactive_viewer.InteractiveViewer.getNearestPointInside(point, boundary);
+      let excess = new ui.Offset.new(pointInside.x - point.x, pointInside.y - point.y);
+      if (excess.dx[$abs]() > largestExcess.dx[$abs]()) {
+        largestExcess = new ui.Offset.new(excess.dx, largestExcess.dy);
+      }
+      if (excess.dy[$abs]() > largestExcess.dy[$abs]()) {
+        largestExcess = new ui.Offset.new(largestExcess.dx, excess.dy);
+      }
+    }
+    return interactive_viewer._round(largestExcess);
+  };
+  interactive_viewer._round = function _round(offset) {
+    return new ui.Offset.new(core.double.parse(offset.dx[$toStringAsFixed](9)), core.double.parse(offset.dy[$toStringAsFixed](9)));
+  };
+  interactive_viewer._alignAxis = function _alignAxis(offset, axis) {
+    switch (axis) {
+      case C[18] || CT.C18:
+        {
+          return new ui.Offset.new(offset.dx, 0.0);
+        }
+      case C[19] || CT.C19:
+        {
+          return new ui.Offset.new(0.0, offset.dy);
+        }
+    }
+  };
+  interactive_viewer._getPanAxis = function _getPanAxis(point1, point2) {
+    if (point1._equals(point2)) {
+      return null;
+    }
+    let x = point2.dx - point1.dx;
+    let y = point2.dy - point1.dy;
+    return x[$abs]() > y[$abs]() ? basic_types.Axis.horizontal : basic_types.Axis.vertical;
+  };
+  dart.trackLibraries("packages/flutter/src/widgets/interactive_viewer.dart", {
+    "package:flutter/src/widgets/interactive_viewer.dart": interactive_viewer
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["interactive_viewer.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/widgets/interactive_viewer.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__interactive_viewer: interactive_viewer
+  };
+}));
+
+//# sourceMappingURL=interactive_viewer.dart.lib.js.map

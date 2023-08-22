@@ -1,0 +1,404 @@
+define(['dart_sdk', 'packages/printing/src/mutex.dart', 'packages/printing/src/method_channel.dart', 'packages/printing/src/printing_info.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/printing/src/raster.dart', 'packages/flutter_web_plugins/src/plugin_registry.dart', 'packages/printing/src/printer.dart', 'packages/pdf/src/pdf/page_format.dart', 'packages/image/src/formats/png_decoder.dart'], (function load__packages__printing__printing_web_dart(dart_sdk, packages__printing__src__mutex$46dart, packages__printing__src__method_channel$46dart, packages__printing__src__printing_info$46dart, packages__flutter__src__foundation__debug$46dart, packages__printing__src__raster$46dart, packages__flutter_web_plugins__src__plugin_registry$46dart, packages__printing__src__printer$46dart, packages__pdf__src__pdf__page_format$46dart, packages__image__src__formats__png_decoder$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const js = dart_sdk.js;
+  const _interceptors = dart_sdk._interceptors;
+  const html = dart_sdk.html;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const js_util = dart_sdk.js_util;
+  const ui = dart_sdk.ui;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const mutex = packages__printing__src__mutex$46dart.src__mutex;
+  const $interface = packages__printing__src__method_channel$46dart.src__interface;
+  const printing_info = packages__printing__src__printing_info$46dart.src__printing_info;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const raster = packages__printing__src__raster$46dart.src__raster;
+  const plugin_registry = packages__flutter_web_plugins__src__plugin_registry$46dart.src__plugin_registry;
+  const printer = packages__printing__src__printer$46dart.src__printer;
+  const page_format = packages__pdf__src__pdf__page_format$46dart.src__pdf__page_format;
+  const png_decoder = packages__image__src__formats__png_decoder$46dart.src__formats__png_decoder;
+  var printing_web = Object.create(dart.library);
+  var $type = dartx.type;
+  var $src = dartx.src;
+  var $head = dartx.head;
+  var $append = dartx.append;
+  var $onLoad = dartx.onLoad;
+  var $isEmpty = dartx.isEmpty;
+  var $contains = dartx.contains;
+  var $createElement = dartx.createElement;
+  var $setAttribute = dartx.setAttribute;
+  var $innerText = dartx.innerText;
+  var $removeEventListener = dartx.removeEventListener;
+  var $addEventListener = dartx.addEventListener;
+  var $remove = dartx.remove;
+  var $target = dartx.target;
+  var $getContext = dartx.getContext;
+  var $toInt = dartx.toInt;
+  var $toBlob = dartx.toBlob;
+  var $onLoadEnd = dartx.onLoadEnd;
+  var $result = dartx.result;
+  var $buffer = dartx.buffer;
+  var $asUint8List = dartx.asUint8List;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    IdentityMapOfString$String: () => (T.IdentityMapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, core.String)))(),
+    MapOfString$String: () => (T.MapOfString$String = dart.constFn(core.Map$(core.String, core.String)))(),
+    IdentityMapOfString$MapOfString$String: () => (T.IdentityMapOfString$MapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, T.MapOfString$String())))(),
+    CompleterOfvoid: () => (T.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    VoidToUint8List: () => (T.VoidToUint8List = dart.constFn(dart.fnType(typed_data.Uint8List, [])))(),
+    Uint8ListTodynamic: () => (T.Uint8ListTodynamic = dart.constFn(dart.fnType(dart.dynamic, [typed_data.Uint8List])))(),
+    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    IterableOfString: () => (T.IterableOfString = dart.constFn(core.Iterable$(core.String)))(),
+    IterableOfStringToIterableOfString: () => (T.IterableOfStringToIterableOfString = dart.constFn(dart.fnType(T.IterableOfString(), [T.IterableOfString()])))(),
+    CompleterOfbool: () => (T.CompleterOfbool = dart.constFn(async.Completer$(core.bool)))(),
+    JSArrayOfUint8List: () => (T.JSArrayOfUint8List = dart.constFn(_interceptors.JSArray$(typed_data.Uint8List)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    EventToNull: () => (T.EventToNull = dart.constFn(dart.fnType(core.Null, [html.Event])))(),
+    CanvasRenderingContext2DN: () => (T.CanvasRenderingContext2DN = dart.constFn(dart.nullable(html.CanvasRenderingContext2D)))(),
+    IterableOfint: () => (T.IterableOfint = dart.constFn(core.Iterable$(core.int)))(),
+    intToint: () => (T.intToint = dart.constFn(dart.fnType(core.int, [core.int])))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    ProgressEventTovoid: () => (T.ProgressEventTovoid = dart.constFn(dart.fnType(dart.void, [html.ProgressEvent])))(),
+    _AsyncStarImplOfPdfRaster: () => (T._AsyncStarImplOfPdfRaster = dart.constFn(async._AsyncStarImpl$(raster.PdfRaster)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/printing_web.dart",
+    "package:printing/printing_web.dart"
+  ];
+  var _loading = dart.privateName(printing_web, "_loading");
+  var _hasPdfJsLib = dart.privateName(printing_web, "_hasPdfJsLib");
+  var _initPlugin = dart.privateName(printing_web, "_initPlugin");
+  var _getPdf = dart.privateName(printing_web, "_getPdf");
+  printing_web.PrintingPlugin = class PrintingPlugin extends $interface.PrintingPlatform {
+    static registerWith(registrar) {
+      $interface.PrintingPlatform.instance = new printing_web.PrintingPlugin.new();
+    }
+    get [_hasPdfJsLib]() {
+      return core.bool.as(js.context.callMethod("eval", T.JSArrayOfString().of(["typeof pdfjsLib !== \"undefined\" && pdfjsLib.GlobalWorkerOptions.workerSrc!=\"\";"])));
+    }
+    [_initPlugin]() {
+      return async.async(dart.void, (function* _initPlugin() {
+        let t0;
+        yield this[_loading].acquire();
+        if (!this[_hasPdfJsLib]) {
+          let script = (t0 = html.ScriptElement.new(), (() => {
+            t0[$type] = "text/javascript";
+            t0.async = true;
+            t0[$src] = printing_web.PrintingPlugin._pdfJsVersion + "/pdf.min.js";
+            return t0;
+          })());
+          if (!(html.document[$head] != null)) dart.assertFailed(null, I[0], 66, 14, "document.head != null");
+          dart.nullCheck(html.document[$head])[$append](script);
+          yield script[$onLoad].first;
+          if (js.context._get("pdfjsLib") == null) {
+            let require = js.JsObject.fromBrowserObject(core.Object.as(js.context._get("require")));
+            require.callMethod("config", [js.JsObject.jsify(new (T.IdentityMapOfString$MapOfString$String()).from(["paths", new (T.IdentityMapOfString$String()).from(["pdfjs-dist/build/pdf", printing_web.PrintingPlugin._pdfJsVersion + "/pdf.min", "pdfjs-dist/build/pdf.worker", printing_web.PrintingPlugin._pdfJsVersion + "/pdf.worker.min"])]))]);
+            let completer = T.CompleterOfvoid().new();
+            js.context.callMethod("require", [js.JsObject.jsify(T.JSArrayOfString().of(["pdfjs-dist/build/pdf", "pdfjs-dist/build/pdf.worker"])), dart.fn(app => {
+                js.context._set("pdfjsLib", app);
+                completer.complete();
+              }, T.dynamicToNull())]);
+            yield completer.future;
+          }
+          dart.dsend(dart.dsend(js.context._get("pdfjsLib"), '_get', ["GlobalWorkerOptions"]), '_set', ["workerSrc", printing_web.PrintingPlugin._pdfJsVersion + "/pdf.worker.min.js"]);
+        }
+        this[_loading].release();
+      }).bind(this));
+    }
+    info() {
+      return async.async(printing_info.PrintingInfo, (function* info() {
+        yield this[_initPlugin]();
+        return new printing_info.PrintingInfo.new({canPrint: true, canShare: true, canRaster: this[_hasPdfJsLib]});
+      }).bind(this));
+    }
+    layoutPdf(printer, onLayout, name, format, dynamicLayout, usePrinterSettings) {
+      return async.async(core.bool, (function* layoutPdf() {
+        let t4, t4$;
+        let result = null;
+        function result$35get() {
+          let t1;
+          t1 = result;
+          return t1 == null ? dart.throw(new _internal.LateError.localNI("result")) : t1;
+        }
+        dart.fn(result$35get, T.VoidToUint8List());
+        function result$35set(result$35param) {
+          return result = result$35param;
+        }
+        dart.fn(result$35set, T.Uint8ListTodynamic());
+        try {
+          result$35set(yield onLayout(format));
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          let s = dart.stackTrace(e$);
+          if (core.Object.is(e)) {
+            let collector = null;
+            if (!dart.fn(() => {
+              collector = dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new diagnostics.StringProperty.new("PageFormat", format.toString());
+              }), T.VoidToIterableOfDiagnosticsNode());
+              return true;
+            }, T.VoidTobool())()) dart.assertFailed(null, I[0], 128, 14, "() {\n        collector = () sync* {\n          yield StringProperty('PageFormat', format.toString());\n        };\n        return true;\n      }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: e, stack: s, stackFilter: dart.fn(input => input, T.IterableOfStringToIterableOfString()), library: "printing", context: new assertions.ErrorDescription.new("while generating a PDF"), informationCollector: collector}));
+            dart.rethrow(e$);
+          } else
+            throw e$;
+        }
+        if (result$35get()[$isEmpty]) {
+          return false;
+        }
+        let userAgent = core.String.as(dart.dsend(js.context._get("navigator"), '_get', ["userAgent"]));
+        let isChrome = js.context._get("chrome") != null;
+        let isSafari = js.context._get("safari") != null && !userAgent[$contains](core.RegExp.new("Version/14\\.1\\."));
+        let isMobile = userAgent[$contains]("Mobile");
+        let isFirefox = userAgent[$contains]("Firefox");
+        if ((isChrome || isSafari || isFirefox) && !isMobile) {
+          let completer = T.CompleterOfbool().new();
+          let pdfFile = html.Blob.new(T.JSArrayOfUint8List().of([result$35get()]), "application/pdf");
+          let pdfUrl = html.Url.createObjectUrl(pdfFile);
+          let doc = html.HtmlDocument.as(js.context._get("document"));
+          let script = (t4 = doc.getElementById("__net_nfet_printing_s__"), t4 == null ? doc[$createElement]("script") : t4);
+          script[$setAttribute]("id", "__net_nfet_printing_s__");
+          script[$setAttribute]("type", "text/javascript");
+          script[$innerText] = "function " + "__net_nfet_printing__" + "_print(){var f=document.getElementById('" + "__net_nfet_printing__" + "');f.focus();f.contentWindow.print();}";
+          dart.nullCheck(doc.body)[$append](script);
+          let frame = (t4$ = doc.getElementById("__net_nfet_printing__"), t4$ == null ? doc[$createElement]("iframe") : t4$);
+          if (isFirefox) {
+            frame[$setAttribute]("style", "width: 1px; height: 100px; position: fixed; left: 0; top: 0; opacity: 0; border-width: 0; margin: 0; padding: 0");
+          } else {
+            frame[$setAttribute]("style", "visibility: hidden; height: 0; width: 0; position: absolute;");
+          }
+          frame[$setAttribute]("id", "__net_nfet_printing__");
+          frame[$setAttribute]("src", pdfUrl);
+          let stopWatch = new core.Stopwatch.new();
+          let load = null;
+          load = dart.fn(event => {
+            frame[$removeEventListener]("load", load);
+            async.Timer.new(new core.Duration.new({milliseconds: isSafari ? 500 : 0}), dart.fn(() => {
+              try {
+                stopWatch.start();
+                js.context.callMethod("__net_nfet_printing__" + "_print");
+                stopWatch.stop();
+                completer.complete(true);
+              } catch (e$) {
+                let e = dart.getThrown(e$);
+                if (core.Object.is(e)) {
+                  if (!dart.fn(() => {
+                    core.print("Error: " + dart.str(e));
+                    return true;
+                  }, T.VoidTobool())()) dart.assertFailed(null, I[0], 206, 20, "() {\n              // ignore: avoid_print\n              print('Error: $e');\n              return true;\n            }()");
+                  completer.complete(this[_getPdf](result$35get()));
+                } else
+                  throw e$;
+              }
+            }, T.VoidTovoid()));
+          }, T.EventToNull());
+          frame[$addEventListener]("load", load);
+          dart.nullCheck(doc.body)[$append](frame);
+          let res = (yield completer.future);
+          if (stopWatch.elapsedMilliseconds > 1000) {
+            frame[$remove]();
+            script[$remove]();
+          }
+          return res;
+        }
+        return this[_getPdf](result$35get());
+      }).bind(this));
+    }
+    sharePdf(bytes, filename, bounds, subject, body, emails) {
+      return async.async(core.bool, (function* sharePdf() {
+        return this[_getPdf](bytes, {filename: filename});
+      }).bind(this));
+    }
+    [_getPdf](bytes, opts) {
+      let filename = opts && 'filename' in opts ? opts.filename : null;
+      return async.async(core.bool, function* _getPdf() {
+        let t5;
+        let pdfFile = html.Blob.new(T.JSArrayOfUint8List().of([bytes]), "application/pdf");
+        let pdfUrl = html.Url.createObjectUrl(pdfFile);
+        let doc = html.HtmlDocument.as(js.context._get("document"));
+        let link = html.AnchorElement.new({href: pdfUrl});
+        if (filename != null) {
+          link.download = filename;
+        } else {
+          link[$target] = "_blank";
+        }
+        t5 = doc.body;
+        t5 == null ? null : t5[$append](link);
+        link.click();
+        link[$remove]();
+        return true;
+      });
+    }
+    convertHtml(html, baseUrl, format) {
+      dart.throw(new core.UnimplementedError.new());
+    }
+    listPrinters() {
+      dart.throw(new core.UnimplementedError.new());
+    }
+    pickPrinter(bounds) {
+      dart.throw(new core.UnimplementedError.new());
+    }
+    raster(document, pages, dpi) {
+      return new (T._AsyncStarImplOfPdfRaster()).new((function* raster(stream) {
+        let t5, t5$, t5$0, t5$1;
+        yield this[_initPlugin]();
+        let t = dart.global.pdfjsLib.getDocument((t5 = {}, (() => {
+          t5.data = document;
+          return t5;
+        })()));
+        try {
+          let d = (yield js_util.promiseToFuture(dart.packageJSType("PdfJsDoc"), t.promise));
+          let numPages = d.numPages;
+          let canvas = html.CanvasElement.as(dart.dsend(js.context._get("document"), 'createElement', ["canvas"]));
+          let context = T.CanvasRenderingContext2DN().as(canvas[$getContext]("2d"));
+          let _pages = (t5$ = pages, t5$ == null ? T.IterableOfint().generate(numPages, dart.fn(index => index, T.intToint())) : t5$);
+          for (let i of _pages) {
+            let page = (yield js_util.promiseToFuture(dart.packageJSType("PdfJsPage"), d.getPage(i + 1)));
+            try {
+              let viewport = page.getViewport((t5$0 = {}, (() => {
+                t5$0.scale = dpi / 72;
+                return t5$0;
+              })()));
+              canvas.height = viewport.height[$toInt]();
+              canvas.width = viewport.width[$toInt]();
+              let renderContext = (t5$1 = {}, (() => {
+                t5$1.canvasContext = dart.nullCheck(context);
+                t5$1.viewport = viewport;
+                return t5$1;
+              })());
+              yield js_util.promiseToFuture(dart.void, page.render(renderContext).promise);
+              let completer = T.CompleterOfvoid().new();
+              let blob = (yield canvas[$toBlob]());
+              let data = _internal.BytesBuilder.new();
+              let r = html.FileReader.new();
+              r.readAsArrayBuffer(blob);
+              r[$onLoadEnd].listen(dart.fn(e => {
+                data.add(T.ListOfint().as(r[$result]));
+                completer.complete();
+              }, T.ProgressEventTovoid()));
+              yield completer.future;
+              if (stream.add(new printing_web._WebPdfRaster.new(dart.nullCheck(canvas.width), dart.nullCheck(canvas.height), data.toBytes()))) return;
+              yield;
+            } finally {
+              page.cleanup();
+            }
+          }
+        } finally {
+          t.destroy();
+        }
+      }).bind(this)).stream;
+    }
+    static ['_#new#tearOff']() {
+      return new printing_web.PrintingPlugin.new();
+    }
+  };
+  (printing_web.PrintingPlugin.new = function() {
+    this[_loading] = new mutex.Mutex.new();
+    printing_web.PrintingPlugin.__proto__.new.call(this);
+    ;
+  }).prototype = printing_web.PrintingPlugin.prototype;
+  dart.addTypeTests(printing_web.PrintingPlugin);
+  dart.addTypeCaches(printing_web.PrintingPlugin);
+  dart.setMethodSignature(printing_web.PrintingPlugin, () => ({
+    __proto__: dart.getMethods(printing_web.PrintingPlugin.__proto__),
+    [_initPlugin]: dart.fnType(async.Future$(dart.void), []),
+    info: dart.fnType(async.Future$(printing_info.PrintingInfo), []),
+    layoutPdf: dart.fnType(async.Future$(core.bool), [dart.nullable(printer.Printer), dart.fnType(async.FutureOr$(typed_data.Uint8List), [page_format.PdfPageFormat]), core.String, page_format.PdfPageFormat, core.bool, core.bool]),
+    sharePdf: dart.fnType(async.Future$(core.bool), [typed_data.Uint8List, core.String, ui.Rect, dart.nullable(core.String), dart.nullable(core.String), dart.nullable(core.List$(core.String))]),
+    [_getPdf]: dart.fnType(async.Future$(core.bool), [typed_data.Uint8List], {filename: dart.nullable(core.String)}, {}),
+    convertHtml: dart.fnType(async.Future$(typed_data.Uint8List), [core.String, dart.nullable(core.String), page_format.PdfPageFormat]),
+    listPrinters: dart.fnType(async.Future$(core.List$(printer.Printer)), []),
+    pickPrinter: dart.fnType(async.Future$(printer.Printer), [ui.Rect]),
+    raster: dart.fnType(async.Stream$(raster.PdfRaster), [typed_data.Uint8List, dart.nullable(core.List$(core.int)), core.double])
+  }));
+  dart.setStaticMethodSignature(printing_web.PrintingPlugin, () => ['registerWith']);
+  dart.setGetterSignature(printing_web.PrintingPlugin, () => ({
+    __proto__: dart.getGetters(printing_web.PrintingPlugin.__proto__),
+    [_hasPdfJsLib]: core.bool
+  }));
+  dart.setLibraryUri(printing_web.PrintingPlugin, I[1]);
+  dart.setFieldSignature(printing_web.PrintingPlugin, () => ({
+    __proto__: dart.getFields(printing_web.PrintingPlugin.__proto__),
+    [_loading]: dart.finalFieldType(mutex.Mutex)
+  }));
+  dart.setStaticFieldSignature(printing_web.PrintingPlugin, () => ['_scriptId', '_frameId', '_pdfJsVersion']);
+  dart.defineLazy(printing_web.PrintingPlugin, {
+    /*printing_web.PrintingPlugin._scriptId*/get _scriptId() {
+      return "__net_nfet_printing_s__";
+    },
+    /*printing_web.PrintingPlugin._frameId*/get _frameId() {
+      return "__net_nfet_printing__";
+    },
+    /*printing_web.PrintingPlugin._pdfJsVersion*/get _pdfJsVersion() {
+      return "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216";
+    }
+  }, false);
+  var _pixels = dart.privateName(printing_web, "_pixels");
+  printing_web._WebPdfRaster = class _WebPdfRaster extends raster.PdfRaster {
+    static ['_#new#tearOff'](width, height, png) {
+      return new printing_web._WebPdfRaster.new(width, height, png);
+    }
+    get pixels() {
+      if (this[_pixels] == null) {
+        let img = dart.nullCheck(new png_decoder.PngDecoder.new().decodeImage(this.png));
+        this[_pixels] = img.data[$buffer][$asUint8List]();
+      }
+      return dart.nullCheck(this[_pixels]);
+    }
+    toImage() {
+      return async.async(ui.Image, (function* toImage() {
+        let codec = (yield ui.instantiateImageCodec(this.png));
+        let frameInfo = (yield codec.getNextFrame());
+        return frameInfo.image;
+      }).bind(this));
+    }
+    toPng() {
+      return async.async(typed_data.Uint8List, (function* toPng() {
+        return this.png;
+      }).bind(this));
+    }
+  };
+  (printing_web._WebPdfRaster.new = function(width, height, png) {
+    this[_pixels] = null;
+    this.png = png;
+    printing_web._WebPdfRaster.__proto__.new.call(this, width, height, _native_typed_data.NativeUint8List.new(0));
+    ;
+  }).prototype = printing_web._WebPdfRaster.prototype;
+  dart.addTypeTests(printing_web._WebPdfRaster);
+  dart.addTypeCaches(printing_web._WebPdfRaster);
+  dart.setGetterSignature(printing_web._WebPdfRaster, () => ({
+    __proto__: dart.getGetters(printing_web._WebPdfRaster.__proto__),
+    pixels: typed_data.Uint8List
+  }));
+  dart.setLibraryUri(printing_web._WebPdfRaster, I[1]);
+  dart.setFieldSignature(printing_web._WebPdfRaster, () => ({
+    __proto__: dart.getFields(printing_web._WebPdfRaster.__proto__),
+    png: dart.finalFieldType(typed_data.Uint8List),
+    [_pixels]: dart.fieldType(dart.nullable(typed_data.Uint8List))
+  }));
+  dart.trackLibraries("packages/printing/printing_web.dart", {
+    "package:printing/printing_web.dart": printing_web
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["printing_web.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/printing/printing_web.dart.lib.js"}');
+  // Exports:
+  return {
+    printing_web: printing_web
+  };
+}));
+
+//# sourceMappingURL=printing_web.dart.lib.js.map

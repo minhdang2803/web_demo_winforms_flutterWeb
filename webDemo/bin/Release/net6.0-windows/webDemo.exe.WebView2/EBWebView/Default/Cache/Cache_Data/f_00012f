@@ -1,0 +1,710 @@
+define(['dart_sdk', 'packages/image/src/color.dart', 'packages/image/src/util/quantizer.dart', 'packages/image/src/image.dart'], (function load__packages__image__src__util__neural_quantizer_dart(dart_sdk, packages__image__src__color$46dart, packages__image__src__util__quantizer$46dart, packages__image__src__image$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _internal = dart_sdk._internal;
+  const math = dart_sdk.math;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const color = packages__image__src__color$46dart.src__color;
+  const quantizer = packages__image__src__util__quantizer$46dart.src__util__quantizer;
+  const image = packages__image__src__image$46dart.src__image;
+  var neural_quantizer = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $truncate = dartx.truncate;
+  var $rightShift = dartx['>>'];
+  var $abs = dartx.abs;
+  var $toInt = dartx.toInt;
+  var $modulo = dartx['%'];
+  var $toDouble = dartx.toDouble;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfdouble: () => (T.ListOfdouble = dart.constFn(core.List$(core.double)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:image/src/util/neural_quantizer.dart"];
+  var samplingFactor$ = dart.privateName(neural_quantizer, "NeuralQuantizer.samplingFactor");
+  var netSize = dart.privateName(neural_quantizer, "NeuralQuantizer.netSize");
+  var specials = dart.privateName(neural_quantizer, "NeuralQuantizer.specials");
+  var maxNetPos = dart.privateName(neural_quantizer, "NeuralQuantizer.maxNetPos");
+  var __NeuralQuantizer_colorMap = dart.privateName(neural_quantizer, "_#NeuralQuantizer#colorMap");
+  var __NeuralQuantizer_bgColor = dart.privateName(neural_quantizer, "_#NeuralQuantizer#bgColor");
+  var __NeuralQuantizer_cutNetSize = dart.privateName(neural_quantizer, "_#NeuralQuantizer#cutNetSize");
+  var __NeuralQuantizer_initRadius = dart.privateName(neural_quantizer, "_#NeuralQuantizer#initRadius");
+  var __NeuralQuantizer_initBiasRadius = dart.privateName(neural_quantizer, "_#NeuralQuantizer#initBiasRadius");
+  var __NeuralQuantizer__radiusPower = dart.privateName(neural_quantizer, "_#NeuralQuantizer#_radiusPower");
+  var __NeuralQuantizer__network = dart.privateName(neural_quantizer, "_#NeuralQuantizer#_network");
+  var __NeuralQuantizer__colorMap = dart.privateName(neural_quantizer, "_#NeuralQuantizer#_colorMap");
+  var _netIndex = dart.privateName(neural_quantizer, "_netIndex");
+  var __NeuralQuantizer__bias = dart.privateName(neural_quantizer, "_#NeuralQuantizer#_bias");
+  var __NeuralQuantizer__freq = dart.privateName(neural_quantizer, "_#NeuralQuantizer#_freq");
+  var _initialize = dart.privateName(neural_quantizer, "_initialize");
+  var _learn = dart.privateName(neural_quantizer, "_learn");
+  var _fix = dart.privateName(neural_quantizer, "_fix");
+  var _inxBuild = dart.privateName(neural_quantizer, "_inxBuild");
+  var _copyColorMap = dart.privateName(neural_quantizer, "_copyColorMap");
+  var _inxSearch = dart.privateName(neural_quantizer, "_inxSearch");
+  var _colorMap = dart.privateName(neural_quantizer, "_colorMap");
+  var _radiusPower = dart.privateName(neural_quantizer, "_radiusPower");
+  var _network = dart.privateName(neural_quantizer, "_network");
+  var _bias = dart.privateName(neural_quantizer, "_bias");
+  var _freq = dart.privateName(neural_quantizer, "_freq");
+  var _updateRadiusPower = dart.privateName(neural_quantizer, "_updateRadiusPower");
+  var _specialFind = dart.privateName(neural_quantizer, "_specialFind");
+  var _contest = dart.privateName(neural_quantizer, "_contest");
+  var _alterSingle = dart.privateName(neural_quantizer, "_alterSingle");
+  var _alterNeighbors = dart.privateName(neural_quantizer, "_alterNeighbors");
+  neural_quantizer.NeuralQuantizer = class NeuralQuantizer extends quantizer.Quantizer {
+    get samplingFactor() {
+      return this[samplingFactor$];
+    }
+    set samplingFactor(value) {
+      this[samplingFactor$] = value;
+    }
+    get netSize() {
+      return this[netSize];
+    }
+    set netSize(value) {
+      this[netSize] = value;
+    }
+    get specials() {
+      return this[specials];
+    }
+    set specials(value) {
+      this[specials] = value;
+    }
+    get maxNetPos() {
+      return this[maxNetPos];
+    }
+    set maxNetPos(value) {
+      this[maxNetPos] = value;
+    }
+    set colorMap(colorMap$35param) {
+      this[__NeuralQuantizer_colorMap] = colorMap$35param;
+    }
+    get colorMap() {
+      let t0;
+      t0 = this[__NeuralQuantizer_colorMap];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("colorMap")) : t0;
+    }
+    static ['_#new#tearOff'](image, opts) {
+      let numberOfColors = opts && 'numberOfColors' in opts ? opts.numberOfColors : 256;
+      let samplingFactor = opts && 'samplingFactor' in opts ? opts.samplingFactor : 10;
+      return new neural_quantizer.NeuralQuantizer.new(image, {numberOfColors: numberOfColors, samplingFactor: samplingFactor});
+    }
+    addImage(image) {
+      this[_learn](image);
+      this[_fix]();
+      this[_inxBuild]();
+      this[_copyColorMap]();
+    }
+    get numColors() {
+      return this.netSize;
+    }
+    color(index) {
+      return color.getColor(this.colorMap[$_get](index * 3), this.colorMap[$_get](index * 3 + 1), this.colorMap[$_get](index * 3 + 2));
+    }
+    lookup(c) {
+      let r = color.getRed(c);
+      let g = color.getGreen(c);
+      let b = color.getBlue(c);
+      return this[_inxSearch](b, g, r);
+    }
+    lookupRGB(r, g, b) {
+      return this[_inxSearch](b, g, r);
+    }
+    getQuantizedColor(c) {
+      let r = color.getRed(c);
+      let g = color.getGreen(c);
+      let b = color.getBlue(c);
+      let a = color.getAlpha(c);
+      let i = this[_inxSearch](b, g, r) * 3;
+      return color.getColor(this.colorMap[$_get](i), this.colorMap[$_get](i + 1), this.colorMap[$_get](i + 2), a);
+    }
+    getIndexMap(image) {
+      let map = _native_typed_data.NativeUint8List.new(image.width * image.height);
+      for (let i = 0, len = image.length; i < len; i = i + 1) {
+        map[$_set](i, this.lookup(image._get(i)));
+      }
+      return map;
+    }
+    [_initialize](numberOfColors) {
+      let t0, t0$, t0$0;
+      this.netSize = math.max(core.int, numberOfColors, 4);
+      this.cutNetSize = this.netSize - this.specials;
+      this.maxNetPos = this.netSize - 1;
+      this.initRadius = (this.netSize / 8)[$truncate]();
+      this.initBiasRadius = this.initRadius * 256;
+      this[_colorMap] = _native_typed_data.NativeInt32List.new(this.netSize * 4);
+      this.colorMap = _native_typed_data.NativeUint8List.new(this.netSize * 3);
+      this.specials = 3;
+      this.bgColor = this.specials - 1;
+      this[_radiusPower] = _native_typed_data.NativeInt32List.new(this.netSize[$rightShift](3));
+      this[_network] = T.ListOfdouble().filled(this.netSize * 3, 0.0);
+      this[_bias] = T.ListOfdouble().filled(this.netSize, 0.0);
+      this[_freq] = T.ListOfdouble().filled(this.netSize, 0.0);
+      this[_network][$_set](0, 0.0);
+      this[_network][$_set](1, 0.0);
+      this[_network][$_set](2, 0.0);
+      this[_network][$_set](3, 255.0);
+      this[_network][$_set](4, 255.0);
+      this[_network][$_set](5, 255.0);
+      let f = 1.0 / this.netSize;
+      for (let i = 0; i < this.specials; i = i + 1) {
+        this[_freq][$_set](i, f);
+        this[_bias][$_set](i, 0.0);
+      }
+      for (let i = this.specials, p = this.specials * 3; i < this.netSize; i = i + 1) {
+        this[_network][$_set]((t0 = p, p = t0 + 1, t0), 255.0 * (i - this.specials) / this.cutNetSize);
+        this[_network][$_set]((t0$ = p, p = t0$ + 1, t0$), 255.0 * (i - this.specials) / this.cutNetSize);
+        this[_network][$_set]((t0$0 = p, p = t0$0 + 1, t0$0), 255.0 * (i - this.specials) / this.cutNetSize);
+        this[_freq][$_set](i, f);
+        this[_bias][$_set](i, 0.0);
+      }
+    }
+    [_copyColorMap]() {
+      let t0, t0$, t0$0;
+      for (let i = 0, p = 0, q = 0; i < this.netSize; i = i + 1) {
+        this.colorMap[$_set]((t0 = p, p = t0 + 1, t0), this[_colorMap][$_get](q + 2)[$abs]() & 255);
+        this.colorMap[$_set]((t0$ = p, p = t0$ + 1, t0$), this[_colorMap][$_get](q + 1)[$abs]() & 255);
+        this.colorMap[$_set]((t0$0 = p, p = t0$0 + 1, t0$0), this[_colorMap][$_get](q)[$abs]() & 255);
+        q = q + 4;
+      }
+    }
+    [_inxSearch](b, g, r) {
+      let bestd = 1000;
+      let best = -1;
+      let i = this[_netIndex][$_get](g);
+      let j = i - 1;
+      while (i < this.netSize || j >= 0) {
+        if (i < this.netSize) {
+          let p = i * 4;
+          let dist = this[_colorMap][$_get](p + 1) - g;
+          if (dist >= bestd) {
+            i = this.netSize;
+          } else {
+            if (dist < 0) {
+              dist = -dist;
+            }
+            let a = this[_colorMap][$_get](p) - b;
+            if (a < 0) {
+              a = -a;
+            }
+            dist = dist + a;
+            if (dist < bestd) {
+              a = this[_colorMap][$_get](p + 2) - r;
+              if (a < 0) {
+                a = -a;
+              }
+              dist = dist + a;
+              if (dist < bestd) {
+                bestd = dist;
+                best = i;
+              }
+            }
+            i = i + 1;
+          }
+        }
+        if (j >= 0) {
+          let p = j * 4;
+          let dist = g - this[_colorMap][$_get](p + 1);
+          if (dist >= bestd) {
+            j = -1;
+          } else {
+            if (dist < 0) {
+              dist = -dist;
+            }
+            let a = this[_colorMap][$_get](p) - b;
+            if (a < 0) {
+              a = -a;
+            }
+            dist = dist + a;
+            if (dist < bestd) {
+              a = this[_colorMap][$_get](p + 2) - r;
+              if (a < 0) {
+                a = -a;
+              }
+              dist = dist + a;
+              if (dist < bestd) {
+                bestd = dist;
+                best = j;
+              }
+            }
+            j = j - 1;
+          }
+        }
+      }
+      return best;
+    }
+    [_fix]() {
+      for (let i = 0, p = 0, q = 0; i < this.netSize; i = i + 1, q = q + 4) {
+        for (let j = 0; j < 3; j = j + 1, p = p + 1) {
+          let x = (0.5 + this[_network][$_get](p))[$toInt]();
+          if (x < 0) {
+            x = 0;
+          }
+          if (x > 255) {
+            x = 255;
+          }
+          this[_colorMap][$_set](q + j, x);
+        }
+        this[_colorMap][$_set](q + 3, i);
+      }
+    }
+    [_inxBuild]() {
+      let previousColor = 0;
+      let startPos = 0;
+      for (let i = 0, p = 0; i < this.netSize; i = i + 1, p = p + 4) {
+        let smallpos = i;
+        let smallval = this[_colorMap][$_get](p + 1);
+        for (let j = i + 1, q = p + 4; j < this.netSize; j = j + 1, q = q + 4) {
+          if (this[_colorMap][$_get](q + 1) < smallval) {
+            smallpos = j;
+            smallval = this[_colorMap][$_get](q + 1);
+          }
+        }
+        let q = smallpos * 4;
+        if (i !== smallpos) {
+          let j = this[_colorMap][$_get](q);
+          this[_colorMap][$_set](q, this[_colorMap][$_get](p));
+          this[_colorMap][$_set](p, j);
+          j = this[_colorMap][$_get](q + 1);
+          this[_colorMap][$_set](q + 1, this[_colorMap][$_get](p + 1));
+          this[_colorMap][$_set](p + 1, j);
+          j = this[_colorMap][$_get](q + 2);
+          this[_colorMap][$_set](q + 2, this[_colorMap][$_get](p + 2));
+          this[_colorMap][$_set](p + 2, j);
+          j = this[_colorMap][$_get](q + 3);
+          this[_colorMap][$_set](q + 3, this[_colorMap][$_get](p + 3));
+          this[_colorMap][$_set](p + 3, j);
+        }
+        if (smallval !== previousColor) {
+          this[_netIndex][$_set](previousColor, (startPos + i)[$rightShift](1));
+          for (let j = previousColor + 1; j < smallval; j = j + 1) {
+            this[_netIndex][$_set](j, i);
+          }
+          previousColor = smallval;
+          startPos = i;
+        }
+      }
+      this[_netIndex][$_set](previousColor, (startPos + dart.nullCheck(this.maxNetPos))[$rightShift](1));
+      for (let j = previousColor + 1; j < 256; j = j + 1) {
+        this[_netIndex][$_set](j, dart.nullCheck(this.maxNetPos));
+      }
+    }
+    [_updateRadiusPower](rad, alpha) {
+      for (let i = 0; i < rad; i = i + 1) {
+        this[_radiusPower][$_set](i, (alpha * ((rad * rad - i * i) * 256 / (rad * rad)))[$toInt]());
+      }
+    }
+    [_learn](image) {
+      let biasRadius = this.initBiasRadius;
+      let alphaDec = 30 + ((this.samplingFactor - 1) / 3)[$truncate]();
+      let lengthCount = image.length;
+      let samplePixels = (lengthCount / this.samplingFactor)[$truncate]();
+      let delta = math.max(core.int, (samplePixels / 100)[$truncate](), 1);
+      let alpha = 1024;
+      if (delta === 0) {
+        delta = 1;
+      }
+      let rad = biasRadius[$rightShift](8);
+      if (rad <= 1) {
+        rad = 0;
+      }
+      this[_updateRadiusPower](rad, alpha);
+      let step = 0;
+      let pos = 0;
+      if (lengthCount < 1509) {
+        this.samplingFactor = 1;
+        step = 1;
+      } else if (lengthCount[$modulo](499) !== 0) {
+        step = 499;
+      } else {
+        if (lengthCount[$modulo](491) !== 0) {
+          step = 491;
+        } else {
+          if (lengthCount[$modulo](487) !== 0) {
+            step = 487;
+          } else {
+            step = 503;
+          }
+        }
+      }
+      let i = 0;
+      while (i < samplePixels) {
+        let p = image._get(pos);
+        let red = color.getRed(p);
+        let green = color.getGreen(p);
+        let blue = color.getBlue(p);
+        let b = blue[$toDouble]();
+        let g = green[$toDouble]();
+        let r = red[$toDouble]();
+        if (i === 0) {
+          this[_network][$_set](this.bgColor * 3, b);
+          this[_network][$_set](this.bgColor * 3 + 1, g);
+          this[_network][$_set](this.bgColor * 3 + 2, r);
+        }
+        let j = this[_specialFind](b, g, r);
+        j = j < 0 ? this[_contest](b, g, r) : j;
+        if (j >= this.specials) {
+          let a = 1.0 * alpha / 1024;
+          this[_alterSingle](a, j, b, g, r);
+          if (rad > 0) {
+            this[_alterNeighbors](a, rad, j, b, g, r);
+          }
+        }
+        pos = pos + step;
+        while (pos >= lengthCount) {
+          pos = pos - lengthCount;
+        }
+        i = i + 1;
+        if (i[$modulo](delta) === 0) {
+          alpha = alpha - (alpha / alphaDec)[$truncate]();
+          biasRadius = biasRadius - (biasRadius / 30)[$truncate]();
+          rad = biasRadius[$rightShift](8);
+          if (rad <= 1) {
+            rad = 0;
+          }
+          this[_updateRadiusPower](rad, alpha);
+        }
+      }
+    }
+    [_alterSingle](alpha, i, b, g, r) {
+      let t0, t1, t0$, t1$, t0$0;
+      let p = i * 3;
+      t0 = this[_network];
+      t0[$_set](p, t0[$_get](p) - alpha * (this[_network][$_get](p) - b));
+      t0$ = this[_network];
+      t1 = p + 1;
+      t0$[$_set](t1, t0$[$_get](t1) - alpha * (this[_network][$_get](p + 1) - g));
+      t0$0 = this[_network];
+      t1$ = p + 2;
+      t0$0[$_set](t1$, t0$0[$_get](t1$) - alpha * (this[_network][$_get](p + 2) - r));
+    }
+    [_alterNeighbors](alpha, rad, i, b, g, r) {
+      let t0, t0$, t1, t0$0, t1$, t0$1, t0$2, t1$0, t0$3, t1$1, t0$4;
+      let lo = i - rad;
+      if (lo < this.specials - 1) {
+        lo = this.specials - 1;
+      }
+      let hi = i + rad;
+      if (hi > this.netSize) {
+        hi = this.netSize;
+      }
+      let j = i + 1;
+      let k = i - 1;
+      let m = 1;
+      while (j < hi || k > lo) {
+        let a = this[_radiusPower][$_get]((t0 = m, m = t0 + 1, t0));
+        if (j < hi) {
+          let p = j * 3;
+          t0$ = this[_network];
+          t0$[$_set](p, t0$[$_get](p) - a * (this[_network][$_get](p) - b) / 262144);
+          t0$0 = this[_network];
+          t1 = p + 1;
+          t0$0[$_set](t1, t0$0[$_get](t1) - a * (this[_network][$_get](p + 1) - g) / 262144);
+          t0$1 = this[_network];
+          t1$ = p + 2;
+          t0$1[$_set](t1$, t0$1[$_get](t1$) - a * (this[_network][$_get](p + 2) - r) / 262144);
+          j = j + 1;
+        }
+        if (k > lo) {
+          let p = k * 3;
+          t0$2 = this[_network];
+          t0$2[$_set](p, t0$2[$_get](p) - a * (this[_network][$_get](p) - b) / 262144);
+          t0$3 = this[_network];
+          t1$0 = p + 1;
+          t0$3[$_set](t1$0, t0$3[$_get](t1$0) - a * (this[_network][$_get](p + 1) - g) / 262144);
+          t0$4 = this[_network];
+          t1$1 = p + 2;
+          t0$4[$_set](t1$1, t0$4[$_get](t1$1) - a * (this[_network][$_get](p + 2) - r) / 262144);
+          k = k - 1;
+        }
+      }
+    }
+    [_contest](b, g, r) {
+      let t0, t0$, t0$0, t1, t0$1, t1$, t0$2, t1$0, t0$3, t1$1, t0$4;
+      let bestd = 1e+30;
+      let bestBiasDist = bestd;
+      let bestpos = -1;
+      let bestbiaspos = bestpos;
+      for (let i = this.specials, p = this.specials * 3; i < this.netSize; i = i + 1) {
+        let dist = this[_network][$_get]((t0 = p, p = t0 + 1, t0)) - b;
+        if (dist < 0) {
+          dist = -dist;
+        }
+        let a = this[_network][$_get]((t0$ = p, p = t0$ + 1, t0$)) - g;
+        if (a < 0) {
+          a = -a;
+        }
+        dist = dist + a;
+        a = this[_network][$_get]((t0$0 = p, p = t0$0 + 1, t0$0)) - r;
+        if (a < 0) {
+          a = -a;
+        }
+        dist = dist + a;
+        if (dist < bestd) {
+          bestd = dist;
+          bestpos = i;
+        }
+        let biasDist = dist - this[_bias][$_get](i);
+        if (biasDist < bestBiasDist) {
+          bestBiasDist = biasDist;
+          bestbiaspos = i;
+        }
+        t0$1 = this[_freq];
+        t1 = i;
+        t0$1[$_set](t1, t0$1[$_get](t1) - 0.0009765625 * this[_freq][$_get](i));
+        t0$2 = this[_bias];
+        t1$ = i;
+        t0$2[$_set](t1$, t0$2[$_get](t1$) + 1 * this[_freq][$_get](i));
+      }
+      t0$3 = this[_freq];
+      t1$0 = bestpos;
+      t0$3[$_set](t1$0, t0$3[$_get](t1$0) + 0.0009765625);
+      t0$4 = this[_bias];
+      t1$1 = bestpos;
+      t0$4[$_set](t1$1, t0$4[$_get](t1$1) - 1);
+      return bestbiaspos;
+    }
+    [_specialFind](b, g, r) {
+      let t0, t0$, t0$0;
+      for (let i = 0, p = 0; i < this.specials; i = i + 1) {
+        if (this[_network][$_get]((t0 = p, p = t0 + 1, t0)) === b && this[_network][$_get]((t0$ = p, p = t0$ + 1, t0$)) === g && this[_network][$_get]((t0$0 = p, p = t0$0 + 1, t0$0)) === r) {
+          return i;
+        }
+      }
+      return -1;
+    }
+    get bgColor() {
+      let t0;
+      t0 = this[__NeuralQuantizer_bgColor];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("bgColor")) : t0;
+    }
+    set bgColor(bgColor$35param) {
+      this[__NeuralQuantizer_bgColor] = bgColor$35param;
+    }
+    get cutNetSize() {
+      let t0;
+      t0 = this[__NeuralQuantizer_cutNetSize];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("cutNetSize")) : t0;
+    }
+    set cutNetSize(cutNetSize$35param) {
+      this[__NeuralQuantizer_cutNetSize] = cutNetSize$35param;
+    }
+    get initRadius() {
+      let t0;
+      t0 = this[__NeuralQuantizer_initRadius];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("initRadius")) : t0;
+    }
+    set initRadius(initRadius$35param) {
+      this[__NeuralQuantizer_initRadius] = initRadius$35param;
+    }
+    set initBiasRadius(initBiasRadius$35param) {
+      this[__NeuralQuantizer_initBiasRadius] = initBiasRadius$35param;
+    }
+    get initBiasRadius() {
+      let t0;
+      t0 = this[__NeuralQuantizer_initBiasRadius];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("initBiasRadius")) : t0;
+    }
+    get [_radiusPower]() {
+      let t0;
+      t0 = this[__NeuralQuantizer__radiusPower];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_radiusPower")) : t0;
+    }
+    set [_radiusPower](library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_radiusPower$35param) {
+      this[__NeuralQuantizer__radiusPower] = library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_radiusPower$35param;
+    }
+    get [_network]() {
+      let t0;
+      t0 = this[__NeuralQuantizer__network];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_network")) : t0;
+    }
+    set [_network](library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_network$35param) {
+      this[__NeuralQuantizer__network] = library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_network$35param;
+    }
+    get [_colorMap]() {
+      let t0;
+      t0 = this[__NeuralQuantizer__colorMap];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_colorMap")) : t0;
+    }
+    set [_colorMap](library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_colorMap$35param) {
+      this[__NeuralQuantizer__colorMap] = library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_colorMap$35param;
+    }
+    get [_bias]() {
+      let t0;
+      t0 = this[__NeuralQuantizer__bias];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_bias")) : t0;
+    }
+    set [_bias](library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_bias$35param) {
+      this[__NeuralQuantizer__bias] = library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_bias$35param;
+    }
+    get [_freq]() {
+      let t0;
+      t0 = this[__NeuralQuantizer__freq];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_freq")) : t0;
+    }
+    set [_freq](library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_freq$35param) {
+      this[__NeuralQuantizer__freq] = library$32package$58image$47src$47util$47neural_quantizer$46dart$58$58_freq$35param;
+    }
+  };
+  (neural_quantizer.NeuralQuantizer.new = function(image, opts) {
+    let numberOfColors = opts && 'numberOfColors' in opts ? opts.numberOfColors : 256;
+    let samplingFactor = opts && 'samplingFactor' in opts ? opts.samplingFactor : 10;
+    this[__NeuralQuantizer_colorMap] = null;
+    this[netSize] = 16;
+    this[specials] = 3;
+    this[__NeuralQuantizer_bgColor] = null;
+    this[__NeuralQuantizer_cutNetSize] = null;
+    this[maxNetPos] = null;
+    this[__NeuralQuantizer_initRadius] = null;
+    this[__NeuralQuantizer_initBiasRadius] = null;
+    this[__NeuralQuantizer__radiusPower] = null;
+    this[__NeuralQuantizer__network] = null;
+    this[__NeuralQuantizer__colorMap] = null;
+    this[_netIndex] = _native_typed_data.NativeInt32List.new(256);
+    this[__NeuralQuantizer__bias] = null;
+    this[__NeuralQuantizer__freq] = null;
+    this[samplingFactor$] = samplingFactor;
+    this[_initialize](numberOfColors);
+    this.addImage(image);
+  }).prototype = neural_quantizer.NeuralQuantizer.prototype;
+  dart.addTypeTests(neural_quantizer.NeuralQuantizer);
+  dart.addTypeCaches(neural_quantizer.NeuralQuantizer);
+  dart.setMethodSignature(neural_quantizer.NeuralQuantizer, () => ({
+    __proto__: dart.getMethods(neural_quantizer.NeuralQuantizer.__proto__),
+    addImage: dart.fnType(dart.void, [image.Image]),
+    color: dart.fnType(core.int, [core.int]),
+    lookup: dart.fnType(core.int, [core.int]),
+    lookupRGB: dart.fnType(core.int, [core.int, core.int, core.int]),
+    getQuantizedColor: dart.fnType(core.int, [core.int]),
+    getIndexMap: dart.fnType(typed_data.Uint8List, [image.Image]),
+    [_initialize]: dart.fnType(dart.void, [core.int]),
+    [_copyColorMap]: dart.fnType(dart.void, []),
+    [_inxSearch]: dart.fnType(core.int, [core.int, core.int, core.int]),
+    [_fix]: dart.fnType(dart.void, []),
+    [_inxBuild]: dart.fnType(dart.void, []),
+    [_updateRadiusPower]: dart.fnType(dart.void, [core.int, core.int]),
+    [_learn]: dart.fnType(dart.void, [image.Image]),
+    [_alterSingle]: dart.fnType(dart.void, [core.double, core.int, core.double, core.double, core.double]),
+    [_alterNeighbors]: dart.fnType(dart.void, [core.double, core.int, core.int, core.double, core.double, core.double]),
+    [_contest]: dart.fnType(core.int, [core.double, core.double, core.double]),
+    [_specialFind]: dart.fnType(core.int, [core.double, core.double, core.double])
+  }));
+  dart.setGetterSignature(neural_quantizer.NeuralQuantizer, () => ({
+    __proto__: dart.getGetters(neural_quantizer.NeuralQuantizer.__proto__),
+    colorMap: typed_data.Uint8List,
+    numColors: core.int,
+    bgColor: core.int,
+    cutNetSize: core.int,
+    initRadius: core.int,
+    initBiasRadius: core.int,
+    [_radiusPower]: typed_data.Int32List,
+    [_network]: core.List$(core.double),
+    [_colorMap]: typed_data.Int32List,
+    [_bias]: core.List$(core.double),
+    [_freq]: core.List$(core.double)
+  }));
+  dart.setSetterSignature(neural_quantizer.NeuralQuantizer, () => ({
+    __proto__: dart.getSetters(neural_quantizer.NeuralQuantizer.__proto__),
+    colorMap: typed_data.Uint8List,
+    bgColor: core.int,
+    cutNetSize: core.int,
+    initRadius: core.int,
+    initBiasRadius: core.int,
+    [_radiusPower]: typed_data.Int32List,
+    [_network]: core.List$(core.double),
+    [_colorMap]: typed_data.Int32List,
+    [_bias]: core.List$(core.double),
+    [_freq]: core.List$(core.double)
+  }));
+  dart.setLibraryUri(neural_quantizer.NeuralQuantizer, I[0]);
+  dart.setFieldSignature(neural_quantizer.NeuralQuantizer, () => ({
+    __proto__: dart.getFields(neural_quantizer.NeuralQuantizer.__proto__),
+    [__NeuralQuantizer_colorMap]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    samplingFactor: dart.fieldType(core.int),
+    netSize: dart.fieldType(core.int),
+    specials: dart.fieldType(core.int),
+    [__NeuralQuantizer_bgColor]: dart.fieldType(dart.nullable(core.int)),
+    [__NeuralQuantizer_cutNetSize]: dart.fieldType(dart.nullable(core.int)),
+    maxNetPos: dart.fieldType(dart.nullable(core.int)),
+    [__NeuralQuantizer_initRadius]: dart.fieldType(dart.nullable(core.int)),
+    [__NeuralQuantizer_initBiasRadius]: dart.fieldType(dart.nullable(core.int)),
+    [__NeuralQuantizer__radiusPower]: dart.fieldType(dart.nullable(typed_data.Int32List)),
+    [__NeuralQuantizer__network]: dart.fieldType(dart.nullable(core.List$(core.double))),
+    [__NeuralQuantizer__colorMap]: dart.fieldType(dart.nullable(typed_data.Int32List)),
+    [_netIndex]: dart.finalFieldType(typed_data.Int32List),
+    [__NeuralQuantizer__bias]: dart.fieldType(dart.nullable(core.List$(core.double))),
+    [__NeuralQuantizer__freq]: dart.fieldType(dart.nullable(core.List$(core.double)))
+  }));
+  dart.setStaticFieldSignature(neural_quantizer.NeuralQuantizer, () => ['numCycles', 'alphaBiasShift', 'initAlpha', 'radiusBiasShift', 'radiusBias', 'alphaRadiusBiasShift', 'alphaRadiusBias', 'radiusDec', 'gamma', 'beta', 'betaGamma', 'prime1', 'prime2', 'prime3', 'prime4', 'maxPrime', 'smallImageBytes']);
+  dart.defineLazy(neural_quantizer.NeuralQuantizer, {
+    /*neural_quantizer.NeuralQuantizer.numCycles*/get numCycles() {
+      return 100;
+    },
+    /*neural_quantizer.NeuralQuantizer.alphaBiasShift*/get alphaBiasShift() {
+      return 10;
+    },
+    /*neural_quantizer.NeuralQuantizer.initAlpha*/get initAlpha() {
+      return 1024;
+    },
+    /*neural_quantizer.NeuralQuantizer.radiusBiasShift*/get radiusBiasShift() {
+      return 8;
+    },
+    /*neural_quantizer.NeuralQuantizer.radiusBias*/get radiusBias() {
+      return 256;
+    },
+    /*neural_quantizer.NeuralQuantizer.alphaRadiusBiasShift*/get alphaRadiusBiasShift() {
+      return 18;
+    },
+    /*neural_quantizer.NeuralQuantizer.alphaRadiusBias*/get alphaRadiusBias() {
+      return 262144;
+    },
+    /*neural_quantizer.NeuralQuantizer.radiusDec*/get radiusDec() {
+      return 30;
+    },
+    /*neural_quantizer.NeuralQuantizer.gamma*/get gamma() {
+      return 1024;
+    },
+    /*neural_quantizer.NeuralQuantizer.beta*/get beta() {
+      return 0.0009765625;
+    },
+    /*neural_quantizer.NeuralQuantizer.betaGamma*/get betaGamma() {
+      return 1;
+    },
+    /*neural_quantizer.NeuralQuantizer.prime1*/get prime1() {
+      return 499;
+    },
+    /*neural_quantizer.NeuralQuantizer.prime2*/get prime2() {
+      return 491;
+    },
+    /*neural_quantizer.NeuralQuantizer.prime3*/get prime3() {
+      return 487;
+    },
+    /*neural_quantizer.NeuralQuantizer.prime4*/get prime4() {
+      return 503;
+    },
+    /*neural_quantizer.NeuralQuantizer.maxPrime*/get maxPrime() {
+      return 503;
+    },
+    /*neural_quantizer.NeuralQuantizer.smallImageBytes*/get smallImageBytes() {
+      return 1509;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/util/neural_quantizer.dart", {
+    "package:image/src/util/neural_quantizer.dart": neural_quantizer
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["neural_quantizer.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/util/neural_quantizer.dart.lib.js"}');
+  // Exports:
+  return {
+    src__util__neural_quantizer: neural_quantizer
+  };
+}));
+
+//# sourceMappingURL=neural_quantizer.dart.lib.js.map

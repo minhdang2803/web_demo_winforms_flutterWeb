@@ -1,0 +1,549 @@
+define(['dart_sdk', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/material/text_form_field.dart', 'packages/flutter/src/services/text_formatter.dart', 'packages/theme/src/cc_color.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/material/typography.dart'], (function load__packages__widget__common__text_field__halo_text_field_dart(dart_sdk, packages__flutter__src__services__text_editing_delta$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__material__text_form_field$46dart, packages__flutter__src__services__text_formatter$46dart, packages__theme__src__cc_color$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__material__typography$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text_input = packages__flutter__src__services__text_editing_delta$46dart.src__services__text_input;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const editable_text = packages__flutter__src__widgets__title$46dart.src__widgets__editable_text;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const focus_scope = packages__flutter__src__widgets__title$46dart.src__widgets__focus_scope;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const text_form_field = packages__flutter__src__material__text_form_field$46dart.src__material__text_form_field;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  const cc_color = packages__theme__src__cc_color$46dart.src__cc_color;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const text_theme = packages__flutter__src__material__typography$46dart.src__material__text_theme;
+  var halo_text_field = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $addAll = dartx.addAll;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToNvoid: () => (T.VoidToNvoid = dart.constFn(dart.nullable(T.VoidTovoid())))(),
+    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    JSArrayOfTextInputFormatter: () => (T.JSArrayOfTextInputFormatter = dart.constFn(_interceptors.JSArray$(text_formatter.TextInputFormatter)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: text_input.TextInputType.prototype,
+        [TextInputType_decimal]: null,
+        [TextInputType_signed]: null,
+        [TextInputType_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CcTextField",
+        [_Location_column]: 9,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/common/text_field/halo_text_field.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 20,
+        [_Location_line]: 118,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/common/text_field/halo_text_field.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 23,
+        [_Location_line]: 117,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/common/text_field/halo_text_field.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextFormField",
+        [_Location_column]: 14,
+        [_Location_line]: 88,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/common/text_field/halo_text_field.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 81,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/common/text_field/halo_text_field.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 0,
+        [Radius_x]: 0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: border_radius.BorderRadius.prototype,
+        [BorderRadius_bottomRight]: C[8] || CT.C8,
+        [BorderRadius_bottomLeft]: C[8] || CT.C8,
+        [BorderRadius_topRight]: C[8] || CT.C8,
+        [BorderRadius_topLeft]: C[8] || CT.C8
+      });
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
+  var I = ["package:widget/common/text_field/halo_text_field.dart"];
+  var controller$ = dart.privateName(halo_text_field, "CcTextField.controller");
+  var margin$ = dart.privateName(halo_text_field, "CcTextField.margin");
+  var onClean$ = dart.privateName(halo_text_field, "CcTextField.onClean");
+  var errorText$ = dart.privateName(halo_text_field, "CcTextField.errorText");
+  var hintText$ = dart.privateName(halo_text_field, "CcTextField.hintText");
+  var labelText$ = dart.privateName(halo_text_field, "CcTextField.labelText");
+  var validator$ = dart.privateName(halo_text_field, "CcTextField.validator");
+  var suffixIcon$ = dart.privateName(halo_text_field, "CcTextField.suffixIcon");
+  var readOnly$ = dart.privateName(halo_text_field, "CcTextField.readOnly");
+  var onTabSuffix$ = dart.privateName(halo_text_field, "CcTextField.onTabSuffix");
+  var onChange$ = dart.privateName(halo_text_field, "CcTextField.onChange");
+  var enableOutline$ = dart.privateName(halo_text_field, "CcTextField.enableOutline");
+  var backgroundColor$ = dart.privateName(halo_text_field, "CcTextField.backgroundColor");
+  var radiusBorder$ = dart.privateName(halo_text_field, "CcTextField.radiusBorder");
+  var padding$ = dart.privateName(halo_text_field, "CcTextField.padding");
+  var initialValue$ = dart.privateName(halo_text_field, "CcTextField.initialValue");
+  var allowFormat$ = dart.privateName(halo_text_field, "CcTextField.allowFormat");
+  var denyFormat$ = dart.privateName(halo_text_field, "CcTextField.denyFormat");
+  var keyboardType$ = dart.privateName(halo_text_field, "CcTextField.keyboardType");
+  var onTap$ = dart.privateName(halo_text_field, "CcTextField.onTap");
+  var textInputAction$ = dart.privateName(halo_text_field, "CcTextField.textInputAction");
+  var labelStyle$ = dart.privateName(halo_text_field, "CcTextField.labelStyle");
+  var hintStyle$ = dart.privateName(halo_text_field, "CcTextField.hintStyle");
+  var borderColor$ = dart.privateName(halo_text_field, "CcTextField.borderColor");
+  var focusedBorderColor$ = dart.privateName(halo_text_field, "CcTextField.focusedBorderColor");
+  var cursorColor$ = dart.privateName(halo_text_field, "CcTextField.cursorColor");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var TextInputType_decimal = dart.privateName(text_input, "TextInputType.decimal");
+  var TextInputType_signed = dart.privateName(text_input, "TextInputType.signed");
+  var TextInputType_index = dart.privateName(text_input, "TextInputType.index");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  halo_text_field.CcTextField = class CcTextField extends framework.StatefulWidget {
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get margin() {
+      return this[margin$];
+    }
+    set margin(value) {
+      super.margin = value;
+    }
+    get onClean() {
+      return this[onClean$];
+    }
+    set onClean(value) {
+      super.onClean = value;
+    }
+    get errorText() {
+      return this[errorText$];
+    }
+    set errorText(value) {
+      super.errorText = value;
+    }
+    get hintText() {
+      return this[hintText$];
+    }
+    set hintText(value) {
+      super.hintText = value;
+    }
+    get labelText() {
+      return this[labelText$];
+    }
+    set labelText(value) {
+      super.labelText = value;
+    }
+    get validator() {
+      return this[validator$];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get suffixIcon() {
+      return this[suffixIcon$];
+    }
+    set suffixIcon(value) {
+      super.suffixIcon = value;
+    }
+    get readOnly() {
+      return this[readOnly$];
+    }
+    set readOnly(value) {
+      super.readOnly = value;
+    }
+    get onTabSuffix() {
+      return this[onTabSuffix$];
+    }
+    set onTabSuffix(value) {
+      super.onTabSuffix = value;
+    }
+    get onChange() {
+      return this[onChange$];
+    }
+    set onChange(value) {
+      super.onChange = value;
+    }
+    get enableOutline() {
+      return this[enableOutline$];
+    }
+    set enableOutline(value) {
+      super.enableOutline = value;
+    }
+    get backgroundColor() {
+      return this[backgroundColor$];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get radiusBorder() {
+      return this[radiusBorder$];
+    }
+    set radiusBorder(value) {
+      super.radiusBorder = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get initialValue() {
+      return this[initialValue$];
+    }
+    set initialValue(value) {
+      super.initialValue = value;
+    }
+    get allowFormat() {
+      return this[allowFormat$];
+    }
+    set allowFormat(value) {
+      super.allowFormat = value;
+    }
+    get denyFormat() {
+      return this[denyFormat$];
+    }
+    set denyFormat(value) {
+      super.denyFormat = value;
+    }
+    get keyboardType() {
+      return this[keyboardType$];
+    }
+    set keyboardType(value) {
+      super.keyboardType = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get textInputAction() {
+      return this[textInputAction$];
+    }
+    set textInputAction(value) {
+      super.textInputAction = value;
+    }
+    get labelStyle() {
+      return this[labelStyle$];
+    }
+    set labelStyle(value) {
+      super.labelStyle = value;
+    }
+    get hintStyle() {
+      return this[hintStyle$];
+    }
+    set hintStyle(value) {
+      super.hintStyle = value;
+    }
+    get borderColor() {
+      return this[borderColor$];
+    }
+    set borderColor(value) {
+      super.borderColor = value;
+    }
+    get focusedBorderColor() {
+      return this[focusedBorderColor$];
+    }
+    set focusedBorderColor(value) {
+      super.focusedBorderColor = value;
+    }
+    get cursorColor() {
+      return this[cursorColor$];
+    }
+    set cursorColor(value) {
+      super.cursorColor = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let controller = opts && 'controller' in opts ? opts.controller : null;
+      let margin = opts && 'margin' in opts ? opts.margin : null;
+      let onClean = opts && 'onClean' in opts ? opts.onClean : null;
+      let validator = opts && 'validator' in opts ? opts.validator : null;
+      let errorText = opts && 'errorText' in opts ? opts.errorText : null;
+      let hintText = opts && 'hintText' in opts ? opts.hintText : null;
+      let labelText = opts && 'labelText' in opts ? opts.labelText : null;
+      let suffixIcon = opts && 'suffixIcon' in opts ? opts.suffixIcon : null;
+      let onTabSuffix = opts && 'onTabSuffix' in opts ? opts.onTabSuffix : null;
+      let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+      let enableOutline = opts && 'enableOutline' in opts ? opts.enableOutline : false;
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[0] || CT.C0;
+      let radiusBorder = opts && 'radiusBorder' in opts ? opts.radiusBorder : 6;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+      let allowFormat = opts && 'allowFormat' in opts ? opts.allowFormat : null;
+      let denyFormat = opts && 'denyFormat' in opts ? opts.denyFormat : null;
+      let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : C[1] || CT.C1;
+      let readOnly = opts && 'readOnly' in opts ? opts.readOnly : false;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+      let labelStyle = opts && 'labelStyle' in opts ? opts.labelStyle : null;
+      let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+      let hintStyle = opts && 'hintStyle' in opts ? opts.hintStyle : null;
+      let focusedBorderColor = opts && 'focusedBorderColor' in opts ? opts.focusedBorderColor : null;
+      let cursorColor = opts && 'cursorColor' in opts ? opts.cursorColor : null;
+      return new halo_text_field.CcTextField.new({key: key, controller: controller, margin: margin, onClean: onClean, validator: validator, errorText: errorText, hintText: hintText, labelText: labelText, suffixIcon: suffixIcon, onTabSuffix: onTabSuffix, onChange: onChange, enableOutline: enableOutline, backgroundColor: backgroundColor, radiusBorder: radiusBorder, padding: padding, initialValue: initialValue, allowFormat: allowFormat, denyFormat: denyFormat, keyboardType: keyboardType, readOnly: readOnly, onTap: onTap, textInputAction: textInputAction, labelStyle: labelStyle, borderColor: borderColor, hintStyle: hintStyle, focusedBorderColor: focusedBorderColor, cursorColor: cursorColor, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    createState() {
+      return new halo_text_field._TextFieldBaseState.new();
+    }
+  };
+  (halo_text_field.CcTextField.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let onClean = opts && 'onClean' in opts ? opts.onClean : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let errorText = opts && 'errorText' in opts ? opts.errorText : null;
+    let hintText = opts && 'hintText' in opts ? opts.hintText : null;
+    let labelText = opts && 'labelText' in opts ? opts.labelText : null;
+    let suffixIcon = opts && 'suffixIcon' in opts ? opts.suffixIcon : null;
+    let onTabSuffix = opts && 'onTabSuffix' in opts ? opts.onTabSuffix : null;
+    let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+    let enableOutline = opts && 'enableOutline' in opts ? opts.enableOutline : false;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : C[0] || CT.C0;
+    let radiusBorder = opts && 'radiusBorder' in opts ? opts.radiusBorder : 6;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+    let allowFormat = opts && 'allowFormat' in opts ? opts.allowFormat : null;
+    let denyFormat = opts && 'denyFormat' in opts ? opts.denyFormat : null;
+    let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : C[1] || CT.C1;
+    let readOnly = opts && 'readOnly' in opts ? opts.readOnly : false;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let labelStyle = opts && 'labelStyle' in opts ? opts.labelStyle : null;
+    let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+    let hintStyle = opts && 'hintStyle' in opts ? opts.hintStyle : null;
+    let focusedBorderColor = opts && 'focusedBorderColor' in opts ? opts.focusedBorderColor : null;
+    let cursorColor = opts && 'cursorColor' in opts ? opts.cursorColor : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[controller$] = controller;
+    this[margin$] = margin;
+    this[onClean$] = onClean;
+    this[validator$] = validator;
+    this[errorText$] = errorText;
+    this[hintText$] = hintText;
+    this[labelText$] = labelText;
+    this[suffixIcon$] = suffixIcon;
+    this[onTabSuffix$] = onTabSuffix;
+    this[onChange$] = onChange;
+    this[enableOutline$] = enableOutline;
+    this[backgroundColor$] = backgroundColor;
+    this[radiusBorder$] = radiusBorder;
+    this[padding$] = padding;
+    this[initialValue$] = initialValue;
+    this[allowFormat$] = allowFormat;
+    this[denyFormat$] = denyFormat;
+    this[keyboardType$] = keyboardType;
+    this[readOnly$] = readOnly;
+    this[onTap$] = onTap;
+    this[textInputAction$] = textInputAction;
+    this[labelStyle$] = labelStyle;
+    this[borderColor$] = borderColor;
+    this[hintStyle$] = hintStyle;
+    this[focusedBorderColor$] = focusedBorderColor;
+    this[cursorColor$] = cursorColor;
+    halo_text_field.CcTextField.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = halo_text_field.CcTextField.prototype;
+  dart.addTypeTests(halo_text_field.CcTextField);
+  dart.addTypeCaches(halo_text_field.CcTextField);
+  dart.setMethodSignature(halo_text_field.CcTextField, () => ({
+    __proto__: dart.getMethods(halo_text_field.CcTextField.__proto__),
+    createState: dart.fnType(halo_text_field._TextFieldBaseState, [])
+  }));
+  dart.setLibraryUri(halo_text_field.CcTextField, I[0]);
+  dart.setFieldSignature(halo_text_field.CcTextField, () => ({
+    __proto__: dart.getFields(halo_text_field.CcTextField.__proto__),
+    controller: dart.finalFieldType(dart.nullable(editable_text.TextEditingController)),
+    margin: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+    onClean: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, []))),
+    errorText: dart.finalFieldType(dart.nullable(core.String)),
+    hintText: dart.finalFieldType(dart.nullable(core.String)),
+    labelText: dart.finalFieldType(dart.nullable(core.String)),
+    validator: dart.finalFieldType(dart.nullable(dart.fnType(dart.nullable(core.String), [dart.nullable(core.String)]))),
+    suffixIcon: dart.finalFieldType(dart.nullable(icon.Icon)),
+    readOnly: dart.finalFieldType(core.bool),
+    onTabSuffix: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, []))),
+    onChange: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, [core.String]))),
+    enableOutline: dart.finalFieldType(core.bool),
+    backgroundColor: dart.finalFieldType(ui.Color),
+    radiusBorder: dart.finalFieldType(core.double),
+    padding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsets)),
+    initialValue: dart.finalFieldType(dart.nullable(core.String)),
+    allowFormat: dart.finalFieldType(dart.nullable(core.String)),
+    denyFormat: dart.finalFieldType(dart.nullable(core.String)),
+    keyboardType: dart.finalFieldType(text_input.TextInputType),
+    onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, []))),
+    textInputAction: dart.finalFieldType(dart.nullable(text_input.TextInputAction)),
+    labelStyle: dart.finalFieldType(dart.nullable(text_style.TextStyle)),
+    hintStyle: dart.finalFieldType(dart.nullable(text_style.TextStyle)),
+    borderColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    focusedBorderColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    cursorColor: dart.finalFieldType(dart.nullable(ui.Color))
+  }));
+  var ___TextFieldBaseState_theme = dart.privateName(halo_text_field, "_#_TextFieldBaseState#theme");
+  var ___TextFieldBaseState_textTheme = dart.privateName(halo_text_field, "_#_TextFieldBaseState#textTheme");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
+  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
+  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
+  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
+  halo_text_field._TextFieldBaseState = class _TextFieldBaseState extends framework.State$(halo_text_field.CcTextField) {
+    get theme() {
+      let t0;
+      t0 = this[___TextFieldBaseState_theme];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("theme")) : t0;
+    }
+    set theme(theme$35param) {
+      this[___TextFieldBaseState_theme] = theme$35param;
+    }
+    get textTheme() {
+      let t0;
+      t0 = this[___TextFieldBaseState_textTheme];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("textTheme")) : t0;
+    }
+    set textTheme(textTheme$35param) {
+      this[___TextFieldBaseState_textTheme] = textTheme$35param;
+    }
+    initState() {
+      super.initState();
+      this.regexExist = this.widget.allowFormat != null || this.widget.denyFormat != null;
+    }
+    build(context) {
+      let t0, t1, t1$, t1$0, t1$1, t1$2, t1$3, t1$4, t2, t1$5, t1$6, t2$, t1$7;
+      this.theme = theme.Theme.of(context);
+      this.textTheme = this.theme.textTheme;
+      return new container.Container.new({margin: this.widget.margin, padding: this.widget.padding, decoration: new box_decoration.BoxDecoration.new({borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(this.widget.radiusBorder)), color: this.widget.backgroundColor}), child: new text_form_field.TextFormField.new({onTap: T.VoidToNvoid().as((t0 = this.widget.onTap, t0 == null ? null : t0())), textInputAction: this.widget.textInputAction, onFieldSubmitted: dart.fn(_ => this.widget.textInputAction === text_input.TextInputAction.next ? focus_scope.FocusScope.of(context).nextFocus() : focus_scope.FocusScope.of(context).unfocus(), T.StringTovoid()), readOnly: this.widget.readOnly, onChanged: dart.fn(value => {
+            let t0;
+            t0 = this.widget.onChange;
+            return t0 == null ? null : t0(value);
+          }, T.StringTovoid()), keyboardType: this.widget.keyboardType, inputFormatters: this.regexExist === true ? (() => {
+            let t0 = T.JSArrayOfTextInputFormatter().of([]);
+            if ((t1 = this.widget.allowFormat, t1 == null ? null : t1[$isNotEmpty]) === true)
+              t0[$addAll](T.JSArrayOfTextInputFormatter().of([new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new((t1$ = this.widget.allowFormat, t1$ == null ? "" : t1$)))]));
+            else if ((t1$0 = this.widget.allowFormat, t1$0 == null ? null : t1$0[$isNotEmpty]) === true) t0[$addAll](T.JSArrayOfTextInputFormatter().of([new text_formatter.FilteringTextInputFormatter.deny(core.RegExp.new((t1$1 = this.widget.denyFormat, t1$1 == null ? "" : t1$1)))]));
+            return t0;
+          })() : null, validator: this.widget.validator, controller: this.widget.controller, decoration: new input_decorator.InputDecoration.new({suffixIcon: new basic.SizedBox.new({child: new ink_well.InkWell.new({child: this.widget.suffixIcon, onTap: dart.fn(() => {
+                  let t1;
+                  t1 = this.widget.onTabSuffix;
+                  return t1 == null ? null : t1();
+                }, T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), height: 20.0, width: 20.0, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), hintText: this.widget.hintText, labelText: this.widget.labelText, focusedBorder: this.getInputBorder(this.widget.enableOutline, (t1$2 = this.widget.focusedBorderColor, t1$2 == null ? this.theme.primaryColor : t1$2)), enabledBorder: this.getInputBorder(this.widget.enableOutline, (t1$3 = this.widget.borderColor, t1$3 == null ? cc_color.CcColors.secondary : t1$3)), errorBorder: this.getInputBorder(this.widget.enableOutline, cc_color.CcColors.notice), focusedErrorBorder: this.getInputBorder(this.widget.enableOutline, cc_color.CcColors.notice), errorStyle: (t1$4 = this.theme.textTheme.headline6, t1$4 == null ? null : t1$4.copyWith({fontSize: 12.0, fontWeight: ui.FontWeight.normal, color: cc_color.CcColors.notice})), hintStyle: (t1$5 = this.widget.hintStyle, t1$5 == null ? (t2 = this.theme.textTheme.headline6, t2 == null ? null : t2.copyWith({fontSize: 15.0, fontWeight: ui.FontWeight.normal, color: cc_color.CcColors.secondary})) : t1$5)}), cursorColor: (t1$6 = this.widget.cursorColor, t1$6 == null ? this.theme.primaryColor : t1$6), style: (t1$7 = this.widget.labelStyle, t1$7 == null ? (t2$ = this.theme.textTheme.headline6, t2$ == null ? null : t2$.copyWith({fontSize: 15.0, fontWeight: ui.FontWeight.normal, color: cc_color.CcColors.black})) : t1$7), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+    }
+    getInputBorder(enableOutline, _color) {
+      return this.widget.backgroundColor._equals(colors.Colors.transparent) ? enableOutline ? this.outlineInputBorder(_color) : this.underlineInputBorder(_color) : input_border.InputBorder.none;
+    }
+    underlineInputBorder(_color) {
+      return new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({width: 1.0, color: _color}), borderRadius: C[7] || CT.C7});
+    }
+    outlineInputBorder(_color) {
+      return new input_border.OutlineInputBorder.new({borderSide: new borders.BorderSide.new({color: _color, width: 1.0}), borderRadius: new border_radius.BorderRadius.circular(8.0)});
+    }
+    static ['_#new#tearOff']() {
+      return new halo_text_field._TextFieldBaseState.new();
+    }
+  };
+  (halo_text_field._TextFieldBaseState.new = function() {
+    this[___TextFieldBaseState_theme] = null;
+    this[___TextFieldBaseState_textTheme] = null;
+    this.regexExist = false;
+    halo_text_field._TextFieldBaseState.__proto__.new.call(this);
+    ;
+  }).prototype = halo_text_field._TextFieldBaseState.prototype;
+  dart.addTypeTests(halo_text_field._TextFieldBaseState);
+  dart.addTypeCaches(halo_text_field._TextFieldBaseState);
+  dart.setMethodSignature(halo_text_field._TextFieldBaseState, () => ({
+    __proto__: dart.getMethods(halo_text_field._TextFieldBaseState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    getInputBorder: dart.fnType(input_border.InputBorder, [core.bool, ui.Color]),
+    underlineInputBorder: dart.fnType(input_border.UnderlineInputBorder, [ui.Color]),
+    outlineInputBorder: dart.fnType(input_border.OutlineInputBorder, [ui.Color])
+  }));
+  dart.setGetterSignature(halo_text_field._TextFieldBaseState, () => ({
+    __proto__: dart.getGetters(halo_text_field._TextFieldBaseState.__proto__),
+    theme: theme_data.ThemeData,
+    textTheme: text_theme.TextTheme
+  }));
+  dart.setSetterSignature(halo_text_field._TextFieldBaseState, () => ({
+    __proto__: dart.getSetters(halo_text_field._TextFieldBaseState.__proto__),
+    theme: theme_data.ThemeData,
+    textTheme: text_theme.TextTheme
+  }));
+  dart.setLibraryUri(halo_text_field._TextFieldBaseState, I[0]);
+  dart.setFieldSignature(halo_text_field._TextFieldBaseState, () => ({
+    __proto__: dart.getFields(halo_text_field._TextFieldBaseState.__proto__),
+    [___TextFieldBaseState_theme]: dart.fieldType(dart.nullable(theme_data.ThemeData)),
+    [___TextFieldBaseState_textTheme]: dart.fieldType(dart.nullable(text_theme.TextTheme)),
+    regexExist: dart.fieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/widget/common/text_field/halo_text_field.dart", {
+    "package:widget/common/text_field/halo_text_field.dart": halo_text_field
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["halo_text_field.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/widget/common/text_field/halo_text_field.dart.lib.js"}');
+  // Exports:
+  return {
+    common__text_field__halo_text_field: halo_text_field
+  };
+}));
+
+//# sourceMappingURL=halo_text_field.dart.lib.js.map

@@ -1,0 +1,398 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter_screenutil/src/screen_util.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/painting/alignment.dart'], (function load__packages__flutter_screenutil__src__screenutil_init_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter_screenutil__src__screen_util$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__painting__alignment$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const media_query = packages__flutter__src__widgets__title$46dart.src__widgets__media_query;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const binding = packages__flutter__src__widgets__title$46dart.src__widgets__binding;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const screen_util = packages__flutter_screenutil__src__screen_util$46dart.src__screen_util;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  var screenutil_init = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    MediaQueryDataAndMediaQueryDataTobool: () => (T.MediaQueryDataAndMediaQueryDataTobool = dart.constFn(dart.fnType(core.bool, [media_query.MediaQueryData, media_query.MediaQueryData])))(),
+    BuildContextToContainer: () => (T.BuildContextToContainer = dart.constFn(dart.fnType(container.Container, [framework.BuildContext])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(screenutil_init.RebuildFactors.size, T.MediaQueryDataAndMediaQueryDataTobool());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 690,
+        [OffsetBase__dx]: 360
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ScreenUtilInit",
+        [_Location_column]: 9,
+        [_Location_line]: 34,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 56,
+        [_Location_line]: 126,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[4] || CT.C4,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 26,
+        [_Location_line]: 146,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FittedBox",
+        [_Location_column]: 24,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 20,
+        [_Location_line]: 140,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Builder",
+        [_Location_column]: 16,
+        [_Location_line]: 131,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "MediaQuery",
+        [_Location_column]: 14,
+        [_Location_line]: 128,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 18,
+        [_Location_line]: 174,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FittedBox",
+        [_Location_column]: 16,
+        [_Location_line]: 171,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 168,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screenutil_init.dart"
+      });
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
+  var I = ["package:flutter_screenutil/src/screenutil_init.dart"];
+  screenutil_init.RebuildFactors = class RebuildFactors extends core.Object {
+    static ['_#_#tearOff']() {
+      return new screenutil_init.RebuildFactors.__();
+    }
+    static size(old, data) {
+      return !old.size._equals(data.size);
+    }
+    static orientation(old, data) {
+      return old.orientation !== data.orientation;
+    }
+    static sizeAndViewInsets(old, data) {
+      return !old.viewInsets._equals(data.viewInsets);
+    }
+    static all(old, data) {
+      return !old._equals(data);
+    }
+  };
+  (screenutil_init.RebuildFactors.__ = function() {
+    ;
+  }).prototype = screenutil_init.RebuildFactors.prototype;
+  dart.addTypeTests(screenutil_init.RebuildFactors);
+  dart.addTypeCaches(screenutil_init.RebuildFactors);
+  dart.setStaticMethodSignature(screenutil_init.RebuildFactors, () => ['size', 'orientation', 'sizeAndViewInsets', 'all']);
+  dart.setLibraryUri(screenutil_init.RebuildFactors, I[0]);
+  var builder$ = dart.privateName(screenutil_init, "ScreenUtilInit.builder");
+  var child$ = dart.privateName(screenutil_init, "ScreenUtilInit.child");
+  var splitScreenMode$ = dart.privateName(screenutil_init, "ScreenUtilInit.splitScreenMode");
+  var minTextAdapt$ = dart.privateName(screenutil_init, "ScreenUtilInit.minTextAdapt");
+  var useInheritedMediaQuery$ = dart.privateName(screenutil_init, "ScreenUtilInit.useInheritedMediaQuery");
+  var scaleByHeight$ = dart.privateName(screenutil_init, "ScreenUtilInit.scaleByHeight");
+  var rebuildFactor$ = dart.privateName(screenutil_init, "ScreenUtilInit.rebuildFactor");
+  var designSize$ = dart.privateName(screenutil_init, "ScreenUtilInit.designSize");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  screenutil_init.ScreenUtilInit = class ScreenUtilInit extends framework.StatefulWidget {
+    get builder() {
+      return this[builder$];
+    }
+    set builder(value) {
+      super.builder = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get splitScreenMode() {
+      return this[splitScreenMode$];
+    }
+    set splitScreenMode(value) {
+      super.splitScreenMode = value;
+    }
+    get minTextAdapt() {
+      return this[minTextAdapt$];
+    }
+    set minTextAdapt(value) {
+      super.minTextAdapt = value;
+    }
+    get useInheritedMediaQuery() {
+      return this[useInheritedMediaQuery$];
+    }
+    set useInheritedMediaQuery(value) {
+      super.useInheritedMediaQuery = value;
+    }
+    get scaleByHeight() {
+      return this[scaleByHeight$];
+    }
+    set scaleByHeight(value) {
+      super.scaleByHeight = value;
+    }
+    get rebuildFactor() {
+      return this[rebuildFactor$];
+    }
+    set rebuildFactor(value) {
+      super.rebuildFactor = value;
+    }
+    get designSize() {
+      return this[designSize$];
+    }
+    set designSize(value) {
+      super.designSize = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let rebuildFactor = opts && 'rebuildFactor' in opts ? opts.rebuildFactor : C[0] || CT.C0;
+      let designSize = opts && 'designSize' in opts ? opts.designSize : C[1] || CT.C1;
+      let splitScreenMode = opts && 'splitScreenMode' in opts ? opts.splitScreenMode : false;
+      let minTextAdapt = opts && 'minTextAdapt' in opts ? opts.minTextAdapt : false;
+      let useInheritedMediaQuery = opts && 'useInheritedMediaQuery' in opts ? opts.useInheritedMediaQuery : false;
+      let scaleByHeight = opts && 'scaleByHeight' in opts ? opts.scaleByHeight : false;
+      return new screenutil_init.ScreenUtilInit.new({key: key, builder: builder, child: child, rebuildFactor: rebuildFactor, designSize: designSize, splitScreenMode: splitScreenMode, minTextAdapt: minTextAdapt, useInheritedMediaQuery: useInheritedMediaQuery, scaleByHeight: scaleByHeight, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    createState() {
+      return new screenutil_init._ScreenUtilInitState.new();
+    }
+  };
+  (screenutil_init.ScreenUtilInit.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let rebuildFactor = opts && 'rebuildFactor' in opts ? opts.rebuildFactor : C[0] || CT.C0;
+    let designSize = opts && 'designSize' in opts ? opts.designSize : C[1] || CT.C1;
+    let splitScreenMode = opts && 'splitScreenMode' in opts ? opts.splitScreenMode : false;
+    let minTextAdapt = opts && 'minTextAdapt' in opts ? opts.minTextAdapt : false;
+    let useInheritedMediaQuery = opts && 'useInheritedMediaQuery' in opts ? opts.useInheritedMediaQuery : false;
+    let scaleByHeight = opts && 'scaleByHeight' in opts ? opts.scaleByHeight : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[builder$] = builder;
+    this[child$] = child;
+    this[rebuildFactor$] = rebuildFactor;
+    this[designSize$] = designSize;
+    this[splitScreenMode$] = splitScreenMode;
+    this[minTextAdapt$] = minTextAdapt;
+    this[useInheritedMediaQuery$] = useInheritedMediaQuery;
+    this[scaleByHeight$] = scaleByHeight;
+    screenutil_init.ScreenUtilInit.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = screenutil_init.ScreenUtilInit.prototype;
+  dart.addTypeTests(screenutil_init.ScreenUtilInit);
+  dart.addTypeCaches(screenutil_init.ScreenUtilInit);
+  dart.setMethodSignature(screenutil_init.ScreenUtilInit, () => ({
+    __proto__: dart.getMethods(screenutil_init.ScreenUtilInit.__proto__),
+    createState: dart.fnType(framework.State$(screenutil_init.ScreenUtilInit), [])
+  }));
+  dart.setLibraryUri(screenutil_init.ScreenUtilInit, I[0]);
+  dart.setFieldSignature(screenutil_init.ScreenUtilInit, () => ({
+    __proto__: dart.getFields(screenutil_init.ScreenUtilInit.__proto__),
+    builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(framework.Widget)])),
+    child: dart.finalFieldType(dart.nullable(framework.Widget)),
+    splitScreenMode: dart.finalFieldType(core.bool),
+    minTextAdapt: dart.finalFieldType(core.bool),
+    useInheritedMediaQuery: dart.finalFieldType(core.bool),
+    scaleByHeight: dart.finalFieldType(core.bool),
+    rebuildFactor: dart.finalFieldType(dart.fnType(core.bool, [media_query.MediaQueryData, media_query.MediaQueryData])),
+    designSize: dart.finalFieldType(ui.Size)
+  }));
+  var _mediaQueryData = dart.privateName(screenutil_init, "_mediaQueryData");
+  var _updateTree = dart.privateName(screenutil_init, "_updateTree");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  const State_WidgetsBindingObserver$36 = class State_WidgetsBindingObserver extends framework.State$(screenutil_init.ScreenUtilInit) {};
+  (State_WidgetsBindingObserver$36.new = function() {
+    State_WidgetsBindingObserver$36.__proto__.new.call(this);
+  }).prototype = State_WidgetsBindingObserver$36.prototype;
+  dart.applyMixin(State_WidgetsBindingObserver$36, binding.WidgetsBindingObserver);
+  screenutil_init._ScreenUtilInitState = class _ScreenUtilInitState extends State_WidgetsBindingObserver$36 {
+    get binding() {
+      return binding.WidgetsFlutterBinding.ensureInitialized();
+    }
+    get mediaQueryData() {
+      return dart.nullCheck(this[_mediaQueryData]);
+    }
+    get newData() {
+      if (this.widget.useInheritedMediaQuery) {
+        let data = media_query.MediaQuery.maybeOf(this.context);
+        if (data != null) {
+          this.wrappedInMediaQuery = true;
+          return data;
+        }
+      }
+      return new media_query.MediaQueryData.fromWindow(this.binding.window);
+    }
+    get child() {
+      return this.widget.builder(this.context, this.widget.child);
+    }
+    [_updateTree](el) {
+      el.markNeedsBuild();
+      el.visitChildren(dart.bind(this, _updateTree));
+    }
+    initState() {
+      super.initState();
+      this.binding.addObserver(this);
+    }
+    didChangeMetrics() {
+      let t2, t1, t0;
+      let old = dart.nullCheck(this[_mediaQueryData]);
+      let data = this.newData;
+      if (this.widget.scaleByHeight || (t0 = this.widget, t1 = old, t2 = data, t0.rebuildFactor(t1, t2))) {
+        this[_mediaQueryData] = data;
+        this[_updateTree](framework.Element.as(this.context));
+      }
+    }
+    didChangeDependencies() {
+      super.didChangeDependencies();
+      if (this[_mediaQueryData] == null) this[_mediaQueryData] = this.newData;
+      this.didChangeMetrics();
+    }
+    dispose() {
+      this.binding.removeObserver(this);
+      super.dispose();
+    }
+    build(_context) {
+      let t0, t0$;
+      if (this.mediaQueryData.size._equals(ui.Size.zero)) return C[3] || CT.C3;
+      if (!this.wrappedInMediaQuery) {
+        return new media_query.MediaQuery.new({data: this.mediaQueryData, child: new basic.Builder.new({builder: dart.fn(__context => {
+              let t0, t0$;
+              let deviceData = media_query.MediaQuery.maybeOf(__context);
+              let deviceSize = (t0$ = (t0 = deviceData, t0 == null ? null : t0.size), t0$ == null ? this.widget.designSize : t0$);
+              screen_util.ScreenUtil.init(__context, {designSize: this.widget.designSize, splitScreenMode: this.widget.splitScreenMode, minTextAdapt: this.widget.minTextAdapt, scaleByHeight: this.widget.scaleByHeight});
+              return new container.Container.new({width: deviceSize.width, height: deviceSize.height, child: new basic.FittedBox.new({fit: box_fit.BoxFit.none, alignment: alignment.Alignment.center, child: new container.Container.new({width: this.widget.scaleByHeight ? deviceSize.height * this.widget.designSize.width / this.widget.designSize.height : deviceSize.width, height: deviceSize.height, child: this.child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+            }, T.BuildContextToContainer()), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+      }
+      screen_util.ScreenUtil.init(_context, {designSize: this.widget.designSize, splitScreenMode: this.widget.splitScreenMode, minTextAdapt: this.widget.minTextAdapt, scaleByHeight: this.widget.scaleByHeight});
+      let deviceData = media_query.MediaQuery.maybeOf(_context);
+      let deviceSize = (t0$ = (t0 = deviceData, t0 == null ? null : t0.size), t0$ == null ? this.widget.designSize : t0$);
+      return new container.Container.new({width: deviceSize.width, height: deviceSize.height, child: new basic.FittedBox.new({fit: box_fit.BoxFit.none, alignment: alignment.Alignment.center, child: new container.Container.new({width: this.widget.scaleByHeight ? deviceSize.height * this.widget.designSize.width / this.widget.designSize.height : deviceSize.width, height: deviceSize.height, child: this.child, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+    }
+    static ['_#new#tearOff']() {
+      return new screenutil_init._ScreenUtilInitState.new();
+    }
+  };
+  (screenutil_init._ScreenUtilInitState.new = function() {
+    this[_mediaQueryData] = null;
+    this.wrappedInMediaQuery = false;
+    screenutil_init._ScreenUtilInitState.__proto__.new.call(this);
+    ;
+  }).prototype = screenutil_init._ScreenUtilInitState.prototype;
+  dart.addTypeTests(screenutil_init._ScreenUtilInitState);
+  dart.addTypeCaches(screenutil_init._ScreenUtilInitState);
+  dart.setMethodSignature(screenutil_init._ScreenUtilInitState, () => ({
+    __proto__: dart.getMethods(screenutil_init._ScreenUtilInitState.__proto__),
+    [_updateTree]: dart.fnType(dart.dynamic, [framework.Element]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(screenutil_init._ScreenUtilInitState, () => ({
+    __proto__: dart.getGetters(screenutil_init._ScreenUtilInitState.__proto__),
+    binding: binding.WidgetsBinding,
+    mediaQueryData: media_query.MediaQueryData,
+    newData: media_query.MediaQueryData,
+    child: framework.Widget
+  }));
+  dart.setLibraryUri(screenutil_init._ScreenUtilInitState, I[0]);
+  dart.setFieldSignature(screenutil_init._ScreenUtilInitState, () => ({
+    __proto__: dart.getFields(screenutil_init._ScreenUtilInitState.__proto__),
+    [_mediaQueryData]: dart.fieldType(dart.nullable(media_query.MediaQueryData)),
+    wrappedInMediaQuery: dart.fieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/flutter_screenutil/src/screenutil_init.dart", {
+    "package:flutter_screenutil/src/screenutil_init.dart": screenutil_init
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["screenutil_init.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;gBAckC,KAAoB;AAClD,YAAgB,EAAT,AAAI,GAAD,cAAS,AAAK,IAAD;IACzB;uBAEuC,KAAoB;AACzD,YAAO,AAAI,AAAY,IAAb,iBAAgB,AAAK,IAAD;IAChC;6BAE6C,KAAoB;AAC/D,YAAsB,EAAf,AAAI,GAAD,oBAAe,AAAK,IAAD;IAC/B;eAE+B,KAAoB;AACjD,YAAW,EAAJ,GAAG,SAAI,IAAI;IACpB;;;;EAhBwB;;;;;;;;;;;;;;;;;;;;IAiCI;;;;;;IACd;;;;;;IACH;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACS;;;;;;IAGT;;;;;;;;;;;;;;;;;;;AAG4B;IAAsB;;;QAvBnD;QACQ;QACT;QACA;QACA;QACA;QACA;QACA;QACA;;IAPS;IACT;IACA;IACA;IACA;IACA;IACA;IACA;AACH,kEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAuBS,YAAsB;IAAmB;;AAElC,YAAe,gBAAf;IAAgB;;AAGnD,UAAI,AAAO;AACH,mBAAkB,+BAAQ;AAEhC,YAAI,IAAI;AACoB,UAA1B,2BAAsB;AACtB,gBAAO,KAAI;;;AAIf,YAAsB,2CAAW,AAAQ;IAC3C;;AAGE,YAAO,AAAO,AAAQ,qBAAK,cAAS,AAAO;IAC7C;kBAEoB;AACC,MAAnB,AAAG,EAAD;AAC2B,MAA7B,AAAG,EAAD,yBAAe;IACnB;;AAImB,MAAX;AAEmB,MAAzB,AAAQ,yBAAY;IACtB;;;AAIQ,gBAAqB,eAAf;AACN,iBAAO;AAEb,UAAI,AAAO,mCAAiB,kBAAqB,GAAG,OAAE,IAAI,EAAV;AACxB,QAAtB,wBAAkB,IAAI;AACS,QAA/B,kBAAoB,qBAAR;;IAEhB;;AAI+B,MAAvB;AACN,UAAI,AAAgB,+BAAS,AAAyB,wBAAP;AAC7B,MAAlB;IACF;;AAI8B,MAA5B,AAAQ,4BAAe;AACR,MAAT;IACR;UAG0B;;AACxB,UAAI,AAAe,AAAK,iCAAQ,eAAM;AACtC,WAAK;AACH,cAAO,uCAEC,4BACC,gCACI,QAAC;;AACF,+BAAwB,+BAAQ,SAAS;AACzC,gCAA8B,YAAjB,UAAU,eAAV,OAAY,UAAZ,cAAoB,AAAO;AAKN,cAJ7B,4BAAK,SAAS,eACT,AAAO,yCACF,AAAO,2CACV,AAAO,yCACN,AAAO;AAC1B,oBAAO,qCACI,AAAW,UAAD,gBACT,AAAW,UAAD,gBACX,8BACO,gCACS,mCACd,oCACE,AAAO,4BACP,AAAW,AAAO,AAA2B,UAAnC,UAAU,AAAO,AAAW,+BACrC,AAAO,AAAW,gCACpB,AAAW,UAAD,gBACR,AAAW,UAAD,gBACX;;;AAYiB,MAJ7B,4BAAK,QAAQ,eACR,AAAO,yCACF,AAAO,2CACV,AAAO,yCACN,AAAO;AACpB,uBAAwB,+BAAQ,QAAQ;AAExC,wBAA8B,YAAjB,UAAU,eAAV,OAAY,UAAZ,cAAoB,AAAO;AAC9C,YAAO,qCACI,AAAW,UAAD,gBACT,AAAW,UAAD,gBACX,8BACO,gCACS,mCACd,oCACE,AAAO,4BACP,AAAW,AAAO,AAA2B,UAAnC,UAAU,AAAO,AAAW,+BACrC,AAAO,AAAW,gCACpB,AAAW,UAAD,gBACR,AAAW,UAAD,gBACX;IAGjB;;;;;;IAxHgB;IAEX,2BAAsB;;;EAuH7B","file":"../../../../../../../../../../../packages/flutter_screenutil/src/screenutil_init.dart.lib.js"}');
+  // Exports:
+  return {
+    src__screenutil_init: screenutil_init
+  };
+}));
+
+//# sourceMappingURL=screenutil_init.dart.lib.js.map

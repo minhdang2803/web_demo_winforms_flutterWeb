@@ -1,0 +1,258 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/cc_library/widget/flex/base_column_start.dart', 'packages/cc_library/src/extension/kotlin/when_expression.dart', 'packages/cc_library/widget/dynamic_form/enum/enum_dynamic_form.dart', 'packages/cc_library/widget/dynamic_form/view/input_text.dart', 'packages/cc_library/widget/dynamic_form/view/input_date_picker.dart', 'packages/cc_library/widget/dynamic_form/view/input_check_box.dart', 'packages/cc_library/widget/dynamic_form/view/input_radio_button.dart', 'packages/cc_library/widget/dynamic_form/view/input_file_picker.dart', 'packages/cc_library/widget/dynamic_form/view/select_box.dart', 'packages/cc_library/widget/dynamic_form/view/text_view.dart', 'packages/cc_library/widget/dynamic_form/model/select_box_model.dart'], (function load__packages__cc_library__widget__dynamic_form__view__input_base_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__cc_library__widget__flex__base_column_start$46dart, packages__cc_library__src__extension__kotlin__when_expression$46dart, packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart, packages__cc_library__widget__dynamic_form__view__input_text$46dart, packages__cc_library__widget__dynamic_form__view__input_date_picker$46dart, packages__cc_library__widget__dynamic_form__view__input_check_box$46dart, packages__cc_library__widget__dynamic_form__view__input_radio_button$46dart, packages__cc_library__widget__dynamic_form__view__input_file_picker$46dart, packages__cc_library__widget__dynamic_form__view__select_box$46dart, packages__cc_library__widget__dynamic_form__view__text_view$46dart, packages__cc_library__widget__dynamic_form__model__select_box_model$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const base_column_start = packages__cc_library__widget__flex__base_column_start$46dart.widget__flex__base_column_start;
+  const when_expression = packages__cc_library__src__extension__kotlin__when_expression$46dart.src__extension__kotlin__when_expression;
+  const enum_dynamic_form = packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart.widget__dynamic_form__enum__enum_dynamic_form;
+  const input_text = packages__cc_library__widget__dynamic_form__view__input_text$46dart.widget__dynamic_form__view__input_text;
+  const input_date_picker = packages__cc_library__widget__dynamic_form__view__input_date_picker$46dart.widget__dynamic_form__view__input_date_picker;
+  const input_check_box = packages__cc_library__widget__dynamic_form__view__input_check_box$46dart.widget__dynamic_form__view__input_check_box;
+  const input_radio_button = packages__cc_library__widget__dynamic_form__view__input_radio_button$46dart.widget__dynamic_form__view__input_radio_button;
+  const input_file_picker = packages__cc_library__widget__dynamic_form__view__input_file_picker$46dart.widget__dynamic_form__view__input_file_picker;
+  const select_box = packages__cc_library__widget__dynamic_form__view__select_box$46dart.widget__dynamic_form__view__select_box;
+  const text_view = packages__cc_library__widget__dynamic_form__view__text_view$46dart.widget__dynamic_form__view__text_view;
+  const input_base = packages__cc_library__widget__dynamic_form__model__select_box_model$46dart.widget__dynamic_form__model__input_base;
+  var input_base$ = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    LinkedMapOfInputObjectType$StatelessWidget: () => (T.LinkedMapOfInputObjectType$StatelessWidget = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.InputObjectType, framework.StatelessWidget)))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InputBase",
+        [_Location_column]: 9,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextInput",
+        [_Location_column]: 47,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextInput",
+        [_Location_column]: 52,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextInput",
+        [_Location_column]: 51,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextInput",
+        [_Location_column]: 43,
+        [_Location_line]: 50,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DateInput",
+        [_Location_column]: 41,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CheckBoxInput",
+        [_Location_column]: 45,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RadioButtonInput",
+        [_Location_column]: 49,
+        [_Location_line]: 53,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InputFilePicker",
+        [_Location_column]: 41,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InputSelectBox",
+        [_Location_column]: 46,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InputSelectBox",
+        [_Location_column]: 52,
+        [_Location_line]: 56,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextView",
+        [_Location_column]: 46,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 31,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[13] || CT.C13,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 11,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 11,
+        [_Location_line]: 63,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "BaseColStart",
+        [_Location_column]: 16,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Material",
+        [_Location_column]: 41,
+        [_Location_line]: 39,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/input_base.dart"
+      });
+    }
+  }, false);
+  var C = Array(18).fill(void 0);
+  var I = ["package:cc_library/widget/dynamic_form/view/input_base.dart"];
+  var model$ = dart.privateName(input_base$, "InputBase.model");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  input_base$.InputBase = class InputBase extends framework.StatelessWidget {
+    get model() {
+      return this[model$];
+    }
+    set model(value) {
+      super.model = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let model = opts && 'model' in opts ? opts.model : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      return new input_base$.InputBase.new({model: model, key: key, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    build(context) {
+      return new material.Material.new({color: colors.Colors.transparent, child: new base_column_start.BaseColStart.new({children: T.JSArrayOfWidget().of([new container.Container.new({margin: this.model.margin, child: T.WidgetN().as(when_expression.when(enum_dynamic_form.InputObjectType, framework.Widget, {variable: this.model.type, conditions: new (T.LinkedMapOfInputObjectType$StatelessWidget()).from([enum_dynamic_form.InputObjectType.INPUT_TEXT, new input_text.TextInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), enum_dynamic_form.InputObjectType.INPUT_TEXT_AREA, new input_text.TextInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), enum_dynamic_form.InputObjectType.INPUT_PASSWORD, new input_text.TextInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), enum_dynamic_form.InputObjectType.NUMBER, new input_text.TextInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), enum_dynamic_form.InputObjectType.DATE, new input_date_picker.DateInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), enum_dynamic_form.InputObjectType.CHECKBOX, new input_check_box.CheckBoxInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), enum_dynamic_form.InputObjectType.RADIO_BUTTON, new input_radio_button.RadioButtonInput.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}), enum_dynamic_form.InputObjectType.FILE, new input_file_picker.InputFilePicker.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), enum_dynamic_form.InputObjectType.SELECTBOX, new select_box.InputSelectBox.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), enum_dynamic_form.InputObjectType.SELECTBOX_MULTI, new select_box.InputSelectBox.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), enum_dynamic_form.InputObjectType.TEXT_VIEW, new text_view.TextView.new({model: this.model, $creationLocationd_0dea112b090073317d4: C[11] || CT.C11})]), orElse: C[12] || CT.C12})), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), new basic.SizedBox.new({height: 5.0, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15})]), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+    }
+  };
+  (input_base$.InputBase.new = function(opts) {
+    let model = opts && 'model' in opts ? opts.model : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[model$] = model;
+    input_base$.InputBase.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = input_base$.InputBase.prototype;
+  dart.addTypeTests(input_base$.InputBase);
+  dart.addTypeCaches(input_base$.InputBase);
+  dart.setMethodSignature(input_base$.InputBase, () => ({
+    __proto__: dart.getMethods(input_base$.InputBase.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(input_base$.InputBase, I[0]);
+  dart.setFieldSignature(input_base$.InputBase, () => ({
+    __proto__: dart.getFields(input_base$.InputBase.__proto__),
+    model: dart.finalFieldType(input_base.InputObject)
+  }));
+  dart.trackLibraries("packages/cc_library/widget/dynamic_form/view/input_base.dart", {
+    "package:cc_library/widget/dynamic_form/view/input_base.dart": input_base$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["input_base.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAeoB;;;;;;;;;;;UAuBQ;AAAY,+CAClB,kCACP,kDAAuB,wBAC5B,qCACU,AAAM,yCACP,qFACO,AAAM,6BACJ,2DACM,8CAAY,qCAAiB,qEAC7B,mDAAiB,qCAAiB,qEAClC,kDAAgB,qCAAiB,qEACjC,0CAAQ,qCAAiB,qEACzB,wCAAM,4CAAiB,qEACvB,4CAAU,8CAAqB,qEAC/B,gDAAc,oDAAwB,qEACtC,wCAAM,kDAAuB,qEAC7B,6CAAW,0CAAsB,qEACjC,mDAAiB,0CAAsB,uEACvC,6CAAW,mCAAgB,gKAMnD,gCACU;IAGb;;;QAjCW;QACT;;IADS;AAEX,yDAAW,GAAG;;EAAC","file":"../../../../../../../../../../../../../../packages/cc_library/widget/dynamic_form/view/input_base.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__dynamic_form__view__input_base: input_base$
+  };
+}));
+
+//# sourceMappingURL=input_base.dart.lib.js.map

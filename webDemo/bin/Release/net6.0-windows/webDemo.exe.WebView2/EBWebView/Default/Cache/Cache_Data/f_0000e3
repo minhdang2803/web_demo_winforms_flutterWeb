@@ -1,0 +1,579 @@
+define(['dart_sdk', 'packages/image/src/hdr/half.dart', 'packages/image/src/image.dart'], (function load__packages__image__src__hdr__hdr_slice_dart(dart_sdk, packages__image__src__hdr__half$46dart, packages__image__src__image$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const typed_data = dart_sdk.typed_data;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const half = packages__image__src__hdr__half$46dart.src__hdr__half;
+  const image = packages__image__src__image$46dart.src__image;
+  var hdr_slice = Object.create(dart.library);
+  var hdr_image = Object.create(dart.library);
+  var $sublist = dartx.sublist;
+  var $buffer = dartx.buffer;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
+  var $isEmpty = dartx.isEmpty;
+  var $first = dartx.first;
+  var $values = dartx.values;
+  var $length = dartx.length;
+  var $containsKey = dartx.containsKey;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    IdentityMapOfStringN$HdrSlice: () => (T.IdentityMapOfStringN$HdrSlice = dart.constFn(_js_helper.IdentityMap$(T.StringN(), hdr_slice.HdrSlice)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList(["R", "G", "B", "A"], core.String);
+    }
+  }, false);
+  var C = [void 0];
+  var I = [
+    "package:image/src/hdr/hdr_slice.dart",
+    "package:image/src/hdr/hdr_image.dart"
+  ];
+  var name$ = dart.privateName(hdr_slice, "HdrSlice.name");
+  var width$ = dart.privateName(hdr_slice, "HdrSlice.width");
+  var height$ = dart.privateName(hdr_slice, "HdrSlice.height");
+  var type$ = dart.privateName(hdr_slice, "HdrSlice.type");
+  var bitsPerSample$ = dart.privateName(hdr_slice, "HdrSlice.bitsPerSample");
+  var data = dart.privateName(hdr_slice, "HdrSlice.data");
+  var _maxIntSize = dart.privateName(hdr_slice, "_maxIntSize");
+  hdr_slice.HdrSlice = class HdrSlice extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+    get bitsPerSample() {
+      return this[bitsPerSample$];
+    }
+    set bitsPerSample(value) {
+      super.bitsPerSample = value;
+    }
+    get data() {
+      return this[data];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    static allocateDataForType(size, type, bitsPerSample) {
+      switch (type) {
+        case 1:
+          {
+            if (bitsPerSample === 8) {
+              return _native_typed_data.NativeInt8List.new(size);
+            } else if (bitsPerSample === 16) {
+              return _native_typed_data.NativeInt16List.new(size);
+            } else if (bitsPerSample === 32) {
+              return _native_typed_data.NativeInt32List.new(size);
+            }
+            break;
+          }
+        case 0:
+          {
+            if (bitsPerSample === 8) {
+              return _native_typed_data.NativeUint8List.new(size);
+            } else if (bitsPerSample === 16) {
+              return _native_typed_data.NativeUint16List.new(size);
+            } else if (bitsPerSample === 32) {
+              return _native_typed_data.NativeUint32List.new(size);
+            }
+            break;
+          }
+        case 3:
+          {
+            if (bitsPerSample === 16) {
+              return _native_typed_data.NativeUint16List.new(size);
+            } else if (bitsPerSample === 32) {
+              return _native_typed_data.NativeFloat32List.new(size);
+            } else if (bitsPerSample === 64) {
+              return _native_typed_data.NativeFloat64List.new(size);
+            }
+            break;
+          }
+      }
+      dart.throw(new core.UnimplementedError.new());
+    }
+    static ['_#new#tearOff'](name, width, height, type, bitsPerSample) {
+      return new hdr_slice.HdrSlice.new(name, width, height, type, bitsPerSample);
+    }
+    static ['_#from#tearOff'](other) {
+      return new hdr_slice.HdrSlice.from(other);
+    }
+    getBytes() {
+      return typed_data.Uint8List.view(typed_data.TypedData.as(this.data)[$buffer]);
+    }
+    get isFloat() {
+      return this.type === 3;
+    }
+    get [_maxIntSize]() {
+      let v = this.bitsPerSample === 8 ? 255 : this.bitsPerSample === 16 ? 65535 : 4294967295;
+      if (this.type === 1) {
+        v = v - 1;
+      }
+      return v;
+    }
+    getFloat(x, y) {
+      let pi = y * this.width + x;
+      if (this.type === 1 || this.type === 0) {
+        return core.int.as(this.data[$_get](pi)) / this[_maxIntSize];
+      }
+      let s = this.type === 3 && this.bitsPerSample === 16 ? half.Half.HalfToDouble(core.int.as(this.data[$_get](pi))) : core.double.as(this.data[$_get](pi));
+      return s;
+    }
+    setFloat(x, y, v) {
+      if (this.type !== 3) {
+        return;
+      }
+      let pi = y * this.width + x;
+      if (this.bitsPerSample === 16) {
+        this.data[$_set](pi, half.Half.DoubleToHalf(v));
+      } else {
+        this.data[$_set](pi, v);
+      }
+    }
+    getInt(x, y) {
+      let pi = y * this.width + x;
+      return core.int.as(this.data[$_get](pi));
+    }
+    setInt(x, y, v) {
+      let pi = y * this.width + x;
+      this.data[$_set](pi, v);
+    }
+  };
+  (hdr_slice.HdrSlice.new = function(name, width, height, type, bitsPerSample) {
+    this[name$] = name;
+    this[width$] = width;
+    this[height$] = height;
+    this[type$] = type;
+    this[bitsPerSample$] = bitsPerSample;
+    this[data] = hdr_slice.HdrSlice.allocateDataForType(width * height, type, bitsPerSample);
+    ;
+  }).prototype = hdr_slice.HdrSlice.prototype;
+  (hdr_slice.HdrSlice.from = function(other) {
+    this[name$] = other.name;
+    this[width$] = other.width;
+    this[height$] = other.height;
+    this[type$] = other.type;
+    this[bitsPerSample$] = other.bitsPerSample;
+    this[data] = other.data[$sublist](0);
+    ;
+  }).prototype = hdr_slice.HdrSlice.prototype;
+  dart.addTypeTests(hdr_slice.HdrSlice);
+  dart.addTypeCaches(hdr_slice.HdrSlice);
+  dart.setMethodSignature(hdr_slice.HdrSlice, () => ({
+    __proto__: dart.getMethods(hdr_slice.HdrSlice.__proto__),
+    getBytes: dart.fnType(typed_data.Uint8List, []),
+    getFloat: dart.fnType(core.double, [core.int, core.int]),
+    setFloat: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    getInt: dart.fnType(core.int, [core.int, core.int]),
+    setInt: dart.fnType(dart.void, [core.int, core.int, core.int])
+  }));
+  dart.setStaticMethodSignature(hdr_slice.HdrSlice, () => ['allocateDataForType']);
+  dart.setGetterSignature(hdr_slice.HdrSlice, () => ({
+    __proto__: dart.getGetters(hdr_slice.HdrSlice.__proto__),
+    isFloat: core.bool,
+    [_maxIntSize]: core.int
+  }));
+  dart.setLibraryUri(hdr_slice.HdrSlice, I[0]);
+  dart.setFieldSignature(hdr_slice.HdrSlice, () => ({
+    __proto__: dart.getFields(hdr_slice.HdrSlice.__proto__),
+    name: dart.finalFieldType(dart.nullable(core.String)),
+    width: dart.finalFieldType(core.int),
+    height: dart.finalFieldType(core.int),
+    type: dart.finalFieldType(core.int),
+    bitsPerSample: dart.finalFieldType(core.int),
+    data: dart.finalFieldType(core.List)
+  }));
+  var slices = dart.privateName(hdr_image, "HdrImage.slices");
+  var red = dart.privateName(hdr_image, "HdrImage.red");
+  var green = dart.privateName(hdr_image, "HdrImage.green");
+  var blue = dart.privateName(hdr_image, "HdrImage.blue");
+  var alpha = dart.privateName(hdr_image, "HdrImage.alpha");
+  var depth = dart.privateName(hdr_image, "HdrImage.depth");
+  hdr_image.HdrImage = class HdrImage extends core.Object {
+    get slices() {
+      return this[slices];
+    }
+    set slices(value) {
+      super.slices = value;
+    }
+    get red() {
+      return this[red];
+    }
+    set red(value) {
+      this[red] = value;
+    }
+    get green() {
+      return this[green];
+    }
+    set green(value) {
+      this[green] = value;
+    }
+    get blue() {
+      return this[blue];
+    }
+    set blue(value) {
+      this[blue] = value;
+    }
+    get alpha() {
+      return this[alpha];
+    }
+    set alpha(value) {
+      this[alpha] = value;
+    }
+    get depth() {
+      return this[depth];
+    }
+    set depth(value) {
+      this[depth] = value;
+    }
+    static ['_#new#tearOff']() {
+      return new hdr_image.HdrImage.new();
+    }
+    static ['_#create#tearOff'](width, height, channels, type, bitsPerSample) {
+      return new hdr_image.HdrImage.create(width, height, channels, type, bitsPerSample);
+    }
+    static ['_#from#tearOff'](other) {
+      return new hdr_image.HdrImage.from(other);
+    }
+    static ['_#fromImage#tearOff'](other, opts) {
+      let type = opts && 'type' in opts ? opts.type : 3;
+      let bitsPerSample = opts && 'bitsPerSample' in opts ? opts.bitsPerSample : 16;
+      return new hdr_image.HdrImage.fromImage(other, {type: type, bitsPerSample: bitsPerSample});
+    }
+    get hasColor() {
+      return this.red != null || this.green != null || this.blue != null;
+    }
+    get hasAlpha() {
+      return this.alpha != null;
+    }
+    get hasDepth() {
+      return this.depth != null;
+    }
+    get width() {
+      return this.slices[$isEmpty] ? 0 : this.slices[$values][$first].width;
+    }
+    get height() {
+      return this.slices[$isEmpty] ? 0 : this.slices[$values][$first].height;
+    }
+    getRed(x, y) {
+      return this.red != null ? dart.nullCheck(this.red).isFloat ? dart.nullCheck(this.red).getFloat(x, y) : dart.nullCheck(this.red).getInt(x, y) : 0;
+    }
+    setRed(x, y, c) {
+      if (this.red != null) {
+        if (dart.nullCheck(this.red).isFloat) {
+          dart.nullCheck(this.red).setFloat(x, y, c);
+        } else {
+          dart.nullCheck(this.red).setInt(x, y, dart.asInt(c));
+        }
+      }
+    }
+    setRedInt(x, y, c) {
+      if (this.red != null) {
+        dart.nullCheck(this.red).setInt(x, y, c);
+      }
+    }
+    getGreen(x, y) {
+      return this.green != null ? dart.nullCheck(this.green).isFloat ? dart.nullCheck(this.green).getFloat(x, y) : dart.nullCheck(this.green).getInt(x, y) : 0;
+    }
+    setGreen(x, y, c) {
+      if (this.green != null) {
+        if (dart.nullCheck(this.red).isFloat) {
+          dart.nullCheck(this.green).setFloat(x, y, c);
+        } else {
+          dart.nullCheck(this.green).setInt(x, y, dart.asInt(c));
+        }
+      }
+    }
+    setGreenInt(x, y, c) {
+      if (this.green != null) {
+        dart.nullCheck(this.green).setInt(x, y, c);
+      }
+    }
+    getBlue(x, y) {
+      return this.blue != null ? dart.nullCheck(this.blue).isFloat ? dart.nullCheck(this.blue).getFloat(x, y) : dart.nullCheck(this.blue).getInt(x, y) : 0;
+    }
+    setBlue(x, y, c) {
+      if (this.green != null) {
+        if (dart.nullCheck(this.blue).isFloat) {
+          dart.nullCheck(this.blue).setFloat(x, y, c);
+        } else {
+          dart.nullCheck(this.blue).setInt(x, y, dart.asInt(c));
+        }
+      }
+    }
+    setBlueInt(x, y, c) {
+      if (this.blue != null) {
+        dart.nullCheck(this.blue).setInt(x, y, c);
+      }
+    }
+    getAlpha(x, y) {
+      return this.alpha != null ? dart.nullCheck(this.alpha).isFloat ? dart.nullCheck(this.alpha).getFloat(x, y) : dart.nullCheck(this.alpha).getInt(x, y) : 0;
+    }
+    setAlpha(x, y, c) {
+      if (this.alpha != null) {
+        if (dart.nullCheck(this.alpha).isFloat) {
+          dart.nullCheck(this.alpha).setFloat(x, y, c);
+        } else {
+          dart.nullCheck(this.alpha).setInt(x, y, dart.asInt(c));
+        }
+      }
+    }
+    setAlphaInt(x, y, c) {
+      if (this.alpha != null) {
+        dart.nullCheck(this.alpha).setInt(x, y, c);
+      }
+    }
+    getDepth(x, y) {
+      return this.depth != null ? dart.nullCheck(this.depth).isFloat ? dart.nullCheck(this.depth).getFloat(x, y) : dart.nullCheck(this.depth).getInt(x, y) : 0;
+    }
+    setDepth(x, y, c) {
+      if (this.depth != null) {
+        if (dart.nullCheck(this.depth).isFloat) {
+          dart.nullCheck(this.depth).setFloat(x, y, c);
+        } else {
+          dart.nullCheck(this.depth).setInt(x, y, dart.asInt(c));
+        }
+      }
+    }
+    get bitsPerSample() {
+      return this.red != null ? dart.nullCheck(this.red).bitsPerSample : this.slices[$isEmpty] ? 0 : dart.nullCheck(this.slices[$_get](this.slices[$keys][$first])).bitsPerSample;
+    }
+    get sampleFormat() {
+      return this.red != null ? dart.nullCheck(this.red).type : this.slices[$isEmpty] ? 0 : dart.nullCheck(this.slices[$_get](this.slices[$keys][$first])).type;
+    }
+    get numberOfChannels() {
+      return this.slices[$length];
+    }
+    hasChannel(ch) {
+      return this.slices[$containsKey](ch);
+    }
+    _get(ch) {
+      return this.slices[$_get](ch);
+    }
+    addSlice(slice) {
+      let ch = slice.name;
+      this.slices[$_set](ch, slice);
+      switch (ch) {
+        case "R":
+          {
+            this.red = slice;
+            break;
+          }
+        case "G":
+          {
+            this.green = slice;
+            break;
+          }
+        case "B":
+          {
+            this.blue = slice;
+            break;
+          }
+        case "A":
+          {
+            this.alpha = slice;
+            break;
+          }
+        case "Z":
+          {
+            this.depth = slice;
+            break;
+          }
+      }
+    }
+    toFloatRgba() {
+      let t0, t0$, t0$0, t0$1;
+      let rgba = _native_typed_data.NativeFloat32List.new(this.width * this.height * 4);
+      let w = this.width;
+      let h = this.height;
+      for (let y = 0, di = 0; y < h; y = y + 1) {
+        for (let x = 0; x < w; x = x + 1) {
+          rgba[$_set]((t0 = di, di = t0 + 1, t0), this.red == null ? 0.0 : dart.nullCheck(this.red).getFloat(x, y));
+          rgba[$_set]((t0$ = di, di = t0$ + 1, t0$), this.green == null ? 0.0 : dart.nullCheck(this.green).getFloat(x, y));
+          rgba[$_set]((t0$0 = di, di = t0$0 + 1, t0$0), this.blue == null ? 0.0 : dart.nullCheck(this.blue).getFloat(x, y));
+          rgba[$_set]((t0$1 = di, di = t0$1 + 1, t0$1), this.alpha == null ? 1.0 : dart.nullCheck(this.alpha).getFloat(x, y));
+        }
+      }
+      return rgba;
+    }
+  };
+  (hdr_image.HdrImage.new = function() {
+    this[slices] = new (T.IdentityMapOfStringN$HdrSlice()).new();
+    this[red] = null;
+    this[green] = null;
+    this[blue] = null;
+    this[alpha] = null;
+    this[depth] = null;
+    ;
+  }).prototype = hdr_image.HdrImage.prototype;
+  (hdr_image.HdrImage.create = function(width, height, channels, type, bitsPerSample) {
+    this[slices] = new (T.IdentityMapOfStringN$HdrSlice()).new();
+    this[red] = null;
+    this[green] = null;
+    this[blue] = null;
+    this[alpha] = null;
+    this[depth] = null;
+    if (channels < 0 || channels > 4) {
+      return;
+    }
+    let channelList = C[0] || CT.C0;
+    for (let i = 0; i < channels; i = i + 1) {
+      this.addSlice(new hdr_slice.HdrSlice.new(channelList[$_get](i), dart.nullCheck(width), dart.nullCheck(height), type, bitsPerSample));
+    }
+  }).prototype = hdr_image.HdrImage.prototype;
+  (hdr_image.HdrImage.from = function(other) {
+    this[slices] = new (T.IdentityMapOfStringN$HdrSlice()).new();
+    this[red] = null;
+    this[green] = null;
+    this[blue] = null;
+    this[alpha] = null;
+    this[depth] = null;
+    for (let ch of other.slices[$keys]) {
+      let slice = dart.nullCheck(other.slices[$_get](ch));
+      this.addSlice(new hdr_slice.HdrSlice.from(slice));
+    }
+  }).prototype = hdr_image.HdrImage.prototype;
+  (hdr_image.HdrImage.fromImage = function(other, opts) {
+    let t0, t0$, t0$0, t0$1;
+    let type = opts && 'type' in opts ? opts.type : 3;
+    let bitsPerSample = opts && 'bitsPerSample' in opts ? opts.bitsPerSample : 16;
+    this[slices] = new (T.IdentityMapOfStringN$HdrSlice()).new();
+    this[red] = null;
+    this[green] = null;
+    this[blue] = null;
+    this[alpha] = null;
+    this[depth] = null;
+    this.addSlice(new hdr_slice.HdrSlice.new("R", other.width, other.height, type, bitsPerSample));
+    this.addSlice(new hdr_slice.HdrSlice.new("G", other.width, other.height, type, bitsPerSample));
+    this.addSlice(new hdr_slice.HdrSlice.new("B", other.width, other.height, type, bitsPerSample));
+    if (other.channels === image.Channels.rgba) {
+      this.addSlice(new hdr_slice.HdrSlice.new("A", other.width, other.height, type, bitsPerSample));
+    }
+    let rgb = other.getBytes();
+    for (let y = 0, si = 0; y < other.height; y = y + 1) {
+      for (let x = 0; x < other.width; x = x + 1) {
+        dart.nullCheck(this.red).setFloat(x, y, rgb[$_get]((t0 = si, si = t0 + 1, t0)) / 255.0);
+        dart.nullCheck(this.green).setFloat(x, y, rgb[$_get]((t0$ = si, si = t0$ + 1, t0$)) / 255.0);
+        dart.nullCheck(this.blue).setFloat(x, y, rgb[$_get]((t0$0 = si, si = t0$0 + 1, t0$0)) / 255.0);
+        if (this.alpha != null) {
+          dart.nullCheck(this.alpha).setFloat(x, y, rgb[$_get]((t0$1 = si, si = t0$1 + 1, t0$1)) / 255.0);
+        }
+      }
+    }
+  }).prototype = hdr_image.HdrImage.prototype;
+  dart.addTypeTests(hdr_image.HdrImage);
+  dart.addTypeCaches(hdr_image.HdrImage);
+  dart.setMethodSignature(hdr_image.HdrImage, () => ({
+    __proto__: dart.getMethods(hdr_image.HdrImage.__proto__),
+    getRed: dart.fnType(core.num, [core.int, core.int]),
+    setRed: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    setRedInt: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    getGreen: dart.fnType(core.num, [core.int, core.int]),
+    setGreen: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    setGreenInt: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    getBlue: dart.fnType(core.num, [core.int, core.int]),
+    setBlue: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    setBlueInt: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    getAlpha: dart.fnType(core.num, [core.int, core.int]),
+    setAlpha: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    setAlphaInt: dart.fnType(dart.void, [core.int, core.int, core.int]),
+    getDepth: dart.fnType(core.num, [core.int, core.int]),
+    setDepth: dart.fnType(dart.void, [core.int, core.int, core.num]),
+    hasChannel: dart.fnType(core.bool, [dart.nullable(core.String)]),
+    _get: dart.fnType(dart.nullable(hdr_slice.HdrSlice), [dart.nullable(core.String)]),
+    addSlice: dart.fnType(dart.void, [hdr_slice.HdrSlice]),
+    toFloatRgba: dart.fnType(typed_data.Float32List, [])
+  }));
+  dart.setGetterSignature(hdr_image.HdrImage, () => ({
+    __proto__: dart.getGetters(hdr_image.HdrImage.__proto__),
+    hasColor: core.bool,
+    hasAlpha: core.bool,
+    hasDepth: core.bool,
+    width: core.int,
+    height: core.int,
+    bitsPerSample: core.int,
+    sampleFormat: core.int,
+    numberOfChannels: core.int
+  }));
+  dart.setLibraryUri(hdr_image.HdrImage, I[1]);
+  dart.setFieldSignature(hdr_image.HdrImage, () => ({
+    __proto__: dart.getFields(hdr_image.HdrImage.__proto__),
+    slices: dart.finalFieldType(core.Map$(dart.nullable(core.String), hdr_slice.HdrSlice)),
+    red: dart.fieldType(dart.nullable(hdr_slice.HdrSlice)),
+    green: dart.fieldType(dart.nullable(hdr_slice.HdrSlice)),
+    blue: dart.fieldType(dart.nullable(hdr_slice.HdrSlice)),
+    alpha: dart.fieldType(dart.nullable(hdr_slice.HdrSlice)),
+    depth: dart.fieldType(dart.nullable(hdr_slice.HdrSlice))
+  }));
+  dart.setStaticFieldSignature(hdr_image.HdrImage, () => ['UINT', 'INT', 'FLOAT', 'R', 'G', 'B', 'A', 'Z', 'ID']);
+  dart.defineLazy(hdr_image.HdrImage, {
+    /*hdr_image.HdrImage.UINT*/get UINT() {
+      return 0;
+    },
+    /*hdr_image.HdrImage.INT*/get INT() {
+      return 1;
+    },
+    /*hdr_image.HdrImage.FLOAT*/get FLOAT() {
+      return 3;
+    },
+    /*hdr_image.HdrImage.R*/get R() {
+      return "R";
+    },
+    /*hdr_image.HdrImage.G*/get G() {
+      return "G";
+    },
+    /*hdr_image.HdrImage.B*/get B() {
+      return "B";
+    },
+    /*hdr_image.HdrImage.A*/get A() {
+      return "A";
+    },
+    /*hdr_image.HdrImage.Z*/get Z() {
+      return "Z";
+    },
+    /*hdr_image.HdrImage.ID*/get ID() {
+      return "id";
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/hdr/hdr_slice.dart", {
+    "package:image/src/hdr/hdr_slice.dart": hdr_slice,
+    "package:image/src/hdr/hdr_image.dart": hdr_image
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["hdr_slice.dart","hdr_image.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/hdr/hdr_slice.dart.lib.js"}');
+  // Exports:
+  return {
+    src__hdr__hdr_slice: hdr_slice,
+    src__hdr__hdr_image: hdr_image
+  };
+}));
+
+//# sourceMappingURL=hdr_slice.dart.lib.js.map

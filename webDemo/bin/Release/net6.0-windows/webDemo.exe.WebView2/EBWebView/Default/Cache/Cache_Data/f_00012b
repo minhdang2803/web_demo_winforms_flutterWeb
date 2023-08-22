@@ -1,0 +1,1850 @@
+define(['dart_sdk', 'packages/image/src/formats/webp/vp8l_bit_reader.dart', 'packages/image/src/util/input_buffer.dart', 'packages/image/src/internal/bit_operators.dart', 'packages/image/src/image.dart', 'packages/image/src/image_exception.dart', 'packages/image/src/formats/webp/vp8l_color_cache.dart', 'packages/image/src/color.dart', 'packages/image/src/formats/webp/webp_info.dart'], (function load__packages__image__src__formats__webp__webp_huffman_dart(dart_sdk, packages__image__src__formats__webp__vp8l_bit_reader$46dart, packages__image__src__util__input_buffer$46dart, packages__image__src__internal__bit_operators$46dart, packages__image__src__image$46dart, packages__image__src__image_exception$46dart, packages__image__src__formats__webp__vp8l_color_cache$46dart, packages__image__src__color$46dart, packages__image__src__formats__webp__webp_info$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const vp8l_bit_reader = packages__image__src__formats__webp__vp8l_bit_reader$46dart.src__formats__webp__vp8l_bit_reader;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  const bit_operators = packages__image__src__internal__bit_operators$46dart.src__internal__bit_operators;
+  const image = packages__image__src__image$46dart.src__image;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const vp8l_color_cache = packages__image__src__formats__webp__vp8l_color_cache$46dart.src__formats__webp__vp8l_color_cache;
+  const color = packages__image__src__color$46dart.src__color;
+  const webp_info = packages__image__src__formats__webp__webp_info$46dart.src__formats__webp__webp_info;
+  var webp_huffman = Object.create(dart.library);
+  var vp8l_transform = Object.create(dart.library);
+  var vp8l = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $length = dartx.length;
+  var $fillRange = dartx.fillRange;
+  var $_get = dartx._get;
+  var $rightShift = dartx['>>'];
+  var $leftShift = dartx['<<'];
+  var $setRange = dartx.setRange;
+  var $truncate = dartx.truncate;
+  var $abs = dartx.abs;
+  var $buffer = dartx.buffer;
+  var $modulo = dartx['%'];
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfHuffmanTree: () => (T.ListOfHuffmanTree = dart.constFn(core.List$(webp_huffman.HuffmanTree)))(),
+    intToHuffmanTree: () => (T.intToHuffmanTree = dart.constFn(dart.fnType(webp_huffman.HuffmanTree, [core.int])))(),
+    Uint32ListAndintAndintToint: () => (T.Uint32ListAndintAndintToint = dart.constFn(dart.fnType(core.int, [typed_data.Uint32List, core.int, core.int])))(),
+    JSArrayOfUint32ListAndintAndintToint: () => (T.JSArrayOfUint32ListAndintAndintToint = dart.constFn(_interceptors.JSArray$(T.Uint32ListAndintAndintToint())))(),
+    JSArrayOfHTreeGroup: () => (T.JSArrayOfHTreeGroup = dart.constFn(_interceptors.JSArray$(webp_huffman.HTreeGroup)))(),
+    JSArrayOfVP8LTransform: () => (T.JSArrayOfVP8LTransform = dart.constFn(_interceptors.JSArray$(vp8l_transform.VP8LTransform)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    ListOfHTreeGroup: () => (T.ListOfHTreeGroup = dart.constFn(core.List$(webp_huffman.HTreeGroup)))(),
+    intToHTreeGroup: () => (T.intToHTreeGroup = dart.constFn(dart.fnType(webp_huffman.HTreeGroup, [core.int])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15], core.int);
+    },
+    get C1() {
+      return C[1] = dart.fn(vp8l_transform.VP8LTransform._predictor0, T.Uint32ListAndintAndintToint());
+    },
+    get C2() {
+      return C[2] = dart.fn(vp8l_transform.VP8LTransform._predictor1, T.Uint32ListAndintAndintToint());
+    },
+    get C3() {
+      return C[3] = dart.fn(vp8l_transform.VP8LTransform._predictor2, T.Uint32ListAndintAndintToint());
+    },
+    get C4() {
+      return C[4] = dart.fn(vp8l_transform.VP8LTransform._predictor3, T.Uint32ListAndintAndintToint());
+    },
+    get C5() {
+      return C[5] = dart.fn(vp8l_transform.VP8LTransform._predictor4, T.Uint32ListAndintAndintToint());
+    },
+    get C6() {
+      return C[6] = dart.fn(vp8l_transform.VP8LTransform._predictor5, T.Uint32ListAndintAndintToint());
+    },
+    get C7() {
+      return C[7] = dart.fn(vp8l_transform.VP8LTransform._predictor6, T.Uint32ListAndintAndintToint());
+    },
+    get C8() {
+      return C[8] = dart.fn(vp8l_transform.VP8LTransform._predictor7, T.Uint32ListAndintAndintToint());
+    },
+    get C9() {
+      return C[9] = dart.fn(vp8l_transform.VP8LTransform._predictor8, T.Uint32ListAndintAndintToint());
+    },
+    get C10() {
+      return C[10] = dart.fn(vp8l_transform.VP8LTransform._predictor9, T.Uint32ListAndintAndintToint());
+    },
+    get C11() {
+      return C[11] = dart.fn(vp8l_transform.VP8LTransform._predictor10, T.Uint32ListAndintAndintToint());
+    },
+    get C12() {
+      return C[12] = dart.fn(vp8l_transform.VP8LTransform._predictor11, T.Uint32ListAndintAndintToint());
+    },
+    get C13() {
+      return C[13] = dart.fn(vp8l_transform.VP8LTransform._predictor12, T.Uint32ListAndintAndintToint());
+    },
+    get C14() {
+      return C[14] = dart.fn(vp8l_transform.VP8LTransform._predictor13, T.Uint32ListAndintAndintToint());
+    },
+    get C15() {
+      return C[15] = dart.constList([17, 18, 0, 1, 2, 3, 4, 5, 16, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], core.int);
+    },
+    get C16() {
+      return C[16] = dart.constList([24, 7, 23, 25, 40, 6, 39, 41, 22, 26, 38, 42, 56, 5, 55, 57, 21, 27, 54, 58, 37, 43, 72, 4, 71, 73, 20, 28, 53, 59, 70, 74, 36, 44, 88, 69, 75, 52, 60, 3, 87, 89, 19, 29, 86, 90, 35, 45, 68, 76, 85, 91, 51, 61, 104, 2, 103, 105, 18, 30, 102, 106, 34, 46, 84, 92, 67, 77, 101, 107, 50, 62, 120, 1, 119, 121, 83, 93, 17, 31, 100, 108, 66, 78, 118, 122, 33, 47, 117, 123, 49, 63, 99, 109, 82, 94, 0, 116, 124, 65, 79, 16, 32, 98, 110, 48, 115, 125, 81, 95, 64, 114, 126, 97, 111, 80, 113, 127, 96, 112], core.int);
+    },
+    get C17() {
+      return C[17] = dart.constList([2, 3, 7], core.int);
+    },
+    get C18() {
+      return C[18] = dart.constList([3, 3, 11], core.int);
+    },
+    get C19() {
+      return C[19] = dart.constList([280, 256, 256, 256, 40], core.int);
+    }
+  }, false);
+  var C = Array(20).fill(void 0);
+  var I = [
+    "package:image/src/formats/webp/webp_huffman.dart",
+    "package:image/src/formats/webp/vp8l_transform.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/image-3.2.0/lib/src/formats/webp/vp8l.dart",
+    "package:image/src/formats/webp/vp8l.dart"
+  ];
+  var lutBits = dart.privateName(webp_huffman, "HuffmanTree.lutBits");
+  var lutSymbol = dart.privateName(webp_huffman, "HuffmanTree.lutSymbol");
+  var lutJump = dart.privateName(webp_huffman, "HuffmanTree.lutJump");
+  var maxNodes = dart.privateName(webp_huffman, "HuffmanTree.maxNodes");
+  var numNodes = dart.privateName(webp_huffman, "HuffmanTree.numNodes");
+  var __HuffmanTree_tree = dart.privateName(webp_huffman, "_#HuffmanTree#tree");
+  var _init = dart.privateName(webp_huffman, "_init");
+  var _addSymbol = dart.privateName(webp_huffman, "_addSymbol");
+  var _huffmanCodeLengthsToCodes = dart.privateName(webp_huffman, "_huffmanCodeLengthsToCodes");
+  var _isFull = dart.privateName(webp_huffman, "_isFull");
+  var _nextNode = dart.privateName(webp_huffman, "_nextNode");
+  var _nodeIsNotLeaf = dart.privateName(webp_huffman, "_nodeIsNotLeaf");
+  var _nodeSymbol = dart.privateName(webp_huffman, "_nodeSymbol");
+  var _reverseBitsShort = dart.privateName(webp_huffman, "_reverseBitsShort");
+  var _nodeIsEmpty = dart.privateName(webp_huffman, "_nodeIsEmpty");
+  var _assignChildren = dart.privateName(webp_huffman, "_assignChildren");
+  var _nodeChildren = dart.privateName(webp_huffman, "_nodeChildren");
+  var _nodeSetChildren = dart.privateName(webp_huffman, "_nodeSetChildren");
+  var _nodeSetSymbol = dart.privateName(webp_huffman, "_nodeSetSymbol");
+  webp_huffman.HuffmanTree = class HuffmanTree extends core.Object {
+    get lutBits() {
+      return this[lutBits];
+    }
+    set lutBits(value) {
+      this[lutBits] = value;
+    }
+    get lutSymbol() {
+      return this[lutSymbol];
+    }
+    set lutSymbol(value) {
+      this[lutSymbol] = value;
+    }
+    get lutJump() {
+      return this[lutJump];
+    }
+    set lutJump(value) {
+      this[lutJump] = value;
+    }
+    get maxNodes() {
+      return this[maxNodes];
+    }
+    set maxNodes(value) {
+      this[maxNodes] = value;
+    }
+    get numNodes() {
+      return this[numNodes];
+    }
+    set numNodes(value) {
+      this[numNodes] = value;
+    }
+    get tree() {
+      let t0;
+      t0 = this[__HuffmanTree_tree];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("tree")) : t0;
+    }
+    set tree(tree$35param) {
+      this[__HuffmanTree_tree] = tree$35param;
+    }
+    static ['_#new#tearOff'](numLeaves = 0) {
+      return new webp_huffman.HuffmanTree.new(numLeaves);
+    }
+    [_init](numLeaves) {
+      if (numLeaves === 0) {
+        return false;
+      }
+      this.maxNodes = (numLeaves << 1 >>> 0) - 1;
+      this.tree = _native_typed_data.NativeInt32List.new(this.maxNodes << 1 >>> 0);
+      this.tree[$_set](1, -1);
+      this.numNodes = 1;
+      this.lutBits[$fillRange](0, this.lutBits[$length], 255);
+      return true;
+    }
+    buildImplicit(codeLengths, codeLengthsSize) {
+      let numSymbols = 0;
+      let rootSymbol = 0;
+      for (let symbol = 0; symbol < codeLengthsSize; symbol = symbol + 1) {
+        if (codeLengths[$_get](symbol) > 0) {
+          numSymbols = numSymbols + 1;
+          rootSymbol = symbol;
+        }
+      }
+      if (!this[_init](numSymbols)) {
+        return false;
+      }
+      if (numSymbols === 1) {
+        let maxSymbol = codeLengthsSize;
+        if (rootSymbol < 0 || rootSymbol >= maxSymbol) {
+          return false;
+        }
+        return this[_addSymbol](rootSymbol, 0, 0);
+      }
+      let codes = _native_typed_data.NativeInt32List.new(codeLengthsSize);
+      if (!this[_huffmanCodeLengthsToCodes](codeLengths, codeLengthsSize, codes)) {
+        return false;
+      }
+      for (let symbol = 0; symbol < codeLengthsSize; symbol = symbol + 1) {
+        if (codeLengths[$_get](symbol) > 0) {
+          if (!this[_addSymbol](symbol, codes[$_get](symbol), codeLengths[$_get](symbol))) {
+            return false;
+          }
+        }
+      }
+      return this[_isFull]();
+    }
+    buildExplicit(codeLengths, codes, symbols, maxSymbol, numSymbols) {
+      if (!this[_init](numSymbols)) {
+        return false;
+      }
+      for (let i = 0; i < numSymbols; i = i + 1) {
+        if (codes[$_get](i) !== -1) {
+          if (symbols[$_get](i) < 0 || symbols[$_get](i) >= maxSymbol) {
+            return this[_isFull]();
+          }
+          if (!this[_addSymbol](symbols[$_get](i), codes[$_get](i), codeLengths[$_get](i))) {
+            return this[_isFull]();
+          }
+        }
+      }
+      return this[_isFull]();
+    }
+    readSymbol(br) {
+      let node = 0;
+      let bits = br.prefetchBits();
+      let newBitPos = br.bitPos;
+      let lut_ix = (bits & 128 - 1) >>> 0;
+      let lut_bits = this.lutBits[$_get](lut_ix);
+      if (lut_bits <= 7) {
+        br.bitPos = br.bitPos + lut_bits;
+        return this.lutSymbol[$_get](lut_ix);
+      }
+      node = node + this.lutJump[$_get](lut_ix);
+      newBitPos = newBitPos + 7;
+      bits = bits[$rightShift](7);
+      do {
+        node = this[_nextNode](node, bits & 1);
+        bits = bits[$rightShift](1);
+        newBitPos = newBitPos + 1;
+      } while (this[_nodeIsNotLeaf](node));
+      br.bitPos = newBitPos;
+      return this[_nodeSymbol](node);
+    }
+    [_addSymbol](symbol, code, codeLength) {
+      let t0;
+      let step = 7;
+      let baseCode = null;
+      let node = 0;
+      if (codeLength <= 7) {
+        baseCode = this[_reverseBitsShort](code, codeLength);
+        for (let i = 0; i < (1)[$leftShift](7 - codeLength); i = i + 1) {
+          let idx = (baseCode | i[$leftShift](codeLength)) >>> 0;
+          this.lutSymbol[$_set](idx, symbol);
+          this.lutBits[$_set](idx, codeLength);
+        }
+      } else {
+        baseCode = this[_reverseBitsShort](code[$rightShift](codeLength - 7), 7);
+      }
+      while ((t0 = codeLength, codeLength = t0 - 1, t0) > 0) {
+        if (node >= this.maxNodes) {
+          return false;
+        }
+        if (this[_nodeIsEmpty](node)) {
+          if (this[_isFull]()) {
+            return false;
+          }
+          this[_assignChildren](node);
+        } else if (!this[_nodeIsNotLeaf](node)) {
+          return false;
+        }
+        node = node + (this[_nodeChildren](node) + (code[$rightShift](codeLength) & 1));
+        if ((step = step - 1) === 0) {
+          this.lutJump[$_set](baseCode, node);
+        }
+      }
+      if (this[_nodeIsEmpty](node)) {
+        this[_nodeSetChildren](node, 0);
+      } else if (this[_nodeIsNotLeaf](node)) {
+        return false;
+      }
+      this[_nodeSetSymbol](node, symbol);
+      return true;
+    }
+    [_reverseBitsShort](bits, numBits) {
+      let v = (webp_huffman.HuffmanTree._REVERSED_BITS[$_get](bits & 15) << 4 | webp_huffman.HuffmanTree._REVERSED_BITS[$_get](bits[$rightShift](4))) >>> 0;
+      return v[$rightShift](8 - numBits);
+    }
+    [_isFull]() {
+      return this.numNodes === this.maxNodes;
+    }
+    [_nextNode](node, rightChild) {
+      return node + this[_nodeChildren](node) + rightChild;
+    }
+    [_nodeSymbol](node) {
+      return this.tree[$_get](node << 1 >>> 0);
+    }
+    [_nodeSetSymbol](node, symbol) {
+      this.tree[$_set](node << 1 >>> 0, symbol);
+    }
+    [_nodeChildren](node) {
+      return this.tree[$_get]((node << 1 >>> 0) + 1);
+    }
+    [_nodeSetChildren](node, children) {
+      this.tree[$_set]((node << 1 >>> 0) + 1, children);
+    }
+    [_nodeIsNotLeaf](node) {
+      return this.tree[$_get]((node << 1 >>> 0) + 1) !== 0;
+    }
+    [_nodeIsEmpty](node) {
+      return this.tree[$_get]((node << 1 >>> 0) + 1) < 0;
+    }
+    [_assignChildren](node) {
+      let children = this.numNodes;
+      this[_nodeSetChildren](node, children - node);
+      this.numNodes = this.numNodes + 2;
+      this[_nodeSetChildren](children, -1);
+      this[_nodeSetChildren](children + 1, -1);
+    }
+    [_huffmanCodeLengthsToCodes](codeLengths, codeLengthsSize, huffCodes) {
+      let t3, t2, t5, t4;
+      let symbol = null;
+      let codeLen = null;
+      let codeLengthHist = _native_typed_data.NativeInt32List.new(15 + 1);
+      let currCode = null;
+      let nextCodes = _native_typed_data.NativeInt32List.new(15 + 1);
+      let maxCodeLength = 0;
+      for (let t0 = symbol = 0; symbol < codeLengthsSize; symbol = symbol + 1) {
+        if (codeLengths[$_get](symbol) > maxCodeLength) {
+          maxCodeLength = codeLengths[$_get](symbol);
+        }
+      }
+      if (maxCodeLength > 15) {
+        return false;
+      }
+      for (let t1 = symbol = 0; symbol < codeLengthsSize; symbol = symbol + 1) {
+        t2 = codeLengths[$_get](symbol);
+        t3 = codeLengthHist[$_get](t2) + 1;
+        codeLengthHist[$_set](t2, t3);
+        t3;
+      }
+      codeLengthHist[$_set](0, 0);
+      currCode = 0;
+      nextCodes[$_set](0, -1);
+      for (let t2$ = codeLen = 1; codeLen <= maxCodeLength; codeLen = codeLen + 1) {
+        currCode = currCode + codeLengthHist[$_get](codeLen - 1) << 1 >>> 0;
+        nextCodes[$_set](codeLen, currCode);
+      }
+      for (let t3$ = symbol = 0; symbol < codeLengthsSize; symbol = symbol + 1) {
+        if (codeLengths[$_get](symbol) > 0) {
+          huffCodes[$_set](symbol, (t4 = codeLengths[$_get](symbol), t5 = nextCodes[$_get](t4), nextCodes[$_set](t4, t5 + 1), t5));
+        } else {
+          huffCodes[$_set](symbol, -1);
+        }
+      }
+      return true;
+    }
+  };
+  (webp_huffman.HuffmanTree.new = function(numLeaves = 0) {
+    this[lutBits] = _native_typed_data.NativeUint8List.new(128);
+    this[lutSymbol] = _native_typed_data.NativeInt16List.new(128);
+    this[lutJump] = _native_typed_data.NativeInt16List.new(128);
+    this[__HuffmanTree_tree] = null;
+    this[maxNodes] = 0;
+    this[numNodes] = 0;
+    this[_init](numLeaves);
+  }).prototype = webp_huffman.HuffmanTree.prototype;
+  dart.addTypeTests(webp_huffman.HuffmanTree);
+  dart.addTypeCaches(webp_huffman.HuffmanTree);
+  dart.setMethodSignature(webp_huffman.HuffmanTree, () => ({
+    __proto__: dart.getMethods(webp_huffman.HuffmanTree.__proto__),
+    [_init]: dart.fnType(core.bool, [core.int]),
+    buildImplicit: dart.fnType(core.bool, [core.List$(core.int), core.int]),
+    buildExplicit: dart.fnType(core.bool, [core.List$(core.int), core.List$(core.int), core.List$(core.int), core.int, core.int]),
+    readSymbol: dart.fnType(core.int, [vp8l_bit_reader.VP8LBitReader]),
+    [_addSymbol]: dart.fnType(core.bool, [core.int, core.int, core.int]),
+    [_reverseBitsShort]: dart.fnType(core.int, [core.int, core.int]),
+    [_isFull]: dart.fnType(core.bool, []),
+    [_nextNode]: dart.fnType(core.int, [core.int, core.int]),
+    [_nodeSymbol]: dart.fnType(core.int, [core.int]),
+    [_nodeSetSymbol]: dart.fnType(dart.void, [core.int, core.int]),
+    [_nodeChildren]: dart.fnType(core.int, [core.int]),
+    [_nodeSetChildren]: dart.fnType(dart.void, [core.int, core.int]),
+    [_nodeIsNotLeaf]: dart.fnType(core.bool, [core.int]),
+    [_nodeIsEmpty]: dart.fnType(core.bool, [core.int]),
+    [_assignChildren]: dart.fnType(dart.void, [core.int]),
+    [_huffmanCodeLengthsToCodes]: dart.fnType(core.bool, [core.List$(core.int), core.int, core.List$(core.int)])
+  }));
+  dart.setGetterSignature(webp_huffman.HuffmanTree, () => ({
+    __proto__: dart.getGetters(webp_huffman.HuffmanTree.__proto__),
+    tree: typed_data.Int32List
+  }));
+  dart.setSetterSignature(webp_huffman.HuffmanTree, () => ({
+    __proto__: dart.getSetters(webp_huffman.HuffmanTree.__proto__),
+    tree: typed_data.Int32List
+  }));
+  dart.setLibraryUri(webp_huffman.HuffmanTree, I[0]);
+  dart.setFieldSignature(webp_huffman.HuffmanTree, () => ({
+    __proto__: dart.getFields(webp_huffman.HuffmanTree.__proto__),
+    lutBits: dart.fieldType(typed_data.Uint8List),
+    lutSymbol: dart.fieldType(typed_data.Int16List),
+    lutJump: dart.fieldType(typed_data.Int16List),
+    [__HuffmanTree_tree]: dart.fieldType(dart.nullable(typed_data.Int32List)),
+    maxNodes: dart.fieldType(core.int),
+    numNodes: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(webp_huffman.HuffmanTree, () => ['HUFF_LUT_BITS', 'HUFF_LUT', '_REVERSED_BITS']);
+  dart.defineLazy(webp_huffman.HuffmanTree, {
+    /*webp_huffman.HuffmanTree.HUFF_LUT_BITS*/get HUFF_LUT_BITS() {
+      return 7;
+    },
+    /*webp_huffman.HuffmanTree.HUFF_LUT*/get HUFF_LUT() {
+      return 128;
+    },
+    /*webp_huffman.HuffmanTree._REVERSED_BITS*/get _REVERSED_BITS() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  var htrees = dart.privateName(webp_huffman, "HTreeGroup.htrees");
+  webp_huffman.HTreeGroup = class HTreeGroup extends core.Object {
+    get htrees() {
+      return this[htrees];
+    }
+    set htrees(value) {
+      super.htrees = value;
+    }
+    static ['_#new#tearOff']() {
+      return new webp_huffman.HTreeGroup.new();
+    }
+    _get(index) {
+      return this.htrees[$_get](index);
+    }
+  };
+  (webp_huffman.HTreeGroup.new = function() {
+    this[htrees] = T.ListOfHuffmanTree().generate(5, dart.fn(_ => new webp_huffman.HuffmanTree.new(), T.intToHuffmanTree()), {growable: false});
+    ;
+  }).prototype = webp_huffman.HTreeGroup.prototype;
+  dart.addTypeTests(webp_huffman.HTreeGroup);
+  dart.addTypeCaches(webp_huffman.HTreeGroup);
+  dart.setMethodSignature(webp_huffman.HTreeGroup, () => ({
+    __proto__: dart.getMethods(webp_huffman.HTreeGroup.__proto__),
+    _get: dart.fnType(webp_huffman.HuffmanTree, [core.int])
+  }));
+  dart.setLibraryUri(webp_huffman.HTreeGroup, I[0]);
+  dart.setFieldSignature(webp_huffman.HTreeGroup, () => ({
+    __proto__: dart.getFields(webp_huffman.HTreeGroup.__proto__),
+    htrees: dart.finalFieldType(core.List$(webp_huffman.HuffmanTree))
+  }));
+  var type = dart.privateName(vp8l_transform, "VP8LTransform.type");
+  var xsize = dart.privateName(vp8l_transform, "VP8LTransform.xsize");
+  var ysize = dart.privateName(vp8l_transform, "VP8LTransform.ysize");
+  var data = dart.privateName(vp8l_transform, "VP8LTransform.data");
+  var bits = dart.privateName(vp8l_transform, "VP8LTransform.bits");
+  vp8l_transform.VP8LTransform = class VP8LTransform extends core.Object {
+    get type() {
+      return this[type];
+    }
+    set type(value) {
+      this[type] = value;
+    }
+    get xsize() {
+      return this[xsize];
+    }
+    set xsize(value) {
+      this[xsize] = value;
+    }
+    get ysize() {
+      return this[ysize];
+    }
+    set ysize(value) {
+      this[ysize] = value;
+    }
+    get data() {
+      return this[data];
+    }
+    set data(value) {
+      this[data] = value;
+    }
+    get bits() {
+      return this[bits];
+    }
+    set bits(value) {
+      this[bits] = value;
+    }
+    inverseTransform(rowStart, rowEnd, inData, rowsIn, outData, rowsOut) {
+      let width = this.xsize;
+      switch (this.type) {
+        case 2:
+          {
+            this.addGreenToBlueAndRed(outData, rowsOut, rowsOut + (rowEnd - rowStart) * width);
+            break;
+          }
+        case 0:
+          {
+            this.predictorInverseTransform(rowStart, rowEnd, outData, rowsOut);
+            if (rowEnd !== this.ysize) {
+              let start = rowsOut - width;
+              let end = start + width;
+              let offset = rowsOut + (rowEnd - rowStart - 1) * width;
+              outData[$setRange](start, end, inData, offset);
+            }
+            break;
+          }
+        case 1:
+          {
+            this.colorSpaceInverseTransform(rowStart, rowEnd, outData, rowsOut);
+            break;
+          }
+        case 3:
+          {
+            if (rowsIn === rowsOut && this.bits > 0) {
+              let outStride = (rowEnd - rowStart) * width;
+              let inStride = (rowEnd - rowStart) * vp8l.InternalVP8L.subSampleSize(this.xsize, this.bits);
+              let src = rowsOut + outStride - inStride;
+              outData[$setRange](src, src + inStride, inData, rowsOut);
+              this.colorIndexInverseTransform(rowStart, rowEnd, inData, src, outData, rowsOut);
+            } else {
+              this.colorIndexInverseTransform(rowStart, rowEnd, inData, rowsIn, outData, rowsOut);
+            }
+            break;
+          }
+      }
+    }
+    colorIndexInverseTransformAlpha(yStart, yEnd, src, dst) {
+      let t4, t4$, t4$0, t4$1;
+      let bitsPerPixel = (8)[$rightShift](this.bits);
+      let width = this.xsize;
+      let colorMap = this.data;
+      if (bitsPerPixel < 8) {
+        let pixelsPerByte = (1)[$leftShift](this.bits);
+        let countMask = pixelsPerByte - 1;
+        let bit_mask = (1)[$leftShift](bitsPerPixel) - 1;
+        for (let y = yStart; y < yEnd; y = y + 1) {
+          let packed_pixels = 0;
+          for (let x = 0; x < width; x = x + 1) {
+            if ((x & countMask) === 0) {
+              packed_pixels = vp8l_transform.VP8LTransform._getAlphaIndex(src._get(0));
+              t4 = src;
+              t4.offset = t4.offset + 1;
+            }
+            let p = vp8l_transform.VP8LTransform._getAlphaValue(dart.nullCheck(colorMap)[$_get]((packed_pixels & bit_mask) >>> 0));
+            dst._set(0, p);
+            t4$ = dst;
+            t4$.offset = t4$.offset + 1;
+            packed_pixels = packed_pixels[$rightShift](bitsPerPixel);
+          }
+        }
+      } else {
+        for (let y = yStart; y < yEnd; y = y + 1) {
+          for (let x = 0; x < width; x = x + 1) {
+            let index = vp8l_transform.VP8LTransform._getAlphaIndex(src._get(0));
+            t4$0 = src;
+            t4$0.offset = t4$0.offset + 1;
+            dst._set(0, vp8l_transform.VP8LTransform._getAlphaValue(dart.nullCheck(colorMap)[$_get](index)));
+            t4$1 = dst;
+            t4$1.offset = t4$1.offset + 1;
+          }
+        }
+      }
+    }
+    colorIndexInverseTransform(yStart, yEnd, inData, src, outData, dst) {
+      let t4, t4$, t4$0, t4$1;
+      let bitsPerPixel = (8)[$rightShift](this.bits);
+      let width = this.xsize;
+      let colorMap = this.data;
+      if (bitsPerPixel < 8) {
+        let pixelsPerByte = (1)[$leftShift](this.bits);
+        let countMask = pixelsPerByte - 1;
+        let bit_mask = (1)[$leftShift](bitsPerPixel) - 1;
+        for (let y = yStart; y < yEnd; y = y + 1) {
+          let packed_pixels = 0;
+          for (let x = 0; x < width; x = x + 1) {
+            if ((x & countMask) === 0) {
+              packed_pixels = vp8l_transform.VP8LTransform._getARGBIndex(inData[$_get]((t4 = src, src = t4 + 1, t4)));
+            }
+            outData[$_set]((t4$ = dst, dst = t4$ + 1, t4$), vp8l_transform.VP8LTransform._getARGBValue(dart.nullCheck(colorMap)[$_get]((packed_pixels & bit_mask) >>> 0)));
+            packed_pixels = packed_pixels[$rightShift](bitsPerPixel);
+          }
+        }
+      } else {
+        for (let y = yStart; y < yEnd; y = y + 1) {
+          for (let x = 0; x < width; x = x + 1) {
+            outData[$_set]((t4$0 = dst, dst = t4$0 + 1, t4$0), vp8l_transform.VP8LTransform._getARGBValue(dart.nullCheck(colorMap)[$_get](vp8l_transform.VP8LTransform._getARGBIndex(inData[$_get]((t4$1 = src, src = t4$1 + 1, t4$1))))));
+          }
+        }
+      }
+    }
+    colorSpaceInverseTransform(yStart, yEnd, outData, data) {
+      let t4;
+      let width = this.xsize;
+      let mask = (1)[$leftShift](this.bits) - 1;
+      let tilesPerRow = vp8l.InternalVP8L.subSampleSize(width, this.bits);
+      let y = yStart;
+      let predRow = y[$rightShift](this.bits) * tilesPerRow;
+      while (y < yEnd) {
+        let pred = predRow;
+        let m = new vp8l_transform._VP8LMultipliers.new();
+        for (let x = 0; x < width; x = x + 1) {
+          if ((x & mask) === 0) {
+            m.colorCode = dart.nullCheck(this.data)[$_get]((t4 = pred, pred = t4 + 1, t4));
+          }
+          outData[$_set](data + x, m.transformColor(outData[$_get](data + x), true));
+        }
+        data = data + width;
+        y = y + 1;
+        if ((y & mask) === 0) {
+          predRow = predRow + tilesPerRow;
+        }
+      }
+    }
+    predictorInverseTransform(yStart, yEnd, outData, data) {
+      let t4, t4$;
+      let width = this.xsize;
+      if (yStart === 0) {
+        let pred0 = vp8l_transform.VP8LTransform._predictor0(outData, outData[$_get](data - 1), 0);
+        vp8l_transform.VP8LTransform._addPixelsEq(outData, data, pred0);
+        for (let x = 1; x < width; x = x + 1) {
+          let pred1 = vp8l_transform.VP8LTransform._predictor1(outData, outData[$_get](data + x - 1), 0);
+          vp8l_transform.VP8LTransform._addPixelsEq(outData, data + x, pred1);
+        }
+        data = data + width;
+        yStart = yStart + 1;
+      }
+      let y = yStart;
+      let mask = (1)[$leftShift](this.bits) - 1;
+      let tilesPerRow = vp8l.InternalVP8L.subSampleSize(width, this.bits);
+      let predModeBase = y[$rightShift](this.bits) * tilesPerRow;
+      while (y < yEnd) {
+        let pred2 = vp8l_transform.VP8LTransform._predictor2(outData, outData[$_get](data - 1), data - width);
+        let predModeSrc = predModeBase;
+        vp8l_transform.VP8LTransform._addPixelsEq(outData, data, pred2);
+        let k = dart.nullCheck(this.data)[$_get]((t4 = predModeSrc, predModeSrc = t4 + 1, t4)) >> 8 & 15;
+        let predFunc = vp8l_transform.VP8LTransform.PREDICTORS[$_get](k);
+        for (let x = 1; x < width; x = x + 1) {
+          if ((x & mask) === 0) {
+            let k = dart.nullCheck(this.data)[$_get]((t4$ = predModeSrc, predModeSrc = t4$ + 1, t4$)) >> 8 & 15;
+            predFunc = vp8l_transform.VP8LTransform.PREDICTORS[$_get](k);
+          }
+          let d = outData[$_get](data + x - 1);
+          let pred = predFunc(outData, d, data + x - width);
+          vp8l_transform.VP8LTransform._addPixelsEq(outData, data + x, pred);
+        }
+        data = data + width;
+        y = y + 1;
+        if ((y & mask) === 0) {
+          predModeBase = predModeBase + tilesPerRow;
+        }
+      }
+    }
+    addGreenToBlueAndRed(pixels, data, dataEnd) {
+      let t4;
+      while (data < dataEnd) {
+        let argb = pixels[$_get](data);
+        let green = argb >> 8 & 255;
+        let redBlue = argb & 16711935;
+        redBlue = redBlue + ((green << 16 | green) >>> 0);
+        redBlue = redBlue & 16711935;
+        pixels[$_set]((t4 = data, data = t4 + 1, t4), (argb & 4278255360 | redBlue) >>> 0);
+      }
+    }
+    static _getARGBIndex(idx) {
+      return idx >> 8 & 255;
+    }
+    static _getAlphaIndex(idx) {
+      return idx;
+    }
+    static _getARGBValue(val) {
+      return val;
+    }
+    static _getAlphaValue(val) {
+      return val >> 8 & 255;
+    }
+    static _addPixelsEq(pixels, a, b) {
+      let pa = pixels[$_get](a);
+      let alphaAndGreen = ((pa & 4278255360) >>> 0) + ((b & 4278255360) >>> 0);
+      let redAndBlue = (pa & 16711935) + (b & 16711935);
+      pixels[$_set](a, (alphaAndGreen & 4278255360 | redAndBlue & 16711935) >>> 0);
+    }
+    static _average2(a0, a1) {
+      return (((a0 ^ a1) & 4278124286) >>> 1) + ((a0 & a1) >>> 0);
+    }
+    static _average3(a0, a1, a2) {
+      return vp8l_transform.VP8LTransform._average2(vp8l_transform.VP8LTransform._average2(a0, a2), a1);
+    }
+    static _average4(a0, a1, a2, a3) {
+      return vp8l_transform.VP8LTransform._average2(vp8l_transform.VP8LTransform._average2(a0, a1), vp8l_transform.VP8LTransform._average2(a2, a3));
+    }
+    static _clip255(a) {
+      if (a < 0) {
+        return 0;
+      }
+      if (a > 255) {
+        return 255;
+      }
+      return a;
+    }
+    static _addSubtractComponentFull(a, b, c) {
+      return vp8l_transform.VP8LTransform._clip255(a + b - c);
+    }
+    static _clampedAddSubtractFull(c0, c1, c2) {
+      let a = vp8l_transform.VP8LTransform._addSubtractComponentFull(c0[$rightShift](24), c1[$rightShift](24), c2[$rightShift](24));
+      let r = vp8l_transform.VP8LTransform._addSubtractComponentFull(c0 >> 16 & 255, c1 >> 16 & 255, c2 >> 16 & 255);
+      let g = vp8l_transform.VP8LTransform._addSubtractComponentFull(c0 >> 8 & 255, c1 >> 8 & 255, c2 >> 8 & 255);
+      let b = vp8l_transform.VP8LTransform._addSubtractComponentFull(c0 & 255, c1 & 255, c2 & 255);
+      return (a << 24 | r << 16 >>> 0 | g << 8 >>> 0 | b) >>> 0;
+    }
+    static _addSubtractComponentHalf(a, b) {
+      return vp8l_transform.VP8LTransform._clip255(a + ((a - b) / 2)[$truncate]());
+    }
+    static _clampedAddSubtractHalf(c0, c1, c2) {
+      let avg = vp8l_transform.VP8LTransform._average2(c0, c1);
+      let a = vp8l_transform.VP8LTransform._addSubtractComponentHalf(avg[$rightShift](24), c2[$rightShift](24));
+      let r = vp8l_transform.VP8LTransform._addSubtractComponentHalf(avg >> 16 & 255, c2 >> 16 & 255);
+      let g = vp8l_transform.VP8LTransform._addSubtractComponentHalf(avg >> 8 & 255, c2 >> 8 & 255);
+      let b = vp8l_transform.VP8LTransform._addSubtractComponentHalf(avg >> 0 & 255, c2 >> 0 & 255);
+      return (a << 24 | r << 16 >>> 0 | g << 8 >>> 0 | b) >>> 0;
+    }
+    static _sub3(a, b, c) {
+      let pb = b - c;
+      let pa = a - c;
+      return pb[$abs]() - pa[$abs]();
+    }
+    static _select(a, b, c) {
+      let pa_minus_pb = vp8l_transform.VP8LTransform._sub3(a[$rightShift](24), b[$rightShift](24), c[$rightShift](24)) + vp8l_transform.VP8LTransform._sub3(a >> 16 & 255, b >> 16 & 255, c >> 16 & 255) + vp8l_transform.VP8LTransform._sub3(a >> 8 & 255, b >> 8 & 255, c >> 8 & 255) + vp8l_transform.VP8LTransform._sub3(a & 255, b & 255, c & 255);
+      return pa_minus_pb <= 0 ? a : b;
+    }
+    static _predictor0(pixels, left, top) {
+      return 4278190080.0;
+    }
+    static _predictor1(pixels, left, top) {
+      return left;
+    }
+    static _predictor2(pixels, left, top) {
+      return pixels[$_get](top);
+    }
+    static _predictor3(pixels, left, top) {
+      return pixels[$_get](top + 1);
+    }
+    static _predictor4(pixels, left, top) {
+      return pixels[$_get](top - 1);
+    }
+    static _predictor5(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average3(left, pixels[$_get](top), pixels[$_get](top + 1));
+    }
+    static _predictor6(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average2(left, pixels[$_get](top - 1));
+    }
+    static _predictor7(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average2(left, pixels[$_get](top));
+    }
+    static _predictor8(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average2(pixels[$_get](top - 1), pixels[$_get](top));
+    }
+    static _predictor9(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average2(pixels[$_get](top), pixels[$_get](top + 1));
+    }
+    static _predictor10(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._average4(left, pixels[$_get](top - 1), pixels[$_get](top), pixels[$_get](top + 1));
+    }
+    static _predictor11(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._select(pixels[$_get](top), left, pixels[$_get](top - 1));
+    }
+    static _predictor12(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._clampedAddSubtractFull(left, pixels[$_get](top), pixels[$_get](top - 1));
+    }
+    static _predictor13(pixels, left, top) {
+      return vp8l_transform.VP8LTransform._clampedAddSubtractHalf(left, pixels[$_get](top), pixels[$_get](top - 1));
+    }
+    static ['_#new#tearOff']() {
+      return new vp8l_transform.VP8LTransform.new();
+    }
+  };
+  (vp8l_transform.VP8LTransform.new = function() {
+    this[type] = 0;
+    this[xsize] = 0;
+    this[ysize] = 0;
+    this[data] = null;
+    this[bits] = 0;
+    ;
+  }).prototype = vp8l_transform.VP8LTransform.prototype;
+  dart.addTypeTests(vp8l_transform.VP8LTransform);
+  dart.addTypeCaches(vp8l_transform.VP8LTransform);
+  dart.setMethodSignature(vp8l_transform.VP8LTransform, () => ({
+    __proto__: dart.getMethods(vp8l_transform.VP8LTransform.__proto__),
+    inverseTransform: dart.fnType(dart.void, [core.int, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    colorIndexInverseTransformAlpha: dart.fnType(dart.void, [core.int, core.int, input_buffer.InputBuffer, input_buffer.InputBuffer]),
+    colorIndexInverseTransform: dart.fnType(dart.void, [core.int, core.int, typed_data.Uint32List, core.int, typed_data.Uint32List, core.int]),
+    colorSpaceInverseTransform: dart.fnType(dart.void, [core.int, core.int, typed_data.Uint32List, core.int]),
+    predictorInverseTransform: dart.fnType(dart.void, [core.int, core.int, typed_data.Uint32List, core.int]),
+    addGreenToBlueAndRed: dart.fnType(dart.void, [typed_data.Uint32List, core.int, core.int])
+  }));
+  dart.setStaticMethodSignature(vp8l_transform.VP8LTransform, () => ['_getARGBIndex', '_getAlphaIndex', '_getARGBValue', '_getAlphaValue', '_addPixelsEq', '_average2', '_average3', '_average4', '_clip255', '_addSubtractComponentFull', '_clampedAddSubtractFull', '_addSubtractComponentHalf', '_clampedAddSubtractHalf', '_sub3', '_select', '_predictor0', '_predictor1', '_predictor2', '_predictor3', '_predictor4', '_predictor5', '_predictor6', '_predictor7', '_predictor8', '_predictor9', '_predictor10', '_predictor11', '_predictor12', '_predictor13']);
+  dart.setLibraryUri(vp8l_transform.VP8LTransform, I[1]);
+  dart.setFieldSignature(vp8l_transform.VP8LTransform, () => ({
+    __proto__: dart.getFields(vp8l_transform.VP8LTransform.__proto__),
+    type: dart.fieldType(core.int),
+    xsize: dart.fieldType(core.int),
+    ysize: dart.fieldType(core.int),
+    data: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    bits: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(vp8l_transform.VP8LTransform, () => ['PREDICTOR_TRANSFORM', 'CROSS_COLOR_TRANSFORM', 'SUBTRACT_GREEN', 'COLOR_INDEXING_TRANSFORM', 'PREDICTORS']);
+  dart.defineLazy(vp8l_transform.VP8LTransform, {
+    /*vp8l_transform.VP8LTransform.PREDICTOR_TRANSFORM*/get PREDICTOR_TRANSFORM() {
+      return 0;
+    },
+    /*vp8l_transform.VP8LTransform.CROSS_COLOR_TRANSFORM*/get CROSS_COLOR_TRANSFORM() {
+      return 1;
+    },
+    /*vp8l_transform.VP8LTransform.SUBTRACT_GREEN*/get SUBTRACT_GREEN() {
+      return 2;
+    },
+    /*vp8l_transform.VP8LTransform.COLOR_INDEXING_TRANSFORM*/get COLOR_INDEXING_TRANSFORM() {
+      return 3;
+    },
+    /*vp8l_transform.VP8LTransform.PREDICTORS*/get PREDICTORS() {
+      return T.JSArrayOfUint32ListAndintAndintToint().of([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[1] || CT.C1, C[1] || CT.C1]);
+    }
+  }, false);
+  vp8l_transform._VP8LMultipliers = class _VP8LMultipliers extends core.Object {
+    get greenToRed() {
+      return this.data[$_get](0);
+    }
+    set greenToRed(m) {
+      let t6, t5, t4;
+      t4 = this.data;
+      t5 = 0;
+      t6 = m;
+      t4[$_set](t5, t6);
+      return t6;
+    }
+    get greenToBlue() {
+      return this.data[$_get](1);
+    }
+    set greenToBlue(m) {
+      let t6, t5, t4;
+      t4 = this.data;
+      t5 = 1;
+      t6 = m;
+      t4[$_set](t5, t6);
+      return t6;
+    }
+    get redToBlue() {
+      return this.data[$_get](2);
+    }
+    set redToBlue(m) {
+      let t6, t5, t4;
+      t4 = this.data;
+      t5 = 2;
+      t6 = m;
+      t4[$_set](t5, t6);
+      return t6;
+    }
+    clear() {
+      this.data[$_set](0, 0);
+      this.data[$_set](1, 0);
+      this.data[$_set](2, 0);
+    }
+    set colorCode(colorCode) {
+      this.data[$_set](0, colorCode >> 0 & 255);
+      this.data[$_set](1, colorCode >> 8 & 255);
+      this.data[$_set](2, colorCode >> 16 & 255);
+    }
+    get colorCode() {
+      return (4278190080 | this.data[$_get](2) << 16 >>> 0 | this.data[$_get](1) << 8 >>> 0 | this.data[$_get](0)) >>> 0;
+    }
+    transformColor(argb, inverse) {
+      let green = argb >> 8 & 255;
+      let red = argb >> 16 & 255;
+      let newRed = red;
+      let newBlue = argb & 255;
+      if (inverse) {
+        let g = this.colorTransformDelta(this.greenToRed, green);
+        newRed = (newRed + g & 4294967295) >>> 0;
+        newRed = newRed & 255;
+        newBlue = (newBlue + this.colorTransformDelta(this.greenToBlue, green) & 4294967295) >>> 0;
+        newBlue = (newBlue + this.colorTransformDelta(this.redToBlue, newRed) & 4294967295) >>> 0;
+        newBlue = newBlue & 255;
+      } else {
+        newRed = newRed - this.colorTransformDelta(this.greenToRed, green);
+        newRed = newRed & 255;
+        newBlue = newBlue - this.colorTransformDelta(this.greenToBlue, green);
+        newBlue = newBlue - this.colorTransformDelta(this.redToBlue, red);
+        newBlue = newBlue & 255;
+      }
+      let c = (argb & 4278255360 | (newRed << 16 & 4294967295) >>> 0 | newBlue) >>> 0;
+      return c;
+    }
+    colorTransformDelta(colorPred, color) {
+      let a = bit_operators.uint8ToInt8(colorPred);
+      let b = bit_operators.uint8ToInt8(color);
+      let d = bit_operators.int32ToUint32(a * b);
+      return d[$rightShift](5);
+    }
+    static ['_#new#tearOff']() {
+      return new vp8l_transform._VP8LMultipliers.new();
+    }
+  };
+  (vp8l_transform._VP8LMultipliers.new = function() {
+    this.data = _native_typed_data.NativeUint8List.new(3);
+    ;
+  }).prototype = vp8l_transform._VP8LMultipliers.prototype;
+  dart.addTypeTests(vp8l_transform._VP8LMultipliers);
+  dart.addTypeCaches(vp8l_transform._VP8LMultipliers);
+  dart.setMethodSignature(vp8l_transform._VP8LMultipliers, () => ({
+    __proto__: dart.getMethods(vp8l_transform._VP8LMultipliers.__proto__),
+    clear: dart.fnType(dart.void, []),
+    transformColor: dart.fnType(core.int, [core.int, core.bool]),
+    colorTransformDelta: dart.fnType(core.int, [core.int, core.int])
+  }));
+  dart.setGetterSignature(vp8l_transform._VP8LMultipliers, () => ({
+    __proto__: dart.getGetters(vp8l_transform._VP8LMultipliers.__proto__),
+    greenToRed: core.int,
+    greenToBlue: core.int,
+    redToBlue: core.int,
+    colorCode: core.int
+  }));
+  dart.setSetterSignature(vp8l_transform._VP8LMultipliers, () => ({
+    __proto__: dart.getSetters(vp8l_transform._VP8LMultipliers.__proto__),
+    greenToRed: core.int,
+    greenToBlue: core.int,
+    redToBlue: core.int,
+    colorCode: core.int
+  }));
+  dart.setLibraryUri(vp8l_transform._VP8LMultipliers, I[1]);
+  dart.setFieldSignature(vp8l_transform._VP8LMultipliers, () => ({
+    __proto__: dart.getFields(vp8l_transform._VP8LMultipliers.__proto__),
+    data: dart.finalFieldType(typed_data.Uint8List)
+  }));
+  var input$ = dart.privateName(vp8l, "VP8L.input");
+  var br = dart.privateName(vp8l, "VP8L.br");
+  var webp$ = dart.privateName(vp8l, "VP8L.webp");
+  var image$ = dart.privateName(vp8l, "VP8L.image");
+  var _lastPixel = dart.privateName(vp8l, "_lastPixel");
+  var _lastRow = dart.privateName(vp8l, "_lastRow");
+  var _colorCacheSize = dart.privateName(vp8l, "_colorCacheSize");
+  var _colorCache = dart.privateName(vp8l, "_colorCache");
+  var _huffmanMask = dart.privateName(vp8l, "_huffmanMask");
+  var _huffmanSubsampleBits = dart.privateName(vp8l, "_huffmanSubsampleBits");
+  var _huffmanXsize = dart.privateName(vp8l, "_huffmanXsize");
+  var _huffmanImage = dart.privateName(vp8l, "_huffmanImage");
+  var _numHtreeGroups = dart.privateName(vp8l, "_numHtreeGroups");
+  var _htreeGroups = dart.privateName(vp8l, "_htreeGroups");
+  var _transforms = dart.privateName(vp8l, "_transforms");
+  var _transformsSeen = dart.privateName(vp8l, "_transformsSeen");
+  var _pixels = dart.privateName(vp8l, "_pixels");
+  var __VP8L__pixels8 = dart.privateName(vp8l, "_#VP8L#_pixels8");
+  var _argbCache = dart.privateName(vp8l, "_argbCache");
+  var _opaque = dart.privateName(vp8l, "_opaque");
+  var _ioWidth = dart.privateName(vp8l, "_ioWidth");
+  var _ioHeight = dart.privateName(vp8l, "_ioHeight");
+  var _decodeImageStream = dart.privateName(vp8l, "_decodeImageStream");
+  var _allocateInternalBuffers32b = dart.privateName(vp8l, "_allocateInternalBuffers32b");
+  var _processRows = dart.privateName(vp8l, "_processRows");
+  var _decodeImageData = dart.privateName(vp8l, "_decodeImageData");
+  var _pixels8 = dart.privateName(vp8l, "_pixels8");
+  var _allocateInternalBuffers8b = dart.privateName(vp8l, "_allocateInternalBuffers8b");
+  var _expandColorMap = dart.privateName(vp8l, "_expandColorMap");
+  var _readTransform = dart.privateName(vp8l, "_readTransform");
+  var _readHuffmanCodes = dart.privateName(vp8l, "_readHuffmanCodes");
+  var _getHtreeGroupForPos = dart.privateName(vp8l, "_getHtreeGroupForPos");
+  var _getCopyLength = dart.privateName(vp8l, "_getCopyLength");
+  var _getCopyDistance = dart.privateName(vp8l, "_getCopyDistance");
+  var _planeCodeToDistance = dart.privateName(vp8l, "_planeCodeToDistance");
+  var _is8bOptimizable = dart.privateName(vp8l, "_is8bOptimizable");
+  var _applyInverseTransforms = dart.privateName(vp8l, "_applyInverseTransforms");
+  var _extractAlphaRows = dart.privateName(vp8l, "_extractAlphaRows");
+  var _extractPalettedAlphaRows = dart.privateName(vp8l, "_extractPalettedAlphaRows");
+  var _decodeAlphaData = dart.privateName(vp8l, "_decodeAlphaData");
+  var _applyInverseTransformsAlpha = dart.privateName(vp8l, "_applyInverseTransformsAlpha");
+  var _readHuffmanCode = dart.privateName(vp8l, "_readHuffmanCode");
+  var _readHuffmanCodeLengths = dart.privateName(vp8l, "_readHuffmanCodeLengths");
+  var _getMetaIndex = dart.privateName(vp8l, "_getMetaIndex");
+  vp8l.VP8L = class VP8L extends core.Object {
+    get input() {
+      return this[input$];
+    }
+    set input(value) {
+      this[input$] = value;
+    }
+    get br() {
+      return this[br];
+    }
+    set br(value) {
+      this[br] = value;
+    }
+    get webp() {
+      return this[webp$];
+    }
+    set webp(value) {
+      this[webp$] = value;
+    }
+    get image() {
+      return this[image$];
+    }
+    set image(value) {
+      this[image$] = value;
+    }
+    static ['_#new#tearOff'](input, webp) {
+      return new vp8l.VP8L.new(input, webp);
+    }
+    decodeHeader() {
+      let signature = this.br.readBits(8);
+      if (signature !== 47) {
+        return false;
+      }
+      this.webp.format = 2;
+      this.webp.width = this.br.readBits(14) + 1;
+      this.webp.height = this.br.readBits(14) + 1;
+      this.webp.hasAlpha = this.br.readBits(1) !== 0;
+      let version = this.br.readBits(3);
+      if (version !== 0) {
+        return false;
+      }
+      return true;
+    }
+    decode() {
+      this[_lastPixel] = 0;
+      if (!this.decodeHeader()) {
+        return null;
+      }
+      this[_decodeImageStream](this.webp.width, this.webp.height, true);
+      this[_allocateInternalBuffers32b]();
+      this.image = new image.Image.new(this.webp.width, this.webp.height);
+      if (!this[_decodeImageData](dart.nullCheck(this[_pixels]), this.webp.width, this.webp.height, this.webp.height, dart.bind(this, _processRows))) {
+        return null;
+      }
+      return this.image;
+    }
+    [_allocateInternalBuffers32b]() {
+      let numPixels = this.webp.width * this.webp.height;
+      let cacheTopPixels = this.webp.width;
+      let cachePixels = this.webp.width * 16;
+      let totalNumPixels = numPixels + cacheTopPixels + cachePixels;
+      let pixels32 = _native_typed_data.NativeUint32List.new(totalNumPixels);
+      this[_pixels] = pixels32;
+      this[_pixels8] = typed_data.Uint8List.view(pixels32[$buffer]);
+      this[_argbCache] = numPixels + cacheTopPixels;
+      return true;
+    }
+    [_allocateInternalBuffers8b]() {
+      let totalNumPixels = this.webp.width * this.webp.height;
+      this[_argbCache] = 0;
+      let n = totalNumPixels + (4 - totalNumPixels[$modulo](4));
+      this[_pixels8] = _native_typed_data.NativeUint8List.new(n);
+      this[_pixels] = typed_data.Uint32List.view(this[_pixels8][$buffer]);
+      return true;
+    }
+    [_readTransform](transformSize) {
+      let ok = true;
+      let type = this.br.readBits(2);
+      if ((this[_transformsSeen] & (1)[$leftShift](type)) !== 0) {
+        return false;
+      }
+      this[_transformsSeen] = (this[_transformsSeen] | (1)[$leftShift](type)) >>> 0;
+      let transform = new vp8l_transform.VP8LTransform.new();
+      this[_transforms][$add](transform);
+      transform.type = type;
+      transform.xsize = transformSize[$_get](0);
+      transform.ysize = transformSize[$_get](1);
+      switch (type) {
+        case 0:
+        case 1:
+          {
+            transform.bits = this.br.readBits(3) + 2;
+            transform.data = this[_decodeImageStream](vp8l.VP8L._subSampleSize(transform.xsize, transform.bits), vp8l.VP8L._subSampleSize(transform.ysize, transform.bits), false);
+            break;
+          }
+        case 3:
+          {
+            let numColors = this.br.readBits(8) + 1;
+            let bits = numColors > 16 ? 0 : numColors > 4 ? 1 : numColors > 2 ? 2 : 3;
+            transformSize[$_set](0, vp8l.VP8L._subSampleSize(transform.xsize, bits));
+            transform.bits = bits;
+            transform.data = this[_decodeImageStream](numColors, 1, false);
+            ok = this[_expandColorMap](numColors, transform);
+            break;
+          }
+        case 2:
+          {
+            break;
+          }
+        default:
+          {
+            dart.throw(new image_exception.ImageException.new("Invalid WebP transform type: " + dart.str(type)));
+          }
+      }
+      return ok;
+    }
+    [_decodeImageStream](xsize, ysize, isLevel0) {
+      let transformXsize = xsize;
+      let transformYsize = ysize;
+      let colorCacheBits = 0;
+      if (isLevel0) {
+        while (this.br.readBits(1) !== 0) {
+          let sizes = T.JSArrayOfint().of([transformXsize, transformYsize]);
+          if (!this[_readTransform](sizes)) {
+            dart.throw(new image_exception.ImageException.new("Invalid Transform"));
+          }
+          transformXsize = sizes[$_get](0);
+          transformYsize = sizes[$_get](1);
+        }
+      }
+      if (this.br.readBits(1) !== 0) {
+        colorCacheBits = this.br.readBits(4);
+        let ok = colorCacheBits >= 1 && colorCacheBits <= 11;
+        if (!ok) {
+          dart.throw(new image_exception.ImageException.new("Invalid Color Cache"));
+        }
+      }
+      if (!this[_readHuffmanCodes](transformXsize, transformYsize, colorCacheBits, isLevel0)) {
+        dart.throw(new image_exception.ImageException.new("Invalid Huffman Codes"));
+      }
+      if (colorCacheBits > 0) {
+        this[_colorCacheSize] = (1)[$leftShift](colorCacheBits);
+        this[_colorCache] = new vp8l_color_cache.VP8LColorCache.new(colorCacheBits);
+      } else {
+        this[_colorCacheSize] = 0;
+      }
+      this.webp.width = transformXsize;
+      this.webp.height = transformYsize;
+      let numBits = this[_huffmanSubsampleBits];
+      this[_huffmanXsize] = vp8l.VP8L._subSampleSize(transformXsize, numBits);
+      this[_huffmanMask] = numBits === 0 ? ~0 >>> 0 : (1)[$leftShift](numBits) - 1;
+      if (isLevel0) {
+        this[_lastPixel] = 0;
+        return null;
+      }
+      let totalSize = transformXsize * transformYsize;
+      let data = _native_typed_data.NativeUint32List.new(totalSize);
+      if (!this[_decodeImageData](data, transformXsize, transformYsize, transformYsize, null)) {
+        dart.throw(new image_exception.ImageException.new("Failed to decode image data."));
+      }
+      this[_lastPixel] = 0;
+      return data;
+    }
+    [_decodeImageData](data, width, height, lastRow, processFunc) {
+      let row = (this[_lastPixel] / width)[$truncate]();
+      let col = this[_lastPixel][$modulo](width);
+      let htreeGroup = this[_getHtreeGroupForPos](col, row);
+      let src = this[_lastPixel];
+      let lastCached = src;
+      let srcEnd = width * height;
+      let srcLast = width * lastRow;
+      let colorCacheLimit = 280 + this[_colorCacheSize];
+      let colorCache = this[_colorCacheSize] > 0 ? this[_colorCache] : null;
+      let mask = this[_huffmanMask];
+      while (!this.br.isEOS && src < srcLast) {
+        if ((col & mask) === 0) {
+          htreeGroup = this[_getHtreeGroupForPos](col, row);
+        }
+        this.br.fillBitWindow();
+        let code = htreeGroup.htrees[$_get](0).readSymbol(this.br);
+        if (code < 256) {
+          let red = htreeGroup.htrees[$_get](1).readSymbol(this.br);
+          let green = code;
+          this.br.fillBitWindow();
+          let blue = htreeGroup.htrees[$_get](2).readSymbol(this.br);
+          let alpha = htreeGroup.htrees[$_get](3).readSymbol(this.br);
+          let c = color.getColor(blue, green, red, alpha);
+          data[$_set](src, c);
+          src = src + 1;
+          col = col + 1;
+          if (col >= width) {
+            col = 0;
+            row = row + 1;
+            if (row[$modulo](16) === 0 && processFunc != null) {
+              processFunc(row);
+            }
+            if (colorCache != null) {
+              while (lastCached < src) {
+                colorCache.insert(data[$_get](lastCached));
+                lastCached = lastCached + 1;
+              }
+            }
+          }
+        } else if (code < 280) {
+          let lengthSym = code - 256;
+          let length = this[_getCopyLength](lengthSym);
+          let distSymbol = htreeGroup.htrees[$_get](4).readSymbol(this.br);
+          this.br.fillBitWindow();
+          let distCode = this[_getCopyDistance](distSymbol);
+          let dist = this[_planeCodeToDistance](width, distCode);
+          if (src < dist || srcEnd - src < length) {
+            return false;
+          } else {
+            let dst = src - dist;
+            for (let i = 0; i < length; i = i + 1) {
+              data[$_set](src + i, data[$_get](dst + i));
+            }
+            src = src + length;
+          }
+          col = col + length;
+          while (col >= width) {
+            col = col - width;
+            row = row + 1;
+            if (row[$modulo](16) === 0 && processFunc != null) {
+              processFunc(row);
+            }
+          }
+          if (src < srcLast) {
+            if ((col & mask) !== 0) {
+              htreeGroup = this[_getHtreeGroupForPos](col, row);
+            }
+            if (colorCache != null) {
+              while (lastCached < src) {
+                colorCache.insert(data[$_get](lastCached));
+                lastCached = lastCached + 1;
+              }
+            }
+          }
+        } else if (code < colorCacheLimit) {
+          let key = code - 280;
+          while (lastCached < src) {
+            dart.nullCheck(colorCache).insert(data[$_get](lastCached));
+            lastCached = lastCached + 1;
+          }
+          data[$_set](src, dart.nullCheck(colorCache).lookup(key));
+          src = src + 1;
+          col = col + 1;
+          if (col >= width) {
+            col = 0;
+            row = row + 1;
+            if (row[$modulo](16) === 0 && processFunc != null) {
+              processFunc(row);
+            }
+            while (lastCached < src) {
+              colorCache.insert(data[$_get](lastCached));
+              lastCached = lastCached + 1;
+            }
+          }
+        } else {
+          return false;
+        }
+      }
+      if (processFunc != null) {
+        processFunc(row);
+      }
+      if (this.br.isEOS && src < srcEnd) {
+        return false;
+      }
+      this[_lastPixel] = src;
+      return true;
+    }
+    [_is8bOptimizable]() {
+      if (this[_colorCacheSize] > 0) {
+        return false;
+      }
+      for (let i = 0; i < this[_numHtreeGroups]; i = i + 1) {
+        let htrees = this[_htreeGroups][$_get](i).htrees;
+        if (htrees[$_get](1).numNodes > 1) {
+          return false;
+        }
+        if (htrees[$_get](2).numNodes > 1) {
+          return false;
+        }
+        if (htrees[$_get](3).numNodes > 1) {
+          return false;
+        }
+      }
+      return true;
+    }
+    [_extractAlphaRows](row) {
+      let numRows = row - this[_lastRow];
+      if (numRows <= 0) {
+        return;
+      }
+      this[_applyInverseTransforms](numRows, this.webp.width * this[_lastRow]);
+      let width = this.webp.width;
+      let cachePixs = width * numRows;
+      let di = width * this[_lastRow];
+      let src = new input_buffer.InputBuffer.new(dart.nullCheck(this[_pixels]), {offset: dart.nullCheck(this[_argbCache])});
+      for (let i = 0; i < cachePixs; i = i + 1) {
+        dart.nullCheck(this[_opaque])[$_set](di + i, src._get(i) >> 8 & 255);
+      }
+      this[_lastRow] = row;
+    }
+    [_decodeAlphaData](width, height, lastRow) {
+      let row = (this[_lastPixel] / width)[$truncate]();
+      let col = this[_lastPixel][$modulo](width);
+      let htreeGroup = this[_getHtreeGroupForPos](col, row);
+      let pos = this[_lastPixel];
+      let end = width * height;
+      let last = width * lastRow;
+      let mask = this[_huffmanMask];
+      while (!this.br.isEOS && pos < last) {
+        if ((col & mask) === 0) {
+          htreeGroup = this[_getHtreeGroupForPos](col, row);
+        }
+        this.br.fillBitWindow();
+        let code = htreeGroup.htrees[$_get](0).readSymbol(this.br);
+        if (code < 256) {
+          this[_pixels8][$_set](pos, code);
+          pos = pos + 1;
+          col = col + 1;
+          if (col >= width) {
+            col = 0;
+            row = row + 1;
+            if (row[$modulo](16) === 0) {
+              this[_extractPalettedAlphaRows](row);
+            }
+          }
+        } else if (code < 280) {
+          let lengthSym = code - 256;
+          let length = this[_getCopyLength](lengthSym);
+          let distSymbol = htreeGroup.htrees[$_get](4).readSymbol(this.br);
+          this.br.fillBitWindow();
+          let distCode = this[_getCopyDistance](distSymbol);
+          let dist = this[_planeCodeToDistance](width, distCode);
+          if (pos >= dist && end - pos >= length) {
+            for (let i = 0; i < length; i = i + 1) {
+              this[_pixels8][$_set](pos + i, this[_pixels8][$_get](pos + i - dist));
+            }
+          } else {
+            this[_lastPixel] = pos;
+            return true;
+          }
+          pos = pos + length;
+          col = col + length;
+          while (col >= width) {
+            col = col - width;
+            row = row + 1;
+            if (row[$modulo](16) === 0) {
+              this[_extractPalettedAlphaRows](row);
+            }
+          }
+          if (pos < last && (col & mask) !== 0) {
+            htreeGroup = this[_getHtreeGroupForPos](col, row);
+          }
+        } else {
+          return false;
+        }
+      }
+      this[_extractPalettedAlphaRows](row);
+      this[_lastPixel] = pos;
+      return true;
+    }
+    [_extractPalettedAlphaRows](row) {
+      let numRows = row - this[_lastRow];
+      let pIn = new input_buffer.InputBuffer.new(this[_pixels8], {offset: this.webp.width * this[_lastRow]});
+      if (numRows > 0) {
+        this[_applyInverseTransformsAlpha](numRows, pIn);
+      }
+      this[_lastRow] = row;
+    }
+    [_applyInverseTransformsAlpha](numRows, rows) {
+      let startRow = this[_lastRow];
+      let endRow = startRow + numRows;
+      let rowsOut = new input_buffer.InputBuffer.new(dart.nullCheck(this[_opaque]), {offset: dart.nullCheck(this[_ioWidth]) * startRow});
+      let transform = this[_transforms][$_get](0);
+      transform.colorIndexInverseTransformAlpha(startRow, endRow, rows, rowsOut);
+    }
+    [_processRows](row) {
+      let rows = this.webp.width * this[_lastRow];
+      let numRows = row - this[_lastRow];
+      if (numRows <= 0) {
+        return;
+      }
+      this[_applyInverseTransforms](numRows, rows);
+      for (let y = 0, pi = dart.nullCheck(this[_argbCache]), dy = this[_lastRow]; y < numRows; y = y + 1, dy = dy + 1) {
+        for (let x = 0; x < this.webp.width; x = x + 1, pi = pi + 1) {
+          let c = dart.nullCheck(this[_pixels])[$_get](pi);
+          let r = color.getRed(c);
+          let g = color.getGreen(c);
+          let b = color.getBlue(c);
+          let a = color.getAlpha(c);
+          dart.nullCheck(this.image).setPixel(x, dy, color.getColor(b, g, r, a));
+        }
+      }
+      this[_lastRow] = row;
+    }
+    [_applyInverseTransforms](numRows, rows) {
+      let t4;
+      let n = this[_transforms][$length];
+      let cachePixs = this.webp.width * numRows;
+      let startRow = this[_lastRow];
+      let endRow = startRow + numRows;
+      let rowsIn = rows;
+      let rowsOut = dart.nullCheck(this[_argbCache]);
+      dart.nullCheck(this[_pixels])[$setRange](rowsOut, rowsOut + cachePixs, dart.nullCheck(this[_pixels]), rowsIn);
+      while ((t4 = n, n = t4 - 1, t4) > 0) {
+        let transform = this[_transforms][$_get](n);
+        transform.inverseTransform(startRow, endRow, dart.nullCheck(this[_pixels]), rowsIn, dart.nullCheck(this[_pixels]), rowsOut);
+        rowsIn = rowsOut;
+      }
+    }
+    [_readHuffmanCodes](xsize, ysize, colorCacheBits, allowRecursion) {
+      let huffmanImage = null;
+      let numHtreeGroups = 1;
+      if (allowRecursion && this.br.readBits(1) !== 0) {
+        let huffmanPrecision = this.br.readBits(3) + 2;
+        let huffmanXsize = vp8l.VP8L._subSampleSize(xsize, huffmanPrecision);
+        let huffmanYsize = vp8l.VP8L._subSampleSize(ysize, huffmanPrecision);
+        let huffmanPixs = huffmanXsize * huffmanYsize;
+        huffmanImage = this[_decodeImageStream](huffmanXsize, huffmanYsize, false);
+        this[_huffmanSubsampleBits] = huffmanPrecision;
+        for (let i = 0; i < huffmanPixs; i = i + 1) {
+          let group = dart.nullCheck(huffmanImage)[$_get](i) >> 8 & 65535;
+          huffmanImage[$_set](i, group);
+          if (group >= numHtreeGroups) {
+            numHtreeGroups = group + 1;
+          }
+        }
+      }
+      if (!(numHtreeGroups <= 65536)) dart.assertFailed(null, I[2], 573, 12, "numHtreeGroups <= 0x10000");
+      let htreeGroups = T.ListOfHTreeGroup().generate(numHtreeGroups, dart.fn(_ => new webp_huffman.HTreeGroup.new(), T.intToHTreeGroup()), {growable: false});
+      for (let i = 0; i < numHtreeGroups; i = i + 1) {
+        for (let j = 0; j < 5; j = j + 1) {
+          let alphabetSize = vp8l.VP8L.ALPHABET_SIZE[$_get](j);
+          if (j === 0 && colorCacheBits > 0) {
+            alphabetSize = alphabetSize + (1)[$leftShift](colorCacheBits);
+          }
+          if (!this[_readHuffmanCode](alphabetSize, htreeGroups[$_get](i).htrees[$_get](j))) {
+            return false;
+          }
+        }
+      }
+      this[_huffmanImage] = huffmanImage;
+      this[_numHtreeGroups] = numHtreeGroups;
+      this[_htreeGroups] = htreeGroups;
+      return true;
+    }
+    [_readHuffmanCode](alphabetSize, tree) {
+      let ok = false;
+      let simpleCode = this.br.readBits(1);
+      if (simpleCode !== 0) {
+        let symbols = T.JSArrayOfint().of([0, 0]);
+        let codes = T.JSArrayOfint().of([0, 0]);
+        let codeLengths = T.JSArrayOfint().of([0, 0]);
+        let numSymbols = this.br.readBits(1) + 1;
+        let firstSymbolLenCode = this.br.readBits(1);
+        symbols[$_set](0, this.br.readBits(firstSymbolLenCode === 0 ? 1 : 8));
+        codes[$_set](0, 0);
+        codeLengths[$_set](0, numSymbols - 1);
+        if (numSymbols === 2) {
+          symbols[$_set](1, this.br.readBits(8));
+          codes[$_set](1, 1);
+          codeLengths[$_set](1, numSymbols - 1);
+        }
+        ok = tree.buildExplicit(codeLengths, codes, symbols, alphabetSize, numSymbols);
+      } else {
+        let codeLengthCodeLengths = _native_typed_data.NativeInt32List.new(19);
+        let numCodes = this.br.readBits(4) + 4;
+        if (numCodes > 19) {
+          return false;
+        }
+        let codeLengths = _native_typed_data.NativeInt32List.new(alphabetSize);
+        for (let i = 0; i < numCodes; i = i + 1) {
+          codeLengthCodeLengths[$_set](vp8l.VP8L._CODE_LENGTH_CODE_ORDER[$_get](i), this.br.readBits(3));
+        }
+        ok = this[_readHuffmanCodeLengths](codeLengthCodeLengths, alphabetSize, codeLengths);
+        if (ok) {
+          ok = tree.buildImplicit(codeLengths, alphabetSize);
+        }
+      }
+      return ok;
+    }
+    [_readHuffmanCodeLengths](codeLengthCodeLengths, numSymbols, codeLengths) {
+      let t4, t4$, t4$0, t4$1;
+      let symbol = null;
+      let max_symbol = null;
+      let prev_code_len = 8;
+      let tree = new webp_huffman.HuffmanTree.new();
+      if (!tree.buildImplicit(codeLengthCodeLengths, 19)) {
+        return false;
+      }
+      if (this.br.readBits(1) !== 0) {
+        let length_nbits = 2 + 2 * this.br.readBits(3);
+        max_symbol = 2 + this.br.readBits(length_nbits);
+        if (max_symbol > numSymbols) {
+          return false;
+        }
+      } else {
+        max_symbol = numSymbols;
+      }
+      symbol = 0;
+      while (symbol < numSymbols) {
+        let code_len = null;
+        if ((t4 = max_symbol, max_symbol = t4 - 1, t4) === 0) {
+          break;
+        }
+        this.br.fillBitWindow();
+        code_len = tree.readSymbol(this.br);
+        if (code_len < 16) {
+          codeLengths[$_set]((t4$ = symbol, symbol = t4$ + 1, t4$), code_len);
+          if (code_len !== 0) {
+            prev_code_len = code_len;
+          }
+        } else {
+          let usePrev = code_len === 16;
+          let slot = code_len - 16;
+          let extra_bits = vp8l.VP8L._CODE_LENGTH_EXTRA_BITS[$_get](slot);
+          let repeat_offset = vp8l.VP8L._CODE_LENGTH_REPEAT_OFFSETS[$_get](slot);
+          let repeat = this.br.readBits(extra_bits) + repeat_offset;
+          if (symbol + repeat > numSymbols) {
+            return false;
+          } else {
+            let length = usePrev ? prev_code_len : 0;
+            while ((t4$0 = repeat, repeat = t4$0 - 1, t4$0) > 0) {
+              codeLengths[$_set]((t4$1 = symbol, symbol = t4$1 + 1, t4$1), length);
+            }
+          }
+        }
+      }
+      return true;
+    }
+    [_getCopyDistance](distanceSymbol) {
+      if (distanceSymbol < 4) {
+        return distanceSymbol + 1;
+      }
+      let extraBits = (distanceSymbol - 2)[$rightShift](1);
+      let offset = (2 + (distanceSymbol & 1))[$leftShift](extraBits);
+      return offset + this.br.readBits(extraBits) + 1;
+    }
+    [_getCopyLength](lengthSymbol) {
+      return this[_getCopyDistance](lengthSymbol);
+    }
+    [_planeCodeToDistance](xsize, planeCode) {
+      if (planeCode > 120) {
+        return planeCode - 120;
+      } else {
+        let distCode = vp8l.VP8L._CODE_TO_PLANE[$_get](planeCode - 1);
+        let yoffset = distCode[$rightShift](4);
+        let xoffset = 8 - (distCode & 15);
+        let dist = yoffset * xsize + xoffset;
+        return dist >= 1 ? dist : 1;
+      }
+    }
+    static _subSampleSize(size, samplingBits) {
+      return (size + (1)[$leftShift](samplingBits) - 1)[$rightShift](samplingBits);
+    }
+    [_expandColorMap](numColors, transform) {
+      let finalNumColors = (1)[$leftShift]((8)[$rightShift](transform.bits));
+      let newColorMap = _native_typed_data.NativeUint32List.new(finalNumColors);
+      let data = typed_data.Uint8List.view(dart.nullCheck(transform.data)[$buffer]);
+      let newData = typed_data.Uint8List.view(newColorMap[$buffer]);
+      newColorMap[$_set](0, dart.nullCheck(transform.data)[$_get](0));
+      let len = 4 * numColors;
+      let i = null;
+      for (let t4 = i = 4; i < len; i = i + 1) {
+        newData[$_set](i, data[$_get](i) + newData[$_get](i - 4) & 255);
+      }
+      for (let t5 = len = 4 * finalNumColors; i < len; i = i + 1) {
+        newData[$_set](i, 0);
+      }
+      transform.data = newColorMap;
+      return true;
+    }
+    [_getMetaIndex](image, xsize, bits, x, y) {
+      if (bits === 0) {
+        return 0;
+      }
+      return dart.nullCheck(image)[$_get](xsize * y[$rightShift](bits) + x[$rightShift](bits));
+    }
+    [_getHtreeGroupForPos](x, y) {
+      let metaIndex = this[_getMetaIndex](this[_huffmanImage], this[_huffmanXsize], this[_huffmanSubsampleBits], x, y);
+      return this[_htreeGroups][$_get](metaIndex);
+    }
+    get [_pixels8]() {
+      let t6;
+      t6 = this[__VP8L__pixels8];
+      return t6 == null ? dart.throw(new _internal.LateError.fieldNI("_pixels8")) : t6;
+    }
+    set [_pixels8](library$32package$58image$47src$47formats$47webp$47vp8l$46dart$58$58_pixels8$35param) {
+      this[__VP8L__pixels8] = library$32package$58image$47src$47formats$47webp$47vp8l$46dart$58$58_pixels8$35param;
+    }
+  };
+  (vp8l.VP8L.new = function(input, webp) {
+    this[image$] = null;
+    this[_lastPixel] = 0;
+    this[_lastRow] = 0;
+    this[_colorCacheSize] = 0;
+    this[_colorCache] = null;
+    this[_huffmanMask] = 0;
+    this[_huffmanSubsampleBits] = 0;
+    this[_huffmanXsize] = 0;
+    this[_huffmanImage] = null;
+    this[_numHtreeGroups] = 0;
+    this[_htreeGroups] = T.JSArrayOfHTreeGroup().of([]);
+    this[_transforms] = T.JSArrayOfVP8LTransform().of([]);
+    this[_transformsSeen] = 0;
+    this[_pixels] = null;
+    this[__VP8L__pixels8] = null;
+    this[_argbCache] = null;
+    this[_opaque] = null;
+    this[_ioWidth] = null;
+    this[_ioHeight] = null;
+    this[input$] = input;
+    this[webp$] = webp;
+    this[br] = new vp8l_bit_reader.VP8LBitReader.new(input);
+    ;
+  }).prototype = vp8l.VP8L.prototype;
+  dart.addTypeTests(vp8l.VP8L);
+  dart.addTypeCaches(vp8l.VP8L);
+  dart.setMethodSignature(vp8l.VP8L, () => ({
+    __proto__: dart.getMethods(vp8l.VP8L.__proto__),
+    decodeHeader: dart.fnType(core.bool, []),
+    decode: dart.fnType(dart.nullable(image.Image), []),
+    [_allocateInternalBuffers32b]: dart.fnType(core.bool, []),
+    [_allocateInternalBuffers8b]: dart.fnType(core.bool, []),
+    [_readTransform]: dart.fnType(core.bool, [core.List$(core.int)]),
+    [_decodeImageStream]: dart.fnType(dart.nullable(typed_data.Uint32List), [core.int, core.int, core.bool]),
+    [_decodeImageData]: dart.fnType(core.bool, [typed_data.Uint32List, core.int, core.int, core.int, dart.nullable(dart.fnType(dart.void, [core.int]))]),
+    [_is8bOptimizable]: dart.fnType(core.bool, []),
+    [_extractAlphaRows]: dart.fnType(dart.void, [core.int]),
+    [_decodeAlphaData]: dart.fnType(core.bool, [core.int, core.int, core.int]),
+    [_extractPalettedAlphaRows]: dart.fnType(dart.void, [core.int]),
+    [_applyInverseTransformsAlpha]: dart.fnType(dart.void, [core.int, input_buffer.InputBuffer]),
+    [_processRows]: dart.fnType(dart.void, [core.int]),
+    [_applyInverseTransforms]: dart.fnType(dart.void, [core.int, core.int]),
+    [_readHuffmanCodes]: dart.fnType(core.bool, [core.int, core.int, core.int, core.bool]),
+    [_readHuffmanCode]: dart.fnType(core.bool, [core.int, webp_huffman.HuffmanTree]),
+    [_readHuffmanCodeLengths]: dart.fnType(core.bool, [core.List$(core.int), core.int, core.List$(core.int)]),
+    [_getCopyDistance]: dart.fnType(core.int, [core.int]),
+    [_getCopyLength]: dart.fnType(core.int, [core.int]),
+    [_planeCodeToDistance]: dart.fnType(core.int, [core.int, core.int]),
+    [_expandColorMap]: dart.fnType(core.bool, [core.int, vp8l_transform.VP8LTransform]),
+    [_getMetaIndex]: dart.fnType(core.int, [dart.nullable(typed_data.Uint32List), core.int, core.int, core.int, core.int]),
+    [_getHtreeGroupForPos]: dart.fnType(webp_huffman.HTreeGroup, [core.int, core.int])
+  }));
+  dart.setStaticMethodSignature(vp8l.VP8L, () => ['_subSampleSize']);
+  dart.setGetterSignature(vp8l.VP8L, () => ({
+    __proto__: dart.getGetters(vp8l.VP8L.__proto__),
+    [_pixels8]: typed_data.Uint8List
+  }));
+  dart.setSetterSignature(vp8l.VP8L, () => ({
+    __proto__: dart.getSetters(vp8l.VP8L.__proto__),
+    [_pixels8]: typed_data.Uint8List
+  }));
+  dart.setLibraryUri(vp8l.VP8L, I[3]);
+  dart.setFieldSignature(vp8l.VP8L, () => ({
+    __proto__: dart.getFields(vp8l.VP8L.__proto__),
+    input: dart.fieldType(input_buffer.InputBuffer),
+    br: dart.fieldType(vp8l_bit_reader.VP8LBitReader),
+    webp: dart.fieldType(webp_info.WebPInfo),
+    image: dart.fieldType(dart.nullable(image.Image)),
+    [_lastPixel]: dart.fieldType(core.int),
+    [_lastRow]: dart.fieldType(core.int),
+    [_colorCacheSize]: dart.fieldType(core.int),
+    [_colorCache]: dart.fieldType(dart.nullable(vp8l_color_cache.VP8LColorCache)),
+    [_huffmanMask]: dart.fieldType(core.int),
+    [_huffmanSubsampleBits]: dart.fieldType(core.int),
+    [_huffmanXsize]: dart.fieldType(core.int),
+    [_huffmanImage]: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    [_numHtreeGroups]: dart.fieldType(core.int),
+    [_htreeGroups]: dart.fieldType(core.List$(webp_huffman.HTreeGroup)),
+    [_transforms]: dart.finalFieldType(core.List$(vp8l_transform.VP8LTransform)),
+    [_transformsSeen]: dart.fieldType(core.int),
+    [_pixels]: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    [__VP8L__pixels8]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [_argbCache]: dart.fieldType(dart.nullable(core.int)),
+    [_opaque]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [_ioWidth]: dart.fieldType(dart.nullable(core.int)),
+    [_ioHeight]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.setStaticFieldSignature(vp8l.VP8L, () => ['_GREEN', '_RED', '_BLUE', '_ALPHA', '_DIST', '_NUM_ARGB_CACHE_ROWS', '_NUM_CODE_LENGTH_CODES', '_CODE_LENGTH_CODE_ORDER', '_CODE_TO_PLANE_CODES', '_CODE_TO_PLANE', '_CODE_LENGTH_LITERALS', '_CODE_LENGTH_REPEAT_CODE', '_CODE_LENGTH_EXTRA_BITS', '_CODE_LENGTH_REPEAT_OFFSETS', 'ALPHABET_SIZE', 'VP8L_MAGIC_BYTE', 'VP8L_VERSION', 'ARGB_BLACK', 'MAX_CACHE_BITS', 'HUFFMAN_CODES_PER_META_CODE', 'DEFAULT_CODE_LENGTH', 'MAX_ALLOWED_CODE_LENGTH', 'NUM_LITERAL_CODES', 'NUM_LENGTH_CODES', 'NUM_DISTANCE_CODES', 'CODE_LENGTH_CODES']);
+  dart.defineLazy(vp8l.VP8L, {
+    /*vp8l.VP8L._GREEN*/get _GREEN() {
+      return 0;
+    },
+    /*vp8l.VP8L._RED*/get _RED() {
+      return 1;
+    },
+    /*vp8l.VP8L._BLUE*/get _BLUE() {
+      return 2;
+    },
+    /*vp8l.VP8L._ALPHA*/get _ALPHA() {
+      return 3;
+    },
+    /*vp8l.VP8L._DIST*/get _DIST() {
+      return 4;
+    },
+    /*vp8l.VP8L._NUM_ARGB_CACHE_ROWS*/get _NUM_ARGB_CACHE_ROWS() {
+      return 16;
+    },
+    /*vp8l.VP8L._NUM_CODE_LENGTH_CODES*/get _NUM_CODE_LENGTH_CODES() {
+      return 19;
+    },
+    /*vp8l.VP8L._CODE_LENGTH_CODE_ORDER*/get _CODE_LENGTH_CODE_ORDER() {
+      return C[15] || CT.C15;
+    },
+    /*vp8l.VP8L._CODE_TO_PLANE_CODES*/get _CODE_TO_PLANE_CODES() {
+      return 120;
+    },
+    /*vp8l.VP8L._CODE_TO_PLANE*/get _CODE_TO_PLANE() {
+      return C[16] || CT.C16;
+    },
+    /*vp8l.VP8L._CODE_LENGTH_LITERALS*/get _CODE_LENGTH_LITERALS() {
+      return 16;
+    },
+    /*vp8l.VP8L._CODE_LENGTH_REPEAT_CODE*/get _CODE_LENGTH_REPEAT_CODE() {
+      return 16;
+    },
+    /*vp8l.VP8L._CODE_LENGTH_EXTRA_BITS*/get _CODE_LENGTH_EXTRA_BITS() {
+      return C[17] || CT.C17;
+    },
+    /*vp8l.VP8L._CODE_LENGTH_REPEAT_OFFSETS*/get _CODE_LENGTH_REPEAT_OFFSETS() {
+      return C[18] || CT.C18;
+    },
+    /*vp8l.VP8L.ALPHABET_SIZE*/get ALPHABET_SIZE() {
+      return C[19] || CT.C19;
+    },
+    /*vp8l.VP8L.VP8L_MAGIC_BYTE*/get VP8L_MAGIC_BYTE() {
+      return 47;
+    },
+    /*vp8l.VP8L.VP8L_VERSION*/get VP8L_VERSION() {
+      return 0;
+    },
+    /*vp8l.VP8L.ARGB_BLACK*/get ARGB_BLACK() {
+      return 4278190080.0;
+    },
+    /*vp8l.VP8L.MAX_CACHE_BITS*/get MAX_CACHE_BITS() {
+      return 11;
+    },
+    /*vp8l.VP8L.HUFFMAN_CODES_PER_META_CODE*/get HUFFMAN_CODES_PER_META_CODE() {
+      return 5;
+    },
+    /*vp8l.VP8L.DEFAULT_CODE_LENGTH*/get DEFAULT_CODE_LENGTH() {
+      return 8;
+    },
+    /*vp8l.VP8L.MAX_ALLOWED_CODE_LENGTH*/get MAX_ALLOWED_CODE_LENGTH() {
+      return 15;
+    },
+    /*vp8l.VP8L.NUM_LITERAL_CODES*/get NUM_LITERAL_CODES() {
+      return 256;
+    },
+    /*vp8l.VP8L.NUM_LENGTH_CODES*/get NUM_LENGTH_CODES() {
+      return 24;
+    },
+    /*vp8l.VP8L.NUM_DISTANCE_CODES*/get NUM_DISTANCE_CODES() {
+      return 40;
+    },
+    /*vp8l.VP8L.CODE_LENGTH_CODES*/get CODE_LENGTH_CODES() {
+      return 19;
+    }
+  }, false);
+  vp8l.InternalVP8L = class InternalVP8L extends vp8l.VP8L {
+    static ['_#new#tearOff'](input, webp) {
+      return new vp8l.InternalVP8L.new(input, webp);
+    }
+    get transforms() {
+      return this[_transforms];
+    }
+    get pixels() {
+      return this[_pixels];
+    }
+    get opaque() {
+      return this[_opaque];
+    }
+    set opaque(value) {
+      return this[_opaque] = value;
+    }
+    get ioWidth() {
+      return this[_ioWidth];
+    }
+    set ioWidth(width) {
+      return this[_ioWidth] = width;
+    }
+    get ioHeight() {
+      return this[_ioHeight];
+    }
+    set ioHeight(height) {
+      return this[_ioHeight] = height;
+    }
+    decodeImageData(data, width, height, lastRow, processFunc) {
+      return this[_decodeImageData](data, width, height, lastRow, processFunc);
+    }
+    decodeImageStream(xsize, ysize, isLevel0) {
+      return this[_decodeImageStream](xsize, ysize, isLevel0);
+    }
+    allocateInternalBuffers32b() {
+      return this[_allocateInternalBuffers32b]();
+    }
+    allocateInternalBuffers8b() {
+      return this[_allocateInternalBuffers8b]();
+    }
+    decodeAlphaData(width, height, lastRow) {
+      return this[_decodeAlphaData](width, height, lastRow);
+    }
+    is8bOptimizable() {
+      return this[_is8bOptimizable]();
+    }
+    extractAlphaRows(row) {
+      return this[_extractAlphaRows](row);
+    }
+    static subSampleSize(size, samplingBits) {
+      return vp8l.VP8L._subSampleSize(size, samplingBits);
+    }
+  };
+  (vp8l.InternalVP8L.new = function(input, webp) {
+    vp8l.InternalVP8L.__proto__.new.call(this, input, webp);
+    ;
+  }).prototype = vp8l.InternalVP8L.prototype;
+  dart.addTypeTests(vp8l.InternalVP8L);
+  dart.addTypeCaches(vp8l.InternalVP8L);
+  dart.setMethodSignature(vp8l.InternalVP8L, () => ({
+    __proto__: dart.getMethods(vp8l.InternalVP8L.__proto__),
+    decodeImageData: dart.fnType(core.bool, [typed_data.Uint32List, core.int, core.int, core.int, dart.fnType(dart.void, [core.int])]),
+    decodeImageStream: dart.fnType(dart.nullable(typed_data.Uint32List), [core.int, core.int, core.bool]),
+    allocateInternalBuffers32b: dart.fnType(core.bool, []),
+    allocateInternalBuffers8b: dart.fnType(core.bool, []),
+    decodeAlphaData: dart.fnType(core.bool, [core.int, core.int, core.int]),
+    is8bOptimizable: dart.fnType(core.bool, []),
+    extractAlphaRows: dart.fnType(dart.void, [core.int])
+  }));
+  dart.setStaticMethodSignature(vp8l.InternalVP8L, () => ['subSampleSize']);
+  dart.setGetterSignature(vp8l.InternalVP8L, () => ({
+    __proto__: dart.getGetters(vp8l.InternalVP8L.__proto__),
+    transforms: core.List$(vp8l_transform.VP8LTransform),
+    pixels: dart.nullable(typed_data.Uint32List),
+    opaque: dart.nullable(typed_data.Uint8List),
+    ioWidth: dart.nullable(core.int),
+    ioHeight: dart.nullable(core.int)
+  }));
+  dart.setSetterSignature(vp8l.InternalVP8L, () => ({
+    __proto__: dart.getSetters(vp8l.InternalVP8L.__proto__),
+    opaque: dart.nullable(typed_data.Uint8List),
+    ioWidth: dart.nullable(core.int),
+    ioHeight: dart.nullable(core.int)
+  }));
+  dart.setLibraryUri(vp8l.InternalVP8L, I[3]);
+  dart.trackLibraries("packages/image/src/formats/webp/webp_huffman.dart", {
+    "package:image/src/formats/webp/webp_huffman.dart": webp_huffman,
+    "package:image/src/formats/webp/vp8l_transform.dart": vp8l_transform,
+    "package:image/src/formats/webp/vp8l.dart": vp8l
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["webp_huffman.dart","vp8l_transform.dart","vp8l.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/webp/webp_huffman.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__webp__webp_huffman: webp_huffman,
+    src__formats__webp__vp8l_transform: vp8l_transform,
+    src__formats__webp__vp8l: vp8l
+  };
+}));
+
+//# sourceMappingURL=webp_huffman.dart.lib.js.map

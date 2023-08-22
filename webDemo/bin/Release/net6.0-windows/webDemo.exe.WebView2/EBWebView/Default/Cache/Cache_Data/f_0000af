@@ -1,0 +1,516 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/refresh_indicator.dart', 'packages/flutter/src/widgets/single_child_scroll_view.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/get/get_state_manager/src/rx_flutter/rx_obx_widget.dart', 'packages/flutter/src/widgets/visibility.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/cc_library/widget/text/custom_text.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/rendering/box.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/cc_library/widget/responsive_table/model/responsive_table_model.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/box_shadow.dart', 'packages/flutter/src/painting/placeholder_span.dart'], (function load__packages__cc_library__widget__responsive_table__view__content_table_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__refresh_indicator$46dart, packages__flutter__src__widgets__single_child_scroll_view$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart, packages__flutter__src__widgets__visibility$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__cc_library__widget__text__custom_text$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__rendering__box$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__borders$46dart, packages__cc_library__widget__responsive_table__model__responsive_table_model$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__box_shadow$46dart, packages__flutter__src__painting__placeholder_span$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const scrollbar = packages__flutter__src__widgets__title$46dart.src__widgets__scrollbar;
+  const scroll_physics = packages__flutter__src__widgets__title$46dart.src__widgets__scroll_physics;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const refresh_indicator = packages__flutter__src__material__refresh_indicator$46dart.src__material__refresh_indicator;
+  const single_child_scroll_view = packages__flutter__src__widgets__single_child_scroll_view$46dart.src__widgets__single_child_scroll_view;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const rx_obx_widget = packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart.get_state_manager__src__rx_flutter__rx_obx_widget;
+  const visibility = packages__flutter__src__widgets__visibility$46dart.src__widgets__visibility;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const custom_text = packages__cc_library__widget__text__custom_text$46dart.widget__text__custom_text;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const box = packages__flutter__src__rendering__box$46dart.src__rendering__box;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const responsive_table_model = packages__cc_library__widget__responsive_table__model__responsive_table_model$46dart.widget__responsive_table__model__responsive_table_model;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const box_shadow = packages__flutter__src__painting__box_shadow$46dart.src__painting__box_shadow;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  var content_table = Object.create(dart.library);
+  var $values = dartx.values;
+  var $asMap = dartx.asMap;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    VoidToFutureOfvoid: () => (T$.VoidToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [])))(),
+    VoidToVisibility: () => (T$.VoidToVisibility = dart.constFn(dart.fnType(visibility.Visibility, [])))(),
+    MapEntryOfint$Widget: () => (T$.MapEntryOfint$Widget = dart.constFn(core.MapEntry$(core.int, framework.Widget)))(),
+    intAnddynamicToMapEntryOfint$Widget: () => (T$.intAnddynamicToMapEntryOfint$Widget = dart.constFn(dart.fnType(T$.MapEntryOfint$Widget(), [core.int, dart.dynamic])))(),
+    intAndItemContentTableOptionToMapEntryOfint$Widget: () => (T$.intAndItemContentTableOptionToMapEntryOfint$Widget = dart.constFn(dart.fnType(T$.MapEntryOfint$Widget(), [core.int, responsive_table_model.ItemContentTableOption])))(),
+    BuildContextAnddynamicToWidget: () => (T$.BuildContextAnddynamicToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, dart.dynamic])))(),
+    BuildContextAnddynamicToNWidget: () => (T$.BuildContextAnddynamicToNWidget = dart.constFn(dart.nullable(T$.BuildContextAnddynamicToWidget())))(),
+    VoidToColumn: () => (T$.VoidToColumn = dart.constFn(dart.fnType(basic.Column, [])))(),
+    JSArrayOfBoxShadow: () => (T$.JSArrayOfBoxShadow = dart.constFn(_interceptors.JSArray$(box_shadow.BoxShadow)))(),
+    JSArrayOfWidget: () => (T$.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ContentTable",
+        [_Location_column]: 9,
+        [_Location_line]: 9,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 31,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[2] || CT.C2,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Không có dữ liệu",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: C[3] || CT.C3,
+        [CustomText_color]: C[4] || CT.C4,
+        [CustomText_align]: C[5] || CT.C5
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 32,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 26,
+        [_Location_line]: 39,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Visibility",
+        [_Location_column]: 23,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 22,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 20,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SingleChildScrollView",
+        [_Location_column]: 18,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RefreshIndicator",
+        [_Location_column]: 14,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RawScrollbar",
+        [_Location_column]: 12,
+        [_Location_line]: 13,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 16,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "IntrinsicHeight",
+        [_Location_column]: 14,
+        [_Location_line]: 71,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 16,
+        [_Location_line]: 89,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Flexible",
+        [_Location_column]: 12,
+        [_Location_line]: 87,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ContentTableMobile",
+        [_Location_column]: 9,
+        [_Location_line]: 109,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 34,
+        [_Location_line]: 124,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 24,
+        [_Location_line]: 124,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 22,
+        [_Location_line]: 122,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SingleChildScrollView",
+        [_Location_column]: 20,
+        [_Location_line]: 120,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RefreshIndicator",
+        [_Location_column]: 16,
+        [_Location_line]: 118,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RawScrollbar",
+        [_Location_column]: 12,
+        [_Location_line]: 113,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 11,
+        [_Location_line]: 158,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 14,
+        [_Location_line]: 156,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 146,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 11,
+        [_Location_line]: 181,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 11,
+        [_Location_line]: 191,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 14,
+        [_Location_line]: 177,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 174,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/content_table.dart"
+      });
+    }
+  }, false);
+  var C = Array(33).fill(void 0);
+  var I = ["package:cc_library/widget/responsive_table/view/content_table.dart"];
+  var model$ = dart.privateName(content_table, "ContentTable.model");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var CustomText_textStyle = dart.privateName(custom_text, "CustomText.textStyle");
+  var CustomText_textAlign = dart.privateName(custom_text, "CustomText.textAlign");
+  var CustomText_text = dart.privateName(custom_text, "CustomText.text");
+  var CustomText_marginRight = dart.privateName(custom_text, "CustomText.marginRight");
+  var CustomText_marginLeft = dart.privateName(custom_text, "CustomText.marginLeft");
+  var CustomText_heightLine = dart.privateName(custom_text, "CustomText.heightLine");
+  var CustomText_fontSize = dart.privateName(custom_text, "CustomText.fontSize");
+  var CustomText_overflow = dart.privateName(custom_text, "CustomText.overflow");
+  var CustomText_maxLines = dart.privateName(custom_text, "CustomText.maxLines");
+  var CustomText_fontStyle = dart.privateName(custom_text, "CustomText.fontStyle");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var CustomText_fontWeight = dart.privateName(custom_text, "CustomText.fontWeight");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var CustomText_color = dart.privateName(custom_text, "CustomText.color");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var CustomText_align = dart.privateName(custom_text, "CustomText.align");
+  const _is_ContentTable_default = Symbol('_is_ContentTable_default');
+  content_table.ContentTable$ = dart.generic(T => {
+    class ContentTable extends framework.StatelessWidget {
+      get model() {
+        return this[model$];
+      }
+      set model(value) {
+        super.model = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let model = opts && 'model' in opts ? opts.model : null;
+        return new (content_table.ContentTable$(T)).new({model: model, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+      }
+      build(context) {
+        let t0, t0$, t0$0;
+        return new scrollbar.RawScrollbar.new({thumbColor: (t0 = this.model.thumbColor, t0 == null ? colors.Colors.black45 : t0), thickness: (t0$ = this.model.thickness, t0$ == null ? 4.0 : t0$), radius: new ui.Radius.circular(100.0), controller: this.model.scrollController, child: new refresh_indicator.RefreshIndicator.new({onRefresh: dart.fn(() => this.model.refreshData(), T$.VoidToFutureOfvoid()), child: new single_child_scroll_view.SingleChildScrollView.new({physics: new scroll_physics.AlwaysScrollableScrollPhysics.new(), controller: this.model.scrollController, child: new container.Container.new({alignment: alignment.Alignment.topCenter, decoration: new box_decoration.BoxDecoration.new({color: (t0$0 = this.model.backgroundContent, t0$0 == null ? colors.Colors.white : t0$0)}), child: new rx_obx_widget.Obx.new(dart.fn(() => {
+                  let t0;
+                  return new visibility.Visibility.new({visible: this.model.contentData.length > 0, replacement: new container.Container.new({margin: new edge_insets.EdgeInsets.symmetric({vertical: 10.0}), child: (t0 = this.model.emptyDataCustom, t0 == null ? C[1] || CT.C1 : t0), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.start, mainAxisSize: flex.MainAxisSize.max, children: this.buildContents(context), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+                }, T$.VoidToVisibility()), {$creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13});
+      }
+      buildContents(context) {
+        return this.model.contentData[$asMap]()[$map](core.int, framework.Widget, dart.fn((i, element) => new (T$.MapEntryOfint$Widget()).__(i, this.buildItemContents(T.as(element), i, context)), T$.intAnddynamicToMapEntryOfint$Widget()))[$values][$toList]();
+      }
+      buildItemContents(row, index, context) {
+        let t0, t0$, t0$0, t0$1;
+        T.as(row);
+        return new container.Container.new({alignment: alignment.Alignment.topCenter, constraints: new box.BoxConstraints.new({minHeight: (t0 = this.model.rowHeight, t0 == null ? 40.0 : t0)}), decoration: new box_decoration.BoxDecoration.new({border: dart.notNull((t0$ = this.model.widthBorder, t0$ == null ? 0.0 : t0$)) > 0 ? new box_border.Border.new({bottom: new borders.BorderSide.new({color: (t0$0 = this.model.colorBorder, t0$0 == null ? colors.Colors.grey : t0$0), width: (t0$1 = this.model.widthBorder, t0$1 == null ? 0.0 : t0$1)})}) : null}), child: new basic.IntrinsicHeight.new({child: new basic.Row.new({mainAxisSize: flex.MainAxisSize.max, mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.center, children: dart.nullCheck(this.model.contentOptions)[$asMap]()[$map](core.int, framework.Widget, dart.fn((i, element) => new (T$.MapEntryOfint$Widget()).__(i, this.buildItem(row, i, context)), T$.intAndItemContentTableOptionToMapEntryOfint$Widget()))[$values][$toList](), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+      }
+      buildItem(row, index, context) {
+        let t0, t0$, t0$0, t0$1, t0$2;
+        T.as(row);
+        return new basic.Flexible.new({flex: this.model.flexs[$_get](index), child: new container.Container.new({constraints: new box.BoxConstraints.new({minHeight: (t0 = this.model.rowHeight, t0 == null ? 40.0 : t0)}), decoration: new box_decoration.BoxDecoration.new({border: dart.notNull((t0$ = this.model.widthBorder, t0$ == null ? 0.0 : t0$)) > 0 ? index < this.model.countColumn - 1 ? new box_border.Border.new({right: new borders.BorderSide.new({color: (t0$0 = this.model.colorBorder, t0$0 == null ? colors.Colors.grey : t0$0), width: (t0$1 = this.model.widthBorder, t0$1 == null ? 0.0 : t0$1)})}) : null : null}), alignment: (t0$2 = dart.nullCheck(this.model.contentOptions)[$_get](index).itemAlignment, t0$2 == null ? alignment.Alignment.center : t0$2), child: dart.nullCheck(T$.BuildContextAnddynamicToNWidget().as(dart.nullCheck(this.model.contentOptions)[$_get](index).builder))(context, row), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+      }
+    }
+    (ContentTable.new = function(opts) {
+      let model = opts && 'model' in opts ? opts.model : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[model$] = model;
+      ContentTable.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = ContentTable.prototype;
+    dart.addTypeTests(ContentTable);
+    ContentTable.prototype[_is_ContentTable_default] = true;
+    dart.addTypeCaches(ContentTable);
+    dart.setMethodSignature(ContentTable, () => ({
+      __proto__: dart.getMethods(ContentTable.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      buildContents: dart.fnType(core.List$(framework.Widget), [framework.BuildContext]),
+      buildItemContents: dart.fnType(framework.Widget, [dart.nullable(core.Object), core.int, framework.BuildContext]),
+      buildItem: dart.fnType(framework.Widget, [dart.nullable(core.Object), core.int, framework.BuildContext])
+    }));
+    dart.setLibraryUri(ContentTable, I[0]);
+    dart.setFieldSignature(ContentTable, () => ({
+      __proto__: dart.getFields(ContentTable.__proto__),
+      model: dart.finalFieldType(responsive_table_model.ResponsiveTableModel)
+    }));
+    return ContentTable;
+  });
+  content_table.ContentTable = content_table.ContentTable$();
+  dart.addTypeTests(content_table.ContentTable, _is_ContentTable_default);
+  var model$0 = dart.privateName(content_table, "ContentTableMobile.model");
+  const _is_ContentTableMobile_default = Symbol('_is_ContentTableMobile_default');
+  content_table.ContentTableMobile$ = dart.generic(T => {
+    class ContentTableMobile extends framework.StatelessWidget {
+      get model() {
+        return this[model$0];
+      }
+      set model(value) {
+        super.model = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let model = opts && 'model' in opts ? opts.model : null;
+        return new (content_table.ContentTableMobile$(T)).new({model: model, $creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
+      }
+      build(context) {
+        let t0, t0$;
+        return new scrollbar.RawScrollbar.new({thumbColor: (t0 = this.model.thumbColor, t0 == null ? colors.Colors.black45 : t0), thickness: (t0$ = this.model.thickness, t0$ == null ? 3.0 : t0$), radius: new ui.Radius.circular(100.0), controller: this.model.scrollController, child: new refresh_indicator.RefreshIndicator.new({onRefresh: dart.fn(() => this.model.refreshData(), T$.VoidToFutureOfvoid()), child: new single_child_scroll_view.SingleChildScrollView.new({controller: this.model.scrollController, child: new container.Container.new({alignment: alignment.Alignment.topCenter, child: new rx_obx_widget.Obx.new(dart.fn(() => new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.start, mainAxisSize: flex.MainAxisSize.max, children: this.buildContents(context), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20}), T$.VoidToColumn()), {$creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
+      }
+      buildContents(context) {
+        return this.model.contentData[$asMap]()[$map](core.int, framework.Widget, dart.fn((i, element) => new (T$.MapEntryOfint$Widget()).__(i, this.buildItemContents(T.as(element), i, context)), T$.intAnddynamicToMapEntryOfint$Widget()))[$values][$toList]();
+      }
+      buildItemContents(row, index, context) {
+        let t0;
+        T.as(row);
+        if (this.model.builderMobile != null) {
+          return dart.nullCheck(this.model.builderMobile)(context, row, index);
+        }
+        return new container.Container.new({alignment: alignment.Alignment.topCenter, margin: new edge_insets.EdgeInsets.only({top: 5.0, bottom: 10.0, left: 10.0, right: 10.0}), padding: new edge_insets.EdgeInsets.symmetric({vertical: 5.0, horizontal: 10.0}), decoration: new box_decoration.BoxDecoration.new({color: (t0 = this.model.backgroundContent, t0 == null ? colors.Colors.white : t0), borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(10.0)), boxShadow: T$.JSArrayOfBoxShadow().of([new box_shadow.BoxShadow.new({offset: new ui.Offset.new(0.5, 0.5), blurRadius: 1.0, spreadRadius: 1.0, color: colors.Colors.grey.withOpacity(0.3)})])}), child: new basic.Column.new({children: T$.JSArrayOfWidget().of([new basic.Column.new({mainAxisSize: flex.MainAxisSize.max, mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.start, children: dart.nullCheck(this.model.contentOptions)[$asMap]()[$map](core.int, framework.Widget, dart.fn((i, element) => new (T$.MapEntryOfint$Widget()).__(i, this.buildItem(row, i, context)), T$.intAndItemContentTableOptionToMapEntryOfint$Widget()))[$values][$toList](), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26})]), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), $creationLocationd_0dea112b090073317d4: C[28] || CT.C28});
+      }
+      buildItem(row, index, context) {
+        let t0;
+        T.as(row);
+        return new container.Container.new({margin: new edge_insets.EdgeInsets.symmetric({vertical: 2.5}), alignment: alignment.Alignment.topCenter, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T$.JSArrayOfWidget().of([new text.Text.new(dart.nullCheck(this.model.headerTitle)[$_get](index) + ": ", {style: (t0 = this.model.headerTitleStyleMobile, t0 == null ? new text_style.TextStyle.new({fontSize: 16.0, fontWeight: ui.FontWeight.w600, color: colors.Colors.black87}) : t0), textAlign: ui.TextAlign.start, $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), new basic.Expanded.new({child: dart.nullCheck(T$.BuildContextAnddynamicToNWidget().as(dart.nullCheck(this.model.contentOptions)[$_get](index).builder))(context, row), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30})]), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32});
+      }
+    }
+    (ContentTableMobile.new = function(opts) {
+      let model = opts && 'model' in opts ? opts.model : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[model$0] = model;
+      ContentTableMobile.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = ContentTableMobile.prototype;
+    dart.addTypeTests(ContentTableMobile);
+    ContentTableMobile.prototype[_is_ContentTableMobile_default] = true;
+    dart.addTypeCaches(ContentTableMobile);
+    dart.setMethodSignature(ContentTableMobile, () => ({
+      __proto__: dart.getMethods(ContentTableMobile.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      buildContents: dart.fnType(core.List$(framework.Widget), [framework.BuildContext]),
+      buildItemContents: dart.fnType(framework.Widget, [dart.nullable(core.Object), core.int, framework.BuildContext]),
+      buildItem: dart.fnType(framework.Widget, [dart.nullable(core.Object), core.int, framework.BuildContext])
+    }));
+    dart.setLibraryUri(ContentTableMobile, I[0]);
+    dart.setFieldSignature(ContentTableMobile, () => ({
+      __proto__: dart.getFields(ContentTableMobile.__proto__),
+      model: dart.finalFieldType(responsive_table_model.ResponsiveTableModel)
+    }));
+    return ContentTableMobile;
+  });
+  content_table.ContentTableMobile = content_table.ContentTableMobile$();
+  dart.addTypeTests(content_table.ContentTableMobile, _is_ContentTableMobile_default);
+  dart.trackLibraries("packages/cc_library/widget/responsive_table/view/content_table.dart", {
+    "package:cc_library/widget/responsive_table/view/content_table.dart": content_table
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["content_table.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/responsive_table/view/content_table.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__responsive_table__view__content_table: content_table
+  };
+}));
+
+//# sourceMappingURL=content_table.dart.lib.js.map

@@ -1,0 +1,561 @@
+define(['dart_sdk', 'packages/widget/utils/ctmString.dart', 'packages/intl/src/intl/date_format.dart', 'packages/collection/src/iterable_extensions.dart', 'packages/intl/src/intl/number_parser.dart'], (function load__packages__widget__utils__util_helper_dart(dart_sdk, packages__widget__utils__ctmString$46dart, packages__intl__src__intl__date_format$46dart, packages__collection__src__iterable_extensions$46dart, packages__intl__src__intl__number_parser$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const ctmString = packages__widget__utils__ctmString$46dart.utils__ctmString;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const iterable_extensions = packages__collection__src__iterable_extensions$46dart.src__iterable_extensions;
+  const number_format = packages__intl__src__intl__number_parser$46dart.src__intl__number_format;
+  var util_helper = Object.create(dart.library);
+  var $abs = dartx.abs;
+  var $toString = dartx.toString;
+  var $split = dartx.split;
+  var $toList = dartx.toList;
+  var $lastIndexOf = dartx.lastIndexOf;
+  var $substring = dartx.substring;
+  var $add = dartx.add;
+  var $map = dartx.map;
+  var $fold = dartx.fold;
+  var $contains = dartx.contains;
+  var $replaceAll = dartx.replaceAll;
+  var $_get = dartx._get;
+  var $toUpperCase = dartx.toUpperCase;
+  var $toLowerCase = dartx.toLowerCase;
+  var $floor = dartx.floor;
+  var $indexOf = dartx.indexOf;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    FutureOfNull: () => (T$.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    TimerTovoid: () => (T$.TimerTovoid = dart.constFn(dart.fnType(dart.void, [async.Timer])))(),
+    VoidToFutureOfNull: () => (T$.VoidToFutureOfNull = dart.constFn(dart.fnType(T$.FutureOfNull(), [])))(),
+    JSArrayOfString: () => (T$.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    dynamicTobool: () => (T$.dynamicTobool = dart.constFn(dart.fnType(core.bool, [dart.dynamic])))(),
+    dynamicTodynamic: () => (T$.dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic])))(),
+    dynamicAnddynamicTodynamic: () => (T$.dynamicAnddynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic, dart.dynamic])))(),
+    ObjectN: () => (T$.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    JSArrayOfObjectN: () => (T$.JSArrayOfObjectN = dart.constFn(_interceptors.JSArray$(T$.ObjectN())))(),
+    StringN: () => (T$.StringN = dart.constFn(dart.nullable(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 100000
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = ["package:widget/utils/util-helper.dart"];
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  util_helper.UtilHelper = class UtilHelper extends core.Object {
+    static new() {
+      return util_helper.UtilHelper.instance;
+    }
+    static ['_#new#tearOff']() {
+      return util_helper.UtilHelper.new();
+    }
+    static ['_#_internal#tearOff']() {
+      return new util_helper.UtilHelper._internal();
+    }
+    static defaultZezo(value) {
+      if (dart.dtest(dart.dsend(value, '<', [0]))) return 0;
+      return value;
+    }
+    static defaultZezoDouble(value) {
+      if (dart.dtest(dart.dsend(value, '<=', [0]))) return 0.0;
+      return value;
+    }
+    waitConditional(isTrue) {
+      return async.async(dart.dynamic, function* waitConditional() {
+        let promise = async.Completer.new();
+        T$.FutureOfNull().delayed(C[0] || CT.C0, dart.fn(() => async.async(core.Null, function*() {
+          async.Timer.periodic(C[0] || CT.C0, dart.fn(timer => {
+            if (dart.dtest(dart.dcall(isTrue, []))) {
+              timer.cancel();
+              promise.complete();
+            }
+          }, T$.TimerTovoid()));
+        }), T$.VoidToFutureOfNull()));
+        return promise.future;
+      });
+    }
+    static randomNumber() {
+      let rng = math.Random.new();
+      return rng.nextInt(100);
+    }
+    static printCustom(str) {
+      if (typeof str == 'string') {
+        let dtm = new core.DateTime.now();
+        core.print(dart.str(str) + " " + util_helper.UtilHelper.convertDatetimeToString({dtm: dtm, pattern: ctmString.Constants.datetimeFormatPattern2Encode}) + " " + dart.str(dtm.millisecond) + " " + dart.str(dtm.microsecond));
+      }
+    }
+    static setDateTime(opts) {
+      let dtm = opts && 'dtm' in opts ? opts.dtm : null;
+      let type = opts && 'type' in opts ? opts.type : null;
+      let year = opts && 'year' in opts ? opts.year : null;
+      let month = opts && 'month' in opts ? opts.month : null;
+      let day = opts && 'day' in opts ? opts.day : null;
+      let hour = opts && 'hour' in opts ? opts.hour : null;
+      let minute = opts && 'minute' in opts ? opts.minute : null;
+      let second = opts && 'second' in opts ? opts.second : null;
+      let millisecond = opts && 'millisecond' in opts ? opts.millisecond : null;
+      let microsecond = opts && 'microsecond' in opts ? opts.microsecond : null;
+      let _year = year != null ? year : dart.nullCheck(dtm).year;
+      let _month = month != null ? month : dart.nullCheck(dtm).month;
+      let _day = day != null ? day : dart.nullCheck(dtm).day;
+      let _hour = hour != null ? hour : dart.nullCheck(dtm).hour;
+      let _minute = minute != null ? minute : dart.nullCheck(dtm).minute;
+      let _second = second != null ? second : dart.nullCheck(dtm).second;
+      let _millisecond = millisecond != null ? millisecond : dart.nullCheck(dtm).millisecond;
+      let _microsecond = microsecond != null ? microsecond : dart.nullCheck(dtm).microsecond;
+      if (type === util_helper.UtilHelper.addDate) {
+        _year = year == null ? dart.nullCheck(dtm).year : dart.nullCheck(dtm).year + dart.notNull(year);
+        _month = month == null ? dtm.month : dtm.month + dart.notNull(month);
+        _day = day == null ? dtm.day : dtm.day + dart.notNull(day);
+        _hour = hour == null ? dtm.hour : dtm.hour + dart.notNull(hour);
+        _minute = minute == null ? dtm.minute : dtm.minute + dart.notNull(minute);
+        _second = second == null ? dtm.second : dtm.second + dart.notNull(second);
+        _millisecond = millisecond == null ? dtm.millisecond : dtm.millisecond + dart.notNull(millisecond);
+        _microsecond = microsecond == null ? dtm.microsecond : dtm.microsecond + dart.notNull(microsecond);
+      }
+      if (type === util_helper.UtilHelper.subDate) {
+        _year = year == null ? dart.nullCheck(dtm).year : dart.nullCheck(dtm).year - dart.notNull(year);
+        _month = month == null ? dtm.month : dtm.month - dart.notNull(month);
+        _day = day == null ? dtm.day : dtm.day - dart.notNull(day);
+        _hour = hour == null ? dtm.hour : dtm.hour - dart.notNull(hour);
+        _minute = minute == null ? dtm.minute : dtm.minute - dart.notNull(minute);
+        _second = second == null ? dtm.second : dtm.second - dart.notNull(second);
+        _millisecond = millisecond == null ? dtm.millisecond : dtm.millisecond - dart.notNull(millisecond);
+        _microsecond = microsecond == null ? dtm.microsecond : dtm.microsecond - dart.notNull(microsecond);
+      }
+      if (type === util_helper.UtilHelper.startDate) {
+        _hour = 0;
+        _minute = 0;
+        _second = 0;
+        _microsecond = 0;
+        _millisecond = 0;
+      }
+      if (type === util_helper.UtilHelper.endDate) {
+        _hour = 23;
+        _minute = 59;
+        _second = 59;
+        _microsecond = 59;
+        _millisecond = 59;
+      }
+      return new core.DateTime.new(_year, _month, _day, _hour, _minute, _second, _millisecond, _microsecond);
+    }
+    static getDelayTime(date1) {
+      let ts = new core.DateTime.now().difference(date1);
+      let delta = ts.inSeconds;
+      if (delta <= 0) {
+        return "";
+      }
+      delta = delta[$abs]();
+      if (delta < 2 * util_helper.UtilHelper.minute) return "1 phút";
+      if (delta < 45 * util_helper.UtilHelper.minute) return ts.inMinutes[$toString]() + " phút";
+      if (delta < 24 * util_helper.UtilHelper.hour) return (ts.inHours <= 0 ? 1 : ts.inHours)[$toString]() + " giờ";
+      if (delta < 48 * util_helper.UtilHelper.hour) return dart.str(ts.inDays) + " ngày";
+      return dart.str(ts.inDays) + " ngày";
+    }
+    static validateStringDate(str, pattern) {
+      try {
+        let data = new date_format.DateFormat.new(pattern).parse(str);
+        return true;
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        if (core.Object.is(e)) {
+          return false;
+        } else
+          throw e$;
+      }
+    }
+    static getLocalUTC(opts) {
+      let dtm = opts && 'dtm' in opts ? opts.dtm : null;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : "";
+      return dtm.add(new core.Duration.new({hours: 0}));
+    }
+    static isArrayNullOrEmpty(lst) {
+      if (lst == null || dart.equals(dart.dload(lst, 'length'), 0)) {
+        return true;
+      }
+      return false;
+    }
+    static split(str, pattern) {
+      if (util_helper.UtilHelper.isNullOrEmpty(str)) {
+        return T$.JSArrayOfString().of([]);
+      }
+      return str[$split](pattern)[$toList]();
+    }
+    static isStringArray(data) {
+      if (util_helper.UtilHelper.isNullOrEmpty(data)) {
+        return false;
+      }
+      return data[$lastIndexOf]("]") === data[$substring](data.length - 1, data.length);
+    }
+    static firstOrDefault(T, lst) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return null;
+      }
+      return dart.nullable(T).as(dart.dload(lst, 'first'));
+    }
+    static firstWhere(T, lst, isTrue) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return null;
+      }
+      if (core.List.is(lst)) {
+        let rs = iterable_extensions['IterableExtension|firstWhereOrNull'](dart.dynamic, lst, dart.fn(x => core.bool.as(dart.dcall(isTrue, [x])), T$.dynamicTobool()));
+        return dart.nullable(T).as(rs);
+      }
+      return null;
+    }
+    static pluck(T, lst, getValue) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return _interceptors.JSArray$(dart.nullable(T)).of([]);
+      }
+      let arr = _interceptors.JSArray$(dart.nullable(T)).of([]);
+      for (let item of core.Iterable.as(lst)) {
+        arr[$add](dart.nullable(T).as(dart.dcall(getValue, [item])));
+      }
+      return arr;
+    }
+    static any(lst, isTrue) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return false;
+      }
+      if (core.List.is(lst)) {
+        let rs = iterable_extensions['IterableExtension|firstWhereOrNull'](dart.dynamic, lst, dart.fn(x => core.bool.as(dart.dcall(isTrue, [x])), T$.dynamicTobool()));
+        return rs != null;
+      }
+      return false;
+    }
+    static sum(lst, getValue) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return 0;
+      }
+      if (core.List.is(lst)) {
+        let rs = lst[$map](dart.dynamic, dart.fn(m => dart.dcall(getValue, [m]), T$.dynamicTodynamic()))[$toList]()[$fold](dart.dynamic, 0, dart.fn((temp, f) => dart.dsend(temp, '+', [f]), T$.dynamicAnddynamicTodynamic()));
+        return rs;
+      }
+      return 0;
+    }
+    static isNullOrEmpty(str) {
+      return T$.JSArrayOfObjectN().of(["", "null", "{}", null, false, 0])[$contains](str);
+    }
+    static getStringNullOrEmpty(str, opts) {
+      let valueDefault = opts && 'valueDefault' in opts ? opts.valueDefault : null;
+      if (util_helper.UtilHelper.isNullOrEmpty(str)) {
+        return valueDefault;
+      }
+      return str;
+    }
+    static formatDatetime2Encode(date, opts) {
+      let t1;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : null;
+      return util_helper.UtilHelper.convertDatetimeToString({dtm: date, pattern: (t1 = pattern, t1 == null ? ctmString.Constants.datetimeFormatPattern2Encode : t1)});
+    }
+    static formatDatetimeJson(strDate) {
+      let todayDate = core.DateTime.parse(strDate);
+      return new date_format.DateFormat.new(ctmString.Constants.datetimeFormatPattern).format(util_helper.UtilHelper.getLocalUTC({dtm: todayDate}));
+    }
+    static compareDate(date1, operation, date2, opts) {
+      let type = opts && 'type' in opts ? opts.type : null;
+      let subTime = 0;
+      if (type === "date") {
+        subTime = date1.difference(date2).inDays;
+      } else {
+        subTime = date1.difference(date2).inMicroseconds;
+      }
+      let result = false;
+      if (operation === "=") {
+        if (subTime === 0) result = true;
+      } else if (operation === "<=") {
+        if (subTime === 0 || subTime < 0) result = true;
+      } else if (operation === ">") {
+        if (subTime > 0) result = true;
+      }
+      return result;
+    }
+    static convertDatetimeJson(strDate, opts) {
+      let isCheckJsonNet = opts && 'isCheckJsonNet' in opts ? opts.isCheckJsonNet : false;
+      if (util_helper.UtilHelper.isNullOrEmpty(strDate)) {
+        return null;
+      }
+      if (isCheckJsonNet) {
+        if (dart.nullCheck(strDate)[$contains]("/Date")) {
+          return util_helper.UtilHelper.convertDatetimeJsonNet(strDate);
+        }
+      }
+      strDate = dart.nullCheck(strDate)[$replaceAll]("+07:00", "");
+      return core.DateTime.parse(strDate);
+    }
+    static convertDatetimeJsonNet(strDate) {
+      if (util_helper.UtilHelper.isNullOrEmpty(strDate)) {
+        return null;
+      }
+      strDate = dart.nullCheck(strDate)[$replaceAll]("/Date(", "");
+      strDate = strDate[$replaceAll](")/", "");
+      let temp = new core.DateTime.fromMillisecondsSinceEpoch(core.int.parse(strDate), {isUtc: true});
+      let temp2 = util_helper.UtilHelper.setDateTime({dtm: temp, hour: temp.hour + 7});
+      return temp2;
+    }
+    static convertDatetimeToString(opts) {
+      let dtm = opts && 'dtm' in opts ? opts.dtm : null;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : "";
+      if (dtm == null) {
+        return "";
+      }
+      if (util_helper.UtilHelper.isNullOrEmpty(pattern)) {
+        pattern = ctmString.Constants.datetimeFormatPattern;
+      }
+      return new date_format.DateFormat.new(pattern).format(util_helper.UtilHelper.getLocalUTC({dtm: dtm}));
+    }
+    static upperCaseFirst(opts) {
+      let pattern = opts && 'pattern' in opts ? opts.pattern : "";
+      return pattern.length < 1 ? "" : pattern[$_get](0)[$toUpperCase]() + pattern[$substring](1);
+    }
+    static lowerCaseFirst(opts) {
+      let t1;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : null;
+      pattern = (t1 = pattern, t1 == null ? "" : t1);
+      return pattern.length < 1 ? "" : pattern[$_get](0)[$toLowerCase]() + pattern[$substring](1);
+    }
+    static getCaseFirst(opts) {
+      let t1;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : null;
+      pattern = (t1 = pattern, t1 == null ? "" : t1);
+      return pattern.length < 1 ? pattern : pattern[$_get](0);
+    }
+    static substringCaseFirst(opts) {
+      let t1;
+      let pattern = opts && 'pattern' in opts ? opts.pattern : null;
+      pattern = (t1 = pattern, t1 == null ? "" : t1);
+      return pattern.length < 1 ? pattern : pattern[$substring](1);
+    }
+    static truncatedText(opts) {
+      let str = opts && 'str' in opts ? opts.str : null;
+      let truncateAt = opts && 'truncateAt' in opts ? opts.truncateAt : null;
+      let elepsis = "...";
+      let truncated = "";
+      if (str.length > truncateAt) {
+        truncated = str[$substring](0, truncateAt - elepsis.length) + elepsis;
+      } else {
+        truncated = str;
+      }
+      return truncated;
+    }
+    static getValueMoneyformatVND(opts) {
+      let value = opts && 'value' in opts ? opts.value : null;
+      let symbol = opts && 'symbol' in opts ? opts.symbol : "";
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 0;
+      value = value[$replaceAll](".", "");
+      value = value[$replaceAll](",", ".");
+      value = value[$replaceAll]("đ", "");
+      return core.double.parse(value);
+    }
+    static moneyformatVND(opts) {
+      let money = opts && 'money' in opts ? opts.money : null;
+      let symbol = opts && 'symbol' in opts ? opts.symbol : "";
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 0;
+      let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : "";
+      let strMoney = "0";
+      if (money == null || money === 0) {
+        return core.String.as(defaultValue);
+      }
+      let floor = dart.notNull(money) - money[$floor]();
+      if (floor === 0.0) {
+        toFixDecimal = 0;
+      }
+      let strNumberFormat = "#,###";
+      if (toFixDecimal > 0) {
+        let strToFixDecimal = "";
+        for (let i = 0; i < toFixDecimal; i = i + 1) {
+          strToFixDecimal = strToFixDecimal + "#";
+        }
+        strNumberFormat = strNumberFormat + "." + strToFixDecimal;
+      }
+      let f = number_format.NumberFormat.new(strNumberFormat, "en-US");
+      strMoney = f.format(money);
+      strMoney = strMoney[$replaceAll](",", "@");
+      strMoney = strMoney[$replaceAll](".", ",");
+      strMoney = strMoney[$replaceAll]("@", ".");
+      return strMoney + symbol;
+    }
+    static moneyformatEN(opts) {
+      let money = opts && 'money' in opts ? opts.money : null;
+      let symbol = opts && 'symbol' in opts ? opts.symbol : "";
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 0;
+      let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : "0";
+      let strMoney = "0";
+      if (money == null || money === 0) {
+        return T$.StringN().as(dart.dsend(defaultValue, '+', [symbol]));
+      }
+      let floor = dart.notNull(money) - money[$floor]();
+      if (floor === 0.0) {
+        toFixDecimal = 0;
+      }
+      let strNumberFormat = "#,###";
+      if (toFixDecimal > 0) {
+        let strToFixDecimal = "";
+        for (let i = 0; i < toFixDecimal; i = i + 1) {
+          strToFixDecimal = strToFixDecimal + "#";
+        }
+        strNumberFormat = strNumberFormat + "." + strToFixDecimal;
+      }
+      let f = number_format.NumberFormat.new(strNumberFormat);
+      strMoney = f.format(money);
+      return strMoney + symbol;
+    }
+    static moneyformat(opts) {
+      let money = opts && 'money' in opts ? opts.money : null;
+      let symbol = opts && 'symbol' in opts ? opts.symbol : "";
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 0;
+      let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : "0";
+      let strMoney = "0";
+      if (money == null || money === 0) {
+        return T$.StringN().as(dart.dsend(defaultValue, '+', [symbol]));
+      }
+      let floor = dart.notNull(money) - money[$floor]();
+      if (floor === 0.0) {
+        toFixDecimal = 0;
+      }
+      let strNumberFormat = "#,###";
+      if (toFixDecimal > 0) {
+        let strToFixDecimal = "";
+        for (let i = 0; i < toFixDecimal; i = i + 1) {
+          strToFixDecimal = strToFixDecimal + "#";
+        }
+        strNumberFormat = strNumberFormat + "." + strToFixDecimal;
+      }
+      let f = number_format.NumberFormat.new(strNumberFormat, "en_US");
+      strMoney = f.format(money);
+      strMoney = strMoney[$replaceAll](",", "@");
+      strMoney = strMoney[$replaceAll](".", ",");
+      strMoney = strMoney[$replaceAll]("@", ".");
+      return strMoney + symbol;
+    }
+    static moneyformatChart(opts) {
+      let money = opts && 'money' in opts ? opts.money : null;
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 2;
+      let symbol = "";
+      money = money / 1000000;
+      let strMoney = util_helper.UtilHelper.moneyformat({money: money, symbol: symbol, toFixDecimal: toFixDecimal});
+      return strMoney;
+    }
+    static moneyformatSymbol(opts) {
+      let money = opts && 'money' in opts ? opts.money : null;
+      let toFixDecimal = opts && 'toFixDecimal' in opts ? opts.toFixDecimal : 2;
+      let symbol = "";
+      if (money >= 1000000000) {
+        money = money / 1000000000;
+        symbol = "B";
+        toFixDecimal = 2;
+      }
+      if (money >= 1000000) {
+        money = money / 1000000;
+        symbol = "M";
+        toFixDecimal = 2;
+      }
+      money = money / 1000000;
+      let strMoney = util_helper.UtilHelper.moneyformat({money: money, symbol: symbol, toFixDecimal: toFixDecimal});
+      return strMoney;
+    }
+    static GetSaleValue(lst) {
+      if (util_helper.UtilHelper.isArrayNullOrEmpty(lst)) {
+        return [];
+      }
+      return lst;
+    }
+    static IsStringContain(strRoot, strRequest, opts) {
+      let IsSearchWithFormat = opts && 'IsSearchWithFormat' in opts ? opts.IsSearchWithFormat : null;
+      if (util_helper.UtilHelper.isNullOrEmpty(strRoot)) {
+        return false;
+      }
+      if (util_helper.UtilHelper.isNullOrEmpty(strRequest)) {
+        return true;
+      }
+      strRoot = dart.nullCheck(strRoot)[$toLowerCase]();
+      strRequest = strRequest[$toLowerCase]();
+      if (strRoot[$indexOf](strRequest) < 0) {
+        return false;
+      }
+      return true;
+    }
+    static prop(res, propName) {
+      if (res !== null && res[$_get](propName) != null) {
+        return res[$_get](propName);
+      }
+      return null;
+    }
+  };
+  (util_helper.UtilHelper._internal = function() {
+    ;
+  }).prototype = util_helper.UtilHelper.prototype;
+  dart.addTypeTests(util_helper.UtilHelper);
+  dart.addTypeCaches(util_helper.UtilHelper);
+  dart.setMethodSignature(util_helper.UtilHelper, () => ({
+    __proto__: dart.getMethods(util_helper.UtilHelper.__proto__),
+    waitConditional: dart.fnType(async.Future, [core.Function])
+  }));
+  dart.setStaticMethodSignature(util_helper.UtilHelper, () => ['new', 'defaultZezo', 'defaultZezoDouble', 'randomNumber', 'printCustom', 'setDateTime', 'getDelayTime', 'validateStringDate', 'getLocalUTC', 'isArrayNullOrEmpty', 'split', 'isStringArray', 'firstOrDefault', 'firstWhere', 'pluck', 'any', 'sum', 'isNullOrEmpty', 'getStringNullOrEmpty', 'formatDatetime2Encode', 'formatDatetimeJson', 'compareDate', 'convertDatetimeJson', 'convertDatetimeJsonNet', 'convertDatetimeToString', 'upperCaseFirst', 'lowerCaseFirst', 'getCaseFirst', 'substringCaseFirst', 'truncatedText', 'getValueMoneyformatVND', 'moneyformatVND', 'moneyformatEN', 'moneyformat', 'moneyformatChart', 'moneyformatSymbol', 'GetSaleValue', 'IsStringContain', 'prop']);
+  dart.setLibraryUri(util_helper.UtilHelper, I[0]);
+  dart.setStaticFieldSignature(util_helper.UtilHelper, () => ['instance', 'seconds', 'minute', 'hour', 'day', 'month', 'addDate', 'subDate', 'startDate', 'endDate']);
+  dart.defineLazy(util_helper.UtilHelper, {
+    /*util_helper.UtilHelper.instance*/get instance() {
+      return new util_helper.UtilHelper._internal();
+    },
+    /*util_helper.UtilHelper.seconds*/get seconds() {
+      return 1;
+    },
+    set seconds(_) {},
+    /*util_helper.UtilHelper.minute*/get minute() {
+      return 60 * util_helper.UtilHelper.seconds;
+    },
+    set minute(_) {},
+    /*util_helper.UtilHelper.hour*/get hour() {
+      return 60 * util_helper.UtilHelper.minute;
+    },
+    set hour(_) {},
+    /*util_helper.UtilHelper.day*/get day() {
+      return 24 * util_helper.UtilHelper.hour;
+    },
+    set day(_) {},
+    /*util_helper.UtilHelper.month*/get month() {
+      return 30 * util_helper.UtilHelper.day;
+    },
+    set month(_) {},
+    /*util_helper.UtilHelper.addDate*/get addDate() {
+      return 0;
+    },
+    set addDate(_) {},
+    /*util_helper.UtilHelper.subDate*/get subDate() {
+      return 1;
+    },
+    set subDate(_) {},
+    /*util_helper.UtilHelper.startDate*/get startDate() {
+      return 2;
+    },
+    set startDate(_) {},
+    /*util_helper.UtilHelper.endDate*/get endDate() {
+      return 3;
+    },
+    set endDate(_) {}
+  }, false);
+  dart.trackLibraries("packages/widget/utils/util-helper.dart", {
+    "package:widget/utils/util-helper.dart": util_helper
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["util-helper.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/widget/utils/util-helper.dart.lib.js"}');
+  // Exports:
+  return {
+    utils__util_helper: util_helper
+  };
+}));
+
+//# sourceMappingURL=util-helper.dart.lib.js.map

@@ -1,0 +1,317 @@
+define(['dart_sdk', 'packages/file_picker/src/windows/stub.dart', 'packages/file_picker/src/platform_file.dart', 'packages/file_picker/src/file_picker_result.dart', 'packages/flutter_web_plugins/src/plugin_registry.dart'], (function load__packages__file_picker___internal__file_picker_web_dart(dart_sdk, packages__file_picker__src__windows__stub$46dart, packages__file_picker__src__platform_file$46dart, packages__file_picker__src__file_picker_result$46dart, packages__flutter_web_plugins__src__plugin_registry$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const html = dart_sdk.html;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const file_picker = packages__file_picker__src__windows__stub$46dart.src__file_picker;
+  const platform_file = packages__file_picker__src__platform_file$46dart.src__platform_file;
+  const file_picker_result = packages__file_picker__src__file_picker_result$46dart.src__file_picker_result;
+  const plugin_registry = packages__flutter_web_plugins__src__plugin_registry$46dart.src__plugin_registry;
+  var file_picker_web = Object.create(dart.library);
+  var $id = dartx.id;
+  var $children = dartx.children;
+  var $add = dartx.add;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $draggable = dartx.draggable;
+  var $display = dartx.display;
+  var $style = dartx.style;
+  var $name = dartx.name;
+  var $length = dartx.length;
+  var $size = dartx.size;
+  var $onLoadEnd = dartx.onLoadEnd;
+  var $result = dartx.result;
+  var $readAsDataUrl = dartx.readAsDataUrl;
+  var $removeEventListener = dartx.removeEventListener;
+  var $onChange = dartx.onChange;
+  var $addEventListener = dartx.addEventListener;
+  var $clear = dartx.clear;
+  var $isEmpty = dartx.isEmpty;
+  var $fold = dartx.fold;
+  var $slice = dartx.slice;
+  var $onLoad = dartx.onLoad;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfPlatformFile: () => (T.ListOfPlatformFile = dart.constFn(core.List$(platform_file.PlatformFile)))(),
+    ListNOfPlatformFile: () => (T.ListNOfPlatformFile = dart.constFn(dart.nullable(T.ListOfPlatformFile())))(),
+    CompleterOfListNOfPlatformFile: () => (T.CompleterOfListNOfPlatformFile = dart.constFn(async.Completer$(T.ListNOfPlatformFile())))(),
+    JSArrayOfPlatformFile: () => (T.JSArrayOfPlatformFile = dart.constFn(_interceptors.JSArray$(platform_file.PlatformFile)))(),
+    Uint8ListN: () => (T.Uint8ListN = dart.constFn(dart.nullable(typed_data.Uint8List)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    StreamOfListOfint: () => (T.StreamOfListOfint = dart.constFn(async.Stream$(T.ListOfint())))(),
+    StreamNOfListOfint: () => (T.StreamNOfListOfint = dart.constFn(dart.nullable(T.StreamOfListOfint())))(),
+    FileAndUint8ListNAndStringN__Tovoid: () => (T.FileAndUint8ListNAndStringN__Tovoid = dart.constFn(dart.fnType(dart.void, [html.File, T.Uint8ListN(), T.StringN(), T.StreamNOfListOfint()])))(),
+    ProgressEventTovoid: () => (T.ProgressEventTovoid = dart.constFn(dart.fnType(dart.void, [html.ProgressEvent])))(),
+    dynamicTovoid: () => (T.dynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    FilePickerResultN: () => (T.FilePickerResultN = dart.constFn(dart.nullable(file_picker_result.FilePickerResult)))(),
+    StringAndStringToString: () => (T.StringAndStringToString = dart.constFn(dart.fnType(core.String, [core.String, core.String])))(),
+    _AsyncStarImplOfListOfint: () => (T._AsyncStarImplOfListOfint = dart.constFn(async._AsyncStarImpl$(T.ListOfint())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "any",
+        [_Enum_index]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "audio",
+        [_Enum_index]: 4
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "image",
+        [_Enum_index]: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "video",
+        [_Enum_index]: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "media",
+        [_Enum_index]: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "custom",
+        [_Enum_index]: 5
+      });
+    }
+  }, false);
+  var C = Array(6).fill(void 0);
+  var I = ["package:file_picker/_internal/file_picker_web.dart"];
+  var __FilePickerWeb__target = dart.privateName(file_picker_web, "_#FilePickerWeb#_target");
+  var _kFilePickerInputsDomId = dart.privateName(file_picker_web, "_kFilePickerInputsDomId");
+  var _readStreamChunkSize = dart.privateName(file_picker_web, "_readStreamChunkSize");
+  var _target = dart.privateName(file_picker_web, "_target");
+  var _ensureInitialized = dart.privateName(file_picker_web, "_ensureInitialized");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var _openFileReadStream = dart.privateName(file_picker_web, "_openFileReadStream");
+  file_picker_web.FilePickerWeb = class FilePickerWeb extends file_picker.FilePicker {
+    get [_target]() {
+      let t0;
+      t0 = this[__FilePickerWeb__target];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_target")) : t0;
+    }
+    set [_target](library$32package$58file_picker$47_internal$47file_picker_web$46dart$58$58_target$35param) {
+      this[__FilePickerWeb__target] = library$32package$58file_picker$47_internal$47file_picker_web$46dart$58$58_target$35param;
+    }
+    static ['_#_#tearOff']() {
+      return new file_picker_web.FilePickerWeb.__();
+    }
+    static registerWith(registrar) {
+      file_picker.FilePicker.platform = file_picker_web.FilePickerWeb.platform;
+    }
+    [_ensureInitialized](id) {
+      let t0;
+      let target = html.querySelector("#" + id);
+      if (target == null) {
+        let targetElement = (t0 = html.Element.tag("flt-file-picker-inputs"), (() => {
+          t0[$id] = id;
+          return t0;
+        })());
+        dart.nullCheck(html.querySelector("body"))[$children][$add](targetElement);
+        target = targetElement;
+      }
+      return target;
+    }
+    pickFiles(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let allowMultiple = opts && 'allowMultiple' in opts ? opts.allowMultiple : false;
+      let onFileLoading = opts && 'onFileLoading' in opts ? opts.onFileLoading : null;
+      let allowCompression = opts && 'allowCompression' in opts ? opts.allowCompression : true;
+      let withData = opts && 'withData' in opts ? opts.withData : true;
+      let withReadStream = opts && 'withReadStream' in opts ? opts.withReadStream : false;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.FilePickerResultN(), (function* pickFiles() {
+        let t0, t0$;
+        if (type !== file_picker.FileType.custom && dart.test((t0$ = (t0 = allowedExtensions, t0 == null ? null : t0[$isNotEmpty]), t0$ == null ? false : t0$))) {
+          dart.throw(core.Exception.new("You are setting a type [" + dart.str(type) + "]. Custom extension filters are only allowed with FileType.custom, please change it or remove filters."));
+        }
+        let filesCompleter = T.CompleterOfListNOfPlatformFile().new();
+        let accept = file_picker_web.FilePickerWeb._fileType(type, allowedExtensions);
+        let uploadInput = html.InputElement.as(html.FileUploadInputElement.new());
+        uploadInput[$draggable] = true;
+        uploadInput.multiple = allowMultiple;
+        uploadInput.accept = accept;
+        uploadInput[$style][$display] = "none";
+        let changeEventTriggered = false;
+        if (onFileLoading != null) {
+          onFileLoading(file_picker.FilePickerStatus.picking);
+        }
+        const changeEventListener = e => {
+          if (changeEventTriggered) {
+            return;
+          }
+          changeEventTriggered = true;
+          let files = dart.nullCheck(uploadInput.files);
+          let pickedFiles = T.JSArrayOfPlatformFile().of([]);
+          function addPickedFile(file, bytes, path, readStream) {
+            pickedFiles[$add](new platform_file.PlatformFile.new({name: file[$name], path: path, size: bytes != null ? bytes[$length] : file[$size], bytes: bytes, readStream: readStream}));
+            if (pickedFiles[$length] >= files[$length]) {
+              if (onFileLoading != null) {
+                onFileLoading(file_picker.FilePickerStatus.done);
+              }
+              filesCompleter.complete(pickedFiles);
+            }
+          }
+          dart.fn(addPickedFile, T.FileAndUint8ListNAndStringN__Tovoid());
+          for (let file of files) {
+            if (withReadStream) {
+              addPickedFile(file, null, null, this[_openFileReadStream](file));
+              continue;
+            }
+            if (!withData) {
+              let reader = html.FileReader.new();
+              reader[$onLoadEnd].listen(dart.fn(e => {
+                addPickedFile(file, null, T.StringN().as(reader[$result]), null);
+              }, T.ProgressEventTovoid()));
+              reader[$readAsDataUrl](file);
+              continue;
+            }
+            let reader = html.FileReader.new();
+            reader[$onLoadEnd].listen(dart.fn(e => {
+              addPickedFile(file, T.Uint8ListN().as(reader[$result]), null, null);
+            }, T.ProgressEventTovoid()));
+            reader.readAsArrayBuffer(file);
+          }
+        };
+        dart.fn(changeEventListener, T.dynamicTovoid());
+        function cancelledEventListener(_) {
+          html.window[$removeEventListener]("focus", cancelledEventListener);
+          async.Future.delayed(new core.Duration.new({milliseconds: 500})).then(core.Null, dart.fn(value => {
+            if (!changeEventTriggered) {
+              changeEventTriggered = true;
+              filesCompleter.complete(null);
+            }
+          }, T.dynamicToNull()));
+        }
+        dart.fn(cancelledEventListener, T.dynamicTovoid());
+        uploadInput[$onChange].listen(changeEventListener);
+        uploadInput[$addEventListener]("change", changeEventListener);
+        html.window[$addEventListener]("focus", cancelledEventListener);
+        this[_target][$children][$clear]();
+        this[_target][$children][$add](uploadInput);
+        uploadInput.click();
+        let files = (yield filesCompleter.future);
+        return files == null ? null : new file_picker_result.FilePickerResult.new(files);
+      }).bind(this));
+    }
+    static _fileType(type, allowedExtensions) {
+      switch (type) {
+        case C[0] || CT.C0:
+          {
+            return "";
+          }
+        case C[1] || CT.C1:
+          {
+            return "audio/*";
+          }
+        case C[2] || CT.C2:
+          {
+            return "image/*";
+          }
+        case C[3] || CT.C3:
+          {
+            return "video/*";
+          }
+        case C[4] || CT.C4:
+          {
+            return "video/*|image/*";
+          }
+        case C[5] || CT.C5:
+          {
+            return dart.nullCheck(allowedExtensions)[$fold](core.String, "", dart.fn((prev, next) => (prev[$isEmpty] ? "" : prev + ",") + " ." + next, T.StringAndStringToString()));
+          }
+      }
+    }
+    [_openFileReadStream](file) {
+      return new (T._AsyncStarImplOfListOfint()).new((function* _openFileReadStream(stream) {
+        let reader = html.FileReader.new();
+        let start = 0;
+        while (start < file[$size]) {
+          let end = start + this[_readStreamChunkSize] > file[$size] ? file[$size] : start + this[_readStreamChunkSize];
+          let blob = file[$slice](start, end);
+          reader.readAsArrayBuffer(blob);
+          yield reader[$onLoad].first;
+          if (stream.add(T.ListOfint().as(reader[$result]))) return;
+          yield;
+          start = start + this[_readStreamChunkSize];
+        }
+      }).bind(this)).stream;
+    }
+  };
+  (file_picker_web.FilePickerWeb.__ = function() {
+    this[__FilePickerWeb__target] = null;
+    this[_kFilePickerInputsDomId] = "__file_picker_web-file-input";
+    this[_readStreamChunkSize] = 1000 * 1000;
+    file_picker_web.FilePickerWeb.__proto__.new.call(this);
+    this[_target] = this[_ensureInitialized](this[_kFilePickerInputsDomId]);
+  }).prototype = file_picker_web.FilePickerWeb.prototype;
+  dart.addTypeTests(file_picker_web.FilePickerWeb);
+  dart.addTypeCaches(file_picker_web.FilePickerWeb);
+  dart.setMethodSignature(file_picker_web.FilePickerWeb, () => ({
+    __proto__: dart.getMethods(file_picker_web.FilePickerWeb.__proto__),
+    [_ensureInitialized]: dart.fnType(html.Element, [core.String]),
+    [_openFileReadStream]: dart.fnType(async.Stream$(core.List$(core.int)), [html.File])
+  }));
+  dart.setStaticMethodSignature(file_picker_web.FilePickerWeb, () => ['registerWith', '_fileType']);
+  dart.setGetterSignature(file_picker_web.FilePickerWeb, () => ({
+    __proto__: dart.getGetters(file_picker_web.FilePickerWeb.__proto__),
+    [_target]: html.Element
+  }));
+  dart.setSetterSignature(file_picker_web.FilePickerWeb, () => ({
+    __proto__: dart.getSetters(file_picker_web.FilePickerWeb.__proto__),
+    [_target]: html.Element
+  }));
+  dart.setLibraryUri(file_picker_web.FilePickerWeb, I[0]);
+  dart.setFieldSignature(file_picker_web.FilePickerWeb, () => ({
+    __proto__: dart.getFields(file_picker_web.FilePickerWeb.__proto__),
+    [__FilePickerWeb__target]: dart.fieldType(dart.nullable(html.Element)),
+    [_kFilePickerInputsDomId]: dart.finalFieldType(core.String),
+    [_readStreamChunkSize]: dart.finalFieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(file_picker_web.FilePickerWeb, () => ['platform']);
+  dart.defineLazy(file_picker_web.FilePickerWeb, {
+    /*file_picker_web.FilePickerWeb.platform*/get platform() {
+      return new file_picker_web.FilePickerWeb.__();
+    }
+  }, false);
+  dart.trackLibraries("packages/file_picker/_internal/file_picker_web.dart", {
+    "package:file_picker/_internal/file_picker_web.dart": file_picker_web
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["file_picker_web.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/file_picker/_internal/file_picker_web.dart.lib.js"}');
+  // Exports:
+  return {
+    _internal__file_picker_web: file_picker_web
+  };
+}));
+
+//# sourceMappingURL=file_picker_web.dart.lib.js.map

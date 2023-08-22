@@ -1,0 +1,7 @@
+2023/08/21-11:07:49.995 39b8 Reusing MANIFEST C:\Users\Admin\Downloads\webDemo\webDemo\bin\Release\net6.0-windows\webDemo.exe.WebView2\EBWebView\Default\IndexedDB\http_localhost_57631.indexeddb.leveldb/MANIFEST-000001
+2023/08/21-11:07:49.996 39b8 Recovering log #3
+2023/08/21-11:07:49.996 39b8 Reusing old log C:\Users\Admin\Downloads\webDemo\webDemo\bin\Release\net6.0-windows\webDemo.exe.WebView2\EBWebView\Default\IndexedDB\http_localhost_57631.indexeddb.leveldb/000003.log 
+2023/08/21-11:52:08.420 3ae0 Level-0 table #5: started
+2023/08/21-11:52:08.426 3ae0 Level-0 table #5: 8430 bytes OK
+2023/08/21-11:52:08.430 3ae0 Delete type=0 #3
+2023/08/21-11:52:08.432 3ae0 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

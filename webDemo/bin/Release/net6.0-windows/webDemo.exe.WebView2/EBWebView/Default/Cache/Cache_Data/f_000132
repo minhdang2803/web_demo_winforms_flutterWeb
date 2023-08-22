@@ -1,0 +1,357 @@
+define(['dart_sdk', 'packages/image/src/image_exception.dart', 'packages/image/src/util/input_buffer.dart'], (function load__packages__image__src__formats__exr__exr_huffman_dart(dart_sdk, packages__image__src__image_exception$46dart, packages__image__src__util__input_buffer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  var exr_huffman = Object.create(dart.library);
+  var $truncate = dartx.truncate;
+  var $_get = dartx._get;
+  var $rightShift = dartx['>>'];
+  var $_set = dartx._set;
+  var $leftShift = dartx['<<'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    ListOfExrHufDec: () => (T.ListOfExrHufDec = dart.constFn(core.List$(exr_huffman.ExrHufDec)))(),
+    intToExrHufDec: () => (T.intToExrHufDec = dart.constFn(dart.fnType(exr_huffman.ExrHufDec, [core.int])))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:image/src/formats/exr/exr_huffman.dart"];
+  var fixWarnings = dart.privateName(exr_huffman, "ExrHuffman.fixWarnings");
+  exr_huffman.ExrHuffman = class ExrHuffman extends core.Object {
+    get fixWarnings() {
+      return this[fixWarnings];
+    }
+    set fixWarnings(value) {
+      this[fixWarnings] = value;
+    }
+    static uncompress(compressed, nCompressed, raw, nRaw) {
+      if (nCompressed === 0) {
+        if (nRaw !== 0) {
+          dart.throw(new image_exception.ImageException.new("Incomplete huffman data"));
+        }
+        return;
+      }
+      let start = compressed.offset;
+      let im = compressed.readUint32();
+      let iM = compressed.readUint32();
+      compressed.skip(4);
+      let nBits = compressed.readUint32();
+      if (im < 0 || im >= 65537 || iM < 0 || iM >= 65537) {
+        dart.throw(new image_exception.ImageException.new("Invalid huffman table size"));
+      }
+      compressed.skip(4);
+      let freq = T.ListOfint().filled(65537, 0);
+      let hdec = T.ListOfExrHufDec().generate(16384, dart.fn(_ => new exr_huffman.ExrHufDec.new(), T.intToExrHufDec()), {growable: false});
+      exr_huffman.ExrHuffman.unpackEncTable(compressed, nCompressed - 20, im, iM, freq);
+      if (nBits > 8 * (nCompressed - (compressed.offset - start))) {
+        dart.throw(new image_exception.ImageException.new("Error in header for Huffman-encoded data " + "(invalid number of bits)."));
+      }
+      exr_huffman.ExrHuffman.buildDecTable(freq, im, iM, hdec);
+      exr_huffman.ExrHuffman.decode(freq, hdec, compressed, nBits, iM, nRaw, raw);
+    }
+    static decode(hcode, hdecod, input, ni, rlc, no, out) {
+      let t0, t1, t1$, t1$0, t1$1;
+      let c_lc = T.JSArrayOfint().of([0, 0]);
+      let ie = input.offset + ((ni + 7) / 8)[$truncate]();
+      let oi = 0;
+      while (input.offset < ie) {
+        exr_huffman.ExrHuffman.getChar(c_lc, input);
+        while (c_lc[$_get](1) >= 14) {
+          let pl = hdecod[$_get]((c_lc[$_get](0)[$rightShift](c_lc[$_get](1) - 14) & 16383) >>> 0);
+          if (pl.len !== 0) {
+            t0 = 1;
+            c_lc[$_set](t0, c_lc[$_get](t0) - pl.len);
+            oi = exr_huffman.ExrHuffman.getCode(pl.lit, rlc, c_lc, input, out, oi, no);
+          } else {
+            if (pl.p == null) {
+              dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code)."));
+            }
+            let j = null;
+            for (let t0$ = j = 0; j < pl.lit; j = j + 1) {
+              let l = exr_huffman.ExrHuffman.hufLength(hcode[$_get](dart.nullCheck(pl.p)[$_get](j)));
+              while (c_lc[$_get](1) < l && input.offset < ie) {
+                exr_huffman.ExrHuffman.getChar(c_lc, input);
+              }
+              if (c_lc[$_get](1) >= l) {
+                if (exr_huffman.ExrHuffman.hufCode(hcode[$_get](dart.nullCheck(pl.p)[$_get](j))) === (c_lc[$_get](0)[$rightShift](c_lc[$_get](1) - l) & (1)[$leftShift](l) - 1) >>> 0) {
+                  t1 = 1;
+                  c_lc[$_set](t1, c_lc[$_get](t1) - l);
+                  oi = exr_huffman.ExrHuffman.getCode(dart.nullCheck(pl.p)[$_get](j), rlc, c_lc, input, out, oi, no);
+                  break;
+                }
+              }
+            }
+            if (j === pl.lit) {
+              dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code)."));
+            }
+          }
+        }
+      }
+      let i = 8 - ni & 7;
+      t1$ = 0;
+      c_lc[$_set](t1$, c_lc[$_get](t1$)[$rightShift](i));
+      t1$0 = 1;
+      c_lc[$_set](t1$0, c_lc[$_get](t1$0) - i);
+      while (c_lc[$_get](1) > 0) {
+        let pl = hdecod[$_get]((c_lc[$_get](0)[$leftShift](14 - c_lc[$_get](1)) & 16383) >>> 0);
+        if (pl.len !== 0) {
+          t1$1 = 1;
+          c_lc[$_set](t1$1, c_lc[$_get](t1$1) - pl.len);
+          oi = exr_huffman.ExrHuffman.getCode(pl.lit, rlc, c_lc, input, out, oi, no);
+        } else {
+          dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code)."));
+        }
+      }
+      if (oi !== no) {
+        dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(decoded data are shorter than expected)."));
+      }
+    }
+    static getCode(po, rlc, c_lc, input, out, oi, oe) {
+      let t2, t1, t1$, t1$0, t1$1;
+      if (po === rlc) {
+        if (c_lc[$_get](1) < 8) {
+          exr_huffman.ExrHuffman.getChar(c_lc, input);
+        }
+        t1 = c_lc;
+        t2 = 1;
+        t1[$_set](t2, t1[$_get](t2) - 8);
+        let cs = c_lc[$_get](0)[$rightShift](c_lc[$_get](1)) & 255;
+        if (oi + cs > oe) {
+          dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(decoded data are longer than expected)."));
+        }
+        let s = dart.nullCheck(out)[$_get](oi - 1);
+        while ((t1$ = cs, cs = t1$ - 1, t1$) > 0) {
+          out[$_set]((t1$0 = oi, oi = t1$0 + 1, t1$0), s);
+        }
+      } else if (oi < oe) {
+        dart.nullCheck(out)[$_set]((t1$1 = oi, oi = t1$1 + 1, t1$1), po);
+      } else {
+        dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(decoded data are longer than expected)."));
+      }
+      return oi;
+    }
+    static buildDecTable(hcode, im, iM, hdecod) {
+      for (; im <= iM; im = im + 1) {
+        let c = exr_huffman.ExrHuffman.hufCode(hcode[$_get](im));
+        let l = exr_huffman.ExrHuffman.hufLength(hcode[$_get](im));
+        if (c[$rightShift](l) !== 0) {
+          dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code table entry)."));
+        }
+        if (l > 14) {
+          let pl = hdecod[$_get](c[$rightShift](l - 14));
+          if (pl.len !== 0) {
+            dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code table entry)."));
+          }
+          pl.lit = pl.lit + 1;
+          if (pl.p != null) {
+            let p = pl.p;
+            pl.p = T.ListOfint().filled(pl.lit, 0);
+            for (let i = 0; i < pl.lit - 1; i = i + 1) {
+              dart.nullCheck(pl.p)[$_set](i, dart.nullCheck(p)[$_get](i));
+            }
+          } else {
+            pl.p = T.JSArrayOfint().of([0]);
+          }
+          dart.nullCheck(pl.p)[$_set](pl.lit - 1, im);
+        } else if (l !== 0) {
+          let pi = c[$leftShift](14 - l);
+          let pl = hdecod[$_get](pi);
+          for (let i = (1)[$leftShift](14 - l); i > 0; i = i - 1, pi = pi + 1) {
+            pl = hdecod[$_get](pi);
+            if (pl.len !== 0 || pl.p != null) {
+              dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(invalid code table entry)."));
+            }
+            pl.len = l;
+            pl.lit = im;
+          }
+        }
+      }
+    }
+    static unpackEncTable(p, ni, im, iM, hcode) {
+      let t3, t2, t1, t1$, t1$0, t1$1, t1$2;
+      let pcode = p.offset;
+      let c_lc = T.JSArrayOfint().of([0, 0]);
+      for (; im <= iM; im = im + 1) {
+        if (p.offset - pcode > ni) {
+          dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(unexpected end of code table data)."));
+        }
+        let l = (t1 = hcode, t2 = im, t3 = exr_huffman.ExrHuffman.getBits(6, c_lc, p), t1[$_set](t2, t3), t3);
+        if (l === 63) {
+          if (p.offset - pcode > ni) {
+            dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(unexpected end of code table data)."));
+          }
+          let zerun = exr_huffman.ExrHuffman.getBits(8, c_lc, p) + 6;
+          if (im + zerun > iM + 1) {
+            dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(code table is longer than expected)."));
+          }
+          while ((t1$ = zerun, zerun = t1$ - 1, t1$) !== 0) {
+            hcode[$_set]((t1$0 = im, im = t1$0 + 1, t1$0), 0);
+          }
+          im = im - 1;
+        } else if (l >= 59) {
+          let zerun = l - 59 + 2;
+          if (im + zerun > iM + 1) {
+            dart.throw(new image_exception.ImageException.new("Error in Huffman-encoded data " + "(code table is longer than expected)."));
+          }
+          while ((t1$1 = zerun, zerun = t1$1 - 1, t1$1) !== 0) {
+            hcode[$_set]((t1$2 = im, im = t1$2 + 1, t1$2), 0);
+          }
+          im = im - 1;
+        }
+      }
+      exr_huffman.ExrHuffman.canonicalCodeTable(hcode);
+    }
+    static hufLength(code) {
+      return code & 63;
+    }
+    static hufCode(code) {
+      return code[$rightShift](6);
+    }
+    static canonicalCodeTable(hcode) {
+      let t1, t1$;
+      let n = T.ListOfint().filled(59, 0);
+      for (let i = 0; i < 65537; i = i + 1) {
+        t1 = hcode[$_get](i);
+        n[$_set](t1, n[$_get](t1) + 1);
+      }
+      let c = 0;
+      for (let i = 58; i > 0; i = i - 1) {
+        let nc = (c + n[$_get](i))[$rightShift](1);
+        n[$_set](i, c);
+        c = nc;
+      }
+      for (let i = 0; i < 65537; i = i + 1) {
+        let l = hcode[$_get](i);
+        if (l > 0) {
+          hcode[$_set](i, (l | (t1$ = n[$_get](l), n[$_set](l, t1$ + 1), t1$) << 6 >>> 0) >>> 0);
+        }
+      }
+    }
+    static getChar(c_lc, input) {
+      c_lc[$_set](0, ((c_lc[$_get](0) << 8 | input.readByte()) & -1) >>> 0);
+      c_lc[$_set](1, (c_lc[$_get](1) + 8 & -1) >>> 0);
+    }
+    static getBits(nBits, c_lc, input) {
+      let t2, t1;
+      while (c_lc[$_get](1) < nBits) {
+        c_lc[$_set](0, ((c_lc[$_get](0) << 8 | input.readByte()) & -1) >>> 0);
+        c_lc[$_set](1, (c_lc[$_get](1) + 8 & -1) >>> 0);
+      }
+      t1 = c_lc;
+      t2 = 1;
+      t1[$_set](t2, t1[$_get](t2) - nBits);
+      return (c_lc[$_get](0)[$rightShift](c_lc[$_get](1)) & (1)[$leftShift](nBits) - 1) >>> 0;
+    }
+    static ['_#new#tearOff']() {
+      return new exr_huffman.ExrHuffman.new();
+    }
+  };
+  (exr_huffman.ExrHuffman.new = function() {
+    this[fixWarnings] = 0;
+    ;
+  }).prototype = exr_huffman.ExrHuffman.prototype;
+  dart.addTypeTests(exr_huffman.ExrHuffman);
+  dart.addTypeCaches(exr_huffman.ExrHuffman);
+  dart.setStaticMethodSignature(exr_huffman.ExrHuffman, () => ['uncompress', 'decode', 'getCode', 'buildDecTable', 'unpackEncTable', 'hufLength', 'hufCode', 'canonicalCodeTable', 'getChar', 'getBits']);
+  dart.setLibraryUri(exr_huffman.ExrHuffman, I[0]);
+  dart.setFieldSignature(exr_huffman.ExrHuffman, () => ({
+    __proto__: dart.getFields(exr_huffman.ExrHuffman.__proto__),
+    fixWarnings: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(exr_huffman.ExrHuffman, () => ['MASK_32', 'MASK_64', 'HUF_ENCBITS', 'HUF_DECBITS', 'HUF_ENCSIZE', 'HUF_DECSIZE', 'HUF_DECMASK', 'SHORT_ZEROCODE_RUN', 'LONG_ZEROCODE_RUN', 'SHORTEST_LONG_RUN', 'LONGEST_LONG_RUN']);
+  dart.defineLazy(exr_huffman.ExrHuffman, {
+    /*exr_huffman.ExrHuffman.MASK_32*/get MASK_32() {
+      return -1;
+    },
+    /*exr_huffman.ExrHuffman.MASK_64*/get MASK_64() {
+      return -1;
+    },
+    /*exr_huffman.ExrHuffman.HUF_ENCBITS*/get HUF_ENCBITS() {
+      return 16;
+    },
+    /*exr_huffman.ExrHuffman.HUF_DECBITS*/get HUF_DECBITS() {
+      return 14;
+    },
+    /*exr_huffman.ExrHuffman.HUF_ENCSIZE*/get HUF_ENCSIZE() {
+      return 65537;
+    },
+    /*exr_huffman.ExrHuffman.HUF_DECSIZE*/get HUF_DECSIZE() {
+      return 16384;
+    },
+    /*exr_huffman.ExrHuffman.HUF_DECMASK*/get HUF_DECMASK() {
+      return 16383;
+    },
+    /*exr_huffman.ExrHuffman.SHORT_ZEROCODE_RUN*/get SHORT_ZEROCODE_RUN() {
+      return 59;
+    },
+    /*exr_huffman.ExrHuffman.LONG_ZEROCODE_RUN*/get LONG_ZEROCODE_RUN() {
+      return 63;
+    },
+    /*exr_huffman.ExrHuffman.SHORTEST_LONG_RUN*/get SHORTEST_LONG_RUN() {
+      return 6;
+    },
+    /*exr_huffman.ExrHuffman.LONGEST_LONG_RUN*/get LONGEST_LONG_RUN() {
+      return 261;
+    }
+  }, false);
+  var len = dart.privateName(exr_huffman, "ExrHufDec.len");
+  var lit = dart.privateName(exr_huffman, "ExrHufDec.lit");
+  var p = dart.privateName(exr_huffman, "ExrHufDec.p");
+  exr_huffman.ExrHufDec = class ExrHufDec extends core.Object {
+    get len() {
+      return this[len];
+    }
+    set len(value) {
+      this[len] = value;
+    }
+    get lit() {
+      return this[lit];
+    }
+    set lit(value) {
+      this[lit] = value;
+    }
+    get p() {
+      return this[p];
+    }
+    set p(value) {
+      this[p] = value;
+    }
+    static ['_#new#tearOff']() {
+      return new exr_huffman.ExrHufDec.new();
+    }
+  };
+  (exr_huffman.ExrHufDec.new = function() {
+    this[len] = 0;
+    this[lit] = 0;
+    this[p] = null;
+    ;
+  }).prototype = exr_huffman.ExrHufDec.prototype;
+  dart.addTypeTests(exr_huffman.ExrHufDec);
+  dart.addTypeCaches(exr_huffman.ExrHufDec);
+  dart.setLibraryUri(exr_huffman.ExrHufDec, I[0]);
+  dart.setFieldSignature(exr_huffman.ExrHufDec, () => ({
+    __proto__: dart.getFields(exr_huffman.ExrHufDec.__proto__),
+    len: dart.fieldType(core.int),
+    lit: dart.fieldType(core.int),
+    p: dart.fieldType(dart.nullable(core.List$(core.int)))
+  }));
+  dart.trackLibraries("packages/image/src/formats/exr/exr_huffman.dart", {
+    "package:image/src/formats/exr/exr_huffman.dart": exr_huffman
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["exr_huffman.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/exr/exr_huffman.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__exr__exr_huffman: exr_huffman
+  };
+}));
+
+//# sourceMappingURL=exr_huffman.dart.lib.js.map

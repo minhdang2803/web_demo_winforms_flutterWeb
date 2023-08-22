@@ -1,0 +1,218 @@
+define(['dart_sdk', 'packages/file_selector_platform_interface/src/types/x_type_group/x_type_group.dart', 'packages/cross_file/src/types/html.dart', 'packages/plugin_platform_interface/plugin_platform_interface.dart', 'packages/flutter/src/services/text_editing_delta.dart'], (function load__packages__file_selector_platform_interface__src__method_channel__method_channel_file_selector_dart(dart_sdk, packages__file_selector_platform_interface__src__types__x_type_group__x_type_group$46dart, packages__cross_file__src__types__html$46dart, packages__plugin_platform_interface__plugin_platform_interface$46dart, packages__flutter__src__services__text_editing_delta$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const x_type_group = packages__file_selector_platform_interface__src__types__x_type_group__x_type_group$46dart.src__types__x_type_group__x_type_group;
+  const html = packages__cross_file__src__types__html$46dart.src__types__html;
+  const plugin_platform_interface = packages__plugin_platform_interface__plugin_platform_interface$46dart.plugin_platform_interface;
+  const platform_channel = packages__flutter__src__services__text_editing_delta$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__text_editing_delta$46dart.src__services__message_codecs;
+  var method_channel_file_selector = Object.create(dart.library);
+  var file_selector_interface = Object.create(dart.library);
+  var file_selector_platform_interface = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $first = dartx.first;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    XTypeGroupToMapOfString$dynamic: () => (T.XTypeGroupToMapOfString$dynamic = dart.constFn(dart.fnType(T.MapOfString$dynamic(), [x_type_group.XTypeGroup])))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    XFileN: () => (T.XFileN = dart.constFn(dart.nullable(html.XFile)))(),
+    StringToXFile: () => (T.StringToXFile = dart.constFn(dart.fnType(html.XFile, [core.String])))(),
+    JSArrayOfXFile: () => (T.JSArrayOfXFile = dart.constFn(_interceptors.JSArray$(html.XFile)))(),
+    ListOfXFile: () => (T.ListOfXFile = dart.constFn(core.List$(html.XFile)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[2] || CT.C2
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[1] || CT.C1,
+        [MethodChannel_name]: "plugins.flutter.io/file_selector"
+      });
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = [
+    "package:file_selector_platform_interface/src/platform_interface/file_selector_interface.dart",
+    "package:file_selector_platform_interface/src/method_channel/method_channel_file_selector.dart"
+  ];
+  file_selector_interface.FileSelectorPlatform = class FileSelectorPlatform extends plugin_platform_interface.PlatformInterface {
+    static get instance() {
+      return file_selector_interface.FileSelectorPlatform._instance;
+    }
+    static set instance(instance) {
+      plugin_platform_interface.PlatformInterface.verify(instance, file_selector_interface.FileSelectorPlatform._token);
+      file_selector_interface.FileSelectorPlatform._instance = instance;
+    }
+    openFile(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      dart.throw(new core.UnimplementedError.new("openFile() has not been implemented."));
+    }
+    openFiles(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      dart.throw(new core.UnimplementedError.new("openFiles() has not been implemented."));
+    }
+    getSavePath(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let suggestedName = opts && 'suggestedName' in opts ? opts.suggestedName : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      dart.throw(new core.UnimplementedError.new("getSavePath() has not been implemented."));
+    }
+    getDirectoryPath(opts) {
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      dart.throw(new core.UnimplementedError.new("getDirectoryPath() has not been implemented."));
+    }
+    getDirectoryPaths(opts) {
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      dart.throw(new core.UnimplementedError.new("getDirectoryPaths() has not been implemented."));
+    }
+  };
+  (file_selector_interface.FileSelectorPlatform.new = function() {
+    file_selector_interface.FileSelectorPlatform.__proto__.new.call(this, {token: file_selector_interface.FileSelectorPlatform._token});
+    ;
+  }).prototype = file_selector_interface.FileSelectorPlatform.prototype;
+  dart.addTypeTests(file_selector_interface.FileSelectorPlatform);
+  dart.addTypeCaches(file_selector_interface.FileSelectorPlatform);
+  dart.setMethodSignature(file_selector_interface.FileSelectorPlatform, () => ({
+    __proto__: dart.getMethods(file_selector_interface.FileSelectorPlatform.__proto__),
+    openFile: dart.fnType(async.Future$(dart.nullable(html.XFile)), [], {acceptedTypeGroups: dart.nullable(core.List$(x_type_group.XTypeGroup)), confirmButtonText: dart.nullable(core.String), initialDirectory: dart.nullable(core.String)}, {}),
+    openFiles: dart.fnType(async.Future$(core.List$(html.XFile)), [], {acceptedTypeGroups: dart.nullable(core.List$(x_type_group.XTypeGroup)), confirmButtonText: dart.nullable(core.String), initialDirectory: dart.nullable(core.String)}, {}),
+    getSavePath: dart.fnType(async.Future$(dart.nullable(core.String)), [], {acceptedTypeGroups: dart.nullable(core.List$(x_type_group.XTypeGroup)), confirmButtonText: dart.nullable(core.String), initialDirectory: dart.nullable(core.String), suggestedName: dart.nullable(core.String)}, {}),
+    getDirectoryPath: dart.fnType(async.Future$(dart.nullable(core.String)), [], {confirmButtonText: dart.nullable(core.String), initialDirectory: dart.nullable(core.String)}, {}),
+    getDirectoryPaths: dart.fnType(async.Future$(core.List$(core.String)), [], {confirmButtonText: dart.nullable(core.String), initialDirectory: dart.nullable(core.String)}, {})
+  }));
+  dart.setStaticGetterSignature(file_selector_interface.FileSelectorPlatform, () => ['instance']);
+  dart.setStaticSetterSignature(file_selector_interface.FileSelectorPlatform, () => ['instance']);
+  dart.setLibraryUri(file_selector_interface.FileSelectorPlatform, I[0]);
+  dart.setStaticFieldSignature(file_selector_interface.FileSelectorPlatform, () => ['_token', '_instance']);
+  dart.defineLazy(file_selector_interface.FileSelectorPlatform, {
+    /*file_selector_interface.FileSelectorPlatform._token*/get _token() {
+      return new core.Object.new();
+    },
+    /*file_selector_interface.FileSelectorPlatform._instance*/get _instance() {
+      return new method_channel_file_selector.MethodChannelFileSelector.new();
+    },
+    set _instance(_) {}
+  }, false);
+  method_channel_file_selector.MethodChannelFileSelector = class MethodChannelFileSelector extends file_selector_interface.FileSelectorPlatform {
+    get channel() {
+      return method_channel_file_selector._channel;
+    }
+    openFile(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      return async.async(T.XFileN(), function* openFile() {
+        let t0;
+        let path = (yield method_channel_file_selector._channel.invokeListMethod(core.String, "openFile", new (T.IdentityMapOfString$dynamic()).from(["acceptedTypeGroups", (t0 = acceptedTypeGroups, t0 == null ? null : t0[$map](T.MapOfString$dynamic(), dart.fn(group => group.toJSON(), T.XTypeGroupToMapOfString$dynamic()))[$toList]()), "initialDirectory", initialDirectory, "confirmButtonText", confirmButtonText, "multiple", false])));
+        return path == null ? null : new html.XFile.new(path[$first]);
+      });
+    }
+    openFiles(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      return async.async(T.ListOfXFile(), function* openFiles() {
+        let t0, t0$, t0$0;
+        let pathList = (yield method_channel_file_selector._channel.invokeListMethod(core.String, "openFile", new (T.IdentityMapOfString$dynamic()).from(["acceptedTypeGroups", (t0 = acceptedTypeGroups, t0 == null ? null : t0[$map](T.MapOfString$dynamic(), dart.fn(group => group.toJSON(), T.XTypeGroupToMapOfString$dynamic()))[$toList]()), "initialDirectory", initialDirectory, "confirmButtonText", confirmButtonText, "multiple", true])));
+        t0$0 = (t0$ = pathList, t0$ == null ? null : t0$[$map](html.XFile, dart.fn(path => new html.XFile.new(path), T.StringToXFile()))[$toList]());
+        return t0$0 == null ? T.JSArrayOfXFile().of([]) : t0$0;
+      });
+    }
+    getSavePath(opts) {
+      let acceptedTypeGroups = opts && 'acceptedTypeGroups' in opts ? opts.acceptedTypeGroups : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let suggestedName = opts && 'suggestedName' in opts ? opts.suggestedName : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      return async.async(T.StringN(), function* getSavePath() {
+        let t0;
+        return method_channel_file_selector._channel.invokeMethod(core.String, "getSavePath", new (T.IdentityMapOfString$dynamic()).from(["acceptedTypeGroups", (t0 = acceptedTypeGroups, t0 == null ? null : t0[$map](T.MapOfString$dynamic(), dart.fn(group => group.toJSON(), T.XTypeGroupToMapOfString$dynamic()))[$toList]()), "initialDirectory", initialDirectory, "suggestedName", suggestedName, "confirmButtonText", confirmButtonText]));
+      });
+    }
+    getDirectoryPath(opts) {
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      return async.async(T.StringN(), function* getDirectoryPath() {
+        return method_channel_file_selector._channel.invokeMethod(core.String, "getDirectoryPath", new (T.IdentityMapOfString$dynamic()).from(["initialDirectory", initialDirectory, "confirmButtonText", confirmButtonText]));
+      });
+    }
+    getDirectoryPaths(opts) {
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let confirmButtonText = opts && 'confirmButtonText' in opts ? opts.confirmButtonText : null;
+      return async.async(T.ListOfString(), function* getDirectoryPaths() {
+        let t0;
+        let pathList = (yield method_channel_file_selector._channel.invokeListMethod(core.String, "getDirectoryPaths", new (T.IdentityMapOfString$dynamic()).from(["initialDirectory", initialDirectory, "confirmButtonText", confirmButtonText])));
+        t0 = pathList;
+        return t0 == null ? T.JSArrayOfString().of([]) : t0;
+      });
+    }
+    static ['_#new#tearOff']() {
+      return new method_channel_file_selector.MethodChannelFileSelector.new();
+    }
+  };
+  (method_channel_file_selector.MethodChannelFileSelector.new = function() {
+    method_channel_file_selector.MethodChannelFileSelector.__proto__.new.call(this);
+    ;
+  }).prototype = method_channel_file_selector.MethodChannelFileSelector.prototype;
+  dart.addTypeTests(method_channel_file_selector.MethodChannelFileSelector);
+  dart.addTypeCaches(method_channel_file_selector.MethodChannelFileSelector);
+  dart.setGetterSignature(method_channel_file_selector.MethodChannelFileSelector, () => ({
+    __proto__: dart.getGetters(method_channel_file_selector.MethodChannelFileSelector.__proto__),
+    channel: platform_channel.MethodChannel
+  }));
+  dart.setLibraryUri(method_channel_file_selector.MethodChannelFileSelector, I[1]);
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  dart.defineLazy(method_channel_file_selector, {
+    /*method_channel_file_selector._channel*/get _channel() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  dart.trackLibraries("packages/file_selector_platform_interface/src/method_channel/method_channel_file_selector.dart", {
+    "package:file_selector_platform_interface/src/method_channel/method_channel_file_selector.dart": method_channel_file_selector,
+    "package:file_selector_platform_interface/src/platform_interface/file_selector_interface.dart": file_selector_interface,
+    "package:file_selector_platform_interface/file_selector_platform_interface.dart": file_selector_platform_interface
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["../platform_interface/file_selector_interface.dart","method_channel_file_selector.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA6B8C;IAAS;wBAIZ;AACG,MAAxB,mDAAO,QAAQ,EAAE;AACf,MAApB,yDAAY,QAAQ;IACtB;;UAKoB;UACV;UACA;AAEwD,MAAhE,WAAM,gCAAmB;IAC3B;;UAIoB;UACV;UACA;AAEyD,MAAjE,WAAM,gCAAmB;IAC3B;;UAKoB;UACV;UACA;UACA;AAE2D,MAAnE,WAAM,gCAAmB;IAC3B;;UAKU;UACA;AAEgE,MAAxE,WAAM,gCAAmB;IAC3B;;UAIU;UACA;AAEiE,MAAzE,WAAM,gCAAmB;IAC3B;;;AA/DyB,kFAAa;;EAAO;;;;;;;;;;;;;;;;MAEzB,mDAAM;YAAG;;MAED,sDAAS;YAAG;;;;;;ACRX;IAAQ;;UAIjB;UACV;UACA;AAHa;;AAKD,oBAAO,MAAM,AAAS,oEACxC,YACiB,4CACf,4BAAsB,kBAAkB,eAAlB,OAChB,AACD,kCADK,QAAY,SAAU,AAAM,KAAD,8DAErC,oBAAoB,gBAAgB,EACpC,qBAAqB,iBAAiB,EACtC,YAAY;AAGhB,cAAO,AAAK,KAAD,WAAW,OAAO,mBAAM,AAAK,IAAD;MACzC;;;UAIoB;UACV;UACA;AAHmB;;AAKP,wBAAW,MAAM,AAAS,oEAC5C,YACiB,4CACf,4BAAsB,kBAAkB,eAAlB,OAChB,AACD,kCADK,QAAY,SAAU,AAAM,KAAD,8DAErC,oBAAoB,gBAAgB,EACpC,qBAAqB,iBAAiB,EACtC,YAAY;AAGhB,sBAAO,QAAQ,gBAAR,OAAU,AAAkC,sBAA9B,QAAQ,QAAS,mBAAM,IAAI;cAAzC,gBAA+D;MACxE;;;UAIoB;UACV;UACA;UACA;AAJiB;;AAMzB,cAAO,AAAS,iEACd,eACiB,4CACf,4BAAsB,kBAAkB,eAAlB,OAChB,AACD,kCADK,QAAY,SAAU,AAAM,KAAD,8DAErC,oBAAoB,gBAAgB,EACpC,iBAAiB,aAAa,EAC9B,qBAAqB,iBAAiB;MAG5C;;;UAIU;UACA;AAFsB;AAI9B,cAAO,AAAS,iEACd,oBACiB,4CACf,oBAAoB,gBAAgB,EACpC,qBAAqB,iBAAiB;MAG5C;;;UAIa;UAA0B;AADD;;AAEhB,wBAAW,MAAM,AAAS,oEAC5C,qBACiB,4CACf,oBAAoB,gBAAgB,EACpC,qBAAqB,iBAAiB;AAG1C,aAAO,QAAQ;cAAR,cAAoB;MAC7B;;;;;;;;;EACF;;;;;;;;;;;;;MA/FoB,qCAAQ","file":"../../../../../../../../../../../../packages/file_selector_platform_interface/src/method_channel/method_channel_file_selector.dart.lib.js"}');
+  // Exports:
+  return {
+    src__method_channel__method_channel_file_selector: method_channel_file_selector,
+    src__platform_interface__file_selector_interface: file_selector_interface,
+    file_selector_platform_interface: file_selector_platform_interface
+  };
+}));
+
+//# sourceMappingURL=method_channel_file_selector.dart.lib.js.map

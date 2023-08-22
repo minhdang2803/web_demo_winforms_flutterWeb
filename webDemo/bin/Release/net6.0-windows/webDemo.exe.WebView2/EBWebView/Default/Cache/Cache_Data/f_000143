@@ -1,0 +1,406 @@
+define(['dart_sdk', 'packages/qr/src/util.dart', 'packages/qr/src/qr_code.dart'], (function load__packages__qr__src__qr_image_dart(dart_sdk, packages__qr__src__util$46dart, packages__qr__src__qr_code$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const util = packages__qr__src__util$46dart.src__util;
+  const qr_code = packages__qr__src__qr_code$46dart.src__qr_code;
+  var qr_image = Object.create(dart.library);
+  var $clear = dartx.clear;
+  var $add = dartx.add;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $length = dartx.length;
+  var $isEven = dartx.isEven;
+  var $rightShift = dartx['>>'];
+  var $truncate = dartx.truncate;
+  var $modulo = dartx['%'];
+  var $abs = dartx.abs;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    ListOfboolN: () => (T.ListOfboolN = dart.constFn(core.List$(T.boolN())))(),
+    JSArrayOfListOfboolN: () => (T.JSArrayOfListOfboolN = dart.constFn(_interceptors.JSArray$(T.ListOfboolN())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/qr-3.0.1/lib/src/qr_image.dart",
+    "package:qr/src/qr_image.dart"
+  ];
+  var moduleCount = dart.privateName(qr_image, "QrImage.moduleCount");
+  var typeNumber = dart.privateName(qr_image, "QrImage.typeNumber");
+  var errorCorrectLevel = dart.privateName(qr_image, "QrImage.errorCorrectLevel");
+  var maskPattern$ = dart.privateName(qr_image, "QrImage.maskPattern");
+  var _modules = dart.privateName(qr_image, "_modules");
+  var _makeImpl = dart.privateName(qr_image, "_makeImpl");
+  var _resetModules = dart.privateName(qr_image, "_resetModules");
+  var _setupPositionProbePattern = dart.privateName(qr_image, "_setupPositionProbePattern");
+  var _setupPositionAdjustPattern = dart.privateName(qr_image, "_setupPositionAdjustPattern");
+  var _setupTimingPattern = dart.privateName(qr_image, "_setupTimingPattern");
+  var _setupTypeInfo = dart.privateName(qr_image, "_setupTypeInfo");
+  var _setupTypeNumber = dart.privateName(qr_image, "_setupTypeNumber");
+  var _mapData = dart.privateName(qr_image, "_mapData");
+  qr_image.QrImage = class QrImage extends core.Object {
+    get moduleCount() {
+      return this[moduleCount];
+    }
+    set moduleCount(value) {
+      super.moduleCount = value;
+    }
+    get typeNumber() {
+      return this[typeNumber];
+    }
+    set typeNumber(value) {
+      super.typeNumber = value;
+    }
+    get errorCorrectLevel() {
+      return this[errorCorrectLevel];
+    }
+    set errorCorrectLevel(value) {
+      super.errorCorrectLevel = value;
+    }
+    get maskPattern() {
+      return this[maskPattern$];
+    }
+    set maskPattern(value) {
+      super.maskPattern = value;
+    }
+    static new(qrCode) {
+      let minLostPoint = 0.0;
+      let bestImage = null;
+      for (let i = 0; i < 8; i = i + 1) {
+        let testImage = new qr_image.QrImage._test(qrCode, i);
+        let lostPoint = qr_image._lostPoint(testImage);
+        if (i === 0 || minLostPoint > lostPoint) {
+          minLostPoint = lostPoint;
+          bestImage = testImage;
+        }
+      }
+      return new qr_image.QrImage.withMaskPattern(qrCode, dart.nullCheck(bestImage).maskPattern);
+    }
+    static ['_#new#tearOff'](qrCode) {
+      return qr_image.QrImage.new(qrCode);
+    }
+    static ['_#withMaskPattern#tearOff'](qrCode, maskPattern) {
+      return new qr_image.QrImage.withMaskPattern(qrCode, maskPattern);
+    }
+    static ['_#_test#tearOff'](qrCode, maskPattern) {
+      return new qr_image.QrImage._test(qrCode, maskPattern);
+    }
+    get qrModules() {
+      return this[_modules];
+    }
+    [_resetModules]() {
+      this[_modules][$clear]();
+      for (let row = 0; row < this.moduleCount; row = row + 1) {
+        this[_modules][$add](T.ListOfboolN().filled(this.moduleCount, null));
+      }
+    }
+    isDark(row, col) {
+      if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+        dart.throw(new core.ArgumentError.new(dart.str(row) + " , " + dart.str(col)));
+      }
+      return dart.nullCheck(this[_modules][$_get](row)[$_get](col));
+    }
+    [_makeImpl](maskPattern, dataCache, test) {
+      this[_resetModules]();
+      this[_setupPositionProbePattern](0, 0);
+      this[_setupPositionProbePattern](this.moduleCount - 7, 0);
+      this[_setupPositionProbePattern](0, this.moduleCount - 7);
+      this[_setupPositionAdjustPattern]();
+      this[_setupTimingPattern]();
+      this[_setupTypeInfo](maskPattern, test);
+      if (this.typeNumber >= 7) {
+        this[_setupTypeNumber](test);
+      }
+      this[_mapData](dataCache, maskPattern);
+    }
+    [_setupPositionProbePattern](row, col) {
+      for (let r = -1; r <= 7; r = r + 1) {
+        if (row + r <= -1 || this.moduleCount <= row + r) continue;
+        for (let c = -1; c <= 7; c = c + 1) {
+          if (col + c <= -1 || this.moduleCount <= col + c) continue;
+          if (0 <= r && r <= 6 && (c === 0 || c === 6) || 0 <= c && c <= 6 && (r === 0 || r === 6) || 2 <= r && r <= 4 && 2 <= c && c <= 4) {
+            this[_modules][$_get](row + r)[$_set](col + c, true);
+          } else {
+            this[_modules][$_get](row + r)[$_set](col + c, false);
+          }
+        }
+      }
+    }
+    [_setupPositionAdjustPattern]() {
+      let pos = util.patternPosition(this.typeNumber);
+      for (let i = 0; i < pos[$length]; i = i + 1) {
+        for (let j = 0; j < pos[$length]; j = j + 1) {
+          let row = pos[$_get](i);
+          let col = pos[$_get](j);
+          if (this[_modules][$_get](row)[$_get](col) != null) {
+            continue;
+          }
+          for (let r = -2; r <= 2; r = r + 1) {
+            for (let c = -2; c <= 2; c = c + 1) {
+              if (r === -2 || r === 2 || c === -2 || c === 2 || r === 0 && c === 0) {
+                this[_modules][$_get](row + r)[$_set](col + c, true);
+              } else {
+                this[_modules][$_get](row + r)[$_set](col + c, false);
+              }
+            }
+          }
+        }
+      }
+    }
+    [_setupTimingPattern]() {
+      for (let r = 8; r < this.moduleCount - 8; r = r + 1) {
+        if (this[_modules][$_get](r)[$_get](6) != null) {
+          continue;
+        }
+        this[_modules][$_get](r)[$_set](6, r[$isEven]);
+      }
+      for (let c = 8; c < this.moduleCount - 8; c = c + 1) {
+        if (this[_modules][$_get](6)[$_get](c) != null) {
+          continue;
+        }
+        this[_modules][$_get](6)[$_set](c, c[$isEven]);
+      }
+    }
+    [_setupTypeInfo](maskPattern, test) {
+      let data = (this.errorCorrectLevel << 3 | maskPattern) >>> 0;
+      let bits = util.bchTypeInfo(data);
+      let i = null;
+      let mod = null;
+      for (let t0 = i = 0; i < 15; i = i + 1) {
+        mod = !test && (bits[$rightShift](i) & 1) === 1;
+        if (i < 6) {
+          this[_modules][$_get](i)[$_set](8, mod);
+        } else if (i < 8) {
+          this[_modules][$_get](i + 1)[$_set](8, mod);
+        } else {
+          this[_modules][$_get](this.moduleCount - 15 + i)[$_set](8, mod);
+        }
+      }
+      for (let t1 = i = 0; i < 15; i = i + 1) {
+        mod = !test && (bits[$rightShift](i) & 1) === 1;
+        if (i < 8) {
+          this[_modules][$_get](8)[$_set](this.moduleCount - i - 1, mod);
+        } else if (i < 9) {
+          this[_modules][$_get](8)[$_set](15 - i - 1 + 1, mod);
+        } else {
+          this[_modules][$_get](8)[$_set](15 - i - 1, mod);
+        }
+      }
+      this[_modules][$_get](this.moduleCount - 8)[$_set](8, !test);
+    }
+    [_setupTypeNumber](test) {
+      let bits = util.bchTypeNumber(this.typeNumber);
+      for (let i = 0; i < 18; i = i + 1) {
+        let mod = !test && (bits[$rightShift](i) & 1) === 1;
+        this[_modules][$_get]((i / 3)[$truncate]())[$_set](i[$modulo](3) + this.moduleCount - 8 - 3, mod);
+      }
+      for (let i = 0; i < 18; i = i + 1) {
+        let mod = !test && (bits[$rightShift](i) & 1) === 1;
+        this[_modules][$_get](i[$modulo](3) + this.moduleCount - 8 - 3)[$_set]((i / 3)[$truncate](), mod);
+      }
+    }
+    [_mapData](data, maskPattern) {
+      let inc = -1;
+      let row = this.moduleCount - 1;
+      let bitIndex = 7;
+      let byteIndex = 0;
+      for (let col = this.moduleCount - 1; col > 0; col = col - 2) {
+        if (col === 6) col = col - 1;
+        for (;;) {
+          for (let c = 0; c < 2; c = c + 1) {
+            if (this[_modules][$_get](row)[$_get](col - c) == null) {
+              let dark = false;
+              if (byteIndex < data[$length]) {
+                dark = (data[$_get](byteIndex)[$rightShift](bitIndex) & 1) === 1;
+              }
+              let mask = qr_image._mask(maskPattern, row, col - c);
+              if (mask) {
+                dark = !dark;
+              }
+              this[_modules][$_get](row)[$_set](col - c, dark);
+              bitIndex = bitIndex - 1;
+              if (bitIndex === -1) {
+                byteIndex = byteIndex + 1;
+                bitIndex = 7;
+              }
+            }
+          }
+          row = row + inc;
+          if (row < 0 || this.moduleCount <= row) {
+            row = row - inc;
+            inc = -inc;
+            break;
+          }
+        }
+      }
+    }
+  };
+  (qr_image.QrImage.withMaskPattern = function(qrCode, maskPattern) {
+    this[_modules] = T.JSArrayOfListOfboolN().of([]);
+    this[maskPattern$] = maskPattern;
+    if (!(maskPattern >= 0 && maskPattern <= 7)) dart.assertFailed(null, I[0], 36, 16, "maskPattern >= 0 && maskPattern <= 7");
+    this[moduleCount] = qrCode.moduleCount;
+    this[typeNumber] = qrCode.typeNumber;
+    this[errorCorrectLevel] = qrCode.errorCorrectLevel;
+    this[_makeImpl](this.maskPattern, qrCode.dataCache, false);
+  }).prototype = qr_image.QrImage.prototype;
+  (qr_image.QrImage._test = function(qrCode, maskPattern) {
+    this[_modules] = T.JSArrayOfListOfboolN().of([]);
+    this[maskPattern$] = maskPattern;
+    this[moduleCount] = qrCode.moduleCount;
+    this[typeNumber] = qrCode.typeNumber;
+    this[errorCorrectLevel] = qrCode.errorCorrectLevel;
+    this[_makeImpl](this.maskPattern, qrCode.dataCache, true);
+  }).prototype = qr_image.QrImage.prototype;
+  dart.addTypeTests(qr_image.QrImage);
+  dart.addTypeCaches(qr_image.QrImage);
+  dart.setMethodSignature(qr_image.QrImage, () => ({
+    __proto__: dart.getMethods(qr_image.QrImage.__proto__),
+    [_resetModules]: dart.fnType(dart.void, []),
+    isDark: dart.fnType(core.bool, [core.int, core.int]),
+    [_makeImpl]: dart.fnType(dart.void, [core.int, core.List$(core.int), core.bool]),
+    [_setupPositionProbePattern]: dart.fnType(dart.void, [core.int, core.int]),
+    [_setupPositionAdjustPattern]: dart.fnType(dart.void, []),
+    [_setupTimingPattern]: dart.fnType(dart.void, []),
+    [_setupTypeInfo]: dart.fnType(dart.void, [core.int, core.bool]),
+    [_setupTypeNumber]: dart.fnType(dart.void, [core.bool]),
+    [_mapData]: dart.fnType(dart.void, [core.List$(core.int), core.int])
+  }));
+  dart.setStaticMethodSignature(qr_image.QrImage, () => ['new']);
+  dart.setGetterSignature(qr_image.QrImage, () => ({
+    __proto__: dart.getGetters(qr_image.QrImage.__proto__),
+    qrModules: core.List$(core.List$(dart.nullable(core.bool)))
+  }));
+  dart.setLibraryUri(qr_image.QrImage, I[1]);
+  dart.setFieldSignature(qr_image.QrImage, () => ({
+    __proto__: dart.getFields(qr_image.QrImage.__proto__),
+    moduleCount: dart.finalFieldType(core.int),
+    typeNumber: dart.finalFieldType(core.int),
+    errorCorrectLevel: dart.finalFieldType(core.int),
+    maskPattern: dart.finalFieldType(core.int),
+    [_modules]: dart.finalFieldType(core.List$(core.List$(dart.nullable(core.bool))))
+  }));
+  qr_image._mask = function _mask(maskPattern, i, j) {
+    switch (maskPattern) {
+      case 0:
+        {
+          return (i + j)[$isEven];
+        }
+      case 1:
+        {
+          return i[$isEven];
+        }
+      case 2:
+        {
+          return j[$modulo](3) === 0;
+        }
+      case 3:
+        {
+          return (i + j)[$modulo](3) === 0;
+        }
+      case 4:
+        {
+          return ((i / 2)[$truncate]() + (j / 3)[$truncate]())[$isEven];
+        }
+      case 5:
+        {
+          return (i * j)[$modulo](2) + (i * j)[$modulo](3) === 0;
+        }
+      case 6:
+        {
+          return ((i * j)[$modulo](2) + (i * j)[$modulo](3))[$isEven];
+        }
+      case 7:
+        {
+          return ((i * j)[$modulo](3) + (i + j)[$modulo](2))[$isEven];
+        }
+      default:
+        {
+          dart.throw(new core.ArgumentError.new("bad maskPattern:" + dart.str(maskPattern)));
+        }
+    }
+  };
+  qr_image._lostPoint = function _lostPoint(qrImage) {
+    let moduleCount = qrImage.moduleCount;
+    let lostPoint = 0.0;
+    let row = null;
+    let col = null;
+    for (let t2 = row = 0; row < moduleCount; row = row + 1) {
+      for (let t3 = col = 0; col < moduleCount; col = col + 1) {
+        let sameCount = 0;
+        let dark = qrImage.isDark(row, col);
+        for (let r = -1; r <= 1; r = r + 1) {
+          if (row + r < 0 || moduleCount <= row + r) {
+            continue;
+          }
+          for (let c = -1; c <= 1; c = c + 1) {
+            if (col + c < 0 || moduleCount <= col + c) {
+              continue;
+            }
+            if (r === 0 && c === 0) {
+              continue;
+            }
+            if (dark === qrImage.isDark(row + r, col + c)) {
+              sameCount = sameCount + 1;
+            }
+          }
+        }
+        if (sameCount > 5) {
+          lostPoint = lostPoint + (3 + sameCount - 5);
+        }
+      }
+    }
+    for (let t4 = row = 0; row < moduleCount - 1; row = row + 1) {
+      for (let t5 = col = 0; col < moduleCount - 1; col = col + 1) {
+        let count = 0;
+        if (qrImage.isDark(row, col)) count = count + 1;
+        if (qrImage.isDark(row + 1, col)) count = count + 1;
+        if (qrImage.isDark(row, col + 1)) count = count + 1;
+        if (qrImage.isDark(row + 1, col + 1)) count = count + 1;
+        if (count === 0 || count === 4) {
+          lostPoint = lostPoint + 3;
+        }
+      }
+    }
+    for (let t6 = row = 0; row < moduleCount; row = row + 1) {
+      for (let t7 = col = 0; col < moduleCount - 6; col = col + 1) {
+        if (qrImage.isDark(row, col) && !qrImage.isDark(row, col + 1) && qrImage.isDark(row, col + 2) && qrImage.isDark(row, col + 3) && qrImage.isDark(row, col + 4) && !qrImage.isDark(row, col + 5) && qrImage.isDark(row, col + 6)) {
+          lostPoint = lostPoint + 40;
+        }
+      }
+    }
+    for (let t8 = col = 0; col < moduleCount; col = col + 1) {
+      for (let t9 = row = 0; row < moduleCount - 6; row = row + 1) {
+        if (qrImage.isDark(row, col) && !qrImage.isDark(row + 1, col) && qrImage.isDark(row + 2, col) && qrImage.isDark(row + 3, col) && qrImage.isDark(row + 4, col) && !qrImage.isDark(row + 5, col) && qrImage.isDark(row + 6, col)) {
+          lostPoint = lostPoint + 40;
+        }
+      }
+    }
+    let darkCount = 0;
+    for (let t10 = col = 0; col < moduleCount; col = col + 1) {
+      for (let t11 = row = 0; row < moduleCount; row = row + 1) {
+        if (qrImage.isDark(row, col)) {
+          darkCount = darkCount + 1;
+        }
+      }
+    }
+    let ratio = (100 * darkCount / moduleCount / moduleCount - 50)[$abs]() / 5;
+    return lostPoint + ratio * 10;
+  };
+  dart.trackLibraries("packages/qr/src/qr_image.dart", {
+    "package:qr/src/qr_image.dart": qr_image
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["qr_image.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/qr/src/qr_image.dart.lib.js"}');
+  // Exports:
+  return {
+    src__qr_image: qr_image
+  };
+}));
+
+//# sourceMappingURL=qr_image.dart.lib.js.map

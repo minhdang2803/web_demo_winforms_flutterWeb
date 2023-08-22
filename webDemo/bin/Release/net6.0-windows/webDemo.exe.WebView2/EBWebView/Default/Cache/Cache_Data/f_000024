@@ -1,0 +1,972 @@
+define(['dart_sdk', 'packages/path/src/path_set.dart', 'packages/file_picker/src/file_picker_result.dart', 'packages/plugin_platform_interface/plugin_platform_interface.dart', 'packages/file_picker/src/platform_file.dart', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__file_picker__src__windows__stub_dart(dart_sdk, packages__path__src__path_set$46dart, packages__file_picker__src__file_picker_result$46dart, packages__plugin_platform_interface__plugin_platform_interface$46dart, packages__file_picker__src__platform_file$46dart, packages__flutter__src__services__text_editing_delta$46dart, packages__flutter__src__foundation__debug$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
+  const io = dart_sdk.io;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const path = packages__path__src__path_set$46dart.path;
+  const file_picker_result = packages__file_picker__src__file_picker_result$46dart.src__file_picker_result;
+  const plugin_platform_interface = packages__plugin_platform_interface__plugin_platform_interface$46dart.plugin_platform_interface;
+  const platform_file = packages__file_picker__src__platform_file$46dart.src__platform_file;
+  const message_codec = packages__flutter__src__services__text_editing_delta$46dart.src__services__message_codec;
+  const platform_channel = packages__flutter__src__services__text_editing_delta$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__text_editing_delta$46dart.src__services__message_codecs;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  var stub = Object.create(dart.library);
+  var qarma_and_zenity_handler = Object.create(dart.library);
+  var kdialog_handler = Object.create(dart.library);
+  var dialog_handler = Object.create(dart.library);
+  var file_picker_linux = Object.create(dart.library);
+  var utils = Object.create(dart.library);
+  var file_picker_macos = Object.create(dart.library);
+  var file_picker_io = Object.create(dart.library);
+  var file_picker = Object.create(dart.library);
+  var file_picker$ = Object.create(dart.library);
+  var $add = dartx.add;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $join = dartx.join;
+  var $isEmpty = dartx.isEmpty;
+  var $trim = dartx.trim;
+  var $split = dartx.split;
+  var $startsWith = dartx.startsWith;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $addAll = dartx.addAll;
+  var $toUpperCase = dartx.toUpperCase;
+  var $toLowerCase = dartx.toLowerCase;
+  var $endsWith = dartx.endsWith;
+  var $where = dartx.where;
+  var $toString = dartx.toString;
+  var $first = dartx.first;
+  var $replaceAll = dartx.replaceAll;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $substring = dartx.substring;
+  var $_set = dartx._set;
+  var $sublist = dartx.sublist;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))(),
+    FilePickerResultN: () => (T.FilePickerResultN = dart.constFn(dart.nullable(file_picker_result.FilePickerResult)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    StringTobool: () => (T.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
+    FutureOfPlatformFile: () => (T.FutureOfPlatformFile = dart.constFn(async.Future$(platform_file.PlatformFile)))(),
+    StringToFutureOfPlatformFile: () => (T.StringToFutureOfPlatformFile = dart.constFn(dart.fnType(T.FutureOfPlatformFile(), [core.String])))(),
+    dynamicTovoid: () => (T.dynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic])))(),
+    dynamicToNever: () => (T.dynamicToNever = dart.constFn(dart.fnType(dart.Never, [dart.dynamic])))(),
+    ObjectN: () => (T.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    IdentityMapOfString$ObjectN: () => (T.IdentityMapOfString$ObjectN = dart.constFn(_js_helper.IdentityMap$(core.String, T.ObjectN())))(),
+    JSArrayOfPlatformFile: () => (T.JSArrayOfPlatformFile = dart.constFn(_interceptors.JSArray$(platform_file.PlatformFile)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "any",
+        [_Enum_index]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "audio",
+        [_Enum_index]: 4
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "custom",
+        [_Enum_index]: 5
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "image",
+        [_Enum_index]: 2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "media",
+        [_Enum_index]: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: file_picker.FileType.prototype,
+        [_Enum__name]: "video",
+        [_Enum_index]: 3
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: message_codecs.JSONMethodCodec.prototype
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[8] || CT.C8
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: platform_channel.EventChannel.prototype,
+        [EventChannel__binaryMessenger]: null,
+        [EventChannel_codec]: C[7] || CT.C7,
+        [EventChannel_name]: "miguelruivo.flutter.plugins.filepickerevent"
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[0] || CT.C0, C[4] || CT.C4, C[3] || CT.C3, C[5] || CT.C5, C[1] || CT.C1, C[2] || CT.C2], file_picker.FileType);
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: file_picker.FilePickerStatus.prototype,
+        [_Enum__name]: "picking",
+        [_Enum_index]: 0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: file_picker.FilePickerStatus.prototype,
+        [_Enum__name]: "done",
+        [_Enum_index]: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], file_picker.FilePickerStatus);
+    }
+  }, false);
+  var C = Array(14).fill(void 0);
+  var I = [
+    "package:file_picker/src/linux/qarma_and_zenity_handler.dart",
+    "package:file_picker/src/linux/kdialog_handler.dart",
+    "package:file_picker/src/linux/dialog_handler.dart",
+    "package:file_picker/src/file_picker.dart",
+    "package:file_picker/src/linux/file_picker_linux.dart",
+    "package:file_picker/src/file_picker_macos.dart",
+    "package:file_picker/src/file_picker_io.dart"
+  ];
+  stub.filePickerWithFFI = function filePickerWithFFI() {
+    return dart.throw(new core.UnimplementedError.new("Unsupported"));
+  };
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  qarma_and_zenity_handler.QarmaAndZenityHandler = class QarmaAndZenityHandler extends core.Object {
+    generateCommandLineArguments(dialogTitle, opts) {
+      let fileFilter = opts && 'fileFilter' in opts ? opts.fileFilter : "";
+      let fileName = opts && 'fileName' in opts ? opts.fileName : "";
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : "";
+      let multipleFiles = opts && 'multipleFiles' in opts ? opts.multipleFiles : false;
+      let pickDirectory = opts && 'pickDirectory' in opts ? opts.pickDirectory : false;
+      let saveFile = opts && 'saveFile' in opts ? opts.saveFile : false;
+      let $arguments = T.JSArrayOfString().of(["--file-selection", "--title", dialogTitle]);
+      if (saveFile) {
+        $arguments[$add]("--save");
+      }
+      if (fileName[$isNotEmpty] && initialDirectory[$isNotEmpty]) {
+        $arguments[$add]("--filename=" + path.join(initialDirectory, fileName));
+      } else if (fileName[$isNotEmpty]) {
+        $arguments[$add]("--filename=" + fileName);
+      } else if (initialDirectory[$isNotEmpty]) {
+        $arguments[$add]("--filename=" + initialDirectory);
+      }
+      if (fileFilter[$isNotEmpty]) {
+        $arguments[$add]("--file-filter=" + fileFilter);
+      }
+      if (multipleFiles) {
+        $arguments[$add]("--multiple");
+      }
+      if (pickDirectory) {
+        $arguments[$add]("--directory");
+      }
+      return $arguments;
+    }
+    fileTypeToFileFilter(type, allowedExtensions) {
+      switch (type) {
+        case C[0] || CT.C0:
+          {
+            return "";
+          }
+        case C[1] || CT.C1:
+          {
+            return "*.aac *.midi *.mp3 *.ogg *.wav";
+          }
+        case C[2] || CT.C2:
+          {
+            return "*." + dart.nullCheck(allowedExtensions)[$join](" *.");
+          }
+        case C[3] || CT.C3:
+          {
+            return "*.bmp *.gif *.jpeg *.jpg *.png";
+          }
+        case C[4] || CT.C4:
+          {
+            return "*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv *.bmp *.gif *.jpeg *.jpg *.png";
+          }
+        case C[5] || CT.C5:
+          {
+            return "*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv";
+          }
+        default:
+          {
+            dart.throw(core.Exception.new("unknown file type"));
+          }
+      }
+    }
+    resultStringToFilePaths(fileSelectionResult) {
+      if (fileSelectionResult[$trim]()[$isEmpty]) {
+        return T.JSArrayOfString().of([]);
+      }
+      return fileSelectionResult[$split]("|/")[$map](core.String, dart.fn(path => path[$startsWith]("/") ? path : "/" + path, T.StringToString()))[$toList]();
+    }
+    static ['_#new#tearOff']() {
+      return new qarma_and_zenity_handler.QarmaAndZenityHandler.new();
+    }
+  };
+  (qarma_and_zenity_handler.QarmaAndZenityHandler.new = function() {
+    ;
+  }).prototype = qarma_and_zenity_handler.QarmaAndZenityHandler.prototype;
+  dart.addTypeTests(qarma_and_zenity_handler.QarmaAndZenityHandler);
+  dart.addTypeCaches(qarma_and_zenity_handler.QarmaAndZenityHandler);
+  qarma_and_zenity_handler.QarmaAndZenityHandler[dart.implements] = () => [dialog_handler.DialogHandler];
+  dart.setMethodSignature(qarma_and_zenity_handler.QarmaAndZenityHandler, () => ({
+    __proto__: dart.getMethods(qarma_and_zenity_handler.QarmaAndZenityHandler.__proto__),
+    generateCommandLineArguments: dart.fnType(core.List$(core.String), [core.String], {fileFilter: core.String, fileName: core.String, initialDirectory: core.String, multipleFiles: core.bool, pickDirectory: core.bool, saveFile: core.bool}, {}),
+    fileTypeToFileFilter: dart.fnType(core.String, [file_picker.FileType, dart.nullable(core.List$(core.String))]),
+    resultStringToFilePaths: dart.fnType(core.List$(core.String), [core.String])
+  }));
+  dart.setLibraryUri(qarma_and_zenity_handler.QarmaAndZenityHandler, I[0]);
+  kdialog_handler.KDialogHandler = class KDialogHandler extends core.Object {
+    generateCommandLineArguments(dialogTitle, opts) {
+      let fileFilter = opts && 'fileFilter' in opts ? opts.fileFilter : "";
+      let fileName = opts && 'fileName' in opts ? opts.fileName : "";
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : "";
+      let multipleFiles = opts && 'multipleFiles' in opts ? opts.multipleFiles : false;
+      let pickDirectory = opts && 'pickDirectory' in opts ? opts.pickDirectory : false;
+      let saveFile = opts && 'saveFile' in opts ? opts.saveFile : false;
+      let $arguments = T.JSArrayOfString().of(["--title", dialogTitle]);
+      if (saveFile && !pickDirectory) {
+        $arguments[$add]("--getsavefilename");
+      } else if (!saveFile && !pickDirectory) {
+        $arguments[$add]("--getopenfilename");
+      } else {
+        $arguments[$add]("--getexistingdirectory");
+      }
+      if (fileName[$isNotEmpty] && initialDirectory[$isNotEmpty]) {
+        $arguments[$add](path.join(initialDirectory, fileName));
+      } else if (fileName[$isNotEmpty]) {
+        $arguments[$add](path.absolute(fileName));
+      } else if (initialDirectory[$isNotEmpty]) {
+        $arguments[$add](initialDirectory);
+      }
+      if (!pickDirectory && fileFilter[$isNotEmpty]) {
+        if (fileName[$isEmpty] && initialDirectory[$isEmpty]) {
+          $arguments[$add](".");
+        }
+        $arguments[$add](fileFilter);
+      }
+      if (multipleFiles) {
+        $arguments[$addAll](T.JSArrayOfString().of(["--multiple", "--separate-output"]));
+      }
+      return $arguments;
+    }
+    fileTypeToFileFilter(type, allowedExtensions) {
+      switch (type) {
+        case C[0] || CT.C0:
+          {
+            return "";
+          }
+        case C[1] || CT.C1:
+          {
+            return "Audio File (*.aac *.midi *.mp3 *.ogg *.wav)";
+          }
+        case C[2] || CT.C2:
+          {
+            return dart.nullCheck(allowedExtensions)[$map](core.String, dart.fn(ext => ext[$toUpperCase](), T.StringToString()))[$join](" File, ") + " File (*." + allowedExtensions[$join](" *.") + ")";
+          }
+        case C[3] || CT.C3:
+          {
+            return "Image File (*.bmp *.gif *.jpeg *.jpg *.png)";
+          }
+        case C[4] || CT.C4:
+          {
+            return "Media File (*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv *.bmp *.gif *.jpeg *.jpg *.png)";
+          }
+        case C[5] || CT.C5:
+          {
+            return "Video File (*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv)";
+          }
+        default:
+          {
+            dart.throw(core.Exception.new("unknown file type"));
+          }
+      }
+    }
+    resultStringToFilePaths(fileSelectionResult) {
+      if (fileSelectionResult[$trim]()[$isEmpty]) {
+        return T.JSArrayOfString().of([]);
+      }
+      return fileSelectionResult[$split]("\n")[$map](core.String, dart.fn(path => path[$startsWith]("/") ? path : "/" + path, T.StringToString()))[$toList]();
+    }
+    static ['_#new#tearOff']() {
+      return new kdialog_handler.KDialogHandler.new();
+    }
+  };
+  (kdialog_handler.KDialogHandler.new = function() {
+    ;
+  }).prototype = kdialog_handler.KDialogHandler.prototype;
+  dart.addTypeTests(kdialog_handler.KDialogHandler);
+  dart.addTypeCaches(kdialog_handler.KDialogHandler);
+  kdialog_handler.KDialogHandler[dart.implements] = () => [dialog_handler.DialogHandler];
+  dart.setMethodSignature(kdialog_handler.KDialogHandler, () => ({
+    __proto__: dart.getMethods(kdialog_handler.KDialogHandler.__proto__),
+    generateCommandLineArguments: dart.fnType(core.List$(core.String), [core.String], {fileFilter: core.String, fileName: core.String, initialDirectory: core.String, multipleFiles: core.bool, pickDirectory: core.bool, saveFile: core.bool}, {}),
+    fileTypeToFileFilter: dart.fnType(core.String, [file_picker.FileType, dart.nullable(core.List$(core.String))]),
+    resultStringToFilePaths: dart.fnType(core.List$(core.String), [core.String])
+  }));
+  dart.setLibraryUri(kdialog_handler.KDialogHandler, I[1]);
+  dialog_handler.DialogHandler = class DialogHandler extends core.Object {
+    static new(pathToExecutable) {
+      pathToExecutable = pathToExecutable[$toLowerCase]();
+      if (pathToExecutable[$endsWith]("kdialog")) {
+        return new kdialog_handler.KDialogHandler.new();
+      } else if (pathToExecutable[$endsWith]("qarma") || pathToExecutable[$endsWith]("zenity")) {
+        return new qarma_and_zenity_handler.QarmaAndZenityHandler.new();
+      }
+      dart.throw(new core.UnimplementedError.new("DialogHandler for executable " + pathToExecutable + " has not been implemented"));
+    }
+    static ['_#new#tearOff'](pathToExecutable) {
+      return dialog_handler.DialogHandler.new(pathToExecutable);
+    }
+  };
+  (dialog_handler.DialogHandler[dart.mixinNew] = function() {
+  }).prototype = dialog_handler.DialogHandler.prototype;
+  dart.addTypeTests(dialog_handler.DialogHandler);
+  dart.addTypeCaches(dialog_handler.DialogHandler);
+  dart.setStaticMethodSignature(dialog_handler.DialogHandler, () => ['new']);
+  dart.setLibraryUri(dialog_handler.DialogHandler, I[2]);
+  var _getPathToExecutable = dart.privateName(file_picker_linux, "_getPathToExecutable");
+  file_picker.FilePicker = class FilePicker extends plugin_platform_interface.PlatformInterface {
+    static get _instance() {
+      let t4;
+      t4 = file_picker.FilePicker['_#_instance'];
+      return t4 == null ? file_picker.FilePicker['_#_instance'] = file_picker.FilePicker._setPlatform() : t4;
+    }
+    static set _instance(library$32package$58file_picker$47src$47file_picker$46dart$58$58_instance$35param) {
+      file_picker.FilePicker['_#_instance'] = library$32package$58file_picker$47src$47file_picker$46dart$58$58_instance$35param;
+    }
+    static get platform() {
+      return file_picker.FilePicker._instance;
+    }
+    static set platform(instance) {
+      plugin_platform_interface.PlatformInterface.verifyToken(instance, file_picker.FilePicker._token);
+      file_picker.FilePicker._instance = instance;
+    }
+    static _setPlatform() {
+      if (io.Platform.isAndroid || io.Platform.isIOS) {
+        return new file_picker_io.FilePickerIO.new();
+      } else if (io.Platform.isLinux) {
+        return new file_picker_linux.FilePickerLinux.new();
+      } else if (io.Platform.isWindows) {
+        return stub.filePickerWithFFI();
+      } else if (io.Platform.isMacOS) {
+        return new file_picker_macos.FilePickerMacOS.new();
+      } else {
+        dart.throw(new core.UnimplementedError.new("The current platform \"" + io.Platform.operatingSystem + "\" is not supported by this plugin."));
+      }
+    }
+    static ['_#_setPlatform#tearOff']() {
+      return file_picker.FilePicker._setPlatform();
+    }
+    pickFiles(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let onFileLoading = opts && 'onFileLoading' in opts ? opts.onFileLoading : null;
+      let allowCompression = opts && 'allowCompression' in opts ? opts.allowCompression : true;
+      let allowMultiple = opts && 'allowMultiple' in opts ? opts.allowMultiple : false;
+      let withData = opts && 'withData' in opts ? opts.withData : false;
+      let withReadStream = opts && 'withReadStream' in opts ? opts.withReadStream : false;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.FilePickerResultN(), function* pickFiles() {
+        return dart.throw(new core.UnimplementedError.new("pickFiles() has not been implemented."));
+      });
+    }
+    clearTemporaryFiles() {
+      return async.async(T.boolN(), function* clearTemporaryFiles() {
+        return dart.throw(new core.UnimplementedError.new("clearTemporaryFiles() has not been implemented."));
+      });
+    }
+    getDirectoryPath(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      return async.async(T.StringN(), function* getDirectoryPath() {
+        return dart.throw(new core.UnimplementedError.new("getDirectoryPath() has not been implemented."));
+      });
+    }
+    saveFile(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let fileName = opts && 'fileName' in opts ? opts.fileName : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.StringN(), function* saveFile() {
+        return dart.throw(new core.UnimplementedError.new("saveFile() has not been implemented."));
+      });
+    }
+  };
+  (file_picker.FilePicker.new = function() {
+    file_picker.FilePicker.__proto__.new.call(this, {token: file_picker.FilePicker._token});
+    ;
+  }).prototype = file_picker.FilePicker.prototype;
+  dart.addTypeTests(file_picker.FilePicker);
+  dart.addTypeCaches(file_picker.FilePicker);
+  dart.setMethodSignature(file_picker.FilePicker, () => ({
+    __proto__: dart.getMethods(file_picker.FilePicker.__proto__),
+    pickFiles: dart.fnType(async.Future$(dart.nullable(file_picker_result.FilePickerResult)), [], {allowCompression: core.bool, allowMultiple: core.bool, allowedExtensions: dart.nullable(core.List$(core.String)), dialogTitle: dart.nullable(core.String), initialDirectory: dart.nullable(core.String), lockParentWindow: core.bool, onFileLoading: dart.nullable(dart.fnType(dart.dynamic, [file_picker.FilePickerStatus])), type: file_picker.FileType, withData: core.bool, withReadStream: core.bool}, {}),
+    clearTemporaryFiles: dart.fnType(async.Future$(dart.nullable(core.bool)), []),
+    getDirectoryPath: dart.fnType(async.Future$(dart.nullable(core.String)), [], {dialogTitle: dart.nullable(core.String), initialDirectory: dart.nullable(core.String), lockParentWindow: core.bool}, {}),
+    saveFile: dart.fnType(async.Future$(dart.nullable(core.String)), [], {allowedExtensions: dart.nullable(core.List$(core.String)), dialogTitle: dart.nullable(core.String), fileName: dart.nullable(core.String), initialDirectory: dart.nullable(core.String), lockParentWindow: core.bool, type: file_picker.FileType}, {})
+  }));
+  dart.setStaticMethodSignature(file_picker.FilePicker, () => ['_setPlatform']);
+  dart.setStaticGetterSignature(file_picker.FilePicker, () => ['_instance', 'platform']);
+  dart.setStaticSetterSignature(file_picker.FilePicker, () => ['_instance', 'platform']);
+  dart.setLibraryUri(file_picker.FilePicker, I[3]);
+  dart.setStaticFieldSignature(file_picker.FilePicker, () => ['_token', '_#_instance']);
+  dart.defineLazy(file_picker.FilePicker, {
+    /*file_picker.FilePicker._token*/get _token() {
+      return new core.Object.new();
+    },
+    /*file_picker.FilePicker['_#_instance']*/get ['_#_instance']() {
+      return null;
+    },
+    set ['_#_instance'](_) {}
+  }, false);
+  file_picker_linux.FilePickerLinux = class FilePickerLinux extends file_picker.FilePicker {
+    pickFiles(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let onFileLoading = opts && 'onFileLoading' in opts ? opts.onFileLoading : null;
+      let allowCompression = opts && 'allowCompression' in opts ? opts.allowCompression : true;
+      let allowMultiple = opts && 'allowMultiple' in opts ? opts.allowMultiple : false;
+      let withData = opts && 'withData' in opts ? opts.withData : false;
+      let withReadStream = opts && 'withReadStream' in opts ? opts.withReadStream : false;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.FilePickerResultN(), (function* pickFiles() {
+        let t0, t0$;
+        let executable = (yield this[_getPathToExecutable]());
+        let dialogHandler = dialog_handler.DialogHandler.new(executable);
+        let fileFilter = dialogHandler.fileTypeToFileFilter(type, allowedExtensions);
+        let $arguments = dialogHandler.generateCommandLineArguments((t0 = dialogTitle, t0 == null ? "File Picker" : t0), {fileFilter: fileFilter, initialDirectory: (t0$ = initialDirectory, t0$ == null ? "" : t0$), multipleFiles: allowMultiple, pickDirectory: false});
+        let fileSelectionResult = (yield utils.runExecutableWithArguments(executable, $arguments));
+        if (fileSelectionResult == null) {
+          return null;
+        }
+        let filePaths = dialogHandler.resultStringToFilePaths(fileSelectionResult);
+        let platformFiles = (yield utils.filePathsToPlatformFiles(filePaths, withReadStream, withData));
+        return new file_picker_result.FilePickerResult.new(platformFiles);
+      }).bind(this));
+    }
+    getDirectoryPath(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      return async.async(T.StringN(), (function* getDirectoryPath() {
+        let t0, t0$;
+        let executable = (yield this[_getPathToExecutable]());
+        let $arguments = dialog_handler.DialogHandler.new(executable).generateCommandLineArguments((t0 = dialogTitle, t0 == null ? "File Picker" : t0), {initialDirectory: (t0$ = initialDirectory, t0$ == null ? "" : t0$), pickDirectory: true});
+        return yield utils.runExecutableWithArguments(executable, $arguments);
+      }).bind(this));
+    }
+    saveFile(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let fileName = opts && 'fileName' in opts ? opts.fileName : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.StringN(), (function* saveFile() {
+        let t0, t0$, t0$0;
+        let executable = (yield this[_getPathToExecutable]());
+        let dialogHandler = dialog_handler.DialogHandler.new(executable);
+        let fileFilter = dialogHandler.fileTypeToFileFilter(type, allowedExtensions);
+        let $arguments = dialogHandler.generateCommandLineArguments((t0 = dialogTitle, t0 == null ? "File Picker" : t0), {fileFilter: fileFilter, fileName: (t0$ = fileName, t0$ == null ? "" : t0$), initialDirectory: (t0$0 = initialDirectory, t0$0 == null ? "" : t0$0), saveFile: true});
+        return yield utils.runExecutableWithArguments(executable, $arguments);
+      }).bind(this));
+    }
+    [_getPathToExecutable]() {
+      return async.async(core.String, function* _getPathToExecutable() {
+        try {
+          try {
+            return yield utils.isExecutableOnPath("qarma");
+          } catch (e) {
+            let ex = dart.getThrown(e);
+            if (core.Exception.is(ex)) {
+              return yield utils.isExecutableOnPath("kdialog");
+            } else
+              throw e;
+          }
+        } catch (e$) {
+          let ex$ = dart.getThrown(e$);
+          if (core.Exception.is(ex$)) {
+            return yield utils.isExecutableOnPath("zenity");
+          } else
+            throw e$;
+        }
+      });
+    }
+    static ['_#new#tearOff']() {
+      return new file_picker_linux.FilePickerLinux.new();
+    }
+  };
+  (file_picker_linux.FilePickerLinux.new = function() {
+    file_picker_linux.FilePickerLinux.__proto__.new.call(this);
+    ;
+  }).prototype = file_picker_linux.FilePickerLinux.prototype;
+  dart.addTypeTests(file_picker_linux.FilePickerLinux);
+  dart.addTypeCaches(file_picker_linux.FilePickerLinux);
+  dart.setMethodSignature(file_picker_linux.FilePickerLinux, () => ({
+    __proto__: dart.getMethods(file_picker_linux.FilePickerLinux.__proto__),
+    [_getPathToExecutable]: dart.fnType(async.Future$(core.String), [])
+  }));
+  dart.setLibraryUri(file_picker_linux.FilePickerLinux, I[4]);
+  utils.filePathsToPlatformFiles = function filePathsToPlatformFiles(filePaths, withReadStream, withData) {
+    return async.Future.wait(platform_file.PlatformFile, filePaths[$where](dart.fn(filePath => filePath[$isNotEmpty], T.StringTobool()))[$map](T.FutureOfPlatformFile(), dart.fn(filePath => async.async(platform_file.PlatformFile, function*() {
+      let file = io.File.new(filePath);
+      if (withReadStream) {
+        return utils.createPlatformFile(file, null, file.openRead());
+      }
+      if (!withData) {
+        return utils.createPlatformFile(file, null, null);
+      }
+      let bytes = (yield file.readAsBytes());
+      return utils.createPlatformFile(file, bytes, null);
+    }), T.StringToFutureOfPlatformFile()))[$toList]());
+  };
+  utils.createPlatformFile = function createPlatformFile(file, bytes, readStream) {
+    return async.async(platform_file.PlatformFile, function* createPlatformFile() {
+      return new platform_file.PlatformFile.new({bytes: bytes, name: path.basename(file.path), path: file.path, readStream: readStream, size: file.existsSync() ? file.lengthSync() : 0});
+    });
+  };
+  utils.runExecutableWithArguments = function runExecutableWithArguments(executable, $arguments) {
+    return async.async(T.StringN(), function* runExecutableWithArguments() {
+      let t4;
+      let processResult = (yield io.Process.run(executable, $arguments));
+      let path = (t4 = processResult.stdout, t4 == null ? null : dart.toString(t4)[$trim]());
+      if (processResult.exitCode !== 0 || path == null || path[$isEmpty]) {
+        return null;
+      }
+      return path;
+    });
+  };
+  utils.isExecutableOnPath = function isExecutableOnPath(executable) {
+    return async.async(core.String, function* isExecutableOnPath() {
+      let path = (yield utils.runExecutableWithArguments("which", T.JSArrayOfString().of([executable])));
+      if (path == null) {
+        dart.throw(core.Exception.new("Couldn't find the executable " + executable + " in the path."));
+      }
+      return path;
+    });
+  };
+  file_picker_macos.FilePickerMacOS = class FilePickerMacOS extends file_picker.FilePicker {
+    pickFiles(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let onFileLoading = opts && 'onFileLoading' in opts ? opts.onFileLoading : null;
+      let allowCompression = opts && 'allowCompression' in opts ? opts.allowCompression : true;
+      let allowMultiple = opts && 'allowMultiple' in opts ? opts.allowMultiple : false;
+      let withData = opts && 'withData' in opts ? opts.withData : false;
+      let withReadStream = opts && 'withReadStream' in opts ? opts.withReadStream : false;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.FilePickerResultN(), (function* pickFiles() {
+        let t4, t4$;
+        let executable = (yield utils.isExecutableOnPath("osascript"));
+        let fileFilter = this.fileTypeToFileFilter(type, allowedExtensions);
+        let $arguments = this.generateCommandLineArguments(this.escapeDialogTitle((t4 = dialogTitle, t4 == null ? "File Picker" : t4)), {fileFilter: fileFilter, initialDirectory: (t4$ = initialDirectory, t4$ == null ? "" : t4$), multipleFiles: allowMultiple, pickDirectory: false});
+        let fileSelectionResult = (yield utils.runExecutableWithArguments(executable, $arguments));
+        if (fileSelectionResult == null) {
+          return null;
+        }
+        let filePaths = this.resultStringToFilePaths(fileSelectionResult);
+        let platformFiles = (yield utils.filePathsToPlatformFiles(filePaths, withReadStream, withData));
+        return new file_picker_result.FilePickerResult.new(platformFiles);
+      }).bind(this));
+    }
+    getDirectoryPath(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      return async.async(T.StringN(), (function* getDirectoryPath() {
+        let t4, t4$;
+        let executable = (yield utils.isExecutableOnPath("osascript"));
+        let $arguments = this.generateCommandLineArguments(this.escapeDialogTitle((t4 = dialogTitle, t4 == null ? "File Picker" : t4)), {initialDirectory: (t4$ = initialDirectory, t4$ == null ? "" : t4$), pickDirectory: true});
+        let directorySelectionResult = (yield utils.runExecutableWithArguments(executable, $arguments));
+        if (directorySelectionResult == null) {
+          return null;
+        }
+        return this.resultStringToFilePaths(directorySelectionResult)[$first];
+      }).bind(this));
+    }
+    saveFile(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let fileName = opts && 'fileName' in opts ? opts.fileName : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return async.async(T.StringN(), (function* saveFile() {
+        let t4, t4$, t4$0;
+        let executable = (yield utils.isExecutableOnPath("osascript"));
+        let fileFilter = this.fileTypeToFileFilter(type, allowedExtensions);
+        let $arguments = this.generateCommandLineArguments(this.escapeDialogTitle((t4 = dialogTitle, t4 == null ? "File Picker" : t4)), {fileFilter: fileFilter, fileName: (t4$ = fileName, t4$ == null ? "" : t4$), initialDirectory: (t4$0 = initialDirectory, t4$0 == null ? "" : t4$0), saveFile: true});
+        let saveFileResult = (yield utils.runExecutableWithArguments(executable, $arguments));
+        if (saveFileResult == null) {
+          return null;
+        }
+        return this.resultStringToFilePaths(saveFileResult)[$first];
+      }).bind(this));
+    }
+    fileTypeToFileFilter(type, allowedExtensions) {
+      switch (type) {
+        case C[0] || CT.C0:
+          {
+            return "";
+          }
+        case C[1] || CT.C1:
+          {
+            return "\"aac\", \"midi\", \"mp3\", \"ogg\", \"wav\"";
+          }
+        case C[2] || CT.C2:
+          {
+            return "\"\", \"" + dart.nullCheck(allowedExtensions)[$join]("\", \"") + "\"";
+          }
+        case C[3] || CT.C3:
+          {
+            return "\"bmp\", \"gif\", \"jpeg\", \"jpg\", \"png\"";
+          }
+        case C[4] || CT.C4:
+          {
+            return "\"avi\", \"flv\", \"mkv\", \"mov\", \"mp4\", \"mpeg\", \"webm\", \"wmv\", \"bmp\", \"gif\", \"jpeg\", \"jpg\", \"png\"";
+          }
+        case C[5] || CT.C5:
+          {
+            return "\"avi\", \"flv\", \"mkv\", \"mov\", \"mp4\", \"mpeg\", \"webm\", \"wmv\"";
+          }
+        default:
+          {
+            dart.throw(core.Exception.new("unknown file type"));
+          }
+      }
+    }
+    generateCommandLineArguments(dialogTitle, opts) {
+      let fileFilter = opts && 'fileFilter' in opts ? opts.fileFilter : "";
+      let fileName = opts && 'fileName' in opts ? opts.fileName : "";
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : "";
+      let multipleFiles = opts && 'multipleFiles' in opts ? opts.multipleFiles : false;
+      let pickDirectory = opts && 'pickDirectory' in opts ? opts.pickDirectory : false;
+      let saveFile = opts && 'saveFile' in opts ? opts.saveFile : false;
+      let $arguments = T.JSArrayOfString().of(["-e"]);
+      let argument = "choose ";
+      if (pickDirectory) {
+        argument = argument + "folder ";
+      } else {
+        argument = argument + "file ";
+        if (saveFile) {
+          argument = argument + "name ";
+          if (fileName[$isNotEmpty]) {
+            argument = argument + ("default name \"" + fileName + "\" ");
+          }
+        } else {
+          if (fileFilter[$isNotEmpty]) {
+            argument = argument + ("of type {" + fileFilter + "} ");
+          }
+          if (multipleFiles) {
+            argument = argument + "with multiple selections allowed ";
+          }
+        }
+      }
+      if (initialDirectory[$isNotEmpty]) {
+        argument = argument + ("default location \"" + initialDirectory + "\" ");
+      }
+      argument = argument + ("with prompt \"" + dialogTitle + "\"");
+      $arguments[$add](argument);
+      return $arguments;
+    }
+    escapeDialogTitle(dialogTitle) {
+      return dialogTitle[$replaceAll]("\\", "\\\\")[$replaceAll]("\"", "\\\"")[$replaceAll]("\n", "\\\n");
+    }
+    resultStringToFilePaths(fileSelectionResult) {
+      if (fileSelectionResult[$trim]()[$isEmpty]) {
+        return T.JSArrayOfString().of([]);
+      }
+      let paths = fileSelectionResult[$trim]()[$split](", alias ")[$map](core.String, dart.fn(path => path[$trim](), T.StringToString()))[$where](dart.fn(path => path[$isNotEmpty], T.StringTobool()))[$toList]();
+      if (paths[$length] === 1 && paths[$first][$startsWith]("file ")) {
+        paths[$_set](0, paths[$_get](0)[$substring](5));
+      } else if (paths[$isNotEmpty] && paths[$first][$startsWith]("alias ")) {
+        paths[$_set](0, paths[$_get](0)[$substring](6));
+      }
+      return paths[$map](core.String, dart.fn(path => {
+        let pathElements = path[$split](":")[$where](dart.fn(e => e[$isNotEmpty], T.StringTobool()))[$toList]();
+        let volumeName = pathElements[$_get](0);
+        return (() => {
+          let t4 = T.JSArrayOfString().of(["/Volumes", volumeName]);
+          t4[$addAll](pathElements[$sublist](1));
+          return t4;
+        })()[$join]("/");
+      }, T.StringToString()))[$toList]();
+    }
+    static ['_#new#tearOff']() {
+      return new file_picker_macos.FilePickerMacOS.new();
+    }
+  };
+  (file_picker_macos.FilePickerMacOS.new = function() {
+    file_picker_macos.FilePickerMacOS.__proto__.new.call(this);
+    ;
+  }).prototype = file_picker_macos.FilePickerMacOS.prototype;
+  dart.addTypeTests(file_picker_macos.FilePickerMacOS);
+  dart.addTypeCaches(file_picker_macos.FilePickerMacOS);
+  dart.setMethodSignature(file_picker_macos.FilePickerMacOS, () => ({
+    __proto__: dart.getMethods(file_picker_macos.FilePickerMacOS.__proto__),
+    fileTypeToFileFilter: dart.fnType(core.String, [file_picker.FileType, dart.nullable(core.List$(core.String))]),
+    generateCommandLineArguments: dart.fnType(core.List$(core.String), [core.String], {fileFilter: core.String, fileName: core.String, initialDirectory: core.String, multipleFiles: core.bool, pickDirectory: core.bool, saveFile: core.bool}, {}),
+    escapeDialogTitle: dart.fnType(core.String, [core.String]),
+    resultStringToFilePaths: dart.fnType(core.List$(core.String), [core.String])
+  }));
+  dart.setLibraryUri(file_picker_macos.FilePickerMacOS, I[5]);
+  var _getPath = dart.privateName(file_picker_io, "_getPath");
+  file_picker_io.FilePickerIO = class FilePickerIO extends file_picker.FilePicker {
+    pickFiles(opts) {
+      let type = opts && 'type' in opts ? opts.type : C[0] || CT.C0;
+      let allowedExtensions = opts && 'allowedExtensions' in opts ? opts.allowedExtensions : null;
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      let onFileLoading = opts && 'onFileLoading' in opts ? opts.onFileLoading : null;
+      let allowCompression = opts && 'allowCompression' in opts ? opts.allowCompression : true;
+      let allowMultiple = opts && 'allowMultiple' in opts ? opts.allowMultiple : false;
+      let withData = opts && 'withData' in opts ? opts.withData : false;
+      let withReadStream = opts && 'withReadStream' in opts ? opts.withReadStream : false;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      return this[_getPath](type, allowMultiple, allowCompression, allowedExtensions, onFileLoading, withData, withReadStream);
+    }
+    clearTemporaryFiles() {
+      return async.async(T.boolN(), function* clearTemporaryFiles() {
+        return file_picker_io._channel.invokeMethod(core.bool, "clear");
+      });
+    }
+    getDirectoryPath(opts) {
+      let dialogTitle = opts && 'dialogTitle' in opts ? opts.dialogTitle : null;
+      let lockParentWindow = opts && 'lockParentWindow' in opts ? opts.lockParentWindow : false;
+      let initialDirectory = opts && 'initialDirectory' in opts ? opts.initialDirectory : null;
+      return async.async(T.StringN(), function* getDirectoryPath() {
+        try {
+          return yield file_picker_io._channel.invokeMethod(core.String, "dir", new _js_helper.LinkedMap.new());
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (message_codec.PlatformException.is(ex)) {
+            if (ex.code === "unknown_path") {
+              core.print("[" + "MethodChannelFilePicker" + "] Could not resolve directory path. Maybe it's a protected one or unsupported (such as Downloads folder). If you are on Android, make sure that you are on SDK 21 or above.");
+            }
+          } else
+            throw e;
+        }
+        return null;
+      });
+    }
+    [_getPath](fileType, allowMultipleSelection, allowCompression, allowedExtensions, onFileLoading, withData, withReadStream) {
+      return async.async(T.FilePickerResultN(), function* _getPath() {
+        let t6, t6$, t6$0;
+        let type = diagnostics.describeEnum(fileType);
+        if (type !== "custom" && dart.test((t6$ = (t6 = allowedExtensions, t6 == null ? null : t6[$isNotEmpty]), t6$ == null ? false : t6$))) {
+          dart.throw(core.Exception.new("You are setting a type [" + dart.str(fileType) + "]. Custom extension filters are only allowed with FileType.custom, please change it or remove filters."));
+        }
+        try {
+          t6$0 = file_picker_io.FilePickerIO._eventSubscription;
+          t6$0 == null ? null : t6$0.cancel();
+          if (onFileLoading != null) {
+            file_picker_io.FilePickerIO._eventSubscription = file_picker_io._eventChannel.receiveBroadcastStream().listen(dart.fn(data => onFileLoading(core.bool.as(data) ? file_picker.FilePickerStatus.picking : file_picker.FilePickerStatus.done), T.dynamicTovoid()), {onError: dart.fn(error => dart.throw(core.Exception.new(error)), T.dynamicToNever())});
+          }
+          let result = (yield file_picker_io._channel.invokeListMethod(core.Map, type, new (T.IdentityMapOfString$ObjectN()).from(["allowMultipleSelection", allowMultipleSelection, "allowedExtensions", allowedExtensions, "allowCompression", allowCompression, "withData", withData])));
+          if (result == null) {
+            return null;
+          }
+          let platformFiles = T.JSArrayOfPlatformFile().of([]);
+          for (let platformFileMap of result) {
+            platformFiles[$add](platform_file.PlatformFile.fromMap(platformFileMap, {readStream: dart.nullCheck(withReadStream) ? io.File.new(core.String.as(platformFileMap[$_get]("path"))).openRead() : null}));
+          }
+          return new file_picker_result.FilePickerResult.new(platformFiles);
+        } catch (e$) {
+          let ex = dart.getThrown(e$);
+          if (message_codec.PlatformException.is(ex)) {
+            let e = ex;
+            core.print("[" + "MethodChannelFilePicker" + "] Platform exception: " + dart.str(e));
+            dart.rethrow(e$);
+          } else if (core.Object.is(ex)) {
+            let e = ex;
+            core.print("[" + "MethodChannelFilePicker" + "] Unsupported operation. Method not found. The exception thrown was: " + dart.str(e));
+            dart.rethrow(e$);
+          } else
+            throw e$;
+        }
+      });
+    }
+    static ['_#new#tearOff']() {
+      return new file_picker_io.FilePickerIO.new();
+    }
+  };
+  (file_picker_io.FilePickerIO.new = function() {
+    file_picker_io.FilePickerIO.__proto__.new.call(this);
+    ;
+  }).prototype = file_picker_io.FilePickerIO.prototype;
+  dart.addTypeTests(file_picker_io.FilePickerIO);
+  dart.addTypeCaches(file_picker_io.FilePickerIO);
+  dart.setMethodSignature(file_picker_io.FilePickerIO, () => ({
+    __proto__: dart.getMethods(file_picker_io.FilePickerIO.__proto__),
+    pickFiles: dart.fnType(async.Future$(dart.nullable(file_picker_result.FilePickerResult)), [], {allowCompression: dart.nullable(core.bool), allowMultiple: core.bool, allowedExtensions: dart.nullable(core.List$(core.String)), dialogTitle: dart.nullable(core.String), initialDirectory: dart.nullable(core.String), lockParentWindow: core.bool, onFileLoading: dart.nullable(dart.fnType(dart.dynamic, [file_picker.FilePickerStatus])), type: file_picker.FileType, withData: dart.nullable(core.bool), withReadStream: dart.nullable(core.bool)}, {}),
+    [_getPath]: dart.fnType(async.Future$(dart.nullable(file_picker_result.FilePickerResult)), [file_picker.FileType, core.bool, dart.nullable(core.bool), dart.nullable(core.List$(core.String)), dart.nullable(dart.fnType(dart.dynamic, [file_picker.FilePickerStatus])), dart.nullable(core.bool), dart.nullable(core.bool)])
+  }));
+  dart.setLibraryUri(file_picker_io.FilePickerIO, I[6]);
+  dart.setStaticFieldSignature(file_picker_io.FilePickerIO, () => ['_tag', '_eventSubscription']);
+  dart.defineLazy(file_picker_io.FilePickerIO, {
+    /*file_picker_io.FilePickerIO._tag*/get _tag() {
+      return "MethodChannelFilePicker";
+    },
+    /*file_picker_io.FilePickerIO._eventSubscription*/get _eventSubscription() {
+      return null;
+    },
+    set _eventSubscription(_) {}
+  }, false);
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var EventChannel__binaryMessenger = dart.privateName(platform_channel, "EventChannel._binaryMessenger");
+  var EventChannel_codec = dart.privateName(platform_channel, "EventChannel.codec");
+  var EventChannel_name = dart.privateName(platform_channel, "EventChannel.name");
+  dart.defineLazy(file_picker_io, {
+    /*file_picker_io._channel*/get _channel() {
+      return new platform_channel.MethodChannel.new("miguelruivo.flutter.plugins.filepicker", io.Platform.isLinux || io.Platform.isWindows || io.Platform.isMacOS ? C[6] || CT.C6 : C[7] || CT.C7);
+    },
+    /*file_picker_io._eventChannel*/get _eventChannel() {
+      return C[9] || CT.C9;
+    }
+  }, false);
+  var _name = dart.privateName(core, "_name");
+  file_picker.FileType = class FileType extends core._Enum {
+    toString() {
+      return "FileType." + this[_name];
+    }
+  };
+  (file_picker.FileType.new = function(index, name) {
+    file_picker.FileType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = file_picker.FileType.prototype;
+  dart.addTypeTests(file_picker.FileType);
+  dart.addTypeCaches(file_picker.FileType);
+  dart.setLibraryUri(file_picker.FileType, I[3]);
+  dart.setStaticFieldSignature(file_picker.FileType, () => ['values', 'any', 'media', 'image', 'video', 'audio', 'custom']);
+  dart.defineExtensionMethods(file_picker.FileType, ['toString']);
+  dart.defineLazy(file_picker.FileType, {
+    /*file_picker.FileType.values*/get values() {
+      return C[10] || CT.C10;
+    },
+    /*file_picker.FileType.any*/get any() {
+      return C[0] || CT.C0;
+    },
+    /*file_picker.FileType.media*/get media() {
+      return C[4] || CT.C4;
+    },
+    /*file_picker.FileType.image*/get image() {
+      return C[3] || CT.C3;
+    },
+    /*file_picker.FileType.video*/get video() {
+      return C[5] || CT.C5;
+    },
+    /*file_picker.FileType.audio*/get audio() {
+      return C[1] || CT.C1;
+    },
+    /*file_picker.FileType.custom*/get custom() {
+      return C[2] || CT.C2;
+    }
+  }, false);
+  file_picker.FilePickerStatus = class FilePickerStatus extends core._Enum {
+    toString() {
+      return "FilePickerStatus." + this[_name];
+    }
+  };
+  (file_picker.FilePickerStatus.new = function(index, name) {
+    file_picker.FilePickerStatus.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = file_picker.FilePickerStatus.prototype;
+  dart.addTypeTests(file_picker.FilePickerStatus);
+  dart.addTypeCaches(file_picker.FilePickerStatus);
+  dart.setLibraryUri(file_picker.FilePickerStatus, I[3]);
+  dart.setStaticFieldSignature(file_picker.FilePickerStatus, () => ['values', 'picking', 'done']);
+  dart.defineExtensionMethods(file_picker.FilePickerStatus, ['toString']);
+  dart.defineLazy(file_picker.FilePickerStatus, {
+    /*file_picker.FilePickerStatus.values*/get values() {
+      return C[11] || CT.C11;
+    },
+    /*file_picker.FilePickerStatus.picking*/get picking() {
+      return C[12] || CT.C12;
+    },
+    /*file_picker.FilePickerStatus.done*/get done() {
+      return C[13] || CT.C13;
+    }
+  }, false);
+  dart.defineLazy(file_picker, {
+    /*file_picker.defaultDialogTitle*/get defaultDialogTitle() {
+      return "File Picker";
+    }
+  }, false);
+  dart.trackLibraries("packages/file_picker/src/windows/stub.dart", {
+    "package:file_picker/src/windows/stub.dart": stub,
+    "package:file_picker/src/linux/qarma_and_zenity_handler.dart": qarma_and_zenity_handler,
+    "package:file_picker/src/linux/kdialog_handler.dart": kdialog_handler,
+    "package:file_picker/src/linux/dialog_handler.dart": dialog_handler,
+    "package:file_picker/src/linux/file_picker_linux.dart": file_picker_linux,
+    "package:file_picker/src/utils.dart": utils,
+    "package:file_picker/src/file_picker_macos.dart": file_picker_macos,
+    "package:file_picker/src/file_picker_io.dart": file_picker_io,
+    "package:file_picker/src/file_picker.dart": file_picker,
+    "package:file_picker/file_picker.dart": file_picker$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["stub.dart","../linux/qarma_and_zenity_handler.dart","../linux/kdialog_handler.dart","../linux/dialog_handler.dart","../file_picker.dart","../linux/file_picker_linux.dart","../utils.dart","../file_picker_macos.dart","../file_picker_io.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/file_picker/src/windows/stub.dart.lib.js"}');
+  // Exports:
+  return {
+    src__windows__stub: stub,
+    src__linux__qarma_and_zenity_handler: qarma_and_zenity_handler,
+    src__linux__kdialog_handler: kdialog_handler,
+    src__linux__dialog_handler: dialog_handler,
+    src__linux__file_picker_linux: file_picker_linux,
+    src__utils: utils,
+    src__file_picker_macos: file_picker_macos,
+    src__file_picker_io: file_picker_io,
+    src__file_picker: file_picker,
+    file_picker: file_picker$
+  };
+}));
+
+//# sourceMappingURL=stub.dart.lib.js.map

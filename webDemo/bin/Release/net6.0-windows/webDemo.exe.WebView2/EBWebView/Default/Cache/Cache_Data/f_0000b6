@@ -1,0 +1,1591 @@
+define(['dart_sdk', 'packages/get/get_rx/src/rx_types/rx_types.dart', 'packages/flutter/src/widgets/title.dart', 'packages/cc_library/util/cc_define_prototypes.dart', 'packages/get/get_navigation/src/snackbar/snackbar_controller.dart', 'packages/get/get_core/src/get_main.dart', 'packages/flutter/src/rendering/box.dart', 'packages/cc_library/widget/ignore_focus.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/get/get_state_manager/src/rx_flutter/rx_obx_widget.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/cc_library/widget/text/custom_text.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/cc_library/widget/button/debounce_widget.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/cc_library/widget/checkbox/checkbox_widget.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/cc_library/theme/base_colors.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/text_form_field.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/cc_library/widget/widget_util.dart', 'packages/flutter/src/painting/placeholder_span.dart'], (function load__packages__cc_library__widget__dynamic_form__model__dialog_select_box_dart(dart_sdk, packages__get__get_rx__src__rx_types__rx_types$46dart, packages__flutter__src__widgets__title$46dart, packages__cc_library__util__cc_define_prototypes$46dart, packages__get__get_navigation__src__snackbar__snackbar_controller$46dart, packages__get__get_core__src__get_main$46dart, packages__flutter__src__rendering__box$46dart, packages__cc_library__widget__ignore_focus$46dart, packages__flutter__src__rendering__flex$46dart, packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__icon_button$46dart, packages__cc_library__widget__text__custom_text$46dart, packages__flutter__src__painting__alignment$46dart, packages__cc_library__widget__button__debounce_widget$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__border_radius$46dart, packages__cc_library__widget__checkbox__checkbox_widget$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__cc_library__theme__base_colors$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__text_form_field$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__services__text_editing_delta$46dart, packages__cc_library__widget__widget_util$46dart, packages__flutter__src__painting__placeholder_span$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const rx_types = packages__get__get_rx__src__rx_types__rx_types$46dart.get_rx__src__rx_types__rx_types;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const editable_text = packages__flutter__src__widgets__title$46dart.src__widgets__editable_text;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const gesture_detector = packages__flutter__src__widgets__title$46dart.src__widgets__gesture_detector;
+  const cc_define_prototypes = packages__cc_library__util__cc_define_prototypes$46dart.util__cc_define_prototypes;
+  const extension_navigation = packages__get__get_navigation__src__snackbar__snackbar_controller$46dart.get_navigation__src__extension_navigation;
+  const get_main = packages__get__get_core__src__get_main$46dart.get_core__src__get_main;
+  const box = packages__flutter__src__rendering__box$46dart.src__rendering__box;
+  const ignore_focus = packages__cc_library__widget__ignore_focus$46dart.widget__ignore_focus;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const rx_obx_widget = packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart.get_state_manager__src__rx_flutter__rx_obx_widget;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const divider = packages__flutter__src__material__icon_button$46dart.src__material__divider;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const custom_text = packages__cc_library__widget__text__custom_text$46dart.widget__text__custom_text;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const debounce_widget = packages__cc_library__widget__button__debounce_widget$46dart.widget__button__debounce_widget;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const checkbox_widget = packages__cc_library__widget__checkbox__checkbox_widget$46dart.widget__checkbox__checkbox_widget;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const base_colors = packages__cc_library__theme__base_colors$46dart.theme__base_colors;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const text_form_field = packages__flutter__src__material__text_form_field$46dart.src__material__text_form_field;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const text_input = packages__flutter__src__services__text_editing_delta$46dart.src__services__text_input;
+  const widget_util = packages__cc_library__widget__widget_util$46dart.widget__widget_util;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  var dialog_select_box = Object.create(dart.library);
+  var $clear = dartx.clear;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $add = dartx.add;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $toLowerCase = dartx.toLowerCase;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfSelectModel: () => (T.JSArrayOfSelectModel = dart.constFn(_interceptors.JSArray$(dialog_select_box.SelectModel)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    BuildContextAndintToContainer: () => (T.BuildContextAndintToContainer = dart.constFn(dart.fnType(container.Container, [framework.BuildContext, core.int])))(),
+    VoidToFlexible: () => (T.VoidToFlexible = dart.constFn(dart.fnType(basic.Flexible, [])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    BuildContextAndboolToWidget: () => (T.BuildContextAndboolToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, core.bool])))(),
+    boolTovoid: () => (T.boolTovoid = dart.constFn(dart.fnType(dart.void, [core.bool])))(),
+    VoidToContainer: () => (T.VoidToContainer = dart.constFn(dart.fnType(container.Container, [])))(),
+    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    VoidToTextFormField: () => (T.VoidToTextFormField = dart.constFn(dart.fnType(text_form_field.TextFormField, [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DialogSelectBox",
+        [_Location_column]: 9,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 27,
+        [_Location_line]: 133,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[2] || CT.C2,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 10,
+        [SizedBox_width]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 15,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 15
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Divider",
+        [_Location_column]: 89,
+        [_Location_line]: 148,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: divider.Divider.prototype,
+        [Widget__location]: C[5] || CT.C5,
+        [Widget_key]: null,
+        [Divider_color]: null,
+        [Divider_endIndent]: null,
+        [Divider_indent]: null,
+        [Divider_thickness]: null,
+        [Divider_height]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 44,
+        [_Location_line]: 147,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 42,
+        [_Location_line]: 145,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ListView",
+        [_Location_column]: 51,
+        [_Location_line]: 139,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Flexible",
+        [_Location_column]: 38,
+        [_Location_line]: 138,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 27,
+        [_Location_line]: 135,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 42,
+        [_Location_line]: 157,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 3
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[12] || CT.C12,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Không có dữ liệu",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: C[13] || CT.C13,
+        [CustomText_color]: C[14] || CT.C14,
+        [CustomText_align]: C[15] || CT.C15
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 27,
+        [_Location_line]: 155,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 24,
+        [_Location_line]: 129,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Flexible",
+        [_Location_column]: 15,
+        [_Location_line]: 128,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 31,
+        [_Location_line]: 170,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[20] || CT.C20,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 20,
+        [EdgeInsets_right]: 15,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 15
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: box_border.BoxShape.prototype,
+        [_Enum__name]: "rectangle",
+        [_Enum_index]: 0
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 30,
+        [Radius_x]: 30
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: border_radius.BorderRadius.prototype,
+        [BorderRadius_bottomRight]: C[25] || CT.C25,
+        [BorderRadius_bottomLeft]: C[25] || CT.C25,
+        [BorderRadius_topRight]: C[25] || CT.C25,
+        [BorderRadius_topLeft]: C[25] || CT.C25
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3000507232.0
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: box_decoration.BoxDecoration.prototype,
+        [BoxDecoration_shape]: C[23] || CT.C23,
+        [BoxDecoration_backgroundBlendMode]: null,
+        [BoxDecoration_gradient]: null,
+        [BoxDecoration_boxShadow]: null,
+        [BoxDecoration_borderRadius]: C[24] || CT.C24,
+        [BoxDecoration_border]: null,
+        [BoxDecoration_image]: null,
+        [BoxDecoration_color]: C[26] || CT.C26
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Center",
+        [_Location_column]: 42,
+        [_Location_line]: 180,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 38,
+        [_Location_line]: 181,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 6
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[30] || CT.C30,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Đóng",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: C[31] || CT.C31,
+        [CustomText_color]: null,
+        [CustomText_align]: C[15] || CT.C15
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: basic.Center.prototype,
+        [Widget__location]: C[28] || CT.C28,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: C[29] || CT.C29,
+        [Align_heightFactor]: null,
+        [Align_widthFactor]: null,
+        [Align_alignment]: C[15] || CT.C15
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 34,
+        [_Location_line]: 175,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DebounceWidget",
+        [_Location_column]: 25,
+        [_Location_line]: 171,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 15,
+        [_Location_line]: 189,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 18,
+        [_Location_line]: 122,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "IgnoreFocus",
+        [_Location_column]: 16,
+        [_Location_line]: 121,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ConstrainedBox",
+        [_Location_column]: 12,
+        [_Location_line]: 119,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 21,
+        [_Location_line]: 201,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293803648.0
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 57689
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[39] || CT.C39,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: C[40] || CT.C40,
+        [Icon_size]: 18,
+        [Icon_icon]: C[41] || CT.C41
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 21,
+        [_Location_line]: 206,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[43] || CT.C43,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CheckBoxWidget",
+        [_Location_column]: 12,
+        [_Location_line]: 198,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 14,
+        [_Location_line]: 233,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 231,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 23,
+        [_Location_line]: 250,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[48] || CT.C48,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 10,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 38,
+        [_Location_line]: 262,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[51] || CT.C51,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Hủy bỏ",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: C[31] || CT.C31,
+        [CustomText_color]: null,
+        [CustomText_align]: C[15] || CT.C15
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 30,
+        [_Location_line]: 257,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 26,
+        [_Location_line]: 253,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 17,
+        [_Location_line]: 251,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 32,
+        [_Location_line]: 280,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[57] || CT.C57,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Đồng ý",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: C[31] || CT.C31,
+        [CustomText_color]: null,
+        [CustomText_align]: C[15] || CT.C15
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 24,
+        [_Location_line]: 275,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DebounceWidget",
+        [_Location_column]: 20,
+        [_Location_line]: 271,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 11,
+        [_Location_line]: 269,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 14,
+        [_Location_line]: 245,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 242,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 23,
+        [_Location_line]: 302,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: custom_text.CustomText.prototype,
+        [Widget__location]: C[64] || CT.C64,
+        [Widget_key]: null,
+        [CustomText_textStyle]: null,
+        [CustomText_textAlign]: null,
+        [CustomText_text]: "Chọn tất cả",
+        [CustomText_marginRight]: null,
+        [CustomText_marginLeft]: null,
+        [CustomText_heightLine]: null,
+        [CustomText_fontSize]: null,
+        [CustomText_overflow]: null,
+        [CustomText_maxLines]: null,
+        [CustomText_fontStyle]: null,
+        [CustomText_fontWeight]: null,
+        [CustomText_color]: C[14] || CT.C14,
+        [CustomText_align]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 23,
+        [_Location_line]: 303,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[66] || CT.C66,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 5
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 35,
+        [_Location_line]: 306,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[68] || CT.C68,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: C[40] || CT.C40,
+        [Icon_size]: null,
+        [Icon_icon]: C[41] || CT.C41
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 35,
+        [_Location_line]: 310,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286611584.0
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[70] || CT.C70,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: C[71] || CT.C71,
+        [Icon_size]: null,
+        [Icon_icon]: C[41] || CT.C41
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 27,
+        [_Location_line]: 304,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 17,
+        [_Location_line]: 304,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 23,
+        [_Location_line]: 315,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[75] || CT.C75,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 15
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 20,
+        [_Location_line]: 299,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 18,
+        [_Location_line]: 297,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 16,
+        [_Location_line]: 296,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 14,
+        [_Location_line]: 294,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 328,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 22,
+        [_Location_line]: 337,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 11,
+        [_Location_line]: 335,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 20,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 20
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 34,
+        [_Location_line]: 359,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 57706
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[85] || CT.C85,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[86] || CT.C86
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 24,
+        [_Location_line]: 354,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DebounceWidget",
+        [_Location_column]: 26,
+        [_Location_line]: 350,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 15,
+        [_Location_line]: 349,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 11,
+        [_Location_line]: 345,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Stack",
+        [_Location_column]: 14,
+        [_Location_line]: 333,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 16,
+        [_Location_line]: 369,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 12,
+        [_Location_line]: 367,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Divider",
+        [_Location_column]: 15,
+        [_Location_line]: 385,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: divider.Divider.prototype,
+        [Widget__location]: C[95] || CT.C95,
+        [Widget_key]: null,
+        [Divider_color]: null,
+        [Divider_endIndent]: null,
+        [Divider_indent]: null,
+        [Divider_thickness]: 1,
+        [Divider_height]: 1
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 5,
+        [EdgeInsets_right]: 15,
+        [EdgeInsets_top]: 5,
+        [EdgeInsets_left]: 15
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: borders.StrokeAlign.prototype,
+        [_Enum__name]: "inside",
+        [_Enum_index]: 0
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_Enum__name]: "solid",
+        [_Enum_index]: 1
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_strokeAlign]: C[99] || CT.C99,
+        [BorderSide_style]: C[100] || CT.C100,
+        [BorderSide_width]: 1,
+        [BorderSide_color]: C[71] || CT.C71
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 8,
+        [Radius_x]: 8
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: border_radius.BorderRadius.prototype,
+        [BorderRadius_bottomRight]: C[102] || CT.C102,
+        [BorderRadius_bottomLeft]: C[102] || CT.C102,
+        [BorderRadius_topRight]: C[102] || CT.C102,
+        [BorderRadius_topLeft]: C[102] || CT.C102
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: input_border.OutlineInputBorder.prototype,
+        [InputBorder_borderSide]: C[98] || CT.C98,
+        [OutlineInputBorder_borderRadius]: C[101] || CT.C101,
+        [OutlineInputBorder_gapPadding]: 4
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 17,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 17
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 44,
+        [_Location_line]: 416,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 57657
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[105] || CT.C105,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: C[71] || CT.C71,
+        [Icon_size]: 18,
+        [Icon_icon]: C[106] || CT.C106
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 29,
+        [_Location_line]: 411,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 35,
+        [_Location_line]: 418,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[109] || CT.C109,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TextFormField",
+        [_Location_column]: 30,
+        [_Location_line]: 392,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 20,
+        [_Location_line]: 392,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Padding",
+        [_Location_column]: 11,
+        [_Location_line]: 390,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 12,
+        [_Location_line]: 380,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/model/dialog_select_box.dart"
+      });
+    }
+  }, false);
+  var C = Array(114).fill(void 0);
+  var I = ["package:cc_library/widget/dynamic_form/model/dialog_select_box.dart"];
+  var name$ = dart.privateName(dialog_select_box, "SelectModel.name");
+  var value$ = dart.privateName(dialog_select_box, "SelectModel.value");
+  var leading$ = dart.privateName(dialog_select_box, "SelectModel.leading");
+  var check$ = dart.privateName(dialog_select_box, "SelectModel.check");
+  var disable$ = dart.privateName(dialog_select_box, "SelectModel.disable");
+  dialog_select_box.SelectModel = class SelectModel extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    get leading() {
+      return this[leading$];
+    }
+    set leading(value) {
+      super.leading = value;
+    }
+    get check() {
+      return this[check$];
+    }
+    set check(value) {
+      super.check = value;
+    }
+    get disable() {
+      return this[disable$];
+    }
+    set disable(value) {
+      super.disable = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let value = opts && 'value' in opts ? opts.value : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let check = opts && 'check' in opts ? opts.check : null;
+      let disable = opts && 'disable' in opts ? opts.disable : false;
+      let leading = opts && 'leading' in opts ? opts.leading : null;
+      return new dialog_select_box.SelectModel.new({value: value, name: name, check: check, disable: disable, leading: leading});
+    }
+  };
+  (dialog_select_box.SelectModel.new = function(opts) {
+    let t0, t0$;
+    let value = opts && 'value' in opts ? opts.value : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let check = opts && 'check' in opts ? opts.check : null;
+    let disable = opts && 'disable' in opts ? opts.disable : false;
+    let leading = opts && 'leading' in opts ? opts.leading : null;
+    this[check$] = rx_types['BoolExtension|get#obs'](false);
+    this[disable$] = rx_types['BoolExtension|get#obs'](false);
+    this[value$] = value;
+    this[name$] = name;
+    this[leading$] = leading;
+    this.check.value = core.bool.as((t0 = check, t0 == null ? false : t0));
+    this.disable.value = core.bool.as((t0$ = disable, t0$ == null ? false : t0$));
+  }).prototype = dialog_select_box.SelectModel.prototype;
+  dart.addTypeTests(dialog_select_box.SelectModel);
+  dart.addTypeCaches(dialog_select_box.SelectModel);
+  dart.setLibraryUri(dialog_select_box.SelectModel, I[0]);
+  dart.setFieldSignature(dialog_select_box.SelectModel, () => ({
+    __proto__: dart.getFields(dialog_select_box.SelectModel.__proto__),
+    name: dart.finalFieldType(core.String),
+    value: dart.finalFieldType(core.int),
+    leading: dart.finalFieldType(dart.nullable(framework.Widget)),
+    check: dart.finalFieldType(rx_types.RxBool),
+    disable: dart.finalFieldType(rx_types.RxBool)
+  }));
+  var items = dart.privateName(dialog_select_box, "DialogSelectBoxModel.items");
+  var multiSelect$ = dart.privateName(dialog_select_box, "DialogSelectBoxModel.multiSelect");
+  var title$ = dart.privateName(dialog_select_box, "DialogSelectBoxModel.title");
+  var isCloseTop$ = dart.privateName(dialog_select_box, "DialogSelectBoxModel.isCloseTop");
+  var hinTextSearch$ = dart.privateName(dialog_select_box, "DialogSelectBoxModel.hinTextSearch");
+  var showSearchInput$ = dart.privateName(dialog_select_box, "DialogSelectBoxModel.showSearchInput");
+  var textSearch = dart.privateName(dialog_select_box, "DialogSelectBoxModel.textSearch");
+  var isCheckAll = dart.privateName(dialog_select_box, "DialogSelectBoxModel.isCheckAll");
+  var controller = dart.privateName(dialog_select_box, "DialogSelectBoxModel.controller");
+  dialog_select_box.DialogSelectBoxModel = class DialogSelectBoxModel extends core.Object {
+    get items() {
+      return this[items];
+    }
+    set items(value) {
+      super.items = value;
+    }
+    get multiSelect() {
+      return this[multiSelect$];
+    }
+    set multiSelect(value) {
+      super.multiSelect = value;
+    }
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    get isCloseTop() {
+      return this[isCloseTop$];
+    }
+    set isCloseTop(value) {
+      super.isCloseTop = value;
+    }
+    get hinTextSearch() {
+      return this[hinTextSearch$];
+    }
+    set hinTextSearch(value) {
+      this[hinTextSearch$] = value;
+    }
+    get showSearchInput() {
+      return this[showSearchInput$];
+    }
+    set showSearchInput(value) {
+      super.showSearchInput = value;
+    }
+    get textSearch() {
+      return this[textSearch];
+    }
+    set textSearch(value) {
+      super.textSearch = value;
+    }
+    get isCheckAll() {
+      return this[isCheckAll];
+    }
+    set isCheckAll(value) {
+      super.isCheckAll = value;
+    }
+    get controller() {
+      return this[controller];
+    }
+    set controller(value) {
+      this[controller] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let itemSelects = opts && 'itemSelects' in opts ? opts.itemSelects : null;
+      let multiSelect = opts && 'multiSelect' in opts ? opts.multiSelect : false;
+      let title = opts && 'title' in opts ? opts.title : "";
+      let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : true;
+      let hinTextSearch = opts && 'hinTextSearch' in opts ? opts.hinTextSearch : null;
+      let isCloseTop = opts && 'isCloseTop' in opts ? opts.isCloseTop : true;
+      return new dialog_select_box.DialogSelectBoxModel.new({itemSelects: itemSelects, multiSelect: multiSelect, title: title, showSearchInput: showSearchInput, hinTextSearch: hinTextSearch, isCloseTop: isCloseTop});
+    }
+    dispose() {
+      if (this.controller != null) {
+        dart.nullCheck(this.controller).dispose();
+      }
+    }
+    set checkAll(v) {
+      for (let element of this.items) {
+        element.check.value = v;
+      }
+      this.isCheckAll.value = v;
+    }
+    get listItem() {
+      if (this.textSearch.value[$isNotEmpty]) {
+        let ls = T.JSArrayOfSelectModel().of([]);
+        for (let element of this.items) {
+          if (cc_define_prototypes['S|ctmContain'](element.name, this.textSearch.value)) {
+            ls[$add](element);
+          }
+        }
+        return ls;
+      } else {
+        return this.items;
+      }
+    }
+  };
+  (dialog_select_box.DialogSelectBoxModel.new = function(opts) {
+    let t0;
+    let itemSelects = opts && 'itemSelects' in opts ? opts.itemSelects : null;
+    let multiSelect = opts && 'multiSelect' in opts ? opts.multiSelect : false;
+    let title = opts && 'title' in opts ? opts.title : "";
+    let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : true;
+    let hinTextSearch = opts && 'hinTextSearch' in opts ? opts.hinTextSearch : null;
+    let isCloseTop = opts && 'isCloseTop' in opts ? opts.isCloseTop : true;
+    this[items] = rx_types['ListExtension|get#obs'](dialog_select_box.SelectModel, T.JSArrayOfSelectModel().of([]));
+    this[textSearch] = rx_types['StringExtension|get#obs']("");
+    this[isCheckAll] = rx_types['BoolExtension|get#obs'](false);
+    this[controller] = null;
+    this[multiSelect$] = multiSelect;
+    this[title$] = title;
+    this[showSearchInput$] = showSearchInput;
+    this[hinTextSearch$] = hinTextSearch;
+    this[isCloseTop$] = isCloseTop;
+    this.items[$clear]();
+    this.items.addAll(itemSelects);
+    let count = 0;
+    for (let item of this.items) {
+      if (item.check.value) {
+        count = count + 1;
+      }
+    }
+    if (count > 0 && count === this.items.length) {
+      this.isCheckAll.value = true;
+    } else {
+      this.isCheckAll.value = false;
+    }
+    this.controller = (t0 = this.controller, t0 == null ? new editable_text.TextEditingController.new() : t0);
+  }).prototype = dialog_select_box.DialogSelectBoxModel.prototype;
+  dart.addTypeTests(dialog_select_box.DialogSelectBoxModel);
+  dart.addTypeCaches(dialog_select_box.DialogSelectBoxModel);
+  dart.setMethodSignature(dialog_select_box.DialogSelectBoxModel, () => ({
+    __proto__: dart.getMethods(dialog_select_box.DialogSelectBoxModel.__proto__),
+    dispose: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(dialog_select_box.DialogSelectBoxModel, () => ({
+    __proto__: dart.getGetters(dialog_select_box.DialogSelectBoxModel.__proto__),
+    listItem: core.List$(dialog_select_box.SelectModel)
+  }));
+  dart.setSetterSignature(dialog_select_box.DialogSelectBoxModel, () => ({
+    __proto__: dart.getSetters(dialog_select_box.DialogSelectBoxModel.__proto__),
+    checkAll: core.bool
+  }));
+  dart.setLibraryUri(dialog_select_box.DialogSelectBoxModel, I[0]);
+  dart.setFieldSignature(dialog_select_box.DialogSelectBoxModel, () => ({
+    __proto__: dart.getFields(dialog_select_box.DialogSelectBoxModel.__proto__),
+    items: dart.finalFieldType(rx_types.RxList$(dialog_select_box.SelectModel)),
+    multiSelect: dart.finalFieldType(core.bool),
+    title: dart.finalFieldType(core.String),
+    isCloseTop: dart.finalFieldType(core.bool),
+    hinTextSearch: dart.fieldType(dart.nullable(core.String)),
+    showSearchInput: dart.finalFieldType(core.bool),
+    textSearch: dart.finalFieldType(rx_types.RxString),
+    isCheckAll: dart.finalFieldType(rx_types.RxBool),
+    controller: dart.fieldType(dart.nullable(editable_text.TextEditingController))
+  }));
+  var model$ = dart.privateName(dialog_select_box, "DialogSelectBox.model");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _searchField = dart.privateName(dialog_select_box, "_searchField");
+  var _checkAllItems = dart.privateName(dialog_select_box, "_checkAllItems");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var _itemWidgetMultiSelection = dart.privateName(dialog_select_box, "_itemWidgetMultiSelection");
+  var Divider_color = dart.privateName(divider, "Divider.color");
+  var Divider_endIndent = dart.privateName(divider, "Divider.endIndent");
+  var Divider_indent = dart.privateName(divider, "Divider.indent");
+  var Divider_thickness = dart.privateName(divider, "Divider.thickness");
+  var Divider_height = dart.privateName(divider, "Divider.height");
+  var CustomText_textStyle = dart.privateName(custom_text, "CustomText.textStyle");
+  var CustomText_textAlign = dart.privateName(custom_text, "CustomText.textAlign");
+  var CustomText_text = dart.privateName(custom_text, "CustomText.text");
+  var CustomText_marginRight = dart.privateName(custom_text, "CustomText.marginRight");
+  var CustomText_marginLeft = dart.privateName(custom_text, "CustomText.marginLeft");
+  var CustomText_heightLine = dart.privateName(custom_text, "CustomText.heightLine");
+  var CustomText_fontSize = dart.privateName(custom_text, "CustomText.fontSize");
+  var CustomText_overflow = dart.privateName(custom_text, "CustomText.overflow");
+  var CustomText_maxLines = dart.privateName(custom_text, "CustomText.maxLines");
+  var CustomText_fontStyle = dart.privateName(custom_text, "CustomText.fontStyle");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var CustomText_fontWeight = dart.privateName(custom_text, "CustomText.fontWeight");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var CustomText_color = dart.privateName(custom_text, "CustomText.color");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var CustomText_align = dart.privateName(custom_text, "CustomText.align");
+  var _multiSelectionValidation = dart.privateName(dialog_select_box, "_multiSelectionValidation");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var BoxDecoration_shape = dart.privateName(box_decoration, "BoxDecoration.shape");
+  var BoxDecoration_backgroundBlendMode = dart.privateName(box_decoration, "BoxDecoration.backgroundBlendMode");
+  var BoxDecoration_gradient = dart.privateName(box_decoration, "BoxDecoration.gradient");
+  var BoxDecoration_boxShadow = dart.privateName(box_decoration, "BoxDecoration.boxShadow");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
+  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
+  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
+  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
+  var BoxDecoration_borderRadius = dart.privateName(box_decoration, "BoxDecoration.borderRadius");
+  var BoxDecoration_border = dart.privateName(box_decoration, "BoxDecoration.border");
+  var BoxDecoration_image = dart.privateName(box_decoration, "BoxDecoration.image");
+  var BoxDecoration_color = dart.privateName(box_decoration, "BoxDecoration.color");
+  var Align_heightFactor = dart.privateName(basic, "Align.heightFactor");
+  var Align_widthFactor = dart.privateName(basic, "Align.widthFactor");
+  var Align_alignment = dart.privateName(basic, "Align.alignment");
+  var Icon_shadows = dart.privateName(icon, "Icon.shadows");
+  var Icon_textDirection = dart.privateName(icon, "Icon.textDirection");
+  var Icon_semanticLabel = dart.privateName(icon, "Icon.semanticLabel");
+  var Icon_color = dart.privateName(icon, "Icon.color");
+  var Icon_size = dart.privateName(icon, "Icon.size");
+  var IconData_matchTextDirection = dart.privateName(icon_data, "IconData.matchTextDirection");
+  var IconData_fontPackage = dart.privateName(icon_data, "IconData.fontPackage");
+  var IconData_fontFamily = dart.privateName(icon_data, "IconData.fontFamily");
+  var IconData_codePoint = dart.privateName(icon_data, "IconData.codePoint");
+  var Icon_icon = dart.privateName(icon, "Icon.icon");
+  var _itemWidgetSingleSelection = dart.privateName(dialog_select_box, "_itemWidgetSingleSelection");
+  var _title = dart.privateName(dialog_select_box, "_title");
+  var BorderSide_strokeAlign = dart.privateName(borders, "BorderSide.strokeAlign");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var InputBorder_borderSide = dart.privateName(input_border, "InputBorder.borderSide");
+  var OutlineInputBorder_borderRadius = dart.privateName(input_border, "OutlineInputBorder.borderRadius");
+  var OutlineInputBorder_gapPadding = dart.privateName(input_border, "OutlineInputBorder.gapPadding");
+  dialog_select_box.DialogSelectBox = class DialogSelectBox extends framework.StatelessWidget {
+    get model() {
+      return this[model$];
+    }
+    set model(value) {
+      super.model = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let model = opts && 'model' in opts ? opts.model : null;
+      return new dialog_select_box.DialogSelectBox.new({key: key, model: model, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    build(context) {
+      let isTablet = extension_navigation['GetNavigation|get#width'](get_main.Get) > extension_navigation['GetNavigation|get#height'](get_main.Get);
+      let maxHeight = extension_navigation['GetNavigation|get#height'](get_main.Get) * (isTablet ? 0.7 : 0.6);
+      return new basic.ConstrainedBox.new({constraints: new box.BoxConstraints.new({maxHeight: maxHeight}), child: new ignore_focus.IgnoreFocus.new({child: new basic.Column.new({mainAxisSize: flex.MainAxisSize.min, mainAxisAlignment: flex.MainAxisAlignment.end, crossAxisAlignment: flex.CrossAxisAlignment.stretch, children: T.JSArrayOfWidget().of([this[_searchField](), new basic.Flexible.new({child: new basic.Column.new({mainAxisSize: flex.MainAxisSize.min, children: T.JSArrayOfWidget().of([this[_checkAllItems](), C[1] || CT.C1, this.model.listItem[$length] > 0 ? new rx_obx_widget.Obx.new(dart.fn(() => {
+                      if (this.model.textSearch.value[$isNotEmpty]) {
+                      }
+                      return new basic.Flexible.new({child: new scroll_view.ListView.builder({shrinkWrap: true, padding: edge_insets.EdgeInsets.zero, itemCount: this.model.listItem[$length], itemBuilder: dart.fn((context, index) => {
+                            let item = this.model.listItem[$_get](index);
+                            return new container.Container.new({padding: C[3] || CT.C3, child: new basic.Column.new({children: T.JSArrayOfWidget().of([this[_itemWidgetMultiSelection](item), C[4] || CT.C4]), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+                          }, T.BuildContextAndintToContainer()), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+                    }, T.VoidToFlexible()), {$creationLocationd_0dea112b090073317d4: C[10] || CT.C10}) : new container.Container.new({margin: new edge_insets.EdgeInsets.symmetric({vertical: 10.0}), child: C[11] || CT.C11, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16})]), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), this.model.multiSelect ? this[_multiSelectionValidation]() : this.model.isCloseTop ? C[19] || CT.C19 : new debounce_widget.DebounceWidget.new({onTap: dart.fn(() => {
+                  extension_navigation['GetNavigation|back'](dart.dynamic, get_main.Get);
+                }, T.VoidTovoid()), child: new container.Container.new({margin: C[21] || CT.C21, decoration: C[22] || CT.C22, height: 45.0, child: C[27] || CT.C27, $creationLocationd_0dea112b090073317d4: C[32] || CT.C32}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), new basic.SizedBox.new({height: extension_navigation['GetNavigation|get#mediaQuery'](get_main.Get).padding.bottom, $creationLocationd_0dea112b090073317d4: C[34] || CT.C34})]), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+    }
+    [_itemWidgetMultiSelection](item) {
+      return new checkbox_widget.CheckBoxWidget.new({checkBox: dart.fn((cnt, checked) => item.check.value ? C[38] || CT.C38 : C[42] || CT.C42, T.BuildContextAndboolToWidget()), layout: dart.fn((context, isChecked) => this[_itemWidgetSingleSelection](item), T.BuildContextAndboolToWidget()), isChecked: item.check, isDisabled: item.disable, leading: item.leading, onChanged: dart.fn(c => {
+          if (!this.model.multiSelect) {
+            if (item.check.value) {
+              extension_navigation['GetNavigation|back'](core.String, get_main.Get, {result: "OK"});
+            } else {
+              this.model.checkAll = false;
+              item.check.value = c;
+              extension_navigation['GetNavigation|back'](core.String, get_main.Get, {result: "OK"});
+            }
+          } else {
+            item.check.value = c;
+          }
+        }, T.boolTovoid()), $creationLocationd_0dea112b090073317d4: C[44] || CT.C44});
+    }
+    [_itemWidgetSingleSelection](item) {
+      return new container.Container.new({height: 40.0, child: new custom_text.CustomText.new(item.name, {color: base_colors.BaseColors.black, fontWeight: ui.FontWeight.w300, $creationLocationd_0dea112b090073317d4: C[45] || CT.C45}), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46});
+    }
+    [_multiSelectionValidation]() {
+      return new container.Container.new({margin: C[21] || CT.C21, height: 45.0, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.center, children: T.JSArrayOfWidget().of([this.model.isCloseTop ? C[47] || CT.C47 : new basic.Expanded.new({flex: 1, child: new gesture_detector.GestureDetector.new({onTap: dart.fn(() => {
+                  extension_navigation['GetNavigation|back'](dart.dynamic, get_main.Get);
+                }, T.VoidTovoid()), child: new container.Container.new({margin: C[49] || CT.C49, decoration: C[22] || CT.C22, alignment: alignment.Alignment.center, child: C[50] || CT.C50, $creationLocationd_0dea112b090073317d4: C[52] || CT.C52}), $creationLocationd_0dea112b090073317d4: C[53] || CT.C53}), $creationLocationd_0dea112b090073317d4: C[54] || CT.C54}), new basic.Expanded.new({flex: 1, child: new debounce_widget.DebounceWidget.new({onTap: dart.fn(() => {
+                  extension_navigation['GetNavigation|back'](core.String, get_main.Get, {result: "OK"});
+                }, T.VoidTovoid()), child: new container.Container.new({margin: C[55] || CT.C55, decoration: C[22] || CT.C22, alignment: alignment.Alignment.center, child: C[56] || CT.C56, $creationLocationd_0dea112b090073317d4: C[58] || CT.C58}), $creationLocationd_0dea112b090073317d4: C[59] || CT.C59}), $creationLocationd_0dea112b090073317d4: C[60] || CT.C60})]), $creationLocationd_0dea112b090073317d4: C[61] || CT.C61}), $creationLocationd_0dea112b090073317d4: C[62] || CT.C62});
+    }
+    [_checkAllItems]() {
+      if (this.model.multiSelect) {
+        return new basic.SizedBox.new({height: 35.0, child: new gesture_detector.GestureDetector.new({child: new container.Container.new({color: colors.Colors.transparent, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.end, children: T.JSArrayOfWidget().of([C[63] || CT.C63, C[65] || CT.C65, new rx_obx_widget.Obx.new(dart.fn(() => new container.Container.new({child: this.model.isCheckAll.value ? C[67] || CT.C67 : C[69] || CT.C69, $creationLocationd_0dea112b090073317d4: C[72] || CT.C72}), T.VoidToContainer()), {$creationLocationd_0dea112b090073317d4: C[73] || CT.C73}), C[74] || CT.C74]), $creationLocationd_0dea112b090073317d4: C[76] || CT.C76}), $creationLocationd_0dea112b090073317d4: C[77] || CT.C77}), onTap: dart.fn(() => {
+              this.model.checkAll = !this.model.isCheckAll.value;
+            }, T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[78] || CT.C78}), $creationLocationd_0dea112b090073317d4: C[79] || CT.C79});
+      }
+      return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[80] || CT.C80});
+    }
+    [_title]() {
+      if (this.model.isCloseTop) {
+        return new basic.Stack.new({children: T.JSArrayOfWidget().of([new basic.SizedBox.new({height: 55.0, child: new custom_text.CustomText.new(this.model.title, {color: base_colors.BaseColors.black, fontSize: 17.0, heightLine: 1.2, fontWeight: ui.FontWeight.bold, align: alignment.Alignment.center, $creationLocationd_0dea112b090073317d4: C[81] || CT.C81}), $creationLocationd_0dea112b090073317d4: C[82] || CT.C82}), new basic.Row.new({mainAxisSize: flex.MainAxisSize.max, mainAxisAlignment: flex.MainAxisAlignment.start, children: T.JSArrayOfWidget().of([new basic.Expanded.new({child: new debounce_widget.DebounceWidget.new({onTap: dart.fn(() => {
+                      extension_navigation['GetNavigation|back'](dart.dynamic, get_main.Get);
+                    }, T.VoidTovoid()), child: new container.Container.new({padding: C[83] || CT.C83, alignment: alignment.Alignment.centerRight, height: 55.0, width: 55.0, child: C[84] || CT.C84, $creationLocationd_0dea112b090073317d4: C[87] || CT.C87}), $creationLocationd_0dea112b090073317d4: C[88] || CT.C88}), $creationLocationd_0dea112b090073317d4: C[89] || CT.C89})]), $creationLocationd_0dea112b090073317d4: C[90] || CT.C90})]), $creationLocationd_0dea112b090073317d4: C[91] || CT.C91});
+      }
+      return new basic.SizedBox.new({height: 55.0, child: new custom_text.CustomText.new(this.model.title, {color: base_colors.BaseColors.black, fontSize: 17.0, heightLine: 1.2, fontWeight: ui.FontWeight.bold, align: alignment.Alignment.center, $creationLocationd_0dea112b090073317d4: C[92] || CT.C92}), $creationLocationd_0dea112b090073317d4: C[93] || CT.C93});
+    }
+    [_searchField]() {
+      return new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.stretch, mainAxisSize: flex.MainAxisSize.min, children: (() => {
+          let t0 = T.JSArrayOfWidget().of([this[_title](), C[94] || CT.C94]);
+          if (this.model.showSearchInput) t0.push(new basic.Padding.new({padding: C[96] || CT.C96, child: new rx_obx_widget.Obx.new(dart.fn(() => {
+              let t1;
+              return new text_form_field.TextFormField.new({style: this.textStyle(), onChanged: dart.fn(f => {
+                  this.model.textSearch.value = f[$toLowerCase]();
+                }, T.StringTovoid()), controller: this.model.controller, decoration: new input_decorator.InputDecoration.new({hintText: (t1 = this.model.hinTextSearch, t1 == null ? "Tìm kiếm" : t1), enabledBorder: C[97] || CT.C97, focusedBorder: C[97] || CT.C97, contentPadding: C[103] || CT.C103, suffixIcon: this.model.textSearch.value[$isNotEmpty] ? new ink_well.InkWell.new({onTap: dart.fn(() => {
+                      this.model.textSearch.value = "";
+                      dart.nullCheck(this.model.controller).text = "";
+                    }, T.VoidTovoid()), child: C[104] || CT.C104, $creationLocationd_0dea112b090073317d4: C[107] || CT.C107}) : C[108] || CT.C108}), keyboardType: text_input.TextInputType.text, textInputAction: text_input.TextInputAction.search, textAlign: ui.TextAlign.start, onFieldSubmitted: dart.fn(t => {
+                  this.model.textSearch.value = t[$toLowerCase]();
+                }, T.StringTovoid()), $creationLocationd_0dea112b090073317d4: C[110] || CT.C110});
+            }, T.VoidToTextFormField()), {$creationLocationd_0dea112b090073317d4: C[111] || CT.C111}), $creationLocationd_0dea112b090073317d4: C[112] || CT.C112}));
+          return t0;
+        })(), $creationLocationd_0dea112b090073317d4: C[113] || CT.C113});
+    }
+    textStyle() {
+      return widget_util.WidgetUtil.getTextStyleRoboto({color: base_colors.BaseColors.grey, fontWeight: ui.FontWeight.w400});
+    }
+  };
+  (dialog_select_box.DialogSelectBox.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let model = opts && 'model' in opts ? opts.model : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[model$] = model;
+    dialog_select_box.DialogSelectBox.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = dialog_select_box.DialogSelectBox.prototype;
+  dart.addTypeTests(dialog_select_box.DialogSelectBox);
+  dart.addTypeCaches(dialog_select_box.DialogSelectBox);
+  dart.setMethodSignature(dialog_select_box.DialogSelectBox, () => ({
+    __proto__: dart.getMethods(dialog_select_box.DialogSelectBox.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_itemWidgetMultiSelection]: dart.fnType(framework.Widget, [dialog_select_box.SelectModel]),
+    [_itemWidgetSingleSelection]: dart.fnType(framework.Widget, [dialog_select_box.SelectModel]),
+    [_multiSelectionValidation]: dart.fnType(framework.Widget, []),
+    [_checkAllItems]: dart.fnType(framework.Widget, []),
+    [_title]: dart.fnType(framework.Widget, []),
+    [_searchField]: dart.fnType(framework.Widget, []),
+    textStyle: dart.fnType(text_style.TextStyle, [])
+  }));
+  dart.setLibraryUri(dialog_select_box.DialogSelectBox, I[0]);
+  dart.setFieldSignature(dialog_select_box.DialogSelectBox, () => ({
+    __proto__: dart.getFields(dialog_select_box.DialogSelectBox.__proto__),
+    model: dart.finalFieldType(dialog_select_box.DialogSelectBoxModel)
+  }));
+  dart.trackLibraries("packages/cc_library/widget/dynamic_form/model/dialog_select_box.dart", {
+    "package:cc_library/widget/dynamic_form/model/dialog_select_box.dart": dialog_select_box
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["dialog_select_box.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAae;;;;;;IACH;;;;;;IACI;;;;;;IACD;;;;;;IACA;;;;;;;;;;;;;;;;;QACc;QAAqB;QAAM;QAAO;QAAsB;IAFtE,eAAc,kCAAN;IACR,iBAAgB,kCAAN;IACI;IAAqB;IAAmC;AAChD,IAA5B,AAAM,mBAAA,cAAc,KAAN,KAAK,EAAL,aAAS;AACS,IAAhC,AAAQ,qBAAA,cAAgB,MAAR,OAAO,EAAP,cAAW;EAClC;;;;;;;;;;;;;;;;;;;;;;IAI0B;;;;;;IACf;;;;;;IACE;;;;;;IACF;;;;;;IACH;;;;;;IACG;;;;;;IACI;;;;;;IACF;;;;;;IAGU;;;;;;;;;;;;;;;;AA8BrB,UAAI;AACmB,QAAX,AAAE,eAAZ;;IAEJ;iBAEkB;AAEhB,eAAS,UAAW;AACK,QAAvB,AAAQ,AAAM,OAAP,eAAe,CAAC;;AAEL,MAApB,AAAW,wBAAQ,CAAC;IACtB;;AAGE,UAAI,AAAW,AAAM;AACf,iBAAkB;AACtB,iBAAS,UAAW;AAClB,cAAiB,qCAAb,AAAQ,OAAD,OAAiB,AAAW;AACtB,YAAf,AAAG,EAAD,OAAK,OAAO;;;AAGlB,cAAO,GAAE;;AAET,cAAO;;IAEX;;;;QAlD6B;QACtB;QACA;QACA;QACA;QACA;IApBmB,cAAwB,iEAAH;IAMhC,mBAAgB,oCAAH;IACf,mBAAmB,kCAAN;IAGH;IAMhB;IACA;IACA;IACA;IACA;AAEQ,IAAb,AAAM;AACmB,IAAzB,AAAM,kBAAO,WAAW;AAGpB,gBAAQ;AACZ,aAAS,OAAQ;AACf,UAAI,AAAK,AAAM,IAAP;AACI,QAAV,QAAA,AAAM,KAAD,GAAI;;;AAGb,QAAI,AAAM,KAAD,GAAG,KAAK,AAAM,KAAD,KAAI,AAAM;AACP,MAAvB,AAAW,wBAAQ;;AAEK,MAAxB,AAAW,wBAAQ;;AAE6B,IAAlD,mBAAwB,sBAAX,aAAc;EAC7B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA+B2B;;;;;;;;;;;UAoBD;AACnB,qBAAe,AAAM,gDAAV,gBAAgB,iDAAJ;AACrB,sBAAgB,AAAO,iDAAX,iBAAc,QAAQ,GAAG,MAAK,GAAR;AAEzC,YAAO,4CACU,uCAA0B,SAAS,WACzC,yCACE,oCACsB,0CACU,gDACE,2CACrB,wBAChB,sBACA,+BACS,oCACsB,iCACjB,wBACR,uCAEA,AAAM,AAAS,AAAO,+BAAE,IAClB,0BACE;AACE,0BAAI,AAAM,AAAW,AAAM;;AAC3B,4BAAO,gCACa,8CACN,eACQ,wCACT,AAAM,AAAS,2CACb,SAAC,SAAS;AACjB,uCAAO,AAAM,AAAQ,2BAAC,KAAK;AAC/B,kCAAO,6DAEE,gCACK,wBAAC,gCAA0B,IAAI;;yGAOrD,qCACqB,gDAAoB,mNAWrD,AAAM,yBACA,oCACA,AAAM,0CAEF,+CACS;AACK,kBAAN,yDAAJ;2CAEK,2FAIG,oJAUtB,gCACc,AAAW,AAAQ,qDAAvB;IAKtB;gCAE6C;AAC3C,YAAO,mDACK,SAAC,KAAK,YACP,AAAK,AAAM,IAAP,4FAQL,SAAC,SAAS,cAAc,iCAA2B,IAAI,gDACpD,AAAK,IAAD,oBACH,AAAK,IAAD,mBACP,AAAK,IAAD,qBACF,QAAC;AAEV,eAAK,AAAM;AAET,gBAAI,AAAK,AAAM,IAAP;AACgB,cAAlB,wDAAJ,uBAAiB;;AAEK,cAAtB,AAAM,sBAAW;AACG,cAApB,AAAK,AAAM,IAAP,eAAe,CAAC;AACE,cAAlB,wDAAJ,uBAAiB;;;AAGC,YAApB,AAAK,AAAM,IAAP,eAAe,CAAC;;;IAI5B;iCAE8C;AAC5C,YAAO,sCACG,aACD,+BACL,AAAK,IAAD,eACc,0CACK;IAG7B;;AAGE,YAAO,+DAEG,aACD,sCACgC,mDACE,0CAC7B,wBACR,AAAM,0CAEA,8BACQ,UACC,iDACI;AACK,kBAAN,yDAAJ;2CAEK,8FAIgB,qOAQnC,8BACQ,UACC,+CACI;AACiB,kBAAlB,wDAAJ,uBAAiB;2CAEZ,8FAIgB;IAWrC;;AAGE,UAAI,AAAM;AACR,cAAO,iCACG,aACD,iDACE,oCACS,kCACP,sCACgC,sCAC3B,0DAGR,0BAAI,cAAM,oCACG,AAAM,AAAW,8VAc7B;AACmC,cAAxC,AAAM,uBAAY,AAAM,AAAW;;;AAQ3C,YAAO;IACT;;AAGE,UAAI,AAAM;AACR,cAAO,gCACK,wBACR,gCACY,aACD,+BACL,AAAM,0BACY,wCACR,kBACE,iBACW,2BACN,kJAEvB,iCAC6B,0CACU,wCAC3B,wBACR,+BACW,+CACF;AACK,sBAAN,yDAAJ;+CAEK,kEAEkB,yCACb,aACD;;AASvB,YAAO,iCACK,aACD,+BACL,AAAM,0BACY,wCACR,kBACE,iBACW,2BACN;IAEzB;;AAGE,YAAO,2CACkC,+CACZ,iCACT;2CAChB;AAKA,cAAI,AAAM,4BACR,gEAES,0BAAI;;AAAM,mEACJ,6BACI,QAAC;AAC8B,kBAAxC,AAAM,AAAW,8BAAQ,AAAE,CAAD;kDAEhB,AAAM,mCAEN,oDACsB,KAApB,AAAM,0BAAA,aAAiB,iIAUrB,AAAM,AAAW,AAAM,2CAC7B,iCACS;AACsB,sBAA3B,AAAM,AAAW,8BAAQ;AACE,sBAAX,AAAE,eAAlB,AAAM,8BAAmB;mKAKX,gDACK,8CACZ,sCACH,QAAC;AACuB,kBAAxC,AAAM,AAAW,8BAAQ,AAAE,CAAD;;;;;IAM5C;;AAGE,YAAkB,mDAAqC,yCAA6B;IACtF;;;QAlUO;QACS;;;AACX,qEAAW,GAAG;;EAAC","file":"../../../../../../../../../../../../../../packages/cc_library/widget/dynamic_form/model/dialog_select_box.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__dynamic_form__model__dialog_select_box: dialog_select_box
+  };
+}));
+
+//# sourceMappingURL=dialog_select_box.dart.lib.js.map

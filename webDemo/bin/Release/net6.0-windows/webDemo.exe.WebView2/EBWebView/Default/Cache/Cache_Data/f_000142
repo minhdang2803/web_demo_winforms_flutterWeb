@@ -1,0 +1,356 @@
+define(['dart_sdk', 'packages/qr/src/byte.dart', 'packages/qr/src/error_correct_level.dart', 'packages/qr/src/rs_block.dart', 'packages/qr/src/bit_buffer.dart', 'packages/qr/src/input_too_long_exception.dart', 'packages/qr/src/polynomial.dart', 'packages/qr/src/math.dart'], (function load__packages__qr__src__qr_code_dart(dart_sdk, packages__qr__src__byte$46dart, packages__qr__src__error_correct_level$46dart, packages__qr__src__rs_block$46dart, packages__qr__src__bit_buffer$46dart, packages__qr__src__input_too_long_exception$46dart, packages__qr__src__polynomial$46dart, packages__qr__src__math$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const typed_data = dart_sdk.typed_data;
+  const math = dart_sdk.math;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const byte = packages__qr__src__byte$46dart.src__byte;
+  const error_correct_level = packages__qr__src__error_correct_level$46dart.src__error_correct_level;
+  const rs_block = packages__qr__src__rs_block$46dart.src__rs_block;
+  const bit_buffer = packages__qr__src__bit_buffer$46dart.src__bit_buffer;
+  const input_too_long_exception = packages__qr__src__input_too_long_exception$46dart.src__input_too_long_exception;
+  const polynomial = packages__qr__src__polynomial$46dart.src__polynomial;
+  const math$ = packages__qr__src__math$46dart.src__math;
+  var qr_code = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $modulo = dartx['%'];
+  var $isEven = dartx.isEven;
+  var $_set = dartx._set;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfQrDatum: () => (T.JSArrayOfQrDatum = dart.constFn(_interceptors.JSArray$(byte.QrDatum)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    ListNOfint: () => (T.ListNOfint = dart.constFn(dart.nullable(T.ListOfint())))(),
+    ListOfListNOfint: () => (T.ListOfListNOfint = dart.constFn(core.List$(T.ListNOfint())))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:qr/src/qr_code.dart"];
+  var typeNumber$ = dart.privateName(qr_code, "QrCode.typeNumber");
+  var errorCorrectLevel$ = dart.privateName(qr_code, "QrCode.errorCorrectLevel");
+  var moduleCount = dart.privateName(qr_code, "QrCode.moduleCount");
+  var _dataCache = dart.privateName(qr_code, "_dataCache");
+  var _dataList = dart.privateName(qr_code, "_dataList");
+  var _addToList = dart.privateName(qr_code, "_addToList");
+  qr_code.QrCode = class QrCode extends core.Object {
+    get typeNumber() {
+      return this[typeNumber$];
+    }
+    set typeNumber(value) {
+      super.typeNumber = value;
+    }
+    get errorCorrectLevel() {
+      return this[errorCorrectLevel$];
+    }
+    set errorCorrectLevel(value) {
+      super.errorCorrectLevel = value;
+    }
+    get moduleCount() {
+      return this[moduleCount];
+    }
+    set moduleCount(value) {
+      super.moduleCount = value;
+    }
+    static ['_#new#tearOff'](typeNumber, errorCorrectLevel) {
+      return new qr_code.QrCode.new(typeNumber, errorCorrectLevel);
+    }
+    static fromData(opts) {
+      let t0;
+      let data = opts && 'data' in opts ? opts.data : null;
+      let errorCorrectLevel = opts && 'errorCorrectLevel' in opts ? opts.errorCorrectLevel : null;
+      let typeNumber = qr_code.QrCode._calculateTypeNumberFromData(errorCorrectLevel, T.JSArrayOfQrDatum().of([byte.QrByte.new(data)]));
+      t0 = new qr_code.QrCode.new(typeNumber, errorCorrectLevel);
+      return (() => {
+        t0.addData(data);
+        return t0;
+      })();
+    }
+    static ['_#fromData#tearOff'](opts) {
+      let data = opts && 'data' in opts ? opts.data : null;
+      let errorCorrectLevel = opts && 'errorCorrectLevel' in opts ? opts.errorCorrectLevel : null;
+      return qr_code.QrCode.fromData({data: data, errorCorrectLevel: errorCorrectLevel});
+    }
+    static fromUint8List(opts) {
+      let t0;
+      let data = opts && 'data' in opts ? opts.data : null;
+      let errorCorrectLevel = opts && 'errorCorrectLevel' in opts ? opts.errorCorrectLevel : null;
+      let typeNumber = qr_code.QrCode._calculateTypeNumberFromData(errorCorrectLevel, T.JSArrayOfQrDatum().of([new byte.QrByte.fromUint8List(data)]));
+      t0 = new qr_code.QrCode.new(typeNumber, errorCorrectLevel);
+      return (() => {
+        t0[_addToList](new byte.QrByte.fromUint8List(data));
+        return t0;
+      })();
+    }
+    static ['_#fromUint8List#tearOff'](opts) {
+      let data = opts && 'data' in opts ? opts.data : null;
+      let errorCorrectLevel = opts && 'errorCorrectLevel' in opts ? opts.errorCorrectLevel : null;
+      return qr_code.QrCode.fromUint8List({data: data, errorCorrectLevel: errorCorrectLevel});
+    }
+    static _calculateTypeNumberFromData(errorCorrectLevel, dataList) {
+      let t1;
+      let typeNumber = null;
+      for (let t0 = typeNumber = 1; typeNumber < 40; typeNumber = typeNumber + 1) {
+        let rsBlocks = rs_block.QrRsBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+        let buffer = new bit_buffer.QrBitBuffer.new();
+        let totalDataCount = 0;
+        for (let i = 0; i < rsBlocks[$length]; i = i + 1) {
+          totalDataCount = totalDataCount + rsBlocks[$_get](i).dataCount;
+        }
+        for (let i = 0; i < dataList[$length]; i = i + 1) {
+          let data = dataList[$_get](i);
+          t1 = buffer;
+          (() => {
+            t1.put(data.mode, 4);
+            t1.put(data.length, qr_code._lengthInBits(data.mode, typeNumber));
+            return t1;
+          })();
+          data.write(buffer);
+        }
+        if (buffer.length <= totalDataCount * 8) break;
+      }
+      return typeNumber;
+    }
+    addData(data) {
+      return this[_addToList](byte.QrByte.new(data));
+    }
+    addByteData(data) {
+      return this[_addToList](byte.QrByte.fromByteData(data));
+    }
+    addNumeric(numberString) {
+      return this[_addToList](byte.QrNumeric.fromString(numberString));
+    }
+    addAlphaNumeric(alphaNumeric) {
+      return this[_addToList](byte.QrAlphaNumeric.fromString(alphaNumeric));
+    }
+    [_addToList](data) {
+      this[_dataList][$add](data);
+      this[_dataCache] = null;
+    }
+    get dataCache() {
+      let t1;
+      t1 = this[_dataCache];
+      return t1 == null ? this[_dataCache] = qr_code._createData(this.typeNumber, this.errorCorrectLevel, this[_dataList]) : t1;
+    }
+  };
+  (qr_code.QrCode.new = function(typeNumber, errorCorrectLevel) {
+    this[_dataCache] = null;
+    this[_dataList] = T.JSArrayOfQrDatum().of([]);
+    this[typeNumber$] = typeNumber;
+    this[errorCorrectLevel$] = errorCorrectLevel;
+    this[moduleCount] = typeNumber * 4 + 17;
+    core.RangeError.checkValueInInterval(this.typeNumber, 1, 40, "typeNumber");
+    core.RangeError.checkValidIndex(this.errorCorrectLevel, error_correct_level.QrErrorCorrectLevel.levels, "errorCorrectLevel");
+  }).prototype = qr_code.QrCode.prototype;
+  dart.addTypeTests(qr_code.QrCode);
+  dart.addTypeCaches(qr_code.QrCode);
+  dart.setMethodSignature(qr_code.QrCode, () => ({
+    __proto__: dart.getMethods(qr_code.QrCode.__proto__),
+    addData: dart.fnType(dart.void, [core.String]),
+    addByteData: dart.fnType(dart.void, [typed_data.ByteData]),
+    addNumeric: dart.fnType(dart.void, [core.String]),
+    addAlphaNumeric: dart.fnType(dart.void, [core.String]),
+    [_addToList]: dart.fnType(dart.void, [byte.QrDatum])
+  }));
+  dart.setStaticMethodSignature(qr_code.QrCode, () => ['fromData', 'fromUint8List', '_calculateTypeNumberFromData']);
+  dart.setGetterSignature(qr_code.QrCode, () => ({
+    __proto__: dart.getGetters(qr_code.QrCode.__proto__),
+    dataCache: core.List$(core.int)
+  }));
+  dart.setLibraryUri(qr_code.QrCode, I[0]);
+  dart.setFieldSignature(qr_code.QrCode, () => ({
+    __proto__: dart.getFields(qr_code.QrCode.__proto__),
+    typeNumber: dart.finalFieldType(core.int),
+    errorCorrectLevel: dart.finalFieldType(core.int),
+    moduleCount: dart.finalFieldType(core.int),
+    [_dataCache]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    [_dataList]: dart.finalFieldType(core.List$(byte.QrDatum))
+  }));
+  qr_code._createData = function _createData(typeNumber, errorCorrectLevel, dataList) {
+    let t1, t1$;
+    let rsBlocks = rs_block.QrRsBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+    let buffer = new bit_buffer.QrBitBuffer.new();
+    for (let i = 0; i < dataList[$length]; i = i + 1) {
+      let data = dataList[$_get](i);
+      t1 = buffer;
+      (() => {
+        t1.put(data.mode, 4);
+        t1.put(data.length, qr_code._lengthInBits(data.mode, typeNumber));
+        return t1;
+      })();
+      data.write(buffer);
+    }
+    let totalDataCount = 0;
+    for (let i = 0; i < rsBlocks[$length]; i = i + 1) {
+      totalDataCount = totalDataCount + rsBlocks[$_get](i).dataCount;
+    }
+    let totalByteCount = totalDataCount * 8;
+    if (buffer.length > totalByteCount) {
+      dart.throw(input_too_long_exception.InputTooLongException.new(buffer.length, totalByteCount));
+    }
+    if (buffer.length + 4 <= totalByteCount) {
+      buffer.put(0, 4);
+    }
+    while (buffer.length[$modulo](8) !== 0) {
+      buffer.putBit(false);
+    }
+    let bitDataCount = totalDataCount * 8;
+    let count = 0;
+    for (;;) {
+      if (buffer.length >= bitDataCount) {
+        break;
+      }
+      buffer.put((t1$ = count, count = t1$ + 1, t1$)[$isEven] ? 236 : 17, 8);
+    }
+    return qr_code._createBytes(buffer, rsBlocks);
+  };
+  qr_code._createBytes = function _createBytes(buffer, rsBlocks) {
+    let t2, t1, t2$, t1$;
+    let offset = 0;
+    let maxDcCount = 0;
+    let maxEcCount = 0;
+    let dcData = T.ListOfListNOfint().filled(rsBlocks[$length], null);
+    let ecData = T.ListOfListNOfint().filled(rsBlocks[$length], null);
+    for (let r = 0; r < rsBlocks[$length]; r = r + 1) {
+      let dcCount = rsBlocks[$_get](r).dataCount;
+      let ecCount = rsBlocks[$_get](r).totalCount - dcCount;
+      maxDcCount = math.max(core.int, maxDcCount, dcCount);
+      maxEcCount = math.max(core.int, maxEcCount, ecCount);
+      let dcItem = (t1 = r, t2 = _native_typed_data.NativeUint8List.new(dcCount), dcData[$_set](t1, t2), t2);
+      for (let i = 0; i < dcItem[$length]; i = i + 1) {
+        dcItem[$_set](i, 255 & buffer.getByte(i + offset));
+      }
+      offset = offset + dcCount;
+      let rsPoly = qr_code._errorCorrectPolynomial(ecCount);
+      let rawPoly = polynomial.QrPolynomial.new(dcItem, rsPoly.length - 1);
+      let modPoly = rawPoly.mod(rsPoly);
+      let ecItem = (t1$ = r, t2$ = _native_typed_data.NativeUint8List.new(rsPoly.length - 1), ecData[$_set](t1$, t2$), t2$);
+      for (let i = 0; i < ecItem[$length]; i = i + 1) {
+        let modIndex = i + modPoly.length - ecItem[$length];
+        ecItem[$_set](i, modIndex >= 0 ? modPoly._get(modIndex) : 0);
+      }
+    }
+    let data = T.JSArrayOfint().of([]);
+    for (let i = 0; i < maxDcCount; i = i + 1) {
+      for (let r = 0; r < rsBlocks[$length]; r = r + 1) {
+        if (i < dart.nullCheck(dcData[$_get](r))[$length]) {
+          data[$add](dart.nullCheck(dcData[$_get](r))[$_get](i));
+        }
+      }
+    }
+    for (let i = 0; i < maxEcCount; i = i + 1) {
+      for (let r = 0; r < rsBlocks[$length]; r = r + 1) {
+        if (i < dart.nullCheck(ecData[$_get](r))[$length]) {
+          data[$add](dart.nullCheck(ecData[$_get](r))[$_get](i));
+        }
+      }
+    }
+    return data;
+  };
+  qr_code._lengthInBits = function _lengthInBits(mode, type) {
+    if (1 <= type && type < 10) {
+      switch (mode) {
+        case 1:
+          {
+            return 10;
+          }
+        case 2:
+          {
+            return 9;
+          }
+        case 4:
+          {
+            return 8;
+          }
+        case 8:
+          {
+            return 8;
+          }
+        default:
+          {
+            dart.throw(new core.ArgumentError.new("mode:" + dart.str(mode)));
+          }
+      }
+    } else if (type < 27) {
+      switch (mode) {
+        case 1:
+          {
+            return 12;
+          }
+        case 2:
+          {
+            return 11;
+          }
+        case 4:
+          {
+            return 16;
+          }
+        case 8:
+          {
+            return 10;
+          }
+        default:
+          {
+            dart.throw(new core.ArgumentError.new("mode:" + dart.str(mode)));
+          }
+      }
+    } else if (type < 41) {
+      switch (mode) {
+        case 1:
+          {
+            return 14;
+          }
+        case 2:
+          {
+            return 13;
+          }
+        case 4:
+          {
+            return 16;
+          }
+        case 8:
+          {
+            return 12;
+          }
+        default:
+          {
+            dart.throw(new core.ArgumentError.new("mode:" + dart.str(mode)));
+          }
+      }
+    } else {
+      dart.throw(new core.ArgumentError.new("type:" + dart.str(type)));
+    }
+  };
+  qr_code._errorCorrectPolynomial = function _errorCorrectPolynomial(errorCorrectLength) {
+    let a = polynomial.QrPolynomial.new(T.JSArrayOfint().of([1]), 0);
+    for (let i = 0; i < errorCorrectLength; i = i + 1) {
+      a = a.multiply(polynomial.QrPolynomial.new(T.JSArrayOfint().of([1, math$.gexp(i)]), 0));
+    }
+    return a;
+  };
+  dart.defineLazy(qr_code, {
+    /*qr_code._pad0*/get _pad0() {
+      return 236;
+    },
+    /*qr_code._pad1*/get _pad1() {
+      return 17;
+    }
+  }, false);
+  dart.trackLibraries("packages/qr/src/qr_code.dart", {
+    "package:qr/src/qr_code.dart": qr_code
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["qr_code.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/qr/src/qr_code.dart.lib.js"}');
+  // Exports:
+  return {
+    src__qr_code: qr_code
+  };
+}));
+
+//# sourceMappingURL=qr_code.dart.lib.js.map

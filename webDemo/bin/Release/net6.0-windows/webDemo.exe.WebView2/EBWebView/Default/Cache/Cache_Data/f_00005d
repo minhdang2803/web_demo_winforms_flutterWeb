@@ -1,0 +1,553 @@
+define(['dart_sdk'], (function load__packages__easy_localization__src__plural_rules_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var plural_rules = Object.create(dart.library);
+  var $round = dartx.round;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $indexOf = dartx.indexOf;
+  var $modulo = dartx['%'];
+  var $floor = dartx.floor;
+  var $containsKey = dartx.containsKey;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    VoidToPluralCase: () => (T.VoidToPluralCase = dart.constFn(dart.fnType(plural_rules.PluralCase, [])))(),
+    IdentityMapOfString$VoidToPluralCase: () => (T.IdentityMapOfString$VoidToPluralCase = dart.constFn(_js_helper.IdentityMap$(core.String, T.VoidToPluralCase())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "ZERO",
+        [_Enum_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "ONE",
+        [_Enum_index]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "TWO",
+        [_Enum_index]: 2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "FEW",
+        [_Enum_index]: 3
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "MANY",
+        [_Enum_index]: 4
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "OTHER",
+        [_Enum_index]: 5
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], plural_rules.PluralCase);
+    },
+    get C7() {
+      return C[7] = dart.fn(plural_rules._es_rule, T.VoidToPluralCase());
+    },
+    get C8() {
+      return C[8] = dart.fn(plural_rules._hi_rule, T.VoidToPluralCase());
+    },
+    get C9() {
+      return C[9] = dart.fn(plural_rules._ar_rule, T.VoidToPluralCase());
+    },
+    get C10() {
+      return C[10] = dart.fn(plural_rules._be_rule, T.VoidToPluralCase());
+    },
+    get C11() {
+      return C[11] = dart.fn(plural_rules._br_rule, T.VoidToPluralCase());
+    },
+    get C12() {
+      return C[12] = dart.fn(plural_rules._sr_rule, T.VoidToPluralCase());
+    },
+    get C13() {
+      return C[13] = dart.fn(plural_rules._en_rule, T.VoidToPluralCase());
+    },
+    get C14() {
+      return C[14] = dart.fn(plural_rules._cs_rule, T.VoidToPluralCase());
+    },
+    get C15() {
+      return C[15] = dart.fn(plural_rules._cy_rule, T.VoidToPluralCase());
+    },
+    get C16() {
+      return C[16] = dart.fn(plural_rules._da_rule, T.VoidToPluralCase());
+    },
+    get C17() {
+      return C[17] = dart.fn(plural_rules._fil_rule, T.VoidToPluralCase());
+    },
+    get C18() {
+      return C[18] = dart.fn(plural_rules._fr_rule, T.VoidToPluralCase());
+    },
+    get C19() {
+      return C[19] = dart.fn(plural_rules._ga_rule, T.VoidToPluralCase());
+    },
+    get C20() {
+      return C[20] = dart.fn(plural_rules._he_rule, T.VoidToPluralCase());
+    },
+    get C21() {
+      return C[21] = dart.fn(plural_rules._default_rule, T.VoidToPluralCase());
+    },
+    get C22() {
+      return C[22] = dart.fn(plural_rules._is_rule, T.VoidToPluralCase());
+    },
+    get C23() {
+      return C[23] = dart.fn(plural_rules._ak_rule, T.VoidToPluralCase());
+    },
+    get C24() {
+      return C[24] = dart.fn(plural_rules._lt_rule, T.VoidToPluralCase());
+    },
+    get C25() {
+      return C[25] = dart.fn(plural_rules._lv_rule, T.VoidToPluralCase());
+    },
+    get C26() {
+      return C[26] = dart.fn(plural_rules._mk_rule, T.VoidToPluralCase());
+    },
+    get C27() {
+      return C[27] = dart.fn(plural_rules._ro_rule, T.VoidToPluralCase());
+    },
+    get C28() {
+      return C[28] = dart.fn(plural_rules._mt_rule, T.VoidToPluralCase());
+    },
+    get C29() {
+      return C[29] = dart.fn(plural_rules._pl_rule, T.VoidToPluralCase());
+    },
+    get C30() {
+      return C[30] = dart.fn(plural_rules._pt_rule, T.VoidToPluralCase());
+    },
+    get C31() {
+      return C[31] = dart.fn(plural_rules._pt_PT_rule, T.VoidToPluralCase());
+    },
+    get C32() {
+      return C[32] = dart.fn(plural_rules._ru_rule, T.VoidToPluralCase());
+    },
+    get C33() {
+      return C[33] = dart.fn(plural_rules._si_rule, T.VoidToPluralCase());
+    },
+    get C34() {
+      return C[34] = dart.fn(plural_rules._sl_rule, T.VoidToPluralCase());
+    }
+  }, false);
+  var C = Array(35).fill(void 0);
+  var I = ["package:easy_localization/src/plural_rules.dart"];
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  plural_rules.PluralCase = class PluralCase extends core._Enum {
+    toString() {
+      return "PluralCase." + this[_name];
+    }
+  };
+  (plural_rules.PluralCase.new = function(index, name) {
+    plural_rules.PluralCase.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = plural_rules.PluralCase.prototype;
+  dart.addTypeTests(plural_rules.PluralCase);
+  dart.addTypeCaches(plural_rules.PluralCase);
+  dart.setLibraryUri(plural_rules.PluralCase, I[0]);
+  dart.setStaticFieldSignature(plural_rules.PluralCase, () => ['values', 'ZERO', 'ONE', 'TWO', 'FEW', 'MANY', 'OTHER']);
+  dart.defineExtensionMethods(plural_rules.PluralCase, ['toString']);
+  dart.defineLazy(plural_rules.PluralCase, {
+    /*plural_rules.PluralCase.values*/get values() {
+      return C[0] || CT.C0;
+    },
+    /*plural_rules.PluralCase.ZERO*/get ZERO() {
+      return C[1] || CT.C1;
+    },
+    /*plural_rules.PluralCase.ONE*/get ONE() {
+      return C[2] || CT.C2;
+    },
+    /*plural_rules.PluralCase.TWO*/get TWO() {
+      return C[3] || CT.C3;
+    },
+    /*plural_rules.PluralCase.FEW*/get FEW() {
+      return C[4] || CT.C4;
+    },
+    /*plural_rules.PluralCase.MANY*/get MANY() {
+      return C[5] || CT.C5;
+    },
+    /*plural_rules.PluralCase.OTHER*/get OTHER() {
+      return C[6] || CT.C6;
+    }
+  }, false);
+  plural_rules._default_rule = function _default_rule() {
+    return plural_rules.OTHER;
+  };
+  plural_rules.startRuleEvaluation = function startRuleEvaluation(howMany, precision = 0) {
+    plural_rules._n = howMany;
+    plural_rules._precision = precision;
+    plural_rules._i = plural_rules._n[$round]();
+    plural_rules._updateVF(plural_rules._n);
+    plural_rules._updateWT(plural_rules._f, plural_rules._v);
+  };
+  plural_rules._decimals = function _decimals(n) {
+    let str = plural_rules._precision == null ? dart.str(n) : n[$toStringAsFixed](dart.nullCheck(plural_rules._precision));
+    let result = str[$indexOf](".");
+    return result === -1 ? 0 : str.length - result - 1;
+  };
+  plural_rules._updateVF = function _updateVF(n) {
+    let t2;
+    let defaultDigits = 3;
+    plural_rules._v = (t2 = plural_rules._precision, t2 == null ? math.min(core.int, plural_rules._decimals(n), defaultDigits) : t2);
+    let base = dart.asInt(math.pow(10, plural_rules._v));
+    plural_rules._f = (n * base)[$floor]()[$modulo](base);
+  };
+  plural_rules._updateWT = function _updateWT(v, f) {
+    if (f === 0) {
+      plural_rules._t = 0;
+      return;
+    }
+    while (f[$modulo](10) === 0) {
+      f = (f / 10)[$floor]();
+      v = v - 1;
+    }
+    plural_rules._t = f;
+  };
+  plural_rules._fil_rule = function _fil_rule() {
+    if (plural_rules._v === 0 && (plural_rules._i === 1 || plural_rules._i === 2 || plural_rules._i === 3) || plural_rules._v === 0 && plural_rules._i[$modulo](10) !== 4 && plural_rules._i[$modulo](10) !== 6 && plural_rules._i[$modulo](10) !== 9 || plural_rules._v !== 0 && plural_rules._f[$modulo](10) !== 4 && plural_rules._f[$modulo](10) !== 6 && plural_rules._f[$modulo](10) !== 9) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_PT_rule = function _pt_PT_rule() {
+    if (plural_rules._n === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._br_rule = function _br_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 && plural_rules._n[$modulo](100) !== 71 && plural_rules._n[$modulo](100) !== 91) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) === 2 && plural_rules._n[$modulo](100) !== 12 && plural_rules._n[$modulo](100) !== 72 && plural_rules._n[$modulo](100) !== 92) {
+      return plural_rules.TWO;
+    }
+    if ((plural_rules._n[$modulo](10) >= 3 && plural_rules._n[$modulo](10) <= 4 || plural_rules._n[$modulo](10) === 9) && (plural_rules._n[$modulo](100) < 10 || plural_rules._n[$modulo](100) > 19) && (plural_rules._n[$modulo](100) < 70 || plural_rules._n[$modulo](100) > 79) && (plural_rules._n[$modulo](100) < 90 || plural_rules._n[$modulo](100) > 99)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n !== 0 && plural_rules._n[$modulo](1000000) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sr_rule = function _sr_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14) || plural_rules._f[$modulo](10) >= 2 && plural_rules._f[$modulo](10) <= 4 && (plural_rules._f[$modulo](100) < 12 || plural_rules._f[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ro_rule = function _ro_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v !== 0 || plural_rules._n === 0 || plural_rules._n !== 1 && plural_rules._n[$modulo](100) >= 1 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._hi_rule = function _hi_rule() {
+    if (plural_rules._i === 0 || plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._fr_rule = function _fr_rule() {
+    if (plural_rules._i === 0 || plural_rules._i === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cs_rule = function _cs_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._i >= 2 && plural_rules._i <= 4 && plural_rules._v === 0) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pl_rule = function _pl_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i !== 1 && plural_rules._i[$modulo](10) >= 0 && plural_rules._i[$modulo](10) <= 1 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 12 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lv_rule = function _lv_rule() {
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19 || plural_rules._v === 2 && plural_rules._f[$modulo](100) >= 11 && plural_rules._f[$modulo](100) <= 19) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 || plural_rules._v === 2 && plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11 || plural_rules._v !== 2 && plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._he_rule = function _he_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._i === 2 && plural_rules._v === 0) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && (plural_rules._n < 0 || plural_rules._n > 10) && plural_rules._n[$modulo](10) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mt_rule = function _mt_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 0 || plural_rules._n[$modulo](100) >= 2 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._si_rule = function _si_rule() {
+    if (plural_rules._n === 0 || plural_rules._n === 1 || plural_rules._i === 0 && plural_rules._f === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cy_rule = function _cy_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n === 3) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n === 6) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._da_rule = function _da_rule() {
+    if (plural_rules._n === 1 || plural_rules._t !== 0 && (plural_rules._i === 0 || plural_rules._i === 1)) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ru_rule = function _ru_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 0 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 11 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._be_rule = function _be_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 4 && (plural_rules._n[$modulo](100) < 12 || plural_rules._n[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](10) >= 5 && plural_rules._n[$modulo](10) <= 9 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mk_rule = function _mk_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 || plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ga_rule = function _ga_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n >= 3 && plural_rules._n <= 6) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n >= 7 && plural_rules._n <= 10) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_rule = function _pt_rule() {
+    if (plural_rules._n >= 0 && plural_rules._n <= 2 && plural_rules._n !== 2) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._es_rule = function _es_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._is_rule = function _is_rule() {
+    if (plural_rules._t === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._t !== 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ar_rule = function _ar_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n[$modulo](100) >= 3 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 99) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sl_rule = function _sl_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 3 && plural_rules._i[$modulo](100) <= 4 || plural_rules._v !== 0) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lt_rule = function _lt_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 9 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._f !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._en_rule = function _en_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ak_rule = function _ak_rule() {
+    if (plural_rules._n >= 0 && plural_rules._n <= 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules.localeHasPluralRules = function localeHasPluralRules(locale) {
+    return plural_rules.pluralRules[$containsKey](locale);
+  };
+  dart.copyProperties(plural_rules, {
+    get ZERO() {
+      return plural_rules.PluralCase.ZERO;
+    },
+    get ONE() {
+      return plural_rules.PluralCase.ONE;
+    },
+    get TWO() {
+      return plural_rules.PluralCase.TWO;
+    },
+    get FEW() {
+      return plural_rules.PluralCase.FEW;
+    },
+    get MANY() {
+      return plural_rules.PluralCase.MANY;
+    },
+    get OTHER() {
+      return plural_rules.PluralCase.OTHER;
+    }
+  });
+  dart.defineLazy(plural_rules, {
+    /*plural_rules._n*/get _n() {
+      return 0;
+    },
+    set _n(_) {},
+    /*plural_rules._i*/get _i() {
+      return 0;
+    },
+    set _i(_) {},
+    /*plural_rules._precision*/get _precision() {
+      return null;
+    },
+    set _precision(_) {},
+    /*plural_rules._v*/get _v() {
+      return 0;
+    },
+    set _v(_) {},
+    /*plural_rules._f*/get _f() {
+      return 0;
+    },
+    set _f(_) {},
+    /*plural_rules._t*/get _t() {
+      return 0;
+    },
+    set _t(_) {},
+    /*plural_rules.pluralRules*/get pluralRules() {
+      return new (T.IdentityMapOfString$VoidToPluralCase()).from(["af", C[7] || CT.C7, "am", C[8] || CT.C8, "ar", C[9] || CT.C9, "az", C[7] || CT.C7, "be", C[10] || CT.C10, "bg", C[7] || CT.C7, "bn", C[8] || CT.C8, "br", C[11] || CT.C11, "bs", C[12] || CT.C12, "ca", C[13] || CT.C13, "chr", C[7] || CT.C7, "cs", C[14] || CT.C14, "cy", C[15] || CT.C15, "da", C[16] || CT.C16, "de", C[13] || CT.C13, "de_AT", C[13] || CT.C13, "de_CH", C[13] || CT.C13, "el", C[7] || CT.C7, "en", C[13] || CT.C13, "en_AU", C[13] || CT.C13, "en_CA", C[13] || CT.C13, "en_GB", C[13] || CT.C13, "en_IE", C[13] || CT.C13, "en_IN", C[13] || CT.C13, "en_SG", C[13] || CT.C13, "en_US", C[13] || CT.C13, "en_ZA", C[13] || CT.C13, "es", C[7] || CT.C7, "es_419", C[7] || CT.C7, "es_ES", C[7] || CT.C7, "es_MX", C[7] || CT.C7, "es_US", C[7] || CT.C7, "et", C[13] || CT.C13, "eu", C[7] || CT.C7, "fa", C[8] || CT.C8, "fi", C[13] || CT.C13, "fil", C[17] || CT.C17, "fr", C[18] || CT.C18, "fr_CA", C[18] || CT.C18, "ga", C[19] || CT.C19, "gl", C[13] || CT.C13, "gsw", C[7] || CT.C7, "gu", C[8] || CT.C8, "haw", C[7] || CT.C7, "he", C[20] || CT.C20, "hi", C[8] || CT.C8, "hr", C[12] || CT.C12, "hu", C[7] || CT.C7, "hy", C[18] || CT.C18, "id", C[21] || CT.C21, "in", C[21] || CT.C21, "is", C[22] || CT.C22, "it", C[13] || CT.C13, "iw", C[20] || CT.C20, "ja", C[21] || CT.C21, "ka", C[7] || CT.C7, "kk", C[7] || CT.C7, "km", C[21] || CT.C21, "kn", C[8] || CT.C8, "ko", C[21] || CT.C21, "ky", C[7] || CT.C7, "ln", C[23] || CT.C23, "lo", C[21] || CT.C21, "lt", C[24] || CT.C24, "lv", C[25] || CT.C25, "mk", C[26] || CT.C26, "ml", C[7] || CT.C7, "mn", C[7] || CT.C7, "mo", C[27] || CT.C27, "mr", C[8] || CT.C8, "ms", C[21] || CT.C21, "mt", C[28] || CT.C28, "my", C[21] || CT.C21, "nb", C[7] || CT.C7, "ne", C[7] || CT.C7, "nl", C[13] || CT.C13, "no", C[7] || CT.C7, "no_NO", C[7] || CT.C7, "or", C[7] || CT.C7, "pa", C[23] || CT.C23, "pl", C[29] || CT.C29, "pt", C[30] || CT.C30, "pt_BR", C[30] || CT.C30, "pt_PT", C[31] || CT.C31, "ro", C[27] || CT.C27, "ru", C[32] || CT.C32, "sh", C[12] || CT.C12, "si", C[33] || CT.C33, "sk", C[14] || CT.C14, "sl", C[34] || CT.C34, "sq", C[7] || CT.C7, "sr", C[12] || CT.C12, "sr_Latn", C[12] || CT.C12, "sv", C[13] || CT.C13, "sw", C[13] || CT.C13, "ta", C[7] || CT.C7, "te", C[7] || CT.C7, "th", C[21] || CT.C21, "tl", C[17] || CT.C17, "tr", C[7] || CT.C7, "uk", C[32] || CT.C32, "ur", C[13] || CT.C13, "uz", C[7] || CT.C7, "vi", C[21] || CT.C21, "zh", C[21] || CT.C21, "zh_CN", C[21] || CT.C21, "zh_HK", C[21] || CT.C21, "zh_TW", C[21] || CT.C21, "zu", C[8] || CT.C8, "default", C[21] || CT.C21]);
+    }
+  }, false);
+  dart.trackLibraries("packages/easy_localization/src/plural_rules.dart", {
+    "package:easy_localization/src/plural_rules.dart": plural_rules
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["plural_rules.dart"],"names":[],"mappings":"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AAAM,yBAAJ,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM;AAC/C,YAAO;;AAET,QAAI,AAAG,AAAK,yBAAH,OAAM,KAAK,AAAG,AAAK,yBAAH,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM;AAC/D,YAAO;;AAET,QAAI,oBAAM;AACR,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,oBAAG,KAAK,AAAG,oBAAG;AACnB,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,mBAAG,KAAK,AAAG,mBAAG;AACnB,YAAO;;AAET,UAAO;EACT;oEAqHiC;AAAW,UAAA,AAAY,wCAAY,MAAM;EAAC;;;AApbpD,YAAW;IAAI;;AAChB,YAAW;IAAG;;AACd,YAAW;IAAG;;AACd,YAAW;IAAG;;AACb,YAAW;IAAI;;AACd,YAAW;IAAK;;;MAjFpC,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MACJ,uBAAU;;;;MAoDX,eAAE;YAAG;;;MAML,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MA6UH,wBAAW;YAAG,sDAClB,qBACA,qBACA,qBACA,qBACA,uBACA,qBACA,qBACA,uBACA,uBACA,uBACA,sBACA,uBACA,uBACA,uBACA,uBACA,0BACA,0BACA,qBACA,uBACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,qBACA,yBACA,wBACA,wBACA,wBACA,uBACA,qBACA,qBACA,uBACA,wBACA,uBACA,0BACA,uBACA,uBACA,sBACA,qBACA,sBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,wBACA,qBACA,uBACA,uBACA,uBACA,0BACA,0BACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,uBACA,4BACA,uBACA,uBACA,qBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,0BACA,0BACA,0BACA,qBACA","file":"../../../../../../../../../../../packages/easy_localization/src/plural_rules.dart.lib.js"}');
+  // Exports:
+  return {
+    src__plural_rules: plural_rules
+  };
+}));
+
+//# sourceMappingURL=plural_rules.dart.lib.js.map

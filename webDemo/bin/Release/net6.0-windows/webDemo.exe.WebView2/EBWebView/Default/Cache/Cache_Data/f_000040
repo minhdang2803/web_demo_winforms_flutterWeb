@@ -1,0 +1,287 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/pdf/src/pdf/page_format.dart', 'packages/get/get_navigation/src/snackbar/snackbar_controller.dart', 'packages/get/get_core/src/get_main.dart', 'packages/printing/src/printing.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/webviewx/src/view/impl/web.dart', 'packages/webviewx/src/utils/source_type.dart', 'packages/webviewx/src/controller/interface.dart', 'packages/printing/src/preview/pdf_preview.dart', 'packages/pdf/src/widgets/table.dart', 'packages/pdf/src/pdf/output.dart', 'packages/printing/src/fonts/gfonts.dart'], (function load__packages__base__util__printer__print_html_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__pdf__src__pdf__page_format$46dart, packages__get__get_navigation__src__snackbar__snackbar_controller$46dart, packages__get__get_core__src__get_main$46dart, packages__printing__src__printing$46dart, packages__flutter__src__material__icon_button$46dart, packages__webviewx__src__view__impl__web$46dart, packages__webviewx__src__utils__source_type$46dart, packages__webviewx__src__controller__interface$46dart, packages__printing__src__preview__pdf_preview$46dart, packages__pdf__src__widgets__table$46dart, packages__pdf__src__pdf__output$46dart, packages__printing__src__fonts__gfonts$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const io = dart_sdk.io;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const page_format = packages__pdf__src__pdf__page_format$46dart.src__pdf__page_format;
+  const extension_navigation = packages__get__get_navigation__src__snackbar__snackbar_controller$46dart.get_navigation__src__extension_navigation;
+  const get_main = packages__get__get_core__src__get_main$46dart.get_core__src__get_main;
+  const printing = packages__printing__src__printing$46dart.src__printing;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
+  const web = packages__webviewx__src__view__impl__web$46dart.src__view__impl__web;
+  const source_type = packages__webviewx__src__utils__source_type$46dart.src__utils__source_type;
+  const $interface = packages__webviewx__src__controller__interface$46dart.src__controller__interface;
+  const pdf_preview = packages__printing__src__preview__pdf_preview$46dart.src__preview__pdf_preview;
+  const document = packages__pdf__src__widgets__table$46dart.src__widgets__document;
+  const document$ = packages__pdf__src__pdf__output$46dart.src__pdf__document;
+  const gfonts = packages__printing__src__fonts__gfonts$46dart.src__fonts__gfonts;
+  var print_html = Object.create(dart.library);
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    WebViewXControllerToNull: () => (T.WebViewXControllerToNull = dart.constFn(dart.fnType(core.Null, [$interface.WebViewXController])))(),
+    FutureOfUint8List: () => (T.FutureOfUint8List = dart.constFn(async.Future$(typed_data.Uint8List)))(),
+    PdfPageFormatToFutureOfUint8List: () => (T.PdfPageFormatToFutureOfUint8List = dart.constFn(dart.fnType(T.FutureOfUint8List(), [page_format.PdfPageFormat])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PrinterScreen",
+        [_Location_column]: 9,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "WebViewX",
+        [_Location_column]: 15,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Scaffold",
+        [_Location_column]: 14,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 16,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "AppBar",
+        [_Location_column]: 15,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: page_format.PdfPageFormat.prototype,
+        [PdfPageFormat_marginRight]: 56.69291338582677,
+        [PdfPageFormat_marginLeft]: 56.69291338582677,
+        [PdfPageFormat_marginBottom]: 56.69291338582677,
+        [PdfPageFormat_marginTop]: 56.69291338582677,
+        [PdfPageFormat_height]: 595.275590551181,
+        [PdfPageFormat_width]: 419.5275590551181
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: page_format.PdfPageFormat.prototype,
+        [PdfPageFormat_marginRight]: 56.69291338582677,
+        [PdfPageFormat_marginLeft]: 56.69291338582677,
+        [PdfPageFormat_marginBottom]: 56.69291338582677,
+        [PdfPageFormat_marginTop]: 56.69291338582677,
+        [PdfPageFormat_height]: 841.8897637795275,
+        [PdfPageFormat_width]: 595.275590551181
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: page_format.PdfPageFormat.prototype,
+        [PdfPageFormat_marginRight]: 72,
+        [PdfPageFormat_marginLeft]: 72,
+        [PdfPageFormat_marginBottom]: 72,
+        [PdfPageFormat_marginTop]: 72,
+        [PdfPageFormat_height]: 792,
+        [PdfPageFormat_width]: 612
+      });
+    },
+    get C5() {
+      return C[5] = dart.constMap(core.String, page_format.PdfPageFormat, ["A5", C[6] || CT.C6, "A4", C[7] || CT.C7, "Letter", C[8] || CT.C8]);
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreview",
+        [_Location_column]: 15,
+        [_Location_line]: 69,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 23,
+        [_Location_line]: 79,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[11] || CT.C11,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Scaffold",
+        [_Location_column]: 12,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/base/lib/util/printer/print_html.dart"
+      });
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
+  var I = ["package:base/util/printer/print_html.dart"];
+  var htmlStr$ = dart.privateName(print_html, "PrinterScreen.htmlStr");
+  var title$ = dart.privateName(print_html, "PrinterScreen.title");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  print_html.PrinterScreen = class PrinterScreen extends framework.StatefulWidget {
+    get htmlStr() {
+      return this[htmlStr$];
+    }
+    set htmlStr(value) {
+      super.htmlStr = value;
+    }
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let htmlStr = opts && 'htmlStr' in opts ? opts.htmlStr : null;
+      let title = opts && 'title' in opts ? opts.title : null;
+      return new print_html.PrinterScreen.new({htmlStr: htmlStr, title: title, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    createState() {
+      return new print_html._PrinterScreenState.new();
+    }
+  };
+  (print_html.PrinterScreen.new = function(opts) {
+    let htmlStr = opts && 'htmlStr' in opts ? opts.htmlStr : null;
+    let title = opts && 'title' in opts ? opts.title : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[htmlStr$] = htmlStr;
+    this[title$] = title;
+    print_html.PrinterScreen.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = print_html.PrinterScreen.prototype;
+  dart.addTypeTests(print_html.PrinterScreen);
+  dart.addTypeCaches(print_html.PrinterScreen);
+  dart.setMethodSignature(print_html.PrinterScreen, () => ({
+    __proto__: dart.getMethods(print_html.PrinterScreen.__proto__),
+    createState: dart.fnType(print_html._PrinterScreenState, [])
+  }));
+  dart.setLibraryUri(print_html.PrinterScreen, I[0]);
+  dart.setFieldSignature(print_html.PrinterScreen, () => ({
+    __proto__: dart.getFields(print_html.PrinterScreen.__proto__),
+    htmlStr: dart.finalFieldType(core.String),
+    title: dart.finalFieldType(core.String)
+  }));
+  var PdfPageFormat_marginRight = dart.privateName(page_format, "PdfPageFormat.marginRight");
+  var PdfPageFormat_marginLeft = dart.privateName(page_format, "PdfPageFormat.marginLeft");
+  var PdfPageFormat_marginBottom = dart.privateName(page_format, "PdfPageFormat.marginBottom");
+  var PdfPageFormat_marginTop = dart.privateName(page_format, "PdfPageFormat.marginTop");
+  var PdfPageFormat_height = dart.privateName(page_format, "PdfPageFormat.height");
+  var PdfPageFormat_width = dart.privateName(page_format, "PdfPageFormat.width");
+  var _generatePdf = dart.privateName(print_html, "_generatePdf");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  print_html._PrinterScreenState = class _PrinterScreenState extends framework.State$(print_html.PrinterScreen) {
+    initState() {
+      this.initBody();
+    }
+    initBody() {
+      return async.async(dart.dynamic, (function* initBody() {
+        let format = new page_format.PdfPageFormat.new(extension_navigation['GetNavigation|get#width'](get_main.Get), extension_navigation['GetNavigation|get#height'](get_main.Get) * 0.85);
+        let bytesRs = (yield printing.Printing.convertHtml({format: format, html: this.widget.htmlStr}));
+        this.setState(dart.fn(() => {
+          this.bytes = bytesRs;
+          this.contentHtml = this.widget.htmlStr;
+        }, T.VoidTovoid()));
+      }).bind(this));
+    }
+    build(context) {
+      {
+        return new scaffold.Scaffold.new({body: new web.WebViewX.new({initialContent: this.widget.htmlStr, initialSourceType: source_type.SourceType.html, onWebViewCreated: dart.fn(controller => {
+            }, T.WebViewXControllerToNull()), height: extension_navigation['GetNavigation|get#height'](get_main.Get), width: extension_navigation['GetNavigation|get#width'](get_main.Get), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+      }
+      return new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({title: new text.Text.new(this.widget.title, {$creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), body: this.bytes != null && dart.nullCheck(this.bytes)[$length] > 0 ? new pdf_preview.PdfPreview.new({pageFormats: C[5] || CT.C5, initialPageFormat: page_format.PdfPageFormat.a4, allowPrinting: io.Platform.isAndroid, build: dart.fn(format => this[_generatePdf](format, this.widget.title), T.PdfPageFormatToFutureOfUint8List()), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}) : C[10] || CT.C10, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+    }
+    [_generatePdf](format, title) {
+      return async.async(typed_data.Uint8List, (function* _generatePdf() {
+        let pdf = new document.Document.new({version: document$.PdfVersion.pdf_1_5, compress: true});
+        let font = (yield gfonts.PdfGoogleFonts.nunitoExtraLight());
+        return T.FutureOfUint8List().value(this.bytes);
+      }).bind(this));
+    }
+    dispose() {
+      super.dispose();
+    }
+    static ['_#new#tearOff']() {
+      return new print_html._PrinterScreenState.new();
+    }
+  };
+  (print_html._PrinterScreenState.new = function() {
+    this.bytes = null;
+    this.contentHtml = "";
+    print_html._PrinterScreenState.__proto__.new.call(this);
+    ;
+  }).prototype = print_html._PrinterScreenState.prototype;
+  dart.addTypeTests(print_html._PrinterScreenState);
+  dart.addTypeCaches(print_html._PrinterScreenState);
+  dart.setMethodSignature(print_html._PrinterScreenState, () => ({
+    __proto__: dart.getMethods(print_html._PrinterScreenState.__proto__),
+    initBody: dart.fnType(async.Future, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_generatePdf]: dart.fnType(async.Future$(typed_data.Uint8List), [page_format.PdfPageFormat, core.String])
+  }));
+  dart.setLibraryUri(print_html._PrinterScreenState, I[0]);
+  dart.setFieldSignature(print_html._PrinterScreenState, () => ({
+    __proto__: dart.getFields(print_html._PrinterScreenState.__proto__),
+    bytes: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    contentHtml: dart.fieldType(core.String)
+  }));
+  dart.trackLibraries("packages/base/util/printer/print_html.dart", {
+    "package:base/util/printer/print_html.dart": print_html
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["print_html.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAYe;;;;;;IACA;;;;;;;;;;;;AAGwB;IAAqB;;;QAFvB;QAAuB;;IAAvB;IAAuB;AAApD;;EAA2D;;;;;;;;;;;;;;;;;;;;;;;;;;;AAUrD,MAAV;IACF;;AAEe;AAGC,qBAAS,kCAAkB,gDAAJ,eAAe,AAAO,iDAAX,gBAAa;AACnD,uBAAU,MAAe,uCACzB,MAAM,QACR,AAAO;AAMb,QAHF,cAAS;AACQ,UAAf,aAAQ,OAAO;AACa,UAA5B,mBAAc,AAAO;;MAGzB;;UAG0B;AACxB;AACE,cAAO,kCACC,sCACY,AAAO,wCACO,+CACZ,QAAC;sDAGP,iDAAJ,sBACG,gDAAJ;;AAKb,YAAO,oCACG,+BACC,kBAAK,AAAO,4IAIjB,AAAc,sBAAQ,AAAE,AAAO,eAAd,uBAAgB,IAG7B,+EAMqC,6CACT,8BACjB,QAAC,UAAW,mBAAa,MAAM,EAAE,AAAO;IAI/D;mBAE6C,QAAe;AAA9B;AACtB,kBAAS,oCAA6B,wCAAmB;AACzD,oBAAO,MAAqB;AAClC,cAAc,6BAAM;MACtB;;;AAKiB,MAAT;IACR;;;;;;IAxEW;IACJ,mBAAc;;;EAwEvB","file":"../../../../../../../../../../packages/base/util/printer/print_html.dart.lib.js"}');
+  // Exports:
+  return {
+    util__printer__print_html: print_html
+  };
+}));
+
+//# sourceMappingURL=print_html.dart.lib.js.map

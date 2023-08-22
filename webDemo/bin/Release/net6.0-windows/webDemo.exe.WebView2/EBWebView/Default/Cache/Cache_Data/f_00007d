@@ -1,0 +1,710 @@
+define(['dart_sdk', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__rendering__selection_dart(dart_sdk, packages__flutter__src__foundation__change_notifier$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var selection = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: selection.SelectionResult.prototype,
+        [_Enum__name]: "next",
+        [_Enum_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: selection.SelectionResult.prototype,
+        [_Enum__name]: "previous",
+        [_Enum_index]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: selection.SelectionResult.prototype,
+        [_Enum__name]: "end",
+        [_Enum_index]: 2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: selection.SelectionResult.prototype,
+        [_Enum__name]: "pending",
+        [_Enum_index]: 3
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: selection.SelectionResult.prototype,
+        [_Enum__name]: "none",
+        [_Enum_index]: 4
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], selection.SelectionResult);
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_Enum__name]: "ltr",
+        [_Enum_index]: 1
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: selection.SelectionEventType.prototype,
+        [_Enum__name]: "startEdgeUpdate",
+        [_Enum_index]: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: selection.SelectionEventType.prototype,
+        [_Enum__name]: "endEdgeUpdate",
+        [_Enum_index]: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: selection.SelectionEventType.prototype,
+        [_Enum__name]: "clear",
+        [_Enum_index]: 2
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: selection.SelectionEventType.prototype,
+        [_Enum__name]: "selectAll",
+        [_Enum_index]: 3
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: selection.SelectionEventType.prototype,
+        [_Enum__name]: "selectWord",
+        [_Enum_index]: 4
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], selection.SelectionEventType);
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: selection.SelectionStatus.prototype,
+        [_Enum__name]: "uncollapsed",
+        [_Enum_index]: 0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: selection.SelectionStatus.prototype,
+        [_Enum__name]: "collapsed",
+        [_Enum_index]: 1
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: selection.SelectionStatus.prototype,
+        [_Enum__name]: "none",
+        [_Enum_index]: 2
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16], selection.SelectionStatus);
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: selection.TextSelectionHandleType.prototype,
+        [_Enum__name]: "left",
+        [_Enum_index]: 0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: selection.TextSelectionHandleType.prototype,
+        [_Enum__name]: "right",
+        [_Enum_index]: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: selection.TextSelectionHandleType.prototype,
+        [_Enum__name]: "collapsed",
+        [_Enum_index]: 2
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], selection.TextSelectionHandleType);
+    }
+  }, false);
+  var C = Array(21).fill(void 0);
+  var I = [
+    "package:flutter/src/rendering/selection.dart",
+    "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/rendering/selection.dart"
+  ];
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  selection.SelectionResult = class SelectionResult extends core._Enum {
+    toString() {
+      return "SelectionResult." + this[_name];
+    }
+  };
+  (selection.SelectionResult.new = function(index, name) {
+    selection.SelectionResult.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = selection.SelectionResult.prototype;
+  dart.addTypeTests(selection.SelectionResult);
+  dart.addTypeCaches(selection.SelectionResult);
+  dart.setLibraryUri(selection.SelectionResult, I[0]);
+  dart.setStaticFieldSignature(selection.SelectionResult, () => ['values', 'next', 'previous', 'end', 'pending', 'none']);
+  dart.defineExtensionMethods(selection.SelectionResult, ['toString']);
+  dart.defineLazy(selection.SelectionResult, {
+    /*selection.SelectionResult.values*/get values() {
+      return C[0] || CT.C0;
+    },
+    /*selection.SelectionResult.next*/get next() {
+      return C[1] || CT.C1;
+    },
+    /*selection.SelectionResult.previous*/get previous() {
+      return C[2] || CT.C2;
+    },
+    /*selection.SelectionResult.end*/get end() {
+      return C[3] || CT.C3;
+    },
+    /*selection.SelectionResult.pending*/get pending() {
+      return C[4] || CT.C4;
+    },
+    /*selection.SelectionResult.none*/get none() {
+      return C[5] || CT.C5;
+    }
+  }, false);
+  selection.SelectionHandler = class SelectionHandler extends core.Object {};
+  (selection.SelectionHandler.new = function() {
+    ;
+  }).prototype = selection.SelectionHandler.prototype;
+  dart.addTypeTests(selection.SelectionHandler);
+  dart.addTypeCaches(selection.SelectionHandler);
+  selection.SelectionHandler[dart.implements] = () => [change_notifier.ValueListenable$(selection.SelectionGeometry)];
+  dart.setLibraryUri(selection.SelectionHandler, I[0]);
+  var plainText$ = dart.privateName(selection, "SelectedContent.plainText");
+  selection.SelectedContent = class SelectedContent extends core.Object {
+    get plainText() {
+      return this[plainText$];
+    }
+    set plainText(value) {
+      super.plainText = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let plainText = opts && 'plainText' in opts ? opts.plainText : null;
+      return new selection.SelectedContent.new({plainText: plainText});
+    }
+  };
+  (selection.SelectedContent.new = function(opts) {
+    let plainText = opts && 'plainText' in opts ? opts.plainText : null;
+    this[plainText$] = plainText;
+    ;
+  }).prototype = selection.SelectedContent.prototype;
+  dart.addTypeTests(selection.SelectedContent);
+  dart.addTypeCaches(selection.SelectedContent);
+  dart.setLibraryUri(selection.SelectedContent, I[0]);
+  dart.setFieldSignature(selection.SelectedContent, () => ({
+    __proto__: dart.getFields(selection.SelectedContent.__proto__),
+    plainText: dart.finalFieldType(core.String)
+  }));
+  selection.Selectable = class Selectable extends core.Object {};
+  selection.Selectable[dart.mixinOn] = Object => class Selectable extends Object {};
+  (selection.Selectable[dart.mixinNew] = function() {
+  }).prototype = selection.Selectable.prototype;
+  dart.addTypeTests(selection.Selectable);
+  dart.addTypeCaches(selection.Selectable);
+  selection.Selectable[dart.implements] = () => [selection.SelectionHandler, core.Object];
+  dart.setLibraryUri(selection.Selectable, I[0]);
+  var _registrar = dart.privateName(selection, "_registrar");
+  var _subscribedToSelectionRegistrar = dart.privateName(selection, "_subscribedToSelectionRegistrar");
+  var _updateSelectionRegistrarSubscription = dart.privateName(selection, "_updateSelectionRegistrarSubscription");
+  var _removeSelectionRegistrarSubscription = dart.privateName(selection, "_removeSelectionRegistrarSubscription");
+  selection.SelectionRegistrant = class SelectionRegistrant extends selection.Selectable {};
+  selection.SelectionRegistrant[dart.mixinOn] = Selectable => class SelectionRegistrant extends Selectable {
+    get registrar() {
+      return this[_registrar];
+    }
+    set registrar(value) {
+      if (dart.equals(value, this[_registrar])) {
+        return;
+      }
+      if (value == null) {
+        this.removeListener(dart.bind(this, _updateSelectionRegistrarSubscription));
+      } else if (this[_registrar] == null) {
+        this.addListener(dart.bind(this, _updateSelectionRegistrarSubscription));
+      }
+      this[_removeSelectionRegistrarSubscription]();
+      this[_registrar] = value;
+      this[_updateSelectionRegistrarSubscription]();
+    }
+    dispose() {
+      this[_removeSelectionRegistrarSubscription]();
+      super.dispose();
+    }
+    [_updateSelectionRegistrarSubscription]() {
+      if (this[_registrar] == null) {
+        this[_subscribedToSelectionRegistrar] = false;
+        return;
+      }
+      if (this[_subscribedToSelectionRegistrar] && !this.value.hasContent) {
+        dart.nullCheck(this[_registrar]).remove(this);
+        this[_subscribedToSelectionRegistrar] = false;
+      } else if (!this[_subscribedToSelectionRegistrar] && this.value.hasContent) {
+        dart.nullCheck(this[_registrar]).add(this);
+        this[_subscribedToSelectionRegistrar] = true;
+      }
+    }
+    [_removeSelectionRegistrarSubscription]() {
+      if (this[_subscribedToSelectionRegistrar]) {
+        dart.nullCheck(this[_registrar]).remove(this);
+        this[_subscribedToSelectionRegistrar] = false;
+      }
+    }
+  };
+  (selection.SelectionRegistrant[dart.mixinNew] = function() {
+    this[_registrar] = null;
+    this[_subscribedToSelectionRegistrar] = false;
+  }).prototype = selection.SelectionRegistrant.prototype;
+  dart.addTypeTests(selection.SelectionRegistrant);
+  dart.addTypeCaches(selection.SelectionRegistrant);
+  selection.SelectionRegistrant[dart.implements] = () => [selection.Selectable];
+  dart.setMethodSignature(selection.SelectionRegistrant, () => ({
+    __proto__: dart.getMethods(selection.SelectionRegistrant.__proto__),
+    dispose: dart.fnType(dart.void, []),
+    [_updateSelectionRegistrarSubscription]: dart.fnType(dart.void, []),
+    [_removeSelectionRegistrarSubscription]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(selection.SelectionRegistrant, () => ({
+    __proto__: dart.getGetters(selection.SelectionRegistrant.__proto__),
+    registrar: dart.nullable(selection.SelectionRegistrar)
+  }));
+  dart.setSetterSignature(selection.SelectionRegistrant, () => ({
+    __proto__: dart.getSetters(selection.SelectionRegistrant.__proto__),
+    registrar: dart.nullable(selection.SelectionRegistrar)
+  }));
+  dart.setLibraryUri(selection.SelectionRegistrant, I[0]);
+  dart.setFieldSignature(selection.SelectionRegistrant, () => ({
+    __proto__: dart.getFields(selection.SelectionRegistrant.__proto__),
+    [_registrar]: dart.fieldType(dart.nullable(selection.SelectionRegistrar)),
+    [_subscribedToSelectionRegistrar]: dart.fieldType(core.bool)
+  }));
+  selection.SelectionUtils = class SelectionUtils extends core.Object {
+    static ['_#_#tearOff']() {
+      return new selection.SelectionUtils.__();
+    }
+    static getResultBasedOnRect(targetRect, point) {
+      if (targetRect.contains(point)) {
+        return selection.SelectionResult.end;
+      }
+      if (point.dy < targetRect.top) {
+        return selection.SelectionResult.previous;
+      }
+      if (point.dy > targetRect.bottom) {
+        return selection.SelectionResult.next;
+      }
+      return point.dx >= targetRect.right ? selection.SelectionResult.next : selection.SelectionResult.previous;
+    }
+    static adjustDragOffset(targetRect, point, opts) {
+      let direction = opts && 'direction' in opts ? opts.direction : C[6] || CT.C6;
+      if (targetRect.contains(point)) {
+        return point;
+      }
+      if (point.dy <= targetRect.top || point.dy <= targetRect.bottom && point.dx <= targetRect.left) {
+        return direction === ui.TextDirection.ltr ? targetRect.topLeft : targetRect.topRight;
+      } else {
+        return direction === ui.TextDirection.ltr ? targetRect.bottomRight : targetRect.bottomLeft;
+      }
+    }
+  };
+  (selection.SelectionUtils.__ = function() {
+    ;
+  }).prototype = selection.SelectionUtils.prototype;
+  dart.addTypeTests(selection.SelectionUtils);
+  dart.addTypeCaches(selection.SelectionUtils);
+  dart.setStaticMethodSignature(selection.SelectionUtils, () => ['getResultBasedOnRect', 'adjustDragOffset']);
+  dart.setLibraryUri(selection.SelectionUtils, I[0]);
+  selection.SelectionEventType = class SelectionEventType extends core._Enum {
+    toString() {
+      return "SelectionEventType." + this[_name];
+    }
+  };
+  (selection.SelectionEventType.new = function(index, name) {
+    selection.SelectionEventType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = selection.SelectionEventType.prototype;
+  dart.addTypeTests(selection.SelectionEventType);
+  dart.addTypeCaches(selection.SelectionEventType);
+  dart.setLibraryUri(selection.SelectionEventType, I[0]);
+  dart.setStaticFieldSignature(selection.SelectionEventType, () => ['values', 'startEdgeUpdate', 'endEdgeUpdate', 'clear', 'selectAll', 'selectWord']);
+  dart.defineExtensionMethods(selection.SelectionEventType, ['toString']);
+  dart.defineLazy(selection.SelectionEventType, {
+    /*selection.SelectionEventType.values*/get values() {
+      return C[7] || CT.C7;
+    },
+    /*selection.SelectionEventType.startEdgeUpdate*/get startEdgeUpdate() {
+      return C[8] || CT.C8;
+    },
+    /*selection.SelectionEventType.endEdgeUpdate*/get endEdgeUpdate() {
+      return C[9] || CT.C9;
+    },
+    /*selection.SelectionEventType.clear*/get clear() {
+      return C[10] || CT.C10;
+    },
+    /*selection.SelectionEventType.selectAll*/get selectAll() {
+      return C[11] || CT.C11;
+    },
+    /*selection.SelectionEventType.selectWord*/get selectWord() {
+      return C[12] || CT.C12;
+    }
+  }, false);
+  var type$ = dart.privateName(selection, "SelectionEvent.type");
+  selection.SelectionEvent = class SelectionEvent extends core.Object {
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+  };
+  (selection.SelectionEvent.__ = function(type) {
+    this[type$] = type;
+    ;
+  }).prototype = selection.SelectionEvent.prototype;
+  dart.addTypeTests(selection.SelectionEvent);
+  dart.addTypeCaches(selection.SelectionEvent);
+  dart.setLibraryUri(selection.SelectionEvent, I[0]);
+  dart.setFieldSignature(selection.SelectionEvent, () => ({
+    __proto__: dart.getFields(selection.SelectionEvent.__proto__),
+    type: dart.finalFieldType(selection.SelectionEventType)
+  }));
+  selection.SelectAllSelectionEvent = class SelectAllSelectionEvent extends selection.SelectionEvent {
+    static ['_#new#tearOff']() {
+      return new selection.SelectAllSelectionEvent.new();
+    }
+  };
+  (selection.SelectAllSelectionEvent.new = function() {
+    selection.SelectAllSelectionEvent.__proto__.__.call(this, selection.SelectionEventType.selectAll);
+    ;
+  }).prototype = selection.SelectAllSelectionEvent.prototype;
+  dart.addTypeTests(selection.SelectAllSelectionEvent);
+  dart.addTypeCaches(selection.SelectAllSelectionEvent);
+  dart.setLibraryUri(selection.SelectAllSelectionEvent, I[0]);
+  selection.ClearSelectionEvent = class ClearSelectionEvent extends selection.SelectionEvent {
+    static ['_#new#tearOff']() {
+      return new selection.ClearSelectionEvent.new();
+    }
+  };
+  (selection.ClearSelectionEvent.new = function() {
+    selection.ClearSelectionEvent.__proto__.__.call(this, selection.SelectionEventType.clear);
+    ;
+  }).prototype = selection.ClearSelectionEvent.prototype;
+  dart.addTypeTests(selection.ClearSelectionEvent);
+  dart.addTypeCaches(selection.ClearSelectionEvent);
+  dart.setLibraryUri(selection.ClearSelectionEvent, I[0]);
+  var globalPosition$ = dart.privateName(selection, "SelectWordSelectionEvent.globalPosition");
+  selection.SelectWordSelectionEvent = class SelectWordSelectionEvent extends selection.SelectionEvent {
+    get globalPosition() {
+      return this[globalPosition$];
+    }
+    set globalPosition(value) {
+      super.globalPosition = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+      return new selection.SelectWordSelectionEvent.new({globalPosition: globalPosition});
+    }
+  };
+  (selection.SelectWordSelectionEvent.new = function(opts) {
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+    this[globalPosition$] = globalPosition;
+    selection.SelectWordSelectionEvent.__proto__.__.call(this, selection.SelectionEventType.selectWord);
+    ;
+  }).prototype = selection.SelectWordSelectionEvent.prototype;
+  dart.addTypeTests(selection.SelectWordSelectionEvent);
+  dart.addTypeCaches(selection.SelectWordSelectionEvent);
+  dart.setLibraryUri(selection.SelectWordSelectionEvent, I[0]);
+  dart.setFieldSignature(selection.SelectWordSelectionEvent, () => ({
+    __proto__: dart.getFields(selection.SelectWordSelectionEvent.__proto__),
+    globalPosition: dart.finalFieldType(ui.Offset)
+  }));
+  var globalPosition$0 = dart.privateName(selection, "SelectionEdgeUpdateEvent.globalPosition");
+  selection.SelectionEdgeUpdateEvent = class SelectionEdgeUpdateEvent extends selection.SelectionEvent {
+    get globalPosition() {
+      return this[globalPosition$0];
+    }
+    set globalPosition(value) {
+      super.globalPosition = value;
+    }
+    static ['_#forStart#tearOff'](opts) {
+      let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+      return new selection.SelectionEdgeUpdateEvent.forStart({globalPosition: globalPosition});
+    }
+    static ['_#forEnd#tearOff'](opts) {
+      let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+      return new selection.SelectionEdgeUpdateEvent.forEnd({globalPosition: globalPosition});
+    }
+  };
+  (selection.SelectionEdgeUpdateEvent.forStart = function(opts) {
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+    this[globalPosition$0] = globalPosition;
+    selection.SelectionEdgeUpdateEvent.__proto__.__.call(this, selection.SelectionEventType.startEdgeUpdate);
+    ;
+  }).prototype = selection.SelectionEdgeUpdateEvent.prototype;
+  (selection.SelectionEdgeUpdateEvent.forEnd = function(opts) {
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+    this[globalPosition$0] = globalPosition;
+    selection.SelectionEdgeUpdateEvent.__proto__.__.call(this, selection.SelectionEventType.endEdgeUpdate);
+    ;
+  }).prototype = selection.SelectionEdgeUpdateEvent.prototype;
+  dart.addTypeTests(selection.SelectionEdgeUpdateEvent);
+  dart.addTypeCaches(selection.SelectionEdgeUpdateEvent);
+  dart.setLibraryUri(selection.SelectionEdgeUpdateEvent, I[0]);
+  dart.setFieldSignature(selection.SelectionEdgeUpdateEvent, () => ({
+    __proto__: dart.getFields(selection.SelectionEdgeUpdateEvent.__proto__),
+    globalPosition: dart.finalFieldType(ui.Offset)
+  }));
+  selection.SelectionRegistrar = class SelectionRegistrar extends core.Object {};
+  (selection.SelectionRegistrar.new = function() {
+    ;
+  }).prototype = selection.SelectionRegistrar.prototype;
+  dart.addTypeTests(selection.SelectionRegistrar);
+  dart.addTypeCaches(selection.SelectionRegistrar);
+  dart.setLibraryUri(selection.SelectionRegistrar, I[0]);
+  selection.SelectionStatus = class SelectionStatus extends core._Enum {
+    toString() {
+      return "SelectionStatus." + this[_name];
+    }
+  };
+  (selection.SelectionStatus.new = function(index, name) {
+    selection.SelectionStatus.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = selection.SelectionStatus.prototype;
+  dart.addTypeTests(selection.SelectionStatus);
+  dart.addTypeCaches(selection.SelectionStatus);
+  dart.setLibraryUri(selection.SelectionStatus, I[0]);
+  dart.setStaticFieldSignature(selection.SelectionStatus, () => ['values', 'uncollapsed', 'collapsed', 'none']);
+  dart.defineExtensionMethods(selection.SelectionStatus, ['toString']);
+  dart.defineLazy(selection.SelectionStatus, {
+    /*selection.SelectionStatus.values*/get values() {
+      return C[13] || CT.C13;
+    },
+    /*selection.SelectionStatus.uncollapsed*/get uncollapsed() {
+      return C[14] || CT.C14;
+    },
+    /*selection.SelectionStatus.collapsed*/get collapsed() {
+      return C[15] || CT.C15;
+    },
+    /*selection.SelectionStatus.none*/get none() {
+      return C[16] || CT.C16;
+    }
+  }, false);
+  var startSelectionPoint$ = dart.privateName(selection, "SelectionGeometry.startSelectionPoint");
+  var endSelectionPoint$ = dart.privateName(selection, "SelectionGeometry.endSelectionPoint");
+  var status$ = dart.privateName(selection, "SelectionGeometry.status");
+  var hasContent$ = dart.privateName(selection, "SelectionGeometry.hasContent");
+  selection.SelectionGeometry = class SelectionGeometry extends core.Object {
+    get startSelectionPoint() {
+      return this[startSelectionPoint$];
+    }
+    set startSelectionPoint(value) {
+      super.startSelectionPoint = value;
+    }
+    get endSelectionPoint() {
+      return this[endSelectionPoint$];
+    }
+    set endSelectionPoint(value) {
+      super.endSelectionPoint = value;
+    }
+    get status() {
+      return this[status$];
+    }
+    set status(value) {
+      super.status = value;
+    }
+    get hasContent() {
+      return this[hasContent$];
+    }
+    set hasContent(value) {
+      super.hasContent = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let startSelectionPoint = opts && 'startSelectionPoint' in opts ? opts.startSelectionPoint : null;
+      let endSelectionPoint = opts && 'endSelectionPoint' in opts ? opts.endSelectionPoint : null;
+      let status = opts && 'status' in opts ? opts.status : null;
+      let hasContent = opts && 'hasContent' in opts ? opts.hasContent : null;
+      return new selection.SelectionGeometry.new({startSelectionPoint: startSelectionPoint, endSelectionPoint: endSelectionPoint, status: status, hasContent: hasContent});
+    }
+    get hasSelection() {
+      return this.status !== selection.SelectionStatus.none;
+    }
+    copyWith(opts) {
+      let t6, t6$, t6$0, t6$1;
+      let startSelectionPoint = opts && 'startSelectionPoint' in opts ? opts.startSelectionPoint : null;
+      let endSelectionPoint = opts && 'endSelectionPoint' in opts ? opts.endSelectionPoint : null;
+      let status = opts && 'status' in opts ? opts.status : null;
+      let hasContent = opts && 'hasContent' in opts ? opts.hasContent : null;
+      return new selection.SelectionGeometry.new({startSelectionPoint: (t6 = startSelectionPoint, t6 == null ? this.startSelectionPoint : t6), endSelectionPoint: (t6$ = endSelectionPoint, t6$ == null ? this.endSelectionPoint : t6$), status: (t6$0 = status, t6$0 == null ? this.status : t6$0), hasContent: (t6$1 = hasContent, t6$1 == null ? this.hasContent : t6$1)});
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) {
+        return true;
+      }
+      if (!other[$runtimeType]._equals(this[$runtimeType])) {
+        return false;
+      }
+      return selection.SelectionGeometry.is(other) && dart.equals(other.startSelectionPoint, this.startSelectionPoint) && dart.equals(other.endSelectionPoint, this.endSelectionPoint) && other.status === this.status && other.hasContent === this.hasContent;
+    }
+    get hashCode() {
+      return core.Object.hash(this.startSelectionPoint, this.endSelectionPoint, this.status, this.hasContent);
+    }
+  };
+  (selection.SelectionGeometry.new = function(opts) {
+    let startSelectionPoint = opts && 'startSelectionPoint' in opts ? opts.startSelectionPoint : null;
+    let endSelectionPoint = opts && 'endSelectionPoint' in opts ? opts.endSelectionPoint : null;
+    let status = opts && 'status' in opts ? opts.status : null;
+    let hasContent = opts && 'hasContent' in opts ? opts.hasContent : null;
+    this[startSelectionPoint$] = startSelectionPoint;
+    this[endSelectionPoint$] = endSelectionPoint;
+    this[status$] = status;
+    this[hasContent$] = hasContent;
+    if (!(startSelectionPoint == null && endSelectionPoint == null || status !== selection.SelectionStatus.none)) dart.assertFailed(null, I[1], 452, 15, "(startSelectionPoint == null && endSelectionPoint == null) || status != SelectionStatus.none");
+    ;
+  }).prototype = selection.SelectionGeometry.prototype;
+  dart.addTypeTests(selection.SelectionGeometry);
+  dart.addTypeCaches(selection.SelectionGeometry);
+  dart.setMethodSignature(selection.SelectionGeometry, () => ({
+    __proto__: dart.getMethods(selection.SelectionGeometry.__proto__),
+    copyWith: dart.fnType(selection.SelectionGeometry, [], {endSelectionPoint: dart.nullable(selection.SelectionPoint), hasContent: dart.nullable(core.bool), startSelectionPoint: dart.nullable(selection.SelectionPoint), status: dart.nullable(selection.SelectionStatus)}, {})
+  }));
+  dart.setGetterSignature(selection.SelectionGeometry, () => ({
+    __proto__: dart.getGetters(selection.SelectionGeometry.__proto__),
+    hasSelection: core.bool
+  }));
+  dart.setLibraryUri(selection.SelectionGeometry, I[0]);
+  dart.setFieldSignature(selection.SelectionGeometry, () => ({
+    __proto__: dart.getFields(selection.SelectionGeometry.__proto__),
+    startSelectionPoint: dart.finalFieldType(dart.nullable(selection.SelectionPoint)),
+    endSelectionPoint: dart.finalFieldType(dart.nullable(selection.SelectionPoint)),
+    status: dart.finalFieldType(selection.SelectionStatus),
+    hasContent: dart.finalFieldType(core.bool)
+  }));
+  dart.defineExtensionMethods(selection.SelectionGeometry, ['_equals']);
+  dart.defineExtensionAccessors(selection.SelectionGeometry, ['hashCode']);
+  var localPosition$ = dart.privateName(selection, "SelectionPoint.localPosition");
+  var lineHeight$ = dart.privateName(selection, "SelectionPoint.lineHeight");
+  var handleType$ = dart.privateName(selection, "SelectionPoint.handleType");
+  selection.SelectionPoint = class SelectionPoint extends core.Object {
+    get localPosition() {
+      return this[localPosition$];
+    }
+    set localPosition(value) {
+      super.localPosition = value;
+    }
+    get lineHeight() {
+      return this[lineHeight$];
+    }
+    set lineHeight(value) {
+      super.lineHeight = value;
+    }
+    get handleType() {
+      return this[handleType$];
+    }
+    set handleType(value) {
+      super.handleType = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+      let lineHeight = opts && 'lineHeight' in opts ? opts.lineHeight : null;
+      let handleType = opts && 'handleType' in opts ? opts.handleType : null;
+      return new selection.SelectionPoint.new({localPosition: localPosition, lineHeight: lineHeight, handleType: handleType});
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) {
+        return true;
+      }
+      if (!other[$runtimeType]._equals(this[$runtimeType])) {
+        return false;
+      }
+      return selection.SelectionPoint.is(other) && other.localPosition._equals(this.localPosition) && other.lineHeight === this.lineHeight && other.handleType === this.handleType;
+    }
+    get hashCode() {
+      return core.Object.hash(this.localPosition, this.lineHeight, this.handleType);
+    }
+  };
+  (selection.SelectionPoint.new = function(opts) {
+    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+    let lineHeight = opts && 'lineHeight' in opts ? opts.lineHeight : null;
+    let handleType = opts && 'handleType' in opts ? opts.handleType : null;
+    this[localPosition$] = localPosition;
+    this[lineHeight$] = lineHeight;
+    this[handleType$] = handleType;
+    if (!(localPosition !== null)) dart.assertFailed(null, I[1], 545, 15, "localPosition != null");
+    if (!(lineHeight !== null)) dart.assertFailed(null, I[1], 546, 15, "lineHeight != null");
+    if (!(handleType !== null)) dart.assertFailed(null, I[1], 547, 15, "handleType != null");
+    ;
+  }).prototype = selection.SelectionPoint.prototype;
+  dart.addTypeTests(selection.SelectionPoint);
+  dart.addTypeCaches(selection.SelectionPoint);
+  dart.setLibraryUri(selection.SelectionPoint, I[0]);
+  dart.setFieldSignature(selection.SelectionPoint, () => ({
+    __proto__: dart.getFields(selection.SelectionPoint.__proto__),
+    localPosition: dart.finalFieldType(ui.Offset),
+    lineHeight: dart.finalFieldType(core.double),
+    handleType: dart.finalFieldType(selection.TextSelectionHandleType)
+  }));
+  dart.defineExtensionMethods(selection.SelectionPoint, ['_equals']);
+  dart.defineExtensionAccessors(selection.SelectionPoint, ['hashCode']);
+  selection.TextSelectionHandleType = class TextSelectionHandleType extends core._Enum {
+    toString() {
+      return "TextSelectionHandleType." + this[_name];
+    }
+  };
+  (selection.TextSelectionHandleType.new = function(index, name) {
+    selection.TextSelectionHandleType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = selection.TextSelectionHandleType.prototype;
+  dart.addTypeTests(selection.TextSelectionHandleType);
+  dart.addTypeCaches(selection.TextSelectionHandleType);
+  dart.setLibraryUri(selection.TextSelectionHandleType, I[0]);
+  dart.setStaticFieldSignature(selection.TextSelectionHandleType, () => ['values', 'left', 'right', 'collapsed']);
+  dart.defineExtensionMethods(selection.TextSelectionHandleType, ['toString']);
+  dart.defineLazy(selection.TextSelectionHandleType, {
+    /*selection.TextSelectionHandleType.values*/get values() {
+      return C[17] || CT.C17;
+    },
+    /*selection.TextSelectionHandleType.left*/get left() {
+      return C[18] || CT.C18;
+    },
+    /*selection.TextSelectionHandleType.right*/get right() {
+      return C[19] || CT.C19;
+    },
+    /*selection.TextSelectionHandleType.collapsed*/get collapsed() {
+      return C[20] || CT.C20;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/rendering/selection.dart", {
+    "package:flutter/src/rendering/selection.dart": selection
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["selection.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/rendering/selection.dart.lib.js"}');
+  // Exports:
+  return {
+    src__rendering__selection: selection
+  };
+}));
+
+//# sourceMappingURL=selection.dart.lib.js.map

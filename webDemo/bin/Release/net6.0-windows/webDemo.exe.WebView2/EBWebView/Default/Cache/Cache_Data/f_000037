@@ -1,0 +1,455 @@
+define(['dart_sdk', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/cc_library/src/extension/logger.dart', 'packages/flutter/src/services/text_formatter.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__cc_library__widget__dynamic_form__input_format__text_input_formatter_dart(dart_sdk, packages__flutter__src__services__text_editing_delta$46dart, packages__cc_library__src__extension__logger$46dart, packages__flutter__src__services__text_formatter$46dart, packages__flutter__src__services__text_editing$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text_input = packages__flutter__src__services__text_editing_delta$46dart.src__services__text_input;
+  const logger = packages__cc_library__src__extension__logger$46dart.src__extension__logger;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
+  var text_input_formatter = Object.create(dart.library);
+  var $split = dartx.split;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $join = dartx.join;
+  var $replaceAll = dartx.replaceAll;
+  var $contains = dartx.contains;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $toList = dartx.toList;
+  var $removeAt = dartx.removeAt;
+  var $substring = dartx.substring;
+  var $reversed = dartx.reversed;
+  var $insert = dartx.insert;
+  var $modulo = dartx['%'];
+  var $getRange = dartx.getRange;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:cc_library/widget/dynamic_form/input_format/text_input_formatter.dart"];
+  text_input_formatter.InputFormatterBase = class InputFormatterBase extends core.Object {};
+  (text_input_formatter.InputFormatterBase.new = function() {
+    ;
+  }).prototype = text_input_formatter.InputFormatterBase.prototype;
+  dart.addTypeTests(text_input_formatter.InputFormatterBase);
+  dart.addTypeCaches(text_input_formatter.InputFormatterBase);
+  dart.setLibraryUri(text_input_formatter.InputFormatterBase, I[0]);
+  var decimalSeparator$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.decimalSeparator");
+  var thousandSeparator$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.thousandSeparator");
+  var rightSymbol$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.rightSymbol");
+  var leftSymbol$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.leftSymbol");
+  var precision$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.precision");
+  var isUsePrecision$ = dart.privateName(text_input_formatter, "DecimalInputFormatter.isUsePrecision");
+  var _applyMask = dart.privateName(text_input_formatter, "_applyMask");
+  const TextInputFormatter_InputFormatterBase$36 = class TextInputFormatter_InputFormatterBase extends text_formatter.TextInputFormatter {};
+  (TextInputFormatter_InputFormatterBase$36.new = function() {
+  }).prototype = TextInputFormatter_InputFormatterBase$36.prototype;
+  dart.applyMixin(TextInputFormatter_InputFormatterBase$36, text_input_formatter.InputFormatterBase);
+  text_input_formatter.DecimalInputFormatter = class DecimalInputFormatter extends TextInputFormatter_InputFormatterBase$36 {
+    get decimalSeparator() {
+      return this[decimalSeparator$];
+    }
+    set decimalSeparator(value) {
+      super.decimalSeparator = value;
+    }
+    get thousandSeparator() {
+      return this[thousandSeparator$];
+    }
+    set thousandSeparator(value) {
+      super.thousandSeparator = value;
+    }
+    get rightSymbol() {
+      return this[rightSymbol$];
+    }
+    set rightSymbol(value) {
+      super.rightSymbol = value;
+    }
+    get leftSymbol() {
+      return this[leftSymbol$];
+    }
+    set leftSymbol(value) {
+      super.leftSymbol = value;
+    }
+    get precision() {
+      return this[precision$];
+    }
+    set precision(value) {
+      super.precision = value;
+    }
+    get isUsePrecision() {
+      return this[isUsePrecision$];
+    }
+    set isUsePrecision(value) {
+      super.isUsePrecision = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let decimalSeparator = opts && 'decimalSeparator' in opts ? opts.decimalSeparator : ".";
+      let thousandSeparator = opts && 'thousandSeparator' in opts ? opts.thousandSeparator : ",";
+      let rightSymbol = opts && 'rightSymbol' in opts ? opts.rightSymbol : "";
+      let leftSymbol = opts && 'leftSymbol' in opts ? opts.leftSymbol : "";
+      let precision = opts && 'precision' in opts ? opts.precision : 2;
+      let isUsePrecision = opts && 'isUsePrecision' in opts ? opts.isUsePrecision : false;
+      return new text_input_formatter.DecimalInputFormatter.new({decimalSeparator: decimalSeparator, thousandSeparator: thousandSeparator, rightSymbol: rightSymbol, leftSymbol: leftSymbol, precision: precision, isUsePrecision: isUsePrecision});
+    }
+    formatEditUpdate(oldValue, newValue) {
+      try {
+        let oldValueText = oldValue.text;
+        let newValueText = newValue.text;
+        let lsOld = oldValueText[$split]("");
+        let lsNew = newValueText[$split]("");
+        let lsLast = T.JSArrayOfString().of([]);
+        if (lsNew[$isNotEmpty]) {
+          for (let i = 0; i < lsNew[$length]; i = i + 1) {
+            let t = lsNew[$_get](i);
+            let tOld = "";
+            if (lsOld[$length] > i) {
+              tOld = lsOld[$_get](i);
+            }
+            if (t !== tOld) {
+              if (t === "." || t === ",") {
+                t = this.decimalSeparator;
+              }
+            }
+            lsLast[$add](t);
+          }
+        } else {
+          lsLast = newValueText[$split]("");
+        }
+        let valueNumber = lsLast[$join]("")[$replaceAll](this.thousandSeparator, "")[$replaceAll](this.decimalSeparator, ".")[$replaceAll](this.rightSymbol, "")[$replaceAll](this.leftSymbol, "")[$replaceAll](core.RegExp.new("[^0-9,.]"), "");
+        let text = this.updateValue(valueNumber);
+        let newSelection = newValue.selection.copyWith({baseOffset: text.length - this.rightSymbol.length, extentOffset: text.length - this.rightSymbol.length});
+        return new text_input.TextEditingValue.new({text: text, selection: newSelection, composing: ui.TextRange.empty});
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        let t = dart.stackTrace(e$);
+        if (core.Exception.is(e)) {
+          logger['TypeExtension|Log'](core.String, dart.str(e));
+          return newValue;
+        } else
+          throw e$;
+      }
+    }
+    convertValue(value) {
+      let text = this.updateValue(value);
+      return text;
+    }
+    toNum(value) {
+      try {
+        if (typeof value == 'number') {
+          return core.num.parse(value);
+        }
+        if (value[$contains](".") && this.thousandSeparator === ".") {
+          value = value[$replaceAll](".", ",");
+          value = value + "0";
+        }
+        let valueNumber = value[$replaceAll](this.thousandSeparator, "")[$replaceAll](this.decimalSeparator, ".")[$replaceAll](this.rightSymbol, "")[$replaceAll](this.leftSymbol, "")[$replaceAll](core.RegExp.new("[^0-9,.]"), "");
+        return core.num.parse(valueNumber);
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        let t = dart.stackTrace(e$);
+        if (core.Object.is(e)) {
+          logger['TypeExtension|Log'](core.String, dart.str(e));
+          return 0;
+        } else
+          throw e$;
+      }
+    }
+    revertValue(value) {
+      let valueNumber = value[$replaceAll](this.thousandSeparator, "")[$replaceAll](this.decimalSeparator, ".")[$replaceAll](this.rightSymbol, "")[$replaceAll](this.leftSymbol, "")[$replaceAll](core.RegExp.new("[^0-9,.]"), "");
+      return valueNumber;
+    }
+    updateValue(value) {
+      try {
+        let valueNumber = value;
+        let lastValue = "";
+        if (!this.isUsePrecision) {
+          if (valueNumber[$contains](".")) {
+            let ls = valueNumber[$split](".");
+            if (ls[$isNotEmpty]) {
+              valueNumber = ls[$_get](0);
+              lastValue = this.decimalSeparator + (ls[$length] > 1 ? ls[$_get](1) : "");
+            }
+          }
+        } else {
+          if (valueNumber[$contains](".")) {
+            let ls = valueNumber[$split](".");
+            valueNumber = ls[$_get](0);
+            lastValue = ls[$length] > 1 ? ls[$_get](1) : "";
+            if (lastValue[$isNotEmpty]) {
+              valueNumber = core.double.parse(valueNumber + "." + lastValue)[$toStringAsFixed](this.precision);
+              if (valueNumber[$contains](".")) {
+                ls = valueNumber[$split](".");
+                valueNumber = ls[$_get](0);
+                lastValue = ls[$length] > 1 ? ls[$_get](1) : "";
+              }
+              if (core.double.parse(lastValue) === 0) {
+                lastValue = "";
+              }
+              if (lastValue[$isNotEmpty]) {
+                let l = lastValue[$split]("")[$toList]();
+                for (let i = l[$length] - 1; i >= 0; i = i - 1) {
+                  if (core.int.parse(l[$_get](i)) > 0) {
+                    break;
+                  } else {
+                    l[$removeAt](i);
+                  }
+                }
+                if (l[$isNotEmpty]) {
+                  lastValue = l[$join]("");
+                } else {
+                  lastValue = "";
+                }
+              }
+            }
+            lastValue = this.decimalSeparator + lastValue;
+          }
+        }
+        let masked = this[_applyMask](valueNumber);
+        if (masked[$isNotEmpty]) {
+          if (masked[$substring](masked.length - 1, masked.length) === this.decimalSeparator) {
+            masked = masked[$substring](0, masked.length - 1);
+          }
+          if (lastValue[$isNotEmpty]) {
+            if (masked[$isNotEmpty]) {
+              masked = masked + lastValue;
+            } else {
+              masked = "0" + lastValue;
+            }
+          }
+          if (this.rightSymbol[$isNotEmpty]) {
+            masked = masked + this.rightSymbol;
+          }
+          if (this.leftSymbol[$isNotEmpty]) {
+            masked = this.leftSymbol + masked;
+          }
+        }
+        return masked;
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        let t = dart.stackTrace(e$);
+        if (core.Object.is(e)) {
+          logger['TypeExtension|Log'](core.String, dart.str(e));
+          return value;
+        } else
+          throw e$;
+      }
+    }
+    [_applyMask](value) {
+      let textRepresentation = value[$split]("")[$reversed][$toList]({growable: true});
+      for (let i = 3; true; i = i + 4) {
+        if (textRepresentation[$length] > i) {
+          textRepresentation[$insert](i, this.thousandSeparator);
+        } else {
+          break;
+        }
+      }
+      return textRepresentation[$reversed][$join]("");
+    }
+  };
+  (text_input_formatter.DecimalInputFormatter.new = function(opts) {
+    let decimalSeparator = opts && 'decimalSeparator' in opts ? opts.decimalSeparator : ".";
+    let thousandSeparator = opts && 'thousandSeparator' in opts ? opts.thousandSeparator : ",";
+    let rightSymbol = opts && 'rightSymbol' in opts ? opts.rightSymbol : "";
+    let leftSymbol = opts && 'leftSymbol' in opts ? opts.leftSymbol : "";
+    let precision = opts && 'precision' in opts ? opts.precision : 2;
+    let isUsePrecision = opts && 'isUsePrecision' in opts ? opts.isUsePrecision : false;
+    this[decimalSeparator$] = decimalSeparator;
+    this[thousandSeparator$] = thousandSeparator;
+    this[rightSymbol$] = rightSymbol;
+    this[leftSymbol$] = leftSymbol;
+    this[precision$] = precision;
+    this[isUsePrecision$] = isUsePrecision;
+    ;
+  }).prototype = text_input_formatter.DecimalInputFormatter.prototype;
+  dart.addTypeTests(text_input_formatter.DecimalInputFormatter);
+  dart.addTypeCaches(text_input_formatter.DecimalInputFormatter);
+  dart.setMethodSignature(text_input_formatter.DecimalInputFormatter, () => ({
+    __proto__: dart.getMethods(text_input_formatter.DecimalInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]),
+    convertValue: dart.fnType(core.String, [core.String]),
+    toNum: dart.fnType(core.num, [core.String]),
+    revertValue: dart.fnType(core.String, [core.String]),
+    updateValue: dart.fnType(core.String, [core.String]),
+    [_applyMask]: dart.fnType(core.String, [core.String])
+  }));
+  dart.setLibraryUri(text_input_formatter.DecimalInputFormatter, I[0]);
+  dart.setFieldSignature(text_input_formatter.DecimalInputFormatter, () => ({
+    __proto__: dart.getFields(text_input_formatter.DecimalInputFormatter.__proto__),
+    decimalSeparator: dart.finalFieldType(core.String),
+    thousandSeparator: dart.finalFieldType(core.String),
+    rightSymbol: dart.finalFieldType(core.String),
+    leftSymbol: dart.finalFieldType(core.String),
+    precision: dart.finalFieldType(core.int),
+    isUsePrecision: dart.finalFieldType(core.bool)
+  }));
+  const TextInputFormatter_InputFormatterBase$36$ = class TextInputFormatter_InputFormatterBase extends text_formatter.TextInputFormatter {};
+  (TextInputFormatter_InputFormatterBase$36$.new = function() {
+  }).prototype = TextInputFormatter_InputFormatterBase$36$.prototype;
+  dart.applyMixin(TextInputFormatter_InputFormatterBase$36$, text_input_formatter.InputFormatterBase);
+  text_input_formatter.CardNumberFormatter = class CardNumberFormatter extends TextInputFormatter_InputFormatterBase$36$ {
+    formatEditUpdate(previousValue, nextValue) {
+      if (nextValue.selection.baseOffset === 0) {
+        return nextValue;
+      }
+      let bufferString = this.updateValue(nextValue.text);
+      let string = bufferString;
+      return nextValue.copyWith({text: string, selection: new text_editing.TextSelection.collapsed({offset: string.length})});
+    }
+    updateValue(text) {
+      let inputText = text[$replaceAll](" ", "");
+      let bufferString = new core.StringBuffer.new();
+      for (let i = 0; i < inputText.length; i = i + 1) {
+        bufferString.write(inputText[$_get](i));
+        let nonZeroIndexValue = i + 1;
+        if (nonZeroIndexValue[$modulo](4) === 0 && nonZeroIndexValue !== inputText.length) {
+          bufferString.write(" ");
+        }
+      }
+      return bufferString.toString();
+    }
+    convertValue(value) {
+      let text = this.updateValue(value);
+      return text;
+    }
+    revertValue(value) {
+      let valueNumber = value[$replaceAll](" ", "");
+      return valueNumber;
+    }
+    toNum(value) {
+      try {
+        return core.num.parse(value);
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        if (core.Object.is(e)) {
+          return 0;
+        } else
+          throw e$;
+      }
+    }
+    static ['_#new#tearOff']() {
+      return new text_input_formatter.CardNumberFormatter.new();
+    }
+  };
+  (text_input_formatter.CardNumberFormatter.new = function() {
+    ;
+  }).prototype = text_input_formatter.CardNumberFormatter.prototype;
+  dart.addTypeTests(text_input_formatter.CardNumberFormatter);
+  dart.addTypeCaches(text_input_formatter.CardNumberFormatter);
+  dart.setMethodSignature(text_input_formatter.CardNumberFormatter, () => ({
+    __proto__: dart.getMethods(text_input_formatter.CardNumberFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]),
+    updateValue: dart.fnType(core.String, [core.String]),
+    convertValue: dart.fnType(core.String, [core.String]),
+    revertValue: dart.fnType(core.String, [core.String]),
+    toNum: dart.fnType(core.num, [core.String])
+  }));
+  dart.setLibraryUri(text_input_formatter.CardNumberFormatter, I[0]);
+  var mask$ = dart.privateName(text_input_formatter, "CardTextFormatter.mask");
+  var separator$ = dart.privateName(text_input_formatter, "CardTextFormatter.separator");
+  const TextInputFormatter_InputFormatterBase$36$0 = class TextInputFormatter_InputFormatterBase extends text_formatter.TextInputFormatter {};
+  (TextInputFormatter_InputFormatterBase$36$0.new = function() {
+  }).prototype = TextInputFormatter_InputFormatterBase$36$0.prototype;
+  dart.applyMixin(TextInputFormatter_InputFormatterBase$36$0, text_input_formatter.InputFormatterBase);
+  text_input_formatter.CardTextFormatter = class CardTextFormatter extends TextInputFormatter_InputFormatterBase$36$0 {
+    get mask() {
+      return this[mask$];
+    }
+    set mask(value) {
+      super.mask = value;
+    }
+    get separator() {
+      return this[separator$];
+    }
+    set separator(value) {
+      super.separator = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let mask = opts && 'mask' in opts ? opts.mask : null;
+      let separator = opts && 'separator' in opts ? opts.separator : null;
+      return new text_input_formatter.CardTextFormatter.new({mask: mask, separator: separator});
+    }
+    formatEditUpdate(oldValue, newValue) {
+      if (newValue.text[$isNotEmpty]) {
+        if (newValue.text.length > oldValue.text.length) {
+          if (newValue.text.length > this.mask.length) {
+            return oldValue;
+          }
+          if (newValue.text.length < this.mask.length && this.mask[$_get](newValue.text.length - 1) === this.separator) {
+            return new text_input.TextEditingValue.new({text: oldValue.text + this.separator + newValue.text[$substring](newValue.text.length - 1), selection: new text_editing.TextSelection.collapsed({offset: newValue.selection.end + 1})});
+          }
+        }
+      }
+      return newValue;
+    }
+    convertValue(value) {
+      if (value[$isNotEmpty]) {
+        let lsValue = value[$split]("");
+        let lsMask = this.mask[$split]("");
+        for (let i = 0; i < lsMask[$length]; i = i + 1) {
+          if (lsValue[$length] > i) {
+            if (this.mask[$_get](i) === this.separator) {
+              lsMask[$insert](i, this.separator);
+            }
+          }
+        }
+        return lsValue[$getRange](0, lsValue[$length] > lsMask[$length] ? lsMask[$length] : lsValue[$length])[$join]("");
+      }
+      return value;
+    }
+    revertValue(value) {
+      let valueNumber = value[$replaceAll](this.separator, "");
+      return valueNumber;
+    }
+    toNum(value) {
+      try {
+        return core.num.parse(value);
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        if (core.Object.is(e)) {
+          return 0;
+        } else
+          throw e$;
+      }
+    }
+  };
+  (text_input_formatter.CardTextFormatter.new = function(opts) {
+    let mask = opts && 'mask' in opts ? opts.mask : null;
+    let separator = opts && 'separator' in opts ? opts.separator : null;
+    this[mask$] = mask;
+    this[separator$] = separator;
+    ;
+  }).prototype = text_input_formatter.CardTextFormatter.prototype;
+  dart.addTypeTests(text_input_formatter.CardTextFormatter);
+  dart.addTypeCaches(text_input_formatter.CardTextFormatter);
+  dart.setMethodSignature(text_input_formatter.CardTextFormatter, () => ({
+    __proto__: dart.getMethods(text_input_formatter.CardTextFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]),
+    convertValue: dart.fnType(core.String, [core.String]),
+    revertValue: dart.fnType(core.String, [core.String]),
+    toNum: dart.fnType(core.num, [core.String])
+  }));
+  dart.setLibraryUri(text_input_formatter.CardTextFormatter, I[0]);
+  dart.setFieldSignature(text_input_formatter.CardTextFormatter, () => ({
+    __proto__: dart.getFields(text_input_formatter.CardTextFormatter.__proto__),
+    mask: dart.finalFieldType(core.String),
+    separator: dart.finalFieldType(core.String)
+  }));
+  dart.trackLibraries("packages/cc_library/widget/dynamic_form/input_format/text_input_formatter.dart", {
+    "package:cc_library/widget/dynamic_form/input_format/text_input_formatter.dart": text_input_formatter
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["text_input_formatter.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/dynamic_form/input_format/text_input_formatter.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__dynamic_form__input_format__text_input_formatter: text_input_formatter
+  };
+}));
+
+//# sourceMappingURL=text_input_formatter.dart.lib.js.map

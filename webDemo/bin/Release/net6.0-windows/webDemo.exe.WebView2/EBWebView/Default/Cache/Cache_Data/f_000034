@@ -1,0 +1,1567 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/cc_library/widget/dynamic_form/enum/enum_dynamic_form.dart', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/cc_library/widget/dynamic_form/model/dialog_select_box.dart', 'packages/cc_library/util/cc_define_prototypes.dart', 'packages/cc_library/src/extension/logger.dart', 'packages/get/get_rx/src/rx_types/rx_types.dart', 'packages/cc_library/responsive/divider_layout.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/services/text_formatter.dart', 'packages/intl/src/intl/date_format.dart', 'packages/flutter/src/material/date.dart'], (function load__packages__cc_library__widget__dynamic_form__model__select_box_model_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart, packages__flutter__src__services__text_editing_delta$46dart, packages__cc_library__widget__dynamic_form__model__dialog_select_box$46dart, packages__cc_library__util__cc_define_prototypes$46dart, packages__cc_library__src__extension__logger$46dart, packages__get__get_rx__src__rx_types__rx_types$46dart, packages__cc_library__responsive__divider_layout$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__services__text_formatter$46dart, packages__intl__src__intl__date_format$46dart, packages__flutter__src__material__date$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const editable_text = packages__flutter__src__widgets__title$46dart.src__widgets__editable_text;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const enum_dynamic_form = packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart.widget__dynamic_form__enum__enum_dynamic_form;
+  const text_input = packages__flutter__src__services__text_editing_delta$46dart.src__services__text_input;
+  const dialog_select_box = packages__cc_library__widget__dynamic_form__model__dialog_select_box$46dart.widget__dynamic_form__model__dialog_select_box;
+  const cc_define_prototypes = packages__cc_library__util__cc_define_prototypes$46dart.util__cc_define_prototypes;
+  const logger = packages__cc_library__src__extension__logger$46dart.src__extension__logger;
+  const rx_types = packages__get__get_rx__src__rx_types__rx_types$46dart.get_rx__src__rx_types__rx_types;
+  const divider_layout = packages__cc_library__responsive__divider_layout$46dart.responsive__divider_layout;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const date = packages__flutter__src__material__date$46dart.src__material__date;
+  var select_box_model = Object.create(dart.library);
+  var input_radio_button_model = Object.create(dart.library);
+  var input_base = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $isEmpty = dartx.isEmpty;
+  var $toString = dartx.toString;
+  var $join = dartx.join;
+  var $any = dartx.any;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $where = dartx.where;
+  var $first = dartx.first;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    JSArrayOfSelectBoxValue: () => (T$.JSArrayOfSelectBoxValue = dart.constFn(_interceptors.JSArray$(select_box_model.SelectBoxValue)))(),
+    SelectBoxValueToSelectModel: () => (T$.SelectBoxValueToSelectModel = dart.constFn(dart.fnType(dialog_select_box.SelectModel, [select_box_model.SelectBoxValue])))(),
+    ListOfSelectBoxValue: () => (T$.ListOfSelectBoxValue = dart.constFn(core.List$(select_box_model.SelectBoxValue)))(),
+    ListNOfSelectBoxValue: () => (T$.ListNOfSelectBoxValue = dart.constFn(dart.nullable(T$.ListOfSelectBoxValue())))(),
+    SelectBoxValueTobool: () => (T$.SelectBoxValueTobool = dart.constFn(dart.fnType(core.bool, [select_box_model.SelectBoxValue])))(),
+    JSArrayOfWidget: () => (T$.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    StringN: () => (T$.StringN = dart.constFn(dart.nullable(core.String)))(),
+    SelectBoxValueN: () => (T$.SelectBoxValueN = dart.constFn(dart.nullable(select_box_model.SelectBoxValue)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "package:cc_library/widget/dynamic_form/model/select_box_model.dart",
+    "package:cc_library/widget/dynamic_form/model/input_base.dart",
+    "package:cc_library/widget/dynamic_form/model/input_radio_button_model.dart"
+  ];
+  var value$ = dart.privateName(select_box_model, "SelectBoxValue.value");
+  var text$ = dart.privateName(select_box_model, "SelectBoxValue.text");
+  var parentID$ = dart.privateName(select_box_model, "SelectBoxValue.parentID");
+  select_box_model.SelectBoxValue = class SelectBoxValue extends core.Object {
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    get text() {
+      return this[text$];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get parentID() {
+      return this[parentID$];
+    }
+    set parentID(value) {
+      super.parentID = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let value = opts && 'value' in opts ? opts.value : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let parentID = opts && 'parentID' in opts ? opts.parentID : null;
+      return new select_box_model.SelectBoxValue.new({value: value, text: text, parentID: parentID});
+    }
+    toString() {
+      let t0;
+      t0 = this.text;
+      return t0 == null ? "" : t0;
+    }
+  };
+  (select_box_model.SelectBoxValue.new = function(opts) {
+    let value = opts && 'value' in opts ? opts.value : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    let parentID = opts && 'parentID' in opts ? opts.parentID : null;
+    this[value$] = value;
+    this[text$] = text;
+    this[parentID$] = parentID;
+    ;
+  }).prototype = select_box_model.SelectBoxValue.prototype;
+  dart.addTypeTests(select_box_model.SelectBoxValue);
+  dart.addTypeCaches(select_box_model.SelectBoxValue);
+  dart.setLibraryUri(select_box_model.SelectBoxValue, I[0]);
+  dart.setFieldSignature(select_box_model.SelectBoxValue, () => ({
+    __proto__: dart.getFields(select_box_model.SelectBoxValue.__proto__),
+    value: dart.finalFieldType(dart.nullable(core.int)),
+    text: dart.finalFieldType(dart.nullable(core.String)),
+    parentID: dart.finalFieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(select_box_model.SelectBoxValue, ['toString']);
+  var countRefreshUI = dart.privateName(input_base, "InputObject.countRefreshUI");
+  var type = dart.privateName(input_base, "InputObject.type");
+  var groupValueRadio = dart.privateName(input_base, "InputObject.groupValueRadio");
+  var id = dart.privateName(input_base, "InputObject.id");
+  var label = dart.privateName(input_base, "InputObject.label");
+  var hint = dart.privateName(input_base, "InputObject.hint");
+  var color = dart.privateName(input_base, "InputObject.color");
+  var textStyleInput = dart.privateName(input_base, "InputObject.textStyleInput");
+  var textStyleHint = dart.privateName(input_base, "InputObject.textStyleHint");
+  var textStyleLabel = dart.privateName(input_base, "InputObject.textStyleLabel");
+  var heightInput = dart.privateName(input_base, "InputObject.heightInput");
+  var padding = dart.privateName(input_base, "InputObject.padding");
+  var margin = dart.privateName(input_base, "InputObject.margin");
+  var alignment = dart.privateName(input_base, "InputObject.alignment");
+  var border = dart.privateName(input_base, "InputObject.border");
+  var colorBorder = dart.privateName(input_base, "InputObject.colorBorder");
+  var colorFocusedBorder = dart.privateName(input_base, "InputObject.colorFocusedBorder");
+  var colorErrorBorder = dart.privateName(input_base, "InputObject.colorErrorBorder");
+  var colorDisableBorder = dart.privateName(input_base, "InputObject.colorDisableBorder");
+  var widthBorder = dart.privateName(input_base, "InputObject.widthBorder");
+  var backgroundColor = dart.privateName(input_base, "InputObject.backgroundColor");
+  var maxLength = dart.privateName(input_base, "InputObject.maxLength");
+  var numberLine = dart.privateName(input_base, "InputObject.numberLine");
+  var maxLine = dart.privateName(input_base, "InputObject.maxLine");
+  var textInputAction = dart.privateName(input_base, "InputObject.textInputAction");
+  var controller = dart.privateName(input_base, "InputObject.controller");
+  var enable = dart.privateName(input_base, "InputObject.enable");
+  var readOnly = dart.privateName(input_base, "InputObject.readOnly");
+  var enableInteractiveSelection = dart.privateName(input_base, "InputObject.enableInteractiveSelection");
+  var enableCopy = dart.privateName(input_base, "InputObject.enableCopy");
+  var enableSelectAll = dart.privateName(input_base, "InputObject.enableSelectAll");
+  var enablePaste = dart.privateName(input_base, "InputObject.enablePaste");
+  var enableCut = dart.privateName(input_base, "InputObject.enableCut");
+  var suffixType = dart.privateName(input_base, "InputObject.suffixType");
+  var requiredValidate = dart.privateName(input_base, "InputObject.requiredValidate");
+  var textInputFormatter = dart.privateName(input_base, "InputObject.textInputFormatter");
+  var textTypeFormat = dart.privateName(input_base, "InputObject.textTypeFormat");
+  var isVisible = dart.privateName(input_base, "InputObject.isVisible");
+  var isSelectOnFirstFocus = dart.privateName(input_base, "InputObject.isSelectOnFirstFocus");
+  var dateFormat = dart.privateName(input_base, "InputObject.dateFormat");
+  var onConfirm = dart.privateName(input_base, "InputObject.onConfirm");
+  var onChange = dart.privateName(input_base, "InputObject.onChange");
+  var onDelete = dart.privateName(input_base, "InputObject.onDelete");
+  var validateCustomer = dart.privateName(input_base, "InputObject.validateCustomer");
+  var items = dart.privateName(input_base, "InputObject.items");
+  var showSearchInput = dart.privateName(input_base, "InputObject.showSearchInput");
+  var dialogSelectBoxModel = dart.privateName(input_base, "InputObject.dialogSelectBoxModel");
+  var getListItem = dart.privateName(input_base, "InputObject.getListItem");
+  var belowChildrenList = dart.privateName(input_base, "InputObject.belowChildrenList");
+  var rightButton = dart.privateName(input_base, "InputObject.rightButton");
+  var isReverse = dart.privateName(input_base, "InputObject.isReverse");
+  var fileFilter = dart.privateName(input_base, "InputObject.fileFilter");
+  var dateTimeRange = dart.privateName(input_base, "InputObject.dateTimeRange");
+  var valueResult = dart.privateName(input_base, "InputObject.valueResult");
+  var valueResultOld = dart.privateName(input_base, "InputObject.valueResultOld");
+  const _is_InputObject_default = Symbol('_is_InputObject_default');
+  input_base.InputObject$ = dart.generic(T => {
+    var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+    class InputObject extends divider_layout.DividerLayoutModel {
+      get countRefreshUI() {
+        return this[countRefreshUI];
+      }
+      set countRefreshUI(value) {
+        super.countRefreshUI = value;
+      }
+      get type() {
+        return this[type];
+      }
+      set type(value) {
+        this[type] = value;
+      }
+      get groupValueRadio() {
+        return this[groupValueRadio];
+      }
+      set groupValueRadio(value) {
+        this[groupValueRadio] = value;
+      }
+      get id() {
+        return this[id];
+      }
+      set id(value) {
+        this[id] = value;
+      }
+      get label() {
+        return this[label];
+      }
+      set label(value) {
+        this[label] = value;
+      }
+      get hint() {
+        return this[hint];
+      }
+      set hint(value) {
+        this[hint] = value;
+      }
+      get color() {
+        return this[color];
+      }
+      set color(value) {
+        this[color] = value;
+      }
+      get textStyleInput() {
+        return this[textStyleInput];
+      }
+      set textStyleInput(value) {
+        this[textStyleInput] = value;
+      }
+      get textStyleHint() {
+        return this[textStyleHint];
+      }
+      set textStyleHint(value) {
+        this[textStyleHint] = value;
+      }
+      get textStyleLabel() {
+        return this[textStyleLabel];
+      }
+      set textStyleLabel(value) {
+        this[textStyleLabel] = value;
+      }
+      get heightInput() {
+        return this[heightInput];
+      }
+      set heightInput(value) {
+        this[heightInput] = value;
+      }
+      get padding() {
+        return this[padding];
+      }
+      set padding(value) {
+        this[padding] = value;
+      }
+      get margin() {
+        return this[margin];
+      }
+      set margin(value) {
+        this[margin] = value;
+      }
+      get alignment() {
+        return this[alignment];
+      }
+      set alignment(value) {
+        this[alignment] = value;
+      }
+      get border() {
+        return this[border];
+      }
+      set border(value) {
+        this[border] = value;
+      }
+      get colorBorder() {
+        return this[colorBorder];
+      }
+      set colorBorder(value) {
+        this[colorBorder] = value;
+      }
+      get colorFocusedBorder() {
+        return this[colorFocusedBorder];
+      }
+      set colorFocusedBorder(value) {
+        this[colorFocusedBorder] = value;
+      }
+      get colorErrorBorder() {
+        return this[colorErrorBorder];
+      }
+      set colorErrorBorder(value) {
+        this[colorErrorBorder] = value;
+      }
+      get colorDisableBorder() {
+        return this[colorDisableBorder];
+      }
+      set colorDisableBorder(value) {
+        this[colorDisableBorder] = value;
+      }
+      get widthBorder() {
+        return this[widthBorder];
+      }
+      set widthBorder(value) {
+        this[widthBorder] = value;
+      }
+      get backgroundColor() {
+        return this[backgroundColor];
+      }
+      set backgroundColor(value) {
+        this[backgroundColor] = value;
+      }
+      get maxLength() {
+        return this[maxLength];
+      }
+      set maxLength(value) {
+        this[maxLength] = value;
+      }
+      get numberLine() {
+        return this[numberLine];
+      }
+      set numberLine(value) {
+        this[numberLine] = value;
+      }
+      get maxLine() {
+        return this[maxLine];
+      }
+      set maxLine(value) {
+        this[maxLine] = value;
+      }
+      get textInputAction() {
+        return this[textInputAction];
+      }
+      set textInputAction(value) {
+        this[textInputAction] = value;
+      }
+      get controller() {
+        return this[controller];
+      }
+      set controller(value) {
+        this[controller] = value;
+      }
+      get enable() {
+        return this[enable];
+      }
+      set enable(value) {
+        this[enable] = value;
+      }
+      get readOnly() {
+        return this[readOnly];
+      }
+      set readOnly(value) {
+        this[readOnly] = value;
+      }
+      get enableInteractiveSelection() {
+        return this[enableInteractiveSelection];
+      }
+      set enableInteractiveSelection(value) {
+        this[enableInteractiveSelection] = value;
+      }
+      get enableCopy() {
+        return this[enableCopy];
+      }
+      set enableCopy(value) {
+        this[enableCopy] = value;
+      }
+      get enableSelectAll() {
+        return this[enableSelectAll];
+      }
+      set enableSelectAll(value) {
+        this[enableSelectAll] = value;
+      }
+      get enablePaste() {
+        return this[enablePaste];
+      }
+      set enablePaste(value) {
+        this[enablePaste] = value;
+      }
+      get enableCut() {
+        return this[enableCut];
+      }
+      set enableCut(value) {
+        this[enableCut] = value;
+      }
+      get suffixType() {
+        return this[suffixType];
+      }
+      set suffixType(value) {
+        this[suffixType] = value;
+      }
+      get requiredValidate() {
+        return this[requiredValidate];
+      }
+      set requiredValidate(value) {
+        this[requiredValidate] = value;
+      }
+      get textInputFormatter() {
+        return this[textInputFormatter];
+      }
+      set textInputFormatter(value) {
+        this[textInputFormatter] = value;
+      }
+      get textTypeFormat() {
+        return this[textTypeFormat];
+      }
+      set textTypeFormat(value) {
+        this[textTypeFormat] = value;
+      }
+      get isVisible() {
+        return this[isVisible];
+      }
+      set isVisible(value) {
+        this[isVisible] = value;
+      }
+      get isSelectOnFirstFocus() {
+        return this[isSelectOnFirstFocus];
+      }
+      set isSelectOnFirstFocus(value) {
+        this[isSelectOnFirstFocus] = value;
+      }
+      get dateFormat() {
+        return this[dateFormat];
+      }
+      set dateFormat(value) {
+        this[dateFormat] = value;
+      }
+      get onConfirm() {
+        return this[onConfirm];
+      }
+      set onConfirm(value) {
+        this[onConfirm] = value;
+      }
+      get onChange() {
+        return this[onChange];
+      }
+      set onChange(value) {
+        this[onChange] = value;
+      }
+      get onDelete() {
+        return this[onDelete];
+      }
+      set onDelete(value) {
+        this[onDelete] = value;
+      }
+      get validateCustomer() {
+        return this[validateCustomer];
+      }
+      set validateCustomer(value) {
+        this[validateCustomer] = value;
+      }
+      get items() {
+        return this[items];
+      }
+      set items(value) {
+        this[items] = value;
+      }
+      get showSearchInput() {
+        return this[showSearchInput];
+      }
+      set showSearchInput(value) {
+        this[showSearchInput] = value;
+      }
+      get dialogSelectBoxModel() {
+        return this[dialogSelectBoxModel];
+      }
+      set dialogSelectBoxModel(value) {
+        this[dialogSelectBoxModel] = value;
+      }
+      get getListItem() {
+        return this[getListItem];
+      }
+      set getListItem(value) {
+        this[getListItem] = value;
+      }
+      get belowChildrenList() {
+        return this[belowChildrenList];
+      }
+      set belowChildrenList(value) {
+        this[belowChildrenList] = value;
+      }
+      get rightButton() {
+        return this[rightButton];
+      }
+      set rightButton(value) {
+        this[rightButton] = value;
+      }
+      get isReverse() {
+        return this[isReverse];
+      }
+      set isReverse(value) {
+        this[isReverse] = value;
+      }
+      get fileFilter() {
+        return this[fileFilter];
+      }
+      set fileFilter(value) {
+        this[fileFilter] = value;
+      }
+      get dateTimeRange() {
+        return this[dateTimeRange];
+      }
+      set dateTimeRange(value) {
+        this[dateTimeRange] = value;
+      }
+      get valueResult() {
+        return this[valueResult];
+      }
+      set valueResult(value) {
+        this[valueResult] = __t$TN().as(value);
+      }
+      get valueResultOld() {
+        return this[valueResultOld];
+      }
+      set valueResultOld(value) {
+        this[valueResultOld] = __t$TN().as(value);
+      }
+      validate() {
+        if (this.validateCustomer != null) {
+          return T$.StringN().as(dart.dcall(dart.nullCheck(this.validateCustomer), []));
+        }
+        if (dart.nullCheck(this.requiredValidate)) {
+          return this.value != null && dart.toString(this.value)[$isNotEmpty] ? null : dart.str(this.label) + " " + "không hợp lệ";
+        }
+        return null;
+      }
+      isShowSuffix() {
+        if (this.type === enum_dynamic_form.InputObjectType.FILE) {
+          return this.value != null;
+        }
+        if (this.type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI) {
+          return this.value != null && T$.ListOfSelectBoxValue().as(this.value)[$isNotEmpty];
+        }
+        if (this.type === enum_dynamic_form.InputObjectType.SELECTBOX) {
+          return this.value != null;
+        }
+        return this.value != null && dart.toString(this.value)[$isNotEmpty];
+      }
+      get value() {
+        return this.valueResult;
+      }
+      setValue(v) {
+        this.valueResult = T.as(v);
+      }
+      set value(v) {
+        this.valueResult = T.as(v);
+        this.syncController(v);
+      }
+      syncController(v) {
+        if (this.controller != null) {
+          this.valueResultOld = T.as(dart.nullCheck(this.controller).text);
+          dart.nullCheck(this.controller).text = dart.toString(v);
+          if (!dart.equals(this.valueResultOld, v)) {
+            this.refreshUI();
+          }
+        }
+      }
+      refreshUI() {
+        let t1;
+        t1 = this.countRefreshUI;
+        t1.value = t1.value + 1;
+      }
+      dispose() {
+        if (this.controller != null) {
+          dart.nullCheck(this.controller).dispose();
+        }
+        if (this.dialogSelectBoxModel != null) {
+          dart.nullCheck(this.dialogSelectBoxModel).dispose();
+        }
+      }
+      static ['_#new#tearOff'](T) {
+        return new (input_base.InputObject$(T)).new();
+      }
+    }
+    (InputObject.new = function() {
+      this[countRefreshUI] = rx_types['IntExtension|get#obs'](1);
+      this[type] = enum_dynamic_form.InputObjectType.INPUT_TEXT;
+      this[groupValueRadio] = null;
+      this[id] = null;
+      this[label] = null;
+      this[hint] = null;
+      this[color] = null;
+      this[textStyleInput] = null;
+      this[textStyleHint] = null;
+      this[textStyleLabel] = null;
+      this[heightInput] = null;
+      this[padding] = null;
+      this[margin] = null;
+      this[alignment] = null;
+      this[border] = enum_dynamic_form.BorderType.OUTLINE;
+      this[colorBorder] = null;
+      this[colorFocusedBorder] = null;
+      this[colorErrorBorder] = null;
+      this[colorDisableBorder] = null;
+      this[widthBorder] = null;
+      this[backgroundColor] = null;
+      this[maxLength] = null;
+      this[numberLine] = null;
+      this[maxLine] = null;
+      this[textInputAction] = text_input.TextInputAction.next;
+      this[controller] = null;
+      this[enable] = true;
+      this[readOnly] = false;
+      this[enableInteractiveSelection] = null;
+      this[enableCopy] = null;
+      this[enableSelectAll] = null;
+      this[enablePaste] = null;
+      this[enableCut] = null;
+      this[suffixType] = enum_dynamic_form.SuffixType.NONE;
+      this[requiredValidate] = true;
+      this[textInputFormatter] = null;
+      this[textTypeFormat] = enum_dynamic_form.TextTypeFormat.NONE;
+      this[isVisible] = null;
+      this[isSelectOnFirstFocus] = false;
+      this[dateFormat] = null;
+      this[onConfirm] = null;
+      this[onChange] = null;
+      this[onDelete] = null;
+      this[validateCustomer] = null;
+      this[items] = T$.JSArrayOfSelectBoxValue().of([]);
+      this[showSearchInput] = null;
+      this[dialogSelectBoxModel] = null;
+      this[getListItem] = null;
+      this[belowChildrenList] = rx_types['ListExtension|get#obs'](framework.Widget, T$.JSArrayOfWidget().of([]));
+      this[rightButton] = null;
+      this[isReverse] = null;
+      this[fileFilter] = null;
+      this[dateTimeRange] = null;
+      this[valueResult] = null;
+      this[valueResultOld] = null;
+      InputObject.__proto__.new.call(this);
+      ;
+    }).prototype = InputObject.prototype;
+    dart.addTypeTests(InputObject);
+    InputObject.prototype[_is_InputObject_default] = true;
+    dart.addTypeCaches(InputObject);
+    dart.setMethodSignature(InputObject, () => ({
+      __proto__: dart.getMethods(InputObject.__proto__),
+      validate: dart.fnType(dart.nullable(core.String), []),
+      isShowSuffix: dart.fnType(core.bool, []),
+      setValue: dart.fnType(dart.void, [dart.dynamic]),
+      syncController: dart.fnType(dart.void, [dart.dynamic]),
+      refreshUI: dart.fnType(dart.void, []),
+      dispose: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(InputObject, () => ({
+      __proto__: dart.getGetters(InputObject.__proto__),
+      value: dart.nullable(T)
+    }));
+    dart.setSetterSignature(InputObject, () => ({
+      __proto__: dart.getSetters(InputObject.__proto__),
+      value: dart.dynamic
+    }));
+    dart.setLibraryUri(InputObject, I[1]);
+    dart.setFieldSignature(InputObject, () => ({
+      __proto__: dart.getFields(InputObject.__proto__),
+      countRefreshUI: dart.finalFieldType(rx_types.RxInt),
+      type: dart.fieldType(dart.nullable(enum_dynamic_form.InputObjectType)),
+      groupValueRadio: dart.fieldType(dart.nullable(input_radio_button_model.GroupValueRadio)),
+      id: dart.fieldType(dart.nullable(core.String)),
+      label: dart.fieldType(dart.nullable(core.String)),
+      hint: dart.fieldType(dart.nullable(core.String)),
+      color: dart.fieldType(dart.nullable(ui.Color)),
+      textStyleInput: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      textStyleHint: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      textStyleLabel: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      heightInput: dart.fieldType(dart.nullable(core.double)),
+      padding: dart.fieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+      margin: dart.fieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+      alignment: dart.fieldType(dart.nullable(ui.TextAlign)),
+      border: dart.fieldType(dart.nullable(enum_dynamic_form.BorderType)),
+      colorBorder: dart.fieldType(dart.nullable(ui.Color)),
+      colorFocusedBorder: dart.fieldType(dart.nullable(ui.Color)),
+      colorErrorBorder: dart.fieldType(dart.nullable(ui.Color)),
+      colorDisableBorder: dart.fieldType(dart.nullable(ui.Color)),
+      widthBorder: dart.fieldType(dart.nullable(core.double)),
+      backgroundColor: dart.fieldType(dart.nullable(ui.Color)),
+      maxLength: dart.fieldType(dart.nullable(core.int)),
+      numberLine: dart.fieldType(dart.nullable(core.int)),
+      maxLine: dart.fieldType(dart.nullable(core.int)),
+      textInputAction: dart.fieldType(dart.nullable(text_input.TextInputAction)),
+      controller: dart.fieldType(dart.nullable(editable_text.TextEditingController)),
+      enable: dart.fieldType(dart.nullable(core.bool)),
+      readOnly: dart.fieldType(dart.nullable(core.bool)),
+      enableInteractiveSelection: dart.fieldType(dart.nullable(core.bool)),
+      enableCopy: dart.fieldType(dart.nullable(core.bool)),
+      enableSelectAll: dart.fieldType(dart.nullable(core.bool)),
+      enablePaste: dart.fieldType(dart.nullable(core.bool)),
+      enableCut: dart.fieldType(dart.nullable(core.bool)),
+      suffixType: dart.fieldType(dart.nullable(enum_dynamic_form.SuffixType)),
+      requiredValidate: dart.fieldType(dart.nullable(core.bool)),
+      textInputFormatter: dart.fieldType(dart.nullable(text_formatter.TextInputFormatter)),
+      textTypeFormat: dart.fieldType(dart.nullable(enum_dynamic_form.TextTypeFormat)),
+      isVisible: dart.fieldType(dart.nullable(rx_types.RxBool)),
+      isSelectOnFirstFocus: dart.fieldType(dart.nullable(core.bool)),
+      dateFormat: dart.fieldType(dart.nullable(date_format.DateFormat)),
+      onConfirm: dart.fieldType(dart.nullable(core.Function)),
+      onChange: dart.fieldType(dart.nullable(core.Function)),
+      onDelete: dart.fieldType(dart.nullable(core.Function)),
+      validateCustomer: dart.fieldType(dart.nullable(core.Function)),
+      items: dart.fieldType(dart.nullable(core.List$(select_box_model.SelectBoxValue))),
+      showSearchInput: dart.fieldType(dart.nullable(core.bool)),
+      dialogSelectBoxModel: dart.fieldType(dart.nullable(dialog_select_box.DialogSelectBoxModel)),
+      getListItem: dart.fieldType(dart.nullable(dart.fnType(async.Future, []))),
+      belowChildrenList: dart.fieldType(dart.nullable(rx_types.RxList$(framework.Widget))),
+      rightButton: dart.fieldType(dart.nullable(framework.Widget)),
+      isReverse: dart.fieldType(dart.nullable(core.bool)),
+      fileFilter: dart.fieldType(dart.nullable(core.List$(core.String))),
+      dateTimeRange: dart.fieldType(dart.nullable(date.DateTimeRange)),
+      valueResult: dart.fieldType(dart.nullable(T)),
+      valueResultOld: dart.fieldType(dart.nullable(T))
+    }));
+    return InputObject;
+  });
+  input_base.InputObject = input_base.InputObject$();
+  dart.addTypeTests(input_base.InputObject, _is_InputObject_default);
+  const controller$ = Symbol("controller");
+  const type$ = Symbol("type");
+  const id$ = Symbol("id");
+  const label$ = Symbol("label");
+  const hint$ = Symbol("hint");
+  const color$ = Symbol("color");
+  const border$ = Symbol("border");
+  const textInputAction$ = Symbol("textInputAction");
+  const enable$ = Symbol("enable");
+  const readOnly$ = Symbol("readOnly");
+  const suffixType$ = Symbol("suffixType");
+  const requiredValidate$ = Symbol("requiredValidate");
+  const alignment$ = Symbol("alignment");
+  const fileFilter$ = Symbol("fileFilter");
+  const onChange$ = Symbol("onChange");
+  const onDelete$ = Symbol("onDelete");
+  const items$ = Symbol("items");
+  const showSearchInput$ = Symbol("showSearchInput");
+  const isSelectOnFirstFocus$ = Symbol("isSelectOnFirstFocus");
+  const getListItem$ = Symbol("getListItem");
+  const maxLength$ = Symbol("maxLength");
+  const numberLine$ = Symbol("numberLine");
+  const padding$ = Symbol("padding");
+  const maxLine$ = Symbol("maxLine");
+  const isVisible$ = Symbol("isVisible");
+  const colorBorder$ = Symbol("colorBorder");
+  const colorFocusedBorder$ = Symbol("colorFocusedBorder");
+  const colorErrorBorder$ = Symbol("colorErrorBorder");
+  const colorDisableBorder$ = Symbol("colorDisableBorder");
+  const widthBorder$ = Symbol("widthBorder");
+  const backgroundColor$ = Symbol("backgroundColor");
+  const margin$ = Symbol("margin");
+  const heightInput$ = Symbol("heightInput");
+  const textStyleInput$ = Symbol("textStyleInput");
+  const textStyleHint$ = Symbol("textStyleHint");
+  const textStyleLabel$ = Symbol("textStyleLabel");
+  select_box_model.SelectMultiBoxObject = class SelectMultiBoxObject extends input_base.InputObject$(core.List$(select_box_model.SelectBoxValue)) {
+    static ['_#new#tearOff'](opts) {
+      let id = opts && 'id' in opts ? opts.id : null;
+      let type = opts && 'type' in opts ? opts.type : null;
+      let label = opts && 'label' in opts ? opts.label : null;
+      let hint = opts && 'hint' in opts ? opts.hint : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let border = opts && 'border' in opts ? opts.border : null;
+      let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+      let numberLine = opts && 'numberLine' in opts ? opts.numberLine : null;
+      let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+      let enable = opts && 'enable' in opts ? opts.enable : null;
+      let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+      let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+      let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+      let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+      let items = opts && 'items' in opts ? opts.items : null;
+      let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : null;
+      let isSelectOnFirstFocus = opts && 'isSelectOnFirstFocus' in opts ? opts.isSelectOnFirstFocus : null;
+      let getListItem = opts && 'getListItem' in opts ? opts.getListItem : null;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let margin = opts && 'margin' in opts ? opts.margin : null;
+      let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+      let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+      let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+      let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+      let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+      let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+      let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+      let textStyleInput = opts && 'textStyleInput' in opts ? opts.textStyleInput : null;
+      let textStyleHint = opts && 'textStyleHint' in opts ? opts.textStyleHint : null;
+      let textStyleLabel = opts && 'textStyleLabel' in opts ? opts.textStyleLabel : null;
+      let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+      return new select_box_model.SelectMultiBoxObject.new({id: id, type: type, label: label, hint: hint, color: color, border: border, maxLength: maxLength, numberLine: numberLine, textInputAction: textInputAction, enable: enable, readOnly: readOnly, suffixType: suffixType, requiredValidate: requiredValidate, alignment: alignment, onChange: onChange, onDelete: onDelete, items: items, showSearchInput: showSearchInput, isSelectOnFirstFocus: isSelectOnFirstFocus, getListItem: getListItem, padding: padding, margin: margin, maxLine: maxLine, isVisible: isVisible, colorBorder: colorBorder, colorFocusedBorder: colorFocusedBorder, colorErrorBorder: colorErrorBorder, colorDisableBorder: colorDisableBorder, widthBorder: widthBorder, backgroundColor: backgroundColor, heightInput: heightInput, textStyleInput: textStyleInput, textStyleHint: textStyleHint, textStyleLabel: textStyleLabel, responsiveScreens: responsiveScreens});
+    }
+    get value() {
+      return this.valueResult;
+    }
+    set value(v) {
+      if (v == null || dart.toString(v)[$isEmpty]) {
+        this.valueResult = T$.JSArrayOfSelectBoxValue().of([]);
+      } else {
+        this.valueResult = T$.ListNOfSelectBoxValue().as(v);
+      }
+      this.syncController(v);
+    }
+    syncController(v) {
+      try {
+        if (v == null || dart.toString(v)[$isEmpty]) {
+          dart.nullCheck(this.controller).text = "";
+          dart.nullCheck(this.dialogSelectBoxModel).isCheckAll.value = false;
+          for (let element of dart.nullCheck(this.dialogSelectBoxModel).listItem) {
+            element.check.value = false;
+          }
+        } else {
+          dart.nullCheck(this.controller).text = T$.ListOfSelectBoxValue().as(v)[$join]("; ");
+          for (let element of dart.nullCheck(this.dialogSelectBoxModel).listItem) {
+            if (v[$any](dart.fn(val => val.value === element.value, T$.SelectBoxValueTobool()))) {
+              element.check.value = true;
+            } else {
+              element.check.value = false;
+            }
+          }
+        }
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        let t = dart.stackTrace(e$);
+        if (core.Object.is(e)) {
+          logger['TypeExtension|Log'](core.String, dart.str(e));
+        } else
+          throw e$;
+      }
+      this.refreshUI();
+    }
+    set [controller$](x) {
+      super.controller = x;
+    }
+    set [type$](x) {
+      super.type = x;
+    }
+    set [id$](x) {
+      super.id = x;
+    }
+    set [label$](x) {
+      super.label = x;
+    }
+    set [hint$](x) {
+      super.hint = x;
+    }
+    set [color$](x) {
+      super.color = x;
+    }
+    set [border$](x) {
+      super.border = x;
+    }
+    set [textInputAction$](x) {
+      super.textInputAction = x;
+    }
+    set [enable$](x) {
+      super.enable = x;
+    }
+    set [readOnly$](x) {
+      super.readOnly = x;
+    }
+    set [suffixType$](x) {
+      super.suffixType = x;
+    }
+    set [requiredValidate$](x) {
+      super.requiredValidate = x;
+    }
+    set [alignment$](x) {
+      super.alignment = x;
+    }
+    set [fileFilter$](x) {
+      super.fileFilter = x;
+    }
+    set [onChange$](x) {
+      super.onChange = x;
+    }
+    set [onDelete$](x) {
+      super.onDelete = x;
+    }
+    set [items$](x) {
+      super.items = x;
+    }
+    set [showSearchInput$](x) {
+      super.showSearchInput = x;
+    }
+    set [isSelectOnFirstFocus$](x) {
+      super.isSelectOnFirstFocus = x;
+    }
+    set [getListItem$](x) {
+      super.getListItem = x;
+    }
+    set [maxLength$](x) {
+      super.maxLength = x;
+    }
+    set [numberLine$](x) {
+      super.numberLine = x;
+    }
+    set [padding$](x) {
+      super.padding = x;
+    }
+    set [maxLine$](x) {
+      super.maxLine = x;
+    }
+    set [isVisible$](x) {
+      super.isVisible = x;
+    }
+    set [colorBorder$](x) {
+      super.colorBorder = x;
+    }
+    set [colorFocusedBorder$](x) {
+      super.colorFocusedBorder = x;
+    }
+    set [colorErrorBorder$](x) {
+      super.colorErrorBorder = x;
+    }
+    set [colorDisableBorder$](x) {
+      super.colorDisableBorder = x;
+    }
+    set [widthBorder$](x) {
+      super.widthBorder = x;
+    }
+    set [backgroundColor$](x) {
+      super.backgroundColor = x;
+    }
+    set [margin$](x) {
+      super.margin = x;
+    }
+    set [heightInput$](x) {
+      super.heightInput = x;
+    }
+    set [textStyleInput$](x) {
+      super.textStyleInput = x;
+    }
+    set [textStyleHint$](x) {
+      super.textStyleHint = x;
+    }
+    set [textStyleLabel$](x) {
+      super.textStyleLabel = x;
+    }
+  };
+  (select_box_model.SelectMultiBoxObject.new = function(opts) {
+    let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8;
+    let id = opts && 'id' in opts ? opts.id : null;
+    let type = opts && 'type' in opts ? opts.type : null;
+    let label = opts && 'label' in opts ? opts.label : null;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let border = opts && 'border' in opts ? opts.border : null;
+    let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+    let numberLine = opts && 'numberLine' in opts ? opts.numberLine : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let enable = opts && 'enable' in opts ? opts.enable : null;
+    let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+    let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+    let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+    let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+    let items = opts && 'items' in opts ? opts.items : null;
+    let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : null;
+    let isSelectOnFirstFocus = opts && 'isSelectOnFirstFocus' in opts ? opts.isSelectOnFirstFocus : null;
+    let getListItem = opts && 'getListItem' in opts ? opts.getListItem : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+    let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+    let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+    let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+    let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+    let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+    let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+    let textStyleInput = opts && 'textStyleInput' in opts ? opts.textStyleInput : null;
+    let textStyleHint = opts && 'textStyleHint' in opts ? opts.textStyleHint : null;
+    let textStyleLabel = opts && 'textStyleLabel' in opts ? opts.textStyleLabel : null;
+    let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+    select_box_model.SelectMultiBoxObject.__proto__.new.call(this);
+    this[controller$] = new editable_text.TextEditingController.new();
+    this[type$] = (t0 = type, t0 == null ? enum_dynamic_form.InputObjectType.SELECTBOX_MULTI : t0);
+    this[id$] = id;
+    this[label$] = label;
+    this[hint$] = hint;
+    this[color$] = color;
+    this[border$] = (t0$ = border, t0$ == null ? enum_dynamic_form.BorderType.OUTLINE : t0$);
+    this[textInputAction$] = (t0$0 = textInputAction, t0$0 == null ? text_input.TextInputAction.next : t0$0);
+    this[enable$] = (t0$1 = enable, t0$1 == null ? true : t0$1);
+    this[readOnly$] = readOnly;
+    this[suffixType$] = (t0$2 = suffixType, t0$2 == null ? enum_dynamic_form.SuffixType.DELETE : t0$2);
+    this[requiredValidate$] = (t0$3 = requiredValidate, t0$3 == null ? true : t0$3);
+    this[alignment$] = alignment;
+    this[fileFilter$] = this.fileFilter;
+    this[onChange$] = onChange;
+    this[onDelete$] = onDelete;
+    this[items$] = (t0$4 = items, t0$4 == null ? T$.JSArrayOfSelectBoxValue().of([]) : t0$4);
+    this[showSearchInput$] = (t0$5 = showSearchInput, t0$5 == null ? true : t0$5);
+    this[isSelectOnFirstFocus$] = (t0$6 = isSelectOnFirstFocus, t0$6 == null ? false : t0$6);
+    this[getListItem$] = getListItem;
+    this[maxLength$] = maxLength;
+    this[numberLine$] = numberLine;
+    this[padding$] = padding;
+    this[maxLine$] = maxLine;
+    this[isVisible$] = isVisible;
+    this[colorBorder$] = colorBorder;
+    this[colorFocusedBorder$] = colorFocusedBorder;
+    this[colorErrorBorder$] = colorErrorBorder;
+    this[colorDisableBorder$] = colorDisableBorder;
+    this[widthBorder$] = widthBorder;
+    this[backgroundColor$] = backgroundColor;
+    this[margin$] = margin;
+    this[heightInput$] = heightInput;
+    this[textStyleInput$] = textStyleInput;
+    this[textStyleHint$] = textStyleHint;
+    this[textStyleLabel$] = textStyleLabel;
+    this.dialogSelectBoxModel = new dialog_select_box.DialogSelectBoxModel.new({title: (t0$8 = (t0$7 = label, t0$7 == null ? hint : t0$7), t0$8 == null ? "Chọn " + cc_define_prototypes['S|lowerFirst'](dart.nullCheck(label)) : t0$8), hinTextSearch: "Tìm kiếm", itemSelects: dart.nullCheck(items)[$map](dialog_select_box.SelectModel, dart.fn(e => new dialog_select_box.SelectModel.new({name: e.toString(), value: dart.nullCheck(e.value), check: false}), T$.SelectBoxValueToSelectModel()))[$toList](), multiSelect: this.type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI});
+    this.initResponsive({responsiveScreens: responsiveScreens});
+  }).prototype = select_box_model.SelectMultiBoxObject.prototype;
+  dart.addTypeTests(select_box_model.SelectMultiBoxObject);
+  dart.addTypeCaches(select_box_model.SelectMultiBoxObject);
+  dart.setLibraryUri(select_box_model.SelectMultiBoxObject, I[0]);
+  const controller$0 = Symbol("controller");
+  const type$0 = Symbol("type");
+  const id$0 = Symbol("id");
+  const label$0 = Symbol("label");
+  const hint$0 = Symbol("hint");
+  const color$0 = Symbol("color");
+  const border$0 = Symbol("border");
+  const textInputAction$0 = Symbol("textInputAction");
+  const enable$0 = Symbol("enable");
+  const readOnly$0 = Symbol("readOnly");
+  const suffixType$0 = Symbol("suffixType");
+  const requiredValidate$0 = Symbol("requiredValidate");
+  const alignment$0 = Symbol("alignment");
+  const fileFilter$0 = Symbol("fileFilter");
+  const onChange$0 = Symbol("onChange");
+  const onDelete$0 = Symbol("onDelete");
+  const items$0 = Symbol("items");
+  const showSearchInput$0 = Symbol("showSearchInput");
+  const isSelectOnFirstFocus$0 = Symbol("isSelectOnFirstFocus");
+  const getListItem$0 = Symbol("getListItem");
+  const maxLength$0 = Symbol("maxLength");
+  const numberLine$0 = Symbol("numberLine");
+  const padding$0 = Symbol("padding");
+  const maxLine$0 = Symbol("maxLine");
+  const isVisible$0 = Symbol("isVisible");
+  const colorBorder$0 = Symbol("colorBorder");
+  const colorFocusedBorder$0 = Symbol("colorFocusedBorder");
+  const colorErrorBorder$0 = Symbol("colorErrorBorder");
+  const colorDisableBorder$0 = Symbol("colorDisableBorder");
+  const widthBorder$0 = Symbol("widthBorder");
+  const backgroundColor$0 = Symbol("backgroundColor");
+  const margin$0 = Symbol("margin");
+  const heightInput$0 = Symbol("heightInput");
+  const textStyleInput$0 = Symbol("textStyleInput");
+  const textStyleHint$0 = Symbol("textStyleHint");
+  const textStyleLabel$0 = Symbol("textStyleLabel");
+  select_box_model.SelectBoxObject = class SelectBoxObject extends input_base.InputObject$(select_box_model.SelectBoxValue) {
+    static ['_#new#tearOff'](opts) {
+      let id = opts && 'id' in opts ? opts.id : null;
+      let type = opts && 'type' in opts ? opts.type : null;
+      let label = opts && 'label' in opts ? opts.label : null;
+      let hint = opts && 'hint' in opts ? opts.hint : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let border = opts && 'border' in opts ? opts.border : null;
+      let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+      let numberLine = opts && 'numberLine' in opts ? opts.numberLine : null;
+      let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+      let enable = opts && 'enable' in opts ? opts.enable : null;
+      let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+      let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+      let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+      let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+      let items = opts && 'items' in opts ? opts.items : null;
+      let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : null;
+      let isSelectOnFirstFocus = opts && 'isSelectOnFirstFocus' in opts ? opts.isSelectOnFirstFocus : null;
+      let getListItem = opts && 'getListItem' in opts ? opts.getListItem : null;
+      let marginTop = opts && 'marginTop' in opts ? opts.marginTop : null;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let margin = opts && 'margin' in opts ? opts.margin : null;
+      let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+      let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+      let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+      let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+      let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+      let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+      let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+      let textStyleInput = opts && 'textStyleInput' in opts ? opts.textStyleInput : null;
+      let textStyleHint = opts && 'textStyleHint' in opts ? opts.textStyleHint : null;
+      let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+      return new select_box_model.SelectBoxObject.new({id: id, type: type, label: label, hint: hint, color: color, border: border, maxLength: maxLength, numberLine: numberLine, textInputAction: textInputAction, enable: enable, readOnly: readOnly, suffixType: suffixType, requiredValidate: requiredValidate, alignment: alignment, onChange: onChange, onDelete: onDelete, items: items, showSearchInput: showSearchInput, isSelectOnFirstFocus: isSelectOnFirstFocus, getListItem: getListItem, marginTop: marginTop, padding: padding, margin: margin, maxLine: maxLine, isVisible: isVisible, colorBorder: colorBorder, colorFocusedBorder: colorFocusedBorder, colorErrorBorder: colorErrorBorder, colorDisableBorder: colorDisableBorder, widthBorder: widthBorder, backgroundColor: backgroundColor, heightInput: heightInput, textStyleInput: textStyleInput, textStyleHint: textStyleHint, responsiveScreens: responsiveScreens});
+    }
+    get value() {
+      return this.valueResult;
+    }
+    set value(v) {
+      if (v == null || dart.toString(v)[$isEmpty]) {
+        this.valueResult = new select_box_model.SelectBoxValue.new({text: "", value: -1});
+      } else {
+        this.valueResult = T$.SelectBoxValueN().as(v);
+      }
+      this.syncController(v);
+    }
+    syncController(v) {
+      try {
+        if (v == null || dart.toString(v)[$isEmpty]) {
+          dart.nullCheck(this.controller).text = "";
+          dart.nullCheck(this.dialogSelectBoxModel).isCheckAll.value = false;
+          for (let element of dart.nullCheck(this.dialogSelectBoxModel).listItem) {
+            element.check.value = false;
+          }
+        } else {
+          dart.nullCheck(this.controller).text = dart.toString(v);
+          for (let element of dart.nullCheck(this.dialogSelectBoxModel).listItem) {
+            if (dart.equals(dart.dload(v, 'value'), element.value)) {
+              element.check.value = true;
+            } else {
+              element.check.value = false;
+            }
+          }
+        }
+      } catch (e$) {
+        let e = dart.getThrown(e$);
+        let t = dart.stackTrace(e$);
+        if (core.Object.is(e)) {
+          logger['TypeExtension|Log'](core.String, dart.str(e));
+        } else
+          throw e$;
+      }
+      this.refreshUI();
+    }
+    setValueDefault(v) {
+      if (dart.nullCheck(this.items)[$isEmpty]) {
+        return;
+      } else {
+        let rs = dart.nullCheck(this.items)[$where](dart.fn(element => element.value === v, T$.SelectBoxValueTobool()));
+        if (rs[$isNotEmpty]) {
+          this.value = rs[$first];
+        }
+      }
+    }
+    isShowSuffix() {
+      return this.valueResult != null && dart.nullCheck(this.valueResult).text !== "";
+    }
+    set [controller$0](x) {
+      super.controller = x;
+    }
+    set [type$0](x) {
+      super.type = x;
+    }
+    set [id$0](x) {
+      super.id = x;
+    }
+    set [label$0](x) {
+      super.label = x;
+    }
+    set [hint$0](x) {
+      super.hint = x;
+    }
+    set [color$0](x) {
+      super.color = x;
+    }
+    set [border$0](x) {
+      super.border = x;
+    }
+    set [textInputAction$0](x) {
+      super.textInputAction = x;
+    }
+    set [enable$0](x) {
+      super.enable = x;
+    }
+    set [readOnly$0](x) {
+      super.readOnly = x;
+    }
+    set [suffixType$0](x) {
+      super.suffixType = x;
+    }
+    set [requiredValidate$0](x) {
+      super.requiredValidate = x;
+    }
+    set [alignment$0](x) {
+      super.alignment = x;
+    }
+    set [fileFilter$0](x) {
+      super.fileFilter = x;
+    }
+    set [onChange$0](x) {
+      super.onChange = x;
+    }
+    set [onDelete$0](x) {
+      super.onDelete = x;
+    }
+    set [items$0](x) {
+      super.items = x;
+    }
+    set [showSearchInput$0](x) {
+      super.showSearchInput = x;
+    }
+    set [isSelectOnFirstFocus$0](x) {
+      super.isSelectOnFirstFocus = x;
+    }
+    set [getListItem$0](x) {
+      super.getListItem = x;
+    }
+    set [maxLength$0](x) {
+      super.maxLength = x;
+    }
+    set [numberLine$0](x) {
+      super.numberLine = x;
+    }
+    set [padding$0](x) {
+      super.padding = x;
+    }
+    set [maxLine$0](x) {
+      super.maxLine = x;
+    }
+    set [isVisible$0](x) {
+      super.isVisible = x;
+    }
+    set [colorBorder$0](x) {
+      super.colorBorder = x;
+    }
+    set [colorFocusedBorder$0](x) {
+      super.colorFocusedBorder = x;
+    }
+    set [colorErrorBorder$0](x) {
+      super.colorErrorBorder = x;
+    }
+    set [colorDisableBorder$0](x) {
+      super.colorDisableBorder = x;
+    }
+    set [widthBorder$0](x) {
+      super.widthBorder = x;
+    }
+    set [backgroundColor$0](x) {
+      super.backgroundColor = x;
+    }
+    set [margin$0](x) {
+      super.margin = x;
+    }
+    set [heightInput$0](x) {
+      super.heightInput = x;
+    }
+    set [textStyleInput$0](x) {
+      super.textStyleInput = x;
+    }
+    set [textStyleHint$0](x) {
+      super.textStyleHint = x;
+    }
+    set [textStyleLabel$0](x) {
+      super.textStyleLabel = x;
+    }
+  };
+  (select_box_model.SelectBoxObject.new = function(opts) {
+    let t1, t1$, t1$0, t1$1, t1$2, t1$3, t1$4, t1$5, t1$6, t1$7, t1$8, t1$9;
+    let id = opts && 'id' in opts ? opts.id : null;
+    let type = opts && 'type' in opts ? opts.type : null;
+    let label = opts && 'label' in opts ? opts.label : null;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let border = opts && 'border' in opts ? opts.border : null;
+    let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+    let numberLine = opts && 'numberLine' in opts ? opts.numberLine : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let enable = opts && 'enable' in opts ? opts.enable : null;
+    let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+    let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+    let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+    let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+    let items = opts && 'items' in opts ? opts.items : null;
+    let showSearchInput = opts && 'showSearchInput' in opts ? opts.showSearchInput : null;
+    let isSelectOnFirstFocus = opts && 'isSelectOnFirstFocus' in opts ? opts.isSelectOnFirstFocus : null;
+    let getListItem = opts && 'getListItem' in opts ? opts.getListItem : null;
+    let marginTop = opts && 'marginTop' in opts ? opts.marginTop : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+    let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+    let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+    let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+    let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+    let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+    let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+    let textStyleInput = opts && 'textStyleInput' in opts ? opts.textStyleInput : null;
+    let textStyleHint = opts && 'textStyleHint' in opts ? opts.textStyleHint : null;
+    let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+    select_box_model.SelectBoxObject.__proto__.new.call(this);
+    this[controller$0] = new editable_text.TextEditingController.new();
+    this[type$0] = (t1 = type, t1 == null ? enum_dynamic_form.InputObjectType.SELECTBOX : t1);
+    this[id$0] = id;
+    this[label$0] = label;
+    this[hint$0] = hint;
+    this[color$0] = color;
+    this[border$0] = (t1$ = border, t1$ == null ? enum_dynamic_form.BorderType.OUTLINE : t1$);
+    this[textInputAction$0] = (t1$0 = textInputAction, t1$0 == null ? text_input.TextInputAction.next : t1$0);
+    this[enable$0] = (t1$1 = enable, t1$1 == null ? true : t1$1);
+    this[readOnly$0] = readOnly;
+    this[suffixType$0] = (t1$2 = suffixType, t1$2 == null ? enum_dynamic_form.SuffixType.DELETE : t1$2);
+    this[requiredValidate$0] = (t1$3 = requiredValidate, t1$3 == null ? true : t1$3);
+    this[alignment$0] = alignment;
+    this[fileFilter$0] = this.fileFilter;
+    this[onChange$0] = onChange;
+    this[onDelete$0] = onDelete;
+    this[items$0] = (t1$4 = items, t1$4 == null ? T$.JSArrayOfSelectBoxValue().of([]) : t1$4);
+    this[showSearchInput$0] = (t1$5 = showSearchInput, t1$5 == null ? true : t1$5);
+    this[isSelectOnFirstFocus$0] = (t1$6 = isSelectOnFirstFocus, t1$6 == null ? false : t1$6);
+    this[getListItem$0] = getListItem;
+    this[maxLength$0] = maxLength;
+    this[numberLine$0] = numberLine;
+    this[padding$0] = padding;
+    this[maxLine$0] = maxLine;
+    this[isVisible$0] = isVisible;
+    this[colorBorder$0] = colorBorder;
+    this[colorFocusedBorder$0] = colorFocusedBorder;
+    this[colorErrorBorder$0] = colorErrorBorder;
+    this[colorDisableBorder$0] = colorDisableBorder;
+    this[widthBorder$0] = widthBorder;
+    this[backgroundColor$0] = backgroundColor;
+    this[margin$0] = margin;
+    this[heightInput$0] = heightInput;
+    this[textStyleInput$0] = textStyleInput;
+    this[textStyleHint$0] = textStyleHint;
+    this[textStyleLabel$0] = this.textStyleLabel;
+    this.dialogSelectBoxModel = new dialog_select_box.DialogSelectBoxModel.new({title: (t1$8 = (t1$7 = label, t1$7 == null ? hint : t1$7), t1$8 == null ? "Chọn " + cc_define_prototypes['S|lowerFirst'](dart.nullCheck(label)) : t1$8), showSearchInput: (t1$9 = showSearchInput, t1$9 == null ? true : t1$9), hinTextSearch: "Tìm kiếm", itemSelects: dart.nullCheck(items)[$map](dialog_select_box.SelectModel, dart.fn(e => new dialog_select_box.SelectModel.new({name: e.toString(), value: dart.nullCheck(e.value), check: false}), T$.SelectBoxValueToSelectModel()))[$toList](), multiSelect: type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI});
+    this.initResponsive({responsiveScreens: responsiveScreens});
+  }).prototype = select_box_model.SelectBoxObject.prototype;
+  dart.addTypeTests(select_box_model.SelectBoxObject);
+  dart.addTypeCaches(select_box_model.SelectBoxObject);
+  dart.setMethodSignature(select_box_model.SelectBoxObject, () => ({
+    __proto__: dart.getMethods(select_box_model.SelectBoxObject.__proto__),
+    setValueDefault: dart.fnType(dart.void, [core.int])
+  }));
+  dart.setLibraryUri(select_box_model.SelectBoxObject, I[0]);
+  var group = dart.privateName(input_radio_button_model, "GroupValueRadio.group");
+  input_radio_button_model.GroupValueRadio = class GroupValueRadio extends core.Object {
+    get group() {
+      return this[group];
+    }
+    set group(value) {
+      super.group = value;
+    }
+    static ['_#new#tearOff']() {
+      return new input_radio_button_model.GroupValueRadio.new();
+    }
+  };
+  (input_radio_button_model.GroupValueRadio.new = function() {
+    this[group] = rx_types['StringExtension|get#obs']("");
+    ;
+  }).prototype = input_radio_button_model.GroupValueRadio.prototype;
+  dart.addTypeTests(input_radio_button_model.GroupValueRadio);
+  dart.addTypeCaches(input_radio_button_model.GroupValueRadio);
+  dart.setLibraryUri(input_radio_button_model.GroupValueRadio, I[2]);
+  dart.setFieldSignature(input_radio_button_model.GroupValueRadio, () => ({
+    __proto__: dart.getFields(input_radio_button_model.GroupValueRadio.__proto__),
+    group: dart.finalFieldType(dart.nullable(rx_types.RxString))
+  }));
+  const type$1 = Symbol("type");
+  const id$1 = Symbol("id");
+  const label$1 = Symbol("label");
+  const color$1 = Symbol("color");
+  const enable$1 = Symbol("enable");
+  const readOnly$1 = Symbol("readOnly");
+  const requiredValidate$1 = Symbol("requiredValidate");
+  const alignment$1 = Symbol("alignment");
+  const isReverse$ = Symbol("isReverse");
+  const groupValueRadio$ = Symbol("groupValueRadio");
+  const onChange$1 = Symbol("onChange");
+  const onDelete$1 = Symbol("onDelete");
+  const padding$1 = Symbol("padding");
+  const maxLine$1 = Symbol("maxLine");
+  const isVisible$1 = Symbol("isVisible");
+  const colorBorder$1 = Symbol("colorBorder");
+  const colorFocusedBorder$1 = Symbol("colorFocusedBorder");
+  const colorErrorBorder$1 = Symbol("colorErrorBorder");
+  const colorDisableBorder$1 = Symbol("colorDisableBorder");
+  const widthBorder$1 = Symbol("widthBorder");
+  const backgroundColor$1 = Symbol("backgroundColor");
+  const margin$1 = Symbol("margin");
+  const heightInput$1 = Symbol("heightInput");
+  const textStyleInput$1 = Symbol("textStyleInput");
+  const textStyleHint$1 = Symbol("textStyleHint");
+  const textStyleLabel$1 = Symbol("textStyleLabel");
+  input_radio_button_model.InputRadioButtonObject = class InputRadioButtonObject extends input_base.InputObject$(core.String) {
+    static ['_#new#tearOff'](opts) {
+      let groupValueRadio = opts && 'groupValueRadio' in opts ? opts.groupValueRadio : null;
+      let id = opts && 'id' in opts ? opts.id : null;
+      let label = opts && 'label' in opts ? opts.label : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let border = opts && 'border' in opts ? opts.border : null;
+      let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+      let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+      let enable = opts && 'enable' in opts ? opts.enable : null;
+      let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+      let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+      let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let reverse = opts && 'reverse' in opts ? opts.reverse : null;
+      let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+      let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let margin = opts && 'margin' in opts ? opts.margin : null;
+      let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+      let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+      let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+      let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+      let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+      let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+      let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+      let textStyleLabel = opts && 'textStyleLabel' in opts ? opts.textStyleLabel : null;
+      let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+      return new input_radio_button_model.InputRadioButtonObject.new({groupValueRadio: groupValueRadio, id: id, label: label, color: color, border: border, maxLength: maxLength, textInputAction: textInputAction, enable: enable, suffixType: suffixType, requiredValidate: requiredValidate, readOnly: readOnly, alignment: alignment, reverse: reverse, onChange: onChange, onDelete: onDelete, padding: padding, margin: margin, maxLine: maxLine, isVisible: isVisible, colorBorder: colorBorder, colorFocusedBorder: colorFocusedBorder, colorErrorBorder: colorErrorBorder, colorDisableBorder: colorDisableBorder, widthBorder: widthBorder, backgroundColor: backgroundColor, heightInput: heightInput, textStyleLabel: textStyleLabel, responsiveScreens: responsiveScreens});
+    }
+    get value() {
+      return this.valueResult;
+    }
+    set value(v) {
+      this.valueResult = T$.StringN().as(v);
+      dart.nullCheck(dart.nullCheck(this.groupValueRadio).group).value = core.String.as(v);
+      this.syncController(v);
+    }
+    syncController(v) {
+      this.refreshUI();
+    }
+    set [type$1](x) {
+      super.type = x;
+    }
+    set [id$1](x) {
+      super.id = x;
+    }
+    set [label$1](x) {
+      super.label = x;
+    }
+    set [color$1](x) {
+      super.color = x;
+    }
+    set [enable$1](x) {
+      super.enable = x;
+    }
+    set [readOnly$1](x) {
+      super.readOnly = x;
+    }
+    set [requiredValidate$1](x) {
+      super.requiredValidate = x;
+    }
+    set [alignment$1](x) {
+      super.alignment = x;
+    }
+    set [isReverse$](x) {
+      super.isReverse = x;
+    }
+    set [groupValueRadio$](x) {
+      super.groupValueRadio = x;
+    }
+    set [onChange$1](x) {
+      super.onChange = x;
+    }
+    set [onDelete$1](x) {
+      super.onDelete = x;
+    }
+    set [padding$1](x) {
+      super.padding = x;
+    }
+    set [maxLine$1](x) {
+      super.maxLine = x;
+    }
+    set [isVisible$1](x) {
+      super.isVisible = x;
+    }
+    set [colorBorder$1](x) {
+      super.colorBorder = x;
+    }
+    set [colorFocusedBorder$1](x) {
+      super.colorFocusedBorder = x;
+    }
+    set [colorErrorBorder$1](x) {
+      super.colorErrorBorder = x;
+    }
+    set [colorDisableBorder$1](x) {
+      super.colorDisableBorder = x;
+    }
+    set [widthBorder$1](x) {
+      super.widthBorder = x;
+    }
+    set [backgroundColor$1](x) {
+      super.backgroundColor = x;
+    }
+    set [margin$1](x) {
+      super.margin = x;
+    }
+    set [heightInput$1](x) {
+      super.heightInput = x;
+    }
+    set [textStyleInput$1](x) {
+      super.textStyleInput = x;
+    }
+    set [textStyleHint$1](x) {
+      super.textStyleHint = x;
+    }
+    set [textStyleLabel$1](x) {
+      super.textStyleLabel = x;
+    }
+  };
+  (input_radio_button_model.InputRadioButtonObject.new = function(opts) {
+    let t2, t2$, t2$0, t2$1;
+    let groupValueRadio = opts && 'groupValueRadio' in opts ? opts.groupValueRadio : null;
+    let id = opts && 'id' in opts ? opts.id : null;
+    let label = opts && 'label' in opts ? opts.label : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let border = opts && 'border' in opts ? opts.border : null;
+    let maxLength = opts && 'maxLength' in opts ? opts.maxLength : null;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let enable = opts && 'enable' in opts ? opts.enable : null;
+    let suffixType = opts && 'suffixType' in opts ? opts.suffixType : null;
+    let requiredValidate = opts && 'requiredValidate' in opts ? opts.requiredValidate : null;
+    let readOnly = opts && 'readOnly' in opts ? opts.readOnly : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : null;
+    let onChange = opts && 'onChange' in opts ? opts.onChange : null;
+    let onDelete = opts && 'onDelete' in opts ? opts.onDelete : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let maxLine = opts && 'maxLine' in opts ? opts.maxLine : null;
+    let isVisible = opts && 'isVisible' in opts ? opts.isVisible : null;
+    let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+    let colorFocusedBorder = opts && 'colorFocusedBorder' in opts ? opts.colorFocusedBorder : null;
+    let colorErrorBorder = opts && 'colorErrorBorder' in opts ? opts.colorErrorBorder : null;
+    let colorDisableBorder = opts && 'colorDisableBorder' in opts ? opts.colorDisableBorder : null;
+    let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let heightInput = opts && 'heightInput' in opts ? opts.heightInput : null;
+    let textStyleLabel = opts && 'textStyleLabel' in opts ? opts.textStyleLabel : null;
+    let responsiveScreens = opts && 'responsiveScreens' in opts ? opts.responsiveScreens : null;
+    input_radio_button_model.InputRadioButtonObject.__proto__.new.call(this);
+    this[type$1] = enum_dynamic_form.InputObjectType.RADIO_BUTTON;
+    this[id$1] = id;
+    this[label$1] = label;
+    this[color$1] = color;
+    this[enable$1] = (t2 = enable, t2 == null ? true : t2);
+    this[readOnly$1] = (t2$ = readOnly, t2$ == null ? false : t2$);
+    this[requiredValidate$1] = (t2$0 = requiredValidate, t2$0 == null ? true : t2$0);
+    this[alignment$1] = alignment;
+    this[requiredValidate$1] = false;
+    this[isReverse$] = (t2$1 = reverse, t2$1 == null ? false : t2$1);
+    this[groupValueRadio$] = groupValueRadio;
+    this[onChange$1] = onChange;
+    this[onDelete$1] = onDelete;
+    this[padding$1] = padding;
+    this[maxLine$1] = maxLine;
+    this[isVisible$1] = isVisible;
+    this[colorBorder$1] = colorBorder;
+    this[colorFocusedBorder$1] = colorFocusedBorder;
+    this[colorErrorBorder$1] = colorErrorBorder;
+    this[colorDisableBorder$1] = colorDisableBorder;
+    this[widthBorder$1] = widthBorder;
+    this[backgroundColor$1] = backgroundColor;
+    this[margin$1] = margin;
+    this[heightInput$1] = heightInput;
+    this[textStyleInput$1] = this.textStyleInput;
+    this[textStyleHint$1] = this.textStyleHint;
+    this[textStyleLabel$1] = textStyleLabel;
+    this.initResponsive({responsiveScreens: responsiveScreens});
+  }).prototype = input_radio_button_model.InputRadioButtonObject.prototype;
+  dart.addTypeTests(input_radio_button_model.InputRadioButtonObject);
+  dart.addTypeCaches(input_radio_button_model.InputRadioButtonObject);
+  dart.setLibraryUri(input_radio_button_model.InputRadioButtonObject, I[2]);
+  dart.trackLibraries("packages/cc_library/widget/dynamic_form/model/select_box_model.dart", {
+    "package:cc_library/widget/dynamic_form/model/select_box_model.dart": select_box_model,
+    "package:cc_library/widget/dynamic_form/model/input_radio_button_model.dart": input_radio_button_model,
+    "package:cc_library/widget/dynamic_form/model/input_base.dart": input_base
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["select_box_model.dart","input_base.dart","input_radio_button_model.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/dynamic_form/model/select_box_model.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__dynamic_form__model__select_box_model: select_box_model,
+    widget__dynamic_form__model__input_radio_button_model: input_radio_button_model,
+    widget__dynamic_form__model__input_base: input_base
+  };
+}));
+
+//# sourceMappingURL=select_box_model.dart.lib.js.map

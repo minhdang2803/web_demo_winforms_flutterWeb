@@ -1,0 +1,515 @@
+define(['dart_sdk', 'packages/image/src/util/dither_pixels.dart', 'packages/image/src/util/output_buffer.dart', 'packages/image/src/util/neural_quantizer.dart', 'packages/image/src/formats/encoder.dart', 'packages/image/src/image.dart'], (function load__packages__image__src__formats__gif_encoder_dart(dart_sdk, packages__image__src__util__dither_pixels$46dart, packages__image__src__util__output_buffer$46dart, packages__image__src__util__neural_quantizer$46dart, packages__image__src__formats__encoder$46dart, packages__image__src__image$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const dither_pixels = packages__image__src__util__dither_pixels$46dart.src__util__dither_pixels;
+  const output_buffer = packages__image__src__util__output_buffer$46dart.src__util__output_buffer;
+  const neural_quantizer = packages__image__src__util__neural_quantizer$46dart.src__util__neural_quantizer;
+  const encoder = packages__image__src__formats__encoder$46dart.src__formats__encoder;
+  const image = packages__image__src__image$46dart.src__image;
+  var gif_encoder = Object.create(dart.library);
+  var $truncate = dartx.truncate;
+  var $leftShift = dartx['<<'];
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $rightShift = dartx['>>'];
+  var $codeUnits = dartx.codeUnits;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    VoidToint: () => (T.VoidToint = dart.constFn(dart.fnType(core.int, [])))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: dither_pixels.DitherKernel.prototype,
+        [_Enum__name]: "FloydSteinberg",
+        [_Enum_index]: 2
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535], core.int);
+    }
+  }, false);
+  var C = Array(2).fill(void 0);
+  var I = ["package:image/src/formats/gif_encoder.dart"];
+  var delay$ = dart.privateName(gif_encoder, "GifEncoder.delay");
+  var repeat$ = dart.privateName(gif_encoder, "GifEncoder.repeat");
+  var samplingFactor$ = dart.privateName(gif_encoder, "GifEncoder.samplingFactor");
+  var dither$ = dart.privateName(gif_encoder, "GifEncoder.dither");
+  var ditherSerpentine$ = dart.privateName(gif_encoder, "GifEncoder.ditherSerpentine");
+  var output = dart.privateName(gif_encoder, "GifEncoder.output");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var _lastImage = dart.privateName(gif_encoder, "_lastImage");
+  var _lastImageDuration = dart.privateName(gif_encoder, "_lastImageDuration");
+  var _lastColorMap = dart.privateName(gif_encoder, "_lastColorMap");
+  var __GifEncoder__width = dart.privateName(gif_encoder, "_#GifEncoder#_width");
+  var __GifEncoder__height = dart.privateName(gif_encoder, "_#GifEncoder#_height");
+  var _curAccum = dart.privateName(gif_encoder, "_curAccum");
+  var _curBits = dart.privateName(gif_encoder, "_curBits");
+  var _nBits = dart.privateName(gif_encoder, "_nBits");
+  var _initBits = dart.privateName(gif_encoder, "_initBits");
+  var _EOFCode = dart.privateName(gif_encoder, "_EOFCode");
+  var _maxCode = dart.privateName(gif_encoder, "_maxCode");
+  var _clearCode = dart.privateName(gif_encoder, "_clearCode");
+  var _freeEnt = dart.privateName(gif_encoder, "_freeEnt");
+  var _clearFlag = dart.privateName(gif_encoder, "_clearFlag");
+  var __GifEncoder__block = dart.privateName(gif_encoder, "_#GifEncoder#_block");
+  var _blockSize = dart.privateName(gif_encoder, "_blockSize");
+  var _encodedFrames = dart.privateName(gif_encoder, "_encodedFrames");
+  var _width = dart.privateName(gif_encoder, "_width");
+  var _height = dart.privateName(gif_encoder, "_height");
+  var _writeHeader = dart.privateName(gif_encoder, "_writeHeader");
+  var _writeApplicationExt = dart.privateName(gif_encoder, "_writeApplicationExt");
+  var _writeGraphicsCtrlExt = dart.privateName(gif_encoder, "_writeGraphicsCtrlExt");
+  var _addImage = dart.privateName(gif_encoder, "_addImage");
+  var _encodeLZW = dart.privateName(gif_encoder, "_encodeLZW");
+  var _block = dart.privateName(gif_encoder, "_block");
+  var _output = dart.privateName(gif_encoder, "_output");
+  var _addToBlock = dart.privateName(gif_encoder, "_addToBlock");
+  var _writeBlock = dart.privateName(gif_encoder, "_writeBlock");
+  gif_encoder.GifEncoder = class GifEncoder extends encoder.Encoder {
+    get delay() {
+      return this[delay$];
+    }
+    set delay(value) {
+      this[delay$] = value;
+    }
+    get repeat() {
+      return this[repeat$];
+    }
+    set repeat(value) {
+      this[repeat$] = value;
+    }
+    get samplingFactor() {
+      return this[samplingFactor$];
+    }
+    set samplingFactor(value) {
+      this[samplingFactor$] = value;
+    }
+    get dither() {
+      return this[dither$];
+    }
+    set dither(value) {
+      this[dither$] = value;
+    }
+    get ditherSerpentine() {
+      return this[ditherSerpentine$];
+    }
+    set ditherSerpentine(value) {
+      this[ditherSerpentine$] = value;
+    }
+    get output() {
+      return this[output];
+    }
+    set output(value) {
+      this[output] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let delay = opts && 'delay' in opts ? opts.delay : 80;
+      let repeat = opts && 'repeat' in opts ? opts.repeat : 0;
+      let samplingFactor = opts && 'samplingFactor' in opts ? opts.samplingFactor : 10;
+      let dither = opts && 'dither' in opts ? opts.dither : C[0] || CT.C0;
+      let ditherSerpentine = opts && 'ditherSerpentine' in opts ? opts.ditherSerpentine : false;
+      return new gif_encoder.GifEncoder.new({delay: delay, repeat: repeat, samplingFactor: samplingFactor, dither: dither, ditherSerpentine: ditherSerpentine});
+    }
+    addFrame(image, opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      if (this.output == null) {
+        this.output = new output_buffer.OutputBuffer.new();
+        this[_lastColorMap] = new neural_quantizer.NeuralQuantizer.new(image, {samplingFactor: this.samplingFactor});
+        this[_lastImage] = dither_pixels.ditherPixels(image, dart.nullCheck(this[_lastColorMap]), this.dither, this.ditherSerpentine);
+        this[_lastImageDuration] = duration;
+        this[_width] = image.width;
+        this[_height] = image.height;
+        return;
+      }
+      if (this[_encodedFrames] === 0) {
+        this[_writeHeader](this[_width], this[_height]);
+        this[_writeApplicationExt]();
+      }
+      this[_writeGraphicsCtrlExt]();
+      this[_addImage](this[_lastImage], this[_width], this[_height], dart.nullCheck(this[_lastColorMap]).colorMap, 256);
+      this[_encodedFrames] = this[_encodedFrames] + 1;
+      this[_lastColorMap] = new neural_quantizer.NeuralQuantizer.new(image, {samplingFactor: this.samplingFactor});
+      this[_lastImage] = dither_pixels.ditherPixels(image, dart.nullCheck(this[_lastColorMap]), this.dither, this.ditherSerpentine);
+      this[_lastImageDuration] = duration;
+    }
+    finish() {
+      let bytes = null;
+      if (this.output == null) {
+        return bytes;
+      }
+      if (this[_encodedFrames] === 0) {
+        this[_writeHeader](this[_width], this[_height]);
+        this[_writeApplicationExt]();
+      } else {
+        this[_writeGraphicsCtrlExt]();
+      }
+      this[_addImage](this[_lastImage], this[_width], this[_height], dart.nullCheck(this[_lastColorMap]).colorMap, 256);
+      dart.nullCheck(this.output).writeByte(59);
+      this[_lastImage] = null;
+      this[_lastColorMap] = null;
+      this[_encodedFrames] = 0;
+      bytes = dart.nullCheck(this.output).getBytes();
+      this.output = null;
+      return bytes;
+    }
+    encodeImage(image) {
+      this.addFrame(image);
+      return dart.nullCheck(this.finish());
+    }
+    get supportsAnimation() {
+      return true;
+    }
+    encodeAnimation(anim) {
+      this.repeat = anim.loopCount;
+      for (let f of anim) {
+        this.addFrame(f, {duration: (f.duration / 10)[$truncate]()});
+      }
+      return this.finish();
+    }
+    [_addImage](image, width, height, colorMap, numColors) {
+      dart.nullCheck(this.output).writeByte(44);
+      dart.nullCheck(this.output).writeUint16(0);
+      dart.nullCheck(this.output).writeUint16(0);
+      dart.nullCheck(this.output).writeUint16(width);
+      dart.nullCheck(this.output).writeUint16(height);
+      dart.nullCheck(this.output).writeByte(135);
+      dart.nullCheck(this.output).writeBytes(colorMap);
+      for (let i = numColors; i < 256; i = i + 1) {
+        dart.nullCheck(this.output).writeByte(0);
+        dart.nullCheck(this.output).writeByte(0);
+        dart.nullCheck(this.output).writeByte(0);
+      }
+      this[_encodeLZW](image, width, height);
+    }
+    [_encodeLZW](image, width, height) {
+      let t0;
+      this[_curAccum] = 0;
+      this[_curBits] = 0;
+      this[_blockSize] = 0;
+      this[_block] = _native_typed_data.NativeUint8List.new(256);
+      dart.nullCheck(this.output).writeByte(8);
+      let hTab = _native_typed_data.NativeInt32List.new(5003);
+      let codeTab = _native_typed_data.NativeInt32List.new(5003);
+      let remaining = width * height;
+      let curPixel = 0;
+      this[_initBits] = 8 + 1;
+      this[_nBits] = this[_initBits];
+      this[_maxCode] = (1)[$leftShift](this[_nBits]) - 1;
+      this[_clearCode] = (1)[$leftShift](this[_initBits] - 1);
+      this[_EOFCode] = this[_clearCode] + 1;
+      this[_clearFlag] = false;
+      this[_freeEnt] = this[_clearCode] + 2;
+      function _nextPixel() {
+        let t0;
+        if (remaining === 0) {
+          return -1;
+        }
+        remaining = remaining - 1;
+        return dart.nullCheck(image)[$_get]((t0 = curPixel, curPixel = t0 + 1, t0)) & 255;
+      }
+      dart.fn(_nextPixel, T.VoidToint());
+      let ent = _nextPixel();
+      let hshift = 0;
+      for (let fcode = 5003; fcode < 65536; fcode = fcode * 2) {
+        hshift = hshift + 1;
+      }
+      hshift = 8 - hshift;
+      for (let i = 0; i < 5003; i = i + 1) {
+        hTab[$_set](i, -1);
+      }
+      this[_output](this[_clearCode]);
+      let outerLoop = true;
+      while (outerLoop) {
+        outerLoop = false;
+        let c = _nextPixel();
+        while (c !== -1) {
+          let fcode = c[$leftShift](12) + ent;
+          let i = (c[$leftShift](hshift) ^ ent) >>> 0;
+          if (hTab[$_get](i) === fcode) {
+            ent = codeTab[$_get](i);
+            c = _nextPixel();
+            continue;
+          } else if (hTab[$_get](i) >= 0) {
+            let disp = 5003 - i;
+            if (i === 0) {
+              disp = 1;
+            }
+            do {
+              if ((i = i - disp) < 0) {
+                i = i + 5003;
+              }
+              if (hTab[$_get](i) === fcode) {
+                ent = codeTab[$_get](i);
+                outerLoop = true;
+                break;
+              }
+            } while (hTab[$_get](i) >= 0);
+            if (outerLoop) {
+              break;
+            }
+          }
+          this[_output](ent);
+          ent = c;
+          if (this[_freeEnt] < (1)[$leftShift](12)) {
+            codeTab[$_set](i, (t0 = this[_freeEnt], this[_freeEnt] = t0 + 1, t0));
+            hTab[$_set](i, fcode);
+          } else {
+            for (let i = 0; i < 5003; i = i + 1) {
+              hTab[$_set](i, -1);
+            }
+            this[_freeEnt] = this[_clearCode] + 2;
+            this[_clearFlag] = true;
+            this[_output](this[_clearCode]);
+          }
+          c = _nextPixel();
+        }
+      }
+      this[_output](ent);
+      this[_output](this[_EOFCode]);
+      dart.nullCheck(this.output).writeByte(0);
+    }
+    [_output](code) {
+      this[_curAccum] = (this[_curAccum] & gif_encoder.GifEncoder._masks[$_get](this[_curBits])) >>> 0;
+      if (this[_curBits] > 0) {
+        this[_curAccum] = (this[_curAccum] | dart.nullCheck(code)[$leftShift](this[_curBits])) >>> 0;
+      } else {
+        this[_curAccum] = dart.nullCheck(code);
+      }
+      this[_curBits] = this[_curBits] + this[_nBits];
+      while (this[_curBits] >= 8) {
+        this[_addToBlock](this[_curAccum] & 255);
+        this[_curAccum] = this[_curAccum][$rightShift](8);
+        this[_curBits] = this[_curBits] - 8;
+      }
+      if (this[_freeEnt] > this[_maxCode] || this[_clearFlag]) {
+        if (this[_clearFlag]) {
+          this[_nBits] = this[_initBits];
+          this[_maxCode] = (1)[$leftShift](this[_nBits]) - 1;
+          this[_clearFlag] = false;
+        } else {
+          this[_nBits] = this[_nBits] + 1;
+          if (this[_nBits] === 12) {
+            this[_maxCode] = (1)[$leftShift](12);
+          } else {
+            this[_maxCode] = (1)[$leftShift](this[_nBits]) - 1;
+          }
+        }
+      }
+      if (code === this[_EOFCode]) {
+        while (this[_curBits] > 0) {
+          this[_addToBlock](this[_curAccum] & 255);
+          this[_curAccum] = this[_curAccum][$rightShift](8);
+          this[_curBits] = this[_curBits] - 8;
+        }
+        this[_writeBlock]();
+      }
+    }
+    [_writeBlock]() {
+      if (this[_blockSize] > 0) {
+        dart.nullCheck(this.output).writeByte(this[_blockSize]);
+        dart.nullCheck(this.output).writeBytes(this[_block], this[_blockSize]);
+        this[_blockSize] = 0;
+      }
+    }
+    [_addToBlock](c) {
+      let t0;
+      this[_block][$_set]((t0 = this[_blockSize], this[_blockSize] = t0 + 1, t0), c);
+      if (this[_blockSize] >= 254) {
+        this[_writeBlock]();
+      }
+    }
+    [_writeApplicationExt]() {
+      dart.nullCheck(this.output).writeByte(33);
+      dart.nullCheck(this.output).writeByte(255);
+      dart.nullCheck(this.output).writeByte(11);
+      dart.nullCheck(this.output).writeBytes("NETSCAPE2.0"[$codeUnits]);
+      dart.nullCheck(this.output).writeBytes(T.JSArrayOfint().of([3, 1]));
+      dart.nullCheck(this.output).writeUint16(this.repeat);
+      dart.nullCheck(this.output).writeByte(0);
+    }
+    [_writeGraphicsCtrlExt]() {
+      let t0;
+      dart.nullCheck(this.output).writeByte(33);
+      dart.nullCheck(this.output).writeByte(249);
+      dart.nullCheck(this.output).writeByte(4);
+      dart.nullCheck(this.output).writeByte((0 | 0 | 0 | 0) >>> 0);
+      dart.nullCheck(this.output).writeUint16((t0 = this[_lastImageDuration], t0 == null ? this.delay : t0));
+      dart.nullCheck(this.output).writeByte(0);
+      dart.nullCheck(this.output).writeByte(0);
+    }
+    [_writeHeader](width, height) {
+      dart.nullCheck(this.output).writeBytes("GIF89a"[$codeUnits]);
+      dart.nullCheck(this.output).writeUint16(width);
+      dart.nullCheck(this.output).writeUint16(height);
+      dart.nullCheck(this.output).writeByte(0);
+      dart.nullCheck(this.output).writeByte(0);
+      dart.nullCheck(this.output).writeByte(0);
+    }
+    get [_width]() {
+      let t0;
+      t0 = this[__GifEncoder__width];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_width")) : t0;
+    }
+    set [_width](library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_width$35param) {
+      this[__GifEncoder__width] = library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_width$35param;
+    }
+    get [_height]() {
+      let t0;
+      t0 = this[__GifEncoder__height];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_height")) : t0;
+    }
+    set [_height](library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_height$35param) {
+      this[__GifEncoder__height] = library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_height$35param;
+    }
+    get [_block]() {
+      let t0;
+      t0 = this[__GifEncoder__block];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_block")) : t0;
+    }
+    set [_block](library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_block$35param) {
+      this[__GifEncoder__block] = library$32package$58image$47src$47formats$47gif_encoder$46dart$58$58_block$35param;
+    }
+  };
+  (gif_encoder.GifEncoder.new = function(opts) {
+    let delay = opts && 'delay' in opts ? opts.delay : 80;
+    let repeat = opts && 'repeat' in opts ? opts.repeat : 0;
+    let samplingFactor = opts && 'samplingFactor' in opts ? opts.samplingFactor : 10;
+    let dither = opts && 'dither' in opts ? opts.dither : C[0] || CT.C0;
+    let ditherSerpentine = opts && 'ditherSerpentine' in opts ? opts.ditherSerpentine : false;
+    this[_lastImage] = null;
+    this[_lastImageDuration] = null;
+    this[_lastColorMap] = null;
+    this[__GifEncoder__width] = null;
+    this[__GifEncoder__height] = null;
+    this[_curAccum] = 0;
+    this[_curBits] = 0;
+    this[_nBits] = 0;
+    this[_initBits] = 0;
+    this[_EOFCode] = 0;
+    this[_maxCode] = 0;
+    this[_clearCode] = 0;
+    this[_freeEnt] = 0;
+    this[_clearFlag] = false;
+    this[__GifEncoder__block] = null;
+    this[_blockSize] = 0;
+    this[output] = null;
+    this[delay$] = delay;
+    this[repeat$] = repeat;
+    this[samplingFactor$] = samplingFactor;
+    this[dither$] = dither;
+    this[ditherSerpentine$] = ditherSerpentine;
+    this[_encodedFrames] = 0;
+    ;
+  }).prototype = gif_encoder.GifEncoder.prototype;
+  dart.addTypeTests(gif_encoder.GifEncoder);
+  dart.addTypeCaches(gif_encoder.GifEncoder);
+  dart.setMethodSignature(gif_encoder.GifEncoder, () => ({
+    __proto__: dart.getMethods(gif_encoder.GifEncoder.__proto__),
+    addFrame: dart.fnType(dart.void, [image.Image], {duration: dart.nullable(core.int)}, {}),
+    finish: dart.fnType(dart.nullable(core.List$(core.int)), []),
+    encodeImage: dart.fnType(core.List$(core.int), [image.Image]),
+    [_addImage]: dart.fnType(dart.void, [dart.nullable(typed_data.Uint8List), core.int, core.int, typed_data.Uint8List, core.int]),
+    [_encodeLZW]: dart.fnType(dart.void, [dart.nullable(typed_data.Uint8List), core.int, core.int]),
+    [_output]: dart.fnType(dart.void, [dart.nullable(core.int)]),
+    [_writeBlock]: dart.fnType(dart.void, []),
+    [_addToBlock]: dart.fnType(dart.void, [core.int]),
+    [_writeApplicationExt]: dart.fnType(dart.void, []),
+    [_writeGraphicsCtrlExt]: dart.fnType(dart.void, []),
+    [_writeHeader]: dart.fnType(dart.void, [core.int, core.int])
+  }));
+  dart.setGetterSignature(gif_encoder.GifEncoder, () => ({
+    __proto__: dart.getGetters(gif_encoder.GifEncoder.__proto__),
+    [_width]: core.int,
+    [_height]: core.int,
+    [_block]: typed_data.Uint8List
+  }));
+  dart.setSetterSignature(gif_encoder.GifEncoder, () => ({
+    __proto__: dart.getSetters(gif_encoder.GifEncoder.__proto__),
+    [_width]: core.int,
+    [_height]: core.int,
+    [_block]: typed_data.Uint8List
+  }));
+  dart.setLibraryUri(gif_encoder.GifEncoder, I[0]);
+  dart.setFieldSignature(gif_encoder.GifEncoder, () => ({
+    __proto__: dart.getFields(gif_encoder.GifEncoder.__proto__),
+    delay: dart.fieldType(core.int),
+    repeat: dart.fieldType(core.int),
+    samplingFactor: dart.fieldType(core.int),
+    dither: dart.fieldType(dither_pixels.DitherKernel),
+    ditherSerpentine: dart.fieldType(core.bool),
+    [_lastImage]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [_lastImageDuration]: dart.fieldType(dart.nullable(core.int)),
+    [_lastColorMap]: dart.fieldType(dart.nullable(neural_quantizer.NeuralQuantizer)),
+    [__GifEncoder__width]: dart.fieldType(dart.nullable(core.int)),
+    [__GifEncoder__height]: dart.fieldType(dart.nullable(core.int)),
+    [_encodedFrames]: dart.fieldType(core.int),
+    [_curAccum]: dart.fieldType(core.int),
+    [_curBits]: dart.fieldType(core.int),
+    [_nBits]: dart.fieldType(core.int),
+    [_initBits]: dart.fieldType(core.int),
+    [_EOFCode]: dart.fieldType(core.int),
+    [_maxCode]: dart.fieldType(core.int),
+    [_clearCode]: dart.fieldType(core.int),
+    [_freeEnt]: dart.fieldType(core.int),
+    [_clearFlag]: dart.fieldType(core.bool),
+    [__GifEncoder__block]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [_blockSize]: dart.fieldType(core.int),
+    output: dart.fieldType(dart.nullable(output_buffer.OutputBuffer))
+  }));
+  dart.setStaticFieldSignature(gif_encoder.GifEncoder, () => ['_gif89Id', '_imageDescRecordType', '_extensionRecordType', '_terminateRecordType', '_applicationExt', '_graphicControlExt', '_eof', '_bits', '_hsize', '_masks']);
+  dart.defineLazy(gif_encoder.GifEncoder, {
+    /*gif_encoder.GifEncoder._gif89Id*/get _gif89Id() {
+      return "GIF89a";
+    },
+    /*gif_encoder.GifEncoder._imageDescRecordType*/get _imageDescRecordType() {
+      return 44;
+    },
+    /*gif_encoder.GifEncoder._extensionRecordType*/get _extensionRecordType() {
+      return 33;
+    },
+    /*gif_encoder.GifEncoder._terminateRecordType*/get _terminateRecordType() {
+      return 59;
+    },
+    /*gif_encoder.GifEncoder._applicationExt*/get _applicationExt() {
+      return 255;
+    },
+    /*gif_encoder.GifEncoder._graphicControlExt*/get _graphicControlExt() {
+      return 249;
+    },
+    /*gif_encoder.GifEncoder._eof*/get _eof() {
+      return -1;
+    },
+    /*gif_encoder.GifEncoder._bits*/get _bits() {
+      return 12;
+    },
+    /*gif_encoder.GifEncoder._hsize*/get _hsize() {
+      return 5003;
+    },
+    /*gif_encoder.GifEncoder._masks*/get _masks() {
+      return C[1] || CT.C1;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/gif_encoder.dart", {
+    "package:image/src/formats/gif_encoder.dart": gif_encoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["gif_encoder.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAUM;;;;;;IAAO;;;;;;IAAQ;;;;;;IACN;;;;;;IACR;;;;;;IAwVS;;;;;;;;;;;;;;aA3UM;UAAa;AAC/B,UAAI,AAAO;AACc,QAAvB,cAAS;AAE6D,QAAtE,sBAAgB,yCAAgB,KAAK,mBAAkB;AAEU,QADjE,mBACI,2BAAa,KAAK,EAAe,eAAb,sBAAgB,aAAQ;AACnB,QAA7B,2BAAqB,QAAQ;AAET,QAApB,eAAS,AAAM,KAAD;AACQ,QAAtB,gBAAU,AAAM,KAAD;AACf;;AAGF,UAAI,AAAe,yBAAG;AACS,QAA7B,mBAAa,cAAQ;AACC,QAAtB;;AAGqB,MAAvB;AAEoE,MAApE,gBAAU,kBAAY,cAAQ,eAAsB,AAAE,eAAf,+BAAyB;AAChD,MAAhB,uBAAA,AAAc,uBAAA;AAEwD,MAAtE,sBAAgB,yCAAgB,KAAK,mBAAkB;AACmB,MAA1E,mBAAa,2BAAa,KAAK,EAAe,eAAb,sBAAgB,aAAQ;AAC5B,MAA7B,2BAAqB,QAAQ;IAC/B;;AAUa;AACX,UAAI,AAAO;AACT,cAAO,MAAK;;AAGd,UAAI,AAAe,yBAAG;AACS,QAA7B,mBAAa,cAAQ;AACC,QAAtB;;AAEuB,QAAvB;;AAGkE,MAApE,gBAAU,kBAAY,cAAQ,eAAsB,AAAE,eAAf,+BAAyB;AAEzB,MAAjC,AAAE,eAAR;AAEiB,MAAjB,mBAAa;AACO,MAApB,sBAAgB;AACE,MAAlB,uBAAiB;AAES,MAA1B,QAAc,AAAE,eAAR;AACK,MAAb,cAAS;AACT,YAAO,MAAK;IACd;gBAI4B;AACX,MAAf,cAAS,KAAK;AACd,YAAe,gBAAR;IACT;;AAI8B;IAAI;oBAIG;AACZ,MAAvB,cAAS,AAAK,IAAD;AACb,eAAS,IAAK,KAAI;AAIf,QAHD,cACE,CAAC,aACoB,CAAX,AAAE,CAAD,YAAa;;AAG5B,YAAO;IACT;gBAE0B,OAAW,OAAW,QAAkB,UAC1D;AAEiC,MAAjC,AAAE,eAAR;AACsB,MAAhB,AAAE,eAAR,yBAAoB;AACE,MAAhB,AAAE,eAAR,yBAAoB;AACM,MAApB,AAAE,eAAR,yBAAoB,KAAK;AACE,MAArB,AAAE,eAAR,yBAAoB,MAAM;AAIH,MAAjB,AAAE,eAAR,uBAAkB;AACU,MAAtB,AAAE,eAAR,wBAAmB,QAAQ;AAC3B,eAAS,IAAI,SAAS,EAAE,AAAE,CAAD,GAAG,KAAO,IAAF,AAAE,CAAC,GAAH;AACX,QAAd,AAAE,eAAR,uBAAkB;AACE,QAAd,AAAE,eAAR,uBAAkB;AACE,QAAd,AAAE,eAAR,uBAAkB;;AAGY,MAAhC,iBAAW,KAAK,EAAE,KAAK,EAAE,MAAM;IACjC;iBAE2B,OAAW,OAAW;;AAClC,MAAb,kBAAY;AACA,MAAZ,iBAAW;AACG,MAAd,mBAAa;AACU,MAAvB,eAAS,uCAAU;AAGY,MAAzB,AAAE,eAAR;AAEM,iBAAO;AACP,oBAAU;AACZ,sBAAY,AAAM,KAAD,GAAG,MAAM;AAC1B,qBAAW;AAEa,MAA5B,kBAAyB,IAAE;AACT,MAAlB,eAAS;AACmB,MAA5B,iBAAc,AAAW,CAAb,eAAK,gBAAU;AACM,MAAjC,mBAAe,CAAF,eAAM,AAAU,kBAAE;AACN,MAAzB,iBAAW,AAAW,mBAAE;AACN,MAAlB,mBAAa;AACY,MAAzB,iBAAW,AAAW,mBAAE;AAExB,eAAI;;AACF,YAAI,AAAU,SAAD,KAAI;AACf;;AAES,QAAT,YAAF,AAAE,SAAS,GAAX;AACA,cAAY,AAAC,AAAa,gBAAnB,KAAK,UAAU,KAAR,QAAQ,4BAAM;;;AAG1B,gBAAM,UAAU;AAEhB,mBAAS;AACb,eAAS,cAAgB,AAAM,KAAD,GAAG,OAAO,QAAA,AAAM,KAAD,GAAI;AACvC,QAAR,SAAA,AAAM,MAAA;;AAEW,MAAnB,SAAS,AAAE,IAAE,MAAM;AAGnB,eAAS,IAAI,GAAG,AAAE,CAAD,SAAe,IAAF,AAAE,CAAC,GAAH;AAChB,QAAZ,AAAI,IAAA,QAAC,CAAC,EAAI,CAAC;;AAGM,MAAnB,cAAQ;AAEJ,sBAAY;AAChB,aAAO,SAAS;AACG,QAAjB,YAAY;AAER,gBAAI,UAAU;AAClB,eAAO,CAAC;AACA,sBAAS,AAAE,AAAU,CAAX,mBAAa,GAAG;AAC5B,kBAAkB,CAAb,AAAE,CAAD,aAAI,MAAM,IAAI,GAAG;AAE3B,cAAI,AAAI,AAAI,IAAJ,QAAC,CAAC,MAAK,KAAK;AACF,YAAhB,MAAM,AAAO,OAAA,QAAC,CAAC;AACC,YAAhB,IAAI,UAAU;AACd;gBACK,KAAI,AAAI,AAAI,IAAJ,QAAC,CAAC,KAAK;AAEhB,uBAAgB,OAAE,CAAC;AACvB,gBAAI,AAAE,CAAD,KAAI;AACC,cAAR,OAAO;;AAET;AACE,kBAAgB,CAAX,IAAA,AAAE,CAAD,GAAI,IAAI,IAAI;AACH,gBAAb,IAAA,AAAE,CAAD;;AAGH,kBAAI,AAAI,AAAI,IAAJ,QAAC,CAAC,MAAK,KAAK;AACF,gBAAhB,MAAM,AAAO,OAAA,QAAC,CAAC;AACC,gBAAhB,YAAY;AACZ;;qBAEK,AAAI,AAAI,IAAJ,QAAC,CAAC,KAAK;AACpB,gBAAI,SAAS;AACX;;;AAIQ,UAAZ,cAAQ,GAAG;AACJ,UAAP,MAAM,CAAC;AAEP,cAAI,AAAS,iBAAK,CAAF;AACS,YAAvB,AAAO,OAAA,QAAC,CAAC,GAAY,qBAAR,sBAAQ;AACN,YAAf,AAAI,IAAA,QAAC,CAAC,EAAI,KAAK;;AAEf,qBAAS,IAAI,GAAG,AAAE,CAAD,SAAa,IAAF,AAAE,CAAC,GAAH;AACd,cAAZ,AAAI,IAAA,QAAC,CAAC,EAAI,CAAC;;AAEY,YAAzB,iBAAW,AAAW,mBAAE;AACP,YAAjB,mBAAa;AACM,YAAnB,cAAQ;;AAGM,UAAhB,IAAI,UAAU;;;AAIN,MAAZ,cAAQ,GAAG;AACM,MAAjB,cAAQ;AAEY,MAAd,AAAE,eAAR,uBAAkB;IACpB;cAEkB;AACa,MAA7B,kBAAU,CAAV,kBAAa,AAAM,qCAAC;AAEpB,UAAI,AAAS,iBAAE;AACmB,QAAhC,kBAAU,CAAV,kBAAkB,AAAE,eAAN,IAAI,cAAK;;AAEN,QAAjB,kBAAgB,eAAJ,IAAI;;AAGA,MAAlB,iBAAA,AAAS,iBAAG;AAEZ,aAAO,AAAS,kBAAG;AACY,QAA7B,kBAAY,AAAU,kBAAE;AACT,QAAf,kBAAA,AAAU,6BAAI;AACD,QAAb,iBAAA,AAAS,iBAAG;;AAKd,UAAI,AAAS,iBAAE,kBAAY;AACzB,YAAI;AACgB,UAAlB,eAAS;AACmB,UAA5B,iBAAc,AAAW,CAAb,eAAK,gBAAU;AACT,UAAlB,mBAAa;;AAEL,UAAN,eAAF,AAAE,eAAF;AACA,cAAI,AAAO;AACY,YAArB,iBAAa,CAAF;;AAEiB,YAA5B,iBAAc,AAAW,CAAb,eAAK,gBAAU;;;;AAKjC,UAAI,AAAK,IAAD,KAAI;AAEV,eAAO,AAAS,iBAAE;AACa,UAA7B,kBAAY,AAAU,kBAAE;AACT,UAAf,kBAAA,AAAU,6BAAI;AACD,UAAb,iBAAA,AAAS,iBAAG;;AAED,QAAb;;IAEJ;;AAGE,UAAI,AAAW,mBAAE;AACc,QAAvB,AAAE,eAAR,uBAAkB;AACoB,QAAhC,AAAE,eAAR,wBAAmB,cAAQ;AACb,QAAd,mBAAa;;IAEjB;kBAEqB;;AACK,MAAxB,AAAM,qBAAW,uBAAV,wBAAU,QAAM,CAAC;AACxB,UAAI,AAAW,oBAAG;AACH,QAAb;;IAEJ;;AAGyC,MAAjC,AAAE,eAAR;AACkC,MAA5B,AAAE,eAAR;AACqB,MAAf,AAAE,eAAR,uBAAkB;AACyB,MAArC,AAAE,eAAR,wBAAmB,AAAc;AACD,MAA1B,AAAE,eAAR,wBAAmB,qBAAC,GAAM;AACC,MAArB,AAAE,eAAR,yBAAoB;AACA,MAAd,AAAE,eAAR,uBAAkB;IACpB;;;AAGyC,MAAjC,AAAE,eAAR;AACqC,MAA/B,AAAE,eAAR;AACoB,MAAd,AAAE,eAAR,uBAAkB;AASD,MAHX,AAAE,eAAR,uBAEM,CAFY,AAAE,AACR,QACR;AAG4C,MAA1C,AAAE,eAAR,0BAAuC,+BAAnB,aAAsB;AACtB,MAAd,AAAE,eAAR,uBAAkB;AACE,MAAd,AAAE,eAAR,uBAAkB;IACpB;mBAGsB,OAAW;AACO,MAAhC,AAAE,eAAR,wBAA4B;AACF,MAApB,AAAE,eAAR,yBAAoB,KAAK;AACE,MAArB,AAAE,eAAR,yBAAoB,MAAM;AACN,MAAd,AAAE,eAAR,uBAAkB;AACE,MAAd,AAAE,eAAR,uBAAkB;AACE,MAAd,AAAE,eAAR,uBAAkB;IACpB;;;AAKS;;IAAM;iBAAN;;IAAM;;;AACN;;IAAO;kBAAP;;IAAO;;;AAYD;;IAAM;iBAAN;;IAAM;;;QAlVX;QACD;QACA;QACA;QACA;IA8TE;IACN;IACY;gCACR;iCACA;IAGL,kBAAY;IACZ,iBAAW;IACX,eAAS;IACT,kBAAY;IACZ,iBAAW;IACX,iBAAW;IACX,mBAAa;IACb,iBAAW;IACV,mBAAa;gCACH;IACX,mBAAa;IAEH;IArVJ;IACD;IACA;IACA;IACA;IACY,uBAAE;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAkVX,+BAAQ;;;MAER,2CAAoB;;;MACpB,2CAAoB;;;MACpB,2CAAoB;;;MAEpB,sCAAe;;;MACf,yCAAkB;;;MAElB,2BAAI;;;MACJ,4BAAK;;;MACL,6BAAM;;;MACN,6BAAM","file":"../../../../../../../../../../../../packages/image/src/formats/gif_encoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__gif_encoder: gif_encoder
+  };
+}));
+
+//# sourceMappingURL=gif_encoder.dart.lib.js.map

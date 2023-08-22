@@ -1,0 +1,345 @@
+define(['dart_sdk', 'packages/data/entities/model/code_step.dart', 'packages/data/entities/model/userprincipal/user_principal.dart', 'packages/hive/src/box_collection/box_collection_stub.dart'], (function load__packages__constant__config__application__cc_application_dart(dart_sdk, packages__data__entities__model__code_step$46dart, packages__data__entities__model__userprincipal__user_principal$46dart, packages__hive__src__box_collection__box_collection_stub$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const code_step = packages__data__entities__model__code_step$46dart.entities__model__code_step;
+  const user_principal = packages__data__entities__model__userprincipal__user_principal$46dart.entities__model__userprincipal__user_principal;
+  const hive = packages__hive__src__box_collection__box_collection_stub$46dart.hive;
+  const hive_object = packages__hive__src__box_collection__box_collection_stub$46dart.src__object__hive_object;
+  var cc_application = Object.create(dart.library);
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $hashCode = dartx.hashCode;
+  var $runtimeType = dartx.runtimeType;
+  var $toDouble = dartx.toDouble;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfMap: () => (T.JSArrayOfMap = dart.constFn(_interceptors.JSArray$(core.Map)))(),
+    CcApplicationN: () => (T.CcApplicationN = dart.constFn(dart.nullable(cc_application.CcApplication)))(),
+    IdentityMapOfint$dynamic: () => (T.IdentityMapOfint$dynamic = dart.constFn(_js_helper.IdentityMap$(core.int, dart.dynamic)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    numN: () => (T.numN = dart.constFn(dart.nullable(core.num)))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    dynamicToMapOfString$dynamic: () => (T.dynamicToMapOfString$dynamic = dart.constFn(dart.fnType(T.MapOfString$dynamic(), [dart.dynamic])))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:constant/config/application/cc_application.dart"];
+  var token$ = dart.privateName(cc_application, "CcApplication.token");
+  var uuid$ = dart.privateName(cc_application, "CcApplication.uuid");
+  var value_2 = dart.privateName(cc_application, "CcApplication.value_2");
+  var value_3 = dart.privateName(cc_application, "CcApplication.value_3");
+  var new_config = dart.privateName(cc_application, "CcApplication.new_config");
+  var version_cache = dart.privateName(cc_application, "CcApplication.version_cache");
+  var dataLogs = dart.privateName(cc_application, "CcApplication.dataLogs");
+  var isLogWriting = dart.privateName(cc_application, "CcApplication.isLogWriting");
+  var deviceId = dart.privateName(cc_application, "CcApplication.deviceId");
+  var currentMenu = dart.privateName(cc_application, "CcApplication.currentMenu");
+  var currentMenuOld = dart.privateName(cc_application, "CcApplication.currentMenuOld");
+  var storeSupportID = dart.privateName(cc_application, "CcApplication.storeSupportID");
+  var storeNameSupport = dart.privateName(cc_application, "CcApplication.storeNameSupport");
+  var objCodeStep = dart.privateName(cc_application, "CcApplication.objCodeStep");
+  var user = dart.privateName(cc_application, "CcApplication.user");
+  cc_application.CcApplication = class CcApplication extends hive_object.HiveObject {
+    get token() {
+      return this[token$];
+    }
+    set token(value) {
+      this[token$] = value;
+    }
+    get uuid() {
+      return this[uuid$];
+    }
+    set uuid(value) {
+      this[uuid$] = value;
+    }
+    get value_2() {
+      return this[value_2];
+    }
+    set value_2(value) {
+      this[value_2] = value;
+    }
+    get value_3() {
+      return this[value_3];
+    }
+    set value_3(value) {
+      this[value_3] = value;
+    }
+    get new_config() {
+      return this[new_config];
+    }
+    set new_config(value) {
+      this[new_config] = value;
+    }
+    get version_cache() {
+      return this[version_cache];
+    }
+    set version_cache(value) {
+      this[version_cache] = value;
+    }
+    get dataLogs() {
+      return this[dataLogs];
+    }
+    set dataLogs(value) {
+      this[dataLogs] = value;
+    }
+    get isLogWriting() {
+      return this[isLogWriting];
+    }
+    set isLogWriting(value) {
+      this[isLogWriting] = value;
+    }
+    get deviceId() {
+      return this[deviceId];
+    }
+    set deviceId(value) {
+      this[deviceId] = value;
+    }
+    get currentMenu() {
+      return this[currentMenu];
+    }
+    set currentMenu(value) {
+      this[currentMenu] = value;
+    }
+    get currentMenuOld() {
+      return this[currentMenuOld];
+    }
+    set currentMenuOld(value) {
+      this[currentMenuOld] = value;
+    }
+    get storeSupportID() {
+      return this[storeSupportID];
+    }
+    set storeSupportID(value) {
+      this[storeSupportID] = value;
+    }
+    get storeNameSupport() {
+      return this[storeNameSupport];
+    }
+    set storeNameSupport(value) {
+      this[storeNameSupport] = value;
+    }
+    get objCodeStep() {
+      return this[objCodeStep];
+    }
+    set objCodeStep(value) {
+      this[objCodeStep] = value;
+    }
+    get user() {
+      return this[user];
+    }
+    set user(value) {
+      this[user] = value;
+    }
+    static get instance() {
+      let t0;
+      t0 = cc_application.CcApplication['_#instance'];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("instance")) : t0;
+    }
+    static set instance(instance$35param) {
+      cc_application.CcApplication['_#instance'] = instance$35param;
+    }
+    static register() {
+      return async.async(T.CcApplicationN(), function* register() {
+        hive.Hive.registerAdapter(cc_application.CcApplication, new cc_application.CcApplicationAdapter.new());
+        let box = (yield hive.Hive.openBox(cc_application.CcApplication, "application"));
+        let model = box.get("key_default");
+        if (model == null) {
+          model = new cc_application.CcApplication.new();
+          box.put("key_default", model);
+        }
+        cc_application.CcApplication.instance = model;
+        return model;
+      });
+    }
+    static ['_#new#tearOff'](opts) {
+      let token = opts && 'token' in opts ? opts.token : null;
+      let uuid = opts && 'uuid' in opts ? opts.uuid : null;
+      return new cc_application.CcApplication.new({token: token, uuid: uuid});
+    }
+    get storeCurrentOutputID() {
+      if (this.storeSupportID != null) {
+        return dart.nullCheck(this.storeSupportID);
+      }
+      return dart.nullCheck(dart.nullCheck(this.user).storeID);
+    }
+  };
+  (cc_application.CcApplication.new = function(opts) {
+    let token = opts && 'token' in opts ? opts.token : null;
+    let uuid = opts && 'uuid' in opts ? opts.uuid : null;
+    this[value_2] = null;
+    this[value_3] = null;
+    this[new_config] = null;
+    this[version_cache] = null;
+    this[dataLogs] = T.JSArrayOfMap().of([]);
+    this[isLogWriting] = false;
+    this[deviceId] = null;
+    this[currentMenu] = null;
+    this[currentMenuOld] = null;
+    this[storeSupportID] = null;
+    this[storeNameSupport] = null;
+    this[objCodeStep] = new code_step.CodeStep.new();
+    this[user] = new user_principal.UserPrincipal.new();
+    this[token$] = token;
+    this[uuid$] = uuid;
+    cc_application.CcApplication.__proto__.new.call(this);
+    ;
+  }).prototype = cc_application.CcApplication.prototype;
+  dart.addTypeTests(cc_application.CcApplication);
+  dart.addTypeCaches(cc_application.CcApplication);
+  dart.setStaticMethodSignature(cc_application.CcApplication, () => ['register']);
+  dart.setGetterSignature(cc_application.CcApplication, () => ({
+    __proto__: dart.getGetters(cc_application.CcApplication.__proto__),
+    storeCurrentOutputID: core.int
+  }));
+  dart.setStaticGetterSignature(cc_application.CcApplication, () => ['instance']);
+  dart.setStaticSetterSignature(cc_application.CcApplication, () => ['instance']);
+  dart.setLibraryUri(cc_application.CcApplication, I[0]);
+  dart.setFieldSignature(cc_application.CcApplication, () => ({
+    __proto__: dart.getFields(cc_application.CcApplication.__proto__),
+    token: dart.fieldType(dart.nullable(core.String)),
+    uuid: dart.fieldType(dart.nullable(core.String)),
+    value_2: dart.fieldType(dart.nullable(core.String)),
+    value_3: dart.fieldType(dart.nullable(core.String)),
+    new_config: dart.fieldType(dart.nullable(core.String)),
+    version_cache: dart.fieldType(dart.nullable(core.double)),
+    dataLogs: dart.fieldType(core.List$(core.Map)),
+    isLogWriting: dart.fieldType(core.bool),
+    deviceId: dart.fieldType(dart.nullable(core.String)),
+    currentMenu: dart.fieldType(dart.nullable(core.String)),
+    currentMenuOld: dart.fieldType(dart.nullable(core.String)),
+    storeSupportID: dart.fieldType(dart.nullable(core.int)),
+    storeNameSupport: dart.fieldType(dart.nullable(core.String)),
+    objCodeStep: dart.fieldType(code_step.CodeStep),
+    user: dart.fieldType(dart.nullable(user_principal.UserPrincipal))
+  }));
+  dart.setStaticFieldSignature(cc_application.CcApplication, () => ['_#instance']);
+  dart.defineLazy(cc_application.CcApplication, {
+    /*cc_application.CcApplication['_#instance']*/get ['_#instance']() {
+      return null;
+    },
+    set ['_#instance'](_) {}
+  }, false);
+  var typeId = dart.privateName(cc_application, "CcApplicationAdapter.typeId");
+  cc_application.CcApplicationAdapter = class CcApplicationAdapter extends hive.TypeAdapter$(cc_application.CcApplication) {
+    get typeId() {
+      return this[typeId];
+    }
+    set typeId(value) {
+      super.typeId = value;
+    }
+    read(reader) {
+      let t1;
+      let numOfFields = reader.readByte();
+      let fields = (() => {
+        let t0 = new (T.IdentityMapOfint$dynamic()).new();
+        for (let i = 0; i < numOfFields; i = i + 1)
+          t0[$_set](reader.readByte(), reader.read());
+        return t0;
+      })();
+      t1 = new cc_application.CcApplication.new({token: T.StringN().as(fields[$_get](0)), uuid: T.StringN().as(fields[$_get](1))});
+      return (() => {
+        t1.value_2 = T.StringN().as(fields[$_get](2));
+        t1.value_3 = T.StringN().as(fields[$_get](3));
+        t1.new_config = T.StringN().as(fields[$_get](4));
+        t1.version_cache = fields[$_get](5) == null ? 0.0 : T.doubleN().as(fields[$_get](5));
+        return t1;
+      })();
+    }
+    write(writer, obj) {
+      let t1;
+      cc_application.CcApplication.as(obj);
+      t1 = writer;
+      (() => {
+        t1.writeByte(6);
+        t1.writeByte(0);
+        t1.write(T.StringN(), obj.token);
+        t1.writeByte(1);
+        t1.write(T.StringN(), obj.uuid);
+        t1.writeByte(2);
+        t1.write(T.StringN(), obj.value_2);
+        t1.writeByte(3);
+        t1.write(T.StringN(), obj.value_3);
+        t1.writeByte(4);
+        t1.write(T.StringN(), obj.new_config);
+        t1.writeByte(5);
+        t1.write(T.doubleN(), obj.version_cache);
+        return t1;
+      })();
+    }
+    get hashCode() {
+      return this.typeId[$hashCode];
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return this === other || cc_application.CcApplicationAdapter.is(other) && this[$runtimeType]._equals(other[$runtimeType]) && this.typeId === other.typeId;
+    }
+    static ['_#new#tearOff']() {
+      return new cc_application.CcApplicationAdapter.new();
+    }
+  };
+  (cc_application.CcApplicationAdapter.new = function() {
+    this[typeId] = 2;
+    ;
+  }).prototype = cc_application.CcApplicationAdapter.prototype;
+  dart.addTypeTests(cc_application.CcApplicationAdapter);
+  dart.addTypeCaches(cc_application.CcApplicationAdapter);
+  dart.setMethodSignature(cc_application.CcApplicationAdapter, () => ({
+    __proto__: dart.getMethods(cc_application.CcApplicationAdapter.__proto__),
+    read: dart.fnType(cc_application.CcApplication, [hive.BinaryReader]),
+    write: dart.fnType(dart.void, [hive.BinaryWriter, dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(cc_application.CcApplicationAdapter, I[0]);
+  dart.setFieldSignature(cc_application.CcApplicationAdapter, () => ({
+    __proto__: dart.getFields(cc_application.CcApplicationAdapter.__proto__),
+    typeId: dart.finalFieldType(core.int)
+  }));
+  dart.defineExtensionMethods(cc_application.CcApplicationAdapter, ['_equals']);
+  dart.defineExtensionAccessors(cc_application.CcApplicationAdapter, ['hashCode']);
+  cc_application._$CcApplicationFromJson = function _$36CcApplicationFromJson(json) {
+    let t2, t1;
+    t1 = new cc_application.CcApplication.new({token: T.StringN().as(json[$_get]("token")), uuid: T.StringN().as(json[$_get]("uuid"))});
+    return (() => {
+      t1.value_2 = T.StringN().as(json[$_get]("value_2"));
+      t1.value_3 = T.StringN().as(json[$_get]("value_3"));
+      t1.new_config = T.StringN().as(json[$_get]("new_config"));
+      t1.version_cache = (t2 = T.numN().as(json[$_get]("version_cache")), t2 == null ? null : t2[$toDouble]());
+      t1.dataLogs = core.List.as(json[$_get]("dataLogs"))[$map](T.MapOfString$dynamic(), dart.fn(e => T.MapOfString$dynamic().as(e), T.dynamicToMapOfString$dynamic()))[$toList]();
+      t1.isLogWriting = core.bool.as(json[$_get]("isLogWriting"));
+      t1.deviceId = T.StringN().as(json[$_get]("deviceId"));
+      t1.currentMenu = T.StringN().as(json[$_get]("currentMenu"));
+      t1.currentMenuOld = T.StringN().as(json[$_get]("currentMenuOld"));
+      t1.storeSupportID = T.intN().as(json[$_get]("storeSupportID"));
+      t1.storeNameSupport = T.StringN().as(json[$_get]("storeNameSupport"));
+      t1.objCodeStep = new code_step.CodeStep.fromJson(json[$_get]("objCodeStep"));
+      t1.user = json[$_get]("user") == null ? null : new user_principal.UserPrincipal.fromJson(T.MapOfString$dynamic().as(json[$_get]("user")));
+      return t1;
+    })();
+  };
+  cc_application._$CcApplicationToJson = function _$36CcApplicationToJson(instance) {
+    return new (T.IdentityMapOfString$dynamic()).from(["token", instance.token, "uuid", instance.uuid, "value_2", instance.value_2, "value_3", instance.value_3, "new_config", instance.new_config, "version_cache", instance.version_cache, "dataLogs", instance.dataLogs, "isLogWriting", instance.isLogWriting, "deviceId", instance.deviceId, "currentMenu", instance.currentMenu, "currentMenuOld", instance.currentMenuOld, "storeSupportID", instance.storeSupportID, "storeNameSupport", instance.storeNameSupport, "objCodeStep", instance.objCodeStep, "user", instance.user]);
+  };
+  dart.trackLibraries("packages/constant/config/application/cc_application.dart", {
+    "package:constant/config/application/cc_application.dart": cc_application
+  }, {
+    "package:constant/config/application/cc_application.dart": ["cc_application.g.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["cc_application.dart","cc_application.g.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/constant/config/application/cc_application.dart.lib.js"}');
+  // Exports:
+  return {
+    config__application__cc_application: cc_application
+  };
+}));
+
+//# sourceMappingURL=cc_application.dart.lib.js.map

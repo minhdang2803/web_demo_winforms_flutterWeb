@@ -1,0 +1,1513 @@
+define(['dart_sdk', 'packages/image/src/image_exception.dart', 'packages/image/src/util/input_buffer.dart', 'packages/archive/src/zlib_decoder.dart', 'packages/image/src/util/output_buffer.dart', 'packages/image/src/formats/exr/exr_huffman.dart', 'packages/image/src/formats/exr/exr_wavelet.dart', 'packages/image/src/hdr/hdr_slice.dart', 'packages/image/src/formats/exr/exr_channel.dart', 'packages/image/src/formats/exr/exr_attribute.dart'], (function load__packages__image__src__formats__exr__exr_zip_compressor_dart(dart_sdk, packages__image__src__image_exception$46dart, packages__image__src__util__input_buffer$46dart, packages__archive__src__zlib_decoder$46dart, packages__image__src__util__output_buffer$46dart, packages__image__src__formats__exr__exr_huffman$46dart, packages__image__src__formats__exr__exr_wavelet$46dart, packages__image__src__hdr__hdr_slice$46dart, packages__image__src__formats__exr__exr_channel$46dart, packages__image__src__formats__exr__exr_attribute$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const typed_data = dart_sdk.typed_data;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const _js_helper = dart_sdk._js_helper;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  const zlib_decoder = packages__archive__src__zlib_decoder$46dart.src__zlib_decoder;
+  const output_buffer = packages__image__src__util__output_buffer$46dart.src__util__output_buffer;
+  const exr_huffman = packages__image__src__formats__exr__exr_huffman$46dart.src__formats__exr__exr_huffman;
+  const exr_wavelet = packages__image__src__formats__exr__exr_wavelet$46dart.src__formats__exr__exr_wavelet;
+  const hdr_image = packages__image__src__hdr__hdr_slice$46dart.src__hdr__hdr_image;
+  const exr_channel = packages__image__src__formats__exr__exr_channel$46dart.src__formats__exr__exr_channel;
+  const exr_attribute = packages__image__src__formats__exr__exr_attribute$46dart.src__formats__exr__exr_attribute;
+  var exr_zip_compressor = Object.create(dart.library);
+  var exr_rle_compressor = Object.create(dart.library);
+  var exr_pxr24_compressor = Object.create(dart.library);
+  var exr_piz_compressor = Object.create(dart.library);
+  var exr_part = Object.create(dart.library);
+  var exr_compressor = Object.create(dart.library);
+  var exr_b44_compressor = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $truncate = dartx.truncate;
+  var $buffer = dartx.buffer;
+  var $modulo = dartx['%'];
+  var $rightShift = dartx['>>'];
+  var $isEmpty = dartx.isEmpty;
+  var $add = dartx.add;
+  var $leftShift = dartx['<<'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    ListOf_PizChannelData: () => (T.ListOf_PizChannelData = dart.constFn(core.List$(exr_piz_compressor._PizChannelData)))(),
+    intTo_PizChannelData: () => (T.intTo_PizChannelData = dart.constFn(dart.fnType(exr_piz_compressor._PizChannelData, [core.int])))(),
+    JSArrayOfExrChannel: () => (T.JSArrayOfExrChannel = dart.constFn(_interceptors.JSArray$(exr_channel.ExrChannel)))(),
+    IdentityMapOfString$ExrAttribute: () => (T.IdentityMapOfString$ExrAttribute = dart.constFn(_js_helper.IdentityMap$(core.String, exr_attribute.ExrAttribute)))(),
+    ListOfUint32List: () => (T.ListOfUint32List = dart.constFn(core.List$(typed_data.Uint32List)))(),
+    intToUint32List: () => (T.intToUint32List = dart.constFn(dart.fnType(typed_data.Uint32List, [core.int])))(),
+    Uint32ListN: () => (T.Uint32ListN = dart.constFn(dart.nullable(typed_data.Uint32List)))(),
+    JSArrayOfUint32ListN: () => (T.JSArrayOfUint32ListN = dart.constFn(_interceptors.JSArray$(T.Uint32ListN())))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    intToint: () => (T.intToint = dart.constFn(dart.fnType(core.int, [core.int])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: zlib_decoder.ZLibDecoder.prototype
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = [
+    "package:image/src/formats/exr/exr_compressor.dart",
+    "package:image/src/formats/exr/exr_zip_compressor.dart",
+    "package:image/src/formats/exr/exr_rle_compressor.dart",
+    "package:image/src/formats/exr/exr_pxr24_compressor.dart",
+    "package:image/src/formats/exr/exr_piz_compressor.dart",
+    "package:image/src/formats/exr/exr_part.dart",
+    "package:image/src/formats/exr/exr_b44_compressor.dart"
+  ];
+  var decodedWidth = dart.privateName(exr_compressor, "ExrCompressor.decodedWidth");
+  var decodedHeight = dart.privateName(exr_compressor, "ExrCompressor.decodedHeight");
+  var _header$ = dart.privateName(exr_compressor, "_header");
+  exr_compressor.ExrCompressor = class ExrCompressor extends core.Object {
+    get decodedWidth() {
+      return this[decodedWidth];
+    }
+    set decodedWidth(value) {
+      this[decodedWidth] = value;
+    }
+    get decodedHeight() {
+      return this[decodedHeight];
+    }
+    set decodedHeight(value) {
+      this[decodedHeight] = value;
+    }
+    static new(type, hdr, maxScanLineSize, numScanLines = null) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      switch (type) {
+        case 1:
+          {
+            return new exr_rle_compressor.InternalExrRleCompressor.new(hdr, maxScanLineSize);
+          }
+        case 2:
+          {
+            return new exr_zip_compressor.InternalExrZipCompressor.new(hdr, maxScanLineSize, (t0 = numScanLines, t0 == null ? 1 : t0));
+          }
+        case 3:
+          {
+            return new exr_zip_compressor.InternalExrZipCompressor.new(hdr, maxScanLineSize, (t0$ = numScanLines, t0$ == null ? 16 : t0$));
+          }
+        case 4:
+          {
+            return new exr_piz_compressor.InternalExrPizCompressor.new(hdr, maxScanLineSize, (t0$0 = numScanLines, t0$0 == null ? 32 : t0$0));
+          }
+        case 5:
+          {
+            return new exr_pxr24_compressor.InternalExrPxr24Compressor.new(hdr, maxScanLineSize, (t0$1 = numScanLines, t0$1 == null ? 16 : t0$1));
+          }
+        case 6:
+          {
+            return new exr_b44_compressor.InternalExrB44Compressor.new(hdr, maxScanLineSize, (t0$2 = numScanLines, t0$2 == null ? 32 : t0$2), false);
+          }
+        case 7:
+          {
+            return new exr_b44_compressor.InternalExrB44Compressor.new(hdr, maxScanLineSize, (t0$3 = numScanLines, t0$3 == null ? 32 : t0$3), true);
+          }
+        default:
+          {
+            dart.throw(new image_exception.ImageException.new("Invalid compression type: " + dart.str(type)));
+          }
+      }
+    }
+    static ['_#new#tearOff'](type, hdr, maxScanLineSize, numScanLines = null) {
+      return exr_compressor.ExrCompressor.new(type, hdr, maxScanLineSize, numScanLines);
+    }
+    static tile(type, tileLineSize, numTileLines, hdr) {
+      switch (type) {
+        case 1:
+          {
+            return new exr_rle_compressor.InternalExrRleCompressor.new(hdr, tileLineSize * numTileLines);
+          }
+        case 2:
+        case 3:
+          {
+            return new exr_zip_compressor.InternalExrZipCompressor.new(hdr, tileLineSize, numTileLines);
+          }
+        case 4:
+          {
+            return new exr_piz_compressor.InternalExrPizCompressor.new(hdr, tileLineSize, numTileLines);
+          }
+        case 5:
+          {
+            return new exr_pxr24_compressor.InternalExrPxr24Compressor.new(hdr, tileLineSize, numTileLines);
+          }
+        case 6:
+          {
+            return new exr_b44_compressor.InternalExrB44Compressor.new(hdr, tileLineSize, numTileLines, false);
+          }
+        case 7:
+          {
+            return new exr_b44_compressor.InternalExrB44Compressor.new(hdr, tileLineSize, numTileLines, true);
+          }
+        default:
+          {
+            dart.throw(new image_exception.ImageException.new("Invalid compression type: " + dart.str(type)));
+          }
+      }
+    }
+    static ['_#tile#tearOff'](type, tileLineSize, numTileLines, hdr) {
+      return exr_compressor.ExrCompressor.tile(type, tileLineSize, numTileLines, hdr);
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Unsupported compression type"));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Unsupported compression type"));
+    }
+  };
+  (exr_compressor.ExrCompressor.__ = function(_header) {
+    this[decodedWidth] = 0;
+    this[decodedHeight] = 0;
+    this[_header$] = _header;
+    ;
+  }).prototype = exr_compressor.ExrCompressor.prototype;
+  dart.addTypeTests(exr_compressor.ExrCompressor);
+  dart.addTypeCaches(exr_compressor.ExrCompressor);
+  dart.setMethodSignature(exr_compressor.ExrCompressor, () => ({
+    __proto__: dart.getMethods(exr_compressor.ExrCompressor.__proto__),
+    compress: dart.fnType(typed_data.Uint8List, [input_buffer.InputBuffer, core.int, core.int], [dart.nullable(core.int), dart.nullable(core.int)]),
+    uncompress: dart.fnType(typed_data.Uint8List, [input_buffer.InputBuffer, core.int, core.int], [dart.nullable(core.int), dart.nullable(core.int)])
+  }));
+  dart.setStaticMethodSignature(exr_compressor.ExrCompressor, () => ['new', 'tile']);
+  dart.setLibraryUri(exr_compressor.ExrCompressor, I[0]);
+  dart.setFieldSignature(exr_compressor.ExrCompressor, () => ({
+    __proto__: dart.getFields(exr_compressor.ExrCompressor.__proto__),
+    decodedWidth: dart.fieldType(core.int),
+    decodedHeight: dart.fieldType(core.int),
+    [_header$]: dart.fieldType(exr_part.ExrPart)
+  }));
+  dart.setStaticFieldSignature(exr_compressor.ExrCompressor, () => ['NO_COMPRESSION', 'RLE_COMPRESSION', 'ZIPS_COMPRESSION', 'ZIP_COMPRESSION', 'PIZ_COMPRESSION', 'PXR24_COMPRESSION', 'B44_COMPRESSION', 'B44A_COMPRESSION']);
+  dart.defineLazy(exr_compressor.ExrCompressor, {
+    /*exr_compressor.ExrCompressor.NO_COMPRESSION*/get NO_COMPRESSION() {
+      return 0;
+    },
+    /*exr_compressor.ExrCompressor.RLE_COMPRESSION*/get RLE_COMPRESSION() {
+      return 1;
+    },
+    /*exr_compressor.ExrCompressor.ZIPS_COMPRESSION*/get ZIPS_COMPRESSION() {
+      return 2;
+    },
+    /*exr_compressor.ExrCompressor.ZIP_COMPRESSION*/get ZIP_COMPRESSION() {
+      return 3;
+    },
+    /*exr_compressor.ExrCompressor.PIZ_COMPRESSION*/get PIZ_COMPRESSION() {
+      return 4;
+    },
+    /*exr_compressor.ExrCompressor.PXR24_COMPRESSION*/get PXR24_COMPRESSION() {
+      return 5;
+    },
+    /*exr_compressor.ExrCompressor.B44_COMPRESSION*/get B44_COMPRESSION() {
+      return 6;
+    },
+    /*exr_compressor.ExrCompressor.B44A_COMPRESSION*/get B44A_COMPRESSION() {
+      return 7;
+    }
+  }, false);
+  exr_zip_compressor.ExrZipCompressor = class ExrZipCompressor extends exr_compressor.ExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize, numScanLines) {
+      return new exr_zip_compressor.InternalExrZipCompressor.new(header, maxScanLineSize, numScanLines);
+    }
+  };
+  dart.addTypeTests(exr_zip_compressor.ExrZipCompressor);
+  dart.addTypeCaches(exr_zip_compressor.ExrZipCompressor);
+  dart.setStaticMethodSignature(exr_zip_compressor.ExrZipCompressor, () => ['new']);
+  dart.setLibraryUri(exr_zip_compressor.ExrZipCompressor, I[1]);
+  dart.setStaticFieldSignature(exr_zip_compressor.ExrZipCompressor, () => ['_redirecting#']);
+  var zlib = dart.privateName(exr_zip_compressor, "InternalExrZipCompressor.zlib");
+  var _outCache = dart.privateName(exr_zip_compressor, "_outCache");
+  var _numScanLines$ = dart.privateName(exr_zip_compressor, "_numScanLines");
+  exr_compressor.InternalExrCompressor = class InternalExrCompressor extends exr_compressor.ExrCompressor {
+    get header() {
+      return exr_part.InternalExrPart.as(this[_header$]);
+    }
+    numSamples(s, a, b) {
+      let a1 = (a / s)[$truncate]();
+      let b1 = (b / s)[$truncate]();
+      return b1 - a1 + (a1 * s < a ? 0 : 1);
+    }
+  };
+  (exr_compressor.InternalExrCompressor.new = function(header) {
+    exr_compressor.InternalExrCompressor.__proto__.__.call(this, header);
+    ;
+  }).prototype = exr_compressor.InternalExrCompressor.prototype;
+  dart.addTypeTests(exr_compressor.InternalExrCompressor);
+  dart.addTypeCaches(exr_compressor.InternalExrCompressor);
+  dart.setMethodSignature(exr_compressor.InternalExrCompressor, () => ({
+    __proto__: dart.getMethods(exr_compressor.InternalExrCompressor.__proto__),
+    numSamples: dart.fnType(core.int, [core.int, core.int, core.int])
+  }));
+  dart.setGetterSignature(exr_compressor.InternalExrCompressor, () => ({
+    __proto__: dart.getGetters(exr_compressor.InternalExrCompressor.__proto__),
+    header: exr_part.InternalExrPart
+  }));
+  dart.setLibraryUri(exr_compressor.InternalExrCompressor, I[0]);
+  exr_zip_compressor.InternalExrZipCompressor = class InternalExrZipCompressor extends exr_compressor.InternalExrCompressor {
+    get zlib() {
+      return this[zlib];
+    }
+    set zlib(value) {
+      this[zlib] = value;
+    }
+    static ['_#new#tearOff'](header, maxScanLineSize, _numScanLines) {
+      return new exr_zip_compressor.InternalExrZipCompressor.new(header, maxScanLineSize, _numScanLines);
+    }
+    numScanLines() {
+      return this[_numScanLines$];
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Zip compression not yet supported"));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      let t0, t0$, t0$0, t0$1;
+      let data = this.zlib.decodeBytes(input.toUint8List());
+      width == null ? width = this.header.width : null;
+      height == null ? height = this.header.linesInBuffer : null;
+      let minX = x;
+      let maxX = x + dart.nullCheck(width) - 1;
+      let minY = y;
+      let maxY = y + dart.nullCheck(height) - 1;
+      if (maxX > dart.nullCheck(this.header.width)) {
+        maxX = dart.nullCheck(this.header.width) - 1;
+      }
+      if (maxY > dart.nullCheck(this.header.height)) {
+        maxY = dart.nullCheck(this.header.height) - 1;
+      }
+      this.decodedWidth = maxX - minX + 1;
+      this.decodedHeight = maxY - minY + 1;
+      for (let i = 1, len = data[$length]; i < len; i = i + 1) {
+        data[$_set](i, data[$_get](i - 1) + data[$_get](i) - 128);
+      }
+      if (this[_outCache] == null || dart.nullCheck(this[_outCache])[$length] !== data[$length]) {
+        this[_outCache] = _native_typed_data.NativeUint8List.new(data[$length]);
+      }
+      let len = data[$length];
+      let t1 = 0;
+      let t2 = ((len + 1) / 2)[$truncate]();
+      let si = 0;
+      while (true) {
+        if (si < len) {
+          dart.nullCheck(this[_outCache])[$_set]((t0 = si, si = t0 + 1, t0), data[$_get]((t0$ = t1, t1 = t0$ + 1, t0$)));
+        } else {
+          break;
+        }
+        if (si < len) {
+          dart.nullCheck(this[_outCache])[$_set]((t0$0 = si, si = t0$0 + 1, t0$0), data[$_get]((t0$1 = t2, t2 = t0$1 + 1, t0$1)));
+        } else {
+          break;
+        }
+      }
+      return dart.nullCheck(this[_outCache]);
+    }
+  };
+  (exr_zip_compressor.InternalExrZipCompressor.new = function(header, maxScanLineSize, _numScanLines) {
+    this[zlib] = C[0] || CT.C0;
+    this[_outCache] = null;
+    this[_numScanLines$] = _numScanLines;
+    exr_zip_compressor.InternalExrZipCompressor.__proto__.new.call(this, exr_part.InternalExrPart.as(header));
+    ;
+  }).prototype = exr_zip_compressor.InternalExrZipCompressor.prototype;
+  dart.addTypeTests(exr_zip_compressor.InternalExrZipCompressor);
+  dart.addTypeCaches(exr_zip_compressor.InternalExrZipCompressor);
+  exr_zip_compressor.InternalExrZipCompressor[dart.implements] = () => [exr_zip_compressor.ExrZipCompressor];
+  dart.setMethodSignature(exr_zip_compressor.InternalExrZipCompressor, () => ({
+    __proto__: dart.getMethods(exr_zip_compressor.InternalExrZipCompressor.__proto__),
+    numScanLines: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(exr_zip_compressor.InternalExrZipCompressor, I[1]);
+  dart.setFieldSignature(exr_zip_compressor.InternalExrZipCompressor, () => ({
+    __proto__: dart.getFields(exr_zip_compressor.InternalExrZipCompressor.__proto__),
+    zlib: dart.fieldType(zlib_decoder.ZLibDecoder),
+    [_numScanLines$]: dart.finalFieldType(core.int),
+    [_outCache]: dart.fieldType(dart.nullable(typed_data.Uint8List))
+  }));
+  exr_rle_compressor.ExrRleCompressor = class ExrRleCompressor extends exr_compressor.ExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize) {
+      return new exr_rle_compressor.InternalExrRleCompressor.new(header, maxScanLineSize);
+    }
+  };
+  dart.addTypeTests(exr_rle_compressor.ExrRleCompressor);
+  dart.addTypeCaches(exr_rle_compressor.ExrRleCompressor);
+  dart.setStaticMethodSignature(exr_rle_compressor.ExrRleCompressor, () => ['new']);
+  dart.setLibraryUri(exr_rle_compressor.ExrRleCompressor, I[2]);
+  dart.setStaticFieldSignature(exr_rle_compressor.ExrRleCompressor, () => ['_redirecting#']);
+  var _outCache$ = dart.privateName(exr_rle_compressor, "_outCache");
+  exr_rle_compressor.InternalExrRleCompressor = class InternalExrRleCompressor extends exr_compressor.InternalExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize) {
+      return new exr_rle_compressor.InternalExrRleCompressor.new(header, maxScanLineSize);
+    }
+    numScanLines() {
+      return 1;
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Rle compression not yet supported."));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      let out = new output_buffer.OutputBuffer.new({size: input.length * 2});
+      width == null ? width = this.header.width : null;
+      height == null ? height = this.header.linesInBuffer : null;
+      let minX = x;
+      let maxX = x + dart.nullCheck(width) - 1;
+      let minY = y;
+      let maxY = y + dart.nullCheck(height) - 1;
+      if (maxX > dart.nullCheck(this.header.width)) {
+        maxX = dart.nullCheck(this.header.width) - 1;
+      }
+      if (maxY > dart.nullCheck(this.header.height)) {
+        maxY = dart.nullCheck(this.header.height) - 1;
+      }
+      this.decodedWidth = maxX - minX + 1;
+      this.decodedHeight = maxY - minY + 1;
+      while (!input.isEOS) {
+        let n = input.readInt8();
+        if (n < 0) {
+          let count = -n;
+          while ((t0 = count, count = t0 - 1, t0) > 0) {
+            out.writeByte(input.readByte());
+          }
+        } else {
+          let count = n;
+          while ((t0$ = count, count = t0$ - 1, t0$) >= 0) {
+            out.writeByte(input.readByte());
+          }
+        }
+      }
+      let data = typed_data.Uint8List.as(out.getBytes());
+      for (let i = 1, len = data[$length]; i < len; i = i + 1) {
+        data[$_set](i, data[$_get](i - 1) + data[$_get](i) - 128);
+      }
+      if (this[_outCache$] == null || dart.nullCheck(this[_outCache$])[$length] !== data[$length]) {
+        this[_outCache$] = _native_typed_data.NativeUint8List.new(data[$length]);
+      }
+      let len = data[$length];
+      let t1 = 0;
+      let t2 = ((len + 1) / 2)[$truncate]();
+      let si = 0;
+      while (true) {
+        if (si < len) {
+          dart.nullCheck(this[_outCache$])[$_set]((t0$0 = si, si = t0$0 + 1, t0$0), data[$_get]((t0$1 = t1, t1 = t0$1 + 1, t0$1)));
+        } else {
+          break;
+        }
+        if (si < len) {
+          dart.nullCheck(this[_outCache$])[$_set]((t0$2 = si, si = t0$2 + 1, t0$2), data[$_get]((t0$3 = t2, t2 = t0$3 + 1, t0$3)));
+        } else {
+          break;
+        }
+      }
+      return dart.nullCheck(this[_outCache$]);
+    }
+  };
+  (exr_rle_compressor.InternalExrRleCompressor.new = function(header, maxScanLineSize) {
+    this[_outCache$] = null;
+    exr_rle_compressor.InternalExrRleCompressor.__proto__.new.call(this, exr_part.InternalExrPart.as(header));
+    ;
+  }).prototype = exr_rle_compressor.InternalExrRleCompressor.prototype;
+  dart.addTypeTests(exr_rle_compressor.InternalExrRleCompressor);
+  dart.addTypeCaches(exr_rle_compressor.InternalExrRleCompressor);
+  exr_rle_compressor.InternalExrRleCompressor[dart.implements] = () => [exr_rle_compressor.ExrRleCompressor];
+  dart.setMethodSignature(exr_rle_compressor.InternalExrRleCompressor, () => ({
+    __proto__: dart.getMethods(exr_rle_compressor.InternalExrRleCompressor.__proto__),
+    numScanLines: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(exr_rle_compressor.InternalExrRleCompressor, I[2]);
+  dart.setFieldSignature(exr_rle_compressor.InternalExrRleCompressor, () => ({
+    __proto__: dart.getFields(exr_rle_compressor.InternalExrRleCompressor.__proto__),
+    [_outCache$]: dart.fieldType(dart.nullable(typed_data.Uint8List))
+  }));
+  exr_pxr24_compressor.ExrPxr24Compressor = class ExrPxr24Compressor extends exr_compressor.ExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize, numScanLines) {
+      return new exr_pxr24_compressor.InternalExrPxr24Compressor.new(header, maxScanLineSize, numScanLines);
+    }
+  };
+  dart.addTypeTests(exr_pxr24_compressor.ExrPxr24Compressor);
+  dart.addTypeCaches(exr_pxr24_compressor.ExrPxr24Compressor);
+  dart.setStaticMethodSignature(exr_pxr24_compressor.ExrPxr24Compressor, () => ['new']);
+  dart.setLibraryUri(exr_pxr24_compressor.ExrPxr24Compressor, I[3]);
+  dart.setStaticFieldSignature(exr_pxr24_compressor.ExrPxr24Compressor, () => ['_redirecting#']);
+  var _zlib = dart.privateName(exr_pxr24_compressor, "_zlib");
+  var _output = dart.privateName(exr_pxr24_compressor, "_output");
+  var _maxScanLineSize$ = dart.privateName(exr_pxr24_compressor, "_maxScanLineSize");
+  var _numScanLines$0 = dart.privateName(exr_pxr24_compressor, "_numScanLines");
+  exr_pxr24_compressor.InternalExrPxr24Compressor = class InternalExrPxr24Compressor extends exr_compressor.InternalExrCompressor {
+    static ['_#new#tearOff'](header, _maxScanLineSize, _numScanLines) {
+      return new exr_pxr24_compressor.InternalExrPxr24Compressor.new(header, _maxScanLineSize, _numScanLines);
+    }
+    numScanLines() {
+      return this[_numScanLines$0];
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Pxr24 compression not yet supported."));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      let t1, t0, t1$, t0$, t1$0, t0$0, t0$1, t1$1, t0$2, t1$2, t0$3, t0$4, t1$3, t0$5, t1$4, t0$6, t1$5, t0$7, t0$8;
+      let data = this[_zlib].decodeBytes(input.toUint8List());
+      this[_output] == null ? this[_output] = new output_buffer.OutputBuffer.new({size: this[_numScanLines$0] * dart.nullCheck(this[_maxScanLineSize$])}) : null;
+      dart.nullCheck(this[_output]).rewind();
+      let tmpEnd = 0;
+      let ptr = T.JSArrayOfint().of([0, 0, 0, 0]);
+      let pixel = _native_typed_data.NativeUint32List.new(1);
+      let pixelBytes = typed_data.Uint8List.view(pixel[$buffer]);
+      width == null ? width = this.header.width : null;
+      height == null ? height = this.header.linesInBuffer : null;
+      let minX = x;
+      let maxX = x + dart.nullCheck(width) - 1;
+      let minY = y;
+      let maxY = y + dart.nullCheck(height) - 1;
+      if (maxX > dart.nullCheck(this.header.width)) {
+        maxX = dart.nullCheck(this.header.width) - 1;
+      }
+      if (maxY > dart.nullCheck(this.header.height)) {
+        maxY = dart.nullCheck(this.header.height) - 1;
+      }
+      this.decodedWidth = maxX - minX + 1;
+      this.decodedHeight = maxY - minY + 1;
+      let numChannels = this.header.channels[$length];
+      for (let yi = minY; yi <= maxY; yi = yi + 1) {
+        for (let ci = 0; ci < numChannels; ci = ci + 1) {
+          let ch = this.header.channels[$_get](ci);
+          if (y[$modulo](ch.ySampling) !== 0) {
+            continue;
+          }
+          let n = this.numSamples(ch.xSampling, minX, maxX);
+          pixel[$_set](0, 0);
+          switch (ch.type) {
+            case 0:
+              {
+                ptr[$_set](0, tmpEnd);
+                ptr[$_set](1, ptr[$_get](0) + n);
+                ptr[$_set](2, ptr[$_get](1) + n);
+                tmpEnd = ptr[$_get](2) + n;
+                for (let j = 0; j < n; j = j + 1) {
+                  let diff = (data[$_get]((t0 = 0, t1 = ptr[$_get](t0), ptr[$_set](t0, t1 + 1), t1)) << 24 | data[$_get]((t0$ = 1, t1$ = ptr[$_get](t0$), ptr[$_set](t0$, t1$ + 1), t1$)) << 16 >>> 0 | data[$_get]((t0$0 = 2, t1$0 = ptr[$_get](t0$0), ptr[$_set](t0$0, t1$0 + 1), t1$0)) << 8 >>> 0) >>> 0;
+                  t0$1 = 0;
+                  pixel[$_set](t0$1, pixel[$_get](t0$1) + diff);
+                  for (let k = 0; k < 4; k = k + 1) {
+                    dart.nullCheck(this[_output]).writeByte(pixelBytes[$_get](k));
+                  }
+                }
+                break;
+              }
+            case 1:
+              {
+                ptr[$_set](0, tmpEnd);
+                ptr[$_set](1, ptr[$_get](0) + n);
+                tmpEnd = ptr[$_get](1) + n;
+                for (let j = 0; j < n; j = j + 1) {
+                  let diff = (data[$_get]((t0$2 = 0, t1$1 = ptr[$_get](t0$2), ptr[$_set](t0$2, t1$1 + 1), t1$1)) << 8 | data[$_get]((t0$3 = 1, t1$2 = ptr[$_get](t0$3), ptr[$_set](t0$3, t1$2 + 1), t1$2))) >>> 0;
+                  t0$4 = 0;
+                  pixel[$_set](t0$4, pixel[$_get](t0$4) + diff);
+                  for (let k = 0; k < 2; k = k + 1) {
+                    dart.nullCheck(this[_output]).writeByte(pixelBytes[$_get](k));
+                  }
+                }
+                break;
+              }
+            case 2:
+              {
+                ptr[$_set](0, tmpEnd);
+                ptr[$_set](1, ptr[$_get](0) + n);
+                ptr[$_set](2, ptr[$_get](1) + n);
+                tmpEnd = ptr[$_get](2) + n;
+                for (let j = 0; j < n; j = j + 1) {
+                  let diff = (data[$_get]((t0$5 = 0, t1$3 = ptr[$_get](t0$5), ptr[$_set](t0$5, t1$3 + 1), t1$3)) << 24 | data[$_get]((t0$6 = 1, t1$4 = ptr[$_get](t0$6), ptr[$_set](t0$6, t1$4 + 1), t1$4)) << 16 >>> 0 | data[$_get]((t0$7 = 2, t1$5 = ptr[$_get](t0$7), ptr[$_set](t0$7, t1$5 + 1), t1$5)) << 8 >>> 0) >>> 0;
+                  t0$8 = 0;
+                  pixel[$_set](t0$8, pixel[$_get](t0$8) + diff);
+                  for (let k = 0; k < 4; k = k + 1) {
+                    dart.nullCheck(this[_output]).writeByte(pixelBytes[$_get](k));
+                  }
+                }
+                break;
+              }
+          }
+        }
+      }
+      return typed_data.Uint8List.as(dart.nullCheck(this[_output]).getBytes());
+    }
+  };
+  (exr_pxr24_compressor.InternalExrPxr24Compressor.new = function(header, _maxScanLineSize, _numScanLines) {
+    this[_zlib] = C[0] || CT.C0;
+    this[_output] = null;
+    this[_maxScanLineSize$] = _maxScanLineSize;
+    this[_numScanLines$0] = _numScanLines;
+    exr_pxr24_compressor.InternalExrPxr24Compressor.__proto__.new.call(this, exr_part.InternalExrPart.as(header));
+    ;
+  }).prototype = exr_pxr24_compressor.InternalExrPxr24Compressor.prototype;
+  dart.addTypeTests(exr_pxr24_compressor.InternalExrPxr24Compressor);
+  dart.addTypeCaches(exr_pxr24_compressor.InternalExrPxr24Compressor);
+  exr_pxr24_compressor.InternalExrPxr24Compressor[dart.implements] = () => [exr_pxr24_compressor.ExrPxr24Compressor];
+  dart.setMethodSignature(exr_pxr24_compressor.InternalExrPxr24Compressor, () => ({
+    __proto__: dart.getMethods(exr_pxr24_compressor.InternalExrPxr24Compressor.__proto__),
+    numScanLines: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(exr_pxr24_compressor.InternalExrPxr24Compressor, I[3]);
+  dart.setFieldSignature(exr_pxr24_compressor.InternalExrPxr24Compressor, () => ({
+    __proto__: dart.getFields(exr_pxr24_compressor.InternalExrPxr24Compressor.__proto__),
+    [_zlib]: dart.finalFieldType(zlib_decoder.ZLibDecoder),
+    [_maxScanLineSize$]: dart.finalFieldType(dart.nullable(core.int)),
+    [_numScanLines$0]: dart.finalFieldType(core.int),
+    [_output]: dart.fieldType(dart.nullable(output_buffer.OutputBuffer))
+  }));
+  exr_piz_compressor.ExrPizCompressor = class ExrPizCompressor extends exr_compressor.ExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize, numScanLines) {
+      return new exr_piz_compressor.InternalExrPizCompressor.new(header, maxScanLineSize, numScanLines);
+    }
+  };
+  dart.addTypeTests(exr_piz_compressor.ExrPizCompressor);
+  dart.addTypeCaches(exr_piz_compressor.ExrPizCompressor);
+  dart.setStaticMethodSignature(exr_piz_compressor.ExrPizCompressor, () => ['new']);
+  dart.setLibraryUri(exr_piz_compressor.ExrPizCompressor, I[4]);
+  dart.setStaticFieldSignature(exr_piz_compressor.ExrPizCompressor, () => ['_redirecting#']);
+  var _output$ = dart.privateName(exr_piz_compressor, "_output");
+  var __InternalExrPizCompressor__channelData = dart.privateName(exr_piz_compressor, "_#InternalExrPizCompressor#_channelData");
+  var _tmpBuffer = dart.privateName(exr_piz_compressor, "_tmpBuffer");
+  var _maxScanLineSize$0 = dart.privateName(exr_piz_compressor, "_maxScanLineSize");
+  var _numScanLines$1 = dart.privateName(exr_piz_compressor, "_numScanLines");
+  var _channelData = dart.privateName(exr_piz_compressor, "_channelData");
+  var _reverseLutFromBitmap = dart.privateName(exr_piz_compressor, "_reverseLutFromBitmap");
+  var _applyLut = dart.privateName(exr_piz_compressor, "_applyLut");
+  exr_piz_compressor.InternalExrPizCompressor = class InternalExrPizCompressor extends exr_compressor.InternalExrCompressor {
+    static ['_#new#tearOff'](header, _maxScanLineSize, _numScanLines) {
+      return new exr_piz_compressor.InternalExrPizCompressor.new(header, _maxScanLineSize, _numScanLines);
+    }
+    numScanLines() {
+      return this[_numScanLines$1];
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("Piz compression not yet supported."));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      let t0, t1, t0$;
+      width == null ? width = this.header.width : null;
+      height == null ? height = this.header.linesInBuffer : null;
+      let minX = x;
+      let maxX = x + dart.nullCheck(width) - 1;
+      let minY = y;
+      let maxY = y + dart.nullCheck(height) - 1;
+      if (maxX > dart.nullCheck(this.header.width)) {
+        maxX = dart.nullCheck(this.header.width) - 1;
+      }
+      if (maxY > dart.nullCheck(this.header.height)) {
+        maxY = dart.nullCheck(this.header.height) - 1;
+      }
+      this.decodedWidth = maxX - minX + 1;
+      this.decodedHeight = maxY - minY + 1;
+      let tmpBufferEnd = 0;
+      let channels = this.header.channels;
+      let numChannels = channels[$length];
+      for (let i = 0; i < numChannels; i = i + 1) {
+        let ch = channels[$_get](i);
+        let cd = dart.nullCheck(this[_channelData][$_get](i));
+        cd.start = tmpBufferEnd;
+        cd.end = cd.start;
+        cd.nx = this.numSamples(ch.xSampling, minX, maxX);
+        cd.ny = this.numSamples(ch.ySampling, minY, maxY);
+        cd.ys = ch.ySampling;
+        cd.size = (ch.size / 2)[$truncate]();
+        tmpBufferEnd = tmpBufferEnd + cd.nx * cd.ny * cd.size;
+      }
+      let minNonZero = input.readUint16();
+      let maxNonZero = input.readUint16();
+      if (maxNonZero >= 8192) {
+        dart.throw(new image_exception.ImageException.new("Error in header for PIZ-compressed data " + "(invalid bitmap size)."));
+      }
+      let bitmap = _native_typed_data.NativeUint8List.new(8192);
+      if (minNonZero <= maxNonZero) {
+        let b = input.readBytes(maxNonZero - minNonZero + 1);
+        for (let i = 0, j = minNonZero, len = b.length; i < len; i = i + 1) {
+          bitmap[$_set]((t0 = j, j = t0 + 1, t0), b._get(i));
+        }
+      }
+      let lut = _native_typed_data.NativeUint16List.new(65536);
+      let maxValue = this[_reverseLutFromBitmap](bitmap, lut);
+      let length = input.readUint32();
+      exr_huffman.ExrHuffman.uncompress(input, length, this[_tmpBuffer], tmpBufferEnd);
+      for (let i = 0; i < numChannels; i = i + 1) {
+        let cd = dart.nullCheck(this[_channelData][$_get](i));
+        for (let j = 0; j < cd.size; j = j + 1) {
+          exr_wavelet.ExrWavelet.decode(dart.nullCheck(this[_tmpBuffer]), cd.start + j, cd.nx, cd.size, cd.ny, cd.nx * cd.size, maxValue);
+        }
+      }
+      this[_applyLut](lut, dart.nullCheck(this[_tmpBuffer]), tmpBufferEnd);
+      this[_output$] == null ? this[_output$] = new output_buffer.OutputBuffer.new({size: dart.nullCheck(this[_maxScanLineSize$0]) * this[_numScanLines$1] + (65536 + 8192)}) : null;
+      dart.nullCheck(this[_output$]).rewind();
+      for (let y = minY; y <= maxY; y = y + 1) {
+        for (let i = 0; i < numChannels; i = i + 1) {
+          let cd = dart.nullCheck(this[_channelData][$_get](i));
+          if (y[$modulo](cd.ys) !== 0) {
+            continue;
+          }
+          for (let x = cd.nx * cd.size; x > 0; x = x - 1) {
+            dart.nullCheck(this[_output$]).writeUint16(dart.nullCheck(this[_tmpBuffer])[$_get]((t0$ = cd, t1 = t0$.end, t0$.end = t1 + 1, t1)));
+          }
+        }
+      }
+      return typed_data.Uint8List.as(dart.nullCheck(this[_output$]).getBytes());
+    }
+    [_applyLut](lut, data, nData) {
+      for (let i = 0; i < nData; i = i + 1) {
+        data[$_set](i, lut[$_get](data[$_get](i)));
+      }
+    }
+    [_reverseLutFromBitmap](bitmap, lut) {
+      let t0, t0$;
+      let k = 0;
+      for (let i = 0; i < 65536; i = i + 1) {
+        if (i === 0 || (bitmap[$_get](i[$rightShift](3)) & 1 << (i & 7)) !== 0) {
+          lut[$_set]((t0 = k, k = t0 + 1, t0), i);
+        }
+      }
+      let n = k - 1;
+      while (k < 65536) {
+        lut[$_set]((t0$ = k, k = t0$ + 1, t0$), 0);
+      }
+      return n;
+    }
+    get [_channelData]() {
+      let t0;
+      t0 = this[__InternalExrPizCompressor__channelData];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_channelData")) : t0;
+    }
+    set [_channelData](library$32package$58image$47src$47formats$47exr$47exr_piz_compressor$46dart$58$58_channelData$35param) {
+      this[__InternalExrPizCompressor__channelData] = library$32package$58image$47src$47formats$47exr$47exr_piz_compressor$46dart$58$58_channelData$35param;
+    }
+  };
+  (exr_piz_compressor.InternalExrPizCompressor.new = function(header, _maxScanLineSize, _numScanLines) {
+    this[_output$] = null;
+    this[__InternalExrPizCompressor__channelData] = null;
+    this[_tmpBuffer] = null;
+    this[_maxScanLineSize$0] = _maxScanLineSize;
+    this[_numScanLines$1] = _numScanLines;
+    exr_piz_compressor.InternalExrPizCompressor.__proto__.new.call(this, exr_part.InternalExrPart.as(header));
+    this[_channelData] = T.ListOf_PizChannelData().generate(header.channels[$length], dart.fn(_ => new exr_piz_compressor._PizChannelData.new(), T.intTo_PizChannelData()), {growable: false});
+    let tmpBufferSize = (dart.nullCheck(this[_maxScanLineSize$0]) * this[_numScanLines$1] / 2)[$truncate]();
+    this[_tmpBuffer] = _native_typed_data.NativeUint16List.new(tmpBufferSize);
+  }).prototype = exr_piz_compressor.InternalExrPizCompressor.prototype;
+  dart.addTypeTests(exr_piz_compressor.InternalExrPizCompressor);
+  dart.addTypeCaches(exr_piz_compressor.InternalExrPizCompressor);
+  exr_piz_compressor.InternalExrPizCompressor[dart.implements] = () => [exr_piz_compressor.ExrPizCompressor];
+  dart.setMethodSignature(exr_piz_compressor.InternalExrPizCompressor, () => ({
+    __proto__: dart.getMethods(exr_piz_compressor.InternalExrPizCompressor.__proto__),
+    numScanLines: dart.fnType(core.int, []),
+    [_applyLut]: dart.fnType(dart.void, [core.List$(core.int), core.List$(core.int), core.int]),
+    [_reverseLutFromBitmap]: dart.fnType(core.int, [typed_data.Uint8List, typed_data.Uint16List])
+  }));
+  dart.setGetterSignature(exr_piz_compressor.InternalExrPizCompressor, () => ({
+    __proto__: dart.getGetters(exr_piz_compressor.InternalExrPizCompressor.__proto__),
+    [_channelData]: core.List$(dart.nullable(exr_piz_compressor._PizChannelData))
+  }));
+  dart.setSetterSignature(exr_piz_compressor.InternalExrPizCompressor, () => ({
+    __proto__: dart.getSetters(exr_piz_compressor.InternalExrPizCompressor.__proto__),
+    [_channelData]: core.List$(dart.nullable(exr_piz_compressor._PizChannelData))
+  }));
+  dart.setLibraryUri(exr_piz_compressor.InternalExrPizCompressor, I[4]);
+  dart.setFieldSignature(exr_piz_compressor.InternalExrPizCompressor, () => ({
+    __proto__: dart.getFields(exr_piz_compressor.InternalExrPizCompressor.__proto__),
+    [_output$]: dart.fieldType(dart.nullable(output_buffer.OutputBuffer)),
+    [_maxScanLineSize$0]: dart.finalFieldType(dart.nullable(core.int)),
+    [_numScanLines$1]: dart.finalFieldType(core.int),
+    [__InternalExrPizCompressor__channelData]: dart.fieldType(dart.nullable(core.List$(dart.nullable(exr_piz_compressor._PizChannelData)))),
+    [_tmpBuffer]: dart.fieldType(dart.nullable(typed_data.Uint16List))
+  }));
+  dart.setStaticFieldSignature(exr_piz_compressor.InternalExrPizCompressor, () => ['USHORT_RANGE', 'BITMAP_SIZE']);
+  dart.defineLazy(exr_piz_compressor.InternalExrPizCompressor, {
+    /*exr_piz_compressor.InternalExrPizCompressor.USHORT_RANGE*/get USHORT_RANGE() {
+      return 65536;
+    },
+    /*exr_piz_compressor.InternalExrPizCompressor.BITMAP_SIZE*/get BITMAP_SIZE() {
+      return 8192;
+    }
+  }, false);
+  var ___PizChannelData_start = dart.privateName(exr_piz_compressor, "_#_PizChannelData#start");
+  var ___PizChannelData_end = dart.privateName(exr_piz_compressor, "_#_PizChannelData#end");
+  var ___PizChannelData_nx = dart.privateName(exr_piz_compressor, "_#_PizChannelData#nx");
+  var ___PizChannelData_ny = dart.privateName(exr_piz_compressor, "_#_PizChannelData#ny");
+  var ___PizChannelData_ys = dart.privateName(exr_piz_compressor, "_#_PizChannelData#ys");
+  var ___PizChannelData_size = dart.privateName(exr_piz_compressor, "_#_PizChannelData#size");
+  exr_piz_compressor._PizChannelData = class _PizChannelData extends core.Object {
+    get start() {
+      let t0;
+      t0 = this[___PizChannelData_start];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("start")) : t0;
+    }
+    set start(start$35param) {
+      this[___PizChannelData_start] = start$35param;
+    }
+    get end() {
+      let t0;
+      t0 = this[___PizChannelData_end];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("end")) : t0;
+    }
+    set end(end$35param) {
+      this[___PizChannelData_end] = end$35param;
+    }
+    get nx() {
+      let t0;
+      t0 = this[___PizChannelData_nx];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("nx")) : t0;
+    }
+    set nx(nx$35param) {
+      this[___PizChannelData_nx] = nx$35param;
+    }
+    get ny() {
+      let t0;
+      t0 = this[___PizChannelData_ny];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("ny")) : t0;
+    }
+    set ny(ny$35param) {
+      this[___PizChannelData_ny] = ny$35param;
+    }
+    get ys() {
+      let t0;
+      t0 = this[___PizChannelData_ys];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("ys")) : t0;
+    }
+    set ys(ys$35param) {
+      this[___PizChannelData_ys] = ys$35param;
+    }
+    get size() {
+      let t0;
+      t0 = this[___PizChannelData_size];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("size")) : t0;
+    }
+    set size(size$35param) {
+      this[___PizChannelData_size] = size$35param;
+    }
+    static ['_#new#tearOff']() {
+      return new exr_piz_compressor._PizChannelData.new();
+    }
+  };
+  (exr_piz_compressor._PizChannelData.new = function() {
+    this[___PizChannelData_start] = null;
+    this[___PizChannelData_end] = null;
+    this[___PizChannelData_nx] = null;
+    this[___PizChannelData_ny] = null;
+    this[___PizChannelData_ys] = null;
+    this[___PizChannelData_size] = null;
+    ;
+  }).prototype = exr_piz_compressor._PizChannelData.prototype;
+  dart.addTypeTests(exr_piz_compressor._PizChannelData);
+  dart.addTypeCaches(exr_piz_compressor._PizChannelData);
+  dart.setGetterSignature(exr_piz_compressor._PizChannelData, () => ({
+    __proto__: dart.getGetters(exr_piz_compressor._PizChannelData.__proto__),
+    start: core.int,
+    end: core.int,
+    nx: core.int,
+    ny: core.int,
+    ys: core.int,
+    size: core.int
+  }));
+  dart.setSetterSignature(exr_piz_compressor._PizChannelData, () => ({
+    __proto__: dart.getSetters(exr_piz_compressor._PizChannelData.__proto__),
+    start: core.int,
+    end: core.int,
+    nx: core.int,
+    ny: core.int,
+    ys: core.int,
+    size: core.int
+  }));
+  dart.setLibraryUri(exr_piz_compressor._PizChannelData, I[4]);
+  dart.setFieldSignature(exr_piz_compressor._PizChannelData, () => ({
+    __proto__: dart.getFields(exr_piz_compressor._PizChannelData.__proto__),
+    [___PizChannelData_start]: dart.fieldType(dart.nullable(core.int)),
+    [___PizChannelData_end]: dart.fieldType(dart.nullable(core.int)),
+    [___PizChannelData_nx]: dart.fieldType(dart.nullable(core.int)),
+    [___PizChannelData_ny]: dart.fieldType(dart.nullable(core.int)),
+    [___PizChannelData_ys]: dart.fieldType(dart.nullable(core.int)),
+    [___PizChannelData_size]: dart.fieldType(dart.nullable(core.int))
+  }));
+  var framebuffer = dart.privateName(exr_part, "ExrPart.framebuffer");
+  var channels = dart.privateName(exr_part, "ExrPart.channels");
+  var attributes = dart.privateName(exr_part, "ExrPart.attributes");
+  var displayWindow = dart.privateName(exr_part, "ExrPart.displayWindow");
+  var width = dart.privateName(exr_part, "ExrPart.width");
+  var height = dart.privateName(exr_part, "ExrPart.height");
+  var pixelAspectRatio = dart.privateName(exr_part, "ExrPart.pixelAspectRatio");
+  var screenWindowCenterX = dart.privateName(exr_part, "ExrPart.screenWindowCenterX");
+  var screenWindowCenterY = dart.privateName(exr_part, "ExrPart.screenWindowCenterY");
+  var screenWindowWidth = dart.privateName(exr_part, "ExrPart.screenWindowWidth");
+  var __ExrPart_dataWindow = dart.privateName(exr_part, "_#ExrPart#dataWindow");
+  var __ExrPart_chromaticities = dart.privateName(exr_part, "_#ExrPart#chromaticities");
+  var _compressionType = dart.privateName(exr_part, "_compressionType");
+  var _offsets = dart.privateName(exr_part, "_offsets");
+  var __ExrPart__bytesPerLine = dart.privateName(exr_part, "_#ExrPart#_bytesPerLine");
+  var _compressor = dart.privateName(exr_part, "_compressor");
+  var _linesInBuffer = dart.privateName(exr_part, "_linesInBuffer");
+  var _offsetInLineBuffer = dart.privateName(exr_part, "_offsetInLineBuffer");
+  var _tileWidth = dart.privateName(exr_part, "_tileWidth");
+  var _tileHeight = dart.privateName(exr_part, "_tileHeight");
+  var _tileLevelMode = dart.privateName(exr_part, "_tileLevelMode");
+  var _tileRoundingMode = dart.privateName(exr_part, "_tileRoundingMode");
+  var _numXTiles = dart.privateName(exr_part, "_numXTiles");
+  var _numYTiles = dart.privateName(exr_part, "_numYTiles");
+  var _numXLevels = dart.privateName(exr_part, "_numXLevels");
+  var _numYLevels = dart.privateName(exr_part, "_numYLevels");
+  var __ExrPart__bytesPerPixel = dart.privateName(exr_part, "_#ExrPart#_bytesPerPixel");
+  var _maxBytesPerTileLine = dart.privateName(exr_part, "_maxBytesPerTileLine");
+  var _tiled$ = dart.privateName(exr_part, "_tiled");
+  var _calculateNumXLevels = dart.privateName(exr_part, "_calculateNumXLevels");
+  var _calculateNumYLevels = dart.privateName(exr_part, "_calculateNumYLevels");
+  var _calculateNumTiles = dart.privateName(exr_part, "_calculateNumTiles");
+  var _bytesPerPixel = dart.privateName(exr_part, "_bytesPerPixel");
+  var _calculateBytesPerPixel = dart.privateName(exr_part, "_calculateBytesPerPixel");
+  var _bytesPerLine = dart.privateName(exr_part, "_bytesPerLine");
+  var _roundLog2 = dart.privateName(exr_part, "_roundLog2");
+  var _floorLog2 = dart.privateName(exr_part, "_floorLog2");
+  var _ceilLog2 = dart.privateName(exr_part, "_ceilLog2");
+  var _levelSize = dart.privateName(exr_part, "_levelSize");
+  exr_part.ExrPart = class ExrPart extends core.Object {
+    get framebuffer() {
+      return this[framebuffer];
+    }
+    set framebuffer(value) {
+      this[framebuffer] = value;
+    }
+    get channels() {
+      return this[channels];
+    }
+    set channels(value) {
+      this[channels] = value;
+    }
+    get attributes() {
+      return this[attributes];
+    }
+    set attributes(value) {
+      this[attributes] = value;
+    }
+    get displayWindow() {
+      return this[displayWindow];
+    }
+    set displayWindow(value) {
+      this[displayWindow] = value;
+    }
+    get width() {
+      return this[width];
+    }
+    set width(value) {
+      this[width] = value;
+    }
+    get height() {
+      return this[height];
+    }
+    set height(value) {
+      this[height] = value;
+    }
+    get pixelAspectRatio() {
+      return this[pixelAspectRatio];
+    }
+    set pixelAspectRatio(value) {
+      this[pixelAspectRatio] = value;
+    }
+    get screenWindowCenterX() {
+      return this[screenWindowCenterX];
+    }
+    set screenWindowCenterX(value) {
+      this[screenWindowCenterX] = value;
+    }
+    get screenWindowCenterY() {
+      return this[screenWindowCenterY];
+    }
+    set screenWindowCenterY(value) {
+      this[screenWindowCenterY] = value;
+    }
+    get screenWindowWidth() {
+      return this[screenWindowWidth];
+    }
+    set screenWindowWidth(value) {
+      this[screenWindowWidth] = value;
+    }
+    get dataWindow() {
+      let t0;
+      t0 = this[__ExrPart_dataWindow];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("dataWindow")) : t0;
+    }
+    set dataWindow(dataWindow$35param) {
+      this[__ExrPart_dataWindow] = dataWindow$35param;
+    }
+    get chromaticities() {
+      let t0;
+      t0 = this[__ExrPart_chromaticities];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("chromaticities")) : t0;
+    }
+    set chromaticities(chromaticities$35param) {
+      this[__ExrPart_chromaticities] = chromaticities$35param;
+    }
+    static ['_#new#tearOff'](_tiled, input) {
+      return new exr_part.ExrPart.new(_tiled, input);
+    }
+    get left() {
+      return this.dataWindow[$_get](0);
+    }
+    get top() {
+      return this.dataWindow[$_get](1);
+    }
+    get right() {
+      return this.dataWindow[$_get](2);
+    }
+    get bottom() {
+      return this.dataWindow[$_get](3);
+    }
+    get isValid() {
+      return this.width != null;
+    }
+    [_calculateNumXLevels](minX, maxX, minY, maxY) {
+      let num = 0;
+      switch (this[_tileLevelMode]) {
+        case 0:
+          {
+            num = 1;
+            break;
+          }
+        case 1:
+          {
+            let w = maxX - minX + 1;
+            let h = maxY - minY + 1;
+            num = this[_roundLog2](math.max(core.int, w, h), this[_tileRoundingMode]) + 1;
+            break;
+          }
+        case 2:
+          {
+            let w = maxX - minX + 1;
+            num = this[_roundLog2](w, this[_tileRoundingMode]) + 1;
+            break;
+          }
+        default:
+          {
+            dart.throw(new image_exception.ImageException.new("Unknown LevelMode format."));
+          }
+      }
+      return num;
+    }
+    [_calculateNumYLevels](minX, maxX, minY, maxY) {
+      let num = 0;
+      switch (this[_tileLevelMode]) {
+        case 0:
+          {
+            num = 1;
+            break;
+          }
+        case 1:
+          {
+            let w = maxX - minX + 1;
+            let h = maxY - minY + 1;
+            num = this[_roundLog2](math.max(core.int, w, h), this[_tileRoundingMode]) + 1;
+            break;
+          }
+        case 2:
+          {
+            let h = maxY - minY + 1;
+            num = this[_roundLog2](h, this[_tileRoundingMode]) + 1;
+            break;
+          }
+        default:
+          {
+            dart.throw(new image_exception.ImageException.new("Unknown LevelMode format."));
+          }
+      }
+      return num;
+    }
+    [_roundLog2](x, rmode) {
+      return rmode === 0 ? this[_floorLog2](x) : this[_ceilLog2](x);
+    }
+    [_floorLog2](x) {
+      let y = 0;
+      while (x > 1) {
+        y = y + 1;
+        x = x[$rightShift](1);
+      }
+      return y;
+    }
+    [_ceilLog2](x) {
+      let y = 0;
+      let r = 0;
+      while (x > 1) {
+        if ((x & 1) !== 0) {
+          r = 1;
+        }
+        y = y + 1;
+        x = x[$rightShift](1);
+      }
+      return y + r;
+    }
+    [_calculateBytesPerPixel]() {
+      let bytesPerPixel = 0;
+      for (let ch of this.channels) {
+        bytesPerPixel = bytesPerPixel + ch.size;
+      }
+      return bytesPerPixel;
+    }
+    [_calculateNumTiles](numLevels, min, max, size, rmode) {
+      return T.ListOfint().generate(numLevels, dart.fn(i => ((this[_levelSize](min, max, i, rmode) + dart.nullCheck(size) - 1) / dart.notNull(size))[$truncate](), T.intToint()), {growable: false});
+    }
+    [_levelSize](_min, _max, l, rmode) {
+      if (l < 0) {
+        dart.throw(new image_exception.ImageException.new("Argument not in valid range."));
+      }
+      let a = _max - _min + 1;
+      let b = (1)[$leftShift](l);
+      let size = (a / b)[$truncate]();
+      if (rmode === 1 && size * b < a) {
+        size = size + 1;
+      }
+      return math.max(core.int, size, 1);
+    }
+    get [_bytesPerLine]() {
+      let t0;
+      t0 = this[__ExrPart__bytesPerLine];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_bytesPerLine")) : t0;
+    }
+    set [_bytesPerLine](library$32package$58image$47src$47formats$47exr$47exr_part$46dart$58$58_bytesPerLine$35param) {
+      this[__ExrPart__bytesPerLine] = library$32package$58image$47src$47formats$47exr$47exr_part$46dart$58$58_bytesPerLine$35param;
+    }
+    get [_bytesPerPixel]() {
+      let t0;
+      t0 = this[__ExrPart__bytesPerPixel];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_bytesPerPixel")) : t0;
+    }
+    set [_bytesPerPixel](library$32package$58image$47src$47formats$47exr$47exr_part$46dart$58$58_bytesPerPixel$35param) {
+      this[__ExrPart__bytesPerPixel] = library$32package$58image$47src$47formats$47exr$47exr_part$46dart$58$58_bytesPerPixel$35param;
+    }
+  };
+  (exr_part.ExrPart.new = function(_tiled, input) {
+    let t1, t0;
+    this[framebuffer] = new hdr_image.HdrImage.new();
+    this[channels] = T.JSArrayOfExrChannel().of([]);
+    this[attributes] = new (T.IdentityMapOfString$ExrAttribute()).new();
+    this[displayWindow] = null;
+    this[__ExrPart_dataWindow] = null;
+    this[width] = null;
+    this[height] = null;
+    this[pixelAspectRatio] = 1.0;
+    this[screenWindowCenterX] = 0.0;
+    this[screenWindowCenterY] = 0.0;
+    this[screenWindowWidth] = 1.0;
+    this[__ExrPart_chromaticities] = null;
+    this[_compressionType] = 0;
+    this[_offsets] = null;
+    this[__ExrPart__bytesPerLine] = null;
+    this[_compressor] = null;
+    this[_linesInBuffer] = null;
+    this[_offsetInLineBuffer] = null;
+    this[_tileWidth] = null;
+    this[_tileHeight] = null;
+    this[_tileLevelMode] = null;
+    this[_tileRoundingMode] = null;
+    this[_numXTiles] = null;
+    this[_numYTiles] = null;
+    this[_numXLevels] = null;
+    this[_numYLevels] = null;
+    this[__ExrPart__bytesPerPixel] = null;
+    this[_maxBytesPerTileLine] = null;
+    this[_tiled$] = _tiled;
+    while (true) {
+      let name = input.readString();
+      if (name[$isEmpty]) {
+        break;
+      }
+      let type = input.readString();
+      let size = input.readUint32();
+      let value = input.readBytes(size);
+      this.attributes[$_set](name, new exr_attribute.ExrAttribute.new(name, type, size, value));
+      switch (name) {
+        case "channels":
+          {
+            while (true) {
+              let channel = new exr_channel.ExrChannel.new(value);
+              if (!channel.isValid) {
+                break;
+              }
+              this.channels[$add](channel);
+            }
+            break;
+          }
+        case "chromaticities":
+          {
+            this.chromaticities = _native_typed_data.NativeFloat32List.new(8);
+            this.chromaticities[$_set](0, value.readFloat32());
+            this.chromaticities[$_set](1, value.readFloat32());
+            this.chromaticities[$_set](2, value.readFloat32());
+            this.chromaticities[$_set](3, value.readFloat32());
+            this.chromaticities[$_set](4, value.readFloat32());
+            this.chromaticities[$_set](5, value.readFloat32());
+            this.chromaticities[$_set](6, value.readFloat32());
+            this.chromaticities[$_set](7, value.readFloat32());
+            break;
+          }
+        case "compression":
+          {
+            this[_compressionType] = value.readByte();
+            if (this[_compressionType] > 7) {
+              dart.throw(new image_exception.ImageException.new("EXR Invalid compression type"));
+            }
+            break;
+          }
+        case "dataWindow":
+          {
+            this.dataWindow = T.JSArrayOfint().of([value.readInt32(), value.readInt32(), value.readInt32(), value.readInt32()]);
+            this.width = this.dataWindow[$_get](2) - this.dataWindow[$_get](0) + 1;
+            this.height = this.dataWindow[$_get](3) - this.dataWindow[$_get](1) + 1;
+            break;
+          }
+        case "displayWindow":
+          {
+            this.displayWindow = T.JSArrayOfint().of([value.readInt32(), value.readInt32(), value.readInt32(), value.readInt32()]);
+            break;
+          }
+        case "lineOrder":
+          {
+            break;
+          }
+        case "pixelAspectRatio":
+          {
+            this.pixelAspectRatio = value.readFloat32();
+            break;
+          }
+        case "screenWindowCenter":
+          {
+            this.screenWindowCenterX = value.readFloat32();
+            this.screenWindowCenterY = value.readFloat32();
+            break;
+          }
+        case "screenWindowWidth":
+          {
+            this.screenWindowWidth = value.readFloat32();
+            break;
+          }
+        case "tiles":
+          {
+            this[_tileWidth] = value.readUint32();
+            this[_tileHeight] = value.readUint32();
+            let mode = value.readByte();
+            this[_tileLevelMode] = mode & 15;
+            this[_tileRoundingMode] = mode >> 4 & 15;
+            break;
+          }
+        case "type":
+          {
+            let s = value.readString();
+            if (s === "deepscanline") {
+            } else if (s === "deeptile") {
+            } else {
+              dart.throw(new image_exception.ImageException.new("EXR Invalid type: " + s));
+            }
+            break;
+          }
+        default:
+          {
+            break;
+          }
+      }
+    }
+    if (this[_tiled$]) {
+      this[_numXLevels] = this[_calculateNumXLevels](this.left, this.right, this.top, this.bottom);
+      this[_numYLevels] = this[_calculateNumYLevels](this.left, this.right, this.top, this.bottom);
+      if (this[_tileLevelMode] !== 2) {
+        this[_numYLevels] = 1;
+      }
+      this[_numXTiles] = this[_calculateNumTiles](dart.nullCheck(this[_numXLevels]), this.left, this.right, this[_tileWidth], this[_tileRoundingMode]);
+      this[_numYTiles] = this[_calculateNumTiles](dart.nullCheck(this[_numYLevels]), this.top, this.bottom, this[_tileHeight], this[_tileRoundingMode]);
+      this[_bytesPerPixel] = this[_calculateBytesPerPixel]();
+      this[_maxBytesPerTileLine] = this[_bytesPerPixel] * dart.nullCheck(this[_tileWidth]);
+      this[_compressor] = exr_compressor.ExrCompressor.new(this[_compressionType], this, this[_maxBytesPerTileLine], this[_tileHeight]);
+      let lx = 0;
+      let ly = 0;
+      this[_offsets] = T.ListOfUint32List().generate(dart.nullCheck(this[_numXLevels]) * dart.nullCheck(this[_numYLevels]), dart.fn(l => {
+        let result = _native_typed_data.NativeUint32List.new(dart.nullCheck(dart.nullCheck(this[_numXTiles])[$_get](lx)) * dart.nullCheck(dart.nullCheck(this[_numYTiles])[$_get](ly)));
+        lx = lx + 1;
+        if (lx === this[_numXLevels]) {
+          lx = 0;
+          ly = ly + 1;
+        }
+        return result;
+      }, T.intToUint32List()));
+    } else {
+      this[_bytesPerLine] = _native_typed_data.NativeUint32List.new(dart.nullCheck(this.height) + 1);
+      for (let ch of this.channels) {
+        let nBytes = (ch.size * dart.nullCheck(this.width) / ch.xSampling)[$truncate]();
+        for (let y = 0; y < dart.nullCheck(this.height); y = y + 1) {
+          if ((y + this.top)[$modulo](ch.ySampling) === 0) {
+            t0 = this[_bytesPerLine];
+            t1 = y;
+            t0[$_set](t1, t0[$_get](t1) + nBytes);
+          }
+        }
+      }
+      let maxBytesPerLine = 0;
+      for (let y = 0; y < dart.nullCheck(this.height); y = y + 1) {
+        maxBytesPerLine = math.max(core.int, maxBytesPerLine, this[_bytesPerLine][$_get](y));
+      }
+      this[_compressor] = exr_compressor.ExrCompressor.new(this[_compressionType], this, maxBytesPerLine);
+      this[_linesInBuffer] = dart.nullCheck(this[_compressor]).numScanLines();
+      this[_offsetInLineBuffer] = _native_typed_data.NativeUint32List.new(this[_bytesPerLine][$length]);
+      let offset = 0;
+      for (let i = 0; i <= this[_bytesPerLine][$length] - 1; i = i + 1) {
+        if (i[$modulo](dart.nullCheck(this[_linesInBuffer])) === 0) {
+          offset = 0;
+        }
+        dart.nullCheck(this[_offsetInLineBuffer])[$_set](i, offset);
+        offset = offset + this[_bytesPerLine][$_get](i);
+      }
+      let numOffsets = ((dart.nullCheck(this.height) + dart.nullCheck(this[_linesInBuffer])) / dart.nullCheck(this[_linesInBuffer]))[$truncate]() - 1;
+      this[_offsets] = T.JSArrayOfUint32ListN().of([_native_typed_data.NativeUint32List.new(numOffsets)]);
+    }
+  }).prototype = exr_part.ExrPart.prototype;
+  dart.addTypeTests(exr_part.ExrPart);
+  dart.addTypeCaches(exr_part.ExrPart);
+  dart.setMethodSignature(exr_part.ExrPart, () => ({
+    __proto__: dart.getMethods(exr_part.ExrPart.__proto__),
+    [_calculateNumXLevels]: dart.fnType(core.int, [core.int, core.int, core.int, core.int]),
+    [_calculateNumYLevels]: dart.fnType(core.int, [core.int, core.int, core.int, core.int]),
+    [_roundLog2]: dart.fnType(core.int, [core.int, dart.nullable(core.int)]),
+    [_floorLog2]: dart.fnType(core.int, [core.int]),
+    [_ceilLog2]: dart.fnType(core.int, [core.int]),
+    [_calculateBytesPerPixel]: dart.fnType(core.int, []),
+    [_calculateNumTiles]: dart.fnType(core.List$(core.int), [core.int, core.int, core.int, dart.nullable(core.int), dart.nullable(core.int)]),
+    [_levelSize]: dart.fnType(core.int, [core.int, core.int, core.int, dart.nullable(core.int)])
+  }));
+  dart.setGetterSignature(exr_part.ExrPart, () => ({
+    __proto__: dart.getGetters(exr_part.ExrPart.__proto__),
+    dataWindow: core.List$(core.int),
+    chromaticities: typed_data.Float32List,
+    left: core.int,
+    top: core.int,
+    right: core.int,
+    bottom: core.int,
+    isValid: core.bool,
+    [_bytesPerLine]: typed_data.Uint32List,
+    [_bytesPerPixel]: core.int
+  }));
+  dart.setSetterSignature(exr_part.ExrPart, () => ({
+    __proto__: dart.getSetters(exr_part.ExrPart.__proto__),
+    dataWindow: core.List$(core.int),
+    chromaticities: typed_data.Float32List,
+    [_bytesPerLine]: typed_data.Uint32List,
+    [_bytesPerPixel]: core.int
+  }));
+  dart.setLibraryUri(exr_part.ExrPart, I[5]);
+  dart.setFieldSignature(exr_part.ExrPart, () => ({
+    __proto__: dart.getFields(exr_part.ExrPart.__proto__),
+    framebuffer: dart.fieldType(hdr_image.HdrImage),
+    channels: dart.fieldType(core.List$(exr_channel.ExrChannel)),
+    attributes: dart.fieldType(core.Map$(core.String, exr_attribute.ExrAttribute)),
+    displayWindow: dart.fieldType(dart.nullable(core.List$(core.int))),
+    [__ExrPart_dataWindow]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    width: dart.fieldType(dart.nullable(core.int)),
+    height: dart.fieldType(dart.nullable(core.int)),
+    pixelAspectRatio: dart.fieldType(core.double),
+    screenWindowCenterX: dart.fieldType(core.double),
+    screenWindowCenterY: dart.fieldType(core.double),
+    screenWindowWidth: dart.fieldType(core.double),
+    [__ExrPart_chromaticities]: dart.fieldType(dart.nullable(typed_data.Float32List)),
+    [_compressionType]: dart.fieldType(core.int),
+    [_offsets]: dart.fieldType(dart.nullable(core.List$(dart.nullable(typed_data.Uint32List)))),
+    [__ExrPart__bytesPerLine]: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    [_compressor]: dart.fieldType(dart.nullable(exr_compressor.ExrCompressor)),
+    [_linesInBuffer]: dart.fieldType(dart.nullable(core.int)),
+    [_offsetInLineBuffer]: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    [_tiled$]: dart.finalFieldType(core.bool),
+    [_tileWidth]: dart.fieldType(dart.nullable(core.int)),
+    [_tileHeight]: dart.fieldType(dart.nullable(core.int)),
+    [_tileLevelMode]: dart.fieldType(dart.nullable(core.int)),
+    [_tileRoundingMode]: dart.fieldType(dart.nullable(core.int)),
+    [_numXTiles]: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.int)))),
+    [_numYTiles]: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.int)))),
+    [_numXLevels]: dart.fieldType(dart.nullable(core.int)),
+    [_numYLevels]: dart.fieldType(dart.nullable(core.int)),
+    [__ExrPart__bytesPerPixel]: dart.fieldType(dart.nullable(core.int)),
+    [_maxBytesPerTileLine]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.setStaticFieldSignature(exr_part.ExrPart, () => ['TYPE_SCANLINE', 'TYPE_TILE', 'TYPE_DEEP_SCANLINE', 'TYPE_DEEP_TILE', 'INCREASING_Y', 'DECREASING_Y', 'RANDOM_Y', 'ONE_LEVEL', 'MIPMAP_LEVELS', 'RIPMAP_LEVELS', 'ROUND_DOWN', 'ROUND_UP']);
+  dart.defineLazy(exr_part.ExrPart, {
+    /*exr_part.ExrPart.TYPE_SCANLINE*/get TYPE_SCANLINE() {
+      return 0;
+    },
+    /*exr_part.ExrPart.TYPE_TILE*/get TYPE_TILE() {
+      return 1;
+    },
+    /*exr_part.ExrPart.TYPE_DEEP_SCANLINE*/get TYPE_DEEP_SCANLINE() {
+      return 2;
+    },
+    /*exr_part.ExrPart.TYPE_DEEP_TILE*/get TYPE_DEEP_TILE() {
+      return 3;
+    },
+    /*exr_part.ExrPart.INCREASING_Y*/get INCREASING_Y() {
+      return 0;
+    },
+    /*exr_part.ExrPart.DECREASING_Y*/get DECREASING_Y() {
+      return 1;
+    },
+    /*exr_part.ExrPart.RANDOM_Y*/get RANDOM_Y() {
+      return 2;
+    },
+    /*exr_part.ExrPart.ONE_LEVEL*/get ONE_LEVEL() {
+      return 0;
+    },
+    /*exr_part.ExrPart.MIPMAP_LEVELS*/get MIPMAP_LEVELS() {
+      return 1;
+    },
+    /*exr_part.ExrPart.RIPMAP_LEVELS*/get RIPMAP_LEVELS() {
+      return 2;
+    },
+    /*exr_part.ExrPart.ROUND_DOWN*/get ROUND_DOWN() {
+      return 0;
+    },
+    /*exr_part.ExrPart.ROUND_UP*/get ROUND_UP() {
+      return 1;
+    }
+  }, false);
+  exr_part.InternalExrPart = class InternalExrPart extends exr_part.ExrPart {
+    static ['_#new#tearOff'](tiled, input) {
+      return new exr_part.InternalExrPart.new(tiled, input);
+    }
+    get offsets() {
+      return this[_offsets];
+    }
+    get compressor() {
+      return this[_compressor];
+    }
+    get linesInBuffer() {
+      return this[_linesInBuffer];
+    }
+    get offsetInLineBuffer() {
+      return this[_offsetInLineBuffer];
+    }
+    get tiled() {
+      return this[_tiled$];
+    }
+    get tileWidth() {
+      return this[_tileWidth];
+    }
+    get tileHeight() {
+      return this[_tileHeight];
+    }
+    get numXTiles() {
+      return this[_numXTiles];
+    }
+    get numYTiles() {
+      return this[_numYTiles];
+    }
+    get numXLevels() {
+      return this[_numXLevels];
+    }
+    get numYLevels() {
+      return this[_numYLevels];
+    }
+    readOffsets(input) {
+      if (this[_tiled$]) {
+        for (let i = 0; i < dart.nullCheck(this[_offsets])[$length]; i = i + 1) {
+          for (let j = 0; j < dart.nullCheck(dart.nullCheck(this[_offsets])[$_get](i))[$length]; j = j + 1) {
+            dart.nullCheck(dart.nullCheck(this[_offsets])[$_get](i))[$_set](j, input.readUint64());
+          }
+        }
+      } else {
+        let numOffsets = dart.nullCheck(dart.nullCheck(this[_offsets])[$_get](0))[$length];
+        for (let i = 0; i < numOffsets; i = i + 1) {
+          dart.nullCheck(dart.nullCheck(this[_offsets])[$_get](0))[$_set](i, input.readUint64());
+        }
+      }
+    }
+  };
+  (exr_part.InternalExrPart.new = function(tiled, input) {
+    exr_part.InternalExrPart.__proto__.new.call(this, tiled, input);
+    ;
+  }).prototype = exr_part.InternalExrPart.prototype;
+  dart.addTypeTests(exr_part.InternalExrPart);
+  dart.addTypeCaches(exr_part.InternalExrPart);
+  dart.setMethodSignature(exr_part.InternalExrPart, () => ({
+    __proto__: dart.getMethods(exr_part.InternalExrPart.__proto__),
+    readOffsets: dart.fnType(dart.void, [input_buffer.InputBuffer])
+  }));
+  dart.setGetterSignature(exr_part.InternalExrPart, () => ({
+    __proto__: dart.getGetters(exr_part.InternalExrPart.__proto__),
+    offsets: dart.nullable(core.List$(dart.nullable(typed_data.Uint32List))),
+    compressor: dart.nullable(exr_compressor.ExrCompressor),
+    linesInBuffer: dart.nullable(core.int),
+    offsetInLineBuffer: dart.nullable(typed_data.Uint32List),
+    tiled: core.bool,
+    tileWidth: dart.nullable(core.int),
+    tileHeight: dart.nullable(core.int),
+    numXTiles: dart.nullable(core.List$(dart.nullable(core.int))),
+    numYTiles: dart.nullable(core.List$(dart.nullable(core.int))),
+    numXLevels: dart.nullable(core.int),
+    numYLevels: dart.nullable(core.int)
+  }));
+  dart.setLibraryUri(exr_part.InternalExrPart, I[5]);
+  exr_b44_compressor.ExrB44Compressor = class ExrB44Compressor extends exr_compressor.ExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize, numScanLines, optFlatFields) {
+      return new exr_b44_compressor.InternalExrB44Compressor.new(header, maxScanLineSize, numScanLines, optFlatFields);
+    }
+  };
+  dart.addTypeTests(exr_b44_compressor.ExrB44Compressor);
+  dart.addTypeCaches(exr_b44_compressor.ExrB44Compressor);
+  dart.setStaticMethodSignature(exr_b44_compressor.ExrB44Compressor, () => ['new']);
+  dart.setLibraryUri(exr_b44_compressor.ExrB44Compressor, I[6]);
+  dart.setStaticFieldSignature(exr_b44_compressor.ExrB44Compressor, () => ['_redirecting#']);
+  var _numScanLines$2 = dart.privateName(exr_b44_compressor, "_numScanLines");
+  exr_b44_compressor.InternalExrB44Compressor = class InternalExrB44Compressor extends exr_compressor.InternalExrCompressor {
+    static ['_#new#tearOff'](header, maxScanLineSize, _numScanLines, optFlatFields) {
+      return new exr_b44_compressor.InternalExrB44Compressor.new(header, maxScanLineSize, _numScanLines, optFlatFields);
+    }
+    numScanLines() {
+      return this[_numScanLines$2];
+    }
+    compress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("B44 compression not yet supported."));
+    }
+    uncompress(input, x, y, width = null, height = null) {
+      dart.throw(new image_exception.ImageException.new("B44 compression not yet supported."));
+    }
+  };
+  (exr_b44_compressor.InternalExrB44Compressor.new = function(header, maxScanLineSize, _numScanLines, optFlatFields) {
+    this[_numScanLines$2] = _numScanLines;
+    exr_b44_compressor.InternalExrB44Compressor.__proto__.new.call(this, exr_part.InternalExrPart.as(header));
+    ;
+  }).prototype = exr_b44_compressor.InternalExrB44Compressor.prototype;
+  dart.addTypeTests(exr_b44_compressor.InternalExrB44Compressor);
+  dart.addTypeCaches(exr_b44_compressor.InternalExrB44Compressor);
+  exr_b44_compressor.InternalExrB44Compressor[dart.implements] = () => [exr_b44_compressor.ExrB44Compressor];
+  dart.setMethodSignature(exr_b44_compressor.InternalExrB44Compressor, () => ({
+    __proto__: dart.getMethods(exr_b44_compressor.InternalExrB44Compressor.__proto__),
+    numScanLines: dart.fnType(core.int, [])
+  }));
+  dart.setLibraryUri(exr_b44_compressor.InternalExrB44Compressor, I[6]);
+  dart.setFieldSignature(exr_b44_compressor.InternalExrB44Compressor, () => ({
+    __proto__: dart.getFields(exr_b44_compressor.InternalExrB44Compressor.__proto__),
+    [_numScanLines$2]: dart.finalFieldType(core.int)
+  }));
+  dart.trackLibraries("packages/image/src/formats/exr/exr_zip_compressor.dart", {
+    "package:image/src/formats/exr/exr_zip_compressor.dart": exr_zip_compressor,
+    "package:image/src/formats/exr/exr_rle_compressor.dart": exr_rle_compressor,
+    "package:image/src/formats/exr/exr_pxr24_compressor.dart": exr_pxr24_compressor,
+    "package:image/src/formats/exr/exr_piz_compressor.dart": exr_piz_compressor,
+    "package:image/src/formats/exr/exr_part.dart": exr_part,
+    "package:image/src/formats/exr/exr_compressor.dart": exr_compressor,
+    "package:image/src/formats/exr/exr_b44_compressor.dart": exr_b44_compressor
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["exr_compressor.dart","exr_zip_compressor.dart","exr_rle_compressor.dart","exr_pxr24_compressor.dart","exr_piz_compressor.dart","exr_part.dart","exr_b44_compressor.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/exr/exr_zip_compressor.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__exr__exr_zip_compressor: exr_zip_compressor,
+    src__formats__exr__exr_rle_compressor: exr_rle_compressor,
+    src__formats__exr__exr_pxr24_compressor: exr_pxr24_compressor,
+    src__formats__exr__exr_piz_compressor: exr_piz_compressor,
+    src__formats__exr__exr_part: exr_part,
+    src__formats__exr__exr_compressor: exr_compressor,
+    src__formats__exr__exr_b44_compressor: exr_b44_compressor
+  };
+}));
+
+//# sourceMappingURL=exr_zip_compressor.dart.lib.js.map

@@ -1,0 +1,373 @@
+define(['dart_sdk', 'packages/cross_file/src/types/html.dart', 'packages/mime/src/mime_type.dart', 'packages/plugin_platform_interface/plugin_platform_interface.dart', 'packages/flutter/src/services/text_editing_delta.dart'], (function load__packages__share_plus_platform_interface__method_channel__method_channel_share_dart(dart_sdk, packages__cross_file__src__types__html$46dart, packages__mime__src__mime_type$46dart, packages__plugin_platform_interface__plugin_platform_interface$46dart, packages__flutter__src__services__text_editing_delta$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const html = packages__cross_file__src__types__html$46dart.src__types__html;
+  const mime_type = packages__mime__src__mime_type$46dart.src__mime_type;
+  const plugin_platform_interface = packages__plugin_platform_interface__plugin_platform_interface$46dart.plugin_platform_interface;
+  const platform_channel = packages__flutter__src__services__text_editing_delta$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__text_editing_delta$46dart.src__services__message_codecs;
+  var method_channel_share = Object.create(dart.library);
+  var share_plus_platform_interface = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $_set = dartx._set;
+  var $every = dartx.every;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    StringTobool: () => (T.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))(),
+    XFileToString: () => (T.XFileToString = dart.constFn(dart.fnType(core.String, [html.XFile])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[2] || CT.C2
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[1] || CT.C1,
+        [MethodChannel_name]: "dev.fluttercommunity.plus/share"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: share_plus_platform_interface.ShareResultStatus.prototype,
+        [_Enum__name]: "success",
+        [_Enum_index]: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: share_plus_platform_interface.ShareResultStatus.prototype,
+        [_Enum__name]: "dismissed",
+        [_Enum_index]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: share_plus_platform_interface.ShareResultStatus.prototype,
+        [_Enum__name]: "unavailable",
+        [_Enum_index]: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], share_plus_platform_interface.ShareResultStatus);
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: share_plus_platform_interface.ShareResult.prototype,
+        [status$]: C[6] || CT.C6,
+        [raw$]: "dev.fluttercommunity.plus/share/unavailable"
+      });
+    }
+  }, false);
+  var C = Array(8).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/share_plus_platform_interface-3.1.2/lib/method_channel/method_channel_share.dart",
+    "package:share_plus_platform_interface/share_plus_platform_interface.dart",
+    "package:share_plus_platform_interface/method_channel/method_channel_share.dart"
+  ];
+  share_plus_platform_interface.SharePlatform = class SharePlatform extends plugin_platform_interface.PlatformInterface {
+    static ['_#new#tearOff']() {
+      return new share_plus_platform_interface.SharePlatform.new();
+    }
+    static get instance() {
+      return share_plus_platform_interface.SharePlatform._instance;
+    }
+    static set instance(instance) {
+      plugin_platform_interface.PlatformInterface.verifyToken(instance, share_plus_platform_interface.SharePlatform._token);
+      share_plus_platform_interface.SharePlatform._instance = instance;
+    }
+    share(text, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return share_plus_platform_interface.SharePlatform._instance.share(text, {subject: subject, sharePositionOrigin: sharePositionOrigin});
+    }
+    shareFiles(paths, opts) {
+      let mimeTypes = opts && 'mimeTypes' in opts ? opts.mimeTypes : null;
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return share_plus_platform_interface.SharePlatform._instance.shareFiles(paths, {mimeTypes: mimeTypes, subject: subject, text: text, sharePositionOrigin: sharePositionOrigin});
+    }
+    shareWithResult(text, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return async.async(share_plus_platform_interface.ShareResult, function* shareWithResult() {
+        yield share_plus_platform_interface.SharePlatform._instance.share(text, {subject: subject, sharePositionOrigin: sharePositionOrigin});
+        return share_plus_platform_interface._resultUnavailable;
+      });
+    }
+    shareFilesWithResult(paths, opts) {
+      let mimeTypes = opts && 'mimeTypes' in opts ? opts.mimeTypes : null;
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return async.async(share_plus_platform_interface.ShareResult, function* shareFilesWithResult() {
+        yield share_plus_platform_interface.SharePlatform._instance.shareFiles(paths, {mimeTypes: mimeTypes, subject: subject, text: text, sharePositionOrigin: sharePositionOrigin});
+        return share_plus_platform_interface._resultUnavailable;
+      });
+    }
+    shareXFiles(files, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return async.async(share_plus_platform_interface.ShareResult, function* shareXFiles() {
+        return share_plus_platform_interface.SharePlatform._instance.shareXFiles(files, {subject: subject, text: text, sharePositionOrigin: sharePositionOrigin});
+      });
+    }
+  };
+  (share_plus_platform_interface.SharePlatform.new = function() {
+    share_plus_platform_interface.SharePlatform.__proto__.new.call(this, {token: share_plus_platform_interface.SharePlatform._token});
+    ;
+  }).prototype = share_plus_platform_interface.SharePlatform.prototype;
+  dart.addTypeTests(share_plus_platform_interface.SharePlatform);
+  dart.addTypeCaches(share_plus_platform_interface.SharePlatform);
+  dart.setMethodSignature(share_plus_platform_interface.SharePlatform, () => ({
+    __proto__: dart.getMethods(share_plus_platform_interface.SharePlatform.__proto__),
+    share: dart.fnType(async.Future$(dart.void), [core.String], {sharePositionOrigin: dart.nullable(ui.Rect), subject: dart.nullable(core.String)}, {}),
+    shareFiles: dart.fnType(async.Future$(dart.void), [core.List$(core.String)], {mimeTypes: dart.nullable(core.List$(core.String)), sharePositionOrigin: dart.nullable(ui.Rect), subject: dart.nullable(core.String), text: dart.nullable(core.String)}, {}),
+    shareWithResult: dart.fnType(async.Future$(share_plus_platform_interface.ShareResult), [core.String], {sharePositionOrigin: dart.nullable(ui.Rect), subject: dart.nullable(core.String)}, {}),
+    shareFilesWithResult: dart.fnType(async.Future$(share_plus_platform_interface.ShareResult), [core.List$(core.String)], {mimeTypes: dart.nullable(core.List$(core.String)), sharePositionOrigin: dart.nullable(ui.Rect), subject: dart.nullable(core.String), text: dart.nullable(core.String)}, {}),
+    shareXFiles: dart.fnType(async.Future$(share_plus_platform_interface.ShareResult), [core.List$(html.XFile)], {sharePositionOrigin: dart.nullable(ui.Rect), subject: dart.nullable(core.String), text: dart.nullable(core.String)}, {})
+  }));
+  dart.setStaticGetterSignature(share_plus_platform_interface.SharePlatform, () => ['instance']);
+  dart.setStaticSetterSignature(share_plus_platform_interface.SharePlatform, () => ['instance']);
+  dart.setLibraryUri(share_plus_platform_interface.SharePlatform, I[1]);
+  dart.setStaticFieldSignature(share_plus_platform_interface.SharePlatform, () => ['_token', '_instance']);
+  dart.defineLazy(share_plus_platform_interface.SharePlatform, {
+    /*share_plus_platform_interface.SharePlatform._token*/get _token() {
+      return new core.Object.new();
+    },
+    /*share_plus_platform_interface.SharePlatform._instance*/get _instance() {
+      return new method_channel_share.MethodChannelShare.new();
+    },
+    set _instance(_) {}
+  }, false);
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  method_channel_share.MethodChannelShare = class MethodChannelShare extends share_plus_platform_interface.SharePlatform {
+    share(text, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      if (!text[$isNotEmpty]) dart.assertFailed(null, I[0], 30, 12, "text.isNotEmpty");
+      let params = new (T.IdentityMapOfString$dynamic()).from(["text", text, "subject", subject]);
+      if (sharePositionOrigin != null) {
+        params[$_set]("originX", sharePositionOrigin.left);
+        params[$_set]("originY", sharePositionOrigin.top);
+        params[$_set]("originWidth", sharePositionOrigin.width);
+        params[$_set]("originHeight", sharePositionOrigin.height);
+      }
+      return method_channel_share.MethodChannelShare.channel.invokeMethod(dart.void, "share", params);
+    }
+    shareFiles(paths, opts) {
+      let t0;
+      let mimeTypes = opts && 'mimeTypes' in opts ? opts.mimeTypes : null;
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      if (!paths[$isNotEmpty]) dart.assertFailed(null, I[0], 55, 12, "paths.isNotEmpty");
+      if (!paths[$every](dart.fn(element => element[$isNotEmpty], T.StringTobool()))) dart.assertFailed(null, I[0], 56, 12, "paths.every((element) => element.isNotEmpty)");
+      let params = new (T.IdentityMapOfString$dynamic()).from(["paths", paths, "mimeTypes", (t0 = mimeTypes, t0 == null ? paths[$map](core.String, dart.fn(path => method_channel_share.MethodChannelShare._mimeTypeForPath(path), T.StringToString()))[$toList]() : t0)]);
+      if (subject != null) params[$_set]("subject", subject);
+      if (text != null) params[$_set]("text", text);
+      if (sharePositionOrigin != null) {
+        params[$_set]("originX", sharePositionOrigin.left);
+        params[$_set]("originY", sharePositionOrigin.top);
+        params[$_set]("originWidth", sharePositionOrigin.width);
+        params[$_set]("originHeight", sharePositionOrigin.height);
+      }
+      return method_channel_share.MethodChannelShare.channel.invokeMethod(dart.void, "shareFiles", params);
+    }
+    shareWithResult(text, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return async.async(share_plus_platform_interface.ShareResult, function* shareWithResult() {
+        let t0;
+        if (!text[$isNotEmpty]) dart.assertFailed(null, I[0], 83, 12, "text.isNotEmpty");
+        let params = new (T.IdentityMapOfString$dynamic()).from(["text", text, "subject", subject]);
+        if (sharePositionOrigin != null) {
+          params[$_set]("originX", sharePositionOrigin.left);
+          params[$_set]("originY", sharePositionOrigin.top);
+          params[$_set]("originWidth", sharePositionOrigin.width);
+          params[$_set]("originHeight", sharePositionOrigin.height);
+        }
+        let result = (t0 = (yield method_channel_share.MethodChannelShare.channel.invokeMethod(core.String, "shareWithResult", params)), t0 == null ? "dev.fluttercommunity.plus/share/unavailable" : t0);
+        return new share_plus_platform_interface.ShareResult.new(result, method_channel_share.MethodChannelShare._statusFromResult(result));
+      });
+    }
+    shareFilesWithResult(paths, opts) {
+      let mimeTypes = opts && 'mimeTypes' in opts ? opts.mimeTypes : null;
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      return async.async(share_plus_platform_interface.ShareResult, function* shareFilesWithResult() {
+        let t0, t0$;
+        if (!paths[$isNotEmpty]) dart.assertFailed(null, I[0], 112, 12, "paths.isNotEmpty");
+        if (!paths[$every](dart.fn(element => element[$isNotEmpty], T.StringTobool()))) dart.assertFailed(null, I[0], 113, 12, "paths.every((element) => element.isNotEmpty)");
+        let params = new (T.IdentityMapOfString$dynamic()).from(["paths", paths, "mimeTypes", (t0 = mimeTypes, t0 == null ? paths[$map](core.String, dart.fn(path => method_channel_share.MethodChannelShare._mimeTypeForPath(path), T.StringToString()))[$toList]() : t0)]);
+        if (subject != null) params[$_set]("subject", subject);
+        if (text != null) params[$_set]("text", text);
+        if (sharePositionOrigin != null) {
+          params[$_set]("originX", sharePositionOrigin.left);
+          params[$_set]("originY", sharePositionOrigin.top);
+          params[$_set]("originWidth", sharePositionOrigin.width);
+          params[$_set]("originHeight", sharePositionOrigin.height);
+        }
+        let result = (t0$ = (yield method_channel_share.MethodChannelShare.channel.invokeMethod(core.String, "shareFilesWithResult", params)), t0$ == null ? "dev.fluttercommunity.plus/share/unavailable" : t0$);
+        return new share_plus_platform_interface.ShareResult.new(result, method_channel_share.MethodChannelShare._statusFromResult(result));
+      });
+    }
+    shareXFiles(files, opts) {
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      let sharePositionOrigin = opts && 'sharePositionOrigin' in opts ? opts.sharePositionOrigin : null;
+      let mimeTypes = files[$map](core.String, dart.fn(e => {
+        let t0;
+        t0 = e.mimeType;
+        return t0 == null ? method_channel_share.MethodChannelShare._mimeTypeForPath(e.path) : t0;
+      }, T.XFileToString()))[$toList]();
+      return this.shareFilesWithResult(files[$map](core.String, dart.fn(e => e.path, T.XFileToString()))[$toList](), {mimeTypes: mimeTypes, subject: subject, text: text, sharePositionOrigin: sharePositionOrigin});
+    }
+    static _mimeTypeForPath(path) {
+      let t0;
+      t0 = mime_type.lookupMimeType(path);
+      return t0 == null ? "application/octet-stream" : t0;
+    }
+    static _statusFromResult(result) {
+      switch (result) {
+        case "":
+          {
+            return share_plus_platform_interface.ShareResultStatus.dismissed;
+          }
+        case "dev.fluttercommunity.plus/share/unavailable":
+          {
+            return share_plus_platform_interface.ShareResultStatus.unavailable;
+          }
+        default:
+          {
+            return share_plus_platform_interface.ShareResultStatus.success;
+          }
+      }
+    }
+    static ['_#new#tearOff']() {
+      return new method_channel_share.MethodChannelShare.new();
+    }
+  };
+  (method_channel_share.MethodChannelShare.new = function() {
+    method_channel_share.MethodChannelShare.__proto__.new.call(this);
+    ;
+  }).prototype = method_channel_share.MethodChannelShare.prototype;
+  dart.addTypeTests(method_channel_share.MethodChannelShare);
+  dart.addTypeCaches(method_channel_share.MethodChannelShare);
+  dart.setStaticMethodSignature(method_channel_share.MethodChannelShare, () => ['_mimeTypeForPath', '_statusFromResult']);
+  dart.setLibraryUri(method_channel_share.MethodChannelShare, I[2]);
+  dart.setStaticFieldSignature(method_channel_share.MethodChannelShare, () => ['channel']);
+  dart.defineLazy(method_channel_share.MethodChannelShare, {
+    /*method_channel_share.MethodChannelShare.channel*/get channel() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  var raw$ = dart.privateName(share_plus_platform_interface, "ShareResult.raw");
+  var status$ = dart.privateName(share_plus_platform_interface, "ShareResult.status");
+  share_plus_platform_interface.ShareResult = class ShareResult extends core.Object {
+    get raw() {
+      return this[raw$];
+    }
+    set raw(value) {
+      super.raw = value;
+    }
+    get status() {
+      return this[status$];
+    }
+    set status(value) {
+      super.status = value;
+    }
+    static ['_#new#tearOff'](raw, status) {
+      return new share_plus_platform_interface.ShareResult.new(raw, status);
+    }
+  };
+  (share_plus_platform_interface.ShareResult.new = function(raw, status) {
+    this[raw$] = raw;
+    this[status$] = status;
+    ;
+  }).prototype = share_plus_platform_interface.ShareResult.prototype;
+  dart.addTypeTests(share_plus_platform_interface.ShareResult);
+  dart.addTypeCaches(share_plus_platform_interface.ShareResult);
+  dart.setLibraryUri(share_plus_platform_interface.ShareResult, I[1]);
+  dart.setFieldSignature(share_plus_platform_interface.ShareResult, () => ({
+    __proto__: dart.getFields(share_plus_platform_interface.ShareResult.__proto__),
+    raw: dart.finalFieldType(core.String),
+    status: dart.finalFieldType(share_plus_platform_interface.ShareResultStatus)
+  }));
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  share_plus_platform_interface.ShareResultStatus = class ShareResultStatus extends core._Enum {
+    toString() {
+      return "ShareResultStatus." + this[_name];
+    }
+  };
+  (share_plus_platform_interface.ShareResultStatus.new = function(index, name) {
+    share_plus_platform_interface.ShareResultStatus.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = share_plus_platform_interface.ShareResultStatus.prototype;
+  dart.addTypeTests(share_plus_platform_interface.ShareResultStatus);
+  dart.addTypeCaches(share_plus_platform_interface.ShareResultStatus);
+  dart.setLibraryUri(share_plus_platform_interface.ShareResultStatus, I[1]);
+  dart.setStaticFieldSignature(share_plus_platform_interface.ShareResultStatus, () => ['values', 'success', 'dismissed', 'unavailable']);
+  dart.defineExtensionMethods(share_plus_platform_interface.ShareResultStatus, ['toString']);
+  dart.defineLazy(share_plus_platform_interface.ShareResultStatus, {
+    /*share_plus_platform_interface.ShareResultStatus.values*/get values() {
+      return C[3] || CT.C3;
+    },
+    /*share_plus_platform_interface.ShareResultStatus.success*/get success() {
+      return C[4] || CT.C4;
+    },
+    /*share_plus_platform_interface.ShareResultStatus.dismissed*/get dismissed() {
+      return C[5] || CT.C5;
+    },
+    /*share_plus_platform_interface.ShareResultStatus.unavailable*/get unavailable() {
+      return C[6] || CT.C6;
+    }
+  }, false);
+  dart.defineLazy(share_plus_platform_interface, {
+    /*share_plus_platform_interface._resultUnavailable*/get _resultUnavailable() {
+      return C[7] || CT.C7;
+    }
+  }, false);
+  dart.trackLibraries("packages/share_plus_platform_interface/method_channel/method_channel_share.dart", {
+    "package:share_plus_platform_interface/method_channel/method_channel_share.dart": method_channel_share,
+    "package:share_plus_platform_interface/share_plus_platform_interface.dart": share_plus_platform_interface
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["../share_plus_platform_interface.dart","method_channel_share.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/share_plus_platform_interface/method_channel/method_channel_share.dart.lib.js"}');
+  // Exports:
+  return {
+    method_channel__method_channel_share: method_channel_share,
+    share_plus_platform_interface: share_plus_platform_interface
+  };
+}));
+
+//# sourceMappingURL=method_channel_share.dart.lib.js.map

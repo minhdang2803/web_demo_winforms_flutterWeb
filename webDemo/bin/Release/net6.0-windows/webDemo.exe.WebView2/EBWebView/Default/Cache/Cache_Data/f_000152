@@ -1,0 +1,861 @@
+define(['dart_sdk', 'packages/flutter/src/foundation/synchronous_future.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter_blurhash/src/blurhash.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/rendering/stack.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/widgets/async.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter_blurhash__src__blurhash_image_dart(dart_sdk, packages__flutter__src__foundation__synchronous_future$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter_blurhash__src__blurhash$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__rendering__stack$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__widgets__async$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__foundation__debug$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const synchronous_future = packages__flutter__src__foundation__synchronous_future$46dart.src__foundation__synchronous_future;
+  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
+  const blurhash = packages__flutter_blurhash__src__blurhash$46dart.src__blurhash;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const colors$ = packages__flutter__src__painting__colors$46dart.src__painting__colors;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const image$ = packages__flutter__src__widgets__title$46dart.src__widgets__image;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const transitions = packages__flutter__src__widgets__title$46dart.src__widgets__transitions;
+  const ticker_provider = packages__flutter__src__widgets__title$46dart.src__widgets__ticker_provider;
+  const stack = packages__flutter__src__rendering__stack$46dart.src__rendering__stack;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const async$ = packages__flutter__src__widgets__async$46dart.src__widgets__async;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  var blurhash_image = Object.create(dart.library);
+  var blurhash_widget = Object.create(dart.library);
+  var flutter_blurhash = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  var $hashCode = dartx.hashCode;
+  var $_equals = dartx._equals;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    SynchronousFutureOfBlurHashImage: () => (T.SynchronousFutureOfBlurHashImage = dart.constFn(synchronous_future.SynchronousFuture$(blurhash_image.BlurHashImage)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    ImageChunkEventN: () => (T.ImageChunkEventN = dart.constFn(dart.nullable(image_stream.ImageChunkEvent)))(),
+    BuildContextAndWidgetAndImageChunkEventNToWidget: () => (T.BuildContextAndWidgetAndImageChunkEventNToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, T.ImageChunkEventN()])))(),
+    FutureBuilderOfImage: () => (T.FutureBuilderOfImage = dart.constFn(async$.FutureBuilder$(ui.Image)))(),
+    AsyncSnapshotOfImage: () => (T.AsyncSnapshotOfImage = dart.constFn(async$.AsyncSnapshot$(ui.Image)))(),
+    BuildContextAndAsyncSnapshotOfImageToWidget: () => (T.BuildContextAndAsyncSnapshotOfImageToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T.AsyncSnapshotOfImage()])))(),
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    SynchronousFutureOfUiImage: () => (T.SynchronousFutureOfUiImage = dart.constFn(synchronous_future.SynchronousFuture$(blurhash_widget.UiImage)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293718001.0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291811548.0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289773253.0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287669422.0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286091420.0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284513675.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283723386.0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282735204.0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281812815.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280693304.0
+      });
+    },
+    get C1() {
+      return C[1] = dart.constMap(core.int, ui.Color, [50, C[2] || CT.C2, 100, C[3] || CT.C3, 200, C[4] || CT.C4, 300, C[5] || CT.C5, 400, C[6] || CT.C6, 500, C[7] || CT.C7, 600, C[8] || CT.C8, 700, C[9] || CT.C9, 800, C[10] || CT.C10, 900, C[11] || CT.C11]);
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4284513675.0,
+        [ColorSwatch__swatch]: C[1] || CT.C1
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: box_fit.BoxFit.prototype,
+        [_Enum__name]: "fill",
+        [_Enum_index]: 0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.58,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "BlurHash",
+        [_Location_column]: 9,
+        [_Location_line]: 11,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Stack",
+        [_Location_column]: 41,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_DisplayImage",
+        [_Location_column]: 18,
+        [_Location_line]: 122,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 24,
+        [_Location_line]: 128,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[19] || CT.C19,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Image",
+        [_Location_column]: 13,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Image",
+        [_Location_column]: 15,
+        [_Location_line]: 136,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 15,
+        [_Location_line]: 137,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FutureBuilder",
+        [_Location_column]: 39,
+        [_Location_line]: 133,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 800000
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_DisplayImage",
+        [_Location_column]: 9,
+        [_Location_line]: 147,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeTransition",
+        [_Location_column]: 41,
+        [_Location_line]: 164,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart"
+      });
+    }
+  }, false);
+  var C = Array(27).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_image.dart",
+    "package:flutter_blurhash/src/blurhash_image.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_blurhash-0.6.0/lib/src/blurhash_widget.dart",
+    "package:flutter_blurhash/src/blurhash_widget.dart"
+  ];
+  var blurHash$ = dart.privateName(blurhash_image, "BlurHashImage.blurHash");
+  var scale$ = dart.privateName(blurhash_image, "BlurHashImage.scale");
+  var decodingWidth$ = dart.privateName(blurhash_image, "BlurHashImage.decodingWidth");
+  var decodingHeight$ = dart.privateName(blurhash_image, "BlurHashImage.decodingHeight");
+  var _loadAsync = dart.privateName(blurhash_image, "_loadAsync");
+  blurhash_image.BlurHashImage = class BlurHashImage extends image_provider.ImageProvider {
+    get blurHash() {
+      return this[blurHash$];
+    }
+    set blurHash(value) {
+      super.blurHash = value;
+    }
+    get scale() {
+      return this[scale$];
+    }
+    set scale(value) {
+      super.scale = value;
+    }
+    get decodingWidth() {
+      return this[decodingWidth$];
+    }
+    set decodingWidth(value) {
+      super.decodingWidth = value;
+    }
+    get decodingHeight() {
+      return this[decodingHeight$];
+    }
+    set decodingHeight(value) {
+      super.decodingHeight = value;
+    }
+    static ['_#new#tearOff'](blurHash, opts) {
+      let decodingWidth = opts && 'decodingWidth' in opts ? opts.decodingWidth : 32;
+      let decodingHeight = opts && 'decodingHeight' in opts ? opts.decodingHeight : 32;
+      let scale = opts && 'scale' in opts ? opts.scale : 1;
+      return new blurhash_image.BlurHashImage.new(blurHash, {decodingWidth: decodingWidth, decodingHeight: decodingHeight, scale: scale});
+    }
+    obtainKey(configuration) {
+      return new (T.SynchronousFutureOfBlurHashImage()).new(this);
+    }
+    load(key, decode) {
+      blurhash_image.BlurHashImage.as(key);
+      return new image_stream.OneFrameImageStreamCompleter.new(this[_loadAsync](key));
+    }
+    [_loadAsync](key) {
+      return async.async(image_stream.ImageInfo, (function* _loadAsync() {
+        if (!key._equals(this)) dart.assertFailed(null, I[0], 41, 12, "key == this");
+        let image = (yield blurhash.blurHashDecodeImage({blurHash: this.blurHash, width: this.decodingWidth, height: this.decodingHeight}));
+        return new image_stream.ImageInfo.new({image: image, scale: key.scale});
+      }).bind(this));
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!other[$runtimeType]._equals(this[$runtimeType])) return false;
+      return blurhash_image.BlurHashImage.is(other) && other.blurHash === this.blurHash && other.scale === this.scale;
+    }
+    get hashCode() {
+      return ui.hashValues(this.blurHash[$hashCode], this.scale);
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + this.blurHash + ", scale: " + dart.str(this.scale) + ")";
+    }
+  };
+  (blurhash_image.BlurHashImage.new = function(blurHash, opts) {
+    let decodingWidth = opts && 'decodingWidth' in opts ? opts.decodingWidth : 32;
+    let decodingHeight = opts && 'decodingHeight' in opts ? opts.decodingHeight : 32;
+    let scale = opts && 'scale' in opts ? opts.scale : 1;
+    this[blurHash$] = blurHash;
+    this[decodingWidth$] = decodingWidth;
+    this[decodingHeight$] = decodingHeight;
+    this[scale$] = scale;
+    blurhash_image.BlurHashImage.__proto__.new.call(this);
+    ;
+  }).prototype = blurhash_image.BlurHashImage.prototype;
+  dart.addTypeTests(blurhash_image.BlurHashImage);
+  dart.addTypeCaches(blurhash_image.BlurHashImage);
+  dart.setMethodSignature(blurhash_image.BlurHashImage, () => ({
+    __proto__: dart.getMethods(blurhash_image.BlurHashImage.__proto__),
+    obtainKey: dart.fnType(async.Future$(blurhash_image.BlurHashImage), [image_provider.ImageConfiguration]),
+    [_loadAsync]: dart.fnType(async.Future$(image_stream.ImageInfo), [blurhash_image.BlurHashImage])
+  }));
+  dart.setLibraryUri(blurhash_image.BlurHashImage, I[1]);
+  dart.setFieldSignature(blurhash_image.BlurHashImage, () => ({
+    __proto__: dart.getFields(blurhash_image.BlurHashImage.__proto__),
+    blurHash: dart.finalFieldType(core.String),
+    scale: dart.finalFieldType(core.double),
+    decodingWidth: dart.finalFieldType(core.int),
+    decodingHeight: dart.finalFieldType(core.int)
+  }));
+  dart.defineExtensionMethods(blurhash_image.BlurHashImage, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(blurhash_image.BlurHashImage, ['hashCode']);
+  dart.defineLazy(blurhash_image, {
+    /*blurhash_image._DEFAULT_SIZE*/get _DEFAULT_SIZE() {
+      return 32;
+    }
+  }, false);
+  var onDecoded$ = dart.privateName(blurhash_widget, "BlurHash.onDecoded");
+  var onReady$ = dart.privateName(blurhash_widget, "BlurHash.onReady");
+  var onStarted$ = dart.privateName(blurhash_widget, "BlurHash.onStarted");
+  var hash$ = dart.privateName(blurhash_widget, "BlurHash.hash");
+  var color$ = dart.privateName(blurhash_widget, "BlurHash.color");
+  var imageFit$ = dart.privateName(blurhash_widget, "BlurHash.imageFit");
+  var decodingWidth$0 = dart.privateName(blurhash_widget, "BlurHash.decodingWidth");
+  var decodingHeight$0 = dart.privateName(blurhash_widget, "BlurHash.decodingHeight");
+  var image$0 = dart.privateName(blurhash_widget, "BlurHash.image");
+  var duration$ = dart.privateName(blurhash_widget, "BlurHash.duration");
+  var curve$ = dart.privateName(blurhash_widget, "BlurHash.curve");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorSwatch__swatch = dart.privateName(colors$, "ColorSwatch._swatch");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  blurhash_widget.BlurHash = class BlurHash extends framework.StatefulWidget {
+    get onDecoded() {
+      return this[onDecoded$];
+    }
+    set onDecoded(value) {
+      super.onDecoded = value;
+    }
+    get onReady() {
+      return this[onReady$];
+    }
+    set onReady(value) {
+      super.onReady = value;
+    }
+    get onStarted() {
+      return this[onStarted$];
+    }
+    set onStarted(value) {
+      super.onStarted = value;
+    }
+    get hash() {
+      return this[hash$];
+    }
+    set hash(value) {
+      super.hash = value;
+    }
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    get imageFit() {
+      return this[imageFit$];
+    }
+    set imageFit(value) {
+      super.imageFit = value;
+    }
+    get decodingWidth() {
+      return this[decodingWidth$0];
+    }
+    set decodingWidth(value) {
+      super.decodingWidth = value;
+    }
+    get decodingHeight() {
+      return this[decodingHeight$0];
+    }
+    set decodingHeight(value) {
+      super.decodingHeight = value;
+    }
+    get image() {
+      return this[image$0];
+    }
+    set image(value) {
+      super.image = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let hash = opts && 'hash' in opts ? opts.hash : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let color = opts && 'color' in opts ? opts.color : C[0] || CT.C0;
+      let imageFit = opts && 'imageFit' in opts ? opts.imageFit : C[12] || CT.C12;
+      let decodingWidth = opts && 'decodingWidth' in opts ? opts.decodingWidth : 32;
+      let decodingHeight = opts && 'decodingHeight' in opts ? opts.decodingHeight : 32;
+      let image = opts && 'image' in opts ? opts.image : null;
+      let onDecoded = opts && 'onDecoded' in opts ? opts.onDecoded : null;
+      let onReady = opts && 'onReady' in opts ? opts.onReady : null;
+      let onStarted = opts && 'onStarted' in opts ? opts.onStarted : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[13] || CT.C13;
+      let curve = opts && 'curve' in opts ? opts.curve : C[14] || CT.C14;
+      return new blurhash_widget.BlurHash.new({hash: hash, key: key, color: color, imageFit: imageFit, decodingWidth: decodingWidth, decodingHeight: decodingHeight, image: image, onDecoded: onDecoded, onReady: onReady, onStarted: onStarted, duration: duration, curve: curve, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+    }
+    createState() {
+      return new blurhash_widget.BlurHashState.new();
+    }
+  };
+  (blurhash_widget.BlurHash.new = function(opts) {
+    let hash = opts && 'hash' in opts ? opts.hash : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let color = opts && 'color' in opts ? opts.color : C[0] || CT.C0;
+    let imageFit = opts && 'imageFit' in opts ? opts.imageFit : C[12] || CT.C12;
+    let decodingWidth = opts && 'decodingWidth' in opts ? opts.decodingWidth : 32;
+    let decodingHeight = opts && 'decodingHeight' in opts ? opts.decodingHeight : 32;
+    let image = opts && 'image' in opts ? opts.image : null;
+    let onDecoded = opts && 'onDecoded' in opts ? opts.onDecoded : null;
+    let onReady = opts && 'onReady' in opts ? opts.onReady : null;
+    let onStarted = opts && 'onStarted' in opts ? opts.onStarted : null;
+    let duration = opts && 'duration' in opts ? opts.duration : C[13] || CT.C13;
+    let curve = opts && 'curve' in opts ? opts.curve : C[14] || CT.C14;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[hash$] = hash;
+    this[color$] = color;
+    this[imageFit$] = imageFit;
+    this[decodingWidth$0] = decodingWidth;
+    this[decodingHeight$0] = decodingHeight;
+    this[image$0] = image;
+    this[onDecoded$] = onDecoded;
+    this[onReady$] = onReady;
+    this[onStarted$] = onStarted;
+    this[duration$] = duration;
+    this[curve$] = curve;
+    if (!(decodingWidth > 0)) dart.assertFailed(null, I[2], 24, 16, "decodingWidth > 0");
+    if (!(decodingHeight !== 0)) dart.assertFailed(null, I[2], 25, 16, "decodingHeight != 0");
+    blurhash_widget.BlurHash.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = blurhash_widget.BlurHash.prototype;
+  dart.addTypeTests(blurhash_widget.BlurHash);
+  dart.addTypeCaches(blurhash_widget.BlurHash);
+  dart.setMethodSignature(blurhash_widget.BlurHash, () => ({
+    __proto__: dart.getMethods(blurhash_widget.BlurHash.__proto__),
+    createState: dart.fnType(blurhash_widget.BlurHashState, [])
+  }));
+  dart.setLibraryUri(blurhash_widget.BlurHash, I[3]);
+  dart.setFieldSignature(blurhash_widget.BlurHash, () => ({
+    __proto__: dart.getFields(blurhash_widget.BlurHash.__proto__),
+    onDecoded: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onReady: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onStarted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    hash: dart.finalFieldType(core.String),
+    color: dart.finalFieldType(ui.Color),
+    imageFit: dart.finalFieldType(box_fit.BoxFit),
+    decodingWidth: dart.finalFieldType(core.int),
+    decodingHeight: dart.finalFieldType(core.int),
+    image: dart.finalFieldType(dart.nullable(core.String)),
+    duration: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var __BlurHashState__image = dart.privateName(blurhash_widget, "_#BlurHashState#_image");
+  var __BlurHashState_loaded = dart.privateName(blurhash_widget, "_#BlurHashState#loaded");
+  var __BlurHashState_loading = dart.privateName(blurhash_widget, "_#BlurHashState#loading");
+  var _image = dart.privateName(blurhash_widget, "_image");
+  var _init = dart.privateName(blurhash_widget, "_init");
+  var _decodeImage = dart.privateName(blurhash_widget, "_decodeImage");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  blurhash_widget.BlurHashState = class BlurHashState extends framework.State$(blurhash_widget.BlurHash) {
+    get [_image]() {
+      let t0;
+      t0 = this[__BlurHashState__image];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_image")) : t0;
+    }
+    set [_image](library$32package$58flutter_blurhash$47src$47blurhash_widget$46dart$58$58_image$35param) {
+      this[__BlurHashState__image] = library$32package$58flutter_blurhash$47src$47blurhash_widget$46dart$58$58_image$35param;
+    }
+    get loaded() {
+      let t0;
+      t0 = this[__BlurHashState_loaded];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("loaded")) : t0;
+    }
+    set loaded(loaded$35param) {
+      this[__BlurHashState_loaded] = loaded$35param;
+    }
+    get loading() {
+      let t0;
+      t0 = this[__BlurHashState_loading];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("loading")) : t0;
+    }
+    set loading(loading$35param) {
+      this[__BlurHashState_loading] = loading$35param;
+    }
+    initState() {
+      super.initState();
+      this[_init]();
+    }
+    [_init]() {
+      this[_decodeImage]();
+      this.loaded = false;
+      this.loading = false;
+    }
+    didUpdateWidget(oldWidget) {
+      blurhash_widget.BlurHash.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (this.widget.hash !== oldWidget.hash || this.widget.image != oldWidget.image || this.widget.decodingWidth !== oldWidget.decodingWidth || this.widget.decodingHeight !== oldWidget.decodingHeight) {
+        this[_init]();
+      }
+    }
+    [_decodeImage]() {
+      this[_image] = blurhash.blurHashDecodeImage({blurHash: this.widget.hash, width: this.widget.decodingWidth, height: this.widget.decodingHeight});
+    }
+    build(context) {
+      return new basic.Stack.new({fit: stack.StackFit.expand, alignment: alignment.Alignment.center, children: (() => {
+          let t0 = T.JSArrayOfWidget().of([this.buildBlurHashBackground()]);
+          if (this.widget.image != null) t0.push(this.prepareDisplayedImage(dart.nullCheck(this.widget.image)));
+          return t0;
+        })(), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+    }
+    prepareDisplayedImage(image) {
+      return new image$.Image.network(image, {fit: this.widget.imageFit, loadingBuilder: dart.fn((context, img, loadingProgress) => {
+          let t1, t1$;
+          if (this.loading === false) {
+            this.loading = true;
+            t1 = this.widget.onStarted;
+            t1 == null ? null : t1();
+          }
+          if (loadingProgress == null) {
+            this.loaded = true;
+            t1$ = this.widget.onReady;
+            t1$ == null ? null : t1$();
+            return new blurhash_widget._DisplayImage.new({child: img, duration: this.widget.duration, curve: this.widget.curve, $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+          } else {
+            return C[18] || CT.C18;
+          }
+        }, T.BuildContextAndWidgetAndImageChunkEventNToWidget()), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+    }
+    buildBlurHashBackground() {
+      return new (T.FutureBuilderOfImage()).new({future: this[_image], builder: dart.fn((ctx, snap) => snap.hasData ? new image$.Image.new({image: new blurhash_widget.UiImage.new(dart.nullCheck(snap.data)), fit: this.widget.imageFit, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}) : new container.Container.new({color: this.widget.color, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), T.BuildContextAndAsyncSnapshotOfImageToWidget()), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+    }
+    static ['_#new#tearOff']() {
+      return new blurhash_widget.BlurHashState.new();
+    }
+  };
+  (blurhash_widget.BlurHashState.new = function() {
+    this[__BlurHashState__image] = null;
+    this[__BlurHashState_loaded] = null;
+    this[__BlurHashState_loading] = null;
+    blurhash_widget.BlurHashState.__proto__.new.call(this);
+    ;
+  }).prototype = blurhash_widget.BlurHashState.prototype;
+  dart.addTypeTests(blurhash_widget.BlurHashState);
+  dart.addTypeCaches(blurhash_widget.BlurHashState);
+  dart.setMethodSignature(blurhash_widget.BlurHashState, () => ({
+    __proto__: dart.getMethods(blurhash_widget.BlurHashState.__proto__),
+    [_init]: dart.fnType(dart.void, []),
+    [_decodeImage]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    prepareDisplayedImage: dart.fnType(framework.Widget, [core.String]),
+    buildBlurHashBackground: dart.fnType(framework.Widget, [])
+  }));
+  dart.setGetterSignature(blurhash_widget.BlurHashState, () => ({
+    __proto__: dart.getGetters(blurhash_widget.BlurHashState.__proto__),
+    [_image]: async.Future$(ui.Image),
+    loaded: core.bool,
+    loading: core.bool
+  }));
+  dart.setSetterSignature(blurhash_widget.BlurHashState, () => ({
+    __proto__: dart.getSetters(blurhash_widget.BlurHashState.__proto__),
+    [_image]: async.Future$(ui.Image),
+    loaded: core.bool,
+    loading: core.bool
+  }));
+  dart.setLibraryUri(blurhash_widget.BlurHashState, I[3]);
+  dart.setFieldSignature(blurhash_widget.BlurHashState, () => ({
+    __proto__: dart.getFields(blurhash_widget.BlurHashState.__proto__),
+    [__BlurHashState__image]: dart.fieldType(dart.nullable(async.Future$(ui.Image))),
+    [__BlurHashState_loaded]: dart.fieldType(dart.nullable(core.bool)),
+    [__BlurHashState_loading]: dart.fieldType(dart.nullable(core.bool))
+  }));
+  var child$ = dart.privateName(blurhash_widget, "_DisplayImage.child");
+  var duration$0 = dart.privateName(blurhash_widget, "_DisplayImage.duration");
+  var curve$0 = dart.privateName(blurhash_widget, "_DisplayImage.curve");
+  blurhash_widget._DisplayImage = class _DisplayImage extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get duration() {
+      return this[duration$0];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get curve() {
+      return this[curve$0];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[24] || CT.C24;
+      let curve = opts && 'curve' in opts ? opts.curve : null;
+      let key = opts && 'key' in opts ? opts.key : null;
+      return new blurhash_widget._DisplayImage.new({child: child, duration: duration, curve: curve, key: key, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
+    }
+    createState() {
+      return new blurhash_widget._DisplayImageState.new();
+    }
+  };
+  (blurhash_widget._DisplayImage.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let duration = opts && 'duration' in opts ? opts.duration : C[24] || CT.C24;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[duration$0] = duration;
+    this[curve$0] = curve;
+    blurhash_widget._DisplayImage.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = blurhash_widget._DisplayImage.prototype;
+  dart.addTypeTests(blurhash_widget._DisplayImage);
+  dart.addTypeCaches(blurhash_widget._DisplayImage);
+  dart.setMethodSignature(blurhash_widget._DisplayImage, () => ({
+    __proto__: dart.getMethods(blurhash_widget._DisplayImage.__proto__),
+    createState: dart.fnType(blurhash_widget._DisplayImageState, [])
+  }));
+  dart.setLibraryUri(blurhash_widget._DisplayImage, I[3]);
+  dart.setFieldSignature(blurhash_widget._DisplayImage, () => ({
+    __proto__: dart.getFields(blurhash_widget._DisplayImage.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    duration: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var ___DisplayImageState_opacity = dart.privateName(blurhash_widget, "_#_DisplayImageState#opacity");
+  var ___DisplayImageState_controller = dart.privateName(blurhash_widget, "_#_DisplayImageState#controller");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(blurhash_widget._DisplayImage) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(blurhash_widget._DisplayImage)[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(blurhash_widget._DisplayImage));
+  blurhash_widget._DisplayImageState = class _DisplayImageState extends State_SingleTickerProviderStateMixin$36 {
+    get opacity() {
+      let t1;
+      t1 = this[___DisplayImageState_opacity];
+      return t1 == null ? dart.throw(new _internal.LateError.fieldNI("opacity")) : t1;
+    }
+    set opacity(opacity$35param) {
+      this[___DisplayImageState_opacity] = opacity$35param;
+    }
+    get controller() {
+      let t1;
+      t1 = this[___DisplayImageState_controller];
+      return t1 == null ? dart.throw(new _internal.LateError.fieldNI("controller")) : t1;
+    }
+    set controller(controller$35param) {
+      this[___DisplayImageState_controller] = controller$35param;
+    }
+    build(context) {
+      return new transitions.FadeTransition.new({opacity: this.opacity, child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
+    }
+    initState() {
+      super.initState();
+      this.controller = new animation_controller.AnimationController.new({duration: this.widget.duration, vsync: this});
+      let curved = new animations.CurvedAnimation.new({parent: this.controller, curve: this.widget.curve});
+      this.opacity = new (T.TweenOfdouble()).new({begin: 0.0, end: 1.0}).animate(curved);
+      this.controller.forward();
+    }
+    dispose() {
+      this.controller.dispose();
+      super.dispose();
+    }
+    static ['_#new#tearOff']() {
+      return new blurhash_widget._DisplayImageState.new();
+    }
+  };
+  (blurhash_widget._DisplayImageState.new = function() {
+    this[___DisplayImageState_opacity] = null;
+    this[___DisplayImageState_controller] = null;
+    blurhash_widget._DisplayImageState.__proto__.new.call(this);
+    ;
+  }).prototype = blurhash_widget._DisplayImageState.prototype;
+  dart.addTypeTests(blurhash_widget._DisplayImageState);
+  dart.addTypeCaches(blurhash_widget._DisplayImageState);
+  dart.setMethodSignature(blurhash_widget._DisplayImageState, () => ({
+    __proto__: dart.getMethods(blurhash_widget._DisplayImageState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(blurhash_widget._DisplayImageState, () => ({
+    __proto__: dart.getGetters(blurhash_widget._DisplayImageState.__proto__),
+    opacity: animation.Animation$(core.double),
+    controller: animation_controller.AnimationController
+  }));
+  dart.setSetterSignature(blurhash_widget._DisplayImageState, () => ({
+    __proto__: dart.getSetters(blurhash_widget._DisplayImageState.__proto__),
+    opacity: animation.Animation$(core.double),
+    controller: animation_controller.AnimationController
+  }));
+  dart.setLibraryUri(blurhash_widget._DisplayImageState, I[3]);
+  dart.setFieldSignature(blurhash_widget._DisplayImageState, () => ({
+    __proto__: dart.getFields(blurhash_widget._DisplayImageState.__proto__),
+    [___DisplayImageState_opacity]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___DisplayImageState_controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController))
+  }));
+  var image$1 = dart.privateName(blurhash_widget, "UiImage.image");
+  var scale$0 = dart.privateName(blurhash_widget, "UiImage.scale");
+  var _loadAsync$ = dart.privateName(blurhash_widget, "_loadAsync");
+  blurhash_widget.UiImage = class UiImage extends image_provider.ImageProvider {
+    get image() {
+      return this[image$1];
+    }
+    set image(value) {
+      super.image = value;
+    }
+    get scale() {
+      return this[scale$0];
+    }
+    set scale(value) {
+      super.scale = value;
+    }
+    static ['_#new#tearOff'](image, opts) {
+      let scale = opts && 'scale' in opts ? opts.scale : 1;
+      return new blurhash_widget.UiImage.new(image, {scale: scale});
+    }
+    obtainKey(configuration) {
+      return new (T.SynchronousFutureOfUiImage()).new(this);
+    }
+    load(key, decode) {
+      blurhash_widget.UiImage.as(key);
+      return new image_stream.OneFrameImageStreamCompleter.new(this[_loadAsync$](key));
+    }
+    [_loadAsync$](key) {
+      return async.async(image_stream.ImageInfo, (function* _loadAsync() {
+        if (!key._equals(this)) dart.assertFailed(null, I[2], 200, 12, "key == this");
+        return new image_stream.ImageInfo.new({image: this.image, scale: key.scale});
+      }).bind(this));
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.runtimeType(other)._equals(this[$runtimeType])) return false;
+      let typedOther = blurhash_widget.UiImage.as(other);
+      return this.image[$_equals](typedOther.image) && this.scale === typedOther.scale;
+    }
+    get hashCode() {
+      return ui.hashValues(this.image[$hashCode], this.scale);
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + diagnostics.describeIdentity(this.image) + ", scale: " + dart.str(this.scale) + ")";
+    }
+  };
+  (blurhash_widget.UiImage.new = function(image, opts) {
+    let scale = opts && 'scale' in opts ? opts.scale : 1;
+    this[image$1] = image;
+    this[scale$0] = scale;
+    blurhash_widget.UiImage.__proto__.new.call(this);
+    ;
+  }).prototype = blurhash_widget.UiImage.prototype;
+  dart.addTypeTests(blurhash_widget.UiImage);
+  dart.addTypeCaches(blurhash_widget.UiImage);
+  dart.setMethodSignature(blurhash_widget.UiImage, () => ({
+    __proto__: dart.getMethods(blurhash_widget.UiImage.__proto__),
+    obtainKey: dart.fnType(async.Future$(blurhash_widget.UiImage), [image_provider.ImageConfiguration]),
+    [_loadAsync$]: dart.fnType(async.Future$(image_stream.ImageInfo), [blurhash_widget.UiImage]),
+    _equals: dart.fnType(core.bool, [dart.dynamic]),
+    [$_equals]: dart.fnType(core.bool, [dart.dynamic])
+  }));
+  dart.setLibraryUri(blurhash_widget.UiImage, I[3]);
+  dart.setFieldSignature(blurhash_widget.UiImage, () => ({
+    __proto__: dart.getFields(blurhash_widget.UiImage.__proto__),
+    image: dart.finalFieldType(ui.Image),
+    scale: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(blurhash_widget.UiImage, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(blurhash_widget.UiImage, ['hashCode']);
+  dart.defineLazy(blurhash_widget, {
+    /*blurhash_widget._DEFAULT_SIZE*/get _DEFAULT_SIZE() {
+      return 32;
+    }
+  }, false);
+  dart.setBaseClass(blurhash_image.BlurHashImage, image_provider.ImageProvider$(blurhash_image.BlurHashImage));
+  dart.setBaseClass(blurhash_widget.UiImage, image_provider.ImageProvider$(blurhash_widget.UiImage));
+  dart.trackLibraries("packages/flutter_blurhash/src/blurhash_image.dart", {
+    "package:flutter_blurhash/src/blurhash_image.dart": blurhash_image,
+    "package:flutter_blurhash/src/blurhash_widget.dart": blurhash_widget,
+    "package:flutter_blurhash/flutter_blurhash.dart": flutter_blurhash
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["blurhash_image.dart","blurhash_widget.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/flutter_blurhash/src/blurhash_image.dart.lib.js"}');
+  // Exports:
+  return {
+    src__blurhash_image: blurhash_image,
+    src__blurhash_widget: blurhash_widget,
+    flutter_blurhash: flutter_blurhash
+  };
+}));
+
+//# sourceMappingURL=blurhash_image.dart.lib.js.map

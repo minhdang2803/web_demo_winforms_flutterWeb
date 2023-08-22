@@ -1,0 +1,1532 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/material/progress_indicator.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter_blurhash/src/blurhash_image.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/material/circle_avatar.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/rendering/stack.dart', 'packages/octo_image/src/image/fade_widget.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__octo_image__src__progress_indicators_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__material__progress_indicator$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter_blurhash__src__blurhash_image$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__material__circle_avatar$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__rendering__stack$46dart, packages__octo_image__src__image__fade_widget$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__painting__edge_insets$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const image = packages__flutter__src__widgets__title$46dart.src__widgets__image;
+  const placeholder = packages__flutter__src__widgets__title$46dart.src__widgets__placeholder;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const progress_indicator = packages__flutter__src__material__progress_indicator$46dart.src__material__progress_indicator;
+  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
+  const blurhash_image = packages__flutter_blurhash__src__blurhash_image$46dart.src__blurhash_image;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const circle_avatar = packages__flutter__src__material__circle_avatar$46dart.src__material__circle_avatar;
+  const alignment$ = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const stack = packages__flutter__src__rendering__stack$46dart.src__rendering__stack;
+  const fade_widget = packages__octo_image__src__image__fade_widget$46dart.src__image__fade_widget;
+  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const icon$ = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  var progress_indicators = Object.create(dart.library);
+  var placeholders = Object.create(dart.library);
+  var image_handler = Object.create(dart.library);
+  var image_transformers = Object.create(dart.library);
+  var octo_set = Object.create(dart.library);
+  var image$ = Object.create(dart.library);
+  var errors = Object.create(dart.library);
+  var octo_image = Object.create(dart.library);
+  var $_equals = dartx._equals;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ImageChunkEventN: () => (T.ImageChunkEventN = dart.constFn(dart.nullable(image_stream.ImageChunkEvent)))(),
+    BuildContextAndImageChunkEventNToCenter: () => (T.BuildContextAndImageChunkEventNToCenter = dart.constFn(dart.fnType(basic.Center, [framework.BuildContext, T.ImageChunkEventN()])))(),
+    BuildContextToSizedBox: () => (T.BuildContextToSizedBox = dart.constFn(dart.fnType(basic.SizedBox, [framework.BuildContext])))(),
+    BuildContextToCenter: () => (T.BuildContextToCenter = dart.constFn(dart.fnType(basic.Center, [framework.BuildContext])))(),
+    ImageProviderOfObject: () => (T.ImageProviderOfObject = dart.constFn(image_provider.ImageProvider$(core.Object)))(),
+    ValueKeyOfImageProviderOfObject: () => (T.ValueKeyOfImageProviderOfObject = dart.constFn(key.ValueKey$(T.ImageProviderOfObject())))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    BuildContextAndWidgetToCenter: () => (T.BuildContextAndWidgetToCenter = dart.constFn(dart.fnType(basic.Center, [framework.BuildContext, framework.Widget])))(),
+    StackTraceN: () => (T.StackTraceN = dart.constFn(dart.nullable(core.StackTrace)))(),
+    BuildContextAndObjectAndStackTraceNToSizedBox: () => (T.BuildContextAndObjectAndStackTraceNToSizedBox = dart.constFn(dart.fnType(basic.SizedBox, [framework.BuildContext, core.Object, T.StackTraceN()])))(),
+    BuildContextAndObjectAndStackTraceNToIcon: () => (T.BuildContextAndObjectAndStackTraceNToIcon = dart.constFn(dart.fnType(icon$.Icon, [framework.BuildContext, core.Object, T.StackTraceN()])))(),
+    BuildContextAndObjectAndStackTraceNToStack: () => (T.BuildContextAndObjectAndStackTraceNToStack = dart.constFn(dart.fnType(basic.Stack, [framework.BuildContext, core.Object, T.StackTraceN()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CircularProgressIndicator",
+        [_Location_column]: 28,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/progress_indicators.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Center",
+        [_Location_column]: 14,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/progress_indicators.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Image",
+        [_Location_column]: 18,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 34,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CircleAvatar",
+        [_Location_column]: 18,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 25,
+        [_Location_line]: 30,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Center",
+        [_Location_column]: 31,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CircularProgressIndicator",
+        [_Location_column]: 18,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: progress_indicator._ActivityIndicatorType.prototype,
+        [_Enum__name]: "material",
+        [_Enum_index]: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: progress_indicator.CircularProgressIndicator.prototype,
+        [Widget__location]: C[9] || CT.C9,
+        [Widget_key]: null,
+        [ProgressIndicator_semanticsValue]: null,
+        [ProgressIndicator_semanticsLabel]: null,
+        [ProgressIndicator_valueColor]: null,
+        [ProgressIndicator_color]: null,
+        [ProgressIndicator_backgroundColor]: null,
+        [ProgressIndicator_value]: null,
+        [CircularProgressIndicator_strokeWidth]: 4,
+        [CircularProgressIndicator__indicatorType]: C[10] || CT.C10
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: alignment$.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: basic.Center.prototype,
+        [Widget__location]: C[7] || CT.C7,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: C[8] || CT.C8,
+        [Align_heightFactor]: null,
+        [Align_widthFactor]: null,
+        [Align_alignment]: C[11] || CT.C11
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 31,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Placeholder",
+        [_Location_column]: 54,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/placeholders.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282735204.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: placeholder.Placeholder.prototype,
+        [Widget__location]: C[15] || CT.C15,
+        [Widget_key]: null,
+        [Placeholder_child]: null,
+        [Placeholder_fallbackHeight]: 400,
+        [Placeholder_fallbackWidth]: 400,
+        [Placeholder_strokeWidth]: 2,
+        [Placeholder_color]: C[16] || CT.C16
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[13] || CT.C13,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: C[14] || CT.C14,
+        [SizedBox_height]: 1 / 0,
+        [SizedBox_width]: 1 / 0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: image_handler._PlaceholderType.prototype,
+        [_Enum__name]: "none",
+        [_Enum_index]: 0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: image_handler._PlaceholderType.prototype,
+        [_Enum__name]: "static",
+        [_Enum_index]: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: image_handler._PlaceholderType.prototype,
+        [_Enum__name]: "progress",
+        [_Enum_index]: 2
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], image_handler._PlaceholderType);
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Image",
+        [_Location_column]: 12,
+        [_Location_line]: 182,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeWidget",
+        [_Location_column]: 9,
+        [_Location_line]: 205,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeWidget",
+        [_Location_column]: 9,
+        [_Location_line]: 210,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Stack",
+        [_Location_column]: 12,
+        [_Location_line]: 201,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeWidget",
+        [_Location_column]: 16,
+        [_Location_line]: 232,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeWidget",
+        [_Location_column]: 14,
+        [_Location_line]: 273,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 315,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ClipOval",
+        [_Location_column]: 20,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image_transformers.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "AspectRatio",
+        [_Location_column]: 18,
+        [_Location_line]: 16,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image_transformers.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Center",
+        [_Location_column]: 32,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image_transformers.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 500000
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "OctoImage",
+        [_Location_column]: 3,
+        [_Location_line]: 181,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "OctoImage",
+        [_Location_column]: 3,
+        [_Location_line]: 251,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 12,
+        [_Location_line]: 368,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CircleAvatar",
+        [_Location_column]: 18,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 44,
+        [_Location_line]: 38,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 57911
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 44,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Opacity",
+        [_Location_column]: 13,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 8,
+        [EdgeInsets_right]: 8,
+        [EdgeInsets_top]: 8,
+        [EdgeInsets_left]: 8
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Padding",
+        [_Location_column]: 24,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 15,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Stack",
+        [_Location_column]: 44,
+        [_Location_line]: 70,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/errors.dart"
+      });
+    }
+  }, false);
+  var C = Array(46).fill(void 0);
+  var I = [
+    "package:octo_image/src/progress_indicators.dart",
+    "package:octo_image/src/placeholders.dart",
+    "package:octo_image/src/image/image_handler.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/image_handler.dart",
+    "package:octo_image/src/image_transformers.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/octo_set.dart",
+    "package:octo_image/src/octo_set.dart",
+    "package:octo_image/src/image/image.dart",
+    "package:octo_image/src/errors.dart"
+  ];
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  progress_indicators.OctoProgressIndicator = class OctoProgressIndicator extends core.Object {
+    static circularProgressIndicator() {
+      return dart.fn((context, progress) => {
+        let value = null;
+        if (progress != null && progress.expectedTotalBytes != null) {
+          value = progress.cumulativeBytesLoaded / dart.nullCheck(progress.expectedTotalBytes);
+        }
+        return new basic.Center.new({child: new progress_indicator.CircularProgressIndicator.new({value: value, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+      }, T.BuildContextAndImageChunkEventNToCenter());
+    }
+    static ['_#new#tearOff']() {
+      return new progress_indicators.OctoProgressIndicator.new();
+    }
+  };
+  (progress_indicators.OctoProgressIndicator.new = function() {
+    ;
+  }).prototype = progress_indicators.OctoProgressIndicator.prototype;
+  dart.addTypeTests(progress_indicators.OctoProgressIndicator);
+  dart.addTypeCaches(progress_indicators.OctoProgressIndicator);
+  dart.setStaticMethodSignature(progress_indicators.OctoProgressIndicator, () => ['circularProgressIndicator']);
+  dart.setLibraryUri(progress_indicators.OctoProgressIndicator, I[0]);
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var ProgressIndicator_semanticsValue = dart.privateName(progress_indicator, "ProgressIndicator.semanticsValue");
+  var ProgressIndicator_semanticsLabel = dart.privateName(progress_indicator, "ProgressIndicator.semanticsLabel");
+  var ProgressIndicator_valueColor = dart.privateName(progress_indicator, "ProgressIndicator.valueColor");
+  var ProgressIndicator_color = dart.privateName(progress_indicator, "ProgressIndicator.color");
+  var ProgressIndicator_backgroundColor = dart.privateName(progress_indicator, "ProgressIndicator.backgroundColor");
+  var ProgressIndicator_value = dart.privateName(progress_indicator, "ProgressIndicator.value");
+  var CircularProgressIndicator_strokeWidth = dart.privateName(progress_indicator, "CircularProgressIndicator.strokeWidth");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var CircularProgressIndicator__indicatorType = dart.privateName(progress_indicator, "CircularProgressIndicator._indicatorType");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var Align_heightFactor = dart.privateName(basic, "Align.heightFactor");
+  var Align_widthFactor = dart.privateName(basic, "Align.widthFactor");
+  var Alignment_y = dart.privateName(alignment$, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment$, "Alignment.x");
+  var Align_alignment = dart.privateName(basic, "Align.alignment");
+  var Placeholder_child = dart.privateName(placeholder, "Placeholder.child");
+  var Placeholder_fallbackHeight = dart.privateName(placeholder, "Placeholder.fallbackHeight");
+  var Placeholder_fallbackWidth = dart.privateName(placeholder, "Placeholder.fallbackWidth");
+  var Placeholder_strokeWidth = dart.privateName(placeholder, "Placeholder.strokeWidth");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var Placeholder_color = dart.privateName(placeholder, "Placeholder.color");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  placeholders.OctoPlaceholder = class OctoPlaceholder extends core.Object {
+    static blurHash(hash, opts) {
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      return dart.fn(context => {
+        let t0;
+        return new basic.SizedBox.expand({child: new image.Image.new({image: new blurhash_image.BlurHashImage.new(hash), fit: (t0 = fit, t0 == null ? box_fit.BoxFit.cover : t0), $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+      }, T.BuildContextToSizedBox());
+    }
+    static circleAvatar(opts) {
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      return dart.fn(context => new basic.SizedBox.new({width: 1 / 0, height: 1 / 0, child: new circle_avatar.CircleAvatar.new({child: text, backgroundColor: backgroundColor, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), T.BuildContextToSizedBox());
+    }
+    static circularProgressIndicator() {
+      return dart.fn(context => C[6] || CT.C6, T.BuildContextToCenter());
+    }
+    static frame() {
+      return dart.fn(context => C[12] || CT.C12, T.BuildContextToSizedBox());
+    }
+    static ['_#new#tearOff']() {
+      return new placeholders.OctoPlaceholder.new();
+    }
+  };
+  (placeholders.OctoPlaceholder.new = function() {
+    ;
+  }).prototype = placeholders.OctoPlaceholder.prototype;
+  dart.addTypeTests(placeholders.OctoPlaceholder);
+  dart.addTypeCaches(placeholders.OctoPlaceholder);
+  dart.setStaticMethodSignature(placeholders.OctoPlaceholder, () => ['blurHash', 'circleAvatar', 'circularProgressIndicator', 'frame']);
+  dart.setLibraryUri(placeholders.OctoPlaceholder, I[1]);
+  var _name = dart.privateName(core, "_name");
+  image_handler._PlaceholderType = class _PlaceholderType extends core._Enum {
+    toString() {
+      return "_PlaceholderType." + this[_name];
+    }
+  };
+  (image_handler._PlaceholderType.new = function(index, name) {
+    image_handler._PlaceholderType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = image_handler._PlaceholderType.prototype;
+  dart.addTypeTests(image_handler._PlaceholderType);
+  dart.addTypeCaches(image_handler._PlaceholderType);
+  dart.setLibraryUri(image_handler._PlaceholderType, I[2]);
+  dart.setStaticFieldSignature(image_handler._PlaceholderType, () => ['values', 'none', 'static', 'progress']);
+  dart.defineExtensionMethods(image_handler._PlaceholderType, ['toString']);
+  dart.defineLazy(image_handler._PlaceholderType, {
+    /*image_handler._PlaceholderType.values*/get values() {
+      return C[17] || CT.C17;
+    },
+    /*image_handler._PlaceholderType.none*/get none() {
+      return C[18] || CT.C18;
+    },
+    /*image_handler._PlaceholderType.static*/get static() {
+      return C[19] || CT.C19;
+    },
+    /*image_handler._PlaceholderType.progress*/get progress() {
+      return C[20] || CT.C20;
+    }
+  }, false);
+  var image$0 = dart.privateName(image_handler, "ImageHandler.image");
+  var width$ = dart.privateName(image_handler, "ImageHandler.width");
+  var height$ = dart.privateName(image_handler, "ImageHandler.height");
+  var fit$ = dart.privateName(image_handler, "ImageHandler.fit");
+  var alignment$0 = dart.privateName(image_handler, "ImageHandler.alignment");
+  var repeat$ = dart.privateName(image_handler, "ImageHandler.repeat");
+  var matchTextDirection$ = dart.privateName(image_handler, "ImageHandler.matchTextDirection");
+  var color$ = dart.privateName(image_handler, "ImageHandler.color");
+  var colorBlendMode$ = dart.privateName(image_handler, "ImageHandler.colorBlendMode");
+  var filterQuality$ = dart.privateName(image_handler, "ImageHandler.filterQuality");
+  var imageBuilder$ = dart.privateName(image_handler, "ImageHandler.imageBuilder");
+  var placeholderBuilder$ = dart.privateName(image_handler, "ImageHandler.placeholderBuilder");
+  var progressIndicatorBuilder$ = dart.privateName(image_handler, "ImageHandler.progressIndicatorBuilder");
+  var errorBuilder$ = dart.privateName(image_handler, "ImageHandler.errorBuilder");
+  var placeholderFadeInDuration$ = dart.privateName(image_handler, "ImageHandler.placeholderFadeInDuration");
+  var fadeOutDuration$ = dart.privateName(image_handler, "ImageHandler.fadeOutDuration");
+  var fadeOutCurve$ = dart.privateName(image_handler, "ImageHandler.fadeOutCurve");
+  var fadeInDuration$ = dart.privateName(image_handler, "ImageHandler.fadeInDuration");
+  var fadeInCurve$ = dart.privateName(image_handler, "ImageHandler.fadeInCurve");
+  var alwaysShowPlaceHolder$ = dart.privateName(image_handler, "ImageHandler.alwaysShowPlaceHolder");
+  var __ImageHandler__placeholderType = dart.privateName(image_handler, "_#ImageHandler#_placeholderType");
+  var _wasSynchronouslyLoaded = dart.privateName(image_handler, "_wasSynchronouslyLoaded");
+  var _isLoaded = dart.privateName(image_handler, "_isLoaded");
+  var _placeholderType = dart.privateName(image_handler, "_placeholderType");
+  var _definePlaceholderType = dart.privateName(image_handler, "_definePlaceholderType");
+  var _imageBuilder = dart.privateName(image_handler, "_imageBuilder");
+  var _placeholderBuilder = dart.privateName(image_handler, "_placeholderBuilder");
+  var _preLoadingBuilder = dart.privateName(image_handler, "_preLoadingBuilder");
+  var _loadingBuilder = dart.privateName(image_handler, "_loadingBuilder");
+  var _errorBuilder = dart.privateName(image_handler, "_errorBuilder");
+  var _stack = dart.privateName(image_handler, "_stack");
+  var _image = dart.privateName(image_handler, "_image");
+  var _placeholder = dart.privateName(image_handler, "_placeholder");
+  var _progressIndicator = dart.privateName(image_handler, "_progressIndicator");
+  image_handler.ImageHandler = class ImageHandler extends core.Object {
+    get image() {
+      return this[image$0];
+    }
+    set image(value) {
+      super.image = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get fit() {
+      return this[fit$];
+    }
+    set fit(value) {
+      super.fit = value;
+    }
+    get alignment() {
+      return this[alignment$0];
+    }
+    set alignment(value) {
+      super.alignment = value;
+    }
+    get repeat() {
+      return this[repeat$];
+    }
+    set repeat(value) {
+      super.repeat = value;
+    }
+    get matchTextDirection() {
+      return this[matchTextDirection$];
+    }
+    set matchTextDirection(value) {
+      super.matchTextDirection = value;
+    }
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    get colorBlendMode() {
+      return this[colorBlendMode$];
+    }
+    set colorBlendMode(value) {
+      super.colorBlendMode = value;
+    }
+    get filterQuality() {
+      return this[filterQuality$];
+    }
+    set filterQuality(value) {
+      super.filterQuality = value;
+    }
+    get imageBuilder() {
+      return this[imageBuilder$];
+    }
+    set imageBuilder(value) {
+      super.imageBuilder = value;
+    }
+    get placeholderBuilder() {
+      return this[placeholderBuilder$];
+    }
+    set placeholderBuilder(value) {
+      super.placeholderBuilder = value;
+    }
+    get progressIndicatorBuilder() {
+      return this[progressIndicatorBuilder$];
+    }
+    set progressIndicatorBuilder(value) {
+      super.progressIndicatorBuilder = value;
+    }
+    get errorBuilder() {
+      return this[errorBuilder$];
+    }
+    set errorBuilder(value) {
+      super.errorBuilder = value;
+    }
+    get placeholderFadeInDuration() {
+      return this[placeholderFadeInDuration$];
+    }
+    set placeholderFadeInDuration(value) {
+      super.placeholderFadeInDuration = value;
+    }
+    get fadeOutDuration() {
+      return this[fadeOutDuration$];
+    }
+    set fadeOutDuration(value) {
+      super.fadeOutDuration = value;
+    }
+    get fadeOutCurve() {
+      return this[fadeOutCurve$];
+    }
+    set fadeOutCurve(value) {
+      super.fadeOutCurve = value;
+    }
+    get fadeInDuration() {
+      return this[fadeInDuration$];
+    }
+    set fadeInDuration(value) {
+      super.fadeInDuration = value;
+    }
+    get fadeInCurve() {
+      return this[fadeInCurve$];
+    }
+    set fadeInCurve(value) {
+      super.fadeInCurve = value;
+    }
+    get alwaysShowPlaceHolder() {
+      return this[alwaysShowPlaceHolder$];
+    }
+    set alwaysShowPlaceHolder(value) {
+      this[alwaysShowPlaceHolder$] = value;
+    }
+    get [_placeholderType]() {
+      let t2;
+      t2 = this[__ImageHandler__placeholderType];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("_placeholderType")) : t2;
+    }
+    set [_placeholderType](library$32package$58octo_image$47src$47image$47image_handler$46dart$58$58_placeholderType$35param) {
+      this[__ImageHandler__placeholderType] = library$32package$58octo_image$47src$47image$47image_handler$46dart$58$58_placeholderType$35param;
+    }
+    static ['_#new#tearOff'](opts) {
+      let image = opts && 'image' in opts ? opts.image : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+      let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+      let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+      let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+      let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+      let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+      let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+      let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+      let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+      let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+      let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+      let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+      let alwaysShowPlaceHolder = opts && 'alwaysShowPlaceHolder' in opts ? opts.alwaysShowPlaceHolder : null;
+      return new image_handler.ImageHandler.new({image: image, width: width, height: height, fit: fit, alignment: alignment, repeat: repeat, matchTextDirection: matchTextDirection, color: color, colorBlendMode: colorBlendMode, filterQuality: filterQuality, imageBuilder: imageBuilder, placeholderBuilder: placeholderBuilder, progressIndicatorBuilder: progressIndicatorBuilder, errorBuilder: errorBuilder, placeholderFadeInDuration: placeholderFadeInDuration, fadeOutDuration: fadeOutDuration, fadeOutCurve: fadeOutCurve, fadeInDuration: fadeInDuration, fadeInCurve: fadeInCurve, alwaysShowPlaceHolder: alwaysShowPlaceHolder});
+    }
+    imageFrameBuilder() {
+      switch (this[_placeholderType]) {
+        case C[18] || CT.C18:
+          {
+            return dart.bind(this, _imageBuilder);
+          }
+        case C[19] || CT.C19:
+          {
+            return dart.bind(this, _placeholderBuilder);
+          }
+        case C[20] || CT.C20:
+          {
+            return dart.bind(this, _preLoadingBuilder);
+          }
+      }
+    }
+    imageLoadingBuilder() {
+      return this[_placeholderType] === image_handler._PlaceholderType.progress ? dart.bind(this, _loadingBuilder) : null;
+    }
+    errorWidgetBuilder() {
+      return this.errorBuilder != null ? dart.bind(this, _errorBuilder) : null;
+    }
+    build(context) {
+      return new image.Image.new({key: new (T.ValueKeyOfImageProviderOfObject()).new(this.image), image: this.image, loadingBuilder: this.imageLoadingBuilder(), frameBuilder: this.imageFrameBuilder(), errorBuilder: this.errorWidgetBuilder(), fit: this.fit, width: this.width, height: this.height, alignment: this.alignment, repeat: this.repeat, color: this.color, colorBlendMode: this.colorBlendMode, matchTextDirection: this.matchTextDirection, filterQuality: this.filterQuality, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
+    }
+    [_stack](revealing, disappearing) {
+      return new basic.Stack.new({fit: stack.StackFit.passthrough, alignment: alignment$.Alignment.center, children: T.JSArrayOfWidget().of([new fade_widget.FadeWidget.new({child: revealing, duration: this.fadeInDuration, curve: this.fadeInCurve, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), new fade_widget.FadeWidget.new({child: disappearing, duration: this.fadeOutDuration, curve: this.fadeOutCurve, direction: fade_widget.AnimationDirection.reverse, $creationLocationd_0dea112b090073317d4: C[23] || CT.C23})]), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+    }
+    [_imageBuilder](context, child, frame, wasSynchronouslyLoaded) {
+      if (frame == null) {
+        return child;
+      }
+      return this[_image](context, child);
+    }
+    [_placeholderBuilder](context, child, frame, wasSynchronouslyLoaded) {
+      if (frame == null) {
+        if (!this.placeholderFadeInDuration._equals(core.Duration.zero)) {
+          return new fade_widget.FadeWidget.new({child: this[_placeholder](context), duration: this.placeholderFadeInDuration, curve: this.fadeInCurve, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
+        } else {
+          return this[_placeholder](context);
+        }
+      }
+      if (wasSynchronouslyLoaded && !this.alwaysShowPlaceHolder) {
+        return this[_image](context, child);
+      }
+      return this[_stack](this[_image](context, child), this[_placeholder](context));
+    }
+    [_preLoadingBuilder](context, child, frame, wasSynchronouslyLoaded) {
+      this[_wasSynchronouslyLoaded] = wasSynchronouslyLoaded;
+      this[_isLoaded] = frame != null;
+      return child;
+    }
+    [_loadingBuilder](context, child, loadingProgress) {
+      if (this[_isLoaded]) {
+        if (this[_wasSynchronouslyLoaded]) {
+          return this[_image](context, child);
+        }
+        return this[_stack](this[_image](context, child), this[_progressIndicator](context, null));
+      }
+      if (!this.placeholderFadeInDuration._equals(core.Duration.zero)) {
+        return new fade_widget.FadeWidget.new({child: this[_progressIndicator](context, loadingProgress), duration: this.placeholderFadeInDuration, curve: this.fadeInCurve, $creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
+      } else {
+        return this[_progressIndicator](context, loadingProgress);
+      }
+    }
+    [_image](context, child) {
+      if (this.imageBuilder != null) {
+        return dart.nullCheck(this.imageBuilder)(context, child);
+      } else {
+        return child;
+      }
+    }
+    [_errorBuilder](context, error, stacktrace) {
+      if (this.errorBuilder == null) {
+        dart.throw(new core.StateError.new("Try to build errorBuilder with errorBuilder null"));
+      }
+      return dart.nullCheck(this.errorBuilder)(context, error, stacktrace);
+    }
+    [_progressIndicator](context, loadingProgress) {
+      if (this.progressIndicatorBuilder == null) {
+        dart.throw(new core.StateError.new("Try to build progressIndicatorBuilder with progressIndicatorBuilder null"));
+      }
+      return dart.nullCheck(this.progressIndicatorBuilder)(context, loadingProgress);
+    }
+    [_placeholder](context) {
+      if (this.placeholderBuilder != null) {
+        return dart.nullCheck(this.placeholderBuilder)(context);
+      }
+      return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
+    }
+    [_definePlaceholderType]() {
+      if (!(this.placeholderBuilder == null || this.progressIndicatorBuilder == null)) dart.assertFailed(null, I[3], 319, 12, "placeholderBuilder == null || progressIndicatorBuilder == null");
+      if (this.placeholderBuilder != null) return image_handler._PlaceholderType.static;
+      if (this.progressIndicatorBuilder != null) {
+        return image_handler._PlaceholderType.progress;
+      }
+      return image_handler._PlaceholderType.none;
+    }
+  };
+  (image_handler.ImageHandler.new = function(opts) {
+    let image = opts && 'image' in opts ? opts.image : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+    let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+    let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+    let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+    let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+    let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+    let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+    let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+    let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+    let alwaysShowPlaceHolder = opts && 'alwaysShowPlaceHolder' in opts ? opts.alwaysShowPlaceHolder : null;
+    this[__ImageHandler__placeholderType] = null;
+    this[_wasSynchronouslyLoaded] = false;
+    this[_isLoaded] = false;
+    this[image$0] = image;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$0] = alignment;
+    this[repeat$] = repeat;
+    this[matchTextDirection$] = matchTextDirection;
+    this[color$] = color;
+    this[colorBlendMode$] = colorBlendMode;
+    this[filterQuality$] = filterQuality;
+    this[imageBuilder$] = imageBuilder;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[progressIndicatorBuilder$] = progressIndicatorBuilder;
+    this[errorBuilder$] = errorBuilder;
+    this[placeholderFadeInDuration$] = placeholderFadeInDuration;
+    this[fadeOutDuration$] = fadeOutDuration;
+    this[fadeOutCurve$] = fadeOutCurve;
+    this[fadeInDuration$] = fadeInDuration;
+    this[fadeInCurve$] = fadeInCurve;
+    this[alwaysShowPlaceHolder$] = alwaysShowPlaceHolder;
+    this[_placeholderType] = this[_definePlaceholderType]();
+  }).prototype = image_handler.ImageHandler.prototype;
+  dart.addTypeTests(image_handler.ImageHandler);
+  dart.addTypeCaches(image_handler.ImageHandler);
+  dart.setMethodSignature(image_handler.ImageHandler, () => ({
+    __proto__: dart.getMethods(image_handler.ImageHandler.__proto__),
+    imageFrameBuilder: dart.fnType(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(core.int), core.bool]), []),
+    imageLoadingBuilder: dart.fnType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(image_stream.ImageChunkEvent)])), []),
+    errorWidgetBuilder: dart.fnType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.Object, dart.nullable(core.StackTrace)])), []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_stack]: dart.fnType(framework.Widget, [framework.Widget, framework.Widget]),
+    [_imageBuilder]: dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(core.int), core.bool]),
+    [_placeholderBuilder]: dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(core.int), core.bool]),
+    [_preLoadingBuilder]: dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(core.int), core.bool]),
+    [_loadingBuilder]: dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget, dart.nullable(image_stream.ImageChunkEvent)]),
+    [_image]: dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget]),
+    [_errorBuilder]: dart.fnType(framework.Widget, [framework.BuildContext, core.Object, dart.nullable(core.StackTrace)]),
+    [_progressIndicator]: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(image_stream.ImageChunkEvent)]),
+    [_placeholder]: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_definePlaceholderType]: dart.fnType(image_handler._PlaceholderType, [])
+  }));
+  dart.setGetterSignature(image_handler.ImageHandler, () => ({
+    __proto__: dart.getGetters(image_handler.ImageHandler.__proto__),
+    [_placeholderType]: image_handler._PlaceholderType
+  }));
+  dart.setSetterSignature(image_handler.ImageHandler, () => ({
+    __proto__: dart.getSetters(image_handler.ImageHandler.__proto__),
+    [_placeholderType]: image_handler._PlaceholderType
+  }));
+  dart.setLibraryUri(image_handler.ImageHandler, I[2]);
+  dart.setFieldSignature(image_handler.ImageHandler, () => ({
+    __proto__: dart.getFields(image_handler.ImageHandler.__proto__),
+    image: dart.finalFieldType(image_provider.ImageProvider$(core.Object)),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    fit: dart.finalFieldType(dart.nullable(box_fit.BoxFit)),
+    alignment: dart.finalFieldType(alignment$.AlignmentGeometry),
+    repeat: dart.finalFieldType(decoration_image.ImageRepeat),
+    matchTextDirection: dart.finalFieldType(core.bool),
+    color: dart.finalFieldType(dart.nullable(ui.Color)),
+    colorBlendMode: dart.finalFieldType(dart.nullable(ui.BlendMode)),
+    filterQuality: dart.finalFieldType(ui.FilterQuality),
+    [__ImageHandler__placeholderType]: dart.fieldType(dart.nullable(image_handler._PlaceholderType)),
+    imageBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget]))),
+    placeholderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext]))),
+    progressIndicatorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(image_stream.ImageChunkEvent)]))),
+    errorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.Object, dart.nullable(core.StackTrace)]))),
+    placeholderFadeInDuration: dart.finalFieldType(core.Duration),
+    fadeOutDuration: dart.finalFieldType(core.Duration),
+    fadeOutCurve: dart.finalFieldType(curves.Curve),
+    fadeInDuration: dart.finalFieldType(core.Duration),
+    fadeInCurve: dart.finalFieldType(curves.Curve),
+    alwaysShowPlaceHolder: dart.fieldType(core.bool),
+    [_wasSynchronouslyLoaded]: dart.fieldType(core.bool),
+    [_isLoaded]: dart.fieldType(core.bool)
+  }));
+  image_transformers.OctoImageTransformer = class OctoImageTransformer extends core.Object {
+    static circleAvatar() {
+      return dart.fn((context, child) => new basic.Center.new({child: new basic.AspectRatio.new({aspectRatio: 1.0, child: new basic.ClipOval.new({child: child, $creationLocationd_0dea112b090073317d4: C[28] || CT.C28}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), T.BuildContextAndWidgetToCenter());
+    }
+    static ['_#new#tearOff']() {
+      return new image_transformers.OctoImageTransformer.new();
+    }
+  };
+  (image_transformers.OctoImageTransformer.new = function() {
+    ;
+  }).prototype = image_transformers.OctoImageTransformer.prototype;
+  dart.addTypeTests(image_transformers.OctoImageTransformer);
+  dart.addTypeCaches(image_transformers.OctoImageTransformer);
+  dart.setStaticMethodSignature(image_transformers.OctoImageTransformer, () => ['circleAvatar']);
+  dart.setLibraryUri(image_transformers.OctoImageTransformer, I[4]);
+  var imageBuilder$0 = dart.privateName(octo_set, "OctoSet.imageBuilder");
+  var placeholderBuilder$0 = dart.privateName(octo_set, "OctoSet.placeholderBuilder");
+  var progressIndicatorBuilder$0 = dart.privateName(octo_set, "OctoSet.progressIndicatorBuilder");
+  var errorBuilder$0 = dart.privateName(octo_set, "OctoSet.errorBuilder");
+  octo_set.OctoSet = class OctoSet extends core.Object {
+    get imageBuilder() {
+      return this[imageBuilder$0];
+    }
+    set imageBuilder(value) {
+      super.imageBuilder = value;
+    }
+    get placeholderBuilder() {
+      return this[placeholderBuilder$0];
+    }
+    set placeholderBuilder(value) {
+      super.placeholderBuilder = value;
+    }
+    get progressIndicatorBuilder() {
+      return this[progressIndicatorBuilder$0];
+    }
+    set progressIndicatorBuilder(value) {
+      super.progressIndicatorBuilder = value;
+    }
+    get errorBuilder() {
+      return this[errorBuilder$0];
+    }
+    set errorBuilder(value) {
+      super.errorBuilder = value;
+    }
+    static ['_#_#tearOff'](opts) {
+      let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+      let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+      let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+      let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+      return new octo_set.OctoSet.__({imageBuilder: imageBuilder, placeholderBuilder: placeholderBuilder, progressIndicatorBuilder: progressIndicatorBuilder, errorBuilder: errorBuilder});
+    }
+    static blurHash(hash, opts) {
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let errorMessage = opts && 'errorMessage' in opts ? opts.errorMessage : null;
+      return new octo_set.OctoSet.__({placeholderBuilder: placeholders.OctoPlaceholder.blurHash(hash, {fit: fit}), errorBuilder: errors.OctoError.blurHash(hash, {fit: fit})});
+    }
+    static ['_#blurHash#tearOff'](hash, opts) {
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let errorMessage = opts && 'errorMessage' in opts ? opts.errorMessage : null;
+      return octo_set.OctoSet.blurHash(hash, {fit: fit, errorMessage: errorMessage});
+    }
+    static circleAvatar(opts) {
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      return new octo_set.OctoSet.__({placeholderBuilder: placeholders.OctoPlaceholder.circleAvatar({backgroundColor: backgroundColor, text: text}), imageBuilder: image_transformers.OctoImageTransformer.circleAvatar(), errorBuilder: errors.OctoError.circleAvatar({backgroundColor: backgroundColor, text: text})});
+    }
+    static ['_#circleAvatar#tearOff'](opts) {
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      return octo_set.OctoSet.circleAvatar({backgroundColor: backgroundColor, text: text});
+    }
+    static circularIndicatorAndIcon(opts) {
+      let showProgress = opts && 'showProgress' in opts ? opts.showProgress : false;
+      return new octo_set.OctoSet.__({placeholderBuilder: showProgress ? null : placeholders.OctoPlaceholder.circularProgressIndicator(), progressIndicatorBuilder: showProgress ? progress_indicators.OctoProgressIndicator.circularProgressIndicator() : null, errorBuilder: errors.OctoError.icon()});
+    }
+    static ['_#circularIndicatorAndIcon#tearOff'](opts) {
+      let showProgress = opts && 'showProgress' in opts ? opts.showProgress : false;
+      return octo_set.OctoSet.circularIndicatorAndIcon({showProgress: showProgress});
+    }
+  };
+  (octo_set.OctoSet.__ = function(opts) {
+    let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+    let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+    this[imageBuilder$0] = imageBuilder;
+    this[placeholderBuilder$0] = placeholderBuilder;
+    this[progressIndicatorBuilder$0] = progressIndicatorBuilder;
+    this[errorBuilder$0] = errorBuilder;
+    if (!(placeholderBuilder != null || progressIndicatorBuilder != null)) dart.assertFailed(null, I[5], 34, 15, "placeholderBuilder != null || progressIndicatorBuilder != null");
+    ;
+  }).prototype = octo_set.OctoSet.prototype;
+  dart.addTypeTests(octo_set.OctoSet);
+  dart.addTypeCaches(octo_set.OctoSet);
+  dart.setStaticMethodSignature(octo_set.OctoSet, () => ['blurHash', 'circleAvatar', 'circularIndicatorAndIcon']);
+  dart.setLibraryUri(octo_set.OctoSet, I[6]);
+  dart.setFieldSignature(octo_set.OctoSet, () => ({
+    __proto__: dart.getFields(octo_set.OctoSet.__proto__),
+    imageBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget]))),
+    placeholderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext]))),
+    progressIndicatorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(image_stream.ImageChunkEvent)]))),
+    errorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.Object, dart.nullable(core.StackTrace)])))
+  }));
+  var image$1 = dart.privateName(image$, "OctoImage.image");
+  var imageBuilder$1 = dart.privateName(image$, "OctoImage.imageBuilder");
+  var placeholderBuilder$1 = dart.privateName(image$, "OctoImage.placeholderBuilder");
+  var progressIndicatorBuilder$1 = dart.privateName(image$, "OctoImage.progressIndicatorBuilder");
+  var errorBuilder$1 = dart.privateName(image$, "OctoImage.errorBuilder");
+  var placeholderFadeInDuration$0 = dart.privateName(image$, "OctoImage.placeholderFadeInDuration");
+  var fadeOutDuration$0 = dart.privateName(image$, "OctoImage.fadeOutDuration");
+  var fadeOutCurve$0 = dart.privateName(image$, "OctoImage.fadeOutCurve");
+  var fadeInDuration$0 = dart.privateName(image$, "OctoImage.fadeInDuration");
+  var fadeInCurve$0 = dart.privateName(image$, "OctoImage.fadeInCurve");
+  var width$0 = dart.privateName(image$, "OctoImage.width");
+  var height$0 = dart.privateName(image$, "OctoImage.height");
+  var fit$0 = dart.privateName(image$, "OctoImage.fit");
+  var alignment$1 = dart.privateName(image$, "OctoImage.alignment");
+  var repeat$0 = dart.privateName(image$, "OctoImage.repeat");
+  var matchTextDirection$0 = dart.privateName(image$, "OctoImage.matchTextDirection");
+  var color$0 = dart.privateName(image$, "OctoImage.color");
+  var colorBlendMode$0 = dart.privateName(image$, "OctoImage.colorBlendMode");
+  var filterQuality$0 = dart.privateName(image$, "OctoImage.filterQuality");
+  var gaplessPlayback$ = dart.privateName(image$, "OctoImage.gaplessPlayback");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  image$.OctoImage = class OctoImage extends framework.StatefulWidget {
+    get image() {
+      return this[image$1];
+    }
+    set image(value) {
+      super.image = value;
+    }
+    get imageBuilder() {
+      return this[imageBuilder$1];
+    }
+    set imageBuilder(value) {
+      super.imageBuilder = value;
+    }
+    get placeholderBuilder() {
+      return this[placeholderBuilder$1];
+    }
+    set placeholderBuilder(value) {
+      super.placeholderBuilder = value;
+    }
+    get progressIndicatorBuilder() {
+      return this[progressIndicatorBuilder$1];
+    }
+    set progressIndicatorBuilder(value) {
+      super.progressIndicatorBuilder = value;
+    }
+    get errorBuilder() {
+      return this[errorBuilder$1];
+    }
+    set errorBuilder(value) {
+      super.errorBuilder = value;
+    }
+    get placeholderFadeInDuration() {
+      return this[placeholderFadeInDuration$0];
+    }
+    set placeholderFadeInDuration(value) {
+      super.placeholderFadeInDuration = value;
+    }
+    get fadeOutDuration() {
+      return this[fadeOutDuration$0];
+    }
+    set fadeOutDuration(value) {
+      super.fadeOutDuration = value;
+    }
+    get fadeOutCurve() {
+      return this[fadeOutCurve$0];
+    }
+    set fadeOutCurve(value) {
+      super.fadeOutCurve = value;
+    }
+    get fadeInDuration() {
+      return this[fadeInDuration$0];
+    }
+    set fadeInDuration(value) {
+      super.fadeInDuration = value;
+    }
+    get fadeInCurve() {
+      return this[fadeInCurve$0];
+    }
+    set fadeInCurve(value) {
+      super.fadeInCurve = value;
+    }
+    get width() {
+      return this[width$0];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$0];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get fit() {
+      return this[fit$0];
+    }
+    set fit(value) {
+      super.fit = value;
+    }
+    get alignment() {
+      return this[alignment$1];
+    }
+    set alignment(value) {
+      super.alignment = value;
+    }
+    get repeat() {
+      return this[repeat$0];
+    }
+    set repeat(value) {
+      super.repeat = value;
+    }
+    get matchTextDirection() {
+      return this[matchTextDirection$0];
+    }
+    set matchTextDirection(value) {
+      super.matchTextDirection = value;
+    }
+    get color() {
+      return this[color$0];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    get colorBlendMode() {
+      return this[colorBlendMode$0];
+    }
+    set colorBlendMode(value) {
+      super.colorBlendMode = value;
+    }
+    get filterQuality() {
+      return this[filterQuality$0];
+    }
+    set filterQuality(value) {
+      super.filterQuality = value;
+    }
+    get gaplessPlayback() {
+      return this[gaplessPlayback$];
+    }
+    set gaplessPlayback(value) {
+      super.gaplessPlayback = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let image = opts && 'image' in opts ? opts.image : null;
+      let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+      let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+      let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+      let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+      let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+      let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+      let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+      let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+      let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+      let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+      let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+      let gaplessPlayback = opts && 'gaplessPlayback' in opts ? opts.gaplessPlayback : null;
+      let memCacheWidth = opts && 'memCacheWidth' in opts ? opts.memCacheWidth : null;
+      let memCacheHeight = opts && 'memCacheHeight' in opts ? opts.memCacheHeight : null;
+      return new image$.OctoImage.new({key: key, image: image, imageBuilder: imageBuilder, placeholderBuilder: placeholderBuilder, progressIndicatorBuilder: progressIndicatorBuilder, errorBuilder: errorBuilder, fadeOutDuration: fadeOutDuration, fadeOutCurve: fadeOutCurve, fadeInDuration: fadeInDuration, fadeInCurve: fadeInCurve, width: width, height: height, fit: fit, alignment: alignment, repeat: repeat, matchTextDirection: matchTextDirection, color: color, filterQuality: filterQuality, colorBlendMode: colorBlendMode, placeholderFadeInDuration: placeholderFadeInDuration, gaplessPlayback: gaplessPlayback, memCacheWidth: memCacheWidth, memCacheHeight: memCacheHeight, $creationLocationd_0dea112b090073317d4: C[33] || CT.C33});
+    }
+    static ['_#fromSet#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let image = opts && 'image' in opts ? opts.image : null;
+      let octoSet = opts && 'octoSet' in opts ? opts.octoSet : null;
+      let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+      let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+      let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+      let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+      let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+      let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+      let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+      let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+      let gaplessPlayback = opts && 'gaplessPlayback' in opts ? opts.gaplessPlayback : null;
+      let memCacheWidth = opts && 'memCacheWidth' in opts ? opts.memCacheWidth : null;
+      let memCacheHeight = opts && 'memCacheHeight' in opts ? opts.memCacheHeight : null;
+      return new image$.OctoImage.fromSet({key: key, image: image, octoSet: octoSet, fadeOutDuration: fadeOutDuration, fadeOutCurve: fadeOutCurve, fadeInDuration: fadeInDuration, fadeInCurve: fadeInCurve, width: width, height: height, fit: fit, alignment: alignment, repeat: repeat, matchTextDirection: matchTextDirection, color: color, filterQuality: filterQuality, colorBlendMode: colorBlendMode, placeholderFadeInDuration: placeholderFadeInDuration, gaplessPlayback: gaplessPlayback, memCacheWidth: memCacheWidth, memCacheHeight: memCacheHeight, $creationLocationd_0dea112b090073317d4: C[34] || CT.C34});
+    }
+    createState() {
+      return new image$._OctoImageState.new();
+    }
+  };
+  (image$.OctoImage.new = function(opts) {
+    let t2, t2$, t2$0, t2$1, t2$2, t2$3, t2$4, t2$5, t2$6, t2$7;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let image = opts && 'image' in opts ? opts.image : null;
+    let imageBuilder = opts && 'imageBuilder' in opts ? opts.imageBuilder : null;
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let progressIndicatorBuilder = opts && 'progressIndicatorBuilder' in opts ? opts.progressIndicatorBuilder : null;
+    let errorBuilder = opts && 'errorBuilder' in opts ? opts.errorBuilder : null;
+    let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+    let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+    let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+    let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+    let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+    let gaplessPlayback = opts && 'gaplessPlayback' in opts ? opts.gaplessPlayback : null;
+    let memCacheWidth = opts && 'memCacheWidth' in opts ? opts.memCacheWidth : null;
+    let memCacheHeight = opts && 'memCacheHeight' in opts ? opts.memCacheHeight : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[imageBuilder$1] = imageBuilder;
+    this[placeholderBuilder$1] = placeholderBuilder;
+    this[progressIndicatorBuilder$1] = progressIndicatorBuilder;
+    this[errorBuilder$1] = errorBuilder;
+    this[width$0] = width;
+    this[height$0] = height;
+    this[fit$0] = fit;
+    this[color$0] = color;
+    this[colorBlendMode$0] = colorBlendMode;
+    this[image$1] = image_provider.ResizeImage.resizeIfNeeded(memCacheWidth, memCacheHeight, image);
+    this[fadeOutDuration$0] = (t2 = fadeOutDuration, t2 == null ? C[31] || CT.C31 : t2);
+    this[fadeOutCurve$0] = (t2$ = fadeOutCurve, t2$ == null ? curves.Curves.easeOut : t2$);
+    this[fadeInDuration$0] = (t2$0 = fadeInDuration, t2$0 == null ? C[32] || CT.C32 : t2$0);
+    this[fadeInCurve$0] = (t2$1 = fadeInCurve, t2$1 == null ? curves.Curves.easeIn : t2$1);
+    this[alignment$1] = (t2$2 = alignment, t2$2 == null ? alignment$.Alignment.center : t2$2);
+    this[repeat$0] = (t2$3 = repeat, t2$3 == null ? decoration_image.ImageRepeat.noRepeat : t2$3);
+    this[matchTextDirection$0] = (t2$4 = matchTextDirection, t2$4 == null ? false : t2$4);
+    this[filterQuality$0] = (t2$5 = filterQuality, t2$5 == null ? ui.FilterQuality.low : t2$5);
+    this[placeholderFadeInDuration$0] = (t2$6 = placeholderFadeInDuration, t2$6 == null ? core.Duration.zero : t2$6);
+    this[gaplessPlayback$] = (t2$7 = gaplessPlayback, t2$7 == null ? false : t2$7);
+    image$.OctoImage.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = image$.OctoImage.prototype;
+  (image$.OctoImage.fromSet = function(opts) {
+    let t2, t2$, t2$0, t2$1, t2$2, t2$3, t2$4, t2$5, t2$6, t2$7;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let image = opts && 'image' in opts ? opts.image : null;
+    let octoSet = opts && 'octoSet' in opts ? opts.octoSet : null;
+    let fadeOutDuration = opts && 'fadeOutDuration' in opts ? opts.fadeOutDuration : null;
+    let fadeOutCurve = opts && 'fadeOutCurve' in opts ? opts.fadeOutCurve : null;
+    let fadeInDuration = opts && 'fadeInDuration' in opts ? opts.fadeInDuration : null;
+    let fadeInCurve = opts && 'fadeInCurve' in opts ? opts.fadeInCurve : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    let repeat = opts && 'repeat' in opts ? opts.repeat : null;
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+    let placeholderFadeInDuration = opts && 'placeholderFadeInDuration' in opts ? opts.placeholderFadeInDuration : null;
+    let gaplessPlayback = opts && 'gaplessPlayback' in opts ? opts.gaplessPlayback : null;
+    let memCacheWidth = opts && 'memCacheWidth' in opts ? opts.memCacheWidth : null;
+    let memCacheHeight = opts && 'memCacheHeight' in opts ? opts.memCacheHeight : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[width$0] = width;
+    this[height$0] = height;
+    this[fit$0] = fit;
+    this[color$0] = color;
+    this[colorBlendMode$0] = colorBlendMode;
+    this[image$1] = image_provider.ResizeImage.resizeIfNeeded(memCacheWidth, memCacheHeight, image);
+    this[imageBuilder$1] = octoSet.imageBuilder;
+    this[placeholderBuilder$1] = octoSet.placeholderBuilder;
+    this[progressIndicatorBuilder$1] = octoSet.progressIndicatorBuilder;
+    this[errorBuilder$1] = octoSet.errorBuilder;
+    this[fadeOutDuration$0] = (t2 = fadeOutDuration, t2 == null ? C[31] || CT.C31 : t2);
+    this[fadeOutCurve$0] = (t2$ = fadeOutCurve, t2$ == null ? curves.Curves.easeOut : t2$);
+    this[fadeInDuration$0] = (t2$0 = fadeInDuration, t2$0 == null ? C[32] || CT.C32 : t2$0);
+    this[fadeInCurve$0] = (t2$1 = fadeInCurve, t2$1 == null ? curves.Curves.easeIn : t2$1);
+    this[alignment$1] = (t2$2 = alignment, t2$2 == null ? alignment$.Alignment.center : t2$2);
+    this[repeat$0] = (t2$3 = repeat, t2$3 == null ? decoration_image.ImageRepeat.noRepeat : t2$3);
+    this[matchTextDirection$0] = (t2$4 = matchTextDirection, t2$4 == null ? false : t2$4);
+    this[filterQuality$0] = (t2$5 = filterQuality, t2$5 == null ? ui.FilterQuality.low : t2$5);
+    this[placeholderFadeInDuration$0] = (t2$6 = placeholderFadeInDuration, t2$6 == null ? core.Duration.zero : t2$6);
+    this[gaplessPlayback$] = (t2$7 = gaplessPlayback, t2$7 == null ? false : t2$7);
+    image$.OctoImage.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = image$.OctoImage.prototype;
+  dart.addTypeTests(image$.OctoImage);
+  dart.addTypeCaches(image$.OctoImage);
+  dart.setMethodSignature(image$.OctoImage, () => ({
+    __proto__: dart.getMethods(image$.OctoImage.__proto__),
+    createState: dart.fnType(image$._OctoImageState, [])
+  }));
+  dart.setLibraryUri(image$.OctoImage, I[7]);
+  dart.setFieldSignature(image$.OctoImage, () => ({
+    __proto__: dart.getFields(image$.OctoImage.__proto__),
+    image: dart.finalFieldType(image_provider.ImageProvider$(core.Object)),
+    imageBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, framework.Widget]))),
+    placeholderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext]))),
+    progressIndicatorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(image_stream.ImageChunkEvent)]))),
+    errorBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.Object, dart.nullable(core.StackTrace)]))),
+    placeholderFadeInDuration: dart.finalFieldType(core.Duration),
+    fadeOutDuration: dart.finalFieldType(core.Duration),
+    fadeOutCurve: dart.finalFieldType(curves.Curve),
+    fadeInDuration: dart.finalFieldType(core.Duration),
+    fadeInCurve: dart.finalFieldType(curves.Curve),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    fit: dart.finalFieldType(dart.nullable(box_fit.BoxFit)),
+    alignment: dart.finalFieldType(alignment$.AlignmentGeometry),
+    repeat: dart.finalFieldType(decoration_image.ImageRepeat),
+    matchTextDirection: dart.finalFieldType(core.bool),
+    color: dart.finalFieldType(dart.nullable(ui.Color)),
+    colorBlendMode: dart.finalFieldType(dart.nullable(ui.BlendMode)),
+    filterQuality: dart.finalFieldType(ui.FilterQuality),
+    gaplessPlayback: dart.finalFieldType(core.bool)
+  }));
+  var _previousHandler = dart.privateName(image$, "_previousHandler");
+  var ___OctoImageState__imageHandler = dart.privateName(image$, "_#_OctoImageState#_imageHandler");
+  var _imageHandler = dart.privateName(image$, "_imageHandler");
+  image$._OctoImageState = class _OctoImageState extends framework.State$(image$.OctoImage) {
+    get [_imageHandler]() {
+      let t2;
+      t2 = this[___OctoImageState__imageHandler];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("_imageHandler")) : t2;
+    }
+    set [_imageHandler](library$32package$58octo_image$47src$47image$47image$46dart$58$58_imageHandler$35param) {
+      this[___OctoImageState__imageHandler] = library$32package$58octo_image$47src$47image$47image$46dart$58$58_imageHandler$35param;
+    }
+    initState() {
+      super.initState();
+      this[_imageHandler] = new image_handler.ImageHandler.new({image: this.widget.image, imageBuilder: this.widget.imageBuilder, placeholderBuilder: this.widget.placeholderBuilder, progressIndicatorBuilder: this.widget.progressIndicatorBuilder, errorBuilder: this.widget.errorBuilder, placeholderFadeInDuration: this.widget.placeholderFadeInDuration, fadeOutDuration: this.widget.fadeOutDuration, fadeOutCurve: this.widget.fadeOutCurve, fadeInDuration: this.widget.fadeInDuration, fadeInCurve: this.widget.fadeInCurve, fit: this.widget.fit, width: this.widget.width, height: this.widget.height, alignment: this.widget.alignment, repeat: this.widget.repeat, color: this.widget.color, colorBlendMode: this.widget.colorBlendMode, matchTextDirection: this.widget.matchTextDirection, filterQuality: this.widget.filterQuality, alwaysShowPlaceHolder: false});
+    }
+    didUpdateWidget(oldWidget) {
+      let t2;
+      image$.OctoImage.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!oldWidget.image[$_equals](this.widget.image)) {
+        if (this.widget.gaplessPlayback) {
+          this[_previousHandler] = this[_imageHandler];
+          t2 = this[_previousHandler];
+          t2 == null ? null : t2.alwaysShowPlaceHolder = false;
+        } else {
+          this[_previousHandler] = null;
+        }
+      }
+      this[_imageHandler] = new image_handler.ImageHandler.new({image: this.widget.image, imageBuilder: this.widget.imageBuilder, placeholderBuilder: this[_previousHandler] != null ? dart.bind(dart.nullCheck(this[_previousHandler]), 'build') : this.widget.placeholderBuilder, progressIndicatorBuilder: this[_previousHandler] != null ? null : this.widget.progressIndicatorBuilder, errorBuilder: this.widget.errorBuilder, placeholderFadeInDuration: this.widget.placeholderFadeInDuration, fadeOutDuration: this.widget.fadeOutDuration, fadeOutCurve: this.widget.fadeOutCurve, fadeInDuration: this.widget.fadeInDuration, fadeInCurve: this.widget.fadeInCurve, fit: this.widget.fit, width: this.widget.width, height: this.widget.height, alignment: this.widget.alignment, repeat: this.widget.repeat, color: this.widget.color, colorBlendMode: this.widget.colorBlendMode, matchTextDirection: this.widget.matchTextDirection, filterQuality: this.widget.filterQuality, alwaysShowPlaceHolder: this[_previousHandler] != null});
+    }
+    build(context) {
+      return new basic.SizedBox.new({width: this.widget.width, height: this.widget.height, child: this[_imageHandler].build(context), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35});
+    }
+    static ['_#new#tearOff']() {
+      return new image$._OctoImageState.new();
+    }
+  };
+  (image$._OctoImageState.new = function() {
+    this[_previousHandler] = null;
+    this[___OctoImageState__imageHandler] = null;
+    image$._OctoImageState.__proto__.new.call(this);
+    ;
+  }).prototype = image$._OctoImageState.prototype;
+  dart.addTypeTests(image$._OctoImageState);
+  dart.addTypeCaches(image$._OctoImageState);
+  dart.setMethodSignature(image$._OctoImageState, () => ({
+    __proto__: dart.getMethods(image$._OctoImageState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(image$._OctoImageState, () => ({
+    __proto__: dart.getGetters(image$._OctoImageState.__proto__),
+    [_imageHandler]: image_handler.ImageHandler
+  }));
+  dart.setSetterSignature(image$._OctoImageState, () => ({
+    __proto__: dart.getSetters(image$._OctoImageState.__proto__),
+    [_imageHandler]: image_handler.ImageHandler
+  }));
+  dart.setLibraryUri(image$._OctoImageState, I[7]);
+  dart.setFieldSignature(image$._OctoImageState, () => ({
+    __proto__: dart.getFields(image$._OctoImageState.__proto__),
+    [_previousHandler]: dart.fieldType(dart.nullable(image_handler.ImageHandler)),
+    [___OctoImageState__imageHandler]: dart.fieldType(dart.nullable(image_handler.ImageHandler))
+  }));
+  var IconData_matchTextDirection = dart.privateName(icon_data, "IconData.matchTextDirection");
+  var IconData_fontPackage = dart.privateName(icon_data, "IconData.fontPackage");
+  var IconData_fontFamily = dart.privateName(icon_data, "IconData.fontFamily");
+  var IconData_codePoint = dart.privateName(icon_data, "IconData.codePoint");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  errors.OctoError = class OctoError extends core.Object {
+    static blurHash(hash, opts) {
+      let fit = opts && 'fit' in opts ? opts.fit : null;
+      let message = opts && 'message' in opts ? opts.message : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let iconColor = opts && 'iconColor' in opts ? opts.iconColor : null;
+      let iconSize = opts && 'iconSize' in opts ? opts.iconSize : null;
+      return errors.OctoError.placeholderWithErrorIcon(placeholders.OctoPlaceholder.blurHash(hash, {fit: fit}), {message: message, icon: icon, iconColor: iconColor, iconSize: iconSize});
+    }
+    static circleAvatar(opts) {
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let text = opts && 'text' in opts ? opts.text : null;
+      return dart.fn((context, error, stacktrace) => new basic.SizedBox.new({width: 1 / 0, height: 1 / 0, child: new circle_avatar.CircleAvatar.new({child: text, backgroundColor: backgroundColor, $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}), T.BuildContextAndObjectAndStackTraceNToSizedBox());
+    }
+    static icon(opts) {
+      let icon = opts && 'icon' in opts ? opts.icon : C[38] || CT.C38;
+      let color = opts && 'color' in opts ? opts.color : null;
+      return dart.fn((context, error, stacktrace) => new icon$.Icon.new(icon, {color: color, $creationLocationd_0dea112b090073317d4: C[39] || CT.C39}), T.BuildContextAndObjectAndStackTraceNToIcon());
+    }
+    static placeholderWithErrorIcon(placeholderBuilder, opts) {
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let iconColor = opts && 'iconColor' in opts ? opts.iconColor : null;
+      let iconSize = opts && 'iconSize' in opts ? opts.iconSize : null;
+      let message = opts && 'message' in opts ? opts.message : null;
+      icon == null ? icon = icons.Icons.error_outline : null;
+      iconSize == null ? iconSize = 30.0 : null;
+      return dart.fn((context, error, stacktrace) => new basic.Stack.new({alignment: alignment$.Alignment.center, children: (() => {
+          let t2 = T.JSArrayOfWidget().of([placeholderBuilder(context), new basic.Opacity.new({opacity: 0.75, child: new icon$.Icon.new(icon, {size: iconSize, color: iconColor, $creationLocationd_0dea112b090073317d4: C[40] || CT.C40}), $creationLocationd_0dea112b090073317d4: C[41] || CT.C41})]);
+          if (message != null) t2.push(new basic.Align.new({alignment: alignment$.Alignment.bottomCenter, child: new basic.Padding.new({padding: C[42] || CT.C42, child: message, $creationLocationd_0dea112b090073317d4: C[43] || CT.C43}), $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}));
+          return t2;
+        })(), $creationLocationd_0dea112b090073317d4: C[45] || CT.C45}), T.BuildContextAndObjectAndStackTraceNToStack());
+    }
+    static ['_#new#tearOff']() {
+      return new errors.OctoError.new();
+    }
+  };
+  (errors.OctoError.new = function() {
+    ;
+  }).prototype = errors.OctoError.prototype;
+  dart.addTypeTests(errors.OctoError);
+  dart.addTypeCaches(errors.OctoError);
+  dart.setStaticMethodSignature(errors.OctoError, () => ['blurHash', 'circleAvatar', 'icon', 'placeholderWithErrorIcon']);
+  dart.setLibraryUri(errors.OctoError, I[8]);
+  dart.trackLibraries("packages/octo_image/src/progress_indicators.dart", {
+    "package:octo_image/src/progress_indicators.dart": progress_indicators,
+    "package:octo_image/src/placeholders.dart": placeholders,
+    "package:octo_image/src/image/image_handler.dart": image_handler,
+    "package:octo_image/src/image_transformers.dart": image_transformers,
+    "package:octo_image/src/octo_set.dart": octo_set,
+    "package:octo_image/src/image/image.dart": image$,
+    "package:octo_image/src/errors.dart": errors,
+    "package:octo_image/octo_image.dart": octo_image
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["progress_indicators.dart","placeholders.dart","image/image_handler.dart","image_transformers.dart","octo_set.dart","image/image.dart","errors.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/octo_image/src/progress_indicators.dart.lib.js"}');
+  // Exports:
+  return {
+    src__progress_indicators: progress_indicators,
+    src__placeholders: placeholders,
+    src__image__image_handler: image_handler,
+    src__image_transformers: image_transformers,
+    src__octo_set: octo_set,
+    src__image__image: image$,
+    src__errors: errors,
+    octo_image: octo_image
+  };
+}));
+
+//# sourceMappingURL=progress_indicators.dart.lib.js.map

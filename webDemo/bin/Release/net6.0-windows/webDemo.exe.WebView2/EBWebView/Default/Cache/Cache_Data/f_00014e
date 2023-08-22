@@ -1,0 +1,295 @@
+define(['dart_sdk', 'packages/image/src/image_exception.dart', 'packages/image/src/util/input_buffer.dart'], (function load__packages__image__src__formats__tiff__tiff_lzw_decoder_dart(dart_sdk, packages__image__src__image_exception$46dart, packages__image__src__util__input_buffer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const typed_data = dart_sdk.typed_data;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  var tiff_lzw_decoder = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $rightShift = dartx['>>'];
+  var $fillRange = dartx.fillRange;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([511, 1023, 2047, 4095], core.int);
+    }
+  }, false);
+  var C = [void 0];
+  var I = ["package:image/src/formats/tiff/tiff_lzw_decoder.dart"];
+  var _bitsToGet = dart.privateName(tiff_lzw_decoder, "_bitsToGet");
+  var _bytePointer = dart.privateName(tiff_lzw_decoder, "_bytePointer");
+  var _nextData = dart.privateName(tiff_lzw_decoder, "_nextData");
+  var _nextBits = dart.privateName(tiff_lzw_decoder, "_nextBits");
+  var __LzwDecoder__data = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_data");
+  var __LzwDecoder__dataLength = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_dataLength");
+  var __LzwDecoder__out = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_out");
+  var __LzwDecoder__outPointer = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_outPointer");
+  var _buffer = dart.privateName(tiff_lzw_decoder, "_buffer");
+  var __LzwDecoder__table = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_table");
+  var __LzwDecoder__prefix = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_prefix");
+  var _tableIndex = dart.privateName(tiff_lzw_decoder, "_tableIndex");
+  var __LzwDecoder__bufferLength = dart.privateName(tiff_lzw_decoder, "_#LzwDecoder#_bufferLength");
+  var _out = dart.privateName(tiff_lzw_decoder, "_out");
+  var _outPointer = dart.privateName(tiff_lzw_decoder, "_outPointer");
+  var _data = dart.privateName(tiff_lzw_decoder, "_data");
+  var _dataLength = dart.privateName(tiff_lzw_decoder, "_dataLength");
+  var _initializeStringTable = dart.privateName(tiff_lzw_decoder, "_initializeStringTable");
+  var _getNextCode = dart.privateName(tiff_lzw_decoder, "_getNextCode");
+  var _bufferLength = dart.privateName(tiff_lzw_decoder, "_bufferLength");
+  var _getString = dart.privateName(tiff_lzw_decoder, "_getString");
+  var _addString = dart.privateName(tiff_lzw_decoder, "_addString");
+  var _table = dart.privateName(tiff_lzw_decoder, "_table");
+  var _prefix = dart.privateName(tiff_lzw_decoder, "_prefix");
+  tiff_lzw_decoder.LzwDecoder = class LzwDecoder extends core.Object {
+    decode(p, out) {
+      let t0, t0$, t0$0, t0$1;
+      this[_out] = out;
+      let outLen = out[$length];
+      this[_outPointer] = 0;
+      this[_data] = typed_data.Uint8List.as(p.buffer);
+      this[_dataLength] = this[_data][$length];
+      this[_bytePointer] = p.offset;
+      if (this[_data][$_get](0) === 0 && this[_data][$_get](1) === 1) {
+        dart.throw(new image_exception.ImageException.new("Invalid LZW Data"));
+      }
+      this[_initializeStringTable]();
+      this[_nextData] = 0;
+      this[_nextBits] = 0;
+      let oldCode = 0;
+      let code = this[_getNextCode]();
+      while (code !== 257 && this[_outPointer] < outLen) {
+        if (code === 256) {
+          this[_initializeStringTable]();
+          code = this[_getNextCode]();
+          this[_bufferLength] = 0;
+          if (code === 257) {
+            break;
+          }
+          this[_out][$_set]((t0 = this[_outPointer], this[_outPointer] = t0 + 1, t0), code);
+          oldCode = code;
+        } else {
+          if (code < dart.nullCheck(this[_tableIndex])) {
+            this[_getString](code);
+            for (let i = this[_bufferLength] - 1; i >= 0; i = i - 1) {
+              this[_out][$_set]((t0$ = this[_outPointer], this[_outPointer] = t0$ + 1, t0$), this[_buffer][$_get](i));
+            }
+            this[_addString](oldCode, this[_buffer][$_get](this[_bufferLength] - 1));
+            oldCode = code;
+          } else {
+            this[_getString](oldCode);
+            for (let i = this[_bufferLength] - 1; i >= 0; i = i - 1) {
+              this[_out][$_set]((t0$0 = this[_outPointer], this[_outPointer] = t0$0 + 1, t0$0), this[_buffer][$_get](i));
+            }
+            this[_out][$_set]((t0$1 = this[_outPointer], this[_outPointer] = t0$1 + 1, t0$1), this[_buffer][$_get](this[_bufferLength] - 1));
+            this[_addString](oldCode, this[_buffer][$_get](this[_bufferLength] - 1));
+            oldCode = code;
+          }
+        }
+        code = this[_getNextCode]();
+      }
+    }
+    [_addString](string, newString) {
+      this[_table][$_set](dart.nullCheck(this[_tableIndex]), newString);
+      this[_prefix][$_set](dart.nullCheck(this[_tableIndex]), string);
+      this[_tableIndex] = dart.nullCheck(this[_tableIndex]) + 1;
+      if (this[_tableIndex] === 511) {
+        this[_bitsToGet] = 10;
+      } else if (this[_tableIndex] === 1023) {
+        this[_bitsToGet] = 11;
+      } else if (this[_tableIndex] === 2047) {
+        this[_bitsToGet] = 12;
+      }
+    }
+    [_getString](code) {
+      let t0, t0$;
+      this[_bufferLength] = 0;
+      let c = code;
+      this[_buffer][$_set]((t0 = this[_bufferLength], this[_bufferLength] = t0 + 1, t0), this[_table][$_get](c));
+      c = this[_prefix][$_get](c);
+      while (c !== 4098) {
+        this[_buffer][$_set]((t0$ = this[_bufferLength], this[_bufferLength] = t0$ + 1, t0$), this[_table][$_get](c));
+        c = this[_prefix][$_get](c);
+      }
+    }
+    [_getNextCode]() {
+      let t0;
+      if (this[_bytePointer] >= this[_dataLength]) {
+        return 257;
+      }
+      while (this[_nextBits] < this[_bitsToGet]) {
+        if (this[_bytePointer] >= this[_dataLength]) {
+          return 257;
+        }
+        this[_nextData] = ((this[_nextData] << 8 >>> 0) + this[_data][$_get]((t0 = this[_bytePointer], this[_bytePointer] = t0 + 1, t0)) & 4294967295) >>> 0;
+        this[_nextBits] = this[_nextBits] + 8;
+      }
+      this[_nextBits] = this[_nextBits] - this[_bitsToGet];
+      let code = (this[_nextData][$rightShift](this[_nextBits]) & tiff_lzw_decoder.LzwDecoder.AND_TABLE[$_get](this[_bitsToGet] - 9)) >>> 0;
+      return code;
+    }
+    [_initializeStringTable]() {
+      this[_table] = _native_typed_data.NativeUint8List.new(4095 + 1);
+      this[_prefix] = _native_typed_data.NativeUint32List.new(4095 + 1);
+      this[_prefix][$fillRange](0, this[_prefix][$length], 4098);
+      for (let i = 0; i < 256; i = i + 1) {
+        this[_table][$_set](i, i);
+      }
+      this[_bitsToGet] = 9;
+      this[_tableIndex] = 258;
+    }
+    get [_data]() {
+      let t0;
+      t0 = this[__LzwDecoder__data];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_data")) : t0;
+    }
+    set [_data](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_data$35param) {
+      this[__LzwDecoder__data] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_data$35param;
+    }
+    get [_dataLength]() {
+      let t0;
+      t0 = this[__LzwDecoder__dataLength];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_dataLength")) : t0;
+    }
+    set [_dataLength](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_dataLength$35param) {
+      this[__LzwDecoder__dataLength] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_dataLength$35param;
+    }
+    get [_out]() {
+      let t0;
+      t0 = this[__LzwDecoder__out];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_out")) : t0;
+    }
+    set [_out](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_out$35param) {
+      this[__LzwDecoder__out] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_out$35param;
+    }
+    get [_outPointer]() {
+      let t0;
+      t0 = this[__LzwDecoder__outPointer];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_outPointer")) : t0;
+    }
+    set [_outPointer](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_outPointer$35param) {
+      this[__LzwDecoder__outPointer] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_outPointer$35param;
+    }
+    get [_table]() {
+      let t0;
+      t0 = this[__LzwDecoder__table];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_table")) : t0;
+    }
+    set [_table](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_table$35param) {
+      this[__LzwDecoder__table] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_table$35param;
+    }
+    get [_prefix]() {
+      let t0;
+      t0 = this[__LzwDecoder__prefix];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_prefix")) : t0;
+    }
+    set [_prefix](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_prefix$35param) {
+      this[__LzwDecoder__prefix] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_prefix$35param;
+    }
+    get [_bufferLength]() {
+      let t0;
+      t0 = this[__LzwDecoder__bufferLength];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_bufferLength")) : t0;
+    }
+    set [_bufferLength](library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_bufferLength$35param) {
+      this[__LzwDecoder__bufferLength] = library$32package$58image$47src$47formats$47tiff$47tiff_lzw_decoder$46dart$58$58_bufferLength$35param;
+    }
+    static ['_#new#tearOff']() {
+      return new tiff_lzw_decoder.LzwDecoder.new();
+    }
+  };
+  (tiff_lzw_decoder.LzwDecoder.new = function() {
+    this[_bitsToGet] = 9;
+    this[_bytePointer] = 0;
+    this[_nextData] = 0;
+    this[_nextBits] = 0;
+    this[__LzwDecoder__data] = null;
+    this[__LzwDecoder__dataLength] = null;
+    this[__LzwDecoder__out] = null;
+    this[__LzwDecoder__outPointer] = null;
+    this[_buffer] = _native_typed_data.NativeUint8List.new(4096);
+    this[__LzwDecoder__table] = null;
+    this[__LzwDecoder__prefix] = null;
+    this[_tableIndex] = null;
+    this[__LzwDecoder__bufferLength] = null;
+    ;
+  }).prototype = tiff_lzw_decoder.LzwDecoder.prototype;
+  dart.addTypeTests(tiff_lzw_decoder.LzwDecoder);
+  dart.addTypeCaches(tiff_lzw_decoder.LzwDecoder);
+  dart.setMethodSignature(tiff_lzw_decoder.LzwDecoder, () => ({
+    __proto__: dart.getMethods(tiff_lzw_decoder.LzwDecoder.__proto__),
+    decode: dart.fnType(dart.void, [input_buffer.InputBuffer, core.List$(core.int)]),
+    [_addString]: dart.fnType(dart.void, [core.int, core.int]),
+    [_getString]: dart.fnType(dart.void, [core.int]),
+    [_getNextCode]: dart.fnType(core.int, []),
+    [_initializeStringTable]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(tiff_lzw_decoder.LzwDecoder, () => ({
+    __proto__: dart.getGetters(tiff_lzw_decoder.LzwDecoder.__proto__),
+    [_data]: typed_data.Uint8List,
+    [_dataLength]: core.int,
+    [_out]: core.List$(core.int),
+    [_outPointer]: core.int,
+    [_table]: typed_data.Uint8List,
+    [_prefix]: typed_data.Uint32List,
+    [_bufferLength]: core.int
+  }));
+  dart.setSetterSignature(tiff_lzw_decoder.LzwDecoder, () => ({
+    __proto__: dart.getSetters(tiff_lzw_decoder.LzwDecoder.__proto__),
+    [_data]: typed_data.Uint8List,
+    [_dataLength]: core.int,
+    [_out]: core.List$(core.int),
+    [_outPointer]: core.int,
+    [_table]: typed_data.Uint8List,
+    [_prefix]: typed_data.Uint32List,
+    [_bufferLength]: core.int
+  }));
+  dart.setLibraryUri(tiff_lzw_decoder.LzwDecoder, I[0]);
+  dart.setFieldSignature(tiff_lzw_decoder.LzwDecoder, () => ({
+    __proto__: dart.getFields(tiff_lzw_decoder.LzwDecoder.__proto__),
+    [_bitsToGet]: dart.fieldType(core.int),
+    [_bytePointer]: dart.fieldType(core.int),
+    [_nextData]: dart.fieldType(core.int),
+    [_nextBits]: dart.fieldType(core.int),
+    [__LzwDecoder__data]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [__LzwDecoder__dataLength]: dart.fieldType(dart.nullable(core.int)),
+    [__LzwDecoder__out]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    [__LzwDecoder__outPointer]: dart.fieldType(dart.nullable(core.int)),
+    [_buffer]: dart.finalFieldType(typed_data.Uint8List),
+    [__LzwDecoder__table]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [__LzwDecoder__prefix]: dart.fieldType(dart.nullable(typed_data.Uint32List)),
+    [_tableIndex]: dart.fieldType(dart.nullable(core.int)),
+    [__LzwDecoder__bufferLength]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.setStaticFieldSignature(tiff_lzw_decoder.LzwDecoder, () => ['LZ_MAX_CODE', 'NO_SUCH_CODE', 'AND_TABLE']);
+  dart.defineLazy(tiff_lzw_decoder.LzwDecoder, {
+    /*tiff_lzw_decoder.LzwDecoder.LZ_MAX_CODE*/get LZ_MAX_CODE() {
+      return 4095;
+    },
+    /*tiff_lzw_decoder.LzwDecoder.NO_SUCH_CODE*/get NO_SUCH_CODE() {
+      return 4098;
+    },
+    /*tiff_lzw_decoder.LzwDecoder.AND_TABLE*/get AND_TABLE() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/tiff/tiff_lzw_decoder.dart", {
+    "package:image/src/formats/tiff/tiff_lzw_decoder.dart": tiff_lzw_decoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["tiff_lzw_decoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/tiff/tiff_lzw_decoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__tiff__tiff_lzw_decoder: tiff_lzw_decoder
+  };
+}));
+
+//# sourceMappingURL=tiff_lzw_decoder.dart.lib.js.map

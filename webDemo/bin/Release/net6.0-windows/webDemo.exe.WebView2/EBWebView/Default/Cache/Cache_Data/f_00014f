@@ -1,0 +1,901 @@
+define(['dart_sdk', 'packages/image/src/image_exception.dart', 'packages/image/src/util/input_buffer.dart'], (function load__packages__image__src__formats__tiff__tiff_fax_decoder_dart(dart_sdk, packages__image__src__image_exception$46dart, packages__image__src__util__input_buffer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  var tiff_fax_decoder = Object.create(dart.library);
+  var $truncate = dartx.truncate;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $rightShift = dartx['>>'];
+  var $leftShift = dartx['<<'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    ListOfintN: () => (T.ListOfintN = dart.constFn(core.List$(T.intN())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([0, 1, 3, 7, 15, 31, 63, 127, 255], core.int);
+    },
+    get C1() {
+      return C[1] = dart.constList([0, 128, 192, 224, 240, 248, 252, 254, 255], core.int);
+    },
+    get C2() {
+      return C[2] = dart.constList([0, -128, 64, -64, 32, -96, 96, -32, 16, -112, 80, -48, 48, -80, 112, -16, 8, -120, 72, -56, 40, -88, 104, -24, 24, -104, 88, -40, 56, -72, 120, -8, 4, -124, 68, -60, 36, -92, 100, -28, 20, -108, 84, -44, 52, -76, 116, -12, 12, -116, 76, -52, 44, -84, 108, -20, 28, -100, 92, -36, 60, -68, 124, -4, 2, -126, 66, -62, 34, -94, 98, -30, 18, -110, 82, -46, 50, -78, 114, -14, 10, -118, 74, -54, 42, -86, 106, -22, 26, -102, 90, -38, 58, -70, 122, -6, 6, -122, 70, -58, 38, -90, 102, -26, 22, -106, 86, -42, 54, -74, 118, -10, 14, -114, 78, -50, 46, -82, 110, -18, 30, -98, 94, -34, 62, -66, 126, -2, 1, -127, 65, -63, 33, -95, 97, -31, 17, -111, 81, -47, 49, -79, 113, -15, 9, -119, 73, -55, 41, -87, 105, -23, 25, -103, 89, -39, 57, -71, 121, -7, 5, -123, 69, -59, 37, -91, 101, -27, 21, -107, 85, -43, 53, -75, 117, -11, 13, -115, 77, -51, 45, -83, 109, -19, 29, -99, 93, -35, 61, -67, 125, -3, 3, -125, 67, -61, 35, -93, 99, -29, 19, -109, 83, -45, 51, -77, 115, -13, 11, -117, 75, -53, 43, -85, 107, -21, 27, -101, 91, -37, 59, -69, 123, -5, 7, -121, 71, -57, 39, -89, 103, -25, 23, -105, 87, -41, 55, -73, 119, -9, 15, -113, 79, -49, 47, -81, 111, -17, 31, -97, 95, -33, 63, -65, 127, -1], core.int);
+    },
+    get C3() {
+      return C[3] = dart.constList([6430, 6400, 6400, 6400, 3225, 3225, 3225, 3225, 944, 944, 944, 944, 976, 976, 976, 976, 1456, 1456, 1456, 1456, 1488, 1488, 1488, 1488, 718, 718, 718, 718, 718, 718, 718, 718, 750, 750, 750, 750, 750, 750, 750, 750, 1520, 1520, 1520, 1520, 1552, 1552, 1552, 1552, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 654, 654, 654, 654, 654, 654, 654, 654, 1072, 1072, 1072, 1072, 1104, 1104, 1104, 1104, 1136, 1136, 1136, 1136, 1168, 1168, 1168, 1168, 1200, 1200, 1200, 1200, 1232, 1232, 1232, 1232, 622, 622, 622, 622, 622, 622, 622, 622, 1008, 1008, 1008, 1008, 1040, 1040, 1040, 1040, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 396, 1712, 1712, 1712, 1712, 1744, 1744, 1744, 1744, 846, 846, 846, 846, 846, 846, 846, 846, 1264, 1264, 1264, 1264, 1296, 1296, 1296, 1296, 1328, 1328, 1328, 1328, 1360, 1360, 1360, 1360, 1392, 1392, 1392, 1392, 1424, 1424, 1424, 1424, 686, 686, 686, 686, 686, 686, 686, 686, 910, 910, 910, 910, 910, 910, 910, 910, 1968, 1968, 1968, 1968, 2000, 2000, 2000, 2000, 2032, 2032, 2032, 2032, 16, 16, 16, 16, 10257, 10257, 10257, 10257, 12305, 12305, 12305, 12305, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 330, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 362, 878, 878, 878, 878, 878, 878, 878, 878, 1904, 1904, 1904, 1904, 1936, 1936, 1936, 1936, -18413, -18413, -16365, -16365, -14317, -14317, -10221, -10221, 590, 590, 590, 590, 590, 590, 590, 590, 782, 782, 782, 782, 782, 782, 782, 782, 1584, 1584, 1584, 1584, 1616, 1616, 1616, 1616, 1648, 1648, 1648, 1648, 1680, 1680, 1680, 1680, 814, 814, 814, 814, 814, 814, 814, 814, 1776, 1776, 1776, 1776, 1808, 1808, 1808, 1808, 1840, 1840, 1840, 1840, 1872, 1872, 1872, 1872, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, 6157, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, -12275, 14353, 14353, 14353, 14353, 16401, 16401, 16401, 16401, 22547, 22547, 24595, 24595, 20497, 20497, 20497, 20497, 18449, 18449, 18449, 18449, 26643, 26643, 28691, 28691, 30739, 30739, -32749, -32749, -30701, -30701, -28653, -28653, -26605, -26605, -24557, -24557, -22509, -22509, -20461, -20461, 8207, 8207, 8207, 8207, 8207, 8207, 8207, 8207, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 4107, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 298, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 524, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 168, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 492, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 2059, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232, 232], core.int);
+    },
+    get C4() {
+      return C[4] = dart.constList([28679, 28679, 31752, -32759, -31735, -30711, -29687, -28663, 29703, 29703, 30727, 30727, -27639, -26615, -25591, -24567], core.int);
+    },
+    get C5() {
+      return C[5] = dart.constList([3226, 6412, 200, 168, 38, 38, 134, 134, 100, 100, 100, 100, 68, 68, 68, 68], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constList([292, 260, 226, 226], core.int);
+    },
+    get C7() {
+      return C[7] = dart.constList([62, 62, 30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 3225, 588, 588, 588, 588, 588, 588, 588, 588, 1680, 1680, 20499, 22547, 24595, 26643, 1776, 1776, 1808, 1808, -24557, -22509, -20461, -18413, 1904, 1904, 1936, 1936, -16365, -14317, 782, 782, 782, 782, 814, 814, 814, 814, -12269, -10221, 10257, 10257, 12305, 12305, 14353, 14353, 16403, 18451, 1712, 1712, 1744, 1744, 28691, 30739, -32749, -30701, -28653, -26605, 2061, 2061, 2061, 2061, 2061, 2061, 2061, 2061, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 750, 750, 750, 750, 1616, 1616, 1648, 1648, 1424, 1424, 1456, 1456, 1488, 1488, 1520, 1520, 1840, 1840, 1872, 1872, 1968, 1968, 8209, 8209, 524, 524, 524, 524, 524, 524, 524, 524, 556, 556, 556, 556, 556, 556, 556, 556, 1552, 1552, 1584, 1584, 2000, 2000, 2032, 2032, 976, 976, 1008, 1008, 1040, 1040, 1072, 1072, 1296, 1296, 1328, 1328, 718, 718, 718, 718, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 326, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 358, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 490, 4113, 4113, 6161, 6161, 848, 848, 880, 880, 912, 912, 944, 944, 622, 622, 622, 622, 654, 654, 654, 654, 1104, 1104, 1136, 1136, 1168, 1168, 1200, 1200, 1232, 1232, 1264, 1264, 686, 686, 686, 686, 1360, 1360, 1392, 1392, 12, 12, 12, 12, 12, 12, 12, 12, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390, 390], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([80, 88, 23, 71, 30, 30, 62, 62, 4, 4, 4, 4, 4, 4, 4, 4, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41], core.int);
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
+  var I = ["package:image/src/formats/tiff/tiff_fax_decoder.dart"];
+  var width$ = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.width");
+  var height$ = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.height");
+  var fillOrder$ = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.fillOrder");
+  var changingElemSize = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.changingElemSize");
+  var prevChangingElems = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.prevChangingElems");
+  var currChangingElems = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.currChangingElems");
+  var bitPointer = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.bitPointer");
+  var bytePointer = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.bytePointer");
+  var lastChangingElement = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.lastChangingElement");
+  var compression = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.compression");
+  var uncompressedMode = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.uncompressedMode");
+  var fillBits = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.fillBits");
+  var oneD = dart.privateName(tiff_fax_decoder, "TiffFaxDecoder.oneD");
+  var __TiffFaxDecoder_data = dart.privateName(tiff_fax_decoder, "_#TiffFaxDecoder#data");
+  var _decodeNextScanline = dart.privateName(tiff_fax_decoder, "_decodeNextScanline");
+  var _nextNBits = dart.privateName(tiff_fax_decoder, "_nextNBits");
+  var _nextLesserThan8Bits = dart.privateName(tiff_fax_decoder, "_nextLesserThan8Bits");
+  var _updatePointer = dart.privateName(tiff_fax_decoder, "_updatePointer");
+  var _advancePointer = dart.privateName(tiff_fax_decoder, "_advancePointer");
+  var _setToBlack = dart.privateName(tiff_fax_decoder, "_setToBlack");
+  var _readEOL = dart.privateName(tiff_fax_decoder, "_readEOL");
+  var _getNextChangingElement = dart.privateName(tiff_fax_decoder, "_getNextChangingElement");
+  var _decodeWhiteCodeWord = dart.privateName(tiff_fax_decoder, "_decodeWhiteCodeWord");
+  var _decodeBlackCodeWord = dart.privateName(tiff_fax_decoder, "_decodeBlackCodeWord");
+  tiff_fax_decoder.TiffFaxDecoder = class TiffFaxDecoder extends core.Object {
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      this[width$] = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      this[height$] = value;
+    }
+    get fillOrder() {
+      return this[fillOrder$];
+    }
+    set fillOrder(value) {
+      this[fillOrder$] = value;
+    }
+    get changingElemSize() {
+      return this[changingElemSize];
+    }
+    set changingElemSize(value) {
+      this[changingElemSize] = value;
+    }
+    get prevChangingElems() {
+      return this[prevChangingElems];
+    }
+    set prevChangingElems(value) {
+      this[prevChangingElems] = value;
+    }
+    get currChangingElems() {
+      return this[currChangingElems];
+    }
+    set currChangingElems(value) {
+      this[currChangingElems] = value;
+    }
+    get bitPointer() {
+      return this[bitPointer];
+    }
+    set bitPointer(value) {
+      this[bitPointer] = value;
+    }
+    get bytePointer() {
+      return this[bytePointer];
+    }
+    set bytePointer(value) {
+      this[bytePointer] = value;
+    }
+    get lastChangingElement() {
+      return this[lastChangingElement];
+    }
+    set lastChangingElement(value) {
+      this[lastChangingElement] = value;
+    }
+    get compression() {
+      return this[compression];
+    }
+    set compression(value) {
+      this[compression] = value;
+    }
+    get uncompressedMode() {
+      return this[uncompressedMode];
+    }
+    set uncompressedMode(value) {
+      this[uncompressedMode] = value;
+    }
+    get fillBits() {
+      return this[fillBits];
+    }
+    set fillBits(value) {
+      this[fillBits] = value;
+    }
+    get oneD() {
+      return this[oneD];
+    }
+    set oneD(value) {
+      this[oneD] = value;
+    }
+    get data() {
+      let t0;
+      t0 = this[__TiffFaxDecoder_data];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("data")) : t0;
+    }
+    set data(data$35param) {
+      this[__TiffFaxDecoder_data] = data$35param;
+    }
+    static ['_#new#tearOff'](fillOrder, width, height) {
+      return new tiff_fax_decoder.TiffFaxDecoder.new(fillOrder, width, height);
+    }
+    decode1D(out, compData, startX, height) {
+      this.data = compData;
+      this.bitPointer = 0;
+      this.bytePointer = 0;
+      let lineOffset = 0;
+      let scanlineStride = ((this.width + 7) / 8)[$truncate]();
+      for (let i = 0; i < height; i = i + 1) {
+        this[_decodeNextScanline](out, lineOffset, startX);
+        lineOffset = lineOffset + scanlineStride;
+      }
+    }
+    [_decodeNextScanline](buffer, lineOffset, bitOffset) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      let bits = 0;
+      let code = 0;
+      let isT = 0;
+      let current = null;
+      let entry = null;
+      let twoBits = null;
+      let isWhite = true;
+      this.changingElemSize = 0;
+      while (bitOffset < this.width) {
+        while (isWhite) {
+          current = this[_nextNBits](10);
+          entry = tiff_fax_decoder.TiffFaxDecoder.WHITE[$_get](current);
+          isT = entry & 1;
+          bits = entry >> 1 & 15;
+          if (bits === 12) {
+            twoBits = this[_nextLesserThan8Bits](2);
+            current = (current << 2 & 12 | twoBits) >>> 0;
+            entry = tiff_fax_decoder.TiffFaxDecoder.ADDITIONAL_MAKEUP[$_get](current);
+            bits = entry >> 1 & 7;
+            code = entry >> 4 & 4095;
+            bitOffset = bitOffset + code;
+            this[_updatePointer](4 - bits);
+          } else if (bits === 0) {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder0"));
+          } else if (bits === 15) {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder1"));
+          } else {
+            code = entry >> 5 & 2047;
+            bitOffset = bitOffset + code;
+            this[_updatePointer](10 - bits);
+            if (isT === 0) {
+              isWhite = false;
+              dart.nullCheck(this.currChangingElems)[$_set]((t0 = this.changingElemSize, this.changingElemSize = t0 + 1, t0), bitOffset);
+            }
+          }
+        }
+        if (bitOffset === this.width) {
+          if (this.compression === 2) {
+            this[_advancePointer]();
+          }
+          break;
+        }
+        while (isWhite === false) {
+          current = this[_nextLesserThan8Bits](4);
+          entry = tiff_fax_decoder.TiffFaxDecoder.INIT_BLACK[$_get](current);
+          isT = entry & 1;
+          bits = entry >> 1 & 15;
+          code = entry >> 5 & 2047;
+          if (code === 100) {
+            current = this[_nextNBits](9);
+            entry = tiff_fax_decoder.TiffFaxDecoder.BLACK[$_get](current);
+            isT = entry & 1;
+            bits = entry >> 1 & 15;
+            code = entry >> 5 & 2047;
+            if (bits === 12) {
+              this[_updatePointer](5);
+              current = this[_nextLesserThan8Bits](4);
+              entry = tiff_fax_decoder.TiffFaxDecoder.ADDITIONAL_MAKEUP[$_get](current);
+              bits = entry >> 1 & 7;
+              code = entry >> 4 & 4095;
+              this[_setToBlack](buffer, lineOffset, bitOffset, code);
+              bitOffset = bitOffset + code;
+              this[_updatePointer](4 - bits);
+            } else if (bits === 15) {
+              dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder2"));
+            } else {
+              this[_setToBlack](buffer, lineOffset, bitOffset, code);
+              bitOffset = bitOffset + code;
+              this[_updatePointer](9 - bits);
+              if (isT === 0) {
+                isWhite = true;
+                dart.nullCheck(this.currChangingElems)[$_set]((t0$ = this.changingElemSize, this.changingElemSize = t0$ + 1, t0$), bitOffset);
+              }
+            }
+          } else if (code === 200) {
+            current = this[_nextLesserThan8Bits](2);
+            entry = tiff_fax_decoder.TiffFaxDecoder.TWO_BIT_BLACK[$_get](current);
+            code = entry >> 5 & 2047;
+            bits = entry >> 1 & 15;
+            this[_setToBlack](buffer, lineOffset, bitOffset, code);
+            bitOffset = bitOffset + code;
+            this[_updatePointer](2 - bits);
+            isWhite = true;
+            dart.nullCheck(this.currChangingElems)[$_set]((t0$0 = this.changingElemSize, this.changingElemSize = t0$0 + 1, t0$0), bitOffset);
+          } else {
+            this[_setToBlack](buffer, lineOffset, bitOffset, code);
+            bitOffset = bitOffset + code;
+            this[_updatePointer](4 - bits);
+            isWhite = true;
+            dart.nullCheck(this.currChangingElems)[$_set]((t0$1 = this.changingElemSize, this.changingElemSize = t0$1 + 1, t0$1), bitOffset);
+          }
+        }
+        if (bitOffset === this.width) {
+          if (this.compression === 2) {
+            this[_advancePointer]();
+          }
+          break;
+        }
+      }
+      dart.nullCheck(this.currChangingElems)[$_set]((t0$2 = this.changingElemSize, this.changingElemSize = t0$2 + 1, t0$2), bitOffset);
+    }
+    decode2D(out, compData, startX, height, tiffT4Options) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      this.data = compData;
+      this.compression = 3;
+      this.bitPointer = 0;
+      this.bytePointer = 0;
+      let scanlineStride = ((this.width + 7) / 8)[$truncate]();
+      let a0 = null;
+      let a1 = null;
+      let b1 = null;
+      let b2 = null;
+      let b = T.ListOfintN().filled(2, null);
+      let entry = null;
+      let code = null;
+      let bits = null;
+      let isWhite = null;
+      let currIndex = 0;
+      let temp = null;
+      this.oneD = tiffT4Options & 1;
+      this.uncompressedMode = (tiffT4Options & 2) >> 1;
+      this.fillBits = (tiffT4Options & 4) >> 2;
+      if (this[_readEOL]() !== 1) {
+        dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder3"));
+      }
+      let lineOffset = 0;
+      let bitOffset = null;
+      this[_decodeNextScanline](out, lineOffset, startX);
+      lineOffset = lineOffset + scanlineStride;
+      for (let lines = 1; lines < height; lines = lines + 1) {
+        if (this[_readEOL]() === 0) {
+          temp = this.prevChangingElems;
+          this.prevChangingElems = this.currChangingElems;
+          this.currChangingElems = temp;
+          currIndex = 0;
+          a0 = -1;
+          isWhite = true;
+          bitOffset = startX;
+          this.lastChangingElement = 0;
+          while (dart.nullCheck(bitOffset) < this.width) {
+            this[_getNextChangingElement](a0, isWhite, b);
+            b1 = b[$_get](0);
+            b2 = b[$_get](1);
+            entry = this[_nextLesserThan8Bits](7);
+            entry = tiff_fax_decoder.TiffFaxDecoder.TWO_D_CODES[$_get](entry) & 255;
+            code = (entry & 120) >> 3;
+            bits = entry & 7;
+            if (code === 0) {
+              if (!isWhite) {
+                this[_setToBlack](out, lineOffset, bitOffset, dart.nullCheck(b2) - dart.notNull(bitOffset));
+              }
+              bitOffset = a0 = b2;
+              this[_updatePointer](7 - bits);
+            } else if (code === 1) {
+              this[_updatePointer](7 - bits);
+              let number = null;
+              if (isWhite) {
+                number = this[_decodeWhiteCodeWord]();
+                bitOffset = dart.notNull(bitOffset) + number;
+                dart.nullCheck(this.currChangingElems)[$_set]((t0 = currIndex, currIndex = t0 + 1, t0), bitOffset);
+                number = this[_decodeBlackCodeWord]();
+                this[_setToBlack](out, lineOffset, bitOffset, number);
+                bitOffset = dart.notNull(bitOffset) + number;
+                dart.nullCheck(this.currChangingElems)[$_set]((t0$ = currIndex, currIndex = t0$ + 1, t0$), bitOffset);
+              } else {
+                number = this[_decodeBlackCodeWord]();
+                this[_setToBlack](out, lineOffset, bitOffset, number);
+                bitOffset = dart.notNull(bitOffset) + number;
+                dart.nullCheck(this.currChangingElems)[$_set]((t0$0 = currIndex, currIndex = t0$0 + 1, t0$0), bitOffset);
+                number = this[_decodeWhiteCodeWord]();
+                bitOffset = dart.notNull(bitOffset) + number;
+                dart.nullCheck(this.currChangingElems)[$_set]((t0$1 = currIndex, currIndex = t0$1 + 1, t0$1), bitOffset);
+              }
+              a0 = bitOffset;
+            } else if (code <= 8) {
+              a1 = dart.nullCheck(b1) + (code - 5);
+              dart.nullCheck(this.currChangingElems)[$_set]((t0$2 = currIndex, currIndex = t0$2 + 1, t0$2), a1);
+              if (!isWhite) {
+                this[_setToBlack](out, lineOffset, bitOffset, dart.notNull(a1) - dart.notNull(bitOffset));
+              }
+              bitOffset = a0 = a1;
+              isWhite = !isWhite;
+              this[_updatePointer](7 - bits);
+            } else {
+              dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder4"));
+            }
+          }
+          dart.nullCheck(this.currChangingElems)[$_set]((t0$3 = currIndex, currIndex = t0$3 + 1, t0$3), bitOffset);
+          this.changingElemSize = currIndex;
+        } else {
+          this[_decodeNextScanline](out, lineOffset, startX);
+        }
+        lineOffset = lineOffset + scanlineStride;
+      }
+    }
+    decodeT6(out, compData, startX, height, tiffT6Options) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8, t0$9, t0$10;
+      this.data = compData;
+      this.compression = 4;
+      this.bitPointer = 0;
+      this.bytePointer = 0;
+      let scanlineStride = ((this.width + 7) / 8)[$truncate]();
+      let a0 = null;
+      let a1 = null;
+      let b1 = null;
+      let b2 = null;
+      let entry = null;
+      let code = null;
+      let bits = null;
+      let isWhite = null;
+      let currIndex = null;
+      let temp = null;
+      let b = T.ListOfintN().filled(2, null);
+      this.uncompressedMode = (tiffT6Options & 2) >> 1;
+      let cce = dart.nullCheck(this.currChangingElems);
+      this.changingElemSize = 0;
+      cce[$_set]((t0 = this.changingElemSize, this.changingElemSize = t0 + 1, t0), this.width);
+      cce[$_set]((t0$ = this.changingElemSize, this.changingElemSize = t0$ + 1, t0$), this.width);
+      let lineOffset = 0;
+      let bitOffset = null;
+      for (let lines = 0; lines < height; lines = lines + 1) {
+        a0 = -1;
+        isWhite = true;
+        temp = this.prevChangingElems;
+        this.prevChangingElems = this.currChangingElems;
+        cce = dart.nullCheck(this.currChangingElems = temp);
+        currIndex = 0;
+        bitOffset = startX;
+        this.lastChangingElement = 0;
+        while (dart.nullCheck(bitOffset) < this.width) {
+          this[_getNextChangingElement](a0, isWhite, b);
+          b1 = b[$_get](0);
+          b2 = b[$_get](1);
+          entry = this[_nextLesserThan8Bits](7);
+          entry = tiff_fax_decoder.TiffFaxDecoder.TWO_D_CODES[$_get](entry) & 255;
+          code = (entry & 120) >> 3;
+          bits = entry & 7;
+          if (code === 0) {
+            if (!isWhite) {
+              this[_setToBlack](out, lineOffset, bitOffset, dart.nullCheck(b2) - dart.notNull(bitOffset));
+            }
+            bitOffset = a0 = b2;
+            this[_updatePointer](7 - bits);
+          } else if (code === 1) {
+            this[_updatePointer](7 - bits);
+            let number = null;
+            if (isWhite) {
+              number = this[_decodeWhiteCodeWord]();
+              bitOffset = dart.notNull(bitOffset) + number;
+              cce[$_set]((t0$0 = currIndex, currIndex = t0$0 + 1, t0$0), bitOffset);
+              number = this[_decodeBlackCodeWord]();
+              this[_setToBlack](out, lineOffset, bitOffset, number);
+              bitOffset = dart.notNull(bitOffset) + number;
+              cce[$_set]((t0$1 = currIndex, currIndex = t0$1 + 1, t0$1), bitOffset);
+            } else {
+              number = this[_decodeBlackCodeWord]();
+              this[_setToBlack](out, lineOffset, bitOffset, number);
+              bitOffset = dart.notNull(bitOffset) + number;
+              cce[$_set]((t0$2 = currIndex, currIndex = t0$2 + 1, t0$2), bitOffset);
+              number = this[_decodeWhiteCodeWord]();
+              bitOffset = dart.notNull(bitOffset) + number;
+              cce[$_set]((t0$3 = currIndex, currIndex = t0$3 + 1, t0$3), bitOffset);
+            }
+            a0 = bitOffset;
+          } else if (code <= 8) {
+            a1 = dart.nullCheck(b1) + (code - 5);
+            cce[$_set]((t0$4 = currIndex, currIndex = t0$4 + 1, t0$4), a1);
+            if (!isWhite) {
+              this[_setToBlack](out, lineOffset, bitOffset, dart.notNull(a1) - dart.notNull(bitOffset));
+            }
+            bitOffset = a0 = a1;
+            isWhite = !isWhite;
+            this[_updatePointer](7 - bits);
+          } else if (code === 11) {
+            if (this[_nextLesserThan8Bits](3) !== 7) {
+              dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder5"));
+            }
+            let zeros = 0;
+            let exit = false;
+            while (!exit) {
+              while (this[_nextLesserThan8Bits](1) !== 1) {
+                zeros = zeros + 1;
+              }
+              if (zeros > 5) {
+                zeros = zeros - 6;
+                if (!isWhite && zeros > 0) {
+                  cce[$_set]((t0$5 = currIndex, currIndex = t0$5 + 1, t0$5), bitOffset);
+                }
+                bitOffset = dart.nullCheck(bitOffset) + zeros;
+                if (zeros > 0) {
+                  isWhite = true;
+                }
+                if (this[_nextLesserThan8Bits](1) === 0) {
+                  if (!isWhite) {
+                    cce[$_set]((t0$6 = currIndex, currIndex = t0$6 + 1, t0$6), bitOffset);
+                  }
+                  isWhite = true;
+                } else {
+                  if (isWhite) {
+                    cce[$_set]((t0$7 = currIndex, currIndex = t0$7 + 1, t0$7), bitOffset);
+                  }
+                  isWhite = false;
+                }
+                exit = true;
+              }
+              if (zeros === 5) {
+                if (!isWhite) {
+                  cce[$_set]((t0$8 = currIndex, currIndex = t0$8 + 1, t0$8), bitOffset);
+                }
+                bitOffset = dart.nullCheck(bitOffset) + zeros;
+                isWhite = true;
+              } else {
+                bitOffset = dart.nullCheck(bitOffset) + zeros;
+                cce[$_set]((t0$9 = currIndex, currIndex = t0$9 + 1, t0$9), bitOffset);
+                this[_setToBlack](out, lineOffset, bitOffset, 1);
+                bitOffset = dart.notNull(bitOffset) + 1;
+                isWhite = false;
+              }
+            }
+          } else {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder5 " + dart.str(code)));
+          }
+        }
+        cce[$_set]((t0$10 = currIndex, currIndex = t0$10 + 1, t0$10), bitOffset);
+        this.changingElemSize = currIndex;
+        lineOffset = lineOffset + scanlineStride;
+      }
+    }
+    [_decodeWhiteCodeWord]() {
+      let current = null;
+      let entry = null;
+      let bits = null;
+      let isT = null;
+      let twoBits = null;
+      let code = -1;
+      let runLength = 0;
+      let isWhite = true;
+      while (isWhite) {
+        current = this[_nextNBits](10);
+        entry = tiff_fax_decoder.TiffFaxDecoder.WHITE[$_get](current);
+        isT = entry & 1;
+        bits = entry >> 1 & 15;
+        if (bits === 12) {
+          twoBits = this[_nextLesserThan8Bits](2);
+          current = (current << 2 & 12 | twoBits) >>> 0;
+          entry = tiff_fax_decoder.TiffFaxDecoder.ADDITIONAL_MAKEUP[$_get](current);
+          bits = entry >> 1 & 7;
+          code = entry >> 4 & 4095;
+          runLength = runLength + code;
+          this[_updatePointer](4 - bits);
+        } else if (bits === 0) {
+          dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder0"));
+        } else if (bits === 15) {
+          dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder1"));
+        } else {
+          code = entry >> 5 & 2047;
+          runLength = runLength + code;
+          this[_updatePointer](10 - bits);
+          if (isT === 0) {
+            isWhite = false;
+          }
+        }
+      }
+      return runLength;
+    }
+    [_decodeBlackCodeWord]() {
+      let current = null;
+      let entry = null;
+      let bits = null;
+      let isT = null;
+      let code = -1;
+      let runLength = 0;
+      let isWhite = false;
+      while (!isWhite) {
+        current = this[_nextLesserThan8Bits](4);
+        entry = tiff_fax_decoder.TiffFaxDecoder.INIT_BLACK[$_get](current);
+        isT = entry & 1;
+        bits = entry >> 1 & 15;
+        code = entry >> 5 & 2047;
+        if (code === 100) {
+          current = this[_nextNBits](9);
+          entry = tiff_fax_decoder.TiffFaxDecoder.BLACK[$_get](current);
+          isT = entry & 1;
+          bits = entry >> 1 & 15;
+          code = entry >> 5 & 2047;
+          if (bits === 12) {
+            this[_updatePointer](5);
+            current = this[_nextLesserThan8Bits](4);
+            entry = tiff_fax_decoder.TiffFaxDecoder.ADDITIONAL_MAKEUP[$_get](current);
+            bits = entry >> 1 & 7;
+            code = entry >> 4 & 4095;
+            runLength = runLength + code;
+            this[_updatePointer](4 - bits);
+          } else if (bits === 15) {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder2"));
+          } else {
+            runLength = runLength + code;
+            this[_updatePointer](9 - bits);
+            if (isT === 0) {
+              isWhite = true;
+            }
+          }
+        } else if (code === 200) {
+          current = this[_nextLesserThan8Bits](2);
+          entry = tiff_fax_decoder.TiffFaxDecoder.TWO_BIT_BLACK[$_get](current);
+          code = entry >> 5 & 2047;
+          runLength = runLength + code;
+          bits = entry >> 1 & 15;
+          this[_updatePointer](2 - bits);
+          isWhite = true;
+        } else {
+          runLength = runLength + code;
+          this[_updatePointer](4 - bits);
+          isWhite = true;
+        }
+      }
+      return runLength;
+    }
+    [_readEOL]() {
+      if (this.fillBits === 0) {
+        if (this[_nextNBits](12) !== 1) {
+          dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder6"));
+        }
+      } else if (this.fillBits === 1) {
+        let bitsLeft = 8 - dart.nullCheck(this.bitPointer);
+        if (this[_nextNBits](bitsLeft) !== 0) {
+          dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder8"));
+        }
+        if (bitsLeft < 4) {
+          if (this[_nextNBits](8) !== 0) {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder8"));
+          }
+        }
+        let n = null;
+        while ((n = this[_nextNBits](8)) !== 1) {
+          if (n !== 0) {
+            dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder8"));
+          }
+        }
+      }
+      if (this.oneD === 0) {
+        return 1;
+      } else {
+        return this[_nextLesserThan8Bits](1);
+      }
+    }
+    [_getNextChangingElement](a0, isWhite, ret) {
+      let pce = this.prevChangingElems;
+      let ces = this.changingElemSize;
+      let start = this.lastChangingElement > 0 ? this.lastChangingElement - 1 : 0;
+      if (isWhite) {
+        start = (start & ~1 >>> 0) >>> 0;
+      } else {
+        start = (start | 1) >>> 0;
+      }
+      let i = start;
+      for (; i < ces; i = i + 2) {
+        let temp = dart.nullCheck(dart.nullCheck(pce)[$_get](i));
+        if (temp > dart.nullCheck(a0)) {
+          this.lastChangingElement = i;
+          ret[$_set](0, temp);
+          break;
+        }
+      }
+      if (i + 1 < ces) {
+        ret[$_set](1, dart.nullCheck(pce)[$_get](i + 1));
+      }
+    }
+    [_setToBlack](buffer, lineOffset, bitOffset, numBits) {
+      let t0, t1, t0$;
+      let bitNum = 8 * lineOffset + bitOffset;
+      let lastBit = bitNum + numBits;
+      let byteNum = bitNum[$rightShift](3);
+      let shift = bitNum & 7;
+      if (shift > 0) {
+        let maskVal = (1)[$leftShift](7 - shift);
+        let val = buffer._get(byteNum);
+        while (maskVal > 0 && bitNum < lastBit) {
+          val = (val | maskVal) >>> 0;
+          maskVal = maskVal[$rightShift](1);
+          bitNum = bitNum + 1;
+        }
+        buffer._set(byteNum, val);
+      }
+      byteNum = bitNum[$rightShift](3);
+      while (bitNum < lastBit - 7) {
+        buffer._set((t0 = byteNum, byteNum = t0 + 1, t0), 255);
+        bitNum = bitNum + 8;
+      }
+      while (bitNum < lastBit) {
+        byteNum = bitNum[$rightShift](3);
+        t0$ = buffer;
+        t1 = byteNum;
+        t0$._set(t1, (t0$._get(t1) | (1)[$leftShift](7 - (bitNum & 7))) >>> 0);
+        bitNum = bitNum + 1;
+      }
+    }
+    [_nextNBits](bitsToGet) {
+      let b = null;
+      let next = null;
+      let next2next = null;
+      let l = this.data.length - 1;
+      let bp = this.bytePointer;
+      if (this.fillOrder === 1) {
+        b = this.data._get(dart.nullCheck(bp));
+        if (bp === l) {
+          next = 0;
+          next2next = 0;
+        } else if (dart.notNull(bp) + 1 === l) {
+          next = this.data._get(dart.notNull(bp) + 1);
+          next2next = 0;
+        } else {
+          next = this.data._get(dart.notNull(bp) + 1);
+          next2next = this.data._get(dart.notNull(bp) + 2);
+        }
+      } else if (this.fillOrder === 2) {
+        b = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.nullCheck(bp)) & 255);
+        if (bp === l) {
+          next = 0;
+          next2next = 0;
+        } else if (dart.notNull(bp) + 1 === l) {
+          next = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.notNull(bp) + 1) & 255);
+          next2next = 0;
+        } else {
+          next = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.notNull(bp) + 1) & 255);
+          next2next = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.notNull(bp) + 2) & 255);
+        }
+      } else {
+        dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder7"));
+      }
+      let bitsLeft = 8 - dart.nullCheck(this.bitPointer);
+      let bitsFromNextByte = bitsToGet - bitsLeft;
+      let bitsFromNext2NextByte = 0;
+      if (bitsFromNextByte > 8) {
+        bitsFromNext2NextByte = bitsFromNextByte - 8;
+        bitsFromNextByte = 8;
+      }
+      this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+      let i1 = ((b & tiff_fax_decoder.TiffFaxDecoder.TABLE1[$_get](bitsLeft)) >>> 0)[$leftShift](bitsToGet - bitsLeft);
+      let i2 = ((next & tiff_fax_decoder.TiffFaxDecoder.TABLE2[$_get](bitsFromNextByte)) >>> 0)[$rightShift](8 - bitsFromNextByte);
+      let i3 = 0;
+      if (bitsFromNext2NextByte !== 0) {
+        i2 = i2[$leftShift](bitsFromNext2NextByte);
+        i3 = ((next2next & tiff_fax_decoder.TiffFaxDecoder.TABLE2[$_get](bitsFromNext2NextByte)) >>> 0)[$rightShift](8 - bitsFromNext2NextByte);
+        i2 = (i2 | i3) >>> 0;
+        this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+        this.bitPointer = bitsFromNext2NextByte;
+      } else {
+        if (bitsFromNextByte === 8) {
+          this.bitPointer = 0;
+          this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+        } else {
+          this.bitPointer = bitsFromNextByte;
+        }
+      }
+      return (i1 | i2) >>> 0;
+    }
+    [_nextLesserThan8Bits](bitsToGet) {
+      let b = null;
+      let next = null;
+      let l = this.data.length - 1;
+      let bp = this.bytePointer;
+      if (this.fillOrder === 1) {
+        b = this.data._get(dart.nullCheck(bp));
+        if (bp === l) {
+          next = 0;
+        } else {
+          next = this.data._get(dart.notNull(bp) + 1);
+        }
+      } else if (this.fillOrder === 2) {
+        b = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.nullCheck(bp)) & 255);
+        if (bp === l) {
+          next = 0;
+        } else {
+          next = tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE[$_get](this.data._get(dart.notNull(bp) + 1) & 255);
+        }
+      } else {
+        dart.throw(new image_exception.ImageException.new("TIFFFaxDecoder7"));
+      }
+      let bitsLeft = 8 - dart.nullCheck(this.bitPointer);
+      let bitsFromNextByte = bitsToGet - bitsLeft;
+      let shift = bitsLeft - bitsToGet;
+      let i1 = null;
+      let i2 = null;
+      if (shift >= 0) {
+        i1 = ((b & tiff_fax_decoder.TiffFaxDecoder.TABLE1[$_get](bitsLeft)) >>> 0)[$rightShift](shift);
+        this.bitPointer = dart.nullCheck(this.bitPointer) + bitsToGet;
+        if (this.bitPointer === 8) {
+          this.bitPointer = 0;
+          this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+        }
+      } else {
+        i1 = ((b & tiff_fax_decoder.TiffFaxDecoder.TABLE1[$_get](bitsLeft)) >>> 0)[$leftShift](-shift);
+        i2 = ((next & tiff_fax_decoder.TiffFaxDecoder.TABLE2[$_get](bitsFromNextByte)) >>> 0)[$rightShift](8 - bitsFromNextByte);
+        i1 = (i1 | i2) >>> 0;
+        this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+        this.bitPointer = bitsFromNextByte;
+      }
+      return i1;
+    }
+    [_updatePointer](bitsToMoveBack) {
+      let i = dart.nullCheck(this.bitPointer) - bitsToMoveBack;
+      if (i < 0) {
+        this.bytePointer = dart.nullCheck(this.bytePointer) - 1;
+        this.bitPointer = 8 + i;
+      } else {
+        this.bitPointer = i;
+      }
+    }
+    [_advancePointer]() {
+      if (this.bitPointer !== 0) {
+        this.bytePointer = dart.nullCheck(this.bytePointer) + 1;
+        this.bitPointer = 0;
+      }
+      return true;
+    }
+  };
+  (tiff_fax_decoder.TiffFaxDecoder.new = function(fillOrder, width, height) {
+    this[changingElemSize] = 0;
+    this[prevChangingElems] = null;
+    this[currChangingElems] = null;
+    this[__TiffFaxDecoder_data] = null;
+    this[bitPointer] = null;
+    this[bytePointer] = null;
+    this[lastChangingElement] = 0;
+    this[compression] = 2;
+    this[uncompressedMode] = 0;
+    this[fillBits] = 0;
+    this[oneD] = null;
+    this[fillOrder$] = fillOrder;
+    this[width$] = width;
+    this[height$] = height;
+    this.prevChangingElems = T.ListOfintN().filled(this.width, null);
+    this.currChangingElems = T.ListOfintN().filled(this.width, null);
+  }).prototype = tiff_fax_decoder.TiffFaxDecoder.prototype;
+  dart.addTypeTests(tiff_fax_decoder.TiffFaxDecoder);
+  dart.addTypeCaches(tiff_fax_decoder.TiffFaxDecoder);
+  dart.setMethodSignature(tiff_fax_decoder.TiffFaxDecoder, () => ({
+    __proto__: dart.getMethods(tiff_fax_decoder.TiffFaxDecoder.__proto__),
+    decode1D: dart.fnType(dart.void, [input_buffer.InputBuffer, input_buffer.InputBuffer, core.int, core.int]),
+    [_decodeNextScanline]: dart.fnType(dart.void, [input_buffer.InputBuffer, core.int, core.int]),
+    decode2D: dart.fnType(dart.void, [input_buffer.InputBuffer, input_buffer.InputBuffer, core.int, core.int, core.int]),
+    decodeT6: dart.fnType(dart.void, [input_buffer.InputBuffer, input_buffer.InputBuffer, core.int, core.int, core.int]),
+    [_decodeWhiteCodeWord]: dart.fnType(core.int, []),
+    [_decodeBlackCodeWord]: dart.fnType(core.int, []),
+    [_readEOL]: dart.fnType(core.int, []),
+    [_getNextChangingElement]: dart.fnType(dart.void, [dart.nullable(core.int), core.bool, core.List$(dart.nullable(core.int))]),
+    [_setToBlack]: dart.fnType(dart.void, [input_buffer.InputBuffer, core.int, core.int, core.int]),
+    [_nextNBits]: dart.fnType(core.int, [core.int]),
+    [_nextLesserThan8Bits]: dart.fnType(core.int, [core.int]),
+    [_updatePointer]: dart.fnType(dart.void, [core.int]),
+    [_advancePointer]: dart.fnType(core.bool, [])
+  }));
+  dart.setGetterSignature(tiff_fax_decoder.TiffFaxDecoder, () => ({
+    __proto__: dart.getGetters(tiff_fax_decoder.TiffFaxDecoder.__proto__),
+    data: input_buffer.InputBuffer
+  }));
+  dart.setSetterSignature(tiff_fax_decoder.TiffFaxDecoder, () => ({
+    __proto__: dart.getSetters(tiff_fax_decoder.TiffFaxDecoder.__proto__),
+    data: input_buffer.InputBuffer
+  }));
+  dart.setLibraryUri(tiff_fax_decoder.TiffFaxDecoder, I[0]);
+  dart.setFieldSignature(tiff_fax_decoder.TiffFaxDecoder, () => ({
+    __proto__: dart.getFields(tiff_fax_decoder.TiffFaxDecoder.__proto__),
+    width: dart.fieldType(core.int),
+    height: dart.fieldType(core.int),
+    fillOrder: dart.fieldType(dart.nullable(core.int)),
+    changingElemSize: dart.fieldType(core.int),
+    prevChangingElems: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.int)))),
+    currChangingElems: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.int)))),
+    [__TiffFaxDecoder_data]: dart.fieldType(dart.nullable(input_buffer.InputBuffer)),
+    bitPointer: dart.fieldType(dart.nullable(core.int)),
+    bytePointer: dart.fieldType(dart.nullable(core.int)),
+    lastChangingElement: dart.fieldType(core.int),
+    compression: dart.fieldType(core.int),
+    uncompressedMode: dart.fieldType(core.int),
+    fillBits: dart.fieldType(core.int),
+    oneD: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.setStaticFieldSignature(tiff_fax_decoder.TiffFaxDecoder, () => ['TABLE1', 'TABLE2', 'FLIP_TABLE', 'WHITE', 'ADDITIONAL_MAKEUP', 'INIT_BLACK', 'TWO_BIT_BLACK', 'BLACK', 'TWO_D_CODES']);
+  dart.defineLazy(tiff_fax_decoder.TiffFaxDecoder, {
+    /*tiff_fax_decoder.TiffFaxDecoder.TABLE1*/get TABLE1() {
+      return C[0] || CT.C0;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.TABLE2*/get TABLE2() {
+      return C[1] || CT.C1;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.FLIP_TABLE*/get FLIP_TABLE() {
+      return C[2] || CT.C2;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.WHITE*/get WHITE() {
+      return C[3] || CT.C3;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.ADDITIONAL_MAKEUP*/get ADDITIONAL_MAKEUP() {
+      return C[4] || CT.C4;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.INIT_BLACK*/get INIT_BLACK() {
+      return C[5] || CT.C5;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.TWO_BIT_BLACK*/get TWO_BIT_BLACK() {
+      return C[6] || CT.C6;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.BLACK*/get BLACK() {
+      return C[7] || CT.C7;
+    },
+    /*tiff_fax_decoder.TiffFaxDecoder.TWO_D_CODES*/get TWO_D_CODES() {
+      return C[8] || CT.C8;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/tiff/tiff_fax_decoder.dart", {
+    "package:image/src/formats/tiff/tiff_fax_decoder.dart": tiff_fax_decoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["tiff_fax_decoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/tiff/tiff_fax_decoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__tiff__tiff_fax_decoder: tiff_fax_decoder
+  };
+}));
+
+//# sourceMappingURL=tiff_fax_decoder.dart.lib.js.map

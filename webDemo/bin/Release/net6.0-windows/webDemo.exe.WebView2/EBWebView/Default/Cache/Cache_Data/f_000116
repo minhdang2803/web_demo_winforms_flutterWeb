@@ -1,0 +1,3244 @@
+define(['dart_sdk', 'packages/pdf/src/pdf/color.dart'], (function load__packages__pdf__src__pdf__colors_dart(dart_sdk, packages__pdf__src__pdf__color$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const color$ = packages__pdf__src__pdf__color$46dart.src__pdf__color;
+  var colors = Object.create(dart.library);
+  var $modulo = dartx['%'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.21176470588235294,
+        [PdfColor_green]: 0.2627450980392157,
+        [PdfColor_red]: 0.9568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8235294117647058,
+        [PdfColor_green]: 0.803921568627451,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6039215686274509,
+        [PdfColor_green]: 0.6039215686274509,
+        [PdfColor_red]: 0.9372549019607843,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.45098039215686275,
+        [PdfColor_green]: 0.45098039215686275,
+        [PdfColor_red]: 0.8980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3137254901960784,
+        [PdfColor_green]: 0.3254901960784314,
+        [PdfColor_red]: 0.9372549019607843,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.20784313725490197,
+        [PdfColor_green]: 0.2235294117647059,
+        [PdfColor_red]: 0.8980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1843137254901961,
+        [PdfColor_green]: 0.1843137254901961,
+        [PdfColor_red]: 0.8274509803921568,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1568627450980392,
+        [PdfColor_green]: 0.1568627450980392,
+        [PdfColor_red]: 0.7764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.10980392156862745,
+        [PdfColor_green]: 0.10980392156862745,
+        [PdfColor_red]: 0.7176470588235294,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3215686274509804,
+        [PdfColor_green]: 0.3215686274509804,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.5411764705882353,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.26666666666666666,
+        [PdfColor_green]: 0.09019607843137255,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.8352941176470589,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.38823529411764707,
+        [PdfColor_green]: 0.11764705882352941,
+        [PdfColor_red]: 0.9137254901960784,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9254901960784314,
+        [PdfColor_green]: 0.8941176470588236,
+        [PdfColor_red]: 0.9882352941176471,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8156862745098039,
+        [PdfColor_green]: 0.7333333333333333,
+        [PdfColor_red]: 0.9725490196078431,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6941176470588235,
+        [PdfColor_green]: 0.5607843137254902,
+        [PdfColor_red]: 0.9568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5725490196078431,
+        [PdfColor_green]: 0.3843137254901961,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.47843137254901963,
+        [PdfColor_green]: 0.25098039215686274,
+        [PdfColor_red]: 0.9254901960784314,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3764705882352941,
+        [PdfColor_green]: 0.10588235294117647,
+        [PdfColor_red]: 0.8470588235294118,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3568627450980392,
+        [PdfColor_green]: 0.09411764705882353,
+        [PdfColor_red]: 0.7607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3411764705882353,
+        [PdfColor_green]: 0.0784313725490196,
+        [PdfColor_red]: 0.6784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.30980392156862746,
+        [PdfColor_green]: 0.054901960784313725,
+        [PdfColor_red]: 0.5333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5058823529411764,
+        [PdfColor_green]: 0.25098039215686274,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6705882352941176,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3411764705882353,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3843137254901961,
+        [PdfColor_green]: 0.06666666666666667,
+        [PdfColor_red]: 0.7725490196078432,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6901960784313725,
+        [PdfColor_green]: 0.15294117647058825,
+        [PdfColor_red]: 0.611764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9607843137254902,
+        [PdfColor_green]: 0.8980392156862745,
+        [PdfColor_red]: 0.9529411764705882,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9058823529411765,
+        [PdfColor_green]: 0.7450980392156863,
+        [PdfColor_red]: 0.8823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8470588235294118,
+        [PdfColor_green]: 0.5764705882352941,
+        [PdfColor_red]: 0.807843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7843137254901961,
+        [PdfColor_green]: 0.40784313725490196,
+        [PdfColor_red]: 0.7294117647058823,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7372549019607844,
+        [PdfColor_green]: 0.2784313725490196,
+        [PdfColor_red]: 0.6705882352941176,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6666666666666666,
+        [PdfColor_green]: 0.1411764705882353,
+        [PdfColor_red]: 0.5568627450980392,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6352941176470588,
+        [PdfColor_green]: 0.12156862745098039,
+        [PdfColor_red]: 0.4823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6039215686274509,
+        [PdfColor_green]: 0.10588235294117647,
+        [PdfColor_red]: 0.41568627450980394,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5490196078431373,
+        [PdfColor_green]: 0.0784313725490196,
+        [PdfColor_red]: 0.2901960784313726,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.984313725490196,
+        [PdfColor_green]: 0.25098039215686274,
+        [PdfColor_red]: 0.8784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9882352941176471,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.9176470588235294,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9764705882352941,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.8352941176470589,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.6666666666666666,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7176470588235294,
+        [PdfColor_green]: 0.22745098039215686,
+        [PdfColor_red]: 0.403921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9647058823529412,
+        [PdfColor_green]: 0.9058823529411765,
+        [PdfColor_red]: 0.9294117647058824,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9137254901960784,
+        [PdfColor_green]: 0.7686274509803922,
+        [PdfColor_red]: 0.8196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8588235294117647,
+        [PdfColor_green]: 0.615686274509804,
+        [PdfColor_red]: 0.7019607843137254,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.803921568627451,
+        [PdfColor_green]: 0.4588235294117647,
+        [PdfColor_red]: 0.5843137254901961,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7607843137254902,
+        [PdfColor_green]: 0.3411764705882353,
+        [PdfColor_red]: 0.49411764705882355,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6941176470588235,
+        [PdfColor_green]: 0.20784313725490197,
+        [PdfColor_red]: 0.3686274509803922,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6588235294117647,
+        [PdfColor_green]: 0.17647058823529413,
+        [PdfColor_red]: 0.3176470588235294,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6274509803921569,
+        [PdfColor_green]: 0.15294117647058825,
+        [PdfColor_red]: 0.27058823529411763,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5725490196078431,
+        [PdfColor_green]: 0.10588235294117647,
+        [PdfColor_red]: 0.19215686274509805,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.30196078431372547,
+        [PdfColor_red]: 0.48627450980392156,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.5333333333333333,
+        [PdfColor_red]: 0.7019607843137254,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.12156862745098039,
+        [PdfColor_red]: 0.396078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9176470588235294,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.3843137254901961,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7098039215686275,
+        [PdfColor_green]: 0.3176470588235294,
+        [PdfColor_red]: 0.24705882352941178,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9647058823529412,
+        [PdfColor_green]: 0.9176470588235294,
+        [PdfColor_red]: 0.9098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9137254901960784,
+        [PdfColor_green]: 0.792156862745098,
+        [PdfColor_red]: 0.7725490196078432,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8549019607843137,
+        [PdfColor_green]: 0.6588235294117647,
+        [PdfColor_red]: 0.6235294117647059,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.796078431372549,
+        [PdfColor_green]: 0.5254901960784314,
+        [PdfColor_red]: 0.4745098039215686,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7529411764705882,
+        [PdfColor_green]: 0.4196078431372549,
+        [PdfColor_red]: 0.3607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6705882352941176,
+        [PdfColor_green]: 0.28627450980392155,
+        [PdfColor_red]: 0.2235294117647059,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6235294117647059,
+        [PdfColor_green]: 0.24705882352941178,
+        [PdfColor_red]: 0.18823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5764705882352941,
+        [PdfColor_green]: 0.20784313725490197,
+        [PdfColor_red]: 0.1568627450980392,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.49411764705882355,
+        [PdfColor_green]: 0.13725490196078433,
+        [PdfColor_red]: 0.10196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.996078431372549,
+        [PdfColor_green]: 0.42745098039215684,
+        [PdfColor_red]: 0.3254901960784314,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.6196078431372549,
+        [PdfColor_red]: 0.5490196078431373,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.996078431372549,
+        [PdfColor_green]: 0.35294117647058826,
+        [PdfColor_red]: 0.23921568627450981,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.996078431372549,
+        [PdfColor_green]: 0.30980392156862746,
+        [PdfColor_red]: 0.18823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9529411764705882,
+        [PdfColor_green]: 0.5882352941176471,
+        [PdfColor_red]: 0.12941176470588237,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9921568627450981,
+        [PdfColor_green]: 0.9490196078431372,
+        [PdfColor_red]: 0.8901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.984313725490196,
+        [PdfColor_green]: 0.8705882352941177,
+        [PdfColor_red]: 0.7333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9764705882352941,
+        [PdfColor_green]: 0.792156862745098,
+        [PdfColor_red]: 0.5647058823529412,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9647058823529412,
+        [PdfColor_green]: 0.7098039215686275,
+        [PdfColor_red]: 0.39215686274509803,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9607843137254902,
+        [PdfColor_green]: 0.6470588235294118,
+        [PdfColor_red]: 0.25882352941176473,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8980392156862745,
+        [PdfColor_green]: 0.5333333333333333,
+        [PdfColor_red]: 0.11764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8235294117647058,
+        [PdfColor_green]: 0.4627450980392157,
+        [PdfColor_red]: 0.09803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7529411764705882,
+        [PdfColor_green]: 0.396078431372549,
+        [PdfColor_red]: 0.08235294117647059,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6313725490196078,
+        [PdfColor_green]: 0.2784313725490196,
+        [PdfColor_red]: 0.050980392156862744,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.5411764705882353,
+        [PdfColor_red]: 0.26666666666666666,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.6941176470588235,
+        [PdfColor_red]: 0.5098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.4745098039215686,
+        [PdfColor_red]: 0.1607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.3843137254901961,
+        [PdfColor_red]: 0.1607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9568627450980393,
+        [PdfColor_green]: 0.6627450980392157,
+        [PdfColor_red]: 0.011764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.996078431372549,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.8823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9882352941176471,
+        [PdfColor_green]: 0.8980392156862745,
+        [PdfColor_red]: 0.7019607843137254,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.8313725490196079,
+        [PdfColor_red]: 0.5058823529411764,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9686274509803922,
+        [PdfColor_green]: 0.7647058823529411,
+        [PdfColor_red]: 0.30980392156862746,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9647058823529412,
+        [PdfColor_green]: 0.7137254901960784,
+        [PdfColor_red]: 0.1607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8980392156862745,
+        [PdfColor_green]: 0.6078431372549019,
+        [PdfColor_red]: 0.011764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8196078431372549,
+        [PdfColor_green]: 0.5333333333333333,
+        [PdfColor_red]: 0.00784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7411764705882353,
+        [PdfColor_green]: 0.4666666666666667,
+        [PdfColor_red]: 0.00784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6078431372549019,
+        [PdfColor_green]: 0.3411764705882353,
+        [PdfColor_red]: 0.00392156862745098,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.7686274509803922,
+        [PdfColor_red]: 0.25098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.8470588235294118,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.6901960784313725,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9176470588235294,
+        [PdfColor_green]: 0.5686274509803921,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8313725490196079,
+        [PdfColor_green]: 0.7372549019607844,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.9686274509803922,
+        [PdfColor_red]: 0.8784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9490196078431372,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 0.6980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9176470588235294,
+        [PdfColor_green]: 0.8705882352941177,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8823529411764706,
+        [PdfColor_green]: 0.8156862745098039,
+        [PdfColor_red]: 0.30196078431372547,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8549019607843137,
+        [PdfColor_green]: 0.7764705882352941,
+        [PdfColor_red]: 0.14901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7568627450980392,
+        [PdfColor_green]: 0.6745098039215687,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6549019607843137,
+        [PdfColor_green]: 0.592156862745098,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5607843137254902,
+        [PdfColor_green]: 0.5137254901960784,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.39215686274509803,
+        [PdfColor_green]: 0.3764705882352941,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.09411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.5176470588235295,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.8980392156862745,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8313725490196079,
+        [PdfColor_green]: 0.7215686274509804,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5333333333333333,
+        [PdfColor_green]: 0.5882352941176471,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9450980392156862,
+        [PdfColor_green]: 0.9490196078431372,
+        [PdfColor_red]: 0.8784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8588235294117647,
+        [PdfColor_green]: 0.8745098039215686,
+        [PdfColor_red]: 0.6980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7686274509803922,
+        [PdfColor_green]: 0.796078431372549,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6745098039215687,
+        [PdfColor_green]: 0.7137254901960784,
+        [PdfColor_red]: 0.30196078431372547,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6039215686274509,
+        [PdfColor_green]: 0.6509803921568628,
+        [PdfColor_red]: 0.14901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4823529411764706,
+        [PdfColor_green]: 0.5372549019607843,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4196078431372549,
+        [PdfColor_green]: 0.4745098039215686,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3607843137254902,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25098039215686274,
+        [PdfColor_green]: 0.30196078431372547,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8549019607843137,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.39215686274509803,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9215686274509803,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.6549019607843137,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7137254901960784,
+        [PdfColor_green]: 0.9137254901960784,
+        [PdfColor_red]: 0.11372549019607843,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6470588235294118,
+        [PdfColor_green]: 0.7490196078431373,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3137254901960784,
+        [PdfColor_green]: 0.6862745098039216,
+        [PdfColor_red]: 0.2980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9137254901960784,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.9098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.788235294117647,
+        [PdfColor_green]: 0.9019607843137255,
+        [PdfColor_red]: 0.7843137254901961,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6549019607843137,
+        [PdfColor_green]: 0.8392156862745098,
+        [PdfColor_red]: 0.6470588235294118,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5176470588235295,
+        [PdfColor_green]: 0.7803921568627451,
+        [PdfColor_red]: 0.5058823529411764,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.41568627450980394,
+        [PdfColor_green]: 0.7333333333333333,
+        [PdfColor_red]: 0.4,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2784313725490196,
+        [PdfColor_green]: 0.6274509803921569,
+        [PdfColor_red]: 0.2627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.23529411764705882,
+        [PdfColor_green]: 0.5568627450980392,
+        [PdfColor_red]: 0.2196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.19607843137254902,
+        [PdfColor_green]: 0.49019607843137253,
+        [PdfColor_red]: 0.1803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.12549019607843137,
+        [PdfColor_green]: 0.3686274509803922,
+        [PdfColor_red]: 0.10588235294117647,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6823529411764706,
+        [PdfColor_green]: 0.9411764705882353,
+        [PdfColor_red]: 0.4117647058823529,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.792156862745098,
+        [PdfColor_green]: 0.9647058823529412,
+        [PdfColor_red]: 0.7254901960784313,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4627450980392157,
+        [PdfColor_green]: 0.9019607843137255,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3254901960784314,
+        [PdfColor_green]: 0.7843137254901961,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2901960784313726,
+        [PdfColor_green]: 0.7647058823529411,
+        [PdfColor_red]: 0.5450980392156862,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9137254901960784,
+        [PdfColor_green]: 0.9725490196078431,
+        [PdfColor_red]: 0.9450980392156862,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C142() {
+      return C[142] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7843137254901961,
+        [PdfColor_green]: 0.9294117647058824,
+        [PdfColor_red]: 0.8627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6470588235294118,
+        [PdfColor_green]: 0.8823529411764706,
+        [PdfColor_red]: 0.7725490196078432,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C144() {
+      return C[144] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5058823529411764,
+        [PdfColor_green]: 0.8352941176470589,
+        [PdfColor_red]: 0.6823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.396078431372549,
+        [PdfColor_green]: 0.8,
+        [PdfColor_red]: 0.611764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C146() {
+      return C[146] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25882352941176473,
+        [PdfColor_green]: 0.7019607843137254,
+        [PdfColor_red]: 0.48627450980392156,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C147() {
+      return C[147] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2196078431372549,
+        [PdfColor_green]: 0.6235294117647059,
+        [PdfColor_red]: 0.40784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C148() {
+      return C[148] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1843137254901961,
+        [PdfColor_green]: 0.5450980392156862,
+        [PdfColor_red]: 0.3333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.11764705882352941,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 0.2,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C150() {
+      return C[150] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.34901960784313724,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.6980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5647058823529412,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.8,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C152() {
+      return C[152] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.011764705882352941,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.4627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.09019607843137255,
+        [PdfColor_green]: 0.8666666666666667,
+        [PdfColor_red]: 0.39215686274509803,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C154() {
+      return C[154] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2235294117647059,
+        [PdfColor_green]: 0.8627450980392157,
+        [PdfColor_red]: 0.803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9058823529411765,
+        [PdfColor_green]: 0.984313725490196,
+        [PdfColor_red]: 0.9764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C156() {
+      return C[156] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7647058823529411,
+        [PdfColor_green]: 0.9568627450980393,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C157() {
+      return C[157] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.611764705882353,
+        [PdfColor_green]: 0.9333333333333333,
+        [PdfColor_red]: 0.9019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C158() {
+      return C[158] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4588235294117647,
+        [PdfColor_green]: 0.9058823529411765,
+        [PdfColor_red]: 0.8627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3411764705882353,
+        [PdfColor_green]: 0.8823529411764706,
+        [PdfColor_red]: 0.8313725490196079,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C160() {
+      return C[160] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2,
+        [PdfColor_green]: 0.792156862745098,
+        [PdfColor_red]: 0.7529411764705882,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C161() {
+      return C[161] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.16862745098039217,
+        [PdfColor_green]: 0.7058823529411765,
+        [PdfColor_red]: 0.6862745098039216,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1411764705882353,
+        [PdfColor_green]: 0.615686274509804,
+        [PdfColor_red]: 0.6196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.09019607843137255,
+        [PdfColor_green]: 0.4666666666666667,
+        [PdfColor_red]: 0.5098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C164() {
+      return C[164] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2549019607843137,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.9333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C165() {
+      return C[165] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5058823529411764,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.9568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C166() {
+      return C[166] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.7764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C167() {
+      return C[167] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.9176470588235294,
+        [PdfColor_red]: 0.6823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.23137254901960785,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C169() {
+      return C[169] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9058823529411765,
+        [PdfColor_green]: 0.9921568627450981,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C170() {
+      return C[170] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7686274509803922,
+        [PdfColor_green]: 0.9764705882352941,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C171() {
+      return C[171] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.615686274509804,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4627450980392157,
+        [PdfColor_green]: 0.9450980392156862,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C173() {
+      return C[173] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.34509803921568627,
+        [PdfColor_green]: 0.9333333333333333,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.20784313725490197,
+        [PdfColor_green]: 0.8470588235294118,
+        [PdfColor_red]: 0.9921568627450981,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.17647058823529413,
+        [PdfColor_green]: 0.7529411764705882,
+        [PdfColor_red]: 0.984313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C176() {
+      return C[176] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1450980392156863,
+        [PdfColor_green]: 0.6588235294117647,
+        [PdfColor_red]: 0.9764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.09019607843137255,
+        [PdfColor_green]: 0.4980392156862745,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C178() {
+      return C[178] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5529411764705883,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C180() {
+      return C[180] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.9176470588235294,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.8392156862745098,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C182() {
+      return C[182] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.027450980392156862,
+        [PdfColor_green]: 0.7568627450980392,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8823529411764706,
+        [PdfColor_green]: 0.9725490196078431,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7019607843137254,
+        [PdfColor_green]: 0.9254901960784314,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C185() {
+      return C[185] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5098039215686274,
+        [PdfColor_green]: 0.8784313725490196,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C186() {
+      return C[186] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.30980392156862746,
+        [PdfColor_green]: 0.8352941176470589,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C187() {
+      return C[187] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1568627450980392,
+        [PdfColor_green]: 0.792156862745098,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.7019607843137254,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C189() {
+      return C[189] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.6274509803921569,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C190() {
+      return C[190] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5607843137254902,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C191() {
+      return C[191] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.43529411764705883,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25098039215686274,
+        [PdfColor_green]: 0.8431372549019608,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4980392156862745,
+        [PdfColor_green]: 0.8980392156862745,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C194() {
+      return C[194] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.7686274509803922,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C195() {
+      return C[195] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.6705882352941176,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.596078431372549,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C197() {
+      return C[197] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8784313725490196,
+        [PdfColor_green]: 0.9529411764705882,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6980392156862745,
+        [PdfColor_green]: 0.8784313725490196,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C199() {
+      return C[199] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.8,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C200() {
+      return C[200] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.30196078431372547,
+        [PdfColor_green]: 0.7176470588235294,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C201() {
+      return C[201] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.14901960784313725,
+        [PdfColor_green]: 0.6549019607843137,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C202() {
+      return C[202] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5490196078431373,
+        [PdfColor_red]: 0.984313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C203() {
+      return C[203] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.48627450980392156,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C204() {
+      return C[204] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.4235294117647059,
+        [PdfColor_red]: 0.9372549019607843,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C205() {
+      return C[205] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.3176470588235294,
+        [PdfColor_red]: 0.9019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C206() {
+      return C[206] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25098039215686274,
+        [PdfColor_green]: 0.6705882352941176,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C207() {
+      return C[207] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.8196078431372549,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C208() {
+      return C[208] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5686274509803921,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C209() {
+      return C[209] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.42745098039215684,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C210() {
+      return C[210] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.13333333333333333,
+        [PdfColor_green]: 0.3411764705882353,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C211() {
+      return C[211] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9058823529411765,
+        [PdfColor_green]: 0.9137254901960784,
+        [PdfColor_red]: 0.984313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C212() {
+      return C[212] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7372549019607844,
+        [PdfColor_green]: 0.8,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C213() {
+      return C[213] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5686274509803921,
+        [PdfColor_green]: 0.6705882352941176,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C214() {
+      return C[214] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.396078431372549,
+        [PdfColor_green]: 0.5411764705882353,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C215() {
+      return C[215] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2627450980392157,
+        [PdfColor_green]: 0.4392156862745098,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C216() {
+      return C[216] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.11764705882352941,
+        [PdfColor_green]: 0.3176470588235294,
+        [PdfColor_red]: 0.9568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C217() {
+      return C[217] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.09803921568627451,
+        [PdfColor_green]: 0.2901960784313726,
+        [PdfColor_red]: 0.9019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C218() {
+      return C[218] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.08235294117647059,
+        [PdfColor_green]: 0.2627450980392157,
+        [PdfColor_red]: 0.8470588235294118,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C219() {
+      return C[219] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.047058823529411764,
+        [PdfColor_green]: 0.21176470588235294,
+        [PdfColor_red]: 0.7490196078431373,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C220() {
+      return C[220] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25098039215686274,
+        [PdfColor_green]: 0.43137254901960786,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C221() {
+      return C[221] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.6196078431372549,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C222() {
+      return C[222] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.23921568627450981,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C223() {
+      return C[223] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.17254901960784313,
+        [PdfColor_red]: 0.8666666666666667,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C224() {
+      return C[224] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2823529411764706,
+        [PdfColor_green]: 0.3333333333333333,
+        [PdfColor_red]: 0.4745098039215686,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C225() {
+      return C[225] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9137254901960784,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 0.9372549019607843,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C226() {
+      return C[226] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7843137254901961,
+        [PdfColor_green]: 0.8,
+        [PdfColor_red]: 0.8431372549019608,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C227() {
+      return C[227] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6431372549019608,
+        [PdfColor_green]: 0.6666666666666666,
+        [PdfColor_red]: 0.7372549019607844,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C228() {
+      return C[228] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4980392156862745,
+        [PdfColor_green]: 0.5333333333333333,
+        [PdfColor_red]: 0.6313725490196078,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C229() {
+      return C[229] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.38823529411764707,
+        [PdfColor_green]: 0.43137254901960786,
+        [PdfColor_red]: 0.5529411764705883,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C230() {
+      return C[230] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2549019607843137,
+        [PdfColor_green]: 0.2980392156862745,
+        [PdfColor_red]: 0.42745098039215684,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C231() {
+      return C[231] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.21568627450980393,
+        [PdfColor_green]: 0.25098039215686274,
+        [PdfColor_red]: 0.36470588235294116,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C232() {
+      return C[232] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.1803921568627451,
+        [PdfColor_green]: 0.20392156862745098,
+        [PdfColor_red]: 0.3058823529411765,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C233() {
+      return C[233] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.13725490196078433,
+        [PdfColor_green]: 0.15294117647058825,
+        [PdfColor_red]: 0.24313725490196078,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C234() {
+      return C[234] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6196078431372549,
+        [PdfColor_green]: 0.6196078431372549,
+        [PdfColor_red]: 0.6196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C235() {
+      return C[235] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 0.9803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C236() {
+      return C[236] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9607843137254902,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C237() {
+      return C[237] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.9333333333333333,
+        [PdfColor_red]: 0.9333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C238() {
+      return C[238] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8784313725490196,
+        [PdfColor_green]: 0.8784313725490196,
+        [PdfColor_red]: 0.8784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C239() {
+      return C[239] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7411764705882353,
+        [PdfColor_green]: 0.7411764705882353,
+        [PdfColor_red]: 0.7411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C240() {
+      return C[240] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.4588235294117647,
+        [PdfColor_green]: 0.4588235294117647,
+        [PdfColor_red]: 0.4588235294117647,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C241() {
+      return C[241] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.3803921568627451,
+        [PdfColor_green]: 0.3803921568627451,
+        [PdfColor_red]: 0.3803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C242() {
+      return C[242] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.25882352941176473,
+        [PdfColor_green]: 0.25882352941176473,
+        [PdfColor_red]: 0.25882352941176473,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C243() {
+      return C[243] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.12941176470588237,
+        [PdfColor_green]: 0.12941176470588237,
+        [PdfColor_red]: 0.12941176470588237,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C244() {
+      return C[244] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.5450980392156862,
+        [PdfColor_green]: 0.49019607843137253,
+        [PdfColor_red]: 0.3764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C245() {
+      return C[245] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.9450980392156862,
+        [PdfColor_green]: 0.9372549019607843,
+        [PdfColor_red]: 0.9254901960784314,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C246() {
+      return C[246] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.8627450980392157,
+        [PdfColor_green]: 0.8470588235294118,
+        [PdfColor_red]: 0.8117647058823529,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C247() {
+      return C[247] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.7725490196078432,
+        [PdfColor_green]: 0.7450980392156863,
+        [PdfColor_red]: 0.6901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C248() {
+      return C[248] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.6823529411764706,
+        [PdfColor_green]: 0.6431372549019608,
+        [PdfColor_red]: 0.5647058823529412,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C249() {
+      return C[249] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.611764705882353,
+        [PdfColor_green]: 0.5647058823529412,
+        [PdfColor_red]: 0.47058823529411764,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C250() {
+      return C[250] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.47843137254901963,
+        [PdfColor_green]: 0.43137254901960786,
+        [PdfColor_red]: 0.32941176470588235,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C251() {
+      return C[251] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.39215686274509803,
+        [PdfColor_green]: 0.35294117647058826,
+        [PdfColor_red]: 0.27058823529411763,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C252() {
+      return C[252] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.30980392156862746,
+        [PdfColor_green]: 0.2784313725490196,
+        [PdfColor_red]: 0.21568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C253() {
+      return C[253] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0.2196078431372549,
+        [PdfColor_green]: 0.19607843137254902,
+        [PdfColor_red]: 0.14901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C254() {
+      return C[254] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C255() {
+      return C[255] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C256() {
+      return C[256] = dart.constList([C[0] || CT.C0, C[14] || CT.C14, C[28] || CT.C28, C[42] || CT.C42, C[56] || CT.C56, C[70] || CT.C70, C[84] || CT.C84, C[98] || CT.C98, C[112] || CT.C112, C[126] || CT.C126, C[140] || CT.C140, C[154] || CT.C154, C[168] || CT.C168, C[182] || CT.C182, C[196] || CT.C196, C[210] || CT.C210, C[224] || CT.C224, C[234] || CT.C234, C[244] || CT.C244], color$.PdfColor);
+    },
+    get C257() {
+      return C[257] = dart.constList([C[10] || CT.C10, C[24] || CT.C24, C[38] || CT.C38, C[52] || CT.C52, C[66] || CT.C66, C[80] || CT.C80, C[94] || CT.C94, C[108] || CT.C108, C[122] || CT.C122, C[136] || CT.C136, C[150] || CT.C150, C[164] || CT.C164, C[178] || CT.C178, C[192] || CT.C192, C[206] || CT.C206, C[220] || CT.C220], color$.PdfColor);
+    }
+  }, false);
+  var C = Array(258).fill(void 0);
+  var I = ["package:pdf/src/pdf/colors.dart"];
+  var PdfColor_blue = dart.privateName(color$, "PdfColor.blue");
+  var PdfColor_green = dart.privateName(color$, "PdfColor.green");
+  var PdfColor_red = dart.privateName(color$, "PdfColor.red");
+  var PdfColor_alpha = dart.privateName(color$, "PdfColor.alpha");
+  colors.PdfColors = class PdfColors extends core.Object {
+    static ['_#_#tearOff']() {
+      return new colors.PdfColors.__();
+    }
+    static getColor(index) {
+      let hue = index * 137.508;
+      let color = color$.PdfColorHsv.new(hue[$modulo](360), 1.0, 1.0);
+      if ((index / 3)[$modulo](2) === 0) {
+        return color$.PdfColor.fromRYB(color.red, color.green, color.blue);
+      }
+      return color;
+    }
+  };
+  (colors.PdfColors.__ = function() {
+    ;
+  }).prototype = colors.PdfColors.prototype;
+  dart.addTypeTests(colors.PdfColors);
+  dart.addTypeCaches(colors.PdfColors);
+  dart.setStaticMethodSignature(colors.PdfColors, () => ['getColor']);
+  dart.setLibraryUri(colors.PdfColors, I[0]);
+  dart.setStaticFieldSignature(colors.PdfColors, () => ['red', 'red50', 'red100', 'red200', 'red300', 'red400', 'red500', 'red600', 'red700', 'red800', 'red900', 'redAccent', 'redAccent100', 'redAccent200', 'redAccent400', 'redAccent700', 'pink', 'pink50', 'pink100', 'pink200', 'pink300', 'pink400', 'pink500', 'pink600', 'pink700', 'pink800', 'pink900', 'pinkAccent', 'pinkAccent100', 'pinkAccent200', 'pinkAccent400', 'pinkAccent700', 'purple', 'purple50', 'purple100', 'purple200', 'purple300', 'purple400', 'purple500', 'purple600', 'purple700', 'purple800', 'purple900', 'purpleAccent', 'purpleAccent100', 'purpleAccent200', 'purpleAccent400', 'purpleAccent700', 'deepPurple', 'deepPurple50', 'deepPurple100', 'deepPurple200', 'deepPurple300', 'deepPurple400', 'deepPurple500', 'deepPurple600', 'deepPurple700', 'deepPurple800', 'deepPurple900', 'deepPurpleAccent', 'deepPurpleAccent100', 'deepPurpleAccent200', 'deepPurpleAccent400', 'deepPurpleAccent700', 'indigo', 'indigo50', 'indigo100', 'indigo200', 'indigo300', 'indigo400', 'indigo500', 'indigo600', 'indigo700', 'indigo800', 'indigo900', 'indigoAccent', 'indigoAccent100', 'indigoAccent200', 'indigoAccent400', 'indigoAccent700', 'blue', 'blue50', 'blue100', 'blue200', 'blue300', 'blue400', 'blue500', 'blue600', 'blue700', 'blue800', 'blue900', 'blueAccent', 'blueAccent100', 'blueAccent200', 'blueAccent400', 'blueAccent700', 'lightBlue', 'lightBlue50', 'lightBlue100', 'lightBlue200', 'lightBlue300', 'lightBlue400', 'lightBlue500', 'lightBlue600', 'lightBlue700', 'lightBlue800', 'lightBlue900', 'lightBlueAccent', 'lightBlueAccent100', 'lightBlueAccent200', 'lightBlueAccent400', 'lightBlueAccent700', 'cyan', 'cyan50', 'cyan100', 'cyan200', 'cyan300', 'cyan400', 'cyan500', 'cyan600', 'cyan700', 'cyan800', 'cyan900', 'cyanAccent', 'cyanAccent100', 'cyanAccent200', 'cyanAccent400', 'cyanAccent700', 'teal', 'teal50', 'teal100', 'teal200', 'teal300', 'teal400', 'teal500', 'teal600', 'teal700', 'teal800', 'teal900', 'tealAccent', 'tealAccent100', 'tealAccent200', 'tealAccent400', 'tealAccent700', 'green', 'green50', 'green100', 'green200', 'green300', 'green400', 'green500', 'green600', 'green700', 'green800', 'green900', 'greenAccent', 'greenAccent100', 'greenAccent200', 'greenAccent400', 'greenAccent700', 'lightGreen', 'lightGreen50', 'lightGreen100', 'lightGreen200', 'lightGreen300', 'lightGreen400', 'lightGreen500', 'lightGreen600', 'lightGreen700', 'lightGreen800', 'lightGreen900', 'lightGreenAccent', 'lightGreenAccent100', 'lightGreenAccent200', 'lightGreenAccent400', 'lightGreenAccent700', 'lime', 'lime50', 'lime100', 'lime200', 'lime300', 'lime400', 'lime500', 'lime600', 'lime700', 'lime800', 'lime900', 'limeAccent', 'limeAccent100', 'limeAccent200', 'limeAccent400', 'limeAccent700', 'yellow', 'yellow50', 'yellow100', 'yellow200', 'yellow300', 'yellow400', 'yellow500', 'yellow600', 'yellow700', 'yellow800', 'yellow900', 'yellowAccent', 'yellowAccent100', 'yellowAccent200', 'yellowAccent400', 'yellowAccent700', 'amber', 'amber50', 'amber100', 'amber200', 'amber300', 'amber400', 'amber500', 'amber600', 'amber700', 'amber800', 'amber900', 'amberAccent', 'amberAccent100', 'amberAccent200', 'amberAccent400', 'amberAccent700', 'orange', 'orange50', 'orange100', 'orange200', 'orange300', 'orange400', 'orange500', 'orange600', 'orange700', 'orange800', 'orange900', 'orangeAccent', 'orangeAccent100', 'orangeAccent200', 'orangeAccent400', 'orangeAccent700', 'deepOrange', 'deepOrange50', 'deepOrange100', 'deepOrange200', 'deepOrange300', 'deepOrange400', 'deepOrange500', 'deepOrange600', 'deepOrange700', 'deepOrange800', 'deepOrange900', 'deepOrangeAccent', 'deepOrangeAccent100', 'deepOrangeAccent200', 'deepOrangeAccent400', 'deepOrangeAccent700', 'brown', 'brown50', 'brown100', 'brown200', 'brown300', 'brown400', 'brown500', 'brown600', 'brown700', 'brown800', 'brown900', 'grey', 'grey50', 'grey100', 'grey200', 'grey300', 'grey400', 'grey500', 'grey600', 'grey700', 'grey800', 'grey900', 'blueGrey', 'blueGrey50', 'blueGrey100', 'blueGrey200', 'blueGrey300', 'blueGrey400', 'blueGrey500', 'blueGrey600', 'blueGrey700', 'blueGrey800', 'blueGrey900', 'white', 'black', 'primaries', 'accents']);
+  dart.defineLazy(colors.PdfColors, {
+    /*colors.PdfColors.red*/get red() {
+      return C[0] || CT.C0;
+    },
+    /*colors.PdfColors.red50*/get red50() {
+      return C[1] || CT.C1;
+    },
+    /*colors.PdfColors.red100*/get red100() {
+      return C[2] || CT.C2;
+    },
+    /*colors.PdfColors.red200*/get red200() {
+      return C[3] || CT.C3;
+    },
+    /*colors.PdfColors.red300*/get red300() {
+      return C[4] || CT.C4;
+    },
+    /*colors.PdfColors.red400*/get red400() {
+      return C[5] || CT.C5;
+    },
+    /*colors.PdfColors.red500*/get red500() {
+      return C[0] || CT.C0;
+    },
+    /*colors.PdfColors.red600*/get red600() {
+      return C[6] || CT.C6;
+    },
+    /*colors.PdfColors.red700*/get red700() {
+      return C[7] || CT.C7;
+    },
+    /*colors.PdfColors.red800*/get red800() {
+      return C[8] || CT.C8;
+    },
+    /*colors.PdfColors.red900*/get red900() {
+      return C[9] || CT.C9;
+    },
+    /*colors.PdfColors.redAccent*/get redAccent() {
+      return C[10] || CT.C10;
+    },
+    /*colors.PdfColors.redAccent100*/get redAccent100() {
+      return C[11] || CT.C11;
+    },
+    /*colors.PdfColors.redAccent200*/get redAccent200() {
+      return C[10] || CT.C10;
+    },
+    /*colors.PdfColors.redAccent400*/get redAccent400() {
+      return C[12] || CT.C12;
+    },
+    /*colors.PdfColors.redAccent700*/get redAccent700() {
+      return C[13] || CT.C13;
+    },
+    /*colors.PdfColors.pink*/get pink() {
+      return C[14] || CT.C14;
+    },
+    /*colors.PdfColors.pink50*/get pink50() {
+      return C[15] || CT.C15;
+    },
+    /*colors.PdfColors.pink100*/get pink100() {
+      return C[16] || CT.C16;
+    },
+    /*colors.PdfColors.pink200*/get pink200() {
+      return C[17] || CT.C17;
+    },
+    /*colors.PdfColors.pink300*/get pink300() {
+      return C[18] || CT.C18;
+    },
+    /*colors.PdfColors.pink400*/get pink400() {
+      return C[19] || CT.C19;
+    },
+    /*colors.PdfColors.pink500*/get pink500() {
+      return C[14] || CT.C14;
+    },
+    /*colors.PdfColors.pink600*/get pink600() {
+      return C[20] || CT.C20;
+    },
+    /*colors.PdfColors.pink700*/get pink700() {
+      return C[21] || CT.C21;
+    },
+    /*colors.PdfColors.pink800*/get pink800() {
+      return C[22] || CT.C22;
+    },
+    /*colors.PdfColors.pink900*/get pink900() {
+      return C[23] || CT.C23;
+    },
+    /*colors.PdfColors.pinkAccent*/get pinkAccent() {
+      return C[24] || CT.C24;
+    },
+    /*colors.PdfColors.pinkAccent100*/get pinkAccent100() {
+      return C[25] || CT.C25;
+    },
+    /*colors.PdfColors.pinkAccent200*/get pinkAccent200() {
+      return C[24] || CT.C24;
+    },
+    /*colors.PdfColors.pinkAccent400*/get pinkAccent400() {
+      return C[26] || CT.C26;
+    },
+    /*colors.PdfColors.pinkAccent700*/get pinkAccent700() {
+      return C[27] || CT.C27;
+    },
+    /*colors.PdfColors.purple*/get purple() {
+      return C[28] || CT.C28;
+    },
+    /*colors.PdfColors.purple50*/get purple50() {
+      return C[29] || CT.C29;
+    },
+    /*colors.PdfColors.purple100*/get purple100() {
+      return C[30] || CT.C30;
+    },
+    /*colors.PdfColors.purple200*/get purple200() {
+      return C[31] || CT.C31;
+    },
+    /*colors.PdfColors.purple300*/get purple300() {
+      return C[32] || CT.C32;
+    },
+    /*colors.PdfColors.purple400*/get purple400() {
+      return C[33] || CT.C33;
+    },
+    /*colors.PdfColors.purple500*/get purple500() {
+      return C[28] || CT.C28;
+    },
+    /*colors.PdfColors.purple600*/get purple600() {
+      return C[34] || CT.C34;
+    },
+    /*colors.PdfColors.purple700*/get purple700() {
+      return C[35] || CT.C35;
+    },
+    /*colors.PdfColors.purple800*/get purple800() {
+      return C[36] || CT.C36;
+    },
+    /*colors.PdfColors.purple900*/get purple900() {
+      return C[37] || CT.C37;
+    },
+    /*colors.PdfColors.purpleAccent*/get purpleAccent() {
+      return C[38] || CT.C38;
+    },
+    /*colors.PdfColors.purpleAccent100*/get purpleAccent100() {
+      return C[39] || CT.C39;
+    },
+    /*colors.PdfColors.purpleAccent200*/get purpleAccent200() {
+      return C[38] || CT.C38;
+    },
+    /*colors.PdfColors.purpleAccent400*/get purpleAccent400() {
+      return C[40] || CT.C40;
+    },
+    /*colors.PdfColors.purpleAccent700*/get purpleAccent700() {
+      return C[41] || CT.C41;
+    },
+    /*colors.PdfColors.deepPurple*/get deepPurple() {
+      return C[42] || CT.C42;
+    },
+    /*colors.PdfColors.deepPurple50*/get deepPurple50() {
+      return C[43] || CT.C43;
+    },
+    /*colors.PdfColors.deepPurple100*/get deepPurple100() {
+      return C[44] || CT.C44;
+    },
+    /*colors.PdfColors.deepPurple200*/get deepPurple200() {
+      return C[45] || CT.C45;
+    },
+    /*colors.PdfColors.deepPurple300*/get deepPurple300() {
+      return C[46] || CT.C46;
+    },
+    /*colors.PdfColors.deepPurple400*/get deepPurple400() {
+      return C[47] || CT.C47;
+    },
+    /*colors.PdfColors.deepPurple500*/get deepPurple500() {
+      return C[42] || CT.C42;
+    },
+    /*colors.PdfColors.deepPurple600*/get deepPurple600() {
+      return C[48] || CT.C48;
+    },
+    /*colors.PdfColors.deepPurple700*/get deepPurple700() {
+      return C[49] || CT.C49;
+    },
+    /*colors.PdfColors.deepPurple800*/get deepPurple800() {
+      return C[50] || CT.C50;
+    },
+    /*colors.PdfColors.deepPurple900*/get deepPurple900() {
+      return C[51] || CT.C51;
+    },
+    /*colors.PdfColors.deepPurpleAccent*/get deepPurpleAccent() {
+      return C[52] || CT.C52;
+    },
+    /*colors.PdfColors.deepPurpleAccent100*/get deepPurpleAccent100() {
+      return C[53] || CT.C53;
+    },
+    /*colors.PdfColors.deepPurpleAccent200*/get deepPurpleAccent200() {
+      return C[52] || CT.C52;
+    },
+    /*colors.PdfColors.deepPurpleAccent400*/get deepPurpleAccent400() {
+      return C[54] || CT.C54;
+    },
+    /*colors.PdfColors.deepPurpleAccent700*/get deepPurpleAccent700() {
+      return C[55] || CT.C55;
+    },
+    /*colors.PdfColors.indigo*/get indigo() {
+      return C[56] || CT.C56;
+    },
+    /*colors.PdfColors.indigo50*/get indigo50() {
+      return C[57] || CT.C57;
+    },
+    /*colors.PdfColors.indigo100*/get indigo100() {
+      return C[58] || CT.C58;
+    },
+    /*colors.PdfColors.indigo200*/get indigo200() {
+      return C[59] || CT.C59;
+    },
+    /*colors.PdfColors.indigo300*/get indigo300() {
+      return C[60] || CT.C60;
+    },
+    /*colors.PdfColors.indigo400*/get indigo400() {
+      return C[61] || CT.C61;
+    },
+    /*colors.PdfColors.indigo500*/get indigo500() {
+      return C[56] || CT.C56;
+    },
+    /*colors.PdfColors.indigo600*/get indigo600() {
+      return C[62] || CT.C62;
+    },
+    /*colors.PdfColors.indigo700*/get indigo700() {
+      return C[63] || CT.C63;
+    },
+    /*colors.PdfColors.indigo800*/get indigo800() {
+      return C[64] || CT.C64;
+    },
+    /*colors.PdfColors.indigo900*/get indigo900() {
+      return C[65] || CT.C65;
+    },
+    /*colors.PdfColors.indigoAccent*/get indigoAccent() {
+      return C[66] || CT.C66;
+    },
+    /*colors.PdfColors.indigoAccent100*/get indigoAccent100() {
+      return C[67] || CT.C67;
+    },
+    /*colors.PdfColors.indigoAccent200*/get indigoAccent200() {
+      return C[66] || CT.C66;
+    },
+    /*colors.PdfColors.indigoAccent400*/get indigoAccent400() {
+      return C[68] || CT.C68;
+    },
+    /*colors.PdfColors.indigoAccent700*/get indigoAccent700() {
+      return C[69] || CT.C69;
+    },
+    /*colors.PdfColors.blue*/get blue() {
+      return C[70] || CT.C70;
+    },
+    /*colors.PdfColors.blue50*/get blue50() {
+      return C[71] || CT.C71;
+    },
+    /*colors.PdfColors.blue100*/get blue100() {
+      return C[72] || CT.C72;
+    },
+    /*colors.PdfColors.blue200*/get blue200() {
+      return C[73] || CT.C73;
+    },
+    /*colors.PdfColors.blue300*/get blue300() {
+      return C[74] || CT.C74;
+    },
+    /*colors.PdfColors.blue400*/get blue400() {
+      return C[75] || CT.C75;
+    },
+    /*colors.PdfColors.blue500*/get blue500() {
+      return C[70] || CT.C70;
+    },
+    /*colors.PdfColors.blue600*/get blue600() {
+      return C[76] || CT.C76;
+    },
+    /*colors.PdfColors.blue700*/get blue700() {
+      return C[77] || CT.C77;
+    },
+    /*colors.PdfColors.blue800*/get blue800() {
+      return C[78] || CT.C78;
+    },
+    /*colors.PdfColors.blue900*/get blue900() {
+      return C[79] || CT.C79;
+    },
+    /*colors.PdfColors.blueAccent*/get blueAccent() {
+      return C[80] || CT.C80;
+    },
+    /*colors.PdfColors.blueAccent100*/get blueAccent100() {
+      return C[81] || CT.C81;
+    },
+    /*colors.PdfColors.blueAccent200*/get blueAccent200() {
+      return C[80] || CT.C80;
+    },
+    /*colors.PdfColors.blueAccent400*/get blueAccent400() {
+      return C[82] || CT.C82;
+    },
+    /*colors.PdfColors.blueAccent700*/get blueAccent700() {
+      return C[83] || CT.C83;
+    },
+    /*colors.PdfColors.lightBlue*/get lightBlue() {
+      return C[84] || CT.C84;
+    },
+    /*colors.PdfColors.lightBlue50*/get lightBlue50() {
+      return C[85] || CT.C85;
+    },
+    /*colors.PdfColors.lightBlue100*/get lightBlue100() {
+      return C[86] || CT.C86;
+    },
+    /*colors.PdfColors.lightBlue200*/get lightBlue200() {
+      return C[87] || CT.C87;
+    },
+    /*colors.PdfColors.lightBlue300*/get lightBlue300() {
+      return C[88] || CT.C88;
+    },
+    /*colors.PdfColors.lightBlue400*/get lightBlue400() {
+      return C[89] || CT.C89;
+    },
+    /*colors.PdfColors.lightBlue500*/get lightBlue500() {
+      return C[84] || CT.C84;
+    },
+    /*colors.PdfColors.lightBlue600*/get lightBlue600() {
+      return C[90] || CT.C90;
+    },
+    /*colors.PdfColors.lightBlue700*/get lightBlue700() {
+      return C[91] || CT.C91;
+    },
+    /*colors.PdfColors.lightBlue800*/get lightBlue800() {
+      return C[92] || CT.C92;
+    },
+    /*colors.PdfColors.lightBlue900*/get lightBlue900() {
+      return C[93] || CT.C93;
+    },
+    /*colors.PdfColors.lightBlueAccent*/get lightBlueAccent() {
+      return C[94] || CT.C94;
+    },
+    /*colors.PdfColors.lightBlueAccent100*/get lightBlueAccent100() {
+      return C[95] || CT.C95;
+    },
+    /*colors.PdfColors.lightBlueAccent200*/get lightBlueAccent200() {
+      return C[94] || CT.C94;
+    },
+    /*colors.PdfColors.lightBlueAccent400*/get lightBlueAccent400() {
+      return C[96] || CT.C96;
+    },
+    /*colors.PdfColors.lightBlueAccent700*/get lightBlueAccent700() {
+      return C[97] || CT.C97;
+    },
+    /*colors.PdfColors.cyan*/get cyan() {
+      return C[98] || CT.C98;
+    },
+    /*colors.PdfColors.cyan50*/get cyan50() {
+      return C[99] || CT.C99;
+    },
+    /*colors.PdfColors.cyan100*/get cyan100() {
+      return C[100] || CT.C100;
+    },
+    /*colors.PdfColors.cyan200*/get cyan200() {
+      return C[101] || CT.C101;
+    },
+    /*colors.PdfColors.cyan300*/get cyan300() {
+      return C[102] || CT.C102;
+    },
+    /*colors.PdfColors.cyan400*/get cyan400() {
+      return C[103] || CT.C103;
+    },
+    /*colors.PdfColors.cyan500*/get cyan500() {
+      return C[98] || CT.C98;
+    },
+    /*colors.PdfColors.cyan600*/get cyan600() {
+      return C[104] || CT.C104;
+    },
+    /*colors.PdfColors.cyan700*/get cyan700() {
+      return C[105] || CT.C105;
+    },
+    /*colors.PdfColors.cyan800*/get cyan800() {
+      return C[106] || CT.C106;
+    },
+    /*colors.PdfColors.cyan900*/get cyan900() {
+      return C[107] || CT.C107;
+    },
+    /*colors.PdfColors.cyanAccent*/get cyanAccent() {
+      return C[108] || CT.C108;
+    },
+    /*colors.PdfColors.cyanAccent100*/get cyanAccent100() {
+      return C[109] || CT.C109;
+    },
+    /*colors.PdfColors.cyanAccent200*/get cyanAccent200() {
+      return C[108] || CT.C108;
+    },
+    /*colors.PdfColors.cyanAccent400*/get cyanAccent400() {
+      return C[110] || CT.C110;
+    },
+    /*colors.PdfColors.cyanAccent700*/get cyanAccent700() {
+      return C[111] || CT.C111;
+    },
+    /*colors.PdfColors.teal*/get teal() {
+      return C[112] || CT.C112;
+    },
+    /*colors.PdfColors.teal50*/get teal50() {
+      return C[113] || CT.C113;
+    },
+    /*colors.PdfColors.teal100*/get teal100() {
+      return C[114] || CT.C114;
+    },
+    /*colors.PdfColors.teal200*/get teal200() {
+      return C[115] || CT.C115;
+    },
+    /*colors.PdfColors.teal300*/get teal300() {
+      return C[116] || CT.C116;
+    },
+    /*colors.PdfColors.teal400*/get teal400() {
+      return C[117] || CT.C117;
+    },
+    /*colors.PdfColors.teal500*/get teal500() {
+      return C[112] || CT.C112;
+    },
+    /*colors.PdfColors.teal600*/get teal600() {
+      return C[118] || CT.C118;
+    },
+    /*colors.PdfColors.teal700*/get teal700() {
+      return C[119] || CT.C119;
+    },
+    /*colors.PdfColors.teal800*/get teal800() {
+      return C[120] || CT.C120;
+    },
+    /*colors.PdfColors.teal900*/get teal900() {
+      return C[121] || CT.C121;
+    },
+    /*colors.PdfColors.tealAccent*/get tealAccent() {
+      return C[122] || CT.C122;
+    },
+    /*colors.PdfColors.tealAccent100*/get tealAccent100() {
+      return C[123] || CT.C123;
+    },
+    /*colors.PdfColors.tealAccent200*/get tealAccent200() {
+      return C[122] || CT.C122;
+    },
+    /*colors.PdfColors.tealAccent400*/get tealAccent400() {
+      return C[124] || CT.C124;
+    },
+    /*colors.PdfColors.tealAccent700*/get tealAccent700() {
+      return C[125] || CT.C125;
+    },
+    /*colors.PdfColors.green*/get green() {
+      return C[126] || CT.C126;
+    },
+    /*colors.PdfColors.green50*/get green50() {
+      return C[127] || CT.C127;
+    },
+    /*colors.PdfColors.green100*/get green100() {
+      return C[128] || CT.C128;
+    },
+    /*colors.PdfColors.green200*/get green200() {
+      return C[129] || CT.C129;
+    },
+    /*colors.PdfColors.green300*/get green300() {
+      return C[130] || CT.C130;
+    },
+    /*colors.PdfColors.green400*/get green400() {
+      return C[131] || CT.C131;
+    },
+    /*colors.PdfColors.green500*/get green500() {
+      return C[126] || CT.C126;
+    },
+    /*colors.PdfColors.green600*/get green600() {
+      return C[132] || CT.C132;
+    },
+    /*colors.PdfColors.green700*/get green700() {
+      return C[133] || CT.C133;
+    },
+    /*colors.PdfColors.green800*/get green800() {
+      return C[134] || CT.C134;
+    },
+    /*colors.PdfColors.green900*/get green900() {
+      return C[135] || CT.C135;
+    },
+    /*colors.PdfColors.greenAccent*/get greenAccent() {
+      return C[136] || CT.C136;
+    },
+    /*colors.PdfColors.greenAccent100*/get greenAccent100() {
+      return C[137] || CT.C137;
+    },
+    /*colors.PdfColors.greenAccent200*/get greenAccent200() {
+      return C[136] || CT.C136;
+    },
+    /*colors.PdfColors.greenAccent400*/get greenAccent400() {
+      return C[138] || CT.C138;
+    },
+    /*colors.PdfColors.greenAccent700*/get greenAccent700() {
+      return C[139] || CT.C139;
+    },
+    /*colors.PdfColors.lightGreen*/get lightGreen() {
+      return C[140] || CT.C140;
+    },
+    /*colors.PdfColors.lightGreen50*/get lightGreen50() {
+      return C[141] || CT.C141;
+    },
+    /*colors.PdfColors.lightGreen100*/get lightGreen100() {
+      return C[142] || CT.C142;
+    },
+    /*colors.PdfColors.lightGreen200*/get lightGreen200() {
+      return C[143] || CT.C143;
+    },
+    /*colors.PdfColors.lightGreen300*/get lightGreen300() {
+      return C[144] || CT.C144;
+    },
+    /*colors.PdfColors.lightGreen400*/get lightGreen400() {
+      return C[145] || CT.C145;
+    },
+    /*colors.PdfColors.lightGreen500*/get lightGreen500() {
+      return C[140] || CT.C140;
+    },
+    /*colors.PdfColors.lightGreen600*/get lightGreen600() {
+      return C[146] || CT.C146;
+    },
+    /*colors.PdfColors.lightGreen700*/get lightGreen700() {
+      return C[147] || CT.C147;
+    },
+    /*colors.PdfColors.lightGreen800*/get lightGreen800() {
+      return C[148] || CT.C148;
+    },
+    /*colors.PdfColors.lightGreen900*/get lightGreen900() {
+      return C[149] || CT.C149;
+    },
+    /*colors.PdfColors.lightGreenAccent*/get lightGreenAccent() {
+      return C[150] || CT.C150;
+    },
+    /*colors.PdfColors.lightGreenAccent100*/get lightGreenAccent100() {
+      return C[151] || CT.C151;
+    },
+    /*colors.PdfColors.lightGreenAccent200*/get lightGreenAccent200() {
+      return C[150] || CT.C150;
+    },
+    /*colors.PdfColors.lightGreenAccent400*/get lightGreenAccent400() {
+      return C[152] || CT.C152;
+    },
+    /*colors.PdfColors.lightGreenAccent700*/get lightGreenAccent700() {
+      return C[153] || CT.C153;
+    },
+    /*colors.PdfColors.lime*/get lime() {
+      return C[154] || CT.C154;
+    },
+    /*colors.PdfColors.lime50*/get lime50() {
+      return C[155] || CT.C155;
+    },
+    /*colors.PdfColors.lime100*/get lime100() {
+      return C[156] || CT.C156;
+    },
+    /*colors.PdfColors.lime200*/get lime200() {
+      return C[157] || CT.C157;
+    },
+    /*colors.PdfColors.lime300*/get lime300() {
+      return C[158] || CT.C158;
+    },
+    /*colors.PdfColors.lime400*/get lime400() {
+      return C[159] || CT.C159;
+    },
+    /*colors.PdfColors.lime500*/get lime500() {
+      return C[154] || CT.C154;
+    },
+    /*colors.PdfColors.lime600*/get lime600() {
+      return C[160] || CT.C160;
+    },
+    /*colors.PdfColors.lime700*/get lime700() {
+      return C[161] || CT.C161;
+    },
+    /*colors.PdfColors.lime800*/get lime800() {
+      return C[162] || CT.C162;
+    },
+    /*colors.PdfColors.lime900*/get lime900() {
+      return C[163] || CT.C163;
+    },
+    /*colors.PdfColors.limeAccent*/get limeAccent() {
+      return C[164] || CT.C164;
+    },
+    /*colors.PdfColors.limeAccent100*/get limeAccent100() {
+      return C[165] || CT.C165;
+    },
+    /*colors.PdfColors.limeAccent200*/get limeAccent200() {
+      return C[164] || CT.C164;
+    },
+    /*colors.PdfColors.limeAccent400*/get limeAccent400() {
+      return C[166] || CT.C166;
+    },
+    /*colors.PdfColors.limeAccent700*/get limeAccent700() {
+      return C[167] || CT.C167;
+    },
+    /*colors.PdfColors.yellow*/get yellow() {
+      return C[168] || CT.C168;
+    },
+    /*colors.PdfColors.yellow50*/get yellow50() {
+      return C[169] || CT.C169;
+    },
+    /*colors.PdfColors.yellow100*/get yellow100() {
+      return C[170] || CT.C170;
+    },
+    /*colors.PdfColors.yellow200*/get yellow200() {
+      return C[171] || CT.C171;
+    },
+    /*colors.PdfColors.yellow300*/get yellow300() {
+      return C[172] || CT.C172;
+    },
+    /*colors.PdfColors.yellow400*/get yellow400() {
+      return C[173] || CT.C173;
+    },
+    /*colors.PdfColors.yellow500*/get yellow500() {
+      return C[168] || CT.C168;
+    },
+    /*colors.PdfColors.yellow600*/get yellow600() {
+      return C[174] || CT.C174;
+    },
+    /*colors.PdfColors.yellow700*/get yellow700() {
+      return C[175] || CT.C175;
+    },
+    /*colors.PdfColors.yellow800*/get yellow800() {
+      return C[176] || CT.C176;
+    },
+    /*colors.PdfColors.yellow900*/get yellow900() {
+      return C[177] || CT.C177;
+    },
+    /*colors.PdfColors.yellowAccent*/get yellowAccent() {
+      return C[178] || CT.C178;
+    },
+    /*colors.PdfColors.yellowAccent100*/get yellowAccent100() {
+      return C[179] || CT.C179;
+    },
+    /*colors.PdfColors.yellowAccent200*/get yellowAccent200() {
+      return C[178] || CT.C178;
+    },
+    /*colors.PdfColors.yellowAccent400*/get yellowAccent400() {
+      return C[180] || CT.C180;
+    },
+    /*colors.PdfColors.yellowAccent700*/get yellowAccent700() {
+      return C[181] || CT.C181;
+    },
+    /*colors.PdfColors.amber*/get amber() {
+      return C[182] || CT.C182;
+    },
+    /*colors.PdfColors.amber50*/get amber50() {
+      return C[183] || CT.C183;
+    },
+    /*colors.PdfColors.amber100*/get amber100() {
+      return C[184] || CT.C184;
+    },
+    /*colors.PdfColors.amber200*/get amber200() {
+      return C[185] || CT.C185;
+    },
+    /*colors.PdfColors.amber300*/get amber300() {
+      return C[186] || CT.C186;
+    },
+    /*colors.PdfColors.amber400*/get amber400() {
+      return C[187] || CT.C187;
+    },
+    /*colors.PdfColors.amber500*/get amber500() {
+      return C[182] || CT.C182;
+    },
+    /*colors.PdfColors.amber600*/get amber600() {
+      return C[188] || CT.C188;
+    },
+    /*colors.PdfColors.amber700*/get amber700() {
+      return C[189] || CT.C189;
+    },
+    /*colors.PdfColors.amber800*/get amber800() {
+      return C[190] || CT.C190;
+    },
+    /*colors.PdfColors.amber900*/get amber900() {
+      return C[191] || CT.C191;
+    },
+    /*colors.PdfColors.amberAccent*/get amberAccent() {
+      return C[192] || CT.C192;
+    },
+    /*colors.PdfColors.amberAccent100*/get amberAccent100() {
+      return C[193] || CT.C193;
+    },
+    /*colors.PdfColors.amberAccent200*/get amberAccent200() {
+      return C[192] || CT.C192;
+    },
+    /*colors.PdfColors.amberAccent400*/get amberAccent400() {
+      return C[194] || CT.C194;
+    },
+    /*colors.PdfColors.amberAccent700*/get amberAccent700() {
+      return C[195] || CT.C195;
+    },
+    /*colors.PdfColors.orange*/get orange() {
+      return C[196] || CT.C196;
+    },
+    /*colors.PdfColors.orange50*/get orange50() {
+      return C[197] || CT.C197;
+    },
+    /*colors.PdfColors.orange100*/get orange100() {
+      return C[198] || CT.C198;
+    },
+    /*colors.PdfColors.orange200*/get orange200() {
+      return C[199] || CT.C199;
+    },
+    /*colors.PdfColors.orange300*/get orange300() {
+      return C[200] || CT.C200;
+    },
+    /*colors.PdfColors.orange400*/get orange400() {
+      return C[201] || CT.C201;
+    },
+    /*colors.PdfColors.orange500*/get orange500() {
+      return C[196] || CT.C196;
+    },
+    /*colors.PdfColors.orange600*/get orange600() {
+      return C[202] || CT.C202;
+    },
+    /*colors.PdfColors.orange700*/get orange700() {
+      return C[203] || CT.C203;
+    },
+    /*colors.PdfColors.orange800*/get orange800() {
+      return C[204] || CT.C204;
+    },
+    /*colors.PdfColors.orange900*/get orange900() {
+      return C[205] || CT.C205;
+    },
+    /*colors.PdfColors.orangeAccent*/get orangeAccent() {
+      return C[206] || CT.C206;
+    },
+    /*colors.PdfColors.orangeAccent100*/get orangeAccent100() {
+      return C[207] || CT.C207;
+    },
+    /*colors.PdfColors.orangeAccent200*/get orangeAccent200() {
+      return C[206] || CT.C206;
+    },
+    /*colors.PdfColors.orangeAccent400*/get orangeAccent400() {
+      return C[208] || CT.C208;
+    },
+    /*colors.PdfColors.orangeAccent700*/get orangeAccent700() {
+      return C[209] || CT.C209;
+    },
+    /*colors.PdfColors.deepOrange*/get deepOrange() {
+      return C[210] || CT.C210;
+    },
+    /*colors.PdfColors.deepOrange50*/get deepOrange50() {
+      return C[211] || CT.C211;
+    },
+    /*colors.PdfColors.deepOrange100*/get deepOrange100() {
+      return C[212] || CT.C212;
+    },
+    /*colors.PdfColors.deepOrange200*/get deepOrange200() {
+      return C[213] || CT.C213;
+    },
+    /*colors.PdfColors.deepOrange300*/get deepOrange300() {
+      return C[214] || CT.C214;
+    },
+    /*colors.PdfColors.deepOrange400*/get deepOrange400() {
+      return C[215] || CT.C215;
+    },
+    /*colors.PdfColors.deepOrange500*/get deepOrange500() {
+      return C[210] || CT.C210;
+    },
+    /*colors.PdfColors.deepOrange600*/get deepOrange600() {
+      return C[216] || CT.C216;
+    },
+    /*colors.PdfColors.deepOrange700*/get deepOrange700() {
+      return C[217] || CT.C217;
+    },
+    /*colors.PdfColors.deepOrange800*/get deepOrange800() {
+      return C[218] || CT.C218;
+    },
+    /*colors.PdfColors.deepOrange900*/get deepOrange900() {
+      return C[219] || CT.C219;
+    },
+    /*colors.PdfColors.deepOrangeAccent*/get deepOrangeAccent() {
+      return C[220] || CT.C220;
+    },
+    /*colors.PdfColors.deepOrangeAccent100*/get deepOrangeAccent100() {
+      return C[221] || CT.C221;
+    },
+    /*colors.PdfColors.deepOrangeAccent200*/get deepOrangeAccent200() {
+      return C[220] || CT.C220;
+    },
+    /*colors.PdfColors.deepOrangeAccent400*/get deepOrangeAccent400() {
+      return C[222] || CT.C222;
+    },
+    /*colors.PdfColors.deepOrangeAccent700*/get deepOrangeAccent700() {
+      return C[223] || CT.C223;
+    },
+    /*colors.PdfColors.brown*/get brown() {
+      return C[224] || CT.C224;
+    },
+    /*colors.PdfColors.brown50*/get brown50() {
+      return C[225] || CT.C225;
+    },
+    /*colors.PdfColors.brown100*/get brown100() {
+      return C[226] || CT.C226;
+    },
+    /*colors.PdfColors.brown200*/get brown200() {
+      return C[227] || CT.C227;
+    },
+    /*colors.PdfColors.brown300*/get brown300() {
+      return C[228] || CT.C228;
+    },
+    /*colors.PdfColors.brown400*/get brown400() {
+      return C[229] || CT.C229;
+    },
+    /*colors.PdfColors.brown500*/get brown500() {
+      return C[224] || CT.C224;
+    },
+    /*colors.PdfColors.brown600*/get brown600() {
+      return C[230] || CT.C230;
+    },
+    /*colors.PdfColors.brown700*/get brown700() {
+      return C[231] || CT.C231;
+    },
+    /*colors.PdfColors.brown800*/get brown800() {
+      return C[232] || CT.C232;
+    },
+    /*colors.PdfColors.brown900*/get brown900() {
+      return C[233] || CT.C233;
+    },
+    /*colors.PdfColors.grey*/get grey() {
+      return C[234] || CT.C234;
+    },
+    /*colors.PdfColors.grey50*/get grey50() {
+      return C[235] || CT.C235;
+    },
+    /*colors.PdfColors.grey100*/get grey100() {
+      return C[236] || CT.C236;
+    },
+    /*colors.PdfColors.grey200*/get grey200() {
+      return C[237] || CT.C237;
+    },
+    /*colors.PdfColors.grey300*/get grey300() {
+      return C[238] || CT.C238;
+    },
+    /*colors.PdfColors.grey400*/get grey400() {
+      return C[239] || CT.C239;
+    },
+    /*colors.PdfColors.grey500*/get grey500() {
+      return C[234] || CT.C234;
+    },
+    /*colors.PdfColors.grey600*/get grey600() {
+      return C[240] || CT.C240;
+    },
+    /*colors.PdfColors.grey700*/get grey700() {
+      return C[241] || CT.C241;
+    },
+    /*colors.PdfColors.grey800*/get grey800() {
+      return C[242] || CT.C242;
+    },
+    /*colors.PdfColors.grey900*/get grey900() {
+      return C[243] || CT.C243;
+    },
+    /*colors.PdfColors.blueGrey*/get blueGrey() {
+      return C[244] || CT.C244;
+    },
+    /*colors.PdfColors.blueGrey50*/get blueGrey50() {
+      return C[245] || CT.C245;
+    },
+    /*colors.PdfColors.blueGrey100*/get blueGrey100() {
+      return C[246] || CT.C246;
+    },
+    /*colors.PdfColors.blueGrey200*/get blueGrey200() {
+      return C[247] || CT.C247;
+    },
+    /*colors.PdfColors.blueGrey300*/get blueGrey300() {
+      return C[248] || CT.C248;
+    },
+    /*colors.PdfColors.blueGrey400*/get blueGrey400() {
+      return C[249] || CT.C249;
+    },
+    /*colors.PdfColors.blueGrey500*/get blueGrey500() {
+      return C[244] || CT.C244;
+    },
+    /*colors.PdfColors.blueGrey600*/get blueGrey600() {
+      return C[250] || CT.C250;
+    },
+    /*colors.PdfColors.blueGrey700*/get blueGrey700() {
+      return C[251] || CT.C251;
+    },
+    /*colors.PdfColors.blueGrey800*/get blueGrey800() {
+      return C[252] || CT.C252;
+    },
+    /*colors.PdfColors.blueGrey900*/get blueGrey900() {
+      return C[253] || CT.C253;
+    },
+    /*colors.PdfColors.white*/get white() {
+      return C[254] || CT.C254;
+    },
+    /*colors.PdfColors.black*/get black() {
+      return C[255] || CT.C255;
+    },
+    /*colors.PdfColors.primaries*/get primaries() {
+      return C[256] || CT.C256;
+    },
+    /*colors.PdfColors.accents*/get accents() {
+      return C[257] || CT.C257;
+    }
+  }, false);
+  dart.trackLibraries("packages/pdf/src/pdf/colors.dart", {
+    "package:pdf/src/pdf/colors.dart": colors
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["colors.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;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","file":"../../../../../../../../../../../../packages/pdf/src/pdf/colors.dart.lib.js"}');
+  // Exports:
+  return {
+    src__pdf__colors: colors
+  };
+}));
+
+//# sourceMappingURL=colors.dart.lib.js.map

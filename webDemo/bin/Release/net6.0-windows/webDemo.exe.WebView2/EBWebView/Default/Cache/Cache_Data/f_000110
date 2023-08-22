@@ -1,0 +1,867 @@
+define(['dart_sdk', 'packages/jiffy/src/utils/exception.dart', 'packages/jiffy/src/utils/normalize_units.dart', 'packages/intl/src/intl/date_format.dart', 'packages/jiffy/src/utils/replace.dart', 'packages/jiffy/src/utils/regex.dart', 'packages/intl/intl.dart', 'packages/jiffy/src/locale/availableLocales.dart', 'packages/intl/date_symbol_data_local.dart', 'packages/jiffy/src/locale/locale.dart', 'packages/jiffy/src/enums/startOfWeek.dart', 'packages/jiffy/src/enums/units.dart'], (function load__packages__jiffy__src__jiffy_dart(dart_sdk, packages__jiffy__src__utils__exception$46dart, packages__jiffy__src__utils__normalize_units$46dart, packages__intl__src__intl__date_format$46dart, packages__jiffy__src__utils__replace$46dart, packages__jiffy__src__utils__regex$46dart, packages__intl__intl$46dart, packages__jiffy__src__locale__availableLocales$46dart, packages__intl__date_symbol_data_local$46dart, packages__jiffy__src__locale__locale$46dart, packages__jiffy__src__enums__startOfWeek$46dart, packages__jiffy__src__enums__units$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const exception = packages__jiffy__src__utils__exception$46dart.src__utils__exception;
+  const normalize_units = packages__jiffy__src__utils__normalize_units$46dart.src__utils__normalize_units;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const replace = packages__jiffy__src__utils__replace$46dart.src__utils__replace;
+  const regex = packages__jiffy__src__utils__regex$46dart.src__utils__regex;
+  const intl = packages__intl__intl$46dart.intl;
+  const availableLocales = packages__jiffy__src__locale__availableLocales$46dart.src__locale__availableLocales;
+  const date_symbol_data_local = packages__intl__date_symbol_data_local$46dart.date_symbol_data_local;
+  const locale$ = packages__jiffy__src__locale__locale$46dart.src__locale__locale;
+  const startOfWeek = packages__jiffy__src__enums__startOfWeek$46dart.src__enums__startOfWeek;
+  const units$ = packages__jiffy__src__enums__units$46dart.src__enums__units;
+  var jiffy = Object.create(dart.library);
+  var $forEach = dartx.forEach;
+  var $isEmpty = dartx.isEmpty;
+  var $_get = dartx._get;
+  var $length = dartx.length;
+  var $replaceAllMapped = dartx.replaceAllMapped;
+  var $toLowerCase = dartx.toLowerCase;
+  var $floor = dartx.floor;
+  var $modulo = dartx['%'];
+  var $truncate = dartx.truncate;
+  var $ceil = dartx.ceil;
+  var $round = dartx.round;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    dynamicAnddynamicTovoid: () => (T.dynamicAnddynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic, dart.dynamic])))(),
+    MatchToString: () => (T.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))(),
+    FutureOfLocale: () => (T.FutureOfLocale = dart.constFn(async.Future$(locale$.Locale)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: startOfWeek.StartOfWeek.prototype,
+        [_Enum__name]: "MONDAY",
+        [_Enum_index]: 2
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: startOfWeek.StartOfWeek.prototype,
+        [_Enum__name]: "SUNDAY",
+        [_Enum_index]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: startOfWeek.StartOfWeek.prototype,
+        [_Enum__name]: "SATURDAY",
+        [_Enum_index]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "MILLISECOND",
+        [_Enum_index]: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "SECOND",
+        [_Enum_index]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "MINUTE",
+        [_Enum_index]: 2
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "HOUR",
+        [_Enum_index]: 3
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "DAY",
+        [_Enum_index]: 4
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "WEEK",
+        [_Enum_index]: 5
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "MONTH",
+        [_Enum_index]: 6
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: units$.Units.prototype,
+        [_Enum__name]: "YEAR",
+        [_Enum_index]: 7
+      });
+    },
+    get C12() {
+      return C[12] = dart.constList([0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], core.int);
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
+  var I = ["package:jiffy/src/jiffy.dart"];
+  var __Jiffy__dateTime = dart.privateName(jiffy, "_#Jiffy#_dateTime");
+  var _initializeDateTime = dart.privateName(jiffy, "_initializeDateTime");
+  var _unix = dart.privateName(jiffy, "_unix");
+  var _dateTime = dart.privateName(jiffy, "_dateTime");
+  var _parse = dart.privateName(jiffy, "_parse");
+  var _parseMap = dart.privateName(jiffy, "_parseMap");
+  var _parseList = dart.privateName(jiffy, "_parseList");
+  var _parseString = dart.privateName(jiffy, "_parseString");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var _daysInMonth = dart.privateName(jiffy, "_daysInMonth");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _addMonths = dart.privateName(jiffy, "_addMonths");
+  var _isLeapYear = dart.privateName(jiffy, "_isLeapYear");
+  var _monthDiff = dart.privateName(jiffy, "_monthDiff");
+  var _absFloor = dart.privateName(jiffy, "_absFloor");
+  jiffy.Jiffy = class Jiffy extends core.Object {
+    set [_dateTime](library$32package$58jiffy$47src$47jiffy$46dart$58$58_dateTime$35param) {
+      this[__Jiffy__dateTime] = library$32package$58jiffy$47src$47jiffy$46dart$58$58_dateTime$35param;
+    }
+    get [_dateTime]() {
+      let t0;
+      t0 = this[__Jiffy__dateTime];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_dateTime")) : t0;
+    }
+    static get _defaultLocale() {
+      let t0;
+      t0 = jiffy.Jiffy['_#_defaultLocale'];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_defaultLocale")) : t0;
+    }
+    static set _defaultLocale(library$32package$58jiffy$47src$47jiffy$46dart$58$58_defaultLocale$35param) {
+      jiffy.Jiffy['_#_defaultLocale'] = library$32package$58jiffy$47src$47jiffy$46dart$58$58_defaultLocale$35param;
+    }
+    get dateTime() {
+      return this[_dateTime];
+    }
+    static ['_#new#tearOff'](input = null, pattern = null) {
+      return new jiffy.Jiffy.new(input, pattern);
+    }
+    static ['_#unixFromSecondsSinceEpoch#tearOff'](timestamp) {
+      return new jiffy.Jiffy.unixFromSecondsSinceEpoch(timestamp);
+    }
+    static ['_#unixFromMillisecondsSinceEpoch#tearOff'](timestamp) {
+      return new jiffy.Jiffy.unixFromMillisecondsSinceEpoch(timestamp);
+    }
+    [_unix](timestamp) {
+      this[_dateTime] = new core.DateTime.fromMillisecondsSinceEpoch(timestamp);
+    }
+    clone() {
+      return new jiffy.Jiffy.new(this);
+    }
+    [_initializeDateTime](input, pattern = null) {
+      this[_dateTime] = this[_parse](input, pattern);
+    }
+    [_parse](input, pattern = null) {
+      let dateTime = null;
+      if (input == null && pattern == null) {
+        dateTime = new core.DateTime.now();
+      } else if (jiffy.Jiffy.isDateTime(input)) {
+        dateTime = input;
+      } else if (jiffy.Jiffy.isJiffy(input)) {
+        dateTime = dart.dload(input, 'dateTime');
+      } else if (core.Map.is(input)) {
+        dateTime = this[_parseMap](input);
+      } else if (core.List.is(input)) {
+        dateTime = this[_parseList](input);
+      } else if (typeof input == 'string') {
+        dateTime = this[_parseString](input, pattern);
+      } else {
+        dart.throw(new exception.JiffyException.new("Jiffy only accepts String, List, Map, DateTime or Jiffy itself as parameters").cause);
+      }
+      return core.DateTime.as(dateTime);
+    }
+    [_parseMap](input) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8, t0$9, t0$10, t0$11, t0$12, t0$13, t0$14, t0$15, t0$16, t0$17, t0$18;
+      input[$forEach](dart.fn((key, value) => {
+        normalize_units.validateUnits(core.String.as(key));
+      }, T.dynamicAnddynamicTovoid()));
+      if (input[$isEmpty]) {
+        return new core.DateTime.now();
+      } else {
+        return new core.DateTime.new(core.int.as((t0$0 = (t0$ = (t0 = input[$_get]("year"), t0 == null ? input[$_get]("years") : t0), t0$ == null ? input[$_get]("y") : t0$), t0$0 == null ? new core.DateTime.now().year : t0$0)), core.int.as((t0$3 = (t0$2 = (t0$1 = input[$_get]("month"), t0$1 == null ? input[$_get]("months") : t0$1), t0$2 == null ? input[$_get]("M") : t0$2), t0$3 == null ? new core.DateTime.now().month : t0$3)), core.int.as((t0$6 = (t0$5 = (t0$4 = input[$_get]("day"), t0$4 == null ? input[$_get]("days") : t0$4), t0$5 == null ? input[$_get]("d") : t0$5), t0$6 == null ? new core.DateTime.now().day : t0$6)), core.int.as((t0$9 = (t0$8 = (t0$7 = input[$_get]("hour"), t0$7 == null ? input[$_get]("hours") : t0$7), t0$8 == null ? input[$_get]("h") : t0$8), t0$9 == null ? new core.DateTime.now().hour : t0$9)), core.int.as((t0$12 = (t0$11 = (t0$10 = input[$_get]("minute"), t0$10 == null ? input[$_get]("minutes") : t0$10), t0$11 == null ? input[$_get]("m") : t0$11), t0$12 == null ? new core.DateTime.now().minute : t0$12)), core.int.as((t0$15 = (t0$14 = (t0$13 = input[$_get]("second"), t0$13 == null ? input[$_get]("seconds") : t0$13), t0$14 == null ? input[$_get]("s") : t0$14), t0$15 == null ? new core.DateTime.now().second : t0$15)), core.int.as((t0$18 = (t0$17 = (t0$16 = input[$_get]("millisecond"), t0$16 == null ? input[$_get]("milliseconds") : t0$16), t0$17 == null ? input[$_get]("ms") : t0$17), t0$18 == null ? new core.DateTime.now().millisecond : t0$18)));
+      }
+    }
+    [_parseList](input) {
+      if (input[$isEmpty]) {
+        return new core.DateTime.now();
+      } else {
+        return new core.DateTime.new(core.int.as(input[$_get](0)), core.int.as(input[$length] > 1 ? input[$_get](1) : 1), core.int.as(input[$length] > 2 ? input[$_get](2) : 1), core.int.as(input[$length] > 3 ? input[$_get](3) : 0), core.int.as(input[$length] > 4 ? input[$_get](4) : 0), core.int.as(input[$length] > 5 ? input[$_get](5) : 0), core.int.as(input[$length] > 6 ? input[$_get](6) : 0));
+      }
+    }
+    [_parseString](input, pattern) {
+      if (pattern != null) {
+        return new date_format.DateFormat.new(replace.replacePatternInput(pattern)).parse(replace.replaceParseInput(input));
+      } else if (regex.matchHyphenStringDateTime(input)) {
+        return new date_format.DateFormat.new("yyyy-MM-dd").parse(input);
+      } else if (regex.matchDartStringDateTime(input) || regex.matchISOStringDateTime(input)) {
+        return core.DateTime.parse(input).toLocal();
+      } else if (regex.matchSlashStringDateTime(input)) {
+        return new date_format.DateFormat.new("yyyy/MM/dd").parse(input);
+      } else if (regex.matchBasicStringDateTime().hasMatch(input)) {
+        return new date_format.DateFormat.new("yyyy/MM/dd").parse(input[$replaceAllMapped](regex.matchBasicStringDateTime(), dart.fn(match => dart.str(match.group(1)) + "/" + dart.str(match.group(2)) + "/" + dart.str(match.group(3)), T.MatchToString())));
+      } else {
+        dart.throw(new exception.JiffyException.new("Date time not recognized, a pattern must be passed, e.g. Jiffy(\"12, Oct\", \"dd, MMM\")").cause);
+      }
+    }
+    static _initializeLocale() {
+      let currentLocale = intl.Intl.getCurrentLocale();
+      jiffy.Jiffy._defaultLocale = availableLocales.getLocale(currentLocale);
+      jiffy.Jiffy._defaultLocale.code = currentLocale[$toLowerCase]();
+    }
+    static locale(locale = null) {
+      return async.async(locale$.Locale, function* locale$0() {
+        jiffy.Jiffy._initializeLocale();
+        if (locale != null) {
+          if (availableLocales.isLocalAvailable(locale)) {
+            dart.throw(new exception.JiffyException.new("The locale \"" + dart.str(locale) + "\" does not exist in Jiffy, run Jiffy.getAllAvailableLocales() for more locales").cause);
+          }
+          yield date_symbol_data_local.initializeDateFormatting();
+          intl.Intl.defaultLocale = locale;
+          jiffy.Jiffy._defaultLocale = availableLocales.getLocale(locale);
+          jiffy.Jiffy._defaultLocale.code = locale[$toLowerCase]();
+        }
+        return T.FutureOfLocale().value(jiffy.Jiffy._defaultLocale);
+      });
+    }
+    static getAllAvailableLocales() {
+      return availableLocales.getAllLocales();
+    }
+    get millisecond() {
+      return this[_dateTime].millisecond;
+    }
+    get second() {
+      return this[_dateTime].second;
+    }
+    get minute() {
+      return this[_dateTime].minute;
+    }
+    get hour() {
+      return this[_dateTime].hour;
+    }
+    get date() {
+      return this[_dateTime].day;
+    }
+    get day() {
+      let weekDays = T.JSArrayOfint().of([1, 2, 3, 4, 5, 6, 7, 1, 2]);
+      let weekDayIndex = this[_dateTime].weekday - 1;
+      switch (jiffy.Jiffy._defaultLocale.startOfWeek()) {
+        case C[0] || CT.C0:
+          {
+            weekDayIndex = weekDayIndex + 0;
+            break;
+          }
+        case C[1] || CT.C1:
+          {
+            weekDayIndex = weekDayIndex + 1;
+            break;
+          }
+        case C[2] || CT.C2:
+          {
+            weekDayIndex = weekDayIndex + 2;
+            break;
+          }
+      }
+      return weekDays[$_get](weekDayIndex);
+    }
+    get daysInMonth() {
+      return this[_daysInMonth](this[_dateTime].year, this[_dateTime].month);
+    }
+    get dayOfYear() {
+      return core.int.parse(new date_format.DateFormat.new("D").format(this[_dateTime]));
+    }
+    get week() {
+      return ((this.dayOfYear - this.day + 10) / 7)[$floor]();
+    }
+    get month() {
+      return this[_dateTime].month;
+    }
+    get quarter() {
+      return core.int.parse(new date_format.DateFormat.new("Q").format(this[_dateTime]));
+    }
+    get year() {
+      return this[_dateTime].year;
+    }
+    add(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : C[3] || CT.C3;
+      let years = opts && 'years' in opts ? opts.years : 0;
+      let months = opts && 'months' in opts ? opts.months : 0;
+      let weeks = opts && 'weeks' in opts ? opts.weeks : 0;
+      let days = opts && 'days' in opts ? opts.days : 0;
+      let hours = opts && 'hours' in opts ? opts.hours : 0;
+      let minutes = opts && 'minutes' in opts ? opts.minutes : 0;
+      let seconds = opts && 'seconds' in opts ? opts.seconds : 0;
+      let milliseconds = opts && 'milliseconds' in opts ? opts.milliseconds : 0;
+      let microseconds = opts && 'microseconds' in opts ? opts.microseconds : 0;
+      this[_dateTime] = this[_dateTime].add(duration);
+      this[_dateTime] = this[_dateTime].add(new core.Duration.new({days: days + weeks * 7, hours: hours, minutes: minutes, seconds: seconds, milliseconds: milliseconds, microseconds: microseconds}));
+      this[_dateTime] = this[_addMonths](this[_dateTime], months);
+      this[_dateTime] = this[_addMonths](this[_dateTime], years * 12);
+      return this.clone();
+    }
+    subtract(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : C[3] || CT.C3;
+      let years = opts && 'years' in opts ? opts.years : 0;
+      let months = opts && 'months' in opts ? opts.months : 0;
+      let weeks = opts && 'weeks' in opts ? opts.weeks : 0;
+      let days = opts && 'days' in opts ? opts.days : 0;
+      let hours = opts && 'hours' in opts ? opts.hours : 0;
+      let minutes = opts && 'minutes' in opts ? opts.minutes : 0;
+      let seconds = opts && 'seconds' in opts ? opts.seconds : 0;
+      let milliseconds = opts && 'milliseconds' in opts ? opts.milliseconds : 0;
+      let microseconds = opts && 'microseconds' in opts ? opts.microseconds : 0;
+      this[_dateTime] = this[_dateTime].subtract(duration);
+      this[_dateTime] = this[_dateTime].subtract(new core.Duration.new({days: days + weeks * 7, hours: hours, minutes: minutes, seconds: seconds, milliseconds: milliseconds, microseconds: microseconds}));
+      this[_dateTime] = this[_addMonths](this[_dateTime], -months);
+      this[_dateTime] = this[_addMonths](this[_dateTime], -years * 12);
+      return this.clone();
+    }
+    startOf(units) {
+      switch (units) {
+        case C[4] || CT.C4:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute, this[_dateTime].second, this[_dateTime].millisecond);
+            break;
+          }
+        case C[5] || CT.C5:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute, this[_dateTime].second);
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute);
+            break;
+          }
+        case C[7] || CT.C7:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour);
+            break;
+          }
+        case C[8] || CT.C8:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day);
+            break;
+          }
+        case C[9] || CT.C9:
+          {
+            let newDate = this[_dateTime].subtract(new core.Duration.new({days: this.day - 1}));
+            this[_dateTime] = new core.DateTime.new(newDate.year, newDate.month, newDate.day);
+            break;
+          }
+        case C[10] || CT.C10:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, 1);
+            break;
+          }
+        case C[11] || CT.C11:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year);
+            break;
+          }
+      }
+      return this.clone();
+    }
+    endOf(units) {
+      switch (units) {
+        case C[4] || CT.C4:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute, this[_dateTime].second, this[_dateTime].millisecond);
+            break;
+          }
+        case C[5] || CT.C5:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute, this[_dateTime].second, 999);
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, this[_dateTime].minute, 59, 999);
+            break;
+          }
+        case C[7] || CT.C7:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, this[_dateTime].hour, 59, 59, 999);
+            break;
+          }
+        case C[8] || CT.C8:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, this[_dateTime].day, 23, 59, 59, 999);
+            break;
+          }
+        case C[9] || CT.C9:
+          {
+            let newDate = this[_dateTime].add(new core.Duration.new({days: 7 - this.day}));
+            this[_dateTime] = new core.DateTime.new(newDate.year, newDate.month, newDate.day, 23, 59, 59, 999);
+            break;
+          }
+        case C[10] || CT.C10:
+          {
+            let date = jiffy.Jiffy._daysInMonthArray[$_get](this[_dateTime].month);
+            if (this[_isLeapYear](this[_dateTime].year) && this[_dateTime].month === 2) {
+              date = 29;
+            }
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, this[_dateTime].month, date, 23, 59, 59, 999);
+            break;
+          }
+        case C[11] || CT.C11:
+          {
+            this[_dateTime] = new core.DateTime.new(this[_dateTime].year, 12, 31, 23, 59, 59, 999);
+            break;
+          }
+      }
+      return this.clone();
+    }
+    local() {
+      return this[_dateTime] = this[_dateTime].toLocal();
+    }
+    utc() {
+      return this[_dateTime] = this[_dateTime].toUtc();
+    }
+    [_daysInMonth](year, month) {
+      let result = jiffy.Jiffy._daysInMonthArray[$_get](month);
+      if (month === 2 && this[_isLeapYear](year)) result = result + 1;
+      return result;
+    }
+    [_addMonths](from, months) {
+      let r = months[$modulo](12);
+      let q = ((months - r) / 12)[$truncate]();
+      let newYear = from.year + q;
+      let newMonth = from.month + r;
+      if (newMonth > 12) {
+        newYear = newYear + 1;
+        newMonth = newMonth - 12;
+      }
+      let newDay = math.min(core.int, from.day, this[_daysInMonth](newYear, newMonth));
+      if (from.isUtc) {
+        return new core.DateTime.utc(newYear, newMonth, newDay, from.hour, from.minute, from.second, from.millisecond, from.microsecond);
+      } else {
+        return new core.DateTime.new(newYear, newMonth, newDay, from.hour, from.minute, from.second, from.millisecond, from.microsecond);
+      }
+    }
+    format(pattern = null) {
+      if (pattern == null) return this[_dateTime].toIso8601String();
+      let ordinal = jiffy.Jiffy._defaultLocale.ordinal(this[_dateTime].day);
+      let escaped = replace.replaceEscapePattern(pattern);
+      let newPattern = replace.replaceOrdinalDatePattern(escaped, ordinal);
+      return new date_format.DateFormat.new(newPattern).format(this[_dateTime]);
+    }
+    get E() {
+      return new date_format.DateFormat.E().format(this[_dateTime]);
+    }
+    get EEEE() {
+      return new date_format.DateFormat.EEEE().format(this[_dateTime]);
+    }
+    get LLL() {
+      return new date_format.DateFormat.LLL().format(this[_dateTime]);
+    }
+    get LLLL() {
+      return new date_format.DateFormat.LLLL().format(this[_dateTime]);
+    }
+    get Md() {
+      return new date_format.DateFormat.Md().format(this[_dateTime]);
+    }
+    get MEd() {
+      return new date_format.DateFormat.MEd().format(this[_dateTime]);
+    }
+    get MMM() {
+      return new date_format.DateFormat.MMM().format(this[_dateTime]);
+    }
+    get MMMd() {
+      return new date_format.DateFormat.MMMd().format(this[_dateTime]);
+    }
+    get MMMEd() {
+      return new date_format.DateFormat.MMMEd().format(this[_dateTime]);
+    }
+    get MMMM() {
+      return new date_format.DateFormat.MMMM().format(this[_dateTime]);
+    }
+    get MMMMd() {
+      return new date_format.DateFormat.MMMMd().format(this[_dateTime]);
+    }
+    get MMMMEEEEd() {
+      return new date_format.DateFormat.MMMMEEEEd().format(this[_dateTime]);
+    }
+    get QQQ() {
+      return new date_format.DateFormat.QQQ().format(this[_dateTime]);
+    }
+    get QQQQ() {
+      return new date_format.DateFormat.QQQQ().format(this[_dateTime]);
+    }
+    get yM() {
+      return new date_format.DateFormat.yM().format(this[_dateTime]);
+    }
+    get yMd() {
+      return new date_format.DateFormat.yMd().format(this[_dateTime]);
+    }
+    get yMEd() {
+      return new date_format.DateFormat.yMEd().format(this[_dateTime]);
+    }
+    get yMMM() {
+      return new date_format.DateFormat.yMMM().format(this[_dateTime]);
+    }
+    get yMMMd() {
+      return new date_format.DateFormat.yMMMd().format(this[_dateTime]);
+    }
+    get yMMMdjm() {
+      return new date_format.DateFormat.yMMMd().add_jm().format(this[_dateTime]);
+    }
+    get yMMMEd() {
+      return new date_format.DateFormat.yMMMEd().format(this[_dateTime]);
+    }
+    get yMMMEdjm() {
+      return new date_format.DateFormat.yMMMEd().add_jm().format(this[_dateTime]);
+    }
+    get yMMMM() {
+      return new date_format.DateFormat.yMMMM().format(this[_dateTime]);
+    }
+    get yMMMMd() {
+      return new date_format.DateFormat.yMMMMd().format(this[_dateTime]);
+    }
+    get yMMMMdjm() {
+      return new date_format.DateFormat.yMMMMd().add_jm().format(this[_dateTime]);
+    }
+    get yMMMMEEEEd() {
+      return new date_format.DateFormat.yMMMMEEEEd().format(this[_dateTime]);
+    }
+    get yMMMMEEEEdjm() {
+      return new date_format.DateFormat.yMMMMEEEEd().add_jm().format(this[_dateTime]);
+    }
+    get yQQQ() {
+      return new date_format.DateFormat.yQQQ().format(this[_dateTime]);
+    }
+    get yQQQQ() {
+      return new date_format.DateFormat.yQQQQ().format(this[_dateTime]);
+    }
+    get Hm() {
+      return new date_format.DateFormat.Hm().format(this[_dateTime]);
+    }
+    get Hms() {
+      return new date_format.DateFormat.Hms().format(this[_dateTime]);
+    }
+    get j() {
+      return new date_format.DateFormat.j().format(this[_dateTime]);
+    }
+    get jm() {
+      return new date_format.DateFormat.jm().format(this[_dateTime]);
+    }
+    get jms() {
+      return new date_format.DateFormat.jms().format(this[_dateTime]);
+    }
+    fromNow() {
+      return jiffy.Jiffy._defaultLocale.getRelativeTime(this[_dateTime]);
+    }
+    from(input) {
+      let dateTime = this[_parse](input);
+      return jiffy.Jiffy._defaultLocale.getRelativeTime(this[_dateTime], dateTime);
+    }
+    diff(input, units = C[4] || CT.C4, asFloat = false) {
+      let dateTime = this[_parse](input);
+      let diff = null;
+      let dt1 = this[_dateTime].millisecondsSinceEpoch;
+      let dt2 = dateTime.millisecondsSinceEpoch;
+      switch (units) {
+        case C[4] || CT.C4:
+          {
+            diff = dt1 - dt2;
+            break;
+          }
+        case C[5] || CT.C5:
+          {
+            diff = (dt1 - dt2) / 1000;
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            diff = (dt1 - dt2) / 60000;
+            break;
+          }
+        case C[7] || CT.C7:
+          {
+            diff = (dt1 - dt2) / 3600000;
+            break;
+          }
+        case C[8] || CT.C8:
+          {
+            diff = (dt1 - dt2) / 86400000;
+            break;
+          }
+        case C[9] || CT.C9:
+          {
+            diff = (dt1 - dt2) / 86400000 / 7;
+            break;
+          }
+        case C[10] || CT.C10:
+          {
+            diff = this[_monthDiff](this[_dateTime], dateTime);
+            break;
+          }
+        case C[11] || CT.C11:
+          {
+            diff = this[_monthDiff](this[_dateTime], dateTime) / 12;
+            break;
+          }
+      }
+      if (!asFloat) return this[_absFloor](diff);
+      return diff;
+    }
+    [_monthDiff](a, b) {
+      let wholeMonthDiff = (b.year - a.year) * 12 + (b.month - a.month);
+      let anchor = this[_addMonths](a, wholeMonthDiff);
+      let anchor2 = null;
+      let adjust = null;
+      if (b.millisecondsSinceEpoch - anchor.millisecondsSinceEpoch < 0) {
+        anchor2 = this[_addMonths](a, wholeMonthDiff - 1);
+        adjust = (b.millisecondsSinceEpoch - anchor.millisecondsSinceEpoch) / (anchor.millisecondsSinceEpoch - core.num.as(dart.dload(anchor2, 'millisecondsSinceEpoch')));
+      } else {
+        anchor2 = this[_addMonths](a, wholeMonthDiff + 1);
+        adjust = (b.millisecondsSinceEpoch - anchor.millisecondsSinceEpoch) / core.num.as(dart.dsend(dart.dload(anchor2, 'millisecondsSinceEpoch'), '-', [anchor.millisecondsSinceEpoch]));
+      }
+      return -(wholeMonthDiff + core.num.as(adjust));
+    }
+    [_absFloor](number) {
+      if (number < 0) {
+        return number[$ceil]();
+      } else {
+        return number[$floor]();
+      }
+    }
+    valueOf() {
+      return this[_dateTime].millisecondsSinceEpoch;
+    }
+    unix() {
+      return (this[_dateTime].millisecondsSinceEpoch / 1000)[$round]();
+    }
+    isBefore(input, units = C[4] || CT.C4) {
+      let t0;
+      let dateTime = this[_parse](input);
+      if (units === units$.Units.MILLISECOND) {
+        return this.valueOf() < dateTime.millisecondsSinceEpoch;
+      }
+      let endOfMs = (t0 = this.clone(), (() => {
+        t0.endOf(units);
+        return t0;
+      })()).valueOf();
+      return endOfMs < dateTime.millisecondsSinceEpoch;
+    }
+    isAfter(input, units = C[4] || CT.C4) {
+      let t0;
+      let dateTime = this[_parse](input);
+      if (units === units$.Units.MILLISECOND) {
+        return this.valueOf() > dateTime.millisecondsSinceEpoch;
+      }
+      let startOfMs = (t0 = this.clone(), (() => {
+        t0.startOf(units);
+        return t0;
+      })()).valueOf();
+      return dateTime.millisecondsSinceEpoch < startOfMs;
+    }
+    isSame(input, units = C[4] || CT.C4) {
+      let t0, t0$;
+      let dateTime = this[_parse](input);
+      if (units === units$.Units.MILLISECOND) {
+        return this.valueOf() === dateTime.millisecondsSinceEpoch;
+      }
+      let startOfMs = (t0 = this.clone(), (() => {
+        t0.startOf(units);
+        return t0;
+      })()).valueOf();
+      let endOfMs = (t0$ = this.clone(), (() => {
+        t0$.endOf(units);
+        return t0$;
+      })()).valueOf();
+      let dateTimeMs = dateTime.millisecondsSinceEpoch;
+      return startOfMs <= dateTimeMs && dateTimeMs <= endOfMs;
+    }
+    isSameOrBefore(input, units = C[4] || CT.C4) {
+      let dateTime = this[_parse](input);
+      return this.isSame(dateTime, units) || this.isBefore(dateTime, units);
+    }
+    isSameOrAfter(input, units = C[4] || CT.C4) {
+      let dateTime = this[_parse](input);
+      return this.isSame(dateTime, units) || this.isAfter(dateTime, units);
+    }
+    isBetween(inputFrom, inputTo, units = C[4] || CT.C4) {
+      let dateTimeFrom = this[_parse](inputFrom);
+      let dateTimeTo = this[_parse](inputTo);
+      return this.isAfter(dateTimeFrom, units) && this.isBefore(dateTimeTo, units);
+    }
+    [_isLeapYear](year) {
+      return year[$modulo](4) === 0 && (year[$modulo](100) !== 0 || year[$modulo](400) === 0);
+    }
+    get isLeapYear() {
+      return this[_isLeapYear](this[_dateTime].year);
+    }
+    static isJiffy(input) {
+      return jiffy.Jiffy.is(input);
+    }
+    static isDateTime(input) {
+      return core.DateTime.is(input);
+    }
+  };
+  (jiffy.Jiffy.new = function(input = null, pattern = null) {
+    this[__Jiffy__dateTime] = null;
+    this[_initializeDateTime](input, pattern);
+    jiffy.Jiffy._initializeLocale();
+  }).prototype = jiffy.Jiffy.prototype;
+  (jiffy.Jiffy.unixFromSecondsSinceEpoch = function(timestamp) {
+    this[__Jiffy__dateTime] = null;
+    this[_unix](timestamp * 1000);
+  }).prototype = jiffy.Jiffy.prototype;
+  (jiffy.Jiffy.unixFromMillisecondsSinceEpoch = function(timestamp) {
+    this[__Jiffy__dateTime] = null;
+    this[_unix](timestamp);
+  }).prototype = jiffy.Jiffy.prototype;
+  dart.addTypeTests(jiffy.Jiffy);
+  dart.addTypeCaches(jiffy.Jiffy);
+  dart.setMethodSignature(jiffy.Jiffy, () => ({
+    __proto__: dart.getMethods(jiffy.Jiffy.__proto__),
+    [_unix]: dart.fnType(dart.void, [core.int]),
+    clone: dart.fnType(jiffy.Jiffy, []),
+    [_initializeDateTime]: dart.fnType(dart.void, [dart.dynamic], [dart.nullable(core.String)]),
+    [_parse]: dart.fnType(core.DateTime, [dart.dynamic], [dart.nullable(core.String)]),
+    [_parseMap]: dart.fnType(core.DateTime, [core.Map]),
+    [_parseList]: dart.fnType(core.DateTime, [core.List]),
+    [_parseString]: dart.fnType(core.DateTime, [core.String, dart.nullable(core.String)]),
+    add: dart.fnType(jiffy.Jiffy, [], {days: core.int, duration: core.Duration, hours: core.int, microseconds: core.int, milliseconds: core.int, minutes: core.int, months: core.int, seconds: core.int, weeks: core.int, years: core.int}, {}),
+    subtract: dart.fnType(jiffy.Jiffy, [], {days: core.int, duration: core.Duration, hours: core.int, microseconds: core.int, milliseconds: core.int, minutes: core.int, months: core.int, seconds: core.int, weeks: core.int, years: core.int}, {}),
+    startOf: dart.fnType(jiffy.Jiffy, [units$.Units]),
+    endOf: dart.fnType(jiffy.Jiffy, [units$.Units]),
+    local: dart.fnType(core.DateTime, []),
+    utc: dart.fnType(core.DateTime, []),
+    [_daysInMonth]: dart.fnType(core.int, [core.int, core.int]),
+    [_addMonths]: dart.fnType(core.DateTime, [core.DateTime, core.int]),
+    format: dart.fnType(core.String, [], [dart.nullable(core.String)]),
+    fromNow: dart.fnType(core.String, []),
+    from: dart.fnType(core.String, [dart.dynamic]),
+    diff: dart.fnType(core.num, [dart.dynamic], [units$.Units, core.bool]),
+    [_monthDiff]: dart.fnType(core.num, [core.DateTime, core.DateTime]),
+    [_absFloor]: dart.fnType(core.int, [core.num]),
+    valueOf: dart.fnType(core.int, []),
+    unix: dart.fnType(core.int, []),
+    isBefore: dart.fnType(core.bool, [dart.dynamic], [units$.Units]),
+    isAfter: dart.fnType(core.bool, [dart.dynamic], [units$.Units]),
+    isSame: dart.fnType(core.bool, [dart.dynamic], [units$.Units]),
+    isSameOrBefore: dart.fnType(core.bool, [dart.dynamic], [units$.Units]),
+    isSameOrAfter: dart.fnType(core.bool, [dart.dynamic], [units$.Units]),
+    isBetween: dart.fnType(core.bool, [dart.dynamic, dart.dynamic], [units$.Units]),
+    [_isLeapYear]: dart.fnType(core.bool, [core.int])
+  }));
+  dart.setStaticMethodSignature(jiffy.Jiffy, () => ['_initializeLocale', 'locale', 'getAllAvailableLocales', 'isJiffy', 'isDateTime']);
+  dart.setGetterSignature(jiffy.Jiffy, () => ({
+    __proto__: dart.getGetters(jiffy.Jiffy.__proto__),
+    [_dateTime]: core.DateTime,
+    dateTime: core.DateTime,
+    millisecond: core.int,
+    second: core.int,
+    minute: core.int,
+    hour: core.int,
+    date: core.int,
+    day: core.int,
+    daysInMonth: core.int,
+    dayOfYear: core.int,
+    week: core.int,
+    month: core.int,
+    quarter: core.int,
+    year: core.int,
+    E: core.String,
+    EEEE: core.String,
+    LLL: core.String,
+    LLLL: core.String,
+    Md: core.String,
+    MEd: core.String,
+    MMM: core.String,
+    MMMd: core.String,
+    MMMEd: core.String,
+    MMMM: core.String,
+    MMMMd: core.String,
+    MMMMEEEEd: core.String,
+    QQQ: core.String,
+    QQQQ: core.String,
+    yM: core.String,
+    yMd: core.String,
+    yMEd: core.String,
+    yMMM: core.String,
+    yMMMd: core.String,
+    yMMMdjm: core.String,
+    yMMMEd: core.String,
+    yMMMEdjm: core.String,
+    yMMMM: core.String,
+    yMMMMd: core.String,
+    yMMMMdjm: core.String,
+    yMMMMEEEEd: core.String,
+    yMMMMEEEEdjm: core.String,
+    yQQQ: core.String,
+    yQQQQ: core.String,
+    Hm: core.String,
+    Hms: core.String,
+    j: core.String,
+    jm: core.String,
+    jms: core.String,
+    isLeapYear: core.bool
+  }));
+  dart.setSetterSignature(jiffy.Jiffy, () => ({
+    __proto__: dart.getSetters(jiffy.Jiffy.__proto__),
+    [_dateTime]: core.DateTime
+  }));
+  dart.setStaticGetterSignature(jiffy.Jiffy, () => ['_defaultLocale']);
+  dart.setStaticSetterSignature(jiffy.Jiffy, () => ['_defaultLocale']);
+  dart.setLibraryUri(jiffy.Jiffy, I[0]);
+  dart.setFieldSignature(jiffy.Jiffy, () => ({
+    __proto__: dart.getFields(jiffy.Jiffy.__proto__),
+    [__Jiffy__dateTime]: dart.fieldType(dart.nullable(core.DateTime))
+  }));
+  dart.setStaticFieldSignature(jiffy.Jiffy, () => ['_#_defaultLocale', '_daysInMonthArray']);
+  dart.defineLazy(jiffy.Jiffy, {
+    /*jiffy.Jiffy['_#_defaultLocale']*/get ['_#_defaultLocale']() {
+      return null;
+    },
+    set ['_#_defaultLocale'](_) {},
+    /*jiffy.Jiffy._daysInMonthArray*/get _daysInMonthArray() {
+      return C[12] || CT.C12;
+    }
+  }, false);
+  dart.trackLibraries("packages/jiffy/src/jiffy.dart", {
+    "package:jiffy/src/jiffy.dart": jiffy
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["jiffy.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/jiffy/src/jiffy.dart.lib.js"}');
+  // Exports:
+  return {
+    src__jiffy: jiffy
+  };
+}));
+
+//# sourceMappingURL=jiffy.dart.lib.js.map

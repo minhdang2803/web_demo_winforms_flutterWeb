@@ -1,0 +1,571 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/widget/utils/util-helper.dart', 'packages/theme/src/ctmColor.dart', 'packages/widget/utils/setting_device/setting_device.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/elevated_button.dart', 'packages/widget/utils/cc_loading_utils.dart'], (function load__packages__widget__utils__ctmLabel_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__widget__utils__util_helper$46dart, packages__theme__src__ctmColor$46dart, packages__widget__utils__setting_device__setting_device$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__elevated_button$46dart, packages__widget__utils__cc_loading_utils$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const text$ = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const gesture_detector = packages__flutter__src__widgets__title$46dart.src__widgets__gesture_detector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const util_helper = packages__widget__utils__util_helper$46dart.utils__util_helper;
+  const ctmColor = packages__theme__src__ctmColor$46dart.src__ctmColor;
+  const setting_device = packages__widget__utils__setting_device__setting_device$46dart.utils__setting_device__setting_device;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  const text_painter = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_painter;
+  const button_theme = packages__flutter__src__material__icon_button$46dart.src__material__button_theme;
+  const color_scheme = packages__flutter__src__material__icon_button$46dart.src__material__color_scheme;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const elevated_button = packages__flutter__src__material__elevated_button$46dart.src__material__elevated_button;
+  const cc_loading_utils = packages__widget__utils__cc_loading_utils$46dart.utils__cc_loading_utils;
+  var ctmLabel = Object.create(dart.library);
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfTextSpan: () => (T.JSArrayOfTextSpan = dart.constFn(_interceptors.JSArray$(text_span.TextSpan)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CtmLabel",
+        [_Location_column]: 3,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RichText",
+        [_Location_column]: 14,
+        [_Location_line]: 137,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 14,
+        [_Location_line]: 144,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 18,
+        [_Location_line]: 163,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 16,
+        [_Location_line]: 161,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 15,
+        [EdgeInsets_top]: 15,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278290310.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281794739.0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289724448.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278442694.0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284612846.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_Enum__name]: "light",
+        [_Enum_index]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: color_scheme.ColorScheme.prototype,
+        [ColorScheme__secondaryVariant]: C[7] || CT.C7,
+        [ColorScheme__primaryVariant]: C[8] || CT.C8,
+        [ColorScheme__surfaceTint]: null,
+        [ColorScheme__inversePrimary]: null,
+        [ColorScheme__onInverseSurface]: null,
+        [ColorScheme__inverseSurface]: null,
+        [ColorScheme__shadow]: null,
+        [ColorScheme__outline]: null,
+        [ColorScheme__onSurfaceVariant]: null,
+        [ColorScheme__surfaceVariant]: null,
+        [ColorScheme_onSurface]: C[9] || CT.C9,
+        [ColorScheme_surface]: C[10] || CT.C10,
+        [ColorScheme_onBackground]: C[9] || CT.C9,
+        [ColorScheme_background]: C[10] || CT.C10,
+        [ColorScheme__onErrorContainer]: null,
+        [ColorScheme__errorContainer]: null,
+        [ColorScheme_onError]: C[10] || CT.C10,
+        [ColorScheme_error]: C[11] || CT.C11,
+        [ColorScheme__onTertiaryContainer]: null,
+        [ColorScheme__tertiaryContainer]: null,
+        [ColorScheme__onTertiary]: null,
+        [ColorScheme__tertiary]: null,
+        [ColorScheme__onSecondaryContainer]: null,
+        [ColorScheme__secondaryContainer]: null,
+        [ColorScheme_onSecondary]: C[9] || CT.C9,
+        [ColorScheme_secondary]: C[12] || CT.C12,
+        [ColorScheme__onPrimaryContainer]: null,
+        [ColorScheme__primaryContainer]: null,
+        [ColorScheme_onPrimary]: C[10] || CT.C10,
+        [ColorScheme_primary]: C[13] || CT.C13,
+        [ColorScheme_brightness]: C[14] || CT.C14
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ElevatedButton",
+        [_Location_column]: 18,
+        [_Location_line]: 187,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ButtonTheme",
+        [_Location_column]: 16,
+        [_Location_line]: 174,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 14,
+        [_Location_line]: 171,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/cci.web.flutter/Client/modules/widget/lib/utils/ctmLabel.dart"
+      });
+    }
+  }, false);
+  var C = Array(19).fill(void 0);
+  var I = ["package:widget/utils/ctmLabel.dart"];
+  var label$ = dart.privateName(ctmLabel, "CtmLabel.label");
+  var fontSize$ = dart.privateName(ctmLabel, "CtmLabel.fontSize");
+  var isDebug$ = dart.privateName(ctmLabel, "CtmLabel.isDebug");
+  var maxLines$ = dart.privateName(ctmLabel, "CtmLabel.maxLines");
+  var overflow$ = dart.privateName(ctmLabel, "CtmLabel.overflow");
+  var textAlign$ = dart.privateName(ctmLabel, "CtmLabel.textAlign");
+  var textSpans$ = dart.privateName(ctmLabel, "CtmLabel.textSpans");
+  var truncateAt$ = dart.privateName(ctmLabel, "CtmLabel.truncateAt");
+  var fontWeight$ = dart.privateName(ctmLabel, "CtmLabel.fontWeight");
+  var viewType$ = dart.privateName(ctmLabel, "CtmLabel.viewType");
+  var color$ = dart.privateName(ctmLabel, "CtmLabel.color");
+  var decoration$ = dart.privateName(ctmLabel, "CtmLabel.decoration");
+  var onTap$ = dart.privateName(ctmLabel, "CtmLabel.onTap");
+  var isTextTap$ = dart.privateName(ctmLabel, "CtmLabel.isTextTap");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorScheme__secondaryVariant = dart.privateName(color_scheme, "ColorScheme._secondaryVariant");
+  var ColorScheme__primaryVariant = dart.privateName(color_scheme, "ColorScheme._primaryVariant");
+  var ColorScheme__surfaceTint = dart.privateName(color_scheme, "ColorScheme._surfaceTint");
+  var ColorScheme__inversePrimary = dart.privateName(color_scheme, "ColorScheme._inversePrimary");
+  var ColorScheme__onInverseSurface = dart.privateName(color_scheme, "ColorScheme._onInverseSurface");
+  var ColorScheme__inverseSurface = dart.privateName(color_scheme, "ColorScheme._inverseSurface");
+  var ColorScheme__shadow = dart.privateName(color_scheme, "ColorScheme._shadow");
+  var ColorScheme__outline = dart.privateName(color_scheme, "ColorScheme._outline");
+  var ColorScheme__onSurfaceVariant = dart.privateName(color_scheme, "ColorScheme._onSurfaceVariant");
+  var ColorScheme__surfaceVariant = dart.privateName(color_scheme, "ColorScheme._surfaceVariant");
+  var ColorScheme_onSurface = dart.privateName(color_scheme, "ColorScheme.onSurface");
+  var ColorScheme_surface = dart.privateName(color_scheme, "ColorScheme.surface");
+  var ColorScheme_onBackground = dart.privateName(color_scheme, "ColorScheme.onBackground");
+  var ColorScheme_background = dart.privateName(color_scheme, "ColorScheme.background");
+  var ColorScheme__onErrorContainer = dart.privateName(color_scheme, "ColorScheme._onErrorContainer");
+  var ColorScheme__errorContainer = dart.privateName(color_scheme, "ColorScheme._errorContainer");
+  var ColorScheme_onError = dart.privateName(color_scheme, "ColorScheme.onError");
+  var ColorScheme_error = dart.privateName(color_scheme, "ColorScheme.error");
+  var ColorScheme__onTertiaryContainer = dart.privateName(color_scheme, "ColorScheme._onTertiaryContainer");
+  var ColorScheme__tertiaryContainer = dart.privateName(color_scheme, "ColorScheme._tertiaryContainer");
+  var ColorScheme__onTertiary = dart.privateName(color_scheme, "ColorScheme._onTertiary");
+  var ColorScheme__tertiary = dart.privateName(color_scheme, "ColorScheme._tertiary");
+  var ColorScheme__onSecondaryContainer = dart.privateName(color_scheme, "ColorScheme._onSecondaryContainer");
+  var ColorScheme__secondaryContainer = dart.privateName(color_scheme, "ColorScheme._secondaryContainer");
+  var ColorScheme_onSecondary = dart.privateName(color_scheme, "ColorScheme.onSecondary");
+  var ColorScheme_secondary = dart.privateName(color_scheme, "ColorScheme.secondary");
+  var ColorScheme__onPrimaryContainer = dart.privateName(color_scheme, "ColorScheme._onPrimaryContainer");
+  var ColorScheme__primaryContainer = dart.privateName(color_scheme, "ColorScheme._primaryContainer");
+  var ColorScheme_onPrimary = dart.privateName(color_scheme, "ColorScheme.onPrimary");
+  var ColorScheme_primary = dart.privateName(color_scheme, "ColorScheme.primary");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var ColorScheme_brightness = dart.privateName(color_scheme, "ColorScheme.brightness");
+  ctmLabel.CtmLabel = class CtmLabel extends framework.StatelessWidget {
+    get label() {
+      return this[label$];
+    }
+    set label(value) {
+      this[label$] = value;
+    }
+    get fontSize() {
+      return this[fontSize$];
+    }
+    set fontSize(value) {
+      this[fontSize$] = value;
+    }
+    get isDebug() {
+      return this[isDebug$];
+    }
+    set isDebug(value) {
+      this[isDebug$] = value;
+    }
+    get maxLines() {
+      return this[maxLines$];
+    }
+    set maxLines(value) {
+      this[maxLines$] = value;
+    }
+    get overflow() {
+      return this[overflow$];
+    }
+    set overflow(value) {
+      this[overflow$] = value;
+    }
+    get textAlign() {
+      return this[textAlign$];
+    }
+    set textAlign(value) {
+      this[textAlign$] = value;
+    }
+    get textSpans() {
+      return this[textSpans$];
+    }
+    set textSpans(value) {
+      this[textSpans$] = value;
+    }
+    get truncateAt() {
+      return this[truncateAt$];
+    }
+    set truncateAt(value) {
+      this[truncateAt$] = value;
+    }
+    get fontWeight() {
+      return this[fontWeight$];
+    }
+    set fontWeight(value) {
+      this[fontWeight$] = value;
+    }
+    get viewType() {
+      return this[viewType$];
+    }
+    set viewType(value) {
+      this[viewType$] = value;
+    }
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      this[color$] = value;
+    }
+    get decoration() {
+      return this[decoration$];
+    }
+    set decoration(value) {
+      this[decoration$] = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      this[onTap$] = value;
+    }
+    get isTextTap() {
+      return this[isTextTap$];
+    }
+    set isTextTap(value) {
+      this[isTextTap$] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+      let label = opts && 'label' in opts ? opts.label : "";
+      let textSpans = opts && 'textSpans' in opts ? opts.textSpans : null;
+      let truncateAt = opts && 'truncateAt' in opts ? opts.truncateAt : 0;
+      let fontSize = opts && 'fontSize' in opts ? opts.fontSize : null;
+      let fontWeight = opts && 'fontWeight' in opts ? opts.fontWeight : null;
+      let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+      let isDebug = opts && 'isDebug' in opts ? opts.isDebug : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let maxLines = opts && 'maxLines' in opts ? opts.maxLines : null;
+      let overflow = opts && 'overflow' in opts ? opts.overflow : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let isTextTap = opts && 'isTextTap' in opts ? opts.isTextTap : false;
+      let textAlign = opts && 'textAlign' in opts ? opts.textAlign : null;
+      return new ctmLabel.CtmLabel.new({key: key, viewType: viewType, label: label, textSpans: textSpans, truncateAt: truncateAt, fontSize: fontSize, fontWeight: fontWeight, decoration: decoration, isDebug: isDebug, color: color, maxLines: maxLines, overflow: overflow, onTap: onTap, isTextTap: isTextTap, textAlign: textAlign, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    build(context) {
+      if (this.isDebug === true) {
+        util_helper.UtilHelper.printCustom(dart.str(this.label) + " print debug");
+      }
+      if (this.viewType === ctmLabel.CtmLabel.vtH1Bold) {
+        this.fontWeight = ui.FontWeight.w800;
+        this.color == null ? this.color = ctmColor.CtmColor.black : null;
+        this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0);
+      } else if (this.viewType === ctmLabel.CtmLabel.vtH2Normal) {
+        this.color == null ? this.color = ctmColor.CtmColor.black : null;
+        this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(12.0) : null;
+      } else if (this.viewType === ctmLabel.CtmLabel.vtH2Bold) {
+        this.fontWeight = ui.FontWeight.w800;
+        this.color == null ? this.color = ctmColor.CtmColor.black : null;
+        this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(12.0) : null;
+      } else if (this.viewType === ctmLabel.CtmLabel.vtH1Normal) {
+        this.color == null ? this.color = ctmColor.CtmColor.black : null;
+        this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0) : null;
+      } else if (this.viewType === ctmLabel.CtmLabel.vtH1_Ver1_Blue) {
+        this.color == null ? this.color = ctmColor.CtmColor.blue : null;
+        this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0) : null;
+      } else if (this.viewType === ctmLabel.CtmLabel.vtH1_Ver1_BlueBold) {
+        this.color == null ? this.color = ctmColor.CtmColor.blue : null;
+        this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0) : null;
+        this.fontWeight = ui.FontWeight.w800;
+      } else if (this.viewType === ctmLabel.CtmLabel.viewType_Alink) {
+        this.fontWeight = ui.FontWeight.w800;
+        this.color = ctmColor.CtmColor.blue;
+      } else if (this.viewType === ctmLabel.CtmLabel.viewType_Money_Ver1) {
+        this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0);
+        this.fontWeight = ui.FontWeight.w800;
+        this.color == null ? this.color = ctmColor.CtmColor.pinkLower : null;
+      } else if (this.viewType === ctmLabel.CtmLabel.viewType_Money_Ver2) {
+        this.fontWeight = ui.FontWeight.w800;
+        this.color = ctmColor.CtmColor.pinkLower;
+        this.fontSize = setting_device.SettingDevice.fontSizeAuto(25.0);
+      } else if (this.viewType === ctmLabel.CtmLabel.viewType_Money_Ver3) {
+        this.fontSize = setting_device.SettingDevice.fontSizeAuto(14.0);
+        this.decoration = ui.TextDecoration.lineThrough;
+        this.color = colors.Colors.grey;
+      }
+      this.fontWeight == null ? this.fontWeight = ui.FontWeight.w600 : null;
+      this.fontSize == null ? this.fontSize = setting_device.SettingDevice.fontSizeAuto(12.0) : null;
+      this.color == null ? this.color = ctmColor.CtmColor.black : null;
+      if (this.truncateAt > 0) {
+        this.label = util_helper.UtilHelper.truncatedText({str: dart.nullCheck(this.label), truncateAt: this.truncateAt});
+      }
+      if (this.viewType === ctmLabel.CtmLabel.viewType_NoColor) {
+        this.color = null;
+      }
+      let style = new text_style.TextStyle.new({fontFamily: "Montserrat", fontSize: this.fontSize, fontWeight: this.fontWeight, color: this.color, decoration: this.decoration});
+      let text = null;
+      if (this.textSpans != null) {
+        let lst = T.JSArrayOfTextSpan().of([]);
+        for (let item of dart.nullCheck(this.textSpans)) {
+          lst[$add](new text_span.TextSpan.new({text: item.text, style: item.style == null ? null : style.copyWith({color: dart.nullCheck(item.style).color, fontWeight: dart.nullCheck(item.style).fontWeight}), recognizer: item.recognizer}));
+        }
+        text = new basic.RichText.new({text: new text_span.TextSpan.new({style: style, children: lst}), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+      } else {
+        text = new text$.Text.new(dart.nullCheck(this.label), {style: style, overflow: this.overflow, maxLines: this.maxLines, softWrap: true, textAlign: this.textAlign, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+      }
+      if (this.onTap != null) {
+        if (this.isTextTap) {
+          return new container.Container.new({color: colors.Colors.transparent, child: new gesture_detector.GestureDetector.new({onTap: dart.fn(() => {
+                if (this.onTap != null) dart.nullCheck(this.onTap)();
+              }, T.VoidTovoid()), child: text, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+        }
+        return new container.Container.new({height: 30.0, child: new button_theme.ButtonTheme.new({minWidth: 0.0, height: 0.0, padding: C[5] || CT.C5, splashColor: colors.Colors.transparent, focusColor: colors.Colors.transparent, highlightColor: colors.Colors.transparent, hoverColor: colors.Colors.transparent, colorScheme: C[6] || CT.C6, child: new elevated_button.ElevatedButton.new({style: elevated_button.ElevatedButton.styleFrom({primary: colors.Colors.transparent, elevation: 0.0, padding: C[15] || CT.C15}), onPressed: dart.fn(() => {
+                if (cc_loading_utils.CcLoadingUtils.instance.isLoading) {
+                  return;
+                }
+                dart.nullCheck(this.onTap)();
+              }, T.VoidTovoid()), child: text, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+      }
+      return text;
+    }
+  };
+  (ctmLabel.CtmLabel.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
+    let label = opts && 'label' in opts ? opts.label : "";
+    let textSpans = opts && 'textSpans' in opts ? opts.textSpans : null;
+    let truncateAt = opts && 'truncateAt' in opts ? opts.truncateAt : 0;
+    let fontSize = opts && 'fontSize' in opts ? opts.fontSize : null;
+    let fontWeight = opts && 'fontWeight' in opts ? opts.fontWeight : null;
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let isDebug = opts && 'isDebug' in opts ? opts.isDebug : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let maxLines = opts && 'maxLines' in opts ? opts.maxLines : null;
+    let overflow = opts && 'overflow' in opts ? opts.overflow : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let isTextTap = opts && 'isTextTap' in opts ? opts.isTextTap : false;
+    let textAlign = opts && 'textAlign' in opts ? opts.textAlign : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[viewType$] = viewType;
+    this[label$] = label;
+    this[textSpans$] = textSpans;
+    this[truncateAt$] = truncateAt;
+    this[fontSize$] = fontSize;
+    this[fontWeight$] = fontWeight;
+    this[decoration$] = decoration;
+    this[isDebug$] = isDebug;
+    this[color$] = color;
+    this[maxLines$] = maxLines;
+    this[overflow$] = overflow;
+    this[onTap$] = onTap;
+    this[isTextTap$] = isTextTap;
+    this[textAlign$] = textAlign;
+    ctmLabel.CtmLabel.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = ctmLabel.CtmLabel.prototype;
+  dart.addTypeTests(ctmLabel.CtmLabel);
+  dart.addTypeCaches(ctmLabel.CtmLabel);
+  dart.setMethodSignature(ctmLabel.CtmLabel, () => ({
+    __proto__: dart.getMethods(ctmLabel.CtmLabel.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(ctmLabel.CtmLabel, I[0]);
+  dart.setFieldSignature(ctmLabel.CtmLabel, () => ({
+    __proto__: dart.getFields(ctmLabel.CtmLabel.__proto__),
+    label: dart.fieldType(dart.nullable(core.String)),
+    fontSize: dart.fieldType(dart.nullable(core.double)),
+    isDebug: dart.fieldType(dart.nullable(core.bool)),
+    maxLines: dart.fieldType(dart.nullable(core.int)),
+    overflow: dart.fieldType(dart.nullable(text_painter.TextOverflow)),
+    textAlign: dart.fieldType(dart.nullable(ui.TextAlign)),
+    textSpans: dart.fieldType(dart.nullable(core.List$(text_span.TextSpan))),
+    truncateAt: dart.fieldType(core.int),
+    fontWeight: dart.fieldType(dart.nullable(ui.FontWeight)),
+    viewType: dart.fieldType(dart.nullable(core.int)),
+    color: dart.fieldType(dart.nullable(ui.Color)),
+    decoration: dart.fieldType(dart.nullable(ui.TextDecoration)),
+    onTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    isTextTap: dart.fieldType(core.bool)
+  }));
+  dart.setStaticFieldSignature(ctmLabel.CtmLabel, () => ['vtH1Bold', 'vtH1Normal', 'vtH1BoldLower', 'vtH2Bold', 'vtH2Normal', 'vtH1_Ver1_Blue', 'vtH1_Ver1_BlueBold', 'viewType_Alink', 'viewType_Money_Ver1', 'viewType_Money_Ver2', 'viewType_Money_Ver3', 'viewType_NoColor']);
+  dart.defineLazy(ctmLabel.CtmLabel, {
+    /*ctmLabel.CtmLabel.vtH1Bold*/get vtH1Bold() {
+      return 1;
+    },
+    set vtH1Bold(_) {},
+    /*ctmLabel.CtmLabel.vtH1Normal*/get vtH1Normal() {
+      return 2;
+    },
+    set vtH1Normal(_) {},
+    /*ctmLabel.CtmLabel.vtH1BoldLower*/get vtH1BoldLower() {
+      return 3;
+    },
+    set vtH1BoldLower(_) {},
+    /*ctmLabel.CtmLabel.vtH2Bold*/get vtH2Bold() {
+      return 31;
+    },
+    set vtH2Bold(_) {},
+    /*ctmLabel.CtmLabel.vtH2Normal*/get vtH2Normal() {
+      return 32;
+    },
+    set vtH2Normal(_) {},
+    /*ctmLabel.CtmLabel.vtH1_Ver1_Blue*/get vtH1_Ver1_Blue() {
+      return 4;
+    },
+    set vtH1_Ver1_Blue(_) {},
+    /*ctmLabel.CtmLabel.vtH1_Ver1_BlueBold*/get vtH1_Ver1_BlueBold() {
+      return 5;
+    },
+    set vtH1_Ver1_BlueBold(_) {},
+    /*ctmLabel.CtmLabel.viewType_Alink*/get viewType_Alink() {
+      return 6;
+    },
+    set viewType_Alink(_) {},
+    /*ctmLabel.CtmLabel.viewType_Money_Ver1*/get viewType_Money_Ver1() {
+      return 7;
+    },
+    set viewType_Money_Ver1(_) {},
+    /*ctmLabel.CtmLabel.viewType_Money_Ver2*/get viewType_Money_Ver2() {
+      return 8;
+    },
+    set viewType_Money_Ver2(_) {},
+    /*ctmLabel.CtmLabel.viewType_Money_Ver3*/get viewType_Money_Ver3() {
+      return 9;
+    },
+    set viewType_Money_Ver3(_) {},
+    /*ctmLabel.CtmLabel.viewType_NoColor*/get viewType_NoColor() {
+      return 10;
+    },
+    set viewType_NoColor(_) {}
+  }, false);
+  dart.trackLibraries("packages/widget/utils/ctmLabel.dart", {
+    "package:widget/utils/ctmLabel.dart": ctmLabel
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["ctmLabel.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/widget/utils/ctmLabel.dart.lib.js"}');
+  // Exports:
+  return {
+    utils__ctmLabel: ctmLabel
+  };
+}));
+
+//# sourceMappingURL=ctmLabel.dart.lib.js.map

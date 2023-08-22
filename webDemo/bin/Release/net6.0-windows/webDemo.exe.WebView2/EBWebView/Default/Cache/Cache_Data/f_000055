@@ -1,0 +1,409 @@
+define(['dart_sdk'], (function load__packages__data__entities__model__gifts__gifts_entity_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var gifts_entity = Object.create(dart.library);
+  var $_set = dartx._set;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:data/entities/model/gifts/gifts_entity.dart"];
+  var totalRecord$ = dart.privateName(gifts_entity, "GiftEntity.totalRecord");
+  var oscsid$ = dart.privateName(gifts_entity, "GiftEntity.oscsid");
+  var clearStockID$ = dart.privateName(gifts_entity, "GiftEntity.clearStockID");
+  var storeID$ = dart.privateName(gifts_entity, "GiftEntity.storeID");
+  var referenceID$ = dart.privateName(gifts_entity, "GiftEntity.referenceID");
+  var productName$ = dart.privateName(gifts_entity, "GiftEntity.productName");
+  var maxQuantity$ = dart.privateName(gifts_entity, "GiftEntity.maxQuantity");
+  var outputQuantity$ = dart.privateName(gifts_entity, "GiftEntity.outputQuantity");
+  var vat$ = dart.privateName(gifts_entity, "GiftEntity.vat");
+  var priceAfterVAT$ = dart.privateName(gifts_entity, "GiftEntity.priceAfterVAT");
+  var createdDate$ = dart.privateName(gifts_entity, "GiftEntity.createdDate");
+  var createdUserName$ = dart.privateName(gifts_entity, "GiftEntity.createdUserName");
+  var createdFullName$ = dart.privateName(gifts_entity, "GiftEntity.createdFullName");
+  var defectID$ = dart.privateName(gifts_entity, "GiftEntity.defectID");
+  var backgroundMobileFirst$ = dart.privateName(gifts_entity, "GiftEntity.backgroundMobileFirst");
+  var backgroundMobileSecond$ = dart.privateName(gifts_entity, "GiftEntity.backgroundMobileSecond");
+  var maxQuantityOrder$ = dart.privateName(gifts_entity, "GiftEntity.maxQuantityOrder");
+  var categoryID$ = dart.privateName(gifts_entity, "GiftEntity.categoryID");
+  var customerMemberTypeID$ = dart.privateName(gifts_entity, "GiftEntity.customerMemberTypeID");
+  var fixedQuantity$ = dart.privateName(gifts_entity, "GiftEntity.fixedQuantity");
+  var stockQuantity$ = dart.privateName(gifts_entity, "GiftEntity.stockQuantity");
+  var version = dart.privateName(gifts_entity, "GiftEntity.version");
+  var __GiftEntity_pid = dart.privateName(gifts_entity, "_#GiftEntity#pid");
+  var __GiftEntity_productID = dart.privateName(gifts_entity, "_#GiftEntity#productID");
+  gifts_entity.GiftEntity = class GiftEntity extends core.Object {
+    get totalRecord() {
+      return this[totalRecord$];
+    }
+    set totalRecord(value) {
+      this[totalRecord$] = value;
+    }
+    get oscsid() {
+      return this[oscsid$];
+    }
+    set oscsid(value) {
+      this[oscsid$] = value;
+    }
+    get clearStockID() {
+      return this[clearStockID$];
+    }
+    set clearStockID(value) {
+      this[clearStockID$] = value;
+    }
+    get storeID() {
+      return this[storeID$];
+    }
+    set storeID(value) {
+      this[storeID$] = value;
+    }
+    get referenceID() {
+      return this[referenceID$];
+    }
+    set referenceID(value) {
+      this[referenceID$] = value;
+    }
+    get productName() {
+      return this[productName$];
+    }
+    set productName(value) {
+      this[productName$] = value;
+    }
+    get maxQuantity() {
+      return this[maxQuantity$];
+    }
+    set maxQuantity(value) {
+      this[maxQuantity$] = value;
+    }
+    get outputQuantity() {
+      return this[outputQuantity$];
+    }
+    set outputQuantity(value) {
+      this[outputQuantity$] = value;
+    }
+    get vat() {
+      return this[vat$];
+    }
+    set vat(value) {
+      this[vat$] = value;
+    }
+    get priceAfterVAT() {
+      return this[priceAfterVAT$];
+    }
+    set priceAfterVAT(value) {
+      this[priceAfterVAT$] = value;
+    }
+    get createdDate() {
+      return this[createdDate$];
+    }
+    set createdDate(value) {
+      this[createdDate$] = value;
+    }
+    get createdUserName() {
+      return this[createdUserName$];
+    }
+    set createdUserName(value) {
+      this[createdUserName$] = value;
+    }
+    get createdFullName() {
+      return this[createdFullName$];
+    }
+    set createdFullName(value) {
+      this[createdFullName$] = value;
+    }
+    get defectID() {
+      return this[defectID$];
+    }
+    set defectID(value) {
+      this[defectID$] = value;
+    }
+    get backgroundMobileFirst() {
+      return this[backgroundMobileFirst$];
+    }
+    set backgroundMobileFirst(value) {
+      this[backgroundMobileFirst$] = value;
+    }
+    get backgroundMobileSecond() {
+      return this[backgroundMobileSecond$];
+    }
+    set backgroundMobileSecond(value) {
+      this[backgroundMobileSecond$] = value;
+    }
+    get maxQuantityOrder() {
+      return this[maxQuantityOrder$];
+    }
+    set maxQuantityOrder(value) {
+      this[maxQuantityOrder$] = value;
+    }
+    get categoryID() {
+      return this[categoryID$];
+    }
+    set categoryID(value) {
+      this[categoryID$] = value;
+    }
+    get customerMemberTypeID() {
+      return this[customerMemberTypeID$];
+    }
+    set customerMemberTypeID(value) {
+      this[customerMemberTypeID$] = value;
+    }
+    get fixedQuantity() {
+      return this[fixedQuantity$];
+    }
+    set fixedQuantity(value) {
+      this[fixedQuantity$] = value;
+    }
+    get stockQuantity() {
+      return this[stockQuantity$];
+    }
+    set stockQuantity(value) {
+      this[stockQuantity$] = value;
+    }
+    get version() {
+      return this[version];
+    }
+    set version(value) {
+      this[version] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let totalRecord = opts && 'totalRecord' in opts ? opts.totalRecord : null;
+      let oscsid = opts && 'oscsid' in opts ? opts.oscsid : null;
+      let clearStockID = opts && 'clearStockID' in opts ? opts.clearStockID : null;
+      let storeID = opts && 'storeID' in opts ? opts.storeID : null;
+      let pid = opts && 'pid' in opts ? opts.pid : null;
+      let referenceID = opts && 'referenceID' in opts ? opts.referenceID : null;
+      let productName = opts && 'productName' in opts ? opts.productName : null;
+      let productID = opts && 'productID' in opts ? opts.productID : null;
+      let maxQuantity = opts && 'maxQuantity' in opts ? opts.maxQuantity : null;
+      let outputQuantity = opts && 'outputQuantity' in opts ? opts.outputQuantity : null;
+      let vat = opts && 'vat' in opts ? opts.vat : null;
+      let priceAfterVAT = opts && 'priceAfterVAT' in opts ? opts.priceAfterVAT : null;
+      let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+      let createdUserName = opts && 'createdUserName' in opts ? opts.createdUserName : null;
+      let createdFullName = opts && 'createdFullName' in opts ? opts.createdFullName : null;
+      let defectID = opts && 'defectID' in opts ? opts.defectID : null;
+      let maxQuantityOrder = opts && 'maxQuantityOrder' in opts ? opts.maxQuantityOrder : null;
+      let categoryID = opts && 'categoryID' in opts ? opts.categoryID : null;
+      let customerMemberTypeID = opts && 'customerMemberTypeID' in opts ? opts.customerMemberTypeID : null;
+      let fixedQuantity = opts && 'fixedQuantity' in opts ? opts.fixedQuantity : null;
+      let backgroundMobileFirst = opts && 'backgroundMobileFirst' in opts ? opts.backgroundMobileFirst : null;
+      let backgroundMobileSecond = opts && 'backgroundMobileSecond' in opts ? opts.backgroundMobileSecond : null;
+      let stockQuantity = opts && 'stockQuantity' in opts ? opts.stockQuantity : null;
+      return new gifts_entity.GiftEntity.new({totalRecord: totalRecord, oscsid: oscsid, clearStockID: clearStockID, storeID: storeID, pid: pid, referenceID: referenceID, productName: productName, productID: productID, maxQuantity: maxQuantity, outputQuantity: outputQuantity, vat: vat, priceAfterVAT: priceAfterVAT, createdDate: createdDate, createdUserName: createdUserName, createdFullName: createdFullName, defectID: defectID, maxQuantityOrder: maxQuantityOrder, categoryID: categoryID, customerMemberTypeID: customerMemberTypeID, fixedQuantity: fixedQuantity, backgroundMobileFirst: backgroundMobileFirst, backgroundMobileSecond: backgroundMobileSecond, stockQuantity: stockQuantity});
+    }
+    static ['_#fromJson#tearOff'](json) {
+      return new gifts_entity.GiftEntity.fromJson(json);
+    }
+    get pid() {
+      let t0;
+      t0 = this[__GiftEntity_pid];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("pid")) : t0;
+    }
+    set pid(pid$35param) {
+      this[__GiftEntity_pid] = pid$35param;
+    }
+    get productID() {
+      let t0;
+      t0 = this[__GiftEntity_productID];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("productID")) : t0;
+    }
+    set productID(productID$35param) {
+      this[__GiftEntity_productID] = productID$35param;
+    }
+    toJson() {
+      let map = new (T.IdentityMapOfString$dynamic()).new();
+      map[$_set]("TotalRecord", this.totalRecord);
+      map[$_set]("OSCSID", this.oscsid);
+      map[$_set]("ClearStockID", this.clearStockID);
+      map[$_set]("StoreID", this.storeID);
+      map[$_set]("PID", this.pid);
+      map[$_set]("ReferenceID", this.referenceID);
+      map[$_set]("ProductName", this.productName);
+      map[$_set]("ProductID", this.productID);
+      map[$_set]("MaxQuantity", this.maxQuantity);
+      map[$_set]("OutputQuantity", this.outputQuantity);
+      map[$_set]("VAT", this.vat);
+      map[$_set]("PriceAfterVAT", this.priceAfterVAT);
+      map[$_set]("CreatedDate", this.createdDate);
+      map[$_set]("CreatedUserName", this.createdUserName);
+      map[$_set]("CreatedFullName", this.createdFullName);
+      map[$_set]("DefectID", this.defectID);
+      map[$_set]("MaxQuantityOrder", this.maxQuantityOrder);
+      map[$_set]("CategoryID", this.categoryID);
+      map[$_set]("CustomerMemberTypeID", this.customerMemberTypeID);
+      map[$_set]("FixedQuantity", this.fixedQuantity);
+      map[$_set]("StockQuantity", this.stockQuantity);
+      map[$_set]("BackgroundMobileFirst", this.backgroundMobileFirst);
+      map[$_set]("BackgroundMobileSecond", this.backgroundMobileSecond);
+      map[$_set]("Version", this.version);
+      return map;
+    }
+  };
+  (gifts_entity.GiftEntity.new = function(opts) {
+    let totalRecord = opts && 'totalRecord' in opts ? opts.totalRecord : null;
+    let oscsid = opts && 'oscsid' in opts ? opts.oscsid : null;
+    let clearStockID = opts && 'clearStockID' in opts ? opts.clearStockID : null;
+    let storeID = opts && 'storeID' in opts ? opts.storeID : null;
+    let pid = opts && 'pid' in opts ? opts.pid : null;
+    let referenceID = opts && 'referenceID' in opts ? opts.referenceID : null;
+    let productName = opts && 'productName' in opts ? opts.productName : null;
+    let productID = opts && 'productID' in opts ? opts.productID : null;
+    let maxQuantity = opts && 'maxQuantity' in opts ? opts.maxQuantity : null;
+    let outputQuantity = opts && 'outputQuantity' in opts ? opts.outputQuantity : null;
+    let vat = opts && 'vat' in opts ? opts.vat : null;
+    let priceAfterVAT = opts && 'priceAfterVAT' in opts ? opts.priceAfterVAT : null;
+    let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+    let createdUserName = opts && 'createdUserName' in opts ? opts.createdUserName : null;
+    let createdFullName = opts && 'createdFullName' in opts ? opts.createdFullName : null;
+    let defectID = opts && 'defectID' in opts ? opts.defectID : null;
+    let maxQuantityOrder = opts && 'maxQuantityOrder' in opts ? opts.maxQuantityOrder : null;
+    let categoryID = opts && 'categoryID' in opts ? opts.categoryID : null;
+    let customerMemberTypeID = opts && 'customerMemberTypeID' in opts ? opts.customerMemberTypeID : null;
+    let fixedQuantity = opts && 'fixedQuantity' in opts ? opts.fixedQuantity : null;
+    let backgroundMobileFirst = opts && 'backgroundMobileFirst' in opts ? opts.backgroundMobileFirst : null;
+    let backgroundMobileSecond = opts && 'backgroundMobileSecond' in opts ? opts.backgroundMobileSecond : null;
+    let stockQuantity = opts && 'stockQuantity' in opts ? opts.stockQuantity : null;
+    this[__GiftEntity_pid] = null;
+    this[__GiftEntity_productID] = null;
+    this[version] = null;
+    this[totalRecord$] = totalRecord;
+    this[oscsid$] = oscsid;
+    this[clearStockID$] = clearStockID;
+    this[storeID$] = storeID;
+    this[__GiftEntity_pid] = pid;
+    this[referenceID$] = referenceID;
+    this[productName$] = productName;
+    this[__GiftEntity_productID] = productID;
+    this[maxQuantity$] = maxQuantity;
+    this[outputQuantity$] = outputQuantity;
+    this[vat$] = vat;
+    this[priceAfterVAT$] = priceAfterVAT;
+    this[createdDate$] = createdDate;
+    this[createdUserName$] = createdUserName;
+    this[createdFullName$] = createdFullName;
+    this[defectID$] = defectID;
+    this[maxQuantityOrder$] = maxQuantityOrder;
+    this[categoryID$] = categoryID;
+    this[customerMemberTypeID$] = customerMemberTypeID;
+    this[fixedQuantity$] = fixedQuantity;
+    this[backgroundMobileFirst$] = backgroundMobileFirst;
+    this[backgroundMobileSecond$] = backgroundMobileSecond;
+    this[stockQuantity$] = stockQuantity;
+    ;
+  }).prototype = gifts_entity.GiftEntity.prototype;
+  (gifts_entity.GiftEntity.fromJson = function(json) {
+    this[__GiftEntity_pid] = null;
+    this[__GiftEntity_productID] = null;
+    this[version] = null;
+    this[stockQuantity$] = null;
+    this[backgroundMobileSecond$] = null;
+    this[backgroundMobileFirst$] = null;
+    this[fixedQuantity$] = null;
+    this[customerMemberTypeID$] = null;
+    this[categoryID$] = null;
+    this[maxQuantityOrder$] = null;
+    this[defectID$] = null;
+    this[createdFullName$] = null;
+    this[createdUserName$] = null;
+    this[createdDate$] = null;
+    this[priceAfterVAT$] = null;
+    this[vat$] = null;
+    this[outputQuantity$] = null;
+    this[maxQuantity$] = null;
+    this[productName$] = null;
+    this[referenceID$] = null;
+    this[storeID$] = null;
+    this[clearStockID$] = null;
+    this[oscsid$] = null;
+    this[totalRecord$] = null;
+    this.totalRecord = T.intN().as(dart.dsend(json, '_get', ["TotalRecord"]));
+    this.oscsid = T.intN().as(dart.dsend(json, '_get', ["OSCSID"]));
+    this.clearStockID = dart.dsend(json, '_get', ["ClearStockID"]);
+    this.storeID = T.intN().as(dart.dsend(json, '_get', ["StoreID"]));
+    this.pid = core.int.as(dart.dsend(json, '_get', ["PID"]));
+    this.referenceID = dart.dsend(json, '_get', ["ReferenceID"]);
+    this.productName = T.StringN().as(dart.dsend(json, '_get', ["ProductName"]));
+    this.productID = core.String.as(dart.dsend(json, '_get', ["ProductID"]));
+    this.maxQuantity = T.intN().as(dart.dsend(json, '_get', ["MaxQuantity"]));
+    this.outputQuantity = dart.dsend(json, '_get', ["OutputQuantity"]);
+    this.vat = T.intN().as(dart.dsend(json, '_get', ["VAT"]));
+    this.priceAfterVAT = T.doubleN().as(dart.dsend(json, '_get', ["PriceAfterVAT"]));
+    this.createdDate = T.StringN().as(dart.dsend(json, '_get', ["CreatedDate"]));
+    this.createdUserName = dart.dsend(json, '_get', ["CreatedUserName"]);
+    this.createdFullName = dart.dsend(json, '_get', ["CreatedFullName"]);
+    this.defectID = T.StringN().as(dart.dsend(json, '_get', ["DefectID"]));
+    this.maxQuantityOrder = dart.dsend(json, '_get', ["MaxQuantityOrder"]);
+    this.categoryID = T.intN().as(dart.dsend(json, '_get', ["CategoryID"]));
+    this.customerMemberTypeID = T.intN().as(dart.dsend(json, '_get', ["CustomerMemberTypeID"]));
+    this.fixedQuantity = T.intN().as(dart.dsend(json, '_get', ["FixedQuantity"]));
+    this.backgroundMobileFirst = T.StringN().as(dart.dsend(json, '_get', ["BackgroundMobileFirst"]));
+    this.backgroundMobileSecond = T.StringN().as(dart.dsend(json, '_get', ["BackgroundMobileSecond"]));
+    this.stockQuantity = T.intN().as(dart.dsend(json, '_get', ["StockQuantity"]));
+    this.version = T.intN().as(dart.dsend(json, '_get', ["Version"]));
+  }).prototype = gifts_entity.GiftEntity.prototype;
+  dart.addTypeTests(gifts_entity.GiftEntity);
+  dart.addTypeCaches(gifts_entity.GiftEntity);
+  dart.setMethodSignature(gifts_entity.GiftEntity, () => ({
+    __proto__: dart.getMethods(gifts_entity.GiftEntity.__proto__),
+    toJson: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setGetterSignature(gifts_entity.GiftEntity, () => ({
+    __proto__: dart.getGetters(gifts_entity.GiftEntity.__proto__),
+    pid: core.int,
+    productID: core.String
+  }));
+  dart.setSetterSignature(gifts_entity.GiftEntity, () => ({
+    __proto__: dart.getSetters(gifts_entity.GiftEntity.__proto__),
+    pid: core.int,
+    productID: core.String
+  }));
+  dart.setLibraryUri(gifts_entity.GiftEntity, I[0]);
+  dart.setFieldSignature(gifts_entity.GiftEntity, () => ({
+    __proto__: dart.getFields(gifts_entity.GiftEntity.__proto__),
+    totalRecord: dart.fieldType(dart.nullable(core.int)),
+    oscsid: dart.fieldType(dart.nullable(core.int)),
+    clearStockID: dart.fieldType(dart.dynamic),
+    storeID: dart.fieldType(dart.nullable(core.int)),
+    [__GiftEntity_pid]: dart.fieldType(dart.nullable(core.int)),
+    referenceID: dart.fieldType(dart.dynamic),
+    productName: dart.fieldType(dart.nullable(core.String)),
+    [__GiftEntity_productID]: dart.fieldType(dart.nullable(core.String)),
+    maxQuantity: dart.fieldType(dart.nullable(core.int)),
+    outputQuantity: dart.fieldType(dart.dynamic),
+    vat: dart.fieldType(dart.nullable(core.int)),
+    priceAfterVAT: dart.fieldType(dart.nullable(core.double)),
+    createdDate: dart.fieldType(dart.nullable(core.String)),
+    createdUserName: dart.fieldType(dart.dynamic),
+    createdFullName: dart.fieldType(dart.dynamic),
+    defectID: dart.fieldType(dart.nullable(core.String)),
+    backgroundMobileFirst: dart.fieldType(dart.nullable(core.String)),
+    backgroundMobileSecond: dart.fieldType(dart.nullable(core.String)),
+    maxQuantityOrder: dart.fieldType(dart.dynamic),
+    categoryID: dart.fieldType(dart.nullable(core.int)),
+    customerMemberTypeID: dart.fieldType(dart.nullable(core.int)),
+    fixedQuantity: dart.fieldType(dart.nullable(core.int)),
+    stockQuantity: dart.fieldType(dart.nullable(core.int)),
+    version: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.trackLibraries("packages/data/entities/model/gifts/gifts_entity.dart", {
+    "package:data/entities/model/gifts/gifts_entity.dart": gifts_entity
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["gifts_entity.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/data/entities/model/gifts/gifts_entity.dart.lib.js"}');
+  // Exports:
+  return {
+    entities__model__gifts__gifts_entity: gifts_entity
+  };
+}));
+
+//# sourceMappingURL=gifts_entity.dart.lib.js.map

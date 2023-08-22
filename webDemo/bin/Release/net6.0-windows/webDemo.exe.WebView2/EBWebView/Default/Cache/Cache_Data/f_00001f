@@ -1,0 +1,664 @@
+define(['dart_sdk', 'packages/flutter/src/material/typography.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/theme/src/cc_color.dart', 'packages/google_fonts/src/google_fonts_base.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/services/system_chrome.dart', 'packages/flutter/src/material/material_state.dart'], (function load__packages__theme__cc_themes_dart(dart_sdk, packages__flutter__src__material__typography$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__icon_button$46dart, packages__theme__src__cc_color$46dart, packages__google_fonts__src__google_fonts_base$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__services__system_chrome$46dart, packages__flutter__src__material__material_state$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text_theme = packages__flutter__src__material__typography$46dart.src__material__text_theme;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const color_scheme = packages__flutter__src__material__icon_button$46dart.src__material__color_scheme;
+  const app_bar_theme = packages__flutter__src__material__icon_button$46dart.src__material__app_bar_theme;
+  const scrollbar_theme = packages__flutter__src__material__icon_button$46dart.src__material__scrollbar_theme;
+  const cc_color = packages__theme__src__cc_color$46dart.src__cc_color;
+  const google_fonts = packages__google_fonts__src__google_fonts_base$46dart.google_fonts;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const colors$ = packages__flutter__src__painting__colors$46dart.src__painting__colors;
+  const system_chrome = packages__flutter__src__services__system_chrome$46dart.src__services__system_chrome;
+  const material_state = packages__flutter__src__material__material_state$46dart.src__material__material_state;
+  var cc_themes = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    IdentityMapOfint$Color: () => (T.IdentityMapOfint$Color = dart.constFn(_js_helper.IdentityMap$(core.int, ui.Color)))(),
+    ColorN: () => (T.ColorN = dart.constFn(dart.nullable(ui.Color)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278290310.0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281794739.0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289724448.0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278442694.0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284612846.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_Enum__name]: "light",
+        [_Enum_index]: 1
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: color_scheme.ColorScheme.prototype,
+        [ColorScheme__secondaryVariant]: C[1] || CT.C1,
+        [ColorScheme__primaryVariant]: C[2] || CT.C2,
+        [ColorScheme__surfaceTint]: null,
+        [ColorScheme__inversePrimary]: null,
+        [ColorScheme__onInverseSurface]: null,
+        [ColorScheme__inverseSurface]: null,
+        [ColorScheme__shadow]: null,
+        [ColorScheme__outline]: null,
+        [ColorScheme__onSurfaceVariant]: null,
+        [ColorScheme__surfaceVariant]: null,
+        [ColorScheme_onSurface]: C[3] || CT.C3,
+        [ColorScheme_surface]: C[4] || CT.C4,
+        [ColorScheme_onBackground]: C[3] || CT.C3,
+        [ColorScheme_background]: C[4] || CT.C4,
+        [ColorScheme__onErrorContainer]: null,
+        [ColorScheme__errorContainer]: null,
+        [ColorScheme_onError]: C[4] || CT.C4,
+        [ColorScheme_error]: C[5] || CT.C5,
+        [ColorScheme__onTertiaryContainer]: null,
+        [ColorScheme__tertiaryContainer]: null,
+        [ColorScheme__onTertiary]: null,
+        [ColorScheme__tertiary]: null,
+        [ColorScheme__onSecondaryContainer]: null,
+        [ColorScheme__secondaryContainer]: null,
+        [ColorScheme_onSecondary]: C[3] || CT.C3,
+        [ColorScheme_secondary]: C[6] || CT.C6,
+        [ColorScheme__onPrimaryContainer]: null,
+        [ColorScheme__primaryContainer]: null,
+        [ColorScheme_onPrimary]: C[4] || CT.C4,
+        [ColorScheme_primary]: C[7] || CT.C7,
+        [ColorScheme_brightness]: C[8] || CT.C8
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294638330.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309365.0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293848814.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292927712.0
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292269782.0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290624957.0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288585374.0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285887861.0
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284572001.0
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282532418.0
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281348144.0
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280361249.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.constMap(core.int, ui.Color, [50, C[13] || CT.C13, 100, C[14] || CT.C14, 200, C[15] || CT.C15, 300, C[16] || CT.C16, 350, C[17] || CT.C17, 400, C[18] || CT.C18, 500, C[19] || CT.C19, 600, C[20] || CT.C20, 700, C[21] || CT.C21, 800, C[22] || CT.C22, 850, C[23] || CT.C23, 900, C[24] || CT.C24]);
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: colors.MaterialColor.prototype,
+        [Color_value]: 4288585374.0,
+        [ColorSwatch__swatch]: C[12] || CT.C12
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_overflow]: null,
+        [TextStyle_fontVariations]: null,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: 13,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[11] || CT.C11,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_overflow]: null,
+        [TextStyle_fontVariations]: null,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: 13,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[3] || CT.C3,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3707764736.0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_overflow]: null,
+        [TextStyle_fontVariations]: null,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: 13,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[27] || CT.C27,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: text_theme.TextTheme.prototype,
+        [TextTheme_labelSmall]: null,
+        [TextTheme_labelMedium]: null,
+        [TextTheme_labelLarge]: null,
+        [TextTheme_bodySmall]: null,
+        [TextTheme_bodyMedium]: C[10] || CT.C10,
+        [TextTheme_bodyLarge]: C[25] || CT.C25,
+        [TextTheme_titleSmall]: null,
+        [TextTheme_titleMedium]: null,
+        [TextTheme_titleLarge]: null,
+        [TextTheme_headlineSmall]: null,
+        [TextTheme_headlineMedium]: null,
+        [TextTheme_headlineLarge]: null,
+        [TextTheme_displaySmall]: null,
+        [TextTheme_displayMedium]: null,
+        [TextTheme_displayLarge]: C[26] || CT.C26
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_Enum__name]: "dark",
+        [_Enum_index]: 0
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [SystemUiOverlayStyle_systemStatusBarContrastEnforced]: null,
+        [SystemUiOverlayStyle_statusBarIconBrightness]: C[30] || CT.C30,
+        [SystemUiOverlayStyle_statusBarBrightness]: C[8] || CT.C8,
+        [SystemUiOverlayStyle_statusBarColor]: null,
+        [SystemUiOverlayStyle_systemNavigationBarContrastEnforced]: null,
+        [SystemUiOverlayStyle_systemNavigationBarIconBrightness]: C[8] || CT.C8,
+        [SystemUiOverlayStyle_systemNavigationBarDividerColor]: null,
+        [SystemUiOverlayStyle_systemNavigationBarColor]: C[3] || CT.C3
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: app_bar_theme.AppBarTheme.prototype,
+        [AppBarTheme_backwardsCompatibility]: null,
+        [AppBarTheme_systemOverlayStyle]: C[29] || CT.C29,
+        [AppBarTheme_titleTextStyle]: null,
+        [AppBarTheme_toolbarTextStyle]: null,
+        [AppBarTheme_toolbarHeight]: null,
+        [AppBarTheme_titleSpacing]: null,
+        [AppBarTheme_centerTitle]: null,
+        [AppBarTheme_textTheme]: null,
+        [AppBarTheme_actionsIconTheme]: null,
+        [AppBarTheme_iconTheme]: null,
+        [AppBarTheme_shape]: null,
+        [AppBarTheme_surfaceTintColor]: null,
+        [AppBarTheme_shadowColor]: null,
+        [AppBarTheme_scrolledUnderElevation]: null,
+        [AppBarTheme_elevation]: null,
+        [AppBarTheme_foregroundColor]: null,
+        [AppBarTheme_backgroundColor]: null,
+        [AppBarTheme_brightness]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: scrollbar_theme.ScrollbarThemeData.prototype,
+        [ScrollbarThemeData_minThumbLength]: null,
+        [ScrollbarThemeData_mainAxisMargin]: null,
+        [ScrollbarThemeData_crossAxisMargin]: null,
+        [ScrollbarThemeData_trackBorderColor]: null,
+        [ScrollbarThemeData_trackColor]: null,
+        [ScrollbarThemeData_thumbColor]: null,
+        [ScrollbarThemeData_radius]: null,
+        [ScrollbarThemeData_interactive]: null,
+        [ScrollbarThemeData_isAlwaysShown]: null,
+        [ScrollbarThemeData_showTrackOnHover]: null,
+        [ScrollbarThemeData_trackVisibility]: null,
+        [ScrollbarThemeData_thickness]: null,
+        [ScrollbarThemeData_thumbVisibility]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 100,
+        [Radius_x]: 100
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279374354.0
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291782265.0
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290479868.0
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: color_scheme.ColorScheme.prototype,
+        [ColorScheme__secondaryVariant]: C[6] || CT.C6,
+        [ColorScheme__primaryVariant]: C[2] || CT.C2,
+        [ColorScheme__surfaceTint]: null,
+        [ColorScheme__inversePrimary]: null,
+        [ColorScheme__onInverseSurface]: null,
+        [ColorScheme__inverseSurface]: null,
+        [ColorScheme__shadow]: null,
+        [ColorScheme__outline]: null,
+        [ColorScheme__onSurfaceVariant]: null,
+        [ColorScheme__surfaceVariant]: null,
+        [ColorScheme_onSurface]: C[4] || CT.C4,
+        [ColorScheme_surface]: C[34] || CT.C34,
+        [ColorScheme_onBackground]: C[4] || CT.C4,
+        [ColorScheme_background]: C[34] || CT.C34,
+        [ColorScheme__onErrorContainer]: null,
+        [ColorScheme__errorContainer]: null,
+        [ColorScheme_onError]: C[3] || CT.C3,
+        [ColorScheme_error]: C[35] || CT.C35,
+        [ColorScheme__onTertiaryContainer]: null,
+        [ColorScheme__tertiaryContainer]: null,
+        [ColorScheme__onTertiary]: null,
+        [ColorScheme__tertiary]: null,
+        [ColorScheme__onSecondaryContainer]: null,
+        [ColorScheme__secondaryContainer]: null,
+        [ColorScheme_onSecondary]: C[3] || CT.C3,
+        [ColorScheme_secondary]: C[6] || CT.C6,
+        [ColorScheme__onPrimaryContainer]: null,
+        [ColorScheme__primaryContainer]: null,
+        [ColorScheme_onPrimary]: C[3] || CT.C3,
+        [ColorScheme_primary]: C[36] || CT.C36,
+        [ColorScheme_brightness]: C[30] || CT.C30
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281282356.0
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 486539263
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [SystemUiOverlayStyle_systemStatusBarContrastEnforced]: null,
+        [SystemUiOverlayStyle_statusBarIconBrightness]: C[30] || CT.C30,
+        [SystemUiOverlayStyle_statusBarBrightness]: C[8] || CT.C8,
+        [SystemUiOverlayStyle_statusBarColor]: C[4] || CT.C4,
+        [SystemUiOverlayStyle_systemNavigationBarContrastEnforced]: null,
+        [SystemUiOverlayStyle_systemNavigationBarIconBrightness]: C[30] || CT.C30,
+        [SystemUiOverlayStyle_systemNavigationBarDividerColor]: null,
+        [SystemUiOverlayStyle_systemNavigationBarColor]: C[4] || CT.C4
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: app_bar_theme.AppBarTheme.prototype,
+        [AppBarTheme_backwardsCompatibility]: null,
+        [AppBarTheme_systemOverlayStyle]: C[40] || CT.C40,
+        [AppBarTheme_titleTextStyle]: null,
+        [AppBarTheme_toolbarTextStyle]: null,
+        [AppBarTheme_toolbarHeight]: null,
+        [AppBarTheme_titleSpacing]: null,
+        [AppBarTheme_centerTitle]: null,
+        [AppBarTheme_textTheme]: null,
+        [AppBarTheme_actionsIconTheme]: null,
+        [AppBarTheme_iconTheme]: null,
+        [AppBarTheme_shape]: null,
+        [AppBarTheme_surfaceTintColor]: null,
+        [AppBarTheme_shadowColor]: null,
+        [AppBarTheme_scrolledUnderElevation]: null,
+        [AppBarTheme_elevation]: null,
+        [AppBarTheme_foregroundColor]: null,
+        [AppBarTheme_backgroundColor]: null,
+        [AppBarTheme_brightness]: null
+      });
+    }
+  }, false);
+  var C = Array(41).fill(void 0);
+  var I = ["package:theme/cc_themes.dart"];
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorScheme__secondaryVariant = dart.privateName(color_scheme, "ColorScheme._secondaryVariant");
+  var ColorScheme__primaryVariant = dart.privateName(color_scheme, "ColorScheme._primaryVariant");
+  var ColorScheme__surfaceTint = dart.privateName(color_scheme, "ColorScheme._surfaceTint");
+  var ColorScheme__inversePrimary = dart.privateName(color_scheme, "ColorScheme._inversePrimary");
+  var ColorScheme__onInverseSurface = dart.privateName(color_scheme, "ColorScheme._onInverseSurface");
+  var ColorScheme__inverseSurface = dart.privateName(color_scheme, "ColorScheme._inverseSurface");
+  var ColorScheme__shadow = dart.privateName(color_scheme, "ColorScheme._shadow");
+  var ColorScheme__outline = dart.privateName(color_scheme, "ColorScheme._outline");
+  var ColorScheme__onSurfaceVariant = dart.privateName(color_scheme, "ColorScheme._onSurfaceVariant");
+  var ColorScheme__surfaceVariant = dart.privateName(color_scheme, "ColorScheme._surfaceVariant");
+  var ColorScheme_onSurface = dart.privateName(color_scheme, "ColorScheme.onSurface");
+  var ColorScheme_surface = dart.privateName(color_scheme, "ColorScheme.surface");
+  var ColorScheme_onBackground = dart.privateName(color_scheme, "ColorScheme.onBackground");
+  var ColorScheme_background = dart.privateName(color_scheme, "ColorScheme.background");
+  var ColorScheme__onErrorContainer = dart.privateName(color_scheme, "ColorScheme._onErrorContainer");
+  var ColorScheme__errorContainer = dart.privateName(color_scheme, "ColorScheme._errorContainer");
+  var ColorScheme_onError = dart.privateName(color_scheme, "ColorScheme.onError");
+  var ColorScheme_error = dart.privateName(color_scheme, "ColorScheme.error");
+  var ColorScheme__onTertiaryContainer = dart.privateName(color_scheme, "ColorScheme._onTertiaryContainer");
+  var ColorScheme__tertiaryContainer = dart.privateName(color_scheme, "ColorScheme._tertiaryContainer");
+  var ColorScheme__onTertiary = dart.privateName(color_scheme, "ColorScheme._onTertiary");
+  var ColorScheme__tertiary = dart.privateName(color_scheme, "ColorScheme._tertiary");
+  var ColorScheme__onSecondaryContainer = dart.privateName(color_scheme, "ColorScheme._onSecondaryContainer");
+  var ColorScheme__secondaryContainer = dart.privateName(color_scheme, "ColorScheme._secondaryContainer");
+  var ColorScheme_onSecondary = dart.privateName(color_scheme, "ColorScheme.onSecondary");
+  var ColorScheme_secondary = dart.privateName(color_scheme, "ColorScheme.secondary");
+  var ColorScheme__onPrimaryContainer = dart.privateName(color_scheme, "ColorScheme._onPrimaryContainer");
+  var ColorScheme__primaryContainer = dart.privateName(color_scheme, "ColorScheme._primaryContainer");
+  var ColorScheme_onPrimary = dart.privateName(color_scheme, "ColorScheme.onPrimary");
+  var ColorScheme_primary = dart.privateName(color_scheme, "ColorScheme.primary");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var ColorScheme_brightness = dart.privateName(color_scheme, "ColorScheme.brightness");
+  var TextTheme_labelSmall = dart.privateName(text_theme, "TextTheme.labelSmall");
+  var TextTheme_labelMedium = dart.privateName(text_theme, "TextTheme.labelMedium");
+  var TextTheme_labelLarge = dart.privateName(text_theme, "TextTheme.labelLarge");
+  var TextTheme_bodySmall = dart.privateName(text_theme, "TextTheme.bodySmall");
+  var TextStyle_overflow = dart.privateName(text_style, "TextStyle.overflow");
+  var TextStyle_fontVariations = dart.privateName(text_style, "TextStyle.fontVariations");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_leadingDistribution = dart.privateName(text_style, "TextStyle.leadingDistribution");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var ColorSwatch__swatch = dart.privateName(colors$, "ColorSwatch._swatch");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var TextTheme_bodyMedium = dart.privateName(text_theme, "TextTheme.bodyMedium");
+  var TextTheme_bodyLarge = dart.privateName(text_theme, "TextTheme.bodyLarge");
+  var TextTheme_titleSmall = dart.privateName(text_theme, "TextTheme.titleSmall");
+  var TextTheme_titleMedium = dart.privateName(text_theme, "TextTheme.titleMedium");
+  var TextTheme_titleLarge = dart.privateName(text_theme, "TextTheme.titleLarge");
+  var TextTheme_headlineSmall = dart.privateName(text_theme, "TextTheme.headlineSmall");
+  var TextTheme_headlineMedium = dart.privateName(text_theme, "TextTheme.headlineMedium");
+  var TextTheme_headlineLarge = dart.privateName(text_theme, "TextTheme.headlineLarge");
+  var TextTheme_displaySmall = dart.privateName(text_theme, "TextTheme.displaySmall");
+  var TextTheme_displayMedium = dart.privateName(text_theme, "TextTheme.displayMedium");
+  var TextTheme_displayLarge = dart.privateName(text_theme, "TextTheme.displayLarge");
+  var AppBarTheme_backwardsCompatibility = dart.privateName(app_bar_theme, "AppBarTheme.backwardsCompatibility");
+  var SystemUiOverlayStyle_systemStatusBarContrastEnforced = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemStatusBarContrastEnforced");
+  var SystemUiOverlayStyle_statusBarIconBrightness = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarIconBrightness");
+  var SystemUiOverlayStyle_statusBarBrightness = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarBrightness");
+  var SystemUiOverlayStyle_statusBarColor = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarColor");
+  var SystemUiOverlayStyle_systemNavigationBarContrastEnforced = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarContrastEnforced");
+  var SystemUiOverlayStyle_systemNavigationBarIconBrightness = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarIconBrightness");
+  var SystemUiOverlayStyle_systemNavigationBarDividerColor = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarDividerColor");
+  var SystemUiOverlayStyle_systemNavigationBarColor = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarColor");
+  var AppBarTheme_systemOverlayStyle = dart.privateName(app_bar_theme, "AppBarTheme.systemOverlayStyle");
+  var AppBarTheme_titleTextStyle = dart.privateName(app_bar_theme, "AppBarTheme.titleTextStyle");
+  var AppBarTheme_toolbarTextStyle = dart.privateName(app_bar_theme, "AppBarTheme.toolbarTextStyle");
+  var AppBarTheme_toolbarHeight = dart.privateName(app_bar_theme, "AppBarTheme.toolbarHeight");
+  var AppBarTheme_titleSpacing = dart.privateName(app_bar_theme, "AppBarTheme.titleSpacing");
+  var AppBarTheme_centerTitle = dart.privateName(app_bar_theme, "AppBarTheme.centerTitle");
+  var AppBarTheme_textTheme = dart.privateName(app_bar_theme, "AppBarTheme.textTheme");
+  var AppBarTheme_actionsIconTheme = dart.privateName(app_bar_theme, "AppBarTheme.actionsIconTheme");
+  var AppBarTheme_iconTheme = dart.privateName(app_bar_theme, "AppBarTheme.iconTheme");
+  var AppBarTheme_shape = dart.privateName(app_bar_theme, "AppBarTheme.shape");
+  var AppBarTheme_surfaceTintColor = dart.privateName(app_bar_theme, "AppBarTheme.surfaceTintColor");
+  var AppBarTheme_shadowColor = dart.privateName(app_bar_theme, "AppBarTheme.shadowColor");
+  var AppBarTheme_scrolledUnderElevation = dart.privateName(app_bar_theme, "AppBarTheme.scrolledUnderElevation");
+  var AppBarTheme_elevation = dart.privateName(app_bar_theme, "AppBarTheme.elevation");
+  var AppBarTheme_foregroundColor = dart.privateName(app_bar_theme, "AppBarTheme.foregroundColor");
+  var AppBarTheme_backgroundColor = dart.privateName(app_bar_theme, "AppBarTheme.backgroundColor");
+  var AppBarTheme_brightness = dart.privateName(app_bar_theme, "AppBarTheme.brightness");
+  var ScrollbarThemeData_minThumbLength = dart.privateName(scrollbar_theme, "ScrollbarThemeData.minThumbLength");
+  var ScrollbarThemeData_mainAxisMargin = dart.privateName(scrollbar_theme, "ScrollbarThemeData.mainAxisMargin");
+  var ScrollbarThemeData_crossAxisMargin = dart.privateName(scrollbar_theme, "ScrollbarThemeData.crossAxisMargin");
+  var ScrollbarThemeData_trackBorderColor = dart.privateName(scrollbar_theme, "ScrollbarThemeData.trackBorderColor");
+  var ScrollbarThemeData_trackColor = dart.privateName(scrollbar_theme, "ScrollbarThemeData.trackColor");
+  var ScrollbarThemeData_thumbColor = dart.privateName(scrollbar_theme, "ScrollbarThemeData.thumbColor");
+  var ScrollbarThemeData_radius = dart.privateName(scrollbar_theme, "ScrollbarThemeData.radius");
+  var ScrollbarThemeData_interactive = dart.privateName(scrollbar_theme, "ScrollbarThemeData.interactive");
+  var ScrollbarThemeData_isAlwaysShown = dart.privateName(scrollbar_theme, "ScrollbarThemeData.isAlwaysShown");
+  var ScrollbarThemeData_showTrackOnHover = dart.privateName(scrollbar_theme, "ScrollbarThemeData.showTrackOnHover");
+  var ScrollbarThemeData_trackVisibility = dart.privateName(scrollbar_theme, "ScrollbarThemeData.trackVisibility");
+  var ScrollbarThemeData_thickness = dart.privateName(scrollbar_theme, "ScrollbarThemeData.thickness");
+  var ScrollbarThemeData_thumbVisibility = dart.privateName(scrollbar_theme, "ScrollbarThemeData.thumbVisibility");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  cc_themes.CcThemes = class CcThemes extends core.Object {
+    static ['_#new#tearOff']() {
+      return new cc_themes.CcThemes.new();
+    }
+  };
+  (cc_themes.CcThemes.new = function() {
+    ;
+  }).prototype = cc_themes.CcThemes.prototype;
+  dart.addTypeTests(cc_themes.CcThemes);
+  dart.addTypeCaches(cc_themes.CcThemes);
+  dart.setLibraryUri(cc_themes.CcThemes, I[0]);
+  dart.setStaticFieldSignature(cc_themes.CcThemes, () => ['_primaryColor', 'fontStyle', 'fontFamily', 'textTheme', 'primarySwatch', '_textColor', 'textSwatch', 'lightTheme', 'darkTheme']);
+  dart.defineLazy(cc_themes.CcThemes, {
+    /*cc_themes.CcThemes._primaryColor*/get _primaryColor() {
+      return cc_color.CcColors.blue.value;
+    },
+    /*cc_themes.CcThemes.fontStyle*/get fontStyle() {
+      return google_fonts.GoogleFonts.roboto().fontStyle;
+    },
+    set fontStyle(_) {},
+    /*cc_themes.CcThemes.fontFamily*/get fontFamily() {
+      return google_fonts.GoogleFonts.roboto().fontFamily;
+    },
+    set fontFamily(_) {},
+    /*cc_themes.CcThemes.textTheme*/get textTheme() {
+      return null;
+    },
+    set textTheme(_) {},
+    /*cc_themes.CcThemes.primarySwatch*/get primarySwatch() {
+      return new colors.MaterialColor.new(cc_themes.CcThemes._primaryColor, new (T.IdentityMapOfint$Color()).from([50, cc_color.CcColors.primary.withOpacity(0.1), 100, cc_color.CcColors.primary.withOpacity(0.2), 200, cc_color.CcColors.primary.withOpacity(0.3), 300, cc_color.CcColors.primary.withOpacity(0.4), 400, cc_color.CcColors.primary.withOpacity(0.5), 500, cc_color.CcColors.primary.withOpacity(0.6), 600, cc_color.CcColors.primary.withOpacity(0.7), 700, cc_color.CcColors.primary.withOpacity(0.8), 800, cc_color.CcColors.primary.withOpacity(0.9), 900, cc_color.CcColors.primary.withOpacity(1.0)]));
+    },
+    set primarySwatch(_) {},
+    /*cc_themes.CcThemes._textColor*/get _textColor() {
+      return 4285231744.0;
+    },
+    /*cc_themes.CcThemes.textSwatch*/get textSwatch() {
+      return new colors.MaterialColor.new(4285231744.0, new (T.IdentityMapOfint$Color()).from([50, cc_color.CcColors.primary.withOpacity(0.1), 100, cc_color.CcColors.primary.withOpacity(0.2), 200, cc_color.CcColors.primary.withOpacity(0.3), 300, cc_color.CcColors.primary.withOpacity(0.4), 400, cc_color.CcColors.primary.withOpacity(0.5), 500, cc_color.CcColors.primary.withOpacity(0.6), 600, cc_color.CcColors.primary.withOpacity(0.7), 700, cc_color.CcColors.primary.withOpacity(0.8), 800, cc_color.CcColors.primary.withOpacity(0.9), 900, cc_color.CcColors.primary.withOpacity(1.0)]));
+    },
+    set textSwatch(_) {},
+    /*cc_themes.CcThemes.lightTheme*/get lightTheme() {
+      return theme_data.ThemeData.new({unselectedWidgetColor: cc_color.CcColors.secondary, primarySwatch: cc_themes.CcThemes.primarySwatch, brightness: ui.Brightness.light, colorScheme: (C[0] || CT.C0).copyWith({primary: cc_color.CcColors.secondary}), scaffoldBackgroundColor: cc_color.CcColors.white, backgroundColor: cc_color.CcColors.white, cardColor: colors.Colors.white, bottomAppBarColor: colors.Colors.transparent, dividerColor: cc_color.CcColors.divider, fontFamily: cc_themes.CcThemes.fontFamily, textTheme: C[9] || CT.C9, appBarTheme: C[28] || CT.C28, scrollbarTheme: (C[31] || CT.C31).copyWith({thumbColor: material_state.MaterialStateProperty.all(T.ColorN(), colors.Colors.black.withOpacity(0.5)), thickness: material_state.MaterialStateProperty.all(T.doubleN(), 0.0), radius: C[32] || CT.C32})});
+    },
+    /*cc_themes.CcThemes.darkTheme*/get darkTheme() {
+      return cc_themes.CcThemes.lightTheme.copyWith({unselectedWidgetColor: cc_color.CcColors.secondary, brightness: ui.Brightness.dark, colorScheme: (C[33] || CT.C33).copyWith({primary: cc_color.CcColors.secondary}), scaffoldBackgroundColor: cc_color.CcColors.white, backgroundColor: cc_color.CcColors.white, cardColor: C[37] || CT.C37, bottomAppBarColor: colors.Colors.transparent, dividerColor: C[38] || CT.C38, appBarTheme: C[39] || CT.C39});
+    }
+  }, false);
+  dart.trackLibraries("packages/theme/cc_themes.dart", {
+    "package:theme/cc_themes.dart": cc_themes
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["cc_themes.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA+IA;;;;;;MAhImB,gCAAa;YAAY,AAAK;;MAE7B,4BAAS;YAAe,AAAS;;;MACpC,6BAAU;YAAe,AAAS;;;MAE/B,4BAAS;;;;MACN,gCAAa;YAC9B,8BAAc,kCAA2B,uCAC3C,IAAa,AAAQ,sCACnB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB;;;MAIa,6BAAU;;;MACN,6BAAU;YAAG,4CAEpB,uCACV,IAAa,AAAQ,sCACnB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB,MAEF,KAAc,AAAQ,sCACpB;;;MAKO,6BAAU;YAAG,kDACU,4CACjB,8CACQ,kCACgB,mCACnB,wDAEc,0CACR,oCACR,wCACQ,yCACH,uCACX,uGAQ+B,wCACP,qDAAW,AAAM,gCAAY,kBAC9B,sDAAI;;MAI9B,4BAAS;YAAG,AAAW,gEACF,yCACT,iCACe,qCAClB,wDAEc,0CACR,wEAIA","file":"../../../../../../../../packages/theme/cc_themes.dart.lib.js"}');
+  // Exports:
+  return {
+    cc_themes: cc_themes
+  };
+}));
+
+//# sourceMappingURL=cc_themes.dart.lib.js.map

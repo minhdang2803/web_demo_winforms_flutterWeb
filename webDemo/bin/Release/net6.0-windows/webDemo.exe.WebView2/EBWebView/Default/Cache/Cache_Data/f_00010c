@@ -1,0 +1,266 @@
+define(['dart_sdk', 'packages/webviewx/src/utils/embedded_js_content.dart', 'packages/path/src/path_set.dart', 'packages/uuid/uuid.dart'], (function load__packages__webviewx__src__utils__html_utils_dart(dart_sdk, packages__webviewx__src__utils__embedded_js_content$46dart, packages__path__src__path_set$46dart, packages__uuid__uuid$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const collection = dart_sdk.collection;
+  const convert = dart_sdk.convert;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const embedded_js_content = packages__webviewx__src__utils__embedded_js_content$46dart.src__utils__embedded_js_content;
+  const path$ = packages__path__src__path_set$46dart.path;
+  const uuid = packages__uuid__uuid$46dart.uuid;
+  var html_utils = Object.create(dart.library);
+  var $trim = dartx.trim;
+  var $toLowerCase = dartx.toLowerCase;
+  var $startsWith = dartx.startsWith;
+  var $contains = dartx.contains;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $replaceFirst = dartx.replaceFirst;
+  var $isEmpty = dartx.isEmpty;
+  var $toString = dartx.toString;
+  var $substring = dartx.substring;
+  var $times = dartx['*'];
+  var $reduce = dartx.reduce;
+  var $replaceFirstMapped = dartx.replaceFirstMapped;
+  var $indexOf = dartx.indexOf;
+  var $replaceAll = dartx.replaceAll;
+  var $endsWith = dartx.endsWith;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    LinkedHashSetOfString: () => (T.LinkedHashSetOfString = dart.constFn(collection.LinkedHashSet$(core.String)))(),
+    StringAndStringToString: () => (T.StringAndStringToString = dart.constFn(dart.fnType(core.String, [core.String, core.String])))(),
+    MatchToString: () => (T.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: html_utils.EmbedPosition.prototype,
+        [_Enum__name]: "belowBodyOpenTag",
+        [_Enum_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: html_utils.EmbedPosition.prototype,
+        [_Enum__name]: "aboveBodyCloseTag",
+        [_Enum_index]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: html_utils.EmbedPosition.prototype,
+        [_Enum__name]: "belowHeadOpenTag",
+        [_Enum_index]: 2
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: html_utils.EmbedPosition.prototype,
+        [_Enum__name]: "aboveHeadCloseTag",
+        [_Enum_index]: 3
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], html_utils.EmbedPosition);
+    },
+    get C5() {
+      return C[5] = dart.constSet(embedded_js_content.EmbeddedJsContent, []);
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: uuid.Uuid.prototype,
+        [Uuid_options]: null
+      });
+    }
+  }, false);
+  var C = Array(7).fill(void 0);
+  var I = ["package:webviewx/src/utils/html_utils.dart"];
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  html_utils.EmbedPosition = class EmbedPosition extends core._Enum {
+    toString() {
+      return "EmbedPosition." + this[_name];
+    }
+  };
+  (html_utils.EmbedPosition.new = function(index, name) {
+    html_utils.EmbedPosition.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = html_utils.EmbedPosition.prototype;
+  dart.addTypeTests(html_utils.EmbedPosition);
+  dart.addTypeCaches(html_utils.EmbedPosition);
+  dart.setLibraryUri(html_utils.EmbedPosition, I[0]);
+  dart.setStaticFieldSignature(html_utils.EmbedPosition, () => ['values', 'belowBodyOpenTag', 'aboveBodyCloseTag', 'belowHeadOpenTag', 'aboveHeadCloseTag']);
+  dart.defineExtensionMethods(html_utils.EmbedPosition, ['toString']);
+  dart.defineLazy(html_utils.EmbedPosition, {
+    /*html_utils.EmbedPosition.values*/get values() {
+      return C[0] || CT.C0;
+    },
+    /*html_utils.EmbedPosition.belowBodyOpenTag*/get belowBodyOpenTag() {
+      return C[1] || CT.C1;
+    },
+    /*html_utils.EmbedPosition.aboveBodyCloseTag*/get aboveBodyCloseTag() {
+      return C[2] || CT.C2;
+    },
+    /*html_utils.EmbedPosition.belowHeadOpenTag*/get belowHeadOpenTag() {
+      return C[3] || CT.C3;
+    },
+    /*html_utils.EmbedPosition.aboveHeadCloseTag*/get aboveHeadCloseTag() {
+      return C[4] || CT.C4;
+    }
+  }, false);
+  var Uuid_options = dart.privateName(uuid, "Uuid.options");
+  html_utils.HtmlUtils = class HtmlUtils extends core.Object {
+    static isFullHtmlPage(src) {
+      let _src = src[$trim]()[$toLowerCase]();
+      return _src[$startsWith](core.RegExp.new("<!DOCTYPE html>", {caseSensitive: false})) && _src[$contains](core.RegExp.new("<html", {caseSensitive: false})) && _src[$contains](core.RegExp.new("</html>", {caseSensitive: false}));
+    }
+    static wrapHtml(src, iframeId) {
+      let t2;
+      return "    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Iframe " + dart.str((t2 = iframeId, t2 == null ? "" : t2)) + "</title>\n    </head>\n    <body>\n    " + src + "\n    </body>\n    </html>\n    ";
+    }
+    static preprocessSource(src, opts) {
+      let jsContent = opts && 'jsContent' in opts ? opts.jsContent : C[5] || CT.C5;
+      let forWeb = opts && 'forWeb' in opts ? opts.forWeb : false;
+      let encodeHtml = opts && 'encodeHtml' in opts ? opts.encodeHtml : false;
+      let windowDisambiguator = opts && 'windowDisambiguator' in opts ? opts.windowDisambiguator : null;
+      let _src = src;
+      if (!html_utils.HtmlUtils.isFullHtmlPage(_src)) {
+        _src = html_utils.HtmlUtils.wrapHtml(_src, windowDisambiguator);
+      }
+      if (forWeb) {
+        _src = html_utils.HtmlUtils.embedWebIframeJsConnector(_src, dart.nullCheck(windowDisambiguator));
+      }
+      if (jsContent[$isNotEmpty]) {
+        let jsContentStrings = T.LinkedHashSetOfString().new();
+        for (let jsToEmbed of jsContent) {
+          if (jsToEmbed.js != null) {
+            jsContentStrings.add(dart.nullCheck(jsToEmbed.js));
+          } else {
+            if (forWeb && jsToEmbed.webJs != null) {
+              jsContentStrings.add(dart.nullCheck(jsToEmbed.webJs));
+            } else {
+              jsContentStrings.add(dart.nullCheck(jsToEmbed.mobileJs));
+            }
+          }
+        }
+        _src = html_utils.HtmlUtils.embedJsInHtmlSource(_src, jsContentStrings);
+      }
+      if (encodeHtml) {
+        _src = html_utils.HtmlUtils.encodeHtmlToURI(_src);
+      }
+      return _src;
+    }
+    static encodeHtmlToURI(src) {
+      return core.Uri.dataFromString(src, {mimeType: "text/html", encoding: convert.Encoding.getByName("utf-8")}).toString();
+    }
+    static dataUriToHtml(data) {
+      return core.Uri.decodeFull(data)[$replaceFirst](core.RegExp.new("^data:.+,"), "");
+    }
+    static getPathBaseName(path) {
+      return path$.basename(path);
+    }
+    static encodeImageAsEmbeddedBase64(fileName, imageBytes) {
+      let base64Image = "<img width=\"" + "100%" + "\" src=\"data:image/png;base64, " + convert.base64Encode(imageBytes) + "\" data-filename=\"" + fileName + "\">";
+      return base64Image;
+    }
+    static wrapImageLinkWithImgTag(imageLink) {
+      return "<img src=\"" + imageLink + "\">";
+    }
+    static buildJsFunction(name, params) {
+      let args = new core.StringBuffer.new();
+      if (params[$isEmpty]) {
+        return name + "()";
+      }
+      for (let param of params) {
+        args.write(html_utils.HtmlUtils.addSingleQuotes(dart.toString(param)));
+        args.write(",");
+      }
+      let noEndingCommaArgs = args.toString()[$substring](0, args.length - 1);
+      let $function = name + "(" + noEndingCommaArgs + ")";
+      return $function;
+    }
+    static addSingleQuotes(data) {
+      return "'" + data + "'";
+    }
+    static embedJsInHtmlSource(source, jsContents, opts) {
+      let position = opts && 'position' in opts ? opts.position : C[2] || CT.C2;
+      let jsContent = jsContents[$reduce](dart.fn((prev, elem) => prev + "\n"[$times](2) + elem, T.StringAndStringToString()));
+      let whatToEmbed = "\n" + "<script>" + "\n" + jsContent + "\n" + "</script>" + "\n";
+      return html_utils.HtmlUtils.embedInHtmlSource({source: source, whatToEmbed: whatToEmbed, position: position});
+    }
+    static injectAsChildOf(htmlTag, source, toInject) {
+      let replaceSpot = "<" + htmlTag + "([^>]*)>";
+      return source[$replaceFirstMapped](core.RegExp.new(replaceSpot, {caseSensitive: false}), dart.fn(match => "<" + htmlTag + dart.nullCheck(match.group(1)) + "> \n" + toInject, T.MatchToString()));
+    }
+    static embedInHtmlSource(opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      let whatToEmbed = opts && 'whatToEmbed' in opts ? opts.whatToEmbed : null;
+      let position = opts && 'position' in opts ? opts.position : null;
+      switch (position) {
+        case C[3] || CT.C3:
+          {
+            return html_utils.HtmlUtils.injectAsChildOf("head", source, whatToEmbed);
+          }
+        case C[1] || CT.C1:
+          {
+            return html_utils.HtmlUtils.injectAsChildOf("body", source, whatToEmbed);
+          }
+        case C[4] || CT.C4:
+          {
+            let indexToSplit = source[$indexOf]("</head>");
+            let splitSource1 = source[$substring](0, indexToSplit);
+            let splitSource2 = source[$substring](indexToSplit);
+            return splitSource1 + whatToEmbed + "\n" + splitSource2;
+          }
+        case C[2] || CT.C2:
+          {
+            let indexToSplit = source[$indexOf]("</body>");
+            let splitSource1 = source[$substring](0, indexToSplit);
+            let splitSource2 = source[$substring](indexToSplit);
+            return splitSource1 + whatToEmbed + "\n" + splitSource2;
+          }
+      }
+    }
+    static embedWebIframeJsConnector(source, windowDisambiguator) {
+      return html_utils.HtmlUtils.embedJsInHtmlSource(source, T.LinkedHashSetOfString().from(["parent." + "connect_js_to_flutter" + windowDisambiguator + " && parent." + "connect_js_to_flutter" + windowDisambiguator + "(window)"]), {position: html_utils.EmbedPosition.aboveHeadCloseTag});
+    }
+    static buildIframeViewType() {
+      let iframeId = "_" + (C[6] || CT.C6).v4()[$replaceAll]("-", "_");
+      return "_iframe" + iframeId;
+    }
+    static unQuoteJsResponseIfNeeded(rawJsResponse) {
+      if (rawJsResponse[$startsWith]("\"") && rawJsResponse[$endsWith]("\"") || rawJsResponse[$startsWith]("'") && rawJsResponse[$endsWith]("'")) {
+        return rawJsResponse[$substring](1, rawJsResponse.length - 1);
+      }
+      return rawJsResponse;
+    }
+    static embedClickListenersInPageSource(pageUrl, pageSource) {
+      return html_utils.HtmlUtils.embedInHtmlSource({source: pageSource, whatToEmbed: "      <base href=\"" + pageUrl + "\">\n      <script>\n\n      document.addEventListener('click', e => {\n        if (frameElement && document.activeElement && document.activeElement.href) {\n          e.preventDefault()\n\n          var returnedObject = JSON.stringify({method: 'get', href: document.activeElement.href});\n          frameElement.contentWindow." + "WebOnClickInsideIframe" + " && frameElement.contentWindow." + "WebOnClickInsideIframe" + "(returnedObject)\n        }\n      })\n      document.addEventListener('submit', e => {\n        if (frameElement && document.activeElement && document.activeElement.form && document.activeElement.form.action) {\n          e.preventDefault()\n\n          if (document.activeElement.form.method === 'post') {\n            var formData = new FormData(document.activeElement.form);\n            \n            var returnedObject = JSON.stringify({method: 'post', href: document.activeElement.form.action, body: [...formData]});\n            frameElement.contentWindow." + "WebOnClickInsideIframe" + " && frameElement.contentWindow." + "WebOnClickInsideIframe" + "(returnedObject)\n          } else {\n            var urlWithQueryParams = document.activeElement.form.action + '?' + new URLSearchParams(new FormData(document.activeElement.form))\n\n            var returnedObject = JSON.stringify({method: 'get', href: urlWithQueryParams});\n            frameElement.contentWindow." + "WebOnClickInsideIframe" + " && frameElement.contentWindow." + "WebOnClickInsideIframe" + "(returnedObject)\n          }\n        }\n      })\n      </script>\n      ", position: html_utils.EmbedPosition.belowHeadOpenTag});
+    }
+    static ['_#new#tearOff']() {
+      return new html_utils.HtmlUtils.new();
+    }
+  };
+  (html_utils.HtmlUtils.new = function() {
+    ;
+  }).prototype = html_utils.HtmlUtils.prototype;
+  dart.addTypeTests(html_utils.HtmlUtils);
+  dart.addTypeCaches(html_utils.HtmlUtils);
+  dart.setStaticMethodSignature(html_utils.HtmlUtils, () => ['isFullHtmlPage', 'wrapHtml', 'preprocessSource', 'encodeHtmlToURI', 'dataUriToHtml', 'getPathBaseName', 'encodeImageAsEmbeddedBase64', 'wrapImageLinkWithImgTag', 'buildJsFunction', 'addSingleQuotes', 'embedJsInHtmlSource', 'injectAsChildOf', 'embedInHtmlSource', 'embedWebIframeJsConnector', 'buildIframeViewType', 'unQuoteJsResponseIfNeeded', 'embedClickListenersInPageSource']);
+  dart.setLibraryUri(html_utils.HtmlUtils, I[0]);
+  dart.trackLibraries("packages/webviewx/src/utils/html_utils.dart", {
+    "package:webviewx/src/utils/html_utils.dart": html_utils
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["html_utils.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/webviewx/src/utils/html_utils.dart.lib.js"}');
+  // Exports:
+  return {
+    src__utils__html_utils: html_utils
+  };
+}));
+
+//# sourceMappingURL=html_utils.dart.lib.js.map

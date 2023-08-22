@@ -1,0 +1,387 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart'], (function load__packages__flutter_screenutil__src__screen_util_dart(dart_sdk, packages__flutter__src__widgets__title$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const collection = dart_sdk.collection;
+  const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const binding$ = packages__flutter__src__widgets__title$46dart.src__widgets__binding;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const navigator = packages__flutter__src__widgets__title$46dart.src__widgets__navigator;
+  const media_query = packages__flutter__src__widgets__title$46dart.src__widgets__media_query;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  var screen_util = Object.create(dart.library);
+  var $forEach = dartx.forEach;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    VoidToFutureOfvoid: () => (T.VoidToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [])))(),
+    LinkedHashSetOfElement: () => (T.LinkedHashSetOfElement = dart.constFn(collection.LinkedHashSet$(framework.Element)))(),
+    ElementTovoid: () => (T.ElementTovoid = dart.constFn(dart.fnType(dart.void, [framework.Element])))(),
+    ElementN: () => (T.ElementN = dart.constFn(dart.nullable(framework.Element)))(),
+    CompleterOfvoid: () => (T.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
+    DurationTovoid: () => (T.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
+    MediaQueryDataN: () => (T.MediaQueryDataN = dart.constFn(dart.nullable(media_query.MediaQueryData)))(),
+    VoidToMediaQueryDataN: () => (T.VoidToMediaQueryDataN = dart.constFn(dart.fnType(T.MediaQueryDataN(), [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 10000
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.Size.prototype,
+        [OffsetBase__dy]: 690,
+        [OffsetBase__dx]: 360
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 44,
+        [_Location_line]: 206,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screen_util.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 7,
+        [_Location_line]: 209,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screen_util.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 45,
+        [_Location_line]: 211,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screen_util.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 7,
+        [_Location_line]: 214,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screen_util.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 7,
+        [_Location_line]: 217,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0/lib/src/screen_util.dart"
+      });
+    }
+  }, false);
+  var C = Array(7).fill(void 0);
+  var I = ["package:flutter_screenutil/src/screen_util.dart"];
+  var __ScreenUtil__uiSize = dart.privateName(screen_util, "_#ScreenUtil#_uiSize");
+  var __ScreenUtil__orientation = dart.privateName(screen_util, "_#ScreenUtil#_orientation");
+  var __ScreenUtil__screenWidth = dart.privateName(screen_util, "_#ScreenUtil#_screenWidth");
+  var __ScreenUtil__screenHeight = dart.privateName(screen_util, "_#ScreenUtil#_screenHeight");
+  var __ScreenUtil__minTextAdapt = dart.privateName(screen_util, "_#ScreenUtil#_minTextAdapt");
+  var _context = dart.privateName(screen_util, "_context");
+  var __ScreenUtil__splitScreenMode = dart.privateName(screen_util, "_#ScreenUtil#_splitScreenMode");
+  var _elementsToRebuild = dart.privateName(screen_util, "_elementsToRebuild");
+  var _uiSize = dart.privateName(screen_util, "_uiSize");
+  var _orientation = dart.privateName(screen_util, "_orientation");
+  var _screenWidth = dart.privateName(screen_util, "_screenWidth");
+  var _screenHeight = dart.privateName(screen_util, "_screenHeight");
+  var _minTextAdapt = dart.privateName(screen_util, "_minTextAdapt");
+  var _splitScreenMode = dart.privateName(screen_util, "_splitScreenMode");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  screen_util.ScreenUtil = class ScreenUtil extends core.Object {
+    set [_uiSize](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_uiSize$35param) {
+      this[__ScreenUtil__uiSize] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_uiSize$35param;
+    }
+    get [_uiSize]() {
+      let t0;
+      t0 = this[__ScreenUtil__uiSize];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_uiSize")) : t0;
+    }
+    get [_orientation]() {
+      let t0;
+      t0 = this[__ScreenUtil__orientation];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_orientation")) : t0;
+    }
+    set [_orientation](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_orientation$35param) {
+      this[__ScreenUtil__orientation] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_orientation$35param;
+    }
+    get [_screenWidth]() {
+      let t0;
+      t0 = this[__ScreenUtil__screenWidth];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_screenWidth")) : t0;
+    }
+    set [_screenWidth](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_screenWidth$35param) {
+      this[__ScreenUtil__screenWidth] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_screenWidth$35param;
+    }
+    get [_screenHeight]() {
+      let t0;
+      t0 = this[__ScreenUtil__screenHeight];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_screenHeight")) : t0;
+    }
+    set [_screenHeight](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_screenHeight$35param) {
+      this[__ScreenUtil__screenHeight] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_screenHeight$35param;
+    }
+    get [_minTextAdapt]() {
+      let t0;
+      t0 = this[__ScreenUtil__minTextAdapt];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_minTextAdapt")) : t0;
+    }
+    set [_minTextAdapt](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_minTextAdapt$35param) {
+      this[__ScreenUtil__minTextAdapt] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_minTextAdapt$35param;
+    }
+    get [_splitScreenMode]() {
+      let t0;
+      t0 = this[__ScreenUtil__splitScreenMode];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_splitScreenMode")) : t0;
+    }
+    set [_splitScreenMode](library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_splitScreenMode$35param) {
+      this[__ScreenUtil__splitScreenMode] = library$32package$58flutter_screenutil$47src$47screen_util$46dart$58$58_splitScreenMode$35param;
+    }
+    static ['_#_#tearOff']() {
+      return new screen_util.ScreenUtil.__();
+    }
+    static ['_#new#tearOff']() {
+      return screen_util.ScreenUtil.new();
+    }
+    static new() {
+      return screen_util.ScreenUtil._instance;
+    }
+    static ensureScreenSize(window = null, duration = C[0] || CT.C0) {
+      return async.async(dart.void, function* ensureScreenSize() {
+        let binding = binding$.WidgetsFlutterBinding.ensureInitialized();
+        window == null ? window = binding.window : null;
+        if (window.physicalGeometry.isEmpty) {
+          return T.FutureOfvoid().delayed(duration, dart.fn(() => async.async(dart.void, function*() {
+            binding.deferFirstFrame();
+            yield screen_util.ScreenUtil.ensureScreenSize(window, duration);
+            return binding.allowFirstFrame();
+          }), T.VoidToFutureOfvoid()));
+        }
+      });
+    }
+    static registerToBuild(context, withDescendants = false) {
+      let t1, t0;
+      (t0 = screen_util.ScreenUtil._instance, t1 = t0[_elementsToRebuild], t1 == null ? t0[_elementsToRebuild] = T.LinkedHashSetOfElement().new() : t1).add(framework.Element.as(context));
+      if (withDescendants) {
+        context.visitChildren(dart.fn(element => {
+          screen_util.ScreenUtil.registerToBuild(element, true);
+        }, T.ElementTovoid()));
+      }
+    }
+    static init(context, opts) {
+      let designSize = opts && 'designSize' in opts ? opts.designSize : C[1] || CT.C1;
+      let splitScreenMode = opts && 'splitScreenMode' in opts ? opts.splitScreenMode : false;
+      let minTextAdapt = opts && 'minTextAdapt' in opts ? opts.minTextAdapt : false;
+      let scaleByHeight = opts && 'scaleByHeight' in opts ? opts.scaleByHeight : false;
+      return async.async(dart.void, function* init() {
+        let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5;
+        let navigatorContext = T.ElementN().as((t0 = navigator.Navigator.maybeOf(context), t0 == null ? null : t0.context));
+        let mediaQueryContext = (t0$ = navigatorContext, t0$ == null ? null : t0$.getElementForInheritedWidgetOfExactType(media_query.MediaQuery));
+        let initCompleter = T.CompleterOfvoid().new();
+        binding$.WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback(dart.fn(_ => {
+          let t0;
+          t0 = mediaQueryContext;
+          t0 == null ? null : t0.visitChildElements(dart.fn(el => screen_util.ScreenUtil._instance[_context] = el, T.ElementTovoid()));
+          if (screen_util.ScreenUtil._instance[_context] != null) initCompleter.complete();
+        }, T.DurationTovoid()));
+        let deviceData = screen_util['_extension#0|nonEmptySizeOrNull'](media_query.MediaQuery.maybeOf(context));
+        let deviceSize = (t0$1 = (t0$0 = deviceData, t0$0 == null ? null : t0$0.size), t0$1 == null ? designSize : t0$1);
+        let orientation = (t0$3 = (t0$2 = deviceData, t0$2 == null ? null : t0$2.orientation), t0$3 == null ? deviceSize.width > deviceSize.height ? media_query.Orientation.landscape : media_query.Orientation.portrait : t0$3);
+        t0$4 = screen_util.ScreenUtil._instance;
+        (() => {
+          t0$4[_context] = scaleByHeight ? null : context;
+          t0$4[_uiSize] = designSize;
+          t0$4[_splitScreenMode] = splitScreenMode;
+          t0$4[_minTextAdapt] = minTextAdapt;
+          t0$4[_orientation] = orientation;
+          t0$4[_screenWidth] = scaleByHeight ? deviceSize.height * designSize.width / designSize.height : deviceSize.width;
+          t0$4[_screenHeight] = deviceSize.height;
+          return t0$4;
+        })();
+        t0$5 = screen_util.ScreenUtil._instance[_elementsToRebuild];
+        t0$5 == null ? null : t0$5[$forEach](dart.fn(el => el.markNeedsBuild(), T.ElementTovoid()));
+        return initCompleter.future;
+      });
+    }
+    get orientation() {
+      return this[_orientation];
+    }
+    get textScaleFactor() {
+      return this[_context] != null ? media_query.MediaQuery.of(dart.nullCheck(this[_context])).textScaleFactor : 1.0;
+    }
+    get pixelRatio() {
+      return this[_context] != null ? media_query.MediaQuery.of(dart.nullCheck(this[_context])).devicePixelRatio : 1.0;
+    }
+    get screenWidth() {
+      return this[_context] != null ? media_query.MediaQuery.of(dart.nullCheck(this[_context])).size.width : this[_screenWidth];
+    }
+    get screenHeight() {
+      return this[_context] != null ? media_query.MediaQuery.of(dart.nullCheck(this[_context])).size.height : this[_screenHeight];
+    }
+    get statusBarHeight() {
+      return this[_context] == null ? 0.0 : media_query.MediaQuery.of(dart.nullCheck(this[_context])).padding.top;
+    }
+    get bottomBarHeight() {
+      return this[_context] == null ? 0.0 : media_query.MediaQuery.of(dart.nullCheck(this[_context])).padding.bottom;
+    }
+    get scaleWidth() {
+      return this.screenWidth / this[_uiSize].width;
+    }
+    get scaleHeight() {
+      return (this[_splitScreenMode] ? math.max(core.num, this.screenHeight, 700) : this.screenHeight) / this[_uiSize].height;
+    }
+    get scaleText() {
+      return this[_minTextAdapt] ? math.min(core.double, this.scaleWidth, this.scaleHeight) : this.scaleWidth;
+    }
+    setWidth(width) {
+      return width * this.scaleWidth;
+    }
+    setHeight(height) {
+      return height * this.scaleHeight;
+    }
+    radius(r) {
+      return r * math.min(core.double, this.scaleWidth, this.scaleHeight);
+    }
+    setSp(fontSize) {
+      return fontSize * this.scaleText;
+    }
+    setVerticalSpacing(height) {
+      return new basic.SizedBox.new({height: this.setHeight(height), $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    setVerticalSpacingFromWidth(height) {
+      return new basic.SizedBox.new({height: this.setWidth(height), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+    }
+    setHorizontalSpacing(width) {
+      return new basic.SizedBox.new({width: this.setWidth(width), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+    }
+    setHorizontalSpacingRadius(width) {
+      return new basic.SizedBox.new({width: this.radius(width), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    setVerticalSpacingRadius(height) {
+      return new basic.SizedBox.new({height: this.radius(height), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+    }
+  };
+  (screen_util.ScreenUtil.__ = function() {
+    this[__ScreenUtil__uiSize] = null;
+    this[__ScreenUtil__orientation] = null;
+    this[__ScreenUtil__screenWidth] = null;
+    this[__ScreenUtil__screenHeight] = null;
+    this[__ScreenUtil__minTextAdapt] = null;
+    this[_context] = null;
+    this[__ScreenUtil__splitScreenMode] = null;
+    this[_elementsToRebuild] = null;
+    ;
+  }).prototype = screen_util.ScreenUtil.prototype;
+  dart.addTypeTests(screen_util.ScreenUtil);
+  dart.addTypeCaches(screen_util.ScreenUtil);
+  dart.setMethodSignature(screen_util.ScreenUtil, () => ({
+    __proto__: dart.getMethods(screen_util.ScreenUtil.__proto__),
+    setWidth: dart.fnType(core.double, [core.num]),
+    setHeight: dart.fnType(core.double, [core.num]),
+    radius: dart.fnType(core.double, [core.num]),
+    setSp: dart.fnType(core.double, [core.num]),
+    setVerticalSpacing: dart.fnType(framework.Widget, [core.num]),
+    setVerticalSpacingFromWidth: dart.fnType(framework.Widget, [core.num]),
+    setHorizontalSpacing: dart.fnType(framework.Widget, [core.num]),
+    setHorizontalSpacingRadius: dart.fnType(framework.Widget, [core.num]),
+    setVerticalSpacingRadius: dart.fnType(framework.Widget, [core.num])
+  }));
+  dart.setStaticMethodSignature(screen_util.ScreenUtil, () => ['new', 'ensureScreenSize', 'registerToBuild', 'init']);
+  dart.setGetterSignature(screen_util.ScreenUtil, () => ({
+    __proto__: dart.getGetters(screen_util.ScreenUtil.__proto__),
+    [_uiSize]: ui.Size,
+    [_orientation]: media_query.Orientation,
+    [_screenWidth]: core.double,
+    [_screenHeight]: core.double,
+    [_minTextAdapt]: core.bool,
+    [_splitScreenMode]: core.bool,
+    orientation: media_query.Orientation,
+    textScaleFactor: core.double,
+    pixelRatio: dart.nullable(core.double),
+    screenWidth: core.double,
+    screenHeight: core.double,
+    statusBarHeight: core.double,
+    bottomBarHeight: core.double,
+    scaleWidth: core.double,
+    scaleHeight: core.double,
+    scaleText: core.double
+  }));
+  dart.setSetterSignature(screen_util.ScreenUtil, () => ({
+    __proto__: dart.getSetters(screen_util.ScreenUtil.__proto__),
+    [_uiSize]: ui.Size,
+    [_orientation]: media_query.Orientation,
+    [_screenWidth]: core.double,
+    [_screenHeight]: core.double,
+    [_minTextAdapt]: core.bool,
+    [_splitScreenMode]: core.bool
+  }));
+  dart.setLibraryUri(screen_util.ScreenUtil, I[0]);
+  dart.setFieldSignature(screen_util.ScreenUtil, () => ({
+    __proto__: dart.getFields(screen_util.ScreenUtil.__proto__),
+    [__ScreenUtil__uiSize]: dart.fieldType(dart.nullable(ui.Size)),
+    [__ScreenUtil__orientation]: dart.fieldType(dart.nullable(media_query.Orientation)),
+    [__ScreenUtil__screenWidth]: dart.fieldType(dart.nullable(core.double)),
+    [__ScreenUtil__screenHeight]: dart.fieldType(dart.nullable(core.double)),
+    [__ScreenUtil__minTextAdapt]: dart.fieldType(dart.nullable(core.bool)),
+    [_context]: dart.fieldType(dart.nullable(framework.BuildContext)),
+    [__ScreenUtil__splitScreenMode]: dart.fieldType(dart.nullable(core.bool)),
+    [_elementsToRebuild]: dart.fieldType(dart.nullable(core.Set$(framework.Element)))
+  }));
+  dart.setStaticFieldSignature(screen_util.ScreenUtil, () => ['defaultSize', '_instance']);
+  dart.defineLazy(screen_util.ScreenUtil, {
+    /*screen_util.ScreenUtil.defaultSize*/get defaultSize() {
+      return C[1] || CT.C1;
+    },
+    /*screen_util.ScreenUtil._instance*/get _instance() {
+      return new screen_util.ScreenUtil.__();
+    },
+    set _instance(_) {}
+  }, false);
+  screen_util['_extension#0|nonEmptySizeOrNull'] = function _extension$350$124nonEmptySizeOrNull($this) {
+    let t1, t1$;
+    if (dart.test((t1$ = (t1 = $this, t1 == null ? null : t1.size.isEmpty), t1$ == null ? true : t1$)))
+      return null;
+    else
+      return $this;
+  };
+  screen_util['_extension#0|get#nonEmptySizeOrNull'] = function _extension$350$124get$35nonEmptySizeOrNull($this) {
+    return dart.fn(() => screen_util['_extension#0|nonEmptySizeOrNull']($this), T.VoidToMediaQueryDataN());
+  };
+  dart.trackLibraries("packages/flutter_screenutil/src/screen_util.dart", {
+    "package:flutter_screenutil/src/screen_util.dart": screen_util
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["screen_util.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/flutter_screenutil/src/screen_util.dart.lib.js"}');
+  // Exports:
+  return {
+    src__screen_util: screen_util
+  };
+}));
+
+//# sourceMappingURL=screen_util.dart.lib.js.map

@@ -1,0 +1,338 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart'], (function load__packages__octo_image__src__image__fade_widget_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const transitions = packages__flutter__src__widgets__title$46dart.src__widgets__transitions;
+  const ticker_provider = packages__flutter__src__widgets__title$46dart.src__widgets__ticker_provider;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  var fade_widget = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: fade_widget.AnimationDirection.prototype,
+        [_Enum__name]: "forward",
+        [_Enum_index]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: fade_widget.AnimationDirection.prototype,
+        [_Enum__name]: "reverse",
+        [_Enum_index]: 1
+      });
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2], fade_widget.AnimationDirection);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 800000
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.58,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeWidget",
+        [_Location_column]: 9,
+        [_Location_line]: 28,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/fade_widget.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 20,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/fade_widget.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[7] || CT.C7,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FadeTransition",
+        [_Location_column]: 12,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/octo_image-1.0.1/lib/src/image/fade_widget.dart"
+      });
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
+  var I = ["package:octo_image/src/image/fade_widget.dart"];
+  var _name = dart.privateName(core, "_name");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  fade_widget.AnimationDirection = class AnimationDirection extends core._Enum {
+    toString() {
+      return "AnimationDirection." + this[_name];
+    }
+  };
+  (fade_widget.AnimationDirection.new = function(index, name) {
+    fade_widget.AnimationDirection.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = fade_widget.AnimationDirection.prototype;
+  dart.addTypeTests(fade_widget.AnimationDirection);
+  dart.addTypeCaches(fade_widget.AnimationDirection);
+  dart.setLibraryUri(fade_widget.AnimationDirection, I[0]);
+  dart.setStaticFieldSignature(fade_widget.AnimationDirection, () => ['values', 'forward', 'reverse']);
+  dart.defineExtensionMethods(fade_widget.AnimationDirection, ['toString']);
+  dart.defineLazy(fade_widget.AnimationDirection, {
+    /*fade_widget.AnimationDirection.values*/get values() {
+      return C[0] || CT.C0;
+    },
+    /*fade_widget.AnimationDirection.forward*/get forward() {
+      return C[1] || CT.C1;
+    },
+    /*fade_widget.AnimationDirection.reverse*/get reverse() {
+      return C[2] || CT.C2;
+    }
+  }, false);
+  var child$ = dart.privateName(fade_widget, "FadeWidget.child");
+  var duration$ = dart.privateName(fade_widget, "FadeWidget.duration");
+  var direction$ = dart.privateName(fade_widget, "FadeWidget.direction");
+  var curve$ = dart.privateName(fade_widget, "FadeWidget.curve");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  fade_widget.FadeWidget = class FadeWidget extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get direction() {
+      return this[direction$];
+    }
+    set direction(value) {
+      super.direction = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[3] || CT.C3;
+      let direction = opts && 'direction' in opts ? opts.direction : C[1] || CT.C1;
+      let curve = opts && 'curve' in opts ? opts.curve : C[4] || CT.C4;
+      let key = opts && 'key' in opts ? opts.key : null;
+      return new fade_widget.FadeWidget.new({child: child, duration: duration, direction: direction, curve: curve, key: key, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    createState() {
+      return new fade_widget._FadeWidgetState.new();
+    }
+  };
+  (fade_widget.FadeWidget.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let duration = opts && 'duration' in opts ? opts.duration : C[3] || CT.C3;
+    let direction = opts && 'direction' in opts ? opts.direction : C[1] || CT.C1;
+    let curve = opts && 'curve' in opts ? opts.curve : C[4] || CT.C4;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[duration$] = duration;
+    this[direction$] = direction;
+    this[curve$] = curve;
+    fade_widget.FadeWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = fade_widget.FadeWidget.prototype;
+  dart.addTypeTests(fade_widget.FadeWidget);
+  dart.addTypeCaches(fade_widget.FadeWidget);
+  dart.setMethodSignature(fade_widget.FadeWidget, () => ({
+    __proto__: dart.getMethods(fade_widget.FadeWidget.__proto__),
+    createState: dart.fnType(fade_widget._FadeWidgetState, [])
+  }));
+  dart.setLibraryUri(fade_widget.FadeWidget, I[0]);
+  dart.setFieldSignature(fade_widget.FadeWidget, () => ({
+    __proto__: dart.getFields(fade_widget.FadeWidget.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    duration: dart.finalFieldType(core.Duration),
+    direction: dart.finalFieldType(fade_widget.AnimationDirection),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var ___FadeWidgetState_opacity = dart.privateName(fade_widget, "_#_FadeWidgetState#opacity");
+  var ___FadeWidgetState_controller = dart.privateName(fade_widget, "_#_FadeWidgetState#controller");
+  var ___FadeWidgetState_hideWidget = dart.privateName(fade_widget, "_#_FadeWidgetState#hideWidget");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(fade_widget.FadeWidget) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(fade_widget.FadeWidget)[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(fade_widget.FadeWidget));
+  fade_widget._FadeWidgetState = class _FadeWidgetState extends State_SingleTickerProviderStateMixin$36 {
+    get opacity() {
+      let t2;
+      t2 = this[___FadeWidgetState_opacity];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("opacity")) : t2;
+    }
+    set opacity(opacity$35param) {
+      this[___FadeWidgetState_opacity] = opacity$35param;
+    }
+    get controller() {
+      let t2;
+      t2 = this[___FadeWidgetState_controller];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("controller")) : t2;
+    }
+    set controller(controller$35param) {
+      this[___FadeWidgetState_controller] = controller$35param;
+    }
+    get hideWidget() {
+      let t2;
+      t2 = this[___FadeWidgetState_hideWidget];
+      return t2 == null ? dart.throw(new _internal.LateError.fieldNI("hideWidget")) : t2;
+    }
+    set hideWidget(hideWidget$35param) {
+      this[___FadeWidgetState_hideWidget] = hideWidget$35param;
+    }
+    build(context) {
+      if (this.hideWidget) {
+        return C[6] || CT.C6;
+      }
+      return new transitions.FadeTransition.new({opacity: this.opacity, child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+    }
+    initState() {
+      super.initState();
+      this.controller = new animation_controller.AnimationController.new({duration: this.widget.duration, vsync: this});
+      let curved = new animations.CurvedAnimation.new({parent: this.controller, curve: this.widget.curve});
+      let begin = this.widget.direction === fade_widget.AnimationDirection.forward ? 0.0 : 1.0;
+      let end = this.widget.direction === fade_widget.AnimationDirection.forward ? 1.0 : 0.0;
+      this.opacity = new (T.TweenOfdouble()).new({begin: begin, end: end}).animate(curved);
+      this.controller.forward();
+      this.hideWidget = false;
+      if (this.widget.direction === fade_widget.AnimationDirection.reverse) {
+        this.opacity.addStatusListener(dart.bind(this, 'animationStatusChange'));
+      }
+    }
+    didUpdateWidget(oldWidget) {
+      fade_widget.FadeWidget.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (framework.Widget.canUpdate(oldWidget.child, this.widget.child)) return;
+      this.opacity.removeStatusListener(dart.bind(this, 'animationStatusChange'));
+      this.controller.duration = this.widget.duration;
+      this.controller.value = 0.0;
+      let curved = new animations.CurvedAnimation.new({parent: this.controller, curve: this.widget.curve});
+      let begin = this.widget.direction === fade_widget.AnimationDirection.forward ? 0.0 : 1.0;
+      let end = this.widget.direction === fade_widget.AnimationDirection.forward ? 1.0 : 0.0;
+      this.opacity = new (T.TweenOfdouble()).new({begin: begin, end: end}).animate(curved);
+      this.controller.forward();
+      this.hideWidget = false;
+      if (this.widget.direction === fade_widget.AnimationDirection.reverse) {
+        this.opacity.addStatusListener(dart.bind(this, 'animationStatusChange'));
+      }
+    }
+    dispose() {
+      this.opacity.removeStatusListener(dart.bind(this, 'animationStatusChange'));
+      this.controller.dispose();
+      super.dispose();
+    }
+    animationStatusChange(status) {
+      this.setState(dart.fn(() => {
+        this.hideWidget = this.widget.direction === fade_widget.AnimationDirection.reverse && status === animation.AnimationStatus.completed;
+      }, T.VoidTovoid()));
+    }
+    static ['_#new#tearOff']() {
+      return new fade_widget._FadeWidgetState.new();
+    }
+  };
+  (fade_widget._FadeWidgetState.new = function() {
+    this[___FadeWidgetState_opacity] = null;
+    this[___FadeWidgetState_controller] = null;
+    this[___FadeWidgetState_hideWidget] = null;
+    fade_widget._FadeWidgetState.__proto__.new.call(this);
+    ;
+  }).prototype = fade_widget._FadeWidgetState.prototype;
+  dart.addTypeTests(fade_widget._FadeWidgetState);
+  dart.addTypeCaches(fade_widget._FadeWidgetState);
+  dart.setMethodSignature(fade_widget._FadeWidgetState, () => ({
+    __proto__: dart.getMethods(fade_widget._FadeWidgetState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    animationStatusChange: dart.fnType(dart.void, [animation.AnimationStatus])
+  }));
+  dart.setGetterSignature(fade_widget._FadeWidgetState, () => ({
+    __proto__: dart.getGetters(fade_widget._FadeWidgetState.__proto__),
+    opacity: animation.Animation$(core.double),
+    controller: animation_controller.AnimationController,
+    hideWidget: core.bool
+  }));
+  dart.setSetterSignature(fade_widget._FadeWidgetState, () => ({
+    __proto__: dart.getSetters(fade_widget._FadeWidgetState.__proto__),
+    opacity: animation.Animation$(core.double),
+    controller: animation_controller.AnimationController,
+    hideWidget: core.bool
+  }));
+  dart.setLibraryUri(fade_widget._FadeWidgetState, I[0]);
+  dart.setFieldSignature(fade_widget._FadeWidgetState, () => ({
+    __proto__: dart.getFields(fade_widget._FadeWidgetState.__proto__),
+    [___FadeWidgetState_opacity]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___FadeWidgetState_controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [___FadeWidgetState_hideWidget]: dart.fieldType(dart.nullable(core.bool))
+  }));
+  dart.trackLibraries("packages/octo_image/src/image/fade_widget.dart", {
+    "package:octo_image/src/image/fade_widget.dart": fade_widget
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["fade_widget.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IASA;;;;;;;;;;;;MANK,qCAAM;;;MAET,sCAAO;;;MAGP,sCAAO;;;;;;;;;;;;;;;;;;IAMM;;;;;;IAGE;;;;;;IAGU;;;;;;IAGb;;;;;;;;;;;;;;;AAasB;IAAkB;;;QARjC;QACV;QACA;QACA;QACA;;IAJU;IACV;IACA;IACA;AAEH,0DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAQE;;IAAO;gBAAP;;IAAO;;;AACL;;IAAU;mBAAV;;IAAU;;;AACzB;;IAAU;mBAAV;;IAAU;UAGM;AACxB,UAAI;AACF;;AAGF,YAAO,8CACI,qBACF,AAAO;IAElB;;AAImB,MAAX;AACkE,MAAxE,kBAAa,4DAA8B,AAAO,6BAAiB;AAC7D,mBAAS,4CAAwB,wBAAmB,AAAO;AAC7D,kBAAQ,AAAO,AAAU,0BAAsB,yCAAU,MAAM;AAC/D,gBAAM,AAAO,AAAU,0BAAsB,yCAAU,MAAM;AACF,MAA/D,eAAU,AAAsC,oCAAjB,KAAK,OAAO,GAAG,WAAU,MAAM;AAC1C,MAApB,AAAW;AAEO,MAAlB,kBAAa;AACb,UAAI,AAAO,AAAU,0BAAsB;AACO,QAAhD,AAAQ,yCAAkB;;IAE9B;oBAGgC;;AACE,MAA1B,sBAAgB,SAAS;AAC/B,UAAW,2BAAU,AAAU,SAAD,QAAQ,AAAO,oBAAQ;AACF,MAAnD,AAAQ,4CAAqB;AACQ,MAArC,AAAW,2BAAW,AAAO;AACT,MAApB,AAAW,wBAAQ;AACb,mBAAS,4CAAwB,wBAAmB,AAAO;AAC7D,kBAAQ,AAAO,AAAU,0BAAsB,yCAAU,MAAM;AAC/D,gBAAM,AAAO,AAAU,0BAAsB,yCAAU,MAAM;AACF,MAA/D,eAAU,AAAsC,oCAAjB,KAAK,OAAO,GAAG,WAAU,MAAM;AAC1C,MAApB,AAAW;AAEO,MAAlB,kBAAa;AACb,UAAI,AAAO,AAAU,0BAAsB;AACO,QAAhD,AAAQ,yCAAkB;;IAE9B;;AAIqD,MAAnD,AAAQ,4CAAqB;AACT,MAApB,AAAW;AACI,MAAT;IACR;0BAE2C;AAIvC,MAHF,cAAS;AAEgC,QADvC,kBAAa,AAAO,AAAU,AAA8B,0BAAR,0CAChD,AAAO,MAAD,KAAoB;;IAElC;;;;;;uCA/DuB;0CACE;0CACf;;;EA8DZ","file":"../../../../../../../../../../../../packages/octo_image/src/image/fade_widget.dart.lib.js"}');
+  // Exports:
+  return {
+    src__image__fade_widget: fade_widget
+  };
+}));
+
+//# sourceMappingURL=fade_widget.dart.lib.js.map

@@ -1,0 +1,317 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/services/mouse_cursor.dart'], (function load__packages__flutter_bounceable__src__bounceable_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__services__mouse_cursor$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__title$46dart.src__widgets__gesture_detector;
+  const transitions = packages__flutter__src__widgets__title$46dart.src__widgets__transitions;
+  const ticker_provider = packages__flutter__src__widgets__title$46dart.src__widgets__ticker_provider;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const mouse_cursor = packages__flutter__src__services__mouse_cursor$46dart.src__services__mouse_cursor;
+  var bounceable = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    voidToNull: () => (T.voidToNull = dart.constFn(dart.fnType(core.Null, [dart.void])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 200000
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: curves._DecelerateCurve.prototype
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Bounceable",
+        [_Location_column]: 9,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bounceable-1.0.3/lib/src/bounceable.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ScaleTransition",
+        [_Location_column]: 16,
+        [_Location_line]: 109,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bounceable-1.0.3/lib/src/bounceable.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 14,
+        [_Location_line]: 104,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bounceable-1.0.3/lib/src/bounceable.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "MouseRegion",
+        [_Location_column]: 12,
+        [_Location_line]: 102,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bounceable-1.0.3/lib/src/bounceable.dart"
+      });
+    }
+  }, false);
+  var C = Array(6).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_bounceable-1.0.3/lib/src/bounceable.dart",
+    "package:flutter_bounceable/src/bounceable.dart"
+  ];
+  var onTap$ = dart.privateName(bounceable, "Bounceable.onTap");
+  var onTapUp$ = dart.privateName(bounceable, "Bounceable.onTapUp");
+  var onTapDown$ = dart.privateName(bounceable, "Bounceable.onTapDown");
+  var onTapCancel$ = dart.privateName(bounceable, "Bounceable.onTapCancel");
+  var duration$ = dart.privateName(bounceable, "Bounceable.duration");
+  var reverseDuration$ = dart.privateName(bounceable, "Bounceable.reverseDuration");
+  var curve$ = dart.privateName(bounceable, "Bounceable.curve");
+  var reverseCurve$ = dart.privateName(bounceable, "Bounceable.reverseCurve");
+  var scaleFactor$ = dart.privateName(bounceable, "Bounceable.scaleFactor");
+  var child$ = dart.privateName(bounceable, "Bounceable.child");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  bounceable.Bounceable = class Bounceable extends framework.StatefulWidget {
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get onTapUp() {
+      return this[onTapUp$];
+    }
+    set onTapUp(value) {
+      super.onTapUp = value;
+    }
+    get onTapDown() {
+      return this[onTapDown$];
+    }
+    set onTapDown(value) {
+      super.onTapDown = value;
+    }
+    get onTapCancel() {
+      return this[onTapCancel$];
+    }
+    set onTapCancel(value) {
+      super.onTapCancel = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get reverseDuration() {
+      return this[reverseDuration$];
+    }
+    set reverseDuration(value) {
+      super.reverseDuration = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get reverseCurve() {
+      return this[reverseCurve$];
+    }
+    set reverseCurve(value) {
+      super.reverseCurve = value;
+    }
+    get scaleFactor() {
+      return this[scaleFactor$];
+    }
+    set scaleFactor(value) {
+      super.scaleFactor = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let onTapUp = opts && 'onTapUp' in opts ? opts.onTapUp : null;
+      let onTapDown = opts && 'onTapDown' in opts ? opts.onTapDown : null;
+      let onTapCancel = opts && 'onTapCancel' in opts ? opts.onTapCancel : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
+      let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : C[0] || CT.C0;
+      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+      let reverseCurve = opts && 'reverseCurve' in opts ? opts.reverseCurve : C[1] || CT.C1;
+      let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 0.8;
+      return new bounceable.Bounceable.new({key: key, onTap: onTap, child: child, onTapUp: onTapUp, onTapDown: onTapDown, onTapCancel: onTapCancel, duration: duration, reverseDuration: reverseDuration, curve: curve, reverseCurve: reverseCurve, scaleFactor: scaleFactor, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    createState() {
+      return new bounceable._BounceableState.new();
+    }
+  };
+  (bounceable.Bounceable.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let onTapUp = opts && 'onTapUp' in opts ? opts.onTapUp : null;
+    let onTapDown = opts && 'onTapDown' in opts ? opts.onTapDown : null;
+    let onTapCancel = opts && 'onTapCancel' in opts ? opts.onTapCancel : null;
+    let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
+    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : C[0] || CT.C0;
+    let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+    let reverseCurve = opts && 'reverseCurve' in opts ? opts.reverseCurve : C[1] || CT.C1;
+    let scaleFactor = opts && 'scaleFactor' in opts ? opts.scaleFactor : 0.8;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[onTap$] = onTap;
+    this[child$] = child;
+    this[onTapUp$] = onTapUp;
+    this[onTapDown$] = onTapDown;
+    this[onTapCancel$] = onTapCancel;
+    this[duration$] = duration;
+    this[reverseDuration$] = reverseDuration;
+    this[curve$] = curve;
+    this[reverseCurve$] = reverseCurve;
+    this[scaleFactor$] = scaleFactor;
+    if (!(scaleFactor >= 0.0 && scaleFactor <= 1.0)) dart.assertFailed("The valid range of scaleFactor is from 0.0 to 1.0.", I[0], 40, 11, "scaleFactor >= 0.0 && scaleFactor <= 1.0");
+    bounceable.Bounceable.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = bounceable.Bounceable.prototype;
+  dart.addTypeTests(bounceable.Bounceable);
+  dart.addTypeCaches(bounceable.Bounceable);
+  dart.setMethodSignature(bounceable.Bounceable, () => ({
+    __proto__: dart.getMethods(bounceable.Bounceable.__proto__),
+    createState: dart.fnType(bounceable._BounceableState, [])
+  }));
+  dart.setLibraryUri(bounceable.Bounceable, I[1]);
+  dart.setFieldSignature(bounceable.Bounceable, () => ({
+    __proto__: dart.getFields(bounceable.Bounceable.__proto__),
+    onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onTapUp: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
+    onTapDown: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
+    onTapCancel: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    duration: dart.finalFieldType(dart.nullable(core.Duration)),
+    reverseDuration: dart.finalFieldType(dart.nullable(core.Duration)),
+    curve: dart.finalFieldType(curves.Curve),
+    reverseCurve: dart.finalFieldType(dart.nullable(curves.Curve)),
+    scaleFactor: dart.finalFieldType(core.double),
+    child: dart.finalFieldType(framework.Widget)
+  }));
+  var ___BounceableState__controller = dart.privateName(bounceable, "_#_BounceableState#_controller");
+  var ___BounceableState__animation = dart.privateName(bounceable, "_#_BounceableState#_animation");
+  var _controller = dart.privateName(bounceable, "_controller");
+  var _animation = dart.privateName(bounceable, "_animation");
+  var _onTap = dart.privateName(bounceable, "_onTap");
+  var _onTapUp = dart.privateName(bounceable, "_onTapUp");
+  var _onTapDown = dart.privateName(bounceable, "_onTapDown");
+  var _onTapCancel = dart.privateName(bounceable, "_onTapCancel");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(bounceable.Bounceable) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(bounceable.Bounceable)[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(bounceable.Bounceable));
+  bounceable._BounceableState = class _BounceableState extends State_SingleTickerProviderStateMixin$36 {
+    get [_controller]() {
+      let t1, t0;
+      t0 = this[___BounceableState__controller];
+      return t0 == null ? (t1 = new animation_controller.AnimationController.new({vsync: this, duration: this.widget.duration, reverseDuration: this.widget.reverseDuration, value: 1.0, upperBound: 1.0, lowerBound: this.widget.scaleFactor}), this[___BounceableState__controller] == null ? this[___BounceableState__controller] = t1 : dart.throw(new _internal.LateError.fieldADI("_controller"))) : t0;
+    }
+    get [_animation]() {
+      let t1, t0;
+      t0 = this[___BounceableState__animation];
+      return t0 == null ? (t1 = new animations.CurvedAnimation.new({parent: this[_controller], curve: this.widget.curve, reverseCurve: this.widget.reverseCurve}), this[___BounceableState__animation] == null ? this[___BounceableState__animation] = t1 : dart.throw(new _internal.LateError.fieldADI("_animation"))) : t0;
+    }
+    dispose() {
+      this[_controller].dispose();
+      super.dispose();
+    }
+    reassemble() {
+      super.reassemble();
+    }
+    [_onTap]() {
+      if (this.widget.onTap != null) dart.nullCheck(this.widget.onTap)();
+      this[_controller].reverse().then(core.Null, dart.fn(_ => {
+        this[_controller].forward();
+      }, T.voidToNull()));
+    }
+    [_onTapUp](details) {
+      if (this.widget.onTapUp != null) dart.nullCheck(this.widget.onTapUp)(details);
+      this[_controller].forward();
+    }
+    [_onTapDown](details) {
+      if (this.widget.onTapDown != null) dart.nullCheck(this.widget.onTapDown)(details);
+      this[_controller].reverse();
+    }
+    [_onTapCancel]() {
+      if (this.widget.onTapCancel != null) dart.nullCheck(this.widget.onTapCancel)();
+      this[_controller].forward();
+    }
+    build(context) {
+      return new basic.MouseRegion.new({cursor: mouse_cursor.SystemMouseCursors.click, child: new gesture_detector.GestureDetector.new({onTapCancel: this.widget.onTap != null ? dart.bind(this, _onTapCancel) : null, onTapDown: this.widget.onTap != null ? dart.bind(this, _onTapDown) : null, onTapUp: this.widget.onTap != null ? dart.bind(this, _onTapUp) : null, onTap: this.widget.onTap != null ? dart.bind(this, _onTap) : null, child: new transitions.ScaleTransition.new({scale: this[_animation], child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    static ['_#new#tearOff']() {
+      return new bounceable._BounceableState.new();
+    }
+  };
+  (bounceable._BounceableState.new = function() {
+    this[___BounceableState__controller] = null;
+    this[___BounceableState__animation] = null;
+    bounceable._BounceableState.__proto__.new.call(this);
+    ;
+  }).prototype = bounceable._BounceableState.prototype;
+  dart.addTypeTests(bounceable._BounceableState);
+  dart.addTypeCaches(bounceable._BounceableState);
+  dart.setMethodSignature(bounceable._BounceableState, () => ({
+    __proto__: dart.getMethods(bounceable._BounceableState.__proto__),
+    [_onTap]: dart.fnType(dart.void, []),
+    [_onTapUp]: dart.fnType(dart.void, [tap.TapUpDetails]),
+    [_onTapDown]: dart.fnType(dart.void, [tap.TapDownDetails]),
+    [_onTapCancel]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(bounceable._BounceableState, () => ({
+    __proto__: dart.getGetters(bounceable._BounceableState.__proto__),
+    [_controller]: animation_controller.AnimationController,
+    [_animation]: animation.Animation$(core.double)
+  }));
+  dart.setLibraryUri(bounceable._BounceableState, I[1]);
+  dart.setFieldSignature(bounceable._BounceableState, () => ({
+    __proto__: dart.getFields(bounceable._BounceableState.__proto__),
+    [___BounceableState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [___BounceableState__animation]: dart.fieldType(dart.nullable(animation.Animation$(core.double)))
+  }));
+  dart.trackLibraries("packages/flutter_bounceable/src/bounceable.dart", {
+    "package:flutter_bounceable/src/bounceable.dart": bounceable
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["bounceable.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAIsB;;;;;;IACe;;;;;;IACE;;;;;;IACjB;;;;;;IAGJ;;;;;;IAGA;;;;;;IAGJ;;;;;;IAGC;;;;;;IAGA;;;;;;IAEA;;;;;;;;;;;;;;;;;;;;;AAqBqB;IAAkB;;;QAlB7C;QACS;QACA;QACT;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IATS;IACA;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;UAEC,AAAY,AAAO,WAAR,IAAI,OAAO,AAAY,WAAD,IAAI,wBACrC;AAEF,yDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAQU;gCAAc,yDACpC,gBACG,AAAO,uCACA,AAAO,oCACjB,iBACK,iBACA,AAAO,kKANU;IAO9B;;;AAE4B;gCAAa,4CAChC,0BACD,AAAO,iCACA,AAAO,iKAHM;IAI5B;;AAIsB,MAArB,AAAY;AACG,MAAT;IACR;;AAIoB,MAAZ;IACR;;AAGE,UAAI,AAAO,2BAA2B,AAAC,AAAE,eAAf,AAAO;AAI/B,MAFF,AAAY,AAAU,4CAAK,QAAC;AACL,QAArB,AAAY;;IAEhB;eAE2B;AACzB,UAAI,AAAO,6BAA+B,AAAC,AAAS,eAAxB,AAAO,qBAAS,OAAO;AAC9B,MAArB,AAAY;IACd;iBAE+B;AAC7B,UAAI,AAAO,+BAAmC,AAAC,AAAS,eAA1B,AAAO,uBAAW,OAAO;AAClC,MAArB,AAAY;IACd;;AAGE,UAAI,AAAO,iCAAuC,AAAC,AAAE,eAArB,AAAO;AAClB,MAArB,AAAY;IACd;UAG0B;AACxB,YAAO,oCACsB,8CACpB,uDACQ,AAAO,AAAM,sCAAU,sBAAe,iBACxC,AAAO,AAAM,sCAAU,oBAAa,eACtC,AAAO,AAAM,sCAAU,kBAAW,aACpC,AAAO,AAAM,sCAAU,gBAAS,aAChC,4CACE,yBACA,AAAO;IAItB;;;;;;2CAhE+B;0CASF;;;EAwD/B","file":"../../../../../../../../../../../packages/flutter_bounceable/src/bounceable.dart.lib.js"}');
+  // Exports:
+  return {
+    src__bounceable: bounceable
+  };
+}));
+
+//# sourceMappingURL=bounceable.dart.lib.js.map

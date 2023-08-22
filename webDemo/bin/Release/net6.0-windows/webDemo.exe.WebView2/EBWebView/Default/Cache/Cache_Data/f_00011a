@@ -1,0 +1,389 @@
+define(['dart_sdk', 'packages/image/src/util/clip_line.dart', 'packages/image/src/draw/draw_pixel.dart', 'packages/image/src/util/point.dart'], (function load__packages__image__src__draw__draw_line_dart(dart_sdk, packages__image__src__util__clip_line$46dart, packages__image__src__draw__draw_pixel$46dart, packages__image__src__util__point$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const clip_line = packages__image__src__util__clip_line$46dart.src__util__clip_line;
+  const draw_pixel = packages__image__src__draw__draw_pixel$46dart.src__draw__draw_pixel;
+  const point = packages__image__src__util__point$46dart.src__util__point;
+  var draw_line = Object.create(dart.library);
+  var draw_circle = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $floor = dartx.floor;
+  var $abs = dartx.abs;
+  var $truncate = dartx.truncate;
+  var $toInt = dartx.toInt;
+  var $compareTo = dartx.compareTo;
+  var $sort = dartx.sort;
+  var $first = dartx.first;
+  var $sublist = dartx.sublist;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    intToint: () => (T.intToint = dart.constFn(dart.fnType(core.int, [core.int])))(),
+    PointAndPointToint: () => (T.PointAndPointToint = dart.constFn(dart.fnType(core.int, [point.Point, point.Point])))(),
+    JSArrayOfPoint: () => (T.JSArrayOfPoint = dart.constFn(_interceptors.JSArray$(point.Point)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  draw_line.drawLine = function drawLine(image, x1, y1, x2, y2, color, opts) {
+    let antialias = opts && 'antialias' in opts ? opts.antialias : false;
+    let thickness = opts && 'thickness' in opts ? opts.thickness : 1;
+    let line = T.JSArrayOfint().of([x1, y1, x2, y2]);
+    if (!clip_line.clipLine(line, T.JSArrayOfint().of([0, 0, image.width - 1, image.height - 1]))) {
+      return image;
+    }
+    x1 = line[$_get](0);
+    y1 = line[$_get](1);
+    x2 = line[$_get](2);
+    y2 = line[$_get](3);
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let radius = (thickness / 2.0)[$floor]();
+    if (dx === 0 && dy === 0) {
+      thickness === 1 ? draw_pixel.drawPixel(image, x1, y1, color) : draw_circle.fillCircle(image, x1, y1, radius, color);
+      return image;
+    }
+    if (dx === 0) {
+      if (dy < 0) {
+        for (let y = y2; y <= y1; y = y + 1) {
+          if (thickness <= 1) {
+            draw_pixel.drawPixel(image, x1, y, color);
+          } else {
+            for (let i = 0; i < thickness; i = i + 1) {
+              draw_pixel.drawPixel(image, x1 - radius + i, y, color);
+            }
+          }
+        }
+      } else {
+        for (let y = y1; y <= y2; y = y + 1) {
+          if (thickness <= 1) {
+            draw_pixel.drawPixel(image, x1, y, color);
+          } else {
+            for (let i = 0; i < thickness; i = i + 1) {
+              draw_pixel.drawPixel(image, x1 - radius + i, y, color);
+            }
+          }
+        }
+      }
+      return image;
+    } else if (dy === 0) {
+      if (dx < 0) {
+        for (let x = x2; x <= x1; x = x + 1) {
+          if (thickness <= 1) {
+            draw_pixel.drawPixel(image, x, y1, color);
+          } else {
+            for (let i = 0; i < thickness; i = i + 1) {
+              draw_pixel.drawPixel(image, x, y1 - radius + i, color);
+            }
+          }
+        }
+      } else {
+        for (let x = x1; x <= x2; x = x + 1) {
+          if (thickness <= 1) {
+            draw_pixel.drawPixel(image, x, y1, color);
+          } else {
+            for (let i = 0; i < thickness; i = i + 1) {
+              draw_pixel.drawPixel(image, x, y1 - radius + i, color);
+            }
+          }
+        }
+      }
+      return image;
+    }
+    function _xor(n) {
+      return (~n >>> 0) + 65536 & 65535;
+    }
+    dart.fn(_xor, T.intToint());
+    if (!antialias) {
+      dx = dx[$abs]();
+      dy = dy[$abs]();
+      if (dy <= dx) {
+        let ac = math.cos(math.atan2(dy, dx));
+        let wid = null;
+        if (ac !== 0) {
+          wid = (thickness / ac)[$truncate]();
+        } else {
+          wid = 1;
+        }
+        if (wid === 0) {
+          wid = 1;
+        }
+        let d = 2 * dy - dx;
+        let incr1 = 2 * dy;
+        let incr2 = 2 * (dy - dx);
+        let x = null;
+        let y = null;
+        let ydirflag = null;
+        let xend = null;
+        if (x1 > x2) {
+          x = x2;
+          y = y2;
+          ydirflag = -1;
+          xend = x1;
+        } else {
+          x = x1;
+          y = y1;
+          ydirflag = 1;
+          xend = x2;
+        }
+        let wstart = (y - wid / 2)[$toInt]();
+        for (let w = wstart; w < wstart + wid; w = w + 1) {
+          draw_pixel.drawPixel(image, x, w, color);
+        }
+        if ((y2 - y1) * ydirflag > 0) {
+          while (x < xend) {
+            x = x + 1;
+            if (d < 0) {
+              d = d + incr1;
+            } else {
+              y = y + 1;
+              d = d + incr2;
+            }
+            wstart = (y - wid / 2)[$toInt]();
+            for (let w = wstart; w < wstart + wid; w = w + 1) {
+              draw_pixel.drawPixel(image, x, w, color);
+            }
+          }
+        } else {
+          while (x < xend) {
+            x = x + 1;
+            if (d < 0) {
+              d = d + incr1;
+            } else {
+              y = y - 1;
+              d = d + incr2;
+            }
+            wstart = (y - wid / 2)[$toInt]();
+            for (let w = wstart; w < wstart + wid; w = w + 1) {
+              draw_pixel.drawPixel(image, x, w, color);
+            }
+          }
+        }
+      } else {
+        let as = math.sin(math.atan2(dy, dx));
+        let wid = null;
+        if (as !== 0) {
+          wid = (thickness / as)[$truncate]();
+        } else {
+          wid = 1;
+        }
+        if (wid === 0) {
+          wid = 1;
+        }
+        let d = 2 * dx - dy;
+        let incr1 = 2 * dx;
+        let incr2 = 2 * (dx - dy);
+        let x = null;
+        let y = null;
+        let yend = null;
+        let xdirflag = null;
+        if (y1 > y2) {
+          y = y2;
+          x = x2;
+          yend = y1;
+          xdirflag = -1;
+        } else {
+          y = y1;
+          x = x1;
+          yend = y2;
+          xdirflag = 1;
+        }
+        let wstart = (x - wid / 2)[$toInt]();
+        for (let w = wstart; w < wstart + wid; w = w + 1) {
+          draw_pixel.drawPixel(image, w, y, color);
+        }
+        if ((x2 - x1) * xdirflag > 0) {
+          while (y < yend) {
+            y = y + 1;
+            if (d < 0) {
+              d = d + incr1;
+            } else {
+              x = x + 1;
+              d = d + incr2;
+            }
+            wstart = (x - wid / 2)[$toInt]();
+            for (let w = wstart; w < wstart + wid; w = w + 1) {
+              draw_pixel.drawPixel(image, w, y, color);
+            }
+          }
+        } else {
+          while (y < yend) {
+            y = y + 1;
+            if (d < 0) {
+              d = d + incr1;
+            } else {
+              x = x - 1;
+              d = d + incr2;
+            }
+            wstart = (x - wid / 2)[$toInt]();
+            for (let w = wstart; w < wstart + wid; w = w + 1) {
+              draw_pixel.drawPixel(image, w, y, color);
+            }
+          }
+        }
+      }
+      return image;
+    }
+    let ag = dy[$abs]() < dx[$abs]() ? math.cos(math.atan2(dy, dx)) : math.sin(math.atan2(dy, dx));
+    let wid = null;
+    if (ag !== 0.0) {
+      wid = (thickness / ag)[$abs]()[$toInt]();
+    } else {
+      wid = 1;
+    }
+    if (wid === 0) {
+      wid = 1;
+    }
+    if (dx[$abs]() > dy[$abs]()) {
+      if (dx < 0) {
+        let tmp = x1;
+        x1 = x2;
+        x2 = tmp;
+        tmp = y1;
+        y1 = y2;
+        y2 = tmp;
+        dx = x2 - x1;
+        dy = y2 - y1;
+      }
+      let y = y1;
+      let inc = (dy * 65536 / dx)[$truncate]();
+      let frac = 0;
+      for (let x = x1; x <= x2; x = x + 1) {
+        let wstart = y - (wid / 2)[$truncate]();
+        for (let w = wstart; w < wstart + wid; w = w + 1) {
+          draw_pixel.drawPixel(image, x, w, color, frac >> 8 & 255);
+          draw_pixel.drawPixel(image, x, w + 1, color, _xor(frac) >> 8 & 255);
+        }
+        frac = frac + inc;
+        if (frac >= 65536) {
+          frac = frac - 65536;
+          y = y + 1;
+        } else if (frac < 0) {
+          frac = frac + 65536;
+          y = y - 1;
+        }
+      }
+    } else {
+      if (dy < 0) {
+        let tmp = x1;
+        x1 = x2;
+        x2 = tmp;
+        tmp = y1;
+        y1 = y2;
+        y2 = tmp;
+        dx = x2 - x1;
+        dy = y2 - y1;
+      }
+      let x = x1;
+      let inc = (dx * 65536 / dy)[$truncate]();
+      let frac = 0;
+      for (let y = y1; y <= y2; y = y + 1) {
+        let wstart = x - (wid / 2)[$truncate]();
+        for (let w = wstart; w < wstart + wid; w = w + 1) {
+          draw_pixel.drawPixel(image, w, y, color, frac >> 8 & 255);
+          draw_pixel.drawPixel(image, w + 1, y, color, _xor(frac) >> 8 & 255);
+        }
+        frac = frac + inc;
+        if (frac >= 65536) {
+          frac = frac - 65536;
+          x = x + 1;
+        } else if (frac < 0) {
+          frac = frac + 65536;
+          x = x - 1;
+        }
+      }
+    }
+    return image;
+  };
+  draw_circle.drawCircle = function drawCircle(image, x0, y0, radius, color) {
+    let points = draw_circle._calculateCircumference(image, x0, y0, radius);
+    return draw_circle._draw(image, points, color);
+  };
+  draw_circle.fillCircle = function fillCircle(image, x0, y0, radius, color) {
+    let points = draw_circle._calculateCircumference(image, x0, y0, radius);
+    points[$sort](dart.fn((a, b) => a.x === b.x ? a.y[$compareTo](b.y) : a.x[$compareTo](b.x), T.PointAndPointToint()));
+    let start = points[$first];
+    let end = points[$first];
+    for (let pt of points[$sublist](1)) {
+      if (pt.x === start.x) {
+        end = pt;
+      } else {
+        draw_line.drawLine(image, start.xi, start.yi, end.xi, end.yi, color);
+        start = pt;
+        end = pt;
+      }
+    }
+    draw_line.drawLine(image, start.xi, start.yi, end.xi, end.yi, color);
+    return image;
+  };
+  draw_circle._calculateCircumference = function _calculateCircumference(image, x0, y0, radius) {
+    if (radius < 0 || x0 - radius >= image.width || y0 + radius < 0 || y0 - radius >= image.height) {
+      return T.JSArrayOfPoint().of([]);
+    }
+    if (radius === 0) {
+      return T.JSArrayOfPoint().of([new point.Point.new(x0, y0)]);
+    }
+    let points = T.JSArrayOfPoint().of([]);
+    points[$add](new point.Point.new(x0 - radius, y0));
+    points[$add](new point.Point.new(x0 + radius, y0));
+    points[$add](new point.Point.new(x0, y0 - radius));
+    points[$add](new point.Point.new(x0, y0 + radius));
+    if (radius === 1) {
+      return points;
+    }
+    for (let f = 1 - radius, ddFx = 0, ddFy = -(radius << 1 >>> 0), x = 0, y = radius; x < y;) {
+      if (f >= 0) {
+        f = f + (ddFy = ddFy + 2);
+        y = y - 1;
+      }
+      x = x + 1;
+      ddFx = ddFx + 2;
+      f = f + (ddFx + 1);
+      if (x !== y + 1) {
+        let x1 = x0 - y;
+        let x2 = x0 + y;
+        let y1 = y0 - x;
+        let y2 = y0 + x;
+        let x3 = x0 - x;
+        let x4 = x0 + x;
+        let y3 = y0 - y;
+        let y4 = y0 + y;
+        points[$add](new point.Point.new(x1, y1));
+        points[$add](new point.Point.new(x1, y2));
+        points[$add](new point.Point.new(x2, y1));
+        points[$add](new point.Point.new(x2, y2));
+        if (x !== y) {
+          points[$add](new point.Point.new(x3, y3));
+          points[$add](new point.Point.new(x4, y4));
+          points[$add](new point.Point.new(x4, y3));
+          points[$add](new point.Point.new(x3, y4));
+        }
+      }
+    }
+    return points;
+  };
+  draw_circle._draw = function _draw(image, points, color) {
+    for (let pt of points) {
+      draw_pixel.drawPixel(image, pt.xi, pt.yi, color);
+    }
+    return image;
+  };
+  dart.trackLibraries("packages/image/src/draw/draw_line.dart", {
+    "package:image/src/draw/draw_line.dart": draw_line,
+    "package:image/src/draw/draw_circle.dart": draw_circle
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["draw_line.dart","draw_circle.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/draw/draw_line.dart.lib.js"}');
+  // Exports:
+  return {
+    src__draw__draw_line: draw_line,
+    src__draw__draw_circle: draw_circle
+  };
+}));
+
+//# sourceMappingURL=draw_line.dart.lib.js.map

@@ -1,0 +1,647 @@
+define(['dart_sdk', 'packages/drift/src/web/binary_string_conversion.dart', 'packages/drift/src/utils/lazy_database.dart', 'packages/drift/src/web/sql_js.dart', 'packages/drift/src/runtime/executor/helpers/results.dart', 'packages/stream_channel/src/stream_channel_controller.dart'], (function load__packages__drift__web_dart(dart_sdk, packages__drift__src__web__binary_string_conversion$46dart, packages__drift__src__utils__lazy_database$46dart, packages__drift__src__web__sql_js$46dart, packages__drift__src__runtime__executor__helpers__results$46dart, packages__stream_channel__src__stream_channel_controller$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const html = dart_sdk.html;
+  const indexed_db = dart_sdk.indexed_db;
+  const js = dart_sdk.js;
+  const typed_data = dart_sdk.typed_data;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const binary_string_conversion = packages__drift__src__web__binary_string_conversion$46dart.src__web__binary_string_conversion;
+  const engines = packages__drift__src__utils__lazy_database$46dart.src__runtime__executor__helpers__engines;
+  const delegates = packages__drift__src__utils__lazy_database$46dart.src__runtime__executor__helpers__delegates;
+  const executor = packages__drift__src__utils__lazy_database$46dart.src__runtime__executor__executor;
+  const sql_js = packages__drift__src__web__sql_js$46dart.src__web__sql_js;
+  const results = packages__drift__src__runtime__executor__helpers__results$46dart.src__runtime__executor__helpers__results;
+  const stream_channel_controller = packages__stream_channel__src__stream_channel_controller$46dart.src__stream_channel_controller;
+  const stream_channel = packages__stream_channel__src__stream_channel_controller$46dart.stream_channel;
+  var web = Object.create(dart.library);
+  var $indexedDB = dartx.indexedDB;
+  var $open = dartx.open;
+  var $localStorage = dartx.localStorage;
+  var $_get = dartx._get;
+  var $remove = dartx.remove;
+  var $toString = dartx.toString;
+  var $_set = dartx._set;
+  var $result = dartx.result;
+  var $target = dartx.target;
+  var $createObjectStore = dartx.createObjectStore;
+  var $transactionStore = dartx.transactionStore;
+  var $objectStore = dartx.objectStore;
+  var $put = dartx.put;
+  var $completed = dartx.completed;
+  var $getObject = dartx.getObject;
+  var $onLoad = dartx.onLoad;
+  var $add = dartx.add;
+  var $onMessage = dartx.onMessage;
+  var $data = dartx.data;
+  var $postMessage = dartx.postMessage;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    Uint8ListN: () => (T.Uint8ListN = dart.constFn(dart.nullable(typed_data.Uint8List)))(),
+    VersionChangeEventTovoid: () => (T.VersionChangeEventTovoid = dart.constFn(dart.fnType(dart.void, [indexed_db.VersionChangeEvent])))(),
+    BlobN: () => (T.BlobN = dart.constFn(dart.nullable(html.Blob)))(),
+    FutureOfUint8ListN: () => (T.FutureOfUint8ListN = dart.constFn(async.Future$(T.Uint8ListN())))(),
+    JSArrayOfPreparedStatement: () => (T.JSArrayOfPreparedStatement = dart.constFn(_interceptors.JSArray$(sql_js.PreparedStatement)))(),
+    JSArrayOfList: () => (T.JSArrayOfList = dart.constFn(_interceptors.JSArray$(core.List)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    FutureOfQueryResult: () => (T.FutureOfQueryResult = dart.constFn(async.Future$(results.QueryResult)))(),
+    MessageEventTodynamic: () => (T.MessageEventTodynamic = dart.constFn(dart.fnType(dart.dynamic, [html.MessageEvent])))(),
+    ObjectN: () => (T.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    StreamChannelOfObjectN: () => (T.StreamChannelOfObjectN = dart.constFn(stream_channel.StreamChannel$(T.ObjectN())))(),
+    VoidToStreamChannelOfObjectN: () => (T.VoidToStreamChannelOfObjectN = dart.constFn(dart.fnType(T.StreamChannelOfObjectN(), [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: delegates.NoTransactionDelegate.prototype,
+        [NoTransactionDelegate_rollback]: "ROLLBACK TRANSACTION",
+        [NoTransactionDelegate_commit]: "COMMIT TRANSACTION",
+        [NoTransactionDelegate_start]: "BEGIN TRANSACTION"
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = [
+    "package:drift/web.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/drift-1.2.0/lib/src/web/web_db.dart"
+  ];
+  web.DriftWebStorage = class DriftWebStorage extends core.Object {
+    static ['_#new#tearOff'](name) {
+      return new web._LocalStorageImpl.new(name);
+    }
+    static ['_#volatile#tearOff']() {
+      return new web._VolatileStorage.new();
+    }
+    static ['_#indexedDb#tearOff'](name, opts) {
+      let migrateFromLocalStorage = opts && 'migrateFromLocalStorage' in opts ? opts.migrateFromLocalStorage : true;
+      let inWebWorker = opts && 'inWebWorker' in opts ? opts.inWebWorker : false;
+      return new web._IndexedDbStorage.new(name, {migrateFromLocalStorage: migrateFromLocalStorage, inWebWorker: inWebWorker});
+    }
+    static indexedDbIfSupported(name, opts) {
+      let inWebWorker = opts && 'inWebWorker' in opts ? opts.inWebWorker : false;
+      return async.async(web.DriftWebStorage, function* indexedDbIfSupported() {
+        return (yield web.DriftWebStorage.supportsIndexedDb({inWebWorker: inWebWorker})) ? new web._IndexedDbStorage.new(name, {inWebWorker: inWebWorker}) : new web._LocalStorageImpl.new(name);
+      });
+    }
+    static supportsIndexedDb(opts) {
+      let inWebWorker = opts && 'inWebWorker' in opts ? opts.inWebWorker : false;
+      return async.async(core.bool, function* supportsIndexedDb() {
+        let isIndexedDbSupported = false;
+        if (inWebWorker && html.WorkerGlobalScope.instance.indexedDB != null) {
+          isIndexedDbSupported = true;
+        } else {
+          try {
+            isIndexedDbSupported = indexed_db.IdbFactory.supported;
+            if (isIndexedDbSupported) {
+              let mockDb = (yield dart.nullCheck(html.window[$indexedDB])[$open]("drift_mock_db"));
+              mockDb.close();
+            }
+          } catch (e) {
+            let error = dart.getThrown(e);
+            if (core.Object.is(error)) {
+              isIndexedDbSupported = false;
+            } else
+              throw e;
+          }
+        }
+        return isIndexedDbSupported && js.context.hasProperty("FileReader");
+      });
+    }
+  };
+  (web.DriftWebStorage[dart.mixinNew] = function() {
+  }).prototype = web.DriftWebStorage.prototype;
+  dart.addTypeTests(web.DriftWebStorage);
+  dart.addTypeCaches(web.DriftWebStorage);
+  dart.setStaticMethodSignature(web.DriftWebStorage, () => ['new', 'volatile', 'indexedDb', 'indexedDbIfSupported', 'supportsIndexedDb']);
+  dart.setLibraryUri(web.DriftWebStorage, I[0]);
+  dart.setStaticFieldSignature(web.DriftWebStorage, () => ['_redirecting#']);
+  web._CustomSchemaVersionSave = class _CustomSchemaVersionSave extends core.Object {};
+  (web._CustomSchemaVersionSave.new = function() {
+    ;
+  }).prototype = web._CustomSchemaVersionSave.prototype;
+  dart.addTypeTests(web._CustomSchemaVersionSave);
+  dart.addTypeCaches(web._CustomSchemaVersionSave);
+  web._CustomSchemaVersionSave[dart.implements] = () => [web.DriftWebStorage];
+  dart.setLibraryUri(web._CustomSchemaVersionSave, I[0]);
+  var name$ = dart.privateName(web, "_LocalStorageImpl.name");
+  var _persistenceKey = dart.privateName(web, "_persistenceKey");
+  var _versionKey = dart.privateName(web, "_versionKey");
+  web._LocalStorageImpl = class _LocalStorageImpl extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get [_persistenceKey]() {
+      return web._persistenceKeyForLocalStorage(this.name);
+    }
+    get [_versionKey]() {
+      return web._legacyVersionKeyForLocalStorage(this.name);
+    }
+    static ['_#new#tearOff'](name) {
+      return new web._LocalStorageImpl.new(name);
+    }
+    get schemaVersion() {
+      let versionStr = html.window[$localStorage][$_get](this[_versionKey]);
+      if (versionStr == null) return null;
+      return core.int.tryParse(versionStr);
+    }
+    set schemaVersion(value) {
+      let key = this[_versionKey];
+      if (value == null) {
+        html.window[$localStorage][$remove](key);
+      } else {
+        html.window[$localStorage][$_set](this[_versionKey], dart.toString(value));
+      }
+    }
+    close() {
+      return T.FutureOfvoid().value();
+    }
+    open() {
+      return T.FutureOfvoid().value();
+    }
+    restore() {
+      return async.async(T.Uint8ListN(), (function* restore() {
+        return web._restoreLocalStorage(this.name);
+      }).bind(this));
+    }
+    store(data) {
+      let binStr = binary_string_conversion.bin2str.encode(data);
+      html.window[$localStorage][$_set](this[_persistenceKey], binStr);
+      return T.FutureOfvoid().value();
+    }
+  };
+  (web._LocalStorageImpl.new = function(name) {
+    this[name$] = name;
+    ;
+  }).prototype = web._LocalStorageImpl.prototype;
+  dart.addTypeTests(web._LocalStorageImpl);
+  dart.addTypeCaches(web._LocalStorageImpl);
+  web._LocalStorageImpl[dart.implements] = () => [web.DriftWebStorage, web._CustomSchemaVersionSave];
+  dart.setMethodSignature(web._LocalStorageImpl, () => ({
+    __proto__: dart.getMethods(web._LocalStorageImpl.__proto__),
+    close: dart.fnType(async.Future$(dart.void), []),
+    open: dart.fnType(async.Future$(dart.void), []),
+    restore: dart.fnType(async.Future$(dart.nullable(typed_data.Uint8List)), []),
+    store: dart.fnType(async.Future$(dart.void), [typed_data.Uint8List])
+  }));
+  dart.setGetterSignature(web._LocalStorageImpl, () => ({
+    __proto__: dart.getGetters(web._LocalStorageImpl.__proto__),
+    [_persistenceKey]: core.String,
+    [_versionKey]: core.String,
+    schemaVersion: dart.nullable(core.int)
+  }));
+  dart.setSetterSignature(web._LocalStorageImpl, () => ({
+    __proto__: dart.getSetters(web._LocalStorageImpl.__proto__),
+    schemaVersion: dart.nullable(core.int)
+  }));
+  dart.setLibraryUri(web._LocalStorageImpl, I[0]);
+  dart.setFieldSignature(web._LocalStorageImpl, () => ({
+    __proto__: dart.getFields(web._LocalStorageImpl.__proto__),
+    name: dart.finalFieldType(core.String)
+  }));
+  var ___IndexedDbStorage__database = dart.privateName(web, "_#_IndexedDbStorage#_database");
+  var _database = dart.privateName(web, "_database");
+  web._IndexedDbStorage = class _IndexedDbStorage extends core.Object {
+    get [_database]() {
+      let t1;
+      t1 = this[___IndexedDbStorage__database];
+      return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_database")) : t1;
+    }
+    set [_database](library$32package$58drift$47src$47web$47storage$46dart$58$58_database$35param) {
+      this[___IndexedDbStorage__database] = library$32package$58drift$47src$47web$47storage$46dart$58$58_database$35param;
+    }
+    static ['_#new#tearOff'](name, opts) {
+      let migrateFromLocalStorage = opts && 'migrateFromLocalStorage' in opts ? opts.migrateFromLocalStorage : true;
+      let inWebWorker = opts && 'inWebWorker' in opts ? opts.inWebWorker : false;
+      return new web._IndexedDbStorage.new(name, {migrateFromLocalStorage: migrateFromLocalStorage, inWebWorker: inWebWorker});
+    }
+    open() {
+      return async.async(dart.void, (function* open() {
+        let wasCreated = false;
+        let indexedDb = this.inWebWorker ? html.WorkerGlobalScope.instance.indexedDB : html.window[$indexedDB];
+        this[_database] = (yield dart.nullCheck(indexedDb)[$open]("moor_databases", {version: 1, onUpgradeNeeded: dart.fn(event => {
+            let database = indexed_db.Database.as(event[$target][$result]);
+            database[$createObjectStore]("moor_databases");
+            wasCreated = true;
+          }, T.VersionChangeEventTovoid())}));
+        if (this.migrateFromLocalStorage && wasCreated) {
+          let fromLocalStorage = web._restoreLocalStorage(this.name);
+          if (fromLocalStorage != null) {
+            yield this.store(fromLocalStorage);
+          }
+        }
+      }).bind(this));
+    }
+    close() {
+      return async.async(dart.void, (function* close() {
+        this[_database].close();
+      }).bind(this));
+    }
+    store(data) {
+      return async.async(dart.void, (function* store() {
+        let transaction = this[_database][$transactionStore]("moor_databases", "readwrite");
+        let store = transaction[$objectStore]("moor_databases");
+        yield store[$put](html.Blob.new([data]), this.name);
+        yield transaction[$completed];
+      }).bind(this));
+    }
+    restore() {
+      return async.async(T.Uint8ListN(), (function* restore() {
+        let transaction = this[_database][$transactionStore]("moor_databases", "readonly");
+        let store = transaction[$objectStore]("moor_databases");
+        let result = T.BlobN().as(yield store[$getObject](this.name));
+        if (result == null) return null;
+        let reader = html.FileReader.new();
+        reader.readAsArrayBuffer(result);
+        yield reader[$onLoad].first;
+        return typed_data.Uint8List.as(reader[$result]);
+      }).bind(this));
+    }
+  };
+  (web._IndexedDbStorage.new = function(name, opts) {
+    let migrateFromLocalStorage = opts && 'migrateFromLocalStorage' in opts ? opts.migrateFromLocalStorage : true;
+    let inWebWorker = opts && 'inWebWorker' in opts ? opts.inWebWorker : false;
+    this[___IndexedDbStorage__database] = null;
+    this.name = name;
+    this.migrateFromLocalStorage = migrateFromLocalStorage;
+    this.inWebWorker = inWebWorker;
+    ;
+  }).prototype = web._IndexedDbStorage.prototype;
+  dart.addTypeTests(web._IndexedDbStorage);
+  dart.addTypeCaches(web._IndexedDbStorage);
+  web._IndexedDbStorage[dart.implements] = () => [web.DriftWebStorage];
+  dart.setMethodSignature(web._IndexedDbStorage, () => ({
+    __proto__: dart.getMethods(web._IndexedDbStorage.__proto__),
+    open: dart.fnType(async.Future$(dart.void), []),
+    close: dart.fnType(async.Future$(dart.void), []),
+    store: dart.fnType(async.Future$(dart.void), [typed_data.Uint8List]),
+    restore: dart.fnType(async.Future$(dart.nullable(typed_data.Uint8List)), [])
+  }));
+  dart.setGetterSignature(web._IndexedDbStorage, () => ({
+    __proto__: dart.getGetters(web._IndexedDbStorage.__proto__),
+    [_database]: indexed_db.Database
+  }));
+  dart.setSetterSignature(web._IndexedDbStorage, () => ({
+    __proto__: dart.getSetters(web._IndexedDbStorage.__proto__),
+    [_database]: indexed_db.Database
+  }));
+  dart.setLibraryUri(web._IndexedDbStorage, I[0]);
+  dart.setFieldSignature(web._IndexedDbStorage, () => ({
+    __proto__: dart.getFields(web._IndexedDbStorage.__proto__),
+    name: dart.finalFieldType(core.String),
+    migrateFromLocalStorage: dart.finalFieldType(core.bool),
+    inWebWorker: dart.finalFieldType(core.bool),
+    [___IndexedDbStorage__database]: dart.fieldType(dart.nullable(indexed_db.Database))
+  }));
+  dart.setStaticFieldSignature(web._IndexedDbStorage, () => ['_objectStoreName']);
+  dart.defineLazy(web._IndexedDbStorage, {
+    /*web._IndexedDbStorage._objectStoreName*/get _objectStoreName() {
+      return "moor_databases";
+    }
+  }, false);
+  var _storedData = dart.privateName(web, "_storedData");
+  web._VolatileStorage = class _VolatileStorage extends core.Object {
+    close() {
+      return T.FutureOfvoid().value();
+    }
+    open() {
+      return T.FutureOfvoid().value();
+    }
+    restore() {
+      return T.FutureOfUint8ListN().value(this[_storedData]);
+    }
+    store(data) {
+      this[_storedData] = data;
+      return T.FutureOfvoid().value();
+    }
+    static ['_#new#tearOff']() {
+      return new web._VolatileStorage.new();
+    }
+  };
+  (web._VolatileStorage.new = function() {
+    this[_storedData] = null;
+    ;
+  }).prototype = web._VolatileStorage.prototype;
+  dart.addTypeTests(web._VolatileStorage);
+  dart.addTypeCaches(web._VolatileStorage);
+  web._VolatileStorage[dart.implements] = () => [web.DriftWebStorage];
+  dart.setMethodSignature(web._VolatileStorage, () => ({
+    __proto__: dart.getMethods(web._VolatileStorage.__proto__),
+    close: dart.fnType(async.Future$(dart.void), []),
+    open: dart.fnType(async.Future$(dart.void), []),
+    restore: dart.fnType(async.Future$(dart.nullable(typed_data.Uint8List)), []),
+    store: dart.fnType(async.Future$(dart.void), [typed_data.Uint8List])
+  }));
+  dart.setLibraryUri(web._VolatileStorage, I[0]);
+  dart.setFieldSignature(web._VolatileStorage, () => ({
+    __proto__: dart.getFields(web._VolatileStorage.__proto__),
+    [_storedData]: dart.fieldType(dart.nullable(typed_data.Uint8List))
+  }));
+  web.WebDatabase = class WebDatabase extends engines.DelegatedDatabase {
+    static ['_#new#tearOff'](name, opts) {
+      let logStatements = opts && 'logStatements' in opts ? opts.logStatements : false;
+      let initializer = opts && 'initializer' in opts ? opts.initializer : null;
+      return new web.WebDatabase.new(name, {logStatements: logStatements, initializer: initializer});
+    }
+    static ['_#withStorage#tearOff'](storage, opts) {
+      let logStatements = opts && 'logStatements' in opts ? opts.logStatements : false;
+      let initializer = opts && 'initializer' in opts ? opts.initializer : null;
+      return new web.WebDatabase.withStorage(storage, {logStatements: logStatements, initializer: initializer});
+    }
+  };
+  (web.WebDatabase.new = function(name, opts) {
+    let logStatements = opts && 'logStatements' in opts ? opts.logStatements : false;
+    let initializer = opts && 'initializer' in opts ? opts.initializer : null;
+    web.WebDatabase.__proto__.new.call(this, new web._WebDelegate.new(new web._LocalStorageImpl.new(name), initializer), {logStatements: logStatements, isSequential: true});
+    ;
+  }).prototype = web.WebDatabase.prototype;
+  (web.WebDatabase.withStorage = function(storage, opts) {
+    let logStatements = opts && 'logStatements' in opts ? opts.logStatements : false;
+    let initializer = opts && 'initializer' in opts ? opts.initializer : null;
+    web.WebDatabase.__proto__.new.call(this, new web._WebDelegate.new(storage, initializer), {logStatements: logStatements, isSequential: true});
+    ;
+  }).prototype = web.WebDatabase.prototype;
+  dart.addTypeTests(web.WebDatabase);
+  dart.addTypeCaches(web.WebDatabase);
+  dart.setLibraryUri(web.WebDatabase, I[0]);
+  var ___WebDelegate__db = dart.privateName(web, "_#_WebDelegate#_db");
+  var _isOpen = dart.privateName(web, "_isOpen");
+  var _inTransaction = dart.privateName(web, "_inTransaction");
+  var _versionDelegate = dart.privateName(web, "_versionDelegate");
+  var _db = dart.privateName(web, "_db");
+  var _storeDb = dart.privateName(web, "_storeDb");
+  var NoTransactionDelegate_rollback = dart.privateName(delegates, "NoTransactionDelegate.rollback");
+  var NoTransactionDelegate_commit = dart.privateName(delegates, "NoTransactionDelegate.commit");
+  var NoTransactionDelegate_start = dart.privateName(delegates, "NoTransactionDelegate.start");
+  var _handlePotentialUpdate = dart.privateName(web, "_handlePotentialUpdate");
+  web._WebDelegate = class _WebDelegate extends delegates.DatabaseDelegate {
+    get [_db]() {
+      let t1;
+      t1 = this[___WebDelegate__db];
+      return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_db")) : t1;
+    }
+    set [_db](library$32package$58drift$47src$47web$47web_db$46dart$58$58_db$35param) {
+      this[___WebDelegate__db] = library$32package$58drift$47src$47web$47web_db$46dart$58$58_db$35param;
+    }
+    static ['_#new#tearOff'](storage, initializer) {
+      return new web._WebDelegate.new(storage, initializer);
+    }
+    set isInTransaction(value) {
+      this[_inTransaction] = value;
+      if (!this[_inTransaction]) {
+        this[_storeDb]();
+      }
+    }
+    get isInTransaction() {
+      return this[_inTransaction];
+    }
+    get transactionDelegate() {
+      return C[0] || CT.C0;
+    }
+    get versionDelegate() {
+      let t1;
+      t1 = this[_versionDelegate];
+      return t1 == null ? this[_versionDelegate] = new web._WebVersionDelegate.new(this) : t1;
+    }
+    get isOpen() {
+      return this[_isOpen];
+    }
+    open(db) {
+      return async.async(dart.void, (function* open() {
+        let t1;
+        let dbVersion = db.schemaVersion;
+        if (!(dbVersion >= 1)) dart.assertFailed("Database schema version needs to be at least 1", I[1], 69, 12, "dbVersion >= 1");
+        let module = (yield sql_js.initSqlJs());
+        yield this.storage.open();
+        let restored = (yield this.storage.restore());
+        if (restored == null && this.initializer != null) {
+          restored = (yield (t1 = this.initializer, t1 == null ? null : t1()));
+          if (restored != null) {
+            yield this.storage.store(restored);
+          }
+        }
+        this[_db] = module.createDatabase(restored);
+        this[_isOpen] = true;
+      }).bind(this));
+    }
+    runBatched(statements) {
+      let t2;
+      let preparedStatements = (() => {
+        let t1 = T.JSArrayOfPreparedStatement().of([]);
+        for (let stmt of statements.statements)
+          t1.push(this[_db].prepare(stmt));
+        return t1;
+      })();
+      for (let application of statements.arguments) {
+        let stmt = preparedStatements[$_get](application.statementIndex);
+        t2 = stmt;
+        (() => {
+          t2.executeWith(application.arguments);
+          t2.step();
+          return t2;
+        })();
+      }
+      for (let prepared of preparedStatements) {
+        prepared.free();
+      }
+      return this[_handlePotentialUpdate]();
+    }
+    runCustom(statement, args) {
+      this[_db].runWithArgs(statement, args);
+      return T.FutureOfvoid().value();
+    }
+    runInsert(statement, args) {
+      return async.async(core.int, (function* runInsert() {
+        this[_db].runWithArgs(statement, args);
+        let insertId = this[_db].lastInsertId();
+        yield this[_handlePotentialUpdate]();
+        return insertId;
+      }).bind(this));
+    }
+    runSelect(statement, args) {
+      let t2;
+      let stmt = (t2 = this[_db].prepare(statement), (() => {
+        t2.executeWith(args);
+        return t2;
+      })());
+      let columnNames = null;
+      let rows = T.JSArrayOfList().of([]);
+      while (stmt.step()) {
+        columnNames == null ? columnNames = stmt.columnNames() : null;
+        rows[$add](stmt.currentRow());
+      }
+      columnNames == null ? columnNames = T.JSArrayOfString().of([]) : null;
+      stmt.free();
+      return T.FutureOfQueryResult().value(new results.QueryResult.new(columnNames, rows));
+    }
+    runUpdate(statement, args) {
+      this[_db].runWithArgs(statement, args);
+      return this[_handlePotentialUpdate]();
+    }
+    close() {
+      return async.async(dart.void, (function* close() {
+        yield this[_storeDb]();
+        if (this[_isOpen]) {
+          this[_db].close();
+        }
+        yield this.storage.close();
+      }).bind(this));
+    }
+    notifyDatabaseOpened(details) {
+      if (details.hadUpgrade || details.wasCreated) {
+        this[_storeDb]();
+      }
+    }
+    [_handlePotentialUpdate]() {
+      return async.async(core.int, (function* _handlePotentialUpdate() {
+        let modified = this[_db].lastModifiedRows();
+        if (modified > 0) {
+          yield this[_storeDb]();
+        }
+        return modified;
+      }).bind(this));
+    }
+    [_storeDb]() {
+      return async.async(dart.void, (function* _storeDb() {
+        if (!this.isInTransaction) {
+          yield this.storage.store(this[_db].export());
+        }
+      }).bind(this));
+    }
+  };
+  (web._WebDelegate.new = function(storage, initializer) {
+    this[___WebDelegate__db] = null;
+    this[_isOpen] = false;
+    this[_inTransaction] = false;
+    this[_versionDelegate] = null;
+    this.storage = storage;
+    this.initializer = initializer;
+    web._WebDelegate.__proto__.new.call(this);
+    ;
+  }).prototype = web._WebDelegate.prototype;
+  dart.addTypeTests(web._WebDelegate);
+  dart.addTypeCaches(web._WebDelegate);
+  dart.setMethodSignature(web._WebDelegate, () => ({
+    __proto__: dart.getMethods(web._WebDelegate.__proto__),
+    open: dart.fnType(async.Future$(dart.void), [executor.QueryExecutorUser]),
+    runCustom: dart.fnType(async.Future$(dart.void), [core.String, core.List$(dart.nullable(core.Object))]),
+    runInsert: dart.fnType(async.Future$(core.int), [core.String, core.List$(dart.nullable(core.Object))]),
+    runSelect: dart.fnType(async.Future$(results.QueryResult), [core.String, core.List$(dart.nullable(core.Object))]),
+    runUpdate: dart.fnType(async.Future$(core.int), [core.String, core.List$(dart.nullable(core.Object))]),
+    [_handlePotentialUpdate]: dart.fnType(async.Future$(core.int), []),
+    [_storeDb]: dart.fnType(async.Future$(dart.void), [])
+  }));
+  dart.setGetterSignature(web._WebDelegate, () => ({
+    __proto__: dart.getGetters(web._WebDelegate.__proto__),
+    [_db]: sql_js.SqlJsDatabase,
+    isInTransaction: core.bool,
+    transactionDelegate: delegates.TransactionDelegate,
+    versionDelegate: delegates.DbVersionDelegate,
+    isOpen: core.bool
+  }));
+  dart.setSetterSignature(web._WebDelegate, () => ({
+    __proto__: dart.getSetters(web._WebDelegate.__proto__),
+    [_db]: sql_js.SqlJsDatabase,
+    isInTransaction: core.bool
+  }));
+  dart.setLibraryUri(web._WebDelegate, I[0]);
+  dart.setFieldSignature(web._WebDelegate, () => ({
+    __proto__: dart.getFields(web._WebDelegate.__proto__),
+    storage: dart.finalFieldType(web.DriftWebStorage),
+    initializer: dart.finalFieldType(dart.nullable(dart.fnType(async.Future$(typed_data.Uint8List), []))),
+    [___WebDelegate__db]: dart.fieldType(dart.nullable(sql_js.SqlJsDatabase)),
+    [_isOpen]: dart.fieldType(core.bool),
+    [_inTransaction]: dart.fieldType(core.bool),
+    [_versionDelegate]: dart.fieldType(dart.nullable(delegates.DbVersionDelegate))
+  }));
+  web._WebVersionDelegate = class _WebVersionDelegate extends delegates.DynamicVersionDelegate {
+    static ['_#new#tearOff'](delegate) {
+      return new web._WebVersionDelegate.new(delegate);
+    }
+    get schemaVersion() {
+      return async.async(core.int, (function* schemaVersion() {
+        let t2;
+        let storage = this.delegate.storage;
+        let version = null;
+        if (web._CustomSchemaVersionSave.is(storage)) {
+          version = storage.schemaVersion;
+        }
+        t2 = version;
+        return t2 == null ? this.delegate[_db].userVersion : t2;
+      }).bind(this));
+    }
+    setSchemaVersion(version) {
+      return async.async(dart.void, (function* setSchemaVersion() {
+        let storage = this.delegate.storage;
+        if (web._CustomSchemaVersionSave.is(storage)) {
+          storage.schemaVersion = version;
+        }
+        this.delegate[_db].userVersion = version;
+      }).bind(this));
+    }
+  };
+  (web._WebVersionDelegate.new = function(delegate) {
+    this.delegate = delegate;
+    web._WebVersionDelegate.__proto__.new.call(this);
+    ;
+  }).prototype = web._WebVersionDelegate.prototype;
+  dart.addTypeTests(web._WebVersionDelegate);
+  dart.addTypeCaches(web._WebVersionDelegate);
+  dart.setMethodSignature(web._WebVersionDelegate, () => ({
+    __proto__: dart.getMethods(web._WebVersionDelegate.__proto__),
+    setSchemaVersion: dart.fnType(async.Future$(dart.void), [core.int])
+  }));
+  dart.setGetterSignature(web._WebVersionDelegate, () => ({
+    __proto__: dart.getGetters(web._WebVersionDelegate.__proto__),
+    schemaVersion: async.Future$(core.int)
+  }));
+  dart.setLibraryUri(web._WebVersionDelegate, I[0]);
+  dart.setFieldSignature(web._WebVersionDelegate, () => ({
+    __proto__: dart.getFields(web._WebVersionDelegate.__proto__),
+    delegate: dart.finalFieldType(web._WebDelegate)
+  }));
+  web._persistenceKeyForLocalStorage = function _persistenceKeyForLocalStorage(name) {
+    return "moor_db_str_" + name;
+  };
+  web._legacyVersionKeyForLocalStorage = function _legacyVersionKeyForLocalStorage(name) {
+    return "moor_db_version_" + name;
+  };
+  web._restoreLocalStorage = function _restoreLocalStorage(name) {
+    let raw = html.window[$localStorage][$_get](web._persistenceKeyForLocalStorage(name));
+    if (raw != null) {
+      return binary_string_conversion.bin2str.decode(raw);
+    }
+    return null;
+  };
+  web['PortToChannel|channel'] = function PortToChannel$124channel($this) {
+    let controller = new stream_channel_controller.StreamChannelController.new();
+    $this[$onMessage].map(dart.dynamic, dart.fn(event => event[$data], T.MessageEventTodynamic())).pipe(controller.local.sink);
+    controller.local.stream.listen(dart.bind($this, $postMessage), {onDone: dart.bind($this, 'close')});
+    return controller.foreign;
+  };
+  web['PortToChannel|get#channel'] = function PortToChannel$124get$35channel($this) {
+    return dart.fn(() => web['PortToChannel|channel']($this), T.VoidToStreamChannelOfObjectN());
+  };
+  dart.trackLibraries("packages/drift/web.dart", {
+    "package:drift/web.dart": web
+  }, {
+    "package:drift/web.dart": ["src/web/storage.dart", "src/web/web_db.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["src/web/storage.dart","src/web/web_db.dart","web.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/drift/web.dart.lib.js"}');
+  // Exports:
+  return {
+    web: web
+  };
+}));
+
+//# sourceMappingURL=web.dart.lib.js.map

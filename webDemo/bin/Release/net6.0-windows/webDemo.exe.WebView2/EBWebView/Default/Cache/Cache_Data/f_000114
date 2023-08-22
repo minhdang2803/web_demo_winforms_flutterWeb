@@ -1,0 +1,408 @@
+define(['dart_sdk', 'packages/archive/src/util/input_stream.dart', 'packages/archive/src/util/output_stream.dart', 'packages/archive/src/util/crc32.dart', 'packages/archive/src/zlib/deflate.dart', 'packages/archive/src/archive.dart', 'packages/archive/src/archive_file.dart'], (function load__packages__archive__src__zip_encoder_dart(dart_sdk, packages__archive__src__util__input_stream$46dart, packages__archive__src__util__output_stream$46dart, packages__archive__src__util__crc32$46dart, packages__archive__src__zlib__deflate$46dart, packages__archive__src__archive$46dart, packages__archive__src__archive_file$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const input_stream = packages__archive__src__util__input_stream$46dart.src__util__input_stream;
+  const output_stream = packages__archive__src__util__output_stream$46dart.src__util__output_stream;
+  const crc32$ = packages__archive__src__util__crc32$46dart.src__util__crc32;
+  const deflate = packages__archive__src__zlib__deflate$46dart.src__zlib__deflate;
+  const archive = packages__archive__src__archive$46dart.src__archive;
+  const archive_file = packages__archive__src__archive_file$46dart.src__archive_file;
+  var zip_encoder = Object.create(dart.library);
+  var $truncate = dartx.truncate;
+  var $rightShift = dartx['>>'];
+  var $add = dartx.add;
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOf_ZipFileData: () => (T.JSArrayOf_ZipFileData = dart.constFn(_interceptors.JSArray$(zip_encoder._ZipFileData)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:archive/src/zip_encoder.dart"];
+  var ___ZipFileData_name = dart.privateName(zip_encoder, "_#_ZipFileData#name");
+  zip_encoder._ZipFileData = class _ZipFileData extends core.Object {
+    get name() {
+      let t0;
+      t0 = this[___ZipFileData_name];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("name")) : t0;
+    }
+    set name(name$35param) {
+      this[___ZipFileData_name] = name$35param;
+    }
+    static ['_#new#tearOff']() {
+      return new zip_encoder._ZipFileData.new();
+    }
+  };
+  (zip_encoder._ZipFileData.new = function() {
+    this[___ZipFileData_name] = null;
+    this.time = 0;
+    this.date = 0;
+    this.crc32 = 0;
+    this.compressedSize = 0;
+    this.uncompressedSize = 0;
+    this.compressedData = null;
+    this.compress = true;
+    this.comment = "";
+    this.position = 0;
+    this.mode = 0;
+    this.isFile = true;
+    ;
+  }).prototype = zip_encoder._ZipFileData.prototype;
+  dart.addTypeTests(zip_encoder._ZipFileData);
+  dart.addTypeCaches(zip_encoder._ZipFileData);
+  dart.setGetterSignature(zip_encoder._ZipFileData, () => ({
+    __proto__: dart.getGetters(zip_encoder._ZipFileData.__proto__),
+    name: core.String
+  }));
+  dart.setSetterSignature(zip_encoder._ZipFileData, () => ({
+    __proto__: dart.getSetters(zip_encoder._ZipFileData.__proto__),
+    name: core.String
+  }));
+  dart.setLibraryUri(zip_encoder._ZipFileData, I[0]);
+  dart.setFieldSignature(zip_encoder._ZipFileData, () => ({
+    __proto__: dart.getFields(zip_encoder._ZipFileData.__proto__),
+    [___ZipFileData_name]: dart.fieldType(dart.nullable(core.String)),
+    time: dart.fieldType(core.int),
+    date: dart.fieldType(core.int),
+    crc32: dart.fieldType(core.int),
+    compressedSize: dart.fieldType(core.int),
+    uncompressedSize: dart.fieldType(core.int),
+    compressedData: dart.fieldType(dart.nullable(input_stream.InputStreamBase)),
+    compress: dart.fieldType(core.bool),
+    comment: dart.fieldType(dart.nullable(core.String)),
+    position: dart.fieldType(core.int),
+    mode: dart.fieldType(core.int),
+    isFile: dart.fieldType(core.bool)
+  }));
+  var ___ZipEncoderData_time = dart.privateName(zip_encoder, "_#_ZipEncoderData#time");
+  var ___ZipEncoderData_date = dart.privateName(zip_encoder, "_#_ZipEncoderData#date");
+  zip_encoder._ZipEncoderData = class _ZipEncoderData extends core.Object {
+    get time() {
+      let t0;
+      t0 = this[___ZipEncoderData_time];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("time")) : t0;
+    }
+    set time(time$35param) {
+      if (this[___ZipEncoderData_time] == null)
+        this[___ZipEncoderData_time] = time$35param;
+      else
+        dart.throw(new _internal.LateError.fieldAI("time"));
+    }
+    get date() {
+      let t0;
+      t0 = this[___ZipEncoderData_date];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("date")) : t0;
+    }
+    set date(date$35param) {
+      if (this[___ZipEncoderData_date] == null)
+        this[___ZipEncoderData_date] = date$35param;
+      else
+        dart.throw(new _internal.LateError.fieldAI("date"));
+    }
+    static ['_#new#tearOff'](level, dateTime = null) {
+      return new zip_encoder._ZipEncoderData.new(level, dateTime);
+    }
+  };
+  (zip_encoder._ZipEncoderData.new = function(level, dateTime = null) {
+    let t0;
+    this[___ZipEncoderData_time] = null;
+    this[___ZipEncoderData_date] = null;
+    this.localFileSize = 0;
+    this.centralDirectorySize = 0;
+    this.endOfCentralDirectorySize = 0;
+    this.files = T.JSArrayOf_ZipFileData().of([]);
+    this.level = level;
+    dateTime = (t0 = dateTime, t0 == null ? new core.DateTime.now() : t0);
+    let t1 = ((dateTime.minute & 7) << 5 | (dateTime.second / 2)[$truncate]()) >>> 0;
+    let t2 = (dateTime.hour << 3 | dateTime.minute[$rightShift](3)) >>> 0;
+    this.time = (t2 & 255) << 8 | t1 & 255;
+    let d1 = ((dateTime.month & 7) << 5 | dateTime.day) >>> 0;
+    let d2 = ((dateTime.year - 1980 & 127) << 1 | dateTime.month[$rightShift](3)) >>> 0;
+    this.date = (d2 & 255) << 8 | d1 & 255;
+  }).prototype = zip_encoder._ZipEncoderData.prototype;
+  dart.addTypeTests(zip_encoder._ZipEncoderData);
+  dart.addTypeCaches(zip_encoder._ZipEncoderData);
+  dart.setGetterSignature(zip_encoder._ZipEncoderData, () => ({
+    __proto__: dart.getGetters(zip_encoder._ZipEncoderData.__proto__),
+    time: core.int,
+    date: core.int
+  }));
+  dart.setSetterSignature(zip_encoder._ZipEncoderData, () => ({
+    __proto__: dart.getSetters(zip_encoder._ZipEncoderData.__proto__),
+    time: core.int,
+    date: core.int
+  }));
+  dart.setLibraryUri(zip_encoder._ZipEncoderData, I[0]);
+  dart.setFieldSignature(zip_encoder._ZipEncoderData, () => ({
+    __proto__: dart.getFields(zip_encoder._ZipEncoderData.__proto__),
+    level: dart.fieldType(dart.nullable(core.int)),
+    [___ZipEncoderData_time]: dart.fieldType(dart.nullable(core.int)),
+    [___ZipEncoderData_date]: dart.fieldType(dart.nullable(core.int)),
+    localFileSize: dart.fieldType(core.int),
+    centralDirectorySize: dart.fieldType(core.int),
+    endOfCentralDirectorySize: dart.fieldType(core.int),
+    files: dart.fieldType(core.List$(zip_encoder._ZipFileData))
+  }));
+  var __ZipEncoder__data = dart.privateName(zip_encoder, "_#ZipEncoder#_data");
+  var _output = dart.privateName(zip_encoder, "_output");
+  var _data = dart.privateName(zip_encoder, "_data");
+  var _writeFile = dart.privateName(zip_encoder, "_writeFile");
+  var _writeCentralDirectory = dart.privateName(zip_encoder, "_writeCentralDirectory");
+  zip_encoder.ZipEncoder = class ZipEncoder extends core.Object {
+    get [_data]() {
+      let t0;
+      t0 = this[__ZipEncoder__data];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_data")) : t0;
+    }
+    set [_data](library$32package$58archive$47src$47zip_encoder$46dart$58$58_data$35param) {
+      this[__ZipEncoder__data] = library$32package$58archive$47src$47zip_encoder$46dart$58$58_data$35param;
+    }
+    encode(archive, opts) {
+      let level = opts && 'level' in opts ? opts.level : 1;
+      let output = opts && 'output' in opts ? opts.output : null;
+      let modified = opts && 'modified' in opts ? opts.modified : null;
+      output == null ? output = new output_stream.OutputStream.new() : null;
+      this.startEncode(output, {level: level, modified: modified});
+      for (let file of archive.files) {
+        this.addFile(file);
+      }
+      this.endEncode({comment: archive.comment});
+      if (output_stream.OutputStream.is(output)) {
+        return output.getBytes();
+      }
+      return null;
+    }
+    startEncode(output, opts) {
+      let level = opts && 'level' in opts ? opts.level : 1;
+      let modified = opts && 'modified' in opts ? opts.modified : null;
+      this[_data] = new zip_encoder._ZipEncoderData.new(level, modified);
+      this[_output] = output;
+    }
+    getFileCrc32(file) {
+      if (input_stream.InputStreamBase.is(file.content)) {
+        let s = input_stream.InputStreamBase.as(file.content);
+        s.reset();
+        let bytes = s.toUint8List();
+        let crc32 = crc32$.getCrc32(bytes);
+        dart.dsend(file.content, 'reset', []);
+        return crc32;
+      }
+      return crc32$.getCrc32(T.ListOfint().as(file.content));
+    }
+    addFile(file) {
+      let t0, t0$;
+      let fileData = new zip_encoder._ZipFileData.new();
+      this[_data].files[$add](fileData);
+      fileData.name = file.name;
+      fileData.time = this[_data].time;
+      fileData.date = this[_data].date;
+      fileData.mode = file.mode;
+      fileData.isFile = file.isFile;
+      let compressedData = null;
+      let crc32 = null;
+      if (!file.compress) {
+        if (file.isCompressed) {
+          file.decompress();
+        }
+        compressedData = input_stream.InputStreamBase.is(file.content) ? input_stream.InputStreamBase.as(file.content) : new input_stream.InputStream.new(file.content);
+        if (file.crc32 != null) {
+          crc32 = dart.nullCheck(file.crc32);
+        } else {
+          crc32 = this.getFileCrc32(file);
+        }
+      } else if (file.isCompressed && file.compressionType === 8) {
+        compressedData = file.rawContent;
+        if (file.crc32 != null) {
+          crc32 = dart.nullCheck(file.crc32);
+        } else {
+          crc32 = this.getFileCrc32(file);
+        }
+      } else {
+        crc32 = this.getFileCrc32(file);
+        let bytes = file.content;
+        if (input_stream.InputStreamBase.is(bytes)) {
+          bytes = bytes.toUint8List();
+        }
+        bytes = new deflate.Deflate.new(T.ListOfint().as(bytes), {level: this[_data].level}).getBytes();
+        compressedData = new input_stream.InputStream.new(bytes);
+      }
+      let filename = new convert.Utf8Encoder.new().convert(file.name);
+      let comment = file.comment != null ? new convert.Utf8Encoder.new().convert(dart.nullCheck(file.comment)) : null;
+      t0 = this[_data];
+      t0.localFileSize = t0.localFileSize + (30 + filename[$length] + dart.nullCheck(compressedData).length);
+      t0$ = this[_data];
+      t0$.centralDirectorySize = t0$.centralDirectorySize + (46 + filename[$length] + (comment != null ? comment[$length] : 0));
+      fileData.crc32 = crc32;
+      fileData.compressedSize = compressedData.length;
+      fileData.compressedData = compressedData;
+      fileData.uncompressedSize = file.size;
+      fileData.compress = file.compress;
+      fileData.comment = file.comment;
+      fileData.position = dart.nullCheck(this[_output]).length;
+      this[_writeFile](fileData, dart.nullCheck(this[_output]));
+      fileData.compressedData = null;
+    }
+    endEncode(opts) {
+      let comment = opts && 'comment' in opts ? opts.comment : "";
+      this[_writeCentralDirectory](this[_data].files, comment, dart.nullCheck(this[_output]));
+    }
+    [_writeFile](fileData, output) {
+      let filename = fileData.name;
+      output.writeUint32(67324752);
+      let version = 20;
+      let flags = 0;
+      let compressionMethod = fileData.compress ? 8 : 0;
+      let lastModFileTime = fileData.time;
+      let lastModFileDate = fileData.date;
+      let crc32 = fileData.crc32;
+      let compressedSize = fileData.compressedSize;
+      let uncompressedSize = fileData.uncompressedSize;
+      let extra = T.JSArrayOfint().of([]);
+      let compressedData = dart.nullCheck(fileData.compressedData);
+      let filenameUtf8 = new convert.Utf8Encoder.new().convert(filename);
+      output.writeUint16(version);
+      output.writeUint16(flags);
+      output.writeUint16(compressionMethod);
+      output.writeUint16(lastModFileTime);
+      output.writeUint16(lastModFileDate);
+      output.writeUint32(crc32);
+      output.writeUint32(compressedSize);
+      output.writeUint32(uncompressedSize);
+      output.writeUint16(filenameUtf8[$length]);
+      output.writeUint16(extra[$length]);
+      output.writeBytes(filenameUtf8);
+      output.writeBytes(extra);
+      output.writeInputStream(compressedData);
+    }
+    [_writeCentralDirectory](files, comment, output) {
+      let t0;
+      comment == null ? comment = "" : null;
+      let commentUtf8 = new convert.Utf8Encoder.new().convert(comment);
+      let centralDirPosition = output.length;
+      let version = 20;
+      let os = 0;
+      for (let fileData of files) {
+        let versionMadeBy = (os << 8 | version) >>> 0;
+        let versionNeededToExtract = version;
+        let generalPurposeBitFlag = 0;
+        let compressionMethod = fileData.compress ? 8 : 0;
+        let lastModifiedFileTime = fileData.time;
+        let lastModifiedFileDate = fileData.date;
+        let crc32 = fileData.crc32;
+        let compressedSize = fileData.compressedSize;
+        let uncompressedSize = fileData.uncompressedSize;
+        let diskNumberStart = 0;
+        let internalFileAttributes = 0;
+        let externalFileAttributes = fileData.mode << 16 >>> 0;
+        let localHeaderOffset = fileData.position;
+        let extraField = T.JSArrayOfint().of([]);
+        let fileComment = (t0 = fileData.comment, t0 == null ? "" : t0);
+        let filenameUtf8 = new convert.Utf8Encoder.new().convert(fileData.name);
+        let fileCommentUtf8 = new convert.Utf8Encoder.new().convert(fileComment);
+        output.writeUint32(33639248);
+        output.writeUint16(versionMadeBy);
+        output.writeUint16(versionNeededToExtract);
+        output.writeUint16(generalPurposeBitFlag);
+        output.writeUint16(compressionMethod);
+        output.writeUint16(lastModifiedFileTime);
+        output.writeUint16(lastModifiedFileDate);
+        output.writeUint32(crc32);
+        output.writeUint32(compressedSize);
+        output.writeUint32(uncompressedSize);
+        output.writeUint16(filenameUtf8[$length]);
+        output.writeUint16(extraField[$length]);
+        output.writeUint16(fileCommentUtf8[$length]);
+        output.writeUint16(diskNumberStart);
+        output.writeUint16(internalFileAttributes);
+        output.writeUint32(externalFileAttributes);
+        output.writeUint32(localHeaderOffset);
+        output.writeBytes(filenameUtf8);
+        output.writeBytes(extraField);
+        output.writeBytes(fileCommentUtf8);
+      }
+      let numberOfThisDisk = 0;
+      let diskWithTheStartOfTheCentralDirectory = 0;
+      let totalCentralDirectoryEntriesOnThisDisk = files[$length];
+      let totalCentralDirectoryEntries = files[$length];
+      let centralDirectorySize = output.length - centralDirPosition;
+      let centralDirectoryOffset = centralDirPosition;
+      output.writeUint32(101010256);
+      output.writeUint16(numberOfThisDisk);
+      output.writeUint16(diskWithTheStartOfTheCentralDirectory);
+      output.writeUint16(totalCentralDirectoryEntriesOnThisDisk);
+      output.writeUint16(totalCentralDirectoryEntries);
+      output.writeUint32(centralDirectorySize);
+      output.writeUint32(centralDirectoryOffset);
+      output.writeUint16(commentUtf8[$length]);
+      output.writeBytes(commentUtf8);
+    }
+    static ['_#new#tearOff']() {
+      return new zip_encoder.ZipEncoder.new();
+    }
+  };
+  (zip_encoder.ZipEncoder.new = function() {
+    this[__ZipEncoder__data] = null;
+    this[_output] = null;
+    ;
+  }).prototype = zip_encoder.ZipEncoder.prototype;
+  dart.addTypeTests(zip_encoder.ZipEncoder);
+  dart.addTypeCaches(zip_encoder.ZipEncoder);
+  dart.setMethodSignature(zip_encoder.ZipEncoder, () => ({
+    __proto__: dart.getMethods(zip_encoder.ZipEncoder.__proto__),
+    encode: dart.fnType(dart.nullable(core.List$(core.int)), [archive.Archive], {level: core.int, modified: dart.nullable(core.DateTime), output: dart.nullable(output_stream.OutputStreamBase)}, {}),
+    startEncode: dart.fnType(dart.void, [dart.nullable(output_stream.OutputStreamBase)], {level: dart.nullable(core.int), modified: dart.nullable(core.DateTime)}, {}),
+    getFileCrc32: dart.fnType(core.int, [archive_file.ArchiveFile]),
+    addFile: dart.fnType(dart.void, [archive_file.ArchiveFile]),
+    endEncode: dart.fnType(dart.void, [], {comment: dart.nullable(core.String)}, {}),
+    [_writeFile]: dart.fnType(dart.void, [zip_encoder._ZipFileData, output_stream.OutputStreamBase]),
+    [_writeCentralDirectory]: dart.fnType(dart.void, [core.List$(zip_encoder._ZipFileData), dart.nullable(core.String), output_stream.OutputStreamBase])
+  }));
+  dart.setGetterSignature(zip_encoder.ZipEncoder, () => ({
+    __proto__: dart.getGetters(zip_encoder.ZipEncoder.__proto__),
+    [_data]: zip_encoder._ZipEncoderData
+  }));
+  dart.setSetterSignature(zip_encoder.ZipEncoder, () => ({
+    __proto__: dart.getSetters(zip_encoder.ZipEncoder.__proto__),
+    [_data]: zip_encoder._ZipEncoderData
+  }));
+  dart.setLibraryUri(zip_encoder.ZipEncoder, I[0]);
+  dart.setFieldSignature(zip_encoder.ZipEncoder, () => ({
+    __proto__: dart.getFields(zip_encoder.ZipEncoder.__proto__),
+    [__ZipEncoder__data]: dart.fieldType(dart.nullable(zip_encoder._ZipEncoderData)),
+    [_output]: dart.fieldType(dart.nullable(output_stream.OutputStreamBase))
+  }));
+  dart.setStaticFieldSignature(zip_encoder.ZipEncoder, () => ['VERSION', 'OS_MSDOS', 'OS_UNIX', 'OS_MACINTOSH']);
+  dart.defineLazy(zip_encoder.ZipEncoder, {
+    /*zip_encoder.ZipEncoder.VERSION*/get VERSION() {
+      return 20;
+    },
+    /*zip_encoder.ZipEncoder.OS_MSDOS*/get OS_MSDOS() {
+      return 0;
+    },
+    /*zip_encoder.ZipEncoder.OS_UNIX*/get OS_UNIX() {
+      return 3;
+    },
+    /*zip_encoder.ZipEncoder.OS_MACINTOSH*/get OS_MACINTOSH() {
+      return 7;
+    }
+  }, false);
+  dart.trackLibraries("packages/archive/src/zip_encoder.dart", {
+    "package:archive/src/zip_encoder.dart": zip_encoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["zip_encoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/archive/src/zip_encoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__zip_encoder: zip_encoder
+  };
+}));
+
+//# sourceMappingURL=zip_encoder.dart.lib.js.map

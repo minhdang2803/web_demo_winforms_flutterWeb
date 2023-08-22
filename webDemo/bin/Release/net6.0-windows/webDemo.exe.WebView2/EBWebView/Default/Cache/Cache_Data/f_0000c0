@@ -1,0 +1,1473 @@
+define(['dart_sdk', 'packages/pdf/src/pdf/page_format.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/painting/decoration.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/printing/src/preview/raster.dart', 'packages/printing/src/preview/page.dart', 'packages/printing/src/preview/controller.dart', 'packages/printing/src/printing.dart', 'packages/printing/src/printing_info.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/switch.dart', 'packages/pdf/src/widgets/table.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/widgets/icon_theme.dart', 'packages/flutter/src/widgets/icon_theme_data.dart', 'packages/flutter/src/widgets/safe_area.dart', 'packages/flutter/src/rendering/wrap.dart', 'packages/flutter/src/rendering/box.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/material/dropdown.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/material/toggle_buttons.dart', 'packages/printing/src/fonts/gfonts.dart'], (function load__packages__printing__src__preview__pdf_preview_dart(dart_sdk, packages__pdf__src__pdf__page_format$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__painting__decoration$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__printing__src__preview__raster$46dart, packages__printing__src__preview__page$46dart, packages__printing__src__preview__controller$46dart, packages__printing__src__printing$46dart, packages__printing__src__printing_info$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__switch$46dart, packages__pdf__src__widgets__table$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__widgets__icon_theme$46dart, packages__flutter__src__widgets__icon_theme_data$46dart, packages__flutter__src__widgets__safe_area$46dart, packages__flutter__src__rendering__wrap$46dart, packages__flutter__src__rendering__box$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__material__dropdown$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__material__toggle_buttons$46dart, packages__printing__src__fonts__gfonts$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const typed_data = dart_sdk.typed_data;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const page_format = packages__pdf__src__pdf__page_format$46dart.src__pdf__page_format;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const custom = packages__printing__src__preview__raster$46dart.src__preview__custom;
+  const page = packages__printing__src__preview__page$46dart.src__preview__page;
+  const controller$ = packages__printing__src__preview__controller$46dart.src__preview__controller;
+  const printing = packages__printing__src__printing$46dart.src__printing;
+  const printing_info = packages__printing__src__printing_info$46dart.src__printing_info;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const icon_button = packages__flutter__src__material__icon_button$46dart.src__material__icon_button;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const $switch = packages__flutter__src__material__switch$46dart.src__material__switch;
+  const document = packages__pdf__src__widgets__table$46dart.src__widgets__document;
+  const theme = packages__pdf__src__widgets__table$46dart.src__widgets__theme;
+  const font = packages__pdf__src__widgets__table$46dart.src__widgets__font;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const icon_theme = packages__flutter__src__widgets__icon_theme$46dart.src__widgets__icon_theme;
+  const icon_theme_data = packages__flutter__src__widgets__icon_theme_data$46dart.src__widgets__icon_theme_data;
+  const safe_area = packages__flutter__src__widgets__safe_area$46dart.src__widgets__safe_area;
+  const wrap = packages__flutter__src__rendering__wrap$46dart.src__rendering__wrap;
+  const box = packages__flutter__src__rendering__box$46dart.src__rendering__box;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const dropdown = packages__flutter__src__material__dropdown$46dart.src__material__dropdown;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const toggle_buttons = packages__flutter__src__material__toggle_buttons$46dart.src__material__toggle_buttons;
+  const gfonts = packages__printing__src__fonts__gfonts$46dart.src__fonts__gfonts;
+  var pdf_preview = Object.create(dart.library);
+  var actions$ = Object.create(dart.library);
+  var printing$ = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $first = dartx.first;
+  var $_equals = dartx._equals;
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $values = dartx.values;
+  var $contains = dartx.contains;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
+  var $toList = dartx.toList;
+  var $sort = dartx.sort;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    GlobalKeyOfPdfPreviewCustomState: () => (T.GlobalKeyOfPdfPreviewCustomState = dart.constFn(framework.GlobalKey$(custom.PdfPreviewCustomState)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    PrintingInfoToNull: () => (T.PrintingInfoToNull = dart.constFn(dart.fnType(core.Null, [printing_info.PrintingInfo])))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    dynamicTovoid: () => (T.dynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic])))(),
+    WidgetTovoid: () => (T.WidgetTovoid = dart.constFn(dart.fnType(dart.void, [framework.Widget])))(),
+    boolTovoid: () => (T.boolTovoid = dart.constFn(dart.fnType(dart.void, [core.bool])))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    BuildContextToPdfPreviewCustom: () => (T.BuildContextToPdfPreviewCustom = dart.constFn(dart.fnType(custom.PdfPreviewCustom, [framework.BuildContext])))(),
+    StateOfStatefulWidget: () => (T.StateOfStatefulWidget = dart.constFn(framework.State$(framework.StatefulWidget)))(),
+    GlobalKeyOfStateOfStatefulWidget: () => (T.GlobalKeyOfStateOfStatefulWidget = dart.constFn(framework.GlobalKey$(T.StateOfStatefulWidget())))(),
+    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
+    LinkedHashMapOfString$PdfPageFormat: () => (T.LinkedHashMapOfString$PdfPageFormat = dart.constFn(collection.LinkedHashMap$(core.String, page_format.PdfPageFormat)))(),
+    DropdownButtonOfPdfPageFormat: () => (T.DropdownButtonOfPdfPageFormat = dart.constFn(dropdown.DropdownButton$(page_format.PdfPageFormat)))(),
+    DropdownMenuItemOfPdfPageFormat: () => (T.DropdownMenuItemOfPdfPageFormat = dart.constFn(dropdown.DropdownMenuItem$(page_format.PdfPageFormat)))(),
+    ListOfDropdownMenuItemOfPdfPageFormat: () => (T.ListOfDropdownMenuItemOfPdfPageFormat = dart.constFn(core.List$(T.DropdownMenuItemOfPdfPageFormat())))(),
+    intToDropdownMenuItemOfPdfPageFormat: () => (T.intToDropdownMenuItemOfPdfPageFormat = dart.constFn(dart.fnType(T.DropdownMenuItemOfPdfPageFormat(), [core.int])))(),
+    PdfPageFormatN: () => (T.PdfPageFormatN = dart.constFn(dart.nullable(page_format.PdfPageFormat)))(),
+    PdfPageFormatNTovoid: () => (T.PdfPageFormatNTovoid = dart.constFn(dart.fnType(dart.void, [T.PdfPageFormatN()])))(),
+    intTovoid: () => (T.intTovoid = dart.constFn(dart.fnType(dart.void, [core.int])))(),
+    JSArrayOfbool: () => (T.JSArrayOfbool = dart.constFn(_interceptors.JSArray$(core.bool)))(),
+    JSArrayOfFont: () => (T.JSArrayOfFont = dart.constFn(_interceptors.JSArray$(font.Font)))(),
+    VoidToThemeData: () => (T.VoidToThemeData = dart.constFn(dart.fnType(theme.ThemeData, [])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: page_format.PdfPageFormat.prototype,
+        [PdfPageFormat_marginRight]: 56.69291338582677,
+        [PdfPageFormat_marginLeft]: 56.69291338582677,
+        [PdfPageFormat_marginBottom]: 56.69291338582677,
+        [PdfPageFormat_marginTop]: 56.69291338582677,
+        [PdfPageFormat_height]: 841.8897637795275,
+        [PdfPageFormat_width]: 595.275590551181
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: page_format.PdfPageFormat.prototype,
+        [PdfPageFormat_marginRight]: 72,
+        [PdfPageFormat_marginLeft]: 72,
+        [PdfPageFormat_marginBottom]: 72,
+        [PdfPageFormat_marginTop]: 72,
+        [PdfPageFormat_height]: 792,
+        [PdfPageFormat_width]: 612
+      });
+    },
+    get C0() {
+      return C[0] = dart.constMap(core.String, page_format.PdfPageFormat, ["A4", C[1] || CT.C1, "Letter", C[2] || CT.C2]);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreview",
+        [_Location_column]: 9,
+        [_Location_line]: 33,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([], page.PdfPreviewPage);
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPrintAction",
+        [_Location_column]: 19,
+        [_Location_line]: 262,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfShareAction",
+        [_Location_column]: 19,
+        [_Location_line]: 274,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPageFormatAction",
+        [_Location_column]: 19,
+        [_Location_line]: 282,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPageOrientationAction",
+        [_Location_column]: 21,
+        [_Location_line]: 288,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Switch",
+        [_Location_column]: 11,
+        [_Location_line]: 297,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreviewCustom",
+        [_Location_column]: 22,
+        [_Location_line]: 321,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Builder",
+        [_Location_column]: 20,
+        [_Location_line]: 319,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 11,
+        [_Location_line]: 318,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Wrap",
+        [_Location_column]: 28,
+        [_Location_line]: 349,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SafeArea",
+        [_Location_column]: 26,
+        [_Location_line]: 348,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 24,
+        [_Location_line]: 346,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Material",
+        [_Location_column]: 22,
+        [_Location_line]: 343,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 14,
+        [_Location_line]: 315,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreviewController",
+        [_Location_column]: 12,
+        [_Location_line]: 313,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreviewAction",
+        [_Location_column]: 9,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "IconButton",
+        [_Location_column]: 12,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 30,
+        [_Location_line]: 86,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 58602
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[22] || CT.C22,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[23] || CT.C23
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPrintAction",
+        [_Location_column]: 9,
+        [_Location_line]: 78,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreviewAction",
+        [_Location_column]: 12,
+        [_Location_line]: 112,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 30,
+        [_Location_line]: 170,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: false,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 58771
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[27] || CT.C27,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[28] || CT.C28
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfShareAction",
+        [_Location_column]: 3,
+        [_Location_line]: 161,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPreviewAction",
+        [_Location_column]: 12,
+        [_Location_line]: 197,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPageFormatAction",
+        [_Location_column]: 9,
+        [_Location_line]: 227,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 13,
+        [_Location_line]: 263,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 20,
+        [_Location_line]: 275,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DropdownMenuItem",
+        [_Location_column]: 18,
+        [_Location_line]: 273,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DropdownButton",
+        [_Location_column]: 12,
+        [_Location_line]: 261,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PdfPageOrientationAction",
+        [_Location_column]: 9,
+        [_Location_line]: 290,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 315,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: true,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 62000
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[38] || CT.C38,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[39] || CT.C39
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Transform",
+        [_Location_column]: 19,
+        [_Location_line]: 313,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 15,
+        [_Location_line]: 319,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[42] || CT.C42,
+        [Widget_key]: null,
+        [Icon_shadows]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[39] || CT.C39
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ToggleButtons",
+        [_Location_column]: 12,
+        [_Location_line]: 302,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+      });
+    }
+  }, false);
+  var C = Array(44).fill(void 0);
+  var I = [
+    "package:printing/src/preview/pdf_preview.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/pdf_preview.dart",
+    "package:printing/src/preview/actions.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/printing-5.9.3/lib/src/preview/actions.dart"
+  ];
+  var build$ = dart.privateName(pdf_preview, "PdfPreview.build");
+  var initialPageFormat$ = dart.privateName(pdf_preview, "PdfPreview.initialPageFormat");
+  var allowPrinting$ = dart.privateName(pdf_preview, "PdfPreview.allowPrinting");
+  var allowSharing$ = dart.privateName(pdf_preview, "PdfPreview.allowSharing");
+  var useActions$ = dart.privateName(pdf_preview, "PdfPreview.useActions");
+  var maxPageWidth$ = dart.privateName(pdf_preview, "PdfPreview.maxPageWidth");
+  var canChangePageFormat$ = dart.privateName(pdf_preview, "PdfPreview.canChangePageFormat");
+  var canChangeOrientation$ = dart.privateName(pdf_preview, "PdfPreview.canChangeOrientation");
+  var canDebug$ = dart.privateName(pdf_preview, "PdfPreview.canDebug");
+  var actions$0 = dart.privateName(pdf_preview, "PdfPreview.actions");
+  var pageFormats$ = dart.privateName(pdf_preview, "PdfPreview.pageFormats");
+  var onError$ = dart.privateName(pdf_preview, "PdfPreview.onError");
+  var onPrinted$ = dart.privateName(pdf_preview, "PdfPreview.onPrinted");
+  var onPrintError$ = dart.privateName(pdf_preview, "PdfPreview.onPrintError");
+  var onShared$ = dart.privateName(pdf_preview, "PdfPreview.onShared");
+  var scrollViewDecoration$ = dart.privateName(pdf_preview, "PdfPreview.scrollViewDecoration");
+  var pdfPreviewPageDecoration$ = dart.privateName(pdf_preview, "PdfPreview.pdfPreviewPageDecoration");
+  var pdfFileName$ = dart.privateName(pdf_preview, "PdfPreview.pdfFileName");
+  var pages$ = dart.privateName(pdf_preview, "PdfPreview.pages");
+  var dynamicLayout$ = dart.privateName(pdf_preview, "PdfPreview.dynamicLayout");
+  var shareActionExtraSubject$ = dart.privateName(pdf_preview, "PdfPreview.shareActionExtraSubject");
+  var shareActionExtraBody$ = dart.privateName(pdf_preview, "PdfPreview.shareActionExtraBody");
+  var shareActionExtraEmails$ = dart.privateName(pdf_preview, "PdfPreview.shareActionExtraEmails");
+  var previewPageMargin$ = dart.privateName(pdf_preview, "PdfPreview.previewPageMargin");
+  var padding$ = dart.privateName(pdf_preview, "PdfPreview.padding");
+  var shouldRepaint$ = dart.privateName(pdf_preview, "PdfPreview.shouldRepaint");
+  var loadingWidget$ = dart.privateName(pdf_preview, "PdfPreview.loadingWidget");
+  var onPageFormatChanged$ = dart.privateName(pdf_preview, "PdfPreview.onPageFormatChanged");
+  var dpi$ = dart.privateName(pdf_preview, "PdfPreview.dpi");
+  var PdfPageFormat_marginRight = dart.privateName(page_format, "PdfPageFormat.marginRight");
+  var PdfPageFormat_marginLeft = dart.privateName(page_format, "PdfPageFormat.marginLeft");
+  var PdfPageFormat_marginBottom = dart.privateName(page_format, "PdfPageFormat.marginBottom");
+  var PdfPageFormat_marginTop = dart.privateName(page_format, "PdfPageFormat.marginTop");
+  var PdfPageFormat_height = dart.privateName(page_format, "PdfPageFormat.height");
+  var PdfPageFormat_width = dart.privateName(page_format, "PdfPageFormat.width");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  pdf_preview.PdfPreview = class PdfPreview extends framework.StatefulWidget {
+    get build() {
+      return this[build$];
+    }
+    set build(value) {
+      super.build = value;
+    }
+    get initialPageFormat() {
+      return this[initialPageFormat$];
+    }
+    set initialPageFormat(value) {
+      super.initialPageFormat = value;
+    }
+    get allowPrinting() {
+      return this[allowPrinting$];
+    }
+    set allowPrinting(value) {
+      super.allowPrinting = value;
+    }
+    get allowSharing() {
+      return this[allowSharing$];
+    }
+    set allowSharing(value) {
+      super.allowSharing = value;
+    }
+    get useActions() {
+      return this[useActions$];
+    }
+    set useActions(value) {
+      super.useActions = value;
+    }
+    get maxPageWidth() {
+      return this[maxPageWidth$];
+    }
+    set maxPageWidth(value) {
+      super.maxPageWidth = value;
+    }
+    get canChangePageFormat() {
+      return this[canChangePageFormat$];
+    }
+    set canChangePageFormat(value) {
+      super.canChangePageFormat = value;
+    }
+    get canChangeOrientation() {
+      return this[canChangeOrientation$];
+    }
+    set canChangeOrientation(value) {
+      super.canChangeOrientation = value;
+    }
+    get canDebug() {
+      return this[canDebug$];
+    }
+    set canDebug(value) {
+      super.canDebug = value;
+    }
+    get actions() {
+      return this[actions$0];
+    }
+    set actions(value) {
+      super.actions = value;
+    }
+    get pageFormats() {
+      return this[pageFormats$];
+    }
+    set pageFormats(value) {
+      super.pageFormats = value;
+    }
+    get onError() {
+      return this[onError$];
+    }
+    set onError(value) {
+      super.onError = value;
+    }
+    get onPrinted() {
+      return this[onPrinted$];
+    }
+    set onPrinted(value) {
+      super.onPrinted = value;
+    }
+    get onPrintError() {
+      return this[onPrintError$];
+    }
+    set onPrintError(value) {
+      super.onPrintError = value;
+    }
+    get onShared() {
+      return this[onShared$];
+    }
+    set onShared(value) {
+      super.onShared = value;
+    }
+    get scrollViewDecoration() {
+      return this[scrollViewDecoration$];
+    }
+    set scrollViewDecoration(value) {
+      super.scrollViewDecoration = value;
+    }
+    get pdfPreviewPageDecoration() {
+      return this[pdfPreviewPageDecoration$];
+    }
+    set pdfPreviewPageDecoration(value) {
+      super.pdfPreviewPageDecoration = value;
+    }
+    get pdfFileName() {
+      return this[pdfFileName$];
+    }
+    set pdfFileName(value) {
+      super.pdfFileName = value;
+    }
+    get pages() {
+      return this[pages$];
+    }
+    set pages(value) {
+      super.pages = value;
+    }
+    get dynamicLayout() {
+      return this[dynamicLayout$];
+    }
+    set dynamicLayout(value) {
+      super.dynamicLayout = value;
+    }
+    get shareActionExtraSubject() {
+      return this[shareActionExtraSubject$];
+    }
+    set shareActionExtraSubject(value) {
+      super.shareActionExtraSubject = value;
+    }
+    get shareActionExtraBody() {
+      return this[shareActionExtraBody$];
+    }
+    set shareActionExtraBody(value) {
+      super.shareActionExtraBody = value;
+    }
+    get shareActionExtraEmails() {
+      return this[shareActionExtraEmails$];
+    }
+    set shareActionExtraEmails(value) {
+      super.shareActionExtraEmails = value;
+    }
+    get previewPageMargin() {
+      return this[previewPageMargin$];
+    }
+    set previewPageMargin(value) {
+      super.previewPageMargin = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get shouldRepaint() {
+      return this[shouldRepaint$];
+    }
+    set shouldRepaint(value) {
+      super.shouldRepaint = value;
+    }
+    get loadingWidget() {
+      return this[loadingWidget$];
+    }
+    set loadingWidget(value) {
+      super.loadingWidget = value;
+    }
+    get onPageFormatChanged() {
+      return this[onPageFormatChanged$];
+    }
+    set onPageFormatChanged(value) {
+      super.onPageFormatChanged = value;
+    }
+    get dpi() {
+      return this[dpi$];
+    }
+    set dpi(value) {
+      super.dpi = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let build = opts && 'build' in opts ? opts.build : null;
+      let initialPageFormat = opts && 'initialPageFormat' in opts ? opts.initialPageFormat : null;
+      let allowPrinting = opts && 'allowPrinting' in opts ? opts.allowPrinting : true;
+      let allowSharing = opts && 'allowSharing' in opts ? opts.allowSharing : true;
+      let maxPageWidth = opts && 'maxPageWidth' in opts ? opts.maxPageWidth : null;
+      let canChangePageFormat = opts && 'canChangePageFormat' in opts ? opts.canChangePageFormat : true;
+      let canChangeOrientation = opts && 'canChangeOrientation' in opts ? opts.canChangeOrientation : true;
+      let canDebug = opts && 'canDebug' in opts ? opts.canDebug : true;
+      let actions = opts && 'actions' in opts ? opts.actions : null;
+      let pageFormats = opts && 'pageFormats' in opts ? opts.pageFormats : C[0] || CT.C0;
+      let onError = opts && 'onError' in opts ? opts.onError : null;
+      let onPrinted = opts && 'onPrinted' in opts ? opts.onPrinted : null;
+      let onPrintError = opts && 'onPrintError' in opts ? opts.onPrintError : null;
+      let onShared = opts && 'onShared' in opts ? opts.onShared : null;
+      let scrollViewDecoration = opts && 'scrollViewDecoration' in opts ? opts.scrollViewDecoration : null;
+      let pdfPreviewPageDecoration = opts && 'pdfPreviewPageDecoration' in opts ? opts.pdfPreviewPageDecoration : null;
+      let pdfFileName = opts && 'pdfFileName' in opts ? opts.pdfFileName : null;
+      let useActions = opts && 'useActions' in opts ? opts.useActions : true;
+      let pages = opts && 'pages' in opts ? opts.pages : null;
+      let dynamicLayout = opts && 'dynamicLayout' in opts ? opts.dynamicLayout : true;
+      let shareActionExtraBody = opts && 'shareActionExtraBody' in opts ? opts.shareActionExtraBody : null;
+      let shareActionExtraSubject = opts && 'shareActionExtraSubject' in opts ? opts.shareActionExtraSubject : null;
+      let shareActionExtraEmails = opts && 'shareActionExtraEmails' in opts ? opts.shareActionExtraEmails : null;
+      let previewPageMargin = opts && 'previewPageMargin' in opts ? opts.previewPageMargin : null;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let shouldRepaint = opts && 'shouldRepaint' in opts ? opts.shouldRepaint : false;
+      let loadingWidget = opts && 'loadingWidget' in opts ? opts.loadingWidget : null;
+      let onPageFormatChanged = opts && 'onPageFormatChanged' in opts ? opts.onPageFormatChanged : null;
+      let dpi = opts && 'dpi' in opts ? opts.dpi : null;
+      return new pdf_preview.PdfPreview.new({key: key, build: build, initialPageFormat: initialPageFormat, allowPrinting: allowPrinting, allowSharing: allowSharing, maxPageWidth: maxPageWidth, canChangePageFormat: canChangePageFormat, canChangeOrientation: canChangeOrientation, canDebug: canDebug, actions: actions, pageFormats: pageFormats, onError: onError, onPrinted: onPrinted, onPrintError: onPrintError, onShared: onShared, scrollViewDecoration: scrollViewDecoration, pdfPreviewPageDecoration: pdfPreviewPageDecoration, pdfFileName: pdfFileName, useActions: useActions, pages: pages, dynamicLayout: dynamicLayout, shareActionExtraBody: shareActionExtraBody, shareActionExtraSubject: shareActionExtraSubject, shareActionExtraEmails: shareActionExtraEmails, previewPageMargin: previewPageMargin, padding: padding, shouldRepaint: shouldRepaint, loadingWidget: loadingWidget, onPageFormatChanged: onPageFormatChanged, dpi: dpi, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+    }
+    createState() {
+      return new pdf_preview._PdfPreviewState.new();
+    }
+  };
+  (pdf_preview.PdfPreview.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let build = opts && 'build' in opts ? opts.build : null;
+    let initialPageFormat = opts && 'initialPageFormat' in opts ? opts.initialPageFormat : null;
+    let allowPrinting = opts && 'allowPrinting' in opts ? opts.allowPrinting : true;
+    let allowSharing = opts && 'allowSharing' in opts ? opts.allowSharing : true;
+    let maxPageWidth = opts && 'maxPageWidth' in opts ? opts.maxPageWidth : null;
+    let canChangePageFormat = opts && 'canChangePageFormat' in opts ? opts.canChangePageFormat : true;
+    let canChangeOrientation = opts && 'canChangeOrientation' in opts ? opts.canChangeOrientation : true;
+    let canDebug = opts && 'canDebug' in opts ? opts.canDebug : true;
+    let actions = opts && 'actions' in opts ? opts.actions : null;
+    let pageFormats = opts && 'pageFormats' in opts ? opts.pageFormats : C[0] || CT.C0;
+    let onError = opts && 'onError' in opts ? opts.onError : null;
+    let onPrinted = opts && 'onPrinted' in opts ? opts.onPrinted : null;
+    let onPrintError = opts && 'onPrintError' in opts ? opts.onPrintError : null;
+    let onShared = opts && 'onShared' in opts ? opts.onShared : null;
+    let scrollViewDecoration = opts && 'scrollViewDecoration' in opts ? opts.scrollViewDecoration : null;
+    let pdfPreviewPageDecoration = opts && 'pdfPreviewPageDecoration' in opts ? opts.pdfPreviewPageDecoration : null;
+    let pdfFileName = opts && 'pdfFileName' in opts ? opts.pdfFileName : null;
+    let useActions = opts && 'useActions' in opts ? opts.useActions : true;
+    let pages = opts && 'pages' in opts ? opts.pages : null;
+    let dynamicLayout = opts && 'dynamicLayout' in opts ? opts.dynamicLayout : true;
+    let shareActionExtraBody = opts && 'shareActionExtraBody' in opts ? opts.shareActionExtraBody : null;
+    let shareActionExtraSubject = opts && 'shareActionExtraSubject' in opts ? opts.shareActionExtraSubject : null;
+    let shareActionExtraEmails = opts && 'shareActionExtraEmails' in opts ? opts.shareActionExtraEmails : null;
+    let previewPageMargin = opts && 'previewPageMargin' in opts ? opts.previewPageMargin : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let shouldRepaint = opts && 'shouldRepaint' in opts ? opts.shouldRepaint : false;
+    let loadingWidget = opts && 'loadingWidget' in opts ? opts.loadingWidget : null;
+    let onPageFormatChanged = opts && 'onPageFormatChanged' in opts ? opts.onPageFormatChanged : null;
+    let dpi = opts && 'dpi' in opts ? opts.dpi : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[build$] = build;
+    this[initialPageFormat$] = initialPageFormat;
+    this[allowPrinting$] = allowPrinting;
+    this[allowSharing$] = allowSharing;
+    this[maxPageWidth$] = maxPageWidth;
+    this[canChangePageFormat$] = canChangePageFormat;
+    this[canChangeOrientation$] = canChangeOrientation;
+    this[canDebug$] = canDebug;
+    this[actions$0] = actions;
+    this[pageFormats$] = pageFormats;
+    this[onError$] = onError;
+    this[onPrinted$] = onPrinted;
+    this[onPrintError$] = onPrintError;
+    this[onShared$] = onShared;
+    this[scrollViewDecoration$] = scrollViewDecoration;
+    this[pdfPreviewPageDecoration$] = pdfPreviewPageDecoration;
+    this[pdfFileName$] = pdfFileName;
+    this[useActions$] = useActions;
+    this[pages$] = pages;
+    this[dynamicLayout$] = dynamicLayout;
+    this[shareActionExtraBody$] = shareActionExtraBody;
+    this[shareActionExtraSubject$] = shareActionExtraSubject;
+    this[shareActionExtraEmails$] = shareActionExtraEmails;
+    this[previewPageMargin$] = previewPageMargin;
+    this[padding$] = padding;
+    this[shouldRepaint$] = shouldRepaint;
+    this[loadingWidget$] = loadingWidget;
+    this[onPageFormatChanged$] = onPageFormatChanged;
+    this[dpi$] = dpi;
+    pdf_preview.PdfPreview.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = pdf_preview.PdfPreview.prototype;
+  dart.addTypeTests(pdf_preview.PdfPreview);
+  dart.addTypeCaches(pdf_preview.PdfPreview);
+  dart.setMethodSignature(pdf_preview.PdfPreview, () => ({
+    __proto__: dart.getMethods(pdf_preview.PdfPreview.__proto__),
+    createState: dart.fnType(pdf_preview._PdfPreviewState, [])
+  }));
+  dart.setLibraryUri(pdf_preview.PdfPreview, I[0]);
+  dart.setFieldSignature(pdf_preview.PdfPreview, () => ({
+    __proto__: dart.getFields(pdf_preview.PdfPreview.__proto__),
+    build: dart.finalFieldType(dart.fnType(async.FutureOr$(typed_data.Uint8List), [page_format.PdfPageFormat])),
+    initialPageFormat: dart.finalFieldType(dart.nullable(page_format.PdfPageFormat)),
+    allowPrinting: dart.finalFieldType(core.bool),
+    allowSharing: dart.finalFieldType(core.bool),
+    useActions: dart.finalFieldType(core.bool),
+    maxPageWidth: dart.finalFieldType(dart.nullable(core.double)),
+    canChangePageFormat: dart.finalFieldType(core.bool),
+    canChangeOrientation: dart.finalFieldType(core.bool),
+    canDebug: dart.finalFieldType(core.bool),
+    actions: dart.finalFieldType(dart.nullable(core.List$(framework.Widget))),
+    pageFormats: dart.finalFieldType(core.Map$(core.String, page_format.PdfPageFormat)),
+    onError: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.Object]))),
+    onPrinted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [framework.BuildContext]))),
+    onPrintError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [framework.BuildContext, dart.dynamic]))),
+    onShared: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [framework.BuildContext]))),
+    scrollViewDecoration: dart.finalFieldType(dart.nullable(decoration.Decoration)),
+    pdfPreviewPageDecoration: dart.finalFieldType(dart.nullable(decoration.Decoration)),
+    pdfFileName: dart.finalFieldType(dart.nullable(core.String)),
+    pages: dart.finalFieldType(dart.nullable(core.List$(core.int))),
+    dynamicLayout: dart.finalFieldType(core.bool),
+    shareActionExtraSubject: dart.finalFieldType(dart.nullable(core.String)),
+    shareActionExtraBody: dart.finalFieldType(dart.nullable(core.String)),
+    shareActionExtraEmails: dart.finalFieldType(dart.nullable(core.List$(core.String))),
+    previewPageMargin: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsets)),
+    padding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsets)),
+    shouldRepaint: dart.finalFieldType(core.bool),
+    loadingWidget: dart.finalFieldType(dart.nullable(framework.Widget)),
+    onPageFormatChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [page_format.PdfPageFormat]))),
+    dpi: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  dart.setStaticFieldSignature(pdf_preview.PdfPreview, () => ['_defaultPageFormats']);
+  dart.defineLazy(pdf_preview.PdfPreview, {
+    /*pdf_preview.PdfPreview._defaultPageFormats*/get _defaultPageFormats() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  var ___PdfPreviewState_previewData = dart.privateName(pdf_preview, "_#_PdfPreviewState#previewData");
+  pdf_preview._PdfPreviewState = class _PdfPreviewState extends framework.State$(pdf_preview.PdfPreview) {
+    get previewData() {
+      let t0;
+      t0 = this[___PdfPreviewState_previewData];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("previewData")) : t0;
+    }
+    set previewData(previewData$35param) {
+      this[___PdfPreviewState_previewData] = previewData$35param;
+    }
+    computeActualPageFormat() {
+      let t0, t0$, t0$0, t0$1;
+      let format = this.previewData.pageFormat;
+      let pages = (t0$ = (t0 = this.previewWidget.currentState, t0 == null ? null : t0.pages), t0$ == null ? C[4] || CT.C4 : t0$);
+      let dpi = (t0$1 = (t0$0 = this.previewWidget.currentState, t0$0 == null ? null : t0$0.dpi), t0$1 == null ? 72 : t0$1);
+      if (!this.widget.canChangePageFormat && pages[$isNotEmpty]) {
+        format = new page_format.PdfPageFormat.new(pages[$first].width * 72 / dpi, pages[$first].height * 72 / dpi, {marginAll: 5 * 2.834645669291339});
+      }
+      return format;
+    }
+    initState() {
+      this.previewData = new controller$.PdfPreviewData.new({buildDocument: this.widget.build, pageFormats: this.widget.pageFormats[$isNotEmpty] ? this.widget.pageFormats : pdf_preview.PdfPreview._defaultPageFormats, initialPageFormat: this.widget.initialPageFormat, onComputeActualPageFormat: dart.bind(this, 'computeActualPageFormat')});
+      this.previewData.addListener(dart.fn(() => {
+        let t0;
+        if (this.mounted) {
+          this.setState(dart.fn(() => {
+          }, T.VoidTovoid()));
+        }
+        t0 = this.widget.onPageFormatChanged;
+        t0 == null ? null : t0(this.previewData.pageFormat);
+      }, T.VoidTovoid()));
+      super.initState();
+    }
+    dispose() {
+      this.previewData.dispose();
+      super.dispose();
+    }
+    didUpdateWidget(oldWidget) {
+      pdf_preview.PdfPreview.as(oldWidget);
+      if (!oldWidget.build[$_equals](this.widget.build) || this.widget.shouldRepaint || !this.widget.pageFormats[$_equals](oldWidget.pageFormats)) {
+        this.previewData = new controller$.PdfPreviewData.new({buildDocument: this.widget.build, pageFormats: this.widget.pageFormats[$isNotEmpty] ? this.widget.pageFormats : pdf_preview.PdfPreview._defaultPageFormats, initialPageFormat: this.previewData.pageFormat, onComputeActualPageFormat: dart.bind(this, 'computeActualPageFormat')});
+        this.setState(dart.fn(() => {
+        }, T.VoidTovoid()));
+      }
+      super.didUpdateWidget(oldWidget);
+    }
+    didChangeDependencies() {
+      if (!this.infoLoaded) {
+        this.infoLoaded = true;
+        printing.Printing.info().then(core.Null, dart.fn(_info => {
+          this.setState(dart.fn(() => {
+            this.info = _info;
+          }, T.VoidTovoid()));
+        }, T.PrintingInfoToNull()));
+      }
+      super.didChangeDependencies();
+    }
+    build(context) {
+      let t0, t0$, t0$0, t0$1;
+      let theme = theme$.Theme.of(context);
+      let iconColor = (t0 = theme.primaryIconTheme.color, t0 == null ? colors.Colors.white : t0);
+      let actions = T.JSArrayOfWidget().of([]);
+      if (this.widget.useActions && this.widget.allowPrinting && (t0$ = this.info, t0$ == null ? null : t0$.canPrint) === true) {
+        actions[$add](new actions$.PdfPrintAction.new({jobName: this.widget.pdfFileName, dynamicLayout: this.widget.dynamicLayout, onPrinted: this.widget.onPrinted == null ? null : dart.fn(() => dart.nullCheck(this.widget.onPrinted)(context), T.VoidTovoid()), onPrintError: this.widget.onPrintError == null ? null : dart.fn(error => dart.nullCheck(this.widget.onPrintError)(context, error), T.dynamicTovoid()), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}));
+      }
+      if (this.widget.useActions && this.widget.allowSharing && (t0$0 = this.info, t0$0 == null ? null : t0$0.canShare) === true) {
+        actions[$add](new actions$.PdfShareAction.new({filename: this.widget.pdfFileName, onShared: this.widget.onPrinted == null ? null : dart.fn(() => dart.nullCheck(this.widget.onPrinted)(context), T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}));
+      }
+      if (this.widget.useActions && this.widget.canChangePageFormat) {
+        actions[$add](new actions$.PdfPageFormatAction.new({pageFormats: this.widget.pageFormats, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}));
+        if (this.widget.useActions && this.widget.canChangeOrientation) {
+          actions[$add](new actions$.PdfPageOrientationAction.new({$creationLocationd_0dea112b090073317d4: C[8] || CT.C8}));
+        }
+      }
+      t0$1 = this.widget.actions;
+      t0$1 == null ? null : t0$1[$forEach](T.WidgetTovoid().as(dart.bind(actions, $add)));
+      if (!dart.fn(() => {
+        if (actions[$isNotEmpty] && this.widget.canDebug) {
+          actions[$add](new $switch.Switch.new({activeColor: colors.Colors.red, value: document.Document.debug, onChanged: dart.fn(value => {
+              let t0;
+              this.setState(dart.fn(() => {
+                document.Document.debug = value;
+              }, T.VoidTovoid()));
+              t0 = this.previewWidget.currentState;
+              t0 == null ? null : t0.raster();
+            }, T.boolTovoid()), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}));
+        }
+        return true;
+      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 294, 12, "() {\n      if (actions.isNotEmpty && widget.canDebug) {\n        actions.add(\n          Switch(\n            activeColor: Colors.red,\n            value: pw.Document.debug,\n            onChanged: (bool value) {\n              setState(() {\n                pw.Document.debug = value;\n              });\n              previewWidget.currentState?.raster();\n            },\n          ),\n        );\n      }\n\n      return true;\n    }()");
+      return new controller$.PdfPreviewController.new({data: this.previewData, child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: (() => {
+            let t0 = T.JSArrayOfWidget().of([new basic.Expanded.new({child: new basic.Builder.new({builder: dart.fn(context => {
+                    let controller = controller$.PdfPreviewController.listen(context);
+                    return new custom.PdfPreviewCustom.new({key: this.previewWidget, build: controller.buildDocument, loadingWidget: this.widget.loadingWidget, maxPageWidth: this.widget.maxPageWidth, onError: this.widget.onError, padding: this.widget.padding, pageFormat: controller.pageFormat, pages: this.widget.pages, pdfPreviewPageDecoration: this.widget.pdfPreviewPageDecoration, previewPageMargin: this.widget.previewPageMargin, scrollViewDecoration: this.widget.scrollViewDecoration, shouldRepaint: this.widget.shouldRepaint, dpi: this.widget.dpi, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+                  }, T.BuildContextToPdfPreviewCustom()), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12})]);
+            if (actions[$isNotEmpty]) t0.push(icon_theme.IconTheme.merge({data: new icon_theme_data.IconThemeData.new({color: iconColor}), child: new material.Material.new({elevation: 4.0, color: theme.primaryColor, child: new basic.SizedBox.new({width: 1 / 0, child: new safe_area.SafeArea.new({child: new basic.Wrap.new({alignment: wrap.WrapAlignment.spaceAround, children: actions, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16})}));
+            return t0;
+          })(), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+    }
+    static ['_#new#tearOff']() {
+      return new pdf_preview._PdfPreviewState.new();
+    }
+  };
+  (pdf_preview._PdfPreviewState.new = function() {
+    this.previewWidget = T.GlobalKeyOfPdfPreviewCustomState().new();
+    this[___PdfPreviewState_previewData] = null;
+    this.info = null;
+    this.infoLoaded = false;
+    pdf_preview._PdfPreviewState.__proto__.new.call(this);
+    ;
+  }).prototype = pdf_preview._PdfPreviewState.prototype;
+  dart.addTypeTests(pdf_preview._PdfPreviewState);
+  dart.addTypeCaches(pdf_preview._PdfPreviewState);
+  dart.setMethodSignature(pdf_preview._PdfPreviewState, () => ({
+    __proto__: dart.getMethods(pdf_preview._PdfPreviewState.__proto__),
+    computeActualPageFormat: dart.fnType(page_format.PdfPageFormat, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(pdf_preview._PdfPreviewState, () => ({
+    __proto__: dart.getGetters(pdf_preview._PdfPreviewState.__proto__),
+    previewData: controller$.PdfPreviewData
+  }));
+  dart.setSetterSignature(pdf_preview._PdfPreviewState, () => ({
+    __proto__: dart.getSetters(pdf_preview._PdfPreviewState.__proto__),
+    previewData: controller$.PdfPreviewData
+  }));
+  dart.setLibraryUri(pdf_preview._PdfPreviewState, I[0]);
+  dart.setFieldSignature(pdf_preview._PdfPreviewState, () => ({
+    __proto__: dart.getFields(pdf_preview._PdfPreviewState.__proto__),
+    previewWidget: dart.finalFieldType(framework.GlobalKey$(custom.PdfPreviewCustomState)),
+    [___PdfPreviewState_previewData]: dart.fieldType(dart.nullable(controller$.PdfPreviewData)),
+    info: dart.fieldType(dart.nullable(printing_info.PrintingInfo)),
+    infoLoaded: dart.fieldType(core.bool)
+  }));
+  var childKey = dart.privateName(actions$, "PdfPreviewActionBounds.childKey");
+  actions$.PdfPreviewActionBounds = class PdfPreviewActionBounds extends core.Object {};
+  actions$.PdfPreviewActionBounds[dart.mixinOn] = Object => class PdfPreviewActionBounds extends Object {
+    get childKey() {
+      return this[childKey];
+    }
+    set childKey(value) {
+      super.childKey = value;
+    }
+    get bounds() {
+      let referenceBox = box.RenderBox.as(dart.nullCheck(this.childKey.currentContext).findRenderObject());
+      let topLeft = referenceBox.localToGlobal(referenceBox.paintBounds.topLeft);
+      let bottomRight = referenceBox.localToGlobal(referenceBox.paintBounds.bottomRight);
+      return new ui.Rect.fromPoints(topLeft, bottomRight);
+    }
+  };
+  (actions$.PdfPreviewActionBounds[dart.mixinNew] = function() {
+    this[childKey] = T.GlobalKeyOfStateOfStatefulWidget().new();
+  }).prototype = actions$.PdfPreviewActionBounds.prototype;
+  dart.addTypeTests(actions$.PdfPreviewActionBounds);
+  dart.addTypeCaches(actions$.PdfPreviewActionBounds);
+  actions$.PdfPreviewActionBounds[dart.implements] = () => [core.Object];
+  dart.setGetterSignature(actions$.PdfPreviewActionBounds, () => ({
+    __proto__: dart.getGetters(actions$.PdfPreviewActionBounds.__proto__),
+    bounds: ui.Rect
+  }));
+  dart.setLibraryUri(actions$.PdfPreviewActionBounds, I[2]);
+  dart.setFieldSignature(actions$.PdfPreviewActionBounds, () => ({
+    __proto__: dart.getFields(actions$.PdfPreviewActionBounds.__proto__),
+    childKey: dart.finalFieldType(framework.GlobalKey$(framework.State$(framework.StatefulWidget)))
+  }));
+  var icon$ = dart.privateName(actions$, "PdfPreviewAction.icon");
+  var onPressed$ = dart.privateName(actions$, "PdfPreviewAction.onPressed");
+  actions$.PdfPreviewAction = class PdfPreviewAction extends framework.StatelessWidget {
+    get icon() {
+      return this[icon$];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get onPressed() {
+      return this[onPressed$];
+    }
+    set onPressed(value) {
+      super.onPressed = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+      return new actions$.PdfPreviewAction.new({key: key, icon: icon, onPressed: onPressed, $creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
+    }
+    build(context) {
+      return new icon_button.IconButton.new({icon: this.icon, onPressed: this.onPressed == null ? null : dart.fn(() => this.pressed(context), T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+    }
+    pressed(context) {
+      return async.async(dart.void, (function* pressed() {
+        let data = controller$.PdfPreviewController.of(context);
+        dart.nullCheck(this.onPressed)(context, data.buildDocument, data.pageFormat);
+      }).bind(this));
+    }
+  };
+  (actions$.PdfPreviewAction.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[icon$] = icon;
+    this[onPressed$] = onPressed;
+    actions$.PdfPreviewAction.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = actions$.PdfPreviewAction.prototype;
+  dart.addTypeTests(actions$.PdfPreviewAction);
+  dart.addTypeCaches(actions$.PdfPreviewAction);
+  dart.setMethodSignature(actions$.PdfPreviewAction, () => ({
+    __proto__: dart.getMethods(actions$.PdfPreviewAction.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    pressed: dart.fnType(async.Future$(dart.void), [framework.BuildContext])
+  }));
+  dart.setLibraryUri(actions$.PdfPreviewAction, I[2]);
+  dart.setFieldSignature(actions$.PdfPreviewAction, () => ({
+    __proto__: dart.getFields(actions$.PdfPreviewAction.__proto__),
+    icon: dart.finalFieldType(framework.Widget),
+    onPressed: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [framework.BuildContext, dart.fnType(async.FutureOr$(typed_data.Uint8List), [page_format.PdfPageFormat]), page_format.PdfPageFormat])))
+  }));
+  var icon$0 = dart.privateName(actions$, "PdfPrintAction.icon");
+  var jobName$ = dart.privateName(actions$, "PdfPrintAction.jobName");
+  var dynamicLayout$0 = dart.privateName(actions$, "PdfPrintAction.dynamicLayout");
+  var usePrinterSettings$ = dart.privateName(actions$, "PdfPrintAction.usePrinterSettings");
+  var onPrinted$0 = dart.privateName(actions$, "PdfPrintAction.onPrinted");
+  var onPrintError$0 = dart.privateName(actions$, "PdfPrintAction.onPrintError");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var Icon_shadows = dart.privateName(icon, "Icon.shadows");
+  var Icon_textDirection = dart.privateName(icon, "Icon.textDirection");
+  var Icon_semanticLabel = dart.privateName(icon, "Icon.semanticLabel");
+  var Icon_color = dart.privateName(icon, "Icon.color");
+  var Icon_size = dart.privateName(icon, "Icon.size");
+  var IconData_matchTextDirection = dart.privateName(icon_data, "IconData.matchTextDirection");
+  var IconData_fontPackage = dart.privateName(icon_data, "IconData.fontPackage");
+  var IconData_fontFamily = dart.privateName(icon_data, "IconData.fontFamily");
+  var IconData_codePoint = dart.privateName(icon_data, "IconData.codePoint");
+  var Icon_icon = dart.privateName(icon, "Icon.icon");
+  var _print = dart.privateName(actions$, "_print");
+  actions$.PdfPrintAction = class PdfPrintAction extends framework.StatelessWidget {
+    get icon() {
+      return this[icon$0];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get jobName() {
+      return this[jobName$];
+    }
+    set jobName(value) {
+      super.jobName = value;
+    }
+    get dynamicLayout() {
+      return this[dynamicLayout$0];
+    }
+    set dynamicLayout(value) {
+      super.dynamicLayout = value;
+    }
+    get usePrinterSettings() {
+      return this[usePrinterSettings$];
+    }
+    set usePrinterSettings(value) {
+      super.usePrinterSettings = value;
+    }
+    get onPrinted() {
+      return this[onPrinted$0];
+    }
+    set onPrinted(value) {
+      super.onPrinted = value;
+    }
+    get onPrintError() {
+      return this[onPrintError$0];
+    }
+    set onPrintError(value) {
+      super.onPrintError = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let jobName = opts && 'jobName' in opts ? opts.jobName : null;
+      let onPrinted = opts && 'onPrinted' in opts ? opts.onPrinted : null;
+      let onPrintError = opts && 'onPrintError' in opts ? opts.onPrintError : null;
+      let dynamicLayout = opts && 'dynamicLayout' in opts ? opts.dynamicLayout : true;
+      let usePrinterSettings = opts && 'usePrinterSettings' in opts ? opts.usePrinterSettings : false;
+      return new actions$.PdfPrintAction.new({key: key, icon: icon, jobName: jobName, onPrinted: onPrinted, onPrintError: onPrintError, dynamicLayout: dynamicLayout, usePrinterSettings: usePrinterSettings, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+    }
+    build(context) {
+      return new actions$.PdfPreviewAction.new({icon: this.icon, onPressed: dart.bind(this, _print), $creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
+    }
+    [_print](context, build, pageFormat) {
+      return async.async(dart.void, (function* _print() {
+        let t1, t2;
+        let data = controller$.PdfPreviewController.of(context);
+        try {
+          let result = (yield printing.Printing.layoutPdf({onLayout: build, name: this.jobName, format: data.actualPageFormat, dynamicLayout: this.dynamicLayout, usePrinterSettings: this.usePrinterSettings}));
+          if (result) {
+            t1 = this.onPrinted;
+            t1 == null ? null : t1();
+          }
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          let stack = dart.stackTrace(e);
+          if (core.Object.is(exception)) {
+            let collector = null;
+            if (!dart.fn(() => {
+              collector = dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new diagnostics.StringProperty.new("PageFormat", data.actualPageFormat.toString());
+              }), T.VoidToIterableOfDiagnosticsNode());
+              return true;
+            }, T.VoidTobool())()) dart.assertFailed(null, I[3], 140, 14, "() {\n        collector = () sync* {\n          yield StringProperty('PageFormat', data.actualPageFormat.toString());\n        };\n        return true;\n      }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, library: "printing", context: new assertions.ErrorDescription.new("while printing a PDF"), informationCollector: collector}));
+            t2 = this.onPrintError;
+            t2 == null ? null : t2(exception);
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+  };
+  (actions$.PdfPrintAction.new = function(opts) {
+    let t1, t1$;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let jobName = opts && 'jobName' in opts ? opts.jobName : null;
+    let onPrinted = opts && 'onPrinted' in opts ? opts.onPrinted : null;
+    let onPrintError = opts && 'onPrintError' in opts ? opts.onPrintError : null;
+    let dynamicLayout = opts && 'dynamicLayout' in opts ? opts.dynamicLayout : true;
+    let usePrinterSettings = opts && 'usePrinterSettings' in opts ? opts.usePrinterSettings : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[onPrinted$0] = onPrinted;
+    this[onPrintError$0] = onPrintError;
+    this[dynamicLayout$0] = dynamicLayout;
+    this[usePrinterSettings$] = usePrinterSettings;
+    this[icon$0] = (t1 = icon, t1 == null ? C[21] || CT.C21 : t1);
+    this[jobName$] = (t1$ = jobName, t1$ == null ? "Document" : t1$);
+    actions$.PdfPrintAction.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = actions$.PdfPrintAction.prototype;
+  dart.addTypeTests(actions$.PdfPrintAction);
+  dart.addTypeCaches(actions$.PdfPrintAction);
+  dart.setMethodSignature(actions$.PdfPrintAction, () => ({
+    __proto__: dart.getMethods(actions$.PdfPrintAction.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_print]: dart.fnType(async.Future$(dart.void), [framework.BuildContext, dart.fnType(async.FutureOr$(typed_data.Uint8List), [page_format.PdfPageFormat]), page_format.PdfPageFormat])
+  }));
+  dart.setLibraryUri(actions$.PdfPrintAction, I[2]);
+  dart.setFieldSignature(actions$.PdfPrintAction, () => ({
+    __proto__: dart.getFields(actions$.PdfPrintAction.__proto__),
+    icon: dart.finalFieldType(framework.Widget),
+    jobName: dart.finalFieldType(core.String),
+    dynamicLayout: dart.finalFieldType(core.bool),
+    usePrinterSettings: dart.finalFieldType(core.bool),
+    onPrinted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onPrintError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.dynamic])))
+  }));
+  var icon$1 = dart.privateName(actions$, "PdfShareAction.icon");
+  var filename$ = dart.privateName(actions$, "PdfShareAction.filename");
+  var subject$ = dart.privateName(actions$, "PdfShareAction.subject");
+  var body$ = dart.privateName(actions$, "PdfShareAction.body");
+  var emails$ = dart.privateName(actions$, "PdfShareAction.emails");
+  var onShared$0 = dart.privateName(actions$, "PdfShareAction.onShared");
+  var onShareError$ = dart.privateName(actions$, "PdfShareAction.onShareError");
+  var _share = dart.privateName(actions$, "_share");
+  const StatelessWidget_PdfPreviewActionBounds$36 = class StatelessWidget_PdfPreviewActionBounds extends framework.StatelessWidget {};
+  (StatelessWidget_PdfPreviewActionBounds$36.new = function(opts) {
+    actions$.PdfPreviewActionBounds[dart.mixinNew].call(this);
+    StatelessWidget_PdfPreviewActionBounds$36.__proto__.new.call(this, opts);
+  }).prototype = StatelessWidget_PdfPreviewActionBounds$36.prototype;
+  dart.applyMixin(StatelessWidget_PdfPreviewActionBounds$36, actions$.PdfPreviewActionBounds);
+  actions$.PdfShareAction = class PdfShareAction extends StatelessWidget_PdfPreviewActionBounds$36 {
+    get icon() {
+      return this[icon$1];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get filename() {
+      return this[filename$];
+    }
+    set filename(value) {
+      super.filename = value;
+    }
+    get subject() {
+      return this[subject$];
+    }
+    set subject(value) {
+      super.subject = value;
+    }
+    get body() {
+      return this[body$];
+    }
+    set body(value) {
+      super.body = value;
+    }
+    get emails() {
+      return this[emails$];
+    }
+    set emails(value) {
+      super.emails = value;
+    }
+    get onShared() {
+      return this[onShared$0];
+    }
+    set onShared(value) {
+      super.onShared = value;
+    }
+    get onShareError() {
+      return this[onShareError$];
+    }
+    set onShareError(value) {
+      super.onShareError = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let filename = opts && 'filename' in opts ? opts.filename : null;
+      let subject = opts && 'subject' in opts ? opts.subject : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      let emails = opts && 'emails' in opts ? opts.emails : null;
+      let onShared = opts && 'onShared' in opts ? opts.onShared : null;
+      let onShareError = opts && 'onShareError' in opts ? opts.onShareError : null;
+      return new actions$.PdfShareAction.new({key: key, icon: icon, filename: filename, subject: subject, body: body, emails: emails, onShared: onShared, onShareError: onShareError, $creationLocationd_0dea112b090073317d4: C[29] || CT.C29});
+    }
+    build(context) {
+      return new actions$.PdfPreviewAction.new({key: this.childKey, icon: this.icon, onPressed: dart.bind(this, _share), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30});
+    }
+    [_share](context, build, pageFormat) {
+      return async.async(dart.void, (function* _share() {
+        let t2;
+        let bytes = (yield build(pageFormat));
+        let result = (yield printing.Printing.sharePdf({bytes: bytes, bounds: this.bounds, filename: this.filename, body: this.body, subject: this.subject, emails: this.emails}));
+        if (result) {
+          t2 = this.onShared;
+          t2 == null ? null : t2();
+        }
+      }).bind(this));
+    }
+  };
+  (actions$.PdfShareAction.new = function(opts) {
+    let t2, t2$;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let filename = opts && 'filename' in opts ? opts.filename : null;
+    let subject = opts && 'subject' in opts ? opts.subject : null;
+    let body = opts && 'body' in opts ? opts.body : null;
+    let emails = opts && 'emails' in opts ? opts.emails : null;
+    let onShared = opts && 'onShared' in opts ? opts.onShared : null;
+    let onShareError = opts && 'onShareError' in opts ? opts.onShareError : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[subject$] = subject;
+    this[body$] = body;
+    this[emails$] = emails;
+    this[onShared$0] = onShared;
+    this[onShareError$] = onShareError;
+    this[icon$1] = (t2 = icon, t2 == null ? C[26] || CT.C26 : t2);
+    this[filename$] = (t2$ = filename, t2$ == null ? "document.pdf" : t2$);
+    actions$.PdfShareAction.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = actions$.PdfShareAction.prototype;
+  dart.addTypeTests(actions$.PdfShareAction);
+  dart.addTypeCaches(actions$.PdfShareAction);
+  dart.setMethodSignature(actions$.PdfShareAction, () => ({
+    __proto__: dart.getMethods(actions$.PdfShareAction.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_share]: dart.fnType(async.Future$(dart.void), [framework.BuildContext, dart.fnType(async.FutureOr$(typed_data.Uint8List), [page_format.PdfPageFormat]), page_format.PdfPageFormat])
+  }));
+  dart.setLibraryUri(actions$.PdfShareAction, I[2]);
+  dart.setFieldSignature(actions$.PdfShareAction, () => ({
+    __proto__: dart.getFields(actions$.PdfShareAction.__proto__),
+    icon: dart.finalFieldType(framework.Widget),
+    filename: dart.finalFieldType(core.String),
+    subject: dart.finalFieldType(dart.nullable(core.String)),
+    body: dart.finalFieldType(dart.nullable(core.String)),
+    emails: dart.finalFieldType(dart.nullable(core.List$(core.String))),
+    onShared: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onShareError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.dynamic])))
+  }));
+  var pageFormats$0 = dart.privateName(actions$, "PdfPageFormatAction.pageFormats");
+  actions$.PdfPageFormatAction = class PdfPageFormatAction extends framework.StatelessWidget {
+    get pageFormats() {
+      return this[pageFormats$0];
+    }
+    set pageFormats(value) {
+      super.pageFormats = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let pageFormats = opts && 'pageFormats' in opts ? opts.pageFormats : null;
+      return new actions$.PdfPageFormatAction.new({key: key, pageFormats: pageFormats, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
+    }
+    build(context) {
+      let t2, t3;
+      let theme = theme$.Theme.of(context);
+      let iconColor = (t2 = theme.primaryIconTheme.color, t2 == null ? colors.Colors.white : t2);
+      let data = controller$.PdfPreviewController.listen(context);
+      let _pageFormats = (() => {
+        let t2 = T.LinkedHashMapOfString$PdfPageFormat().of(this.pageFormats);
+        return t2;
+      })();
+      let format = data.pageFormat;
+      let orientation = data.horizontal;
+      if (!_pageFormats[$values][$contains](data.pageFormat)) {
+        let found = false;
+        for (let f of _pageFormats[$values]) {
+          if (format.portrait._equals(f.portrait)) {
+            format = f;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          _pageFormats[$_set]("---", format);
+        }
+      }
+      let keys = (t3 = _pageFormats[$keys][$toList](), (() => {
+        t3[$sort]();
+        return t3;
+      })());
+      return new (T.DropdownButtonOfPdfPageFormat()).new({dropdownColor: theme.primaryColor, icon: new icon.Icon.new(icons.Icons.arrow_drop_down, {color: iconColor, $creationLocationd_0dea112b090073317d4: C[32] || CT.C32}), value: format, items: T.ListOfDropdownMenuItemOfPdfPageFormat().generate(_pageFormats[$length], dart.fn(index => {
+          let key = keys[$_get](index);
+          let val = dart.nullCheck(_pageFormats[$_get](key));
+          return new (T.DropdownMenuItemOfPdfPageFormat()).new({value: val, child: new text.Text.new(key, {style: new text_style.TextStyle.new({color: iconColor}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34});
+        }, T.intToDropdownMenuItemOfPdfPageFormat())), onChanged: dart.fn(pageFormat => {
+          if (pageFormat != null) {
+            data.pageFormat = orientation ? pageFormat.landscape : pageFormat.portrait;
+          }
+        }, T.PdfPageFormatNTovoid()), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35});
+    }
+  };
+  (actions$.PdfPageFormatAction.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let pageFormats = opts && 'pageFormats' in opts ? opts.pageFormats : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[pageFormats$0] = pageFormats;
+    actions$.PdfPageFormatAction.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = actions$.PdfPageFormatAction.prototype;
+  dart.addTypeTests(actions$.PdfPageFormatAction);
+  dart.addTypeCaches(actions$.PdfPageFormatAction);
+  dart.setMethodSignature(actions$.PdfPageFormatAction, () => ({
+    __proto__: dart.getMethods(actions$.PdfPageFormatAction.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(actions$.PdfPageFormatAction, I[2]);
+  dart.setFieldSignature(actions$.PdfPageFormatAction, () => ({
+    __proto__: dart.getFields(actions$.PdfPageFormatAction.__proto__),
+    pageFormats: dart.finalFieldType(core.Map$(core.String, page_format.PdfPageFormat))
+  }));
+  actions$.PdfPageOrientationAction = class PdfPageOrientationAction extends framework.StatelessWidget {
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      return new actions$.PdfPageOrientationAction.new({key: key, $creationLocationd_0dea112b090073317d4: C[36] || CT.C36});
+    }
+    build(context) {
+      let t3;
+      let theme = theme$.Theme.of(context);
+      let iconColor = (t3 = theme.primaryIconTheme.color, t3 == null ? colors.Colors.white : t3);
+      let data = controller$.PdfPreviewController.listen(context);
+      let horizontal = data.horizontal;
+      let disabledColor = iconColor.withAlpha(120);
+      return new toggle_buttons.ToggleButtons.new({renderBorder: false, borderColor: disabledColor, color: disabledColor, selectedBorderColor: iconColor, selectedColor: iconColor, onPressed: dart.fn(index => {
+          data.horizontal = index === 1;
+        }, T.intTovoid()), isSelected: T.JSArrayOfbool().of([horizontal === false, horizontal === true]), children: T.JSArrayOfWidget().of([new basic.Transform.rotate({angle: -3.141592653589793 / 2, child: C[37] || CT.C37, $creationLocationd_0dea112b090073317d4: C[40] || CT.C40}), C[41] || CT.C41]), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+    }
+  };
+  (actions$.PdfPageOrientationAction.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    actions$.PdfPageOrientationAction.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = actions$.PdfPageOrientationAction.prototype;
+  dart.addTypeTests(actions$.PdfPageOrientationAction);
+  dart.addTypeCaches(actions$.PdfPageOrientationAction);
+  dart.setMethodSignature(actions$.PdfPageOrientationAction, () => ({
+    __proto__: dart.getMethods(actions$.PdfPageOrientationAction.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(actions$.PdfPageOrientationAction, I[2]);
+  printing$.pdfDefaultTheme = function pdfDefaultTheme() {
+    return async.async(dart.void, function* pdfDefaultTheme() {
+      if (theme.ThemeData.buildThemeData != null) {
+        return;
+      }
+      let base = (yield gfonts.PdfGoogleFonts.openSansRegular());
+      let bold = (yield gfonts.PdfGoogleFonts.openSansBold());
+      let italic = (yield gfonts.PdfGoogleFonts.openSansItalic());
+      let boldItalic = (yield gfonts.PdfGoogleFonts.openSansBoldItalic());
+      let emoji = (yield gfonts.PdfGoogleFonts.notoColorEmoji());
+      let icons = (yield gfonts.PdfGoogleFonts.materialIcons());
+      theme.ThemeData.buildThemeData = dart.fn(() => theme.ThemeData.withFont({base: base, bold: bold, italic: italic, boldItalic: boldItalic, icons: icons, fontFallback: T.JSArrayOfFont().of([emoji, base])}), T.VoidToThemeData());
+    });
+  };
+  dart.trackLibraries("packages/printing/src/preview/pdf_preview.dart", {
+    "package:printing/src/preview/pdf_preview.dart": pdf_preview,
+    "package:printing/src/preview/actions.dart": actions$,
+    "package:printing/printing.dart": printing$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["pdf_preview.dart","actions.dart","../../printing.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/printing/src/preview/pdf_preview.dart.lib.js"}');
+  // Exports:
+  return {
+    src__preview__pdf_preview: pdf_preview,
+    src__preview__actions: actions$,
+    printing: printing$
+  };
+}));
+
+//# sourceMappingURL=pdf_preview.dart.lib.js.map

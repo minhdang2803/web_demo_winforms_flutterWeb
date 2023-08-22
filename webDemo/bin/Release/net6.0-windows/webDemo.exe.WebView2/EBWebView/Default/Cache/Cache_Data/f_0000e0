@@ -1,0 +1,763 @@
+define(['dart_sdk', 'packages/image/src/util/output_buffer.dart', 'packages/image/src/formats/encoder.dart', 'packages/image/src/image.dart', 'packages/image/src/exif_data.dart'], (function load__packages__image__src__formats__jpeg_encoder_dart(dart_sdk, packages__image__src__util__output_buffer$46dart, packages__image__src__formats__encoder$46dart, packages__image__src__image$46dart, packages__image__src__exif_data$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const output_buffer = packages__image__src__util__output_buffer$46dart.src__util__output_buffer;
+  const encoder = packages__image__src__formats__encoder$46dart.src__formats__encoder;
+  const image = packages__image__src__image$46dart.src__image;
+  const exif_data = packages__image__src__exif_data$46dart.src__exif_data;
+  var jpeg_encoder = Object.create(dart.library);
+  var $clamp = dartx.clamp;
+  var $toInt = dartx.toInt;
+  var $floor = dartx.floor;
+  var $rightShift = dartx['>>'];
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $leftShift = dartx['<<'];
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    ListNOfint: () => (T.ListNOfint = dart.constFn(dart.nullable(T.ListOfint())))(),
+    ListOfListNOfint: () => (T.ListOfListNOfint = dart.constFn(core.List$(T.ListNOfint())))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    ListOfintN: () => (T.ListOfintN = dart.constFn(core.List$(T.intN())))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    JSArrayOfListNOfint: () => (T.JSArrayOfListNOfint = dart.constFn(_interceptors.JSArray$(T.ListNOfint())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([16, 11, 10, 16, 24, 40, 51, 61, 12, 12, 14, 19, 26, 58, 60, 55, 14, 13, 16, 24, 40, 57, 69, 56, 14, 17, 22, 29, 51, 87, 80, 62, 18, 22, 37, 56, 68, 109, 103, 77, 24, 35, 55, 64, 81, 104, 113, 92, 49, 64, 78, 87, 103, 121, 120, 101, 72, 92, 95, 98, 112, 100, 103, 99], core.int);
+    },
+    get C1() {
+      return C[1] = dart.constList([17, 18, 24, 47, 99, 99, 99, 99, 18, 21, 26, 66, 99, 99, 99, 99, 24, 26, 56, 99, 99, 99, 99, 99, 47, 66, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99], core.int);
+    },
+    get C2() {
+      return C[2] = dart.constList([1, 1.387039845, 1.306562965, 1.175875602, 1, 0.785694958, 0.5411961, 0.275899379], core.double);
+    },
+    get C3() {
+      return C[3] = dart.constList([0, 1, 5, 6, 14, 15, 27, 28, 2, 4, 7, 13, 16, 26, 29, 42, 3, 8, 12, 17, 25, 30, 41, 43, 9, 11, 18, 24, 31, 40, 44, 53, 10, 19, 23, 32, 39, 45, 52, 54, 20, 22, 33, 38, 46, 51, 55, 60, 21, 34, 37, 47, 50, 56, 59, 61, 35, 36, 48, 49, 57, 58, 62, 63], core.int);
+    },
+    get C4() {
+      return C[4] = dart.constList([0, 0, 1, 5, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0], core.int);
+    },
+    get C5() {
+      return C[5] = dart.constList([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constList([0, 0, 2, 1, 3, 3, 2, 4, 3, 5, 5, 4, 4, 0, 0, 1, 125], core.int);
+    },
+    get C7() {
+      return C[7] = dart.constList([1, 2, 3, 0, 4, 17, 5, 18, 33, 49, 65, 6, 19, 81, 97, 7, 34, 113, 20, 50, 129, 145, 161, 8, 35, 66, 177, 193, 21, 82, 209, 240, 36, 51, 98, 114, 130, 9, 10, 22, 23, 24, 25, 26, 37, 38, 39, 40, 41, 42, 52, 53, 54, 55, 56, 57, 58, 67, 68, 69, 70, 71, 72, 73, 74, 83, 84, 85, 86, 87, 88, 89, 90, 99, 100, 101, 102, 103, 104, 105, 106, 115, 116, 117, 118, 119, 120, 121, 122, 131, 132, 133, 134, 135, 136, 137, 138, 146, 147, 148, 149, 150, 151, 152, 153, 154, 162, 163, 164, 165, 166, 167, 168, 169, 170, 178, 179, 180, 181, 182, 183, 184, 185, 186, 194, 195, 196, 197, 198, 199, 200, 201, 202, 210, 211, 212, 213, 214, 215, 216, 217, 218, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], core.int);
+    },
+    get C9() {
+      return C[9] = dart.constList([0, 0, 2, 1, 2, 4, 4, 3, 4, 7, 5, 4, 4, 0, 1, 2, 119], core.int);
+    },
+    get C10() {
+      return C[10] = dart.constList([0, 1, 2, 3, 17, 4, 5, 33, 49, 6, 18, 65, 81, 7, 97, 113, 19, 34, 50, 129, 8, 20, 66, 145, 161, 177, 193, 9, 35, 51, 82, 240, 21, 98, 114, 209, 10, 22, 36, 52, 225, 37, 241, 23, 24, 25, 26, 38, 39, 40, 41, 42, 53, 54, 55, 56, 57, 58, 67, 68, 69, 70, 71, 72, 73, 74, 83, 84, 85, 86, 87, 88, 89, 90, 99, 100, 101, 102, 103, 104, 105, 106, 115, 116, 117, 118, 119, 120, 121, 122, 130, 131, 132, 133, 134, 135, 136, 137, 138, 146, 147, 148, 149, 150, 151, 152, 153, 154, 162, 163, 164, 165, 166, 167, 168, 169, 170, 178, 179, 180, 181, 182, 183, 184, 185, 186, 194, 195, 196, 197, 198, 199, 200, 201, 202, 210, 211, 212, 213, 214, 215, 216, 217, 218, 226, 227, 228, 229, 230, 231, 232, 233, 234, 242, 243, 244, 245, 246, 247, 248, 249, 250], core.int);
+    }
+  }, false);
+  var C = Array(11).fill(void 0);
+  var I = ["package:image/src/formats/jpeg_encoder.dart"];
+  var YTable = dart.privateName(jpeg_encoder, "JpegEncoder.YTable");
+  var UVTable = dart.privateName(jpeg_encoder, "JpegEncoder.UVTable");
+  var fdtbl_Y = dart.privateName(jpeg_encoder, "JpegEncoder.fdtbl_Y");
+  var fdtbl_UV = dart.privateName(jpeg_encoder, "JpegEncoder.fdtbl_UV");
+  var YDC_HT = dart.privateName(jpeg_encoder, "JpegEncoder.YDC_HT");
+  var UVDC_HT = dart.privateName(jpeg_encoder, "JpegEncoder.UVDC_HT");
+  var bitcode = dart.privateName(jpeg_encoder, "JpegEncoder.bitcode");
+  var category = dart.privateName(jpeg_encoder, "JpegEncoder.category");
+  var outputfDCTQuant = dart.privateName(jpeg_encoder, "JpegEncoder.outputfDCTQuant");
+  var DU = dart.privateName(jpeg_encoder, "JpegEncoder.DU");
+  var YDU = dart.privateName(jpeg_encoder, "JpegEncoder.YDU");
+  var UDU = dart.privateName(jpeg_encoder, "JpegEncoder.UDU");
+  var VDU = dart.privateName(jpeg_encoder, "JpegEncoder.VDU");
+  var RGB_YUV_TABLE = dart.privateName(jpeg_encoder, "JpegEncoder.RGB_YUV_TABLE");
+  var currentQuality = dart.privateName(jpeg_encoder, "JpegEncoder.currentQuality");
+  var __JpegEncoder_YAC_HT = dart.privateName(jpeg_encoder, "_#JpegEncoder#YAC_HT");
+  var __JpegEncoder_UVAC_HT = dart.privateName(jpeg_encoder, "_#JpegEncoder#UVAC_HT");
+  var _bytenew = dart.privateName(jpeg_encoder, "_bytenew");
+  var _bytepos = dart.privateName(jpeg_encoder, "_bytepos");
+  var _initHuffmanTbl = dart.privateName(jpeg_encoder, "_initHuffmanTbl");
+  var _initCategoryNumber = dart.privateName(jpeg_encoder, "_initCategoryNumber");
+  var _initRGBYUVTable = dart.privateName(jpeg_encoder, "_initRGBYUVTable");
+  var _initQuantTables = dart.privateName(jpeg_encoder, "_initQuantTables");
+  var _writeMarker = dart.privateName(jpeg_encoder, "_writeMarker");
+  var _writeAPP0 = dart.privateName(jpeg_encoder, "_writeAPP0");
+  var _writeAPP1 = dart.privateName(jpeg_encoder, "_writeAPP1");
+  var _writeDQT = dart.privateName(jpeg_encoder, "_writeDQT");
+  var _writeSOF0 = dart.privateName(jpeg_encoder, "_writeSOF0");
+  var _writeDHT = dart.privateName(jpeg_encoder, "_writeDHT");
+  var _writeSOS = dart.privateName(jpeg_encoder, "_writeSOS");
+  var _resetBits = dart.privateName(jpeg_encoder, "_resetBits");
+  var _processDU = dart.privateName(jpeg_encoder, "_processDU");
+  var _writeBits = dart.privateName(jpeg_encoder, "_writeBits");
+  var _computeHuffmanTbl = dart.privateName(jpeg_encoder, "_computeHuffmanTbl");
+  var _fDCTQuant = dart.privateName(jpeg_encoder, "_fDCTQuant");
+  jpeg_encoder.JpegEncoder = class JpegEncoder extends encoder.Encoder {
+    get YTable() {
+      return this[YTable];
+    }
+    set YTable(value) {
+      super.YTable = value;
+    }
+    get UVTable() {
+      return this[UVTable];
+    }
+    set UVTable(value) {
+      super.UVTable = value;
+    }
+    get fdtbl_Y() {
+      return this[fdtbl_Y];
+    }
+    set fdtbl_Y(value) {
+      super.fdtbl_Y = value;
+    }
+    get fdtbl_UV() {
+      return this[fdtbl_UV];
+    }
+    set fdtbl_UV(value) {
+      super.fdtbl_UV = value;
+    }
+    get YDC_HT() {
+      return this[YDC_HT];
+    }
+    set YDC_HT(value) {
+      this[YDC_HT] = value;
+    }
+    get UVDC_HT() {
+      return this[UVDC_HT];
+    }
+    set UVDC_HT(value) {
+      this[UVDC_HT] = value;
+    }
+    get bitcode() {
+      return this[bitcode];
+    }
+    set bitcode(value) {
+      super.bitcode = value;
+    }
+    get category() {
+      return this[category];
+    }
+    set category(value) {
+      super.category = value;
+    }
+    get outputfDCTQuant() {
+      return this[outputfDCTQuant];
+    }
+    set outputfDCTQuant(value) {
+      super.outputfDCTQuant = value;
+    }
+    get DU() {
+      return this[DU];
+    }
+    set DU(value) {
+      super.DU = value;
+    }
+    get YDU() {
+      return this[YDU];
+    }
+    set YDU(value) {
+      super.YDU = value;
+    }
+    get UDU() {
+      return this[UDU];
+    }
+    set UDU(value) {
+      super.UDU = value;
+    }
+    get VDU() {
+      return this[VDU];
+    }
+    set VDU(value) {
+      super.VDU = value;
+    }
+    get RGB_YUV_TABLE() {
+      return this[RGB_YUV_TABLE];
+    }
+    set RGB_YUV_TABLE(value) {
+      super.RGB_YUV_TABLE = value;
+    }
+    get currentQuality() {
+      return this[currentQuality];
+    }
+    set currentQuality(value) {
+      this[currentQuality] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let quality = opts && 'quality' in opts ? opts.quality : 100;
+      return new jpeg_encoder.JpegEncoder.new({quality: quality});
+    }
+    setQuality(quality) {
+      quality = quality[$clamp](1, 100)[$toInt]();
+      if (this.currentQuality === quality) {
+        return;
+      }
+      let sf = 0;
+      if (quality < 50) {
+        sf = (5000 / quality)[$floor]();
+      } else {
+        sf = (200 - quality * 2)[$floor]();
+      }
+      this[_initQuantTables](sf);
+      this.currentQuality = quality;
+    }
+    encodeImage(image) {
+      let t0, t0$, t0$0;
+      let fp = new output_buffer.OutputBuffer.new({bigEndian: true});
+      this[_writeMarker](fp, 216);
+      this[_writeAPP0](fp);
+      this[_writeAPP1](fp, image.exif);
+      this[_writeDQT](fp);
+      this[_writeSOF0](fp, image.width, image.height);
+      this[_writeDHT](fp);
+      this[_writeSOS](fp);
+      let DCY = 0;
+      let DCU = 0;
+      let DCV = 0;
+      this[_resetBits]();
+      let width = image.width;
+      let height = image.height;
+      let imageData = image.getBytes();
+      let quadWidth = width * 4;
+      let y = 0;
+      while (y < height) {
+        let x = 0;
+        while (x < quadWidth) {
+          let start = quadWidth * y + x;
+          for (let pos = 0; pos < 64; pos = pos + 1) {
+            let row = pos[$rightShift](3);
+            let col = (pos & 7) * 4;
+            let p = start + row * quadWidth + col;
+            if (y + row >= height) {
+              p = p - quadWidth * (y + 1 + row - height);
+            }
+            if (x + col >= quadWidth) {
+              p = p - (x + col - quadWidth + 4);
+            }
+            let r = imageData[$_get]((t0 = p, p = t0 + 1, t0));
+            let g = imageData[$_get]((t0$ = p, p = t0$ + 1, t0$));
+            let b = imageData[$_get]((t0$0 = p, p = t0$0 + 1, t0$0));
+            this.YDU[$_set](pos, (this.RGB_YUV_TABLE[$_get](r) + this.RGB_YUV_TABLE[$_get](g + 256) + this.RGB_YUV_TABLE[$_get](b + 512))[$rightShift](16) - 128.0);
+            this.UDU[$_set](pos, (this.RGB_YUV_TABLE[$_get](r + 768) + this.RGB_YUV_TABLE[$_get](g + 1024) + this.RGB_YUV_TABLE[$_get](b + 1280))[$rightShift](16) - 128.0);
+            this.VDU[$_set](pos, (this.RGB_YUV_TABLE[$_get](r + 1280) + this.RGB_YUV_TABLE[$_get](g + 1536) + this.RGB_YUV_TABLE[$_get](b + 1792))[$rightShift](16) - 128.0);
+          }
+          DCY = this[_processDU](fp, this.YDU, this.fdtbl_Y, dart.nullCheck(DCY), this.YDC_HT, this.YAC_HT);
+          DCU = this[_processDU](fp, this.UDU, this.fdtbl_UV, dart.nullCheck(DCU), this.UVDC_HT, this.UVAC_HT);
+          DCV = this[_processDU](fp, this.VDU, this.fdtbl_UV, dart.nullCheck(DCV), this.UVDC_HT, this.UVAC_HT);
+          x = x + 32;
+        }
+        y = y + 8;
+      }
+      if (this[_bytepos] >= 0) {
+        let fillBits = T.JSArrayOfint().of([(1)[$leftShift](this[_bytepos] + 1) - 1, this[_bytepos] + 1]);
+        this[_writeBits](fp, fillBits);
+      }
+      this[_writeMarker](fp, 217);
+      return fp.getBytes();
+    }
+    [_writeMarker](fp, marker) {
+      fp.writeByte(255);
+      fp.writeByte(marker & 255);
+    }
+    [_initQuantTables](sf) {
+      let YQT = C[0] || CT.C0;
+      for (let i = 0; i < 64; i = i + 1) {
+        let t = ((YQT[$_get](i) * sf + 50) / 100)[$floor]();
+        if (t < 1) {
+          t = 1;
+        } else if (t > 255) {
+          t = 255;
+        }
+        this.YTable[$_set](jpeg_encoder.JpegEncoder.ZIGZAG[$_get](i), t);
+      }
+      let UVQT = C[1] || CT.C1;
+      for (let j = 0; j < 64; j = j + 1) {
+        let u = ((UVQT[$_get](j) * sf + 50) / 100)[$floor]();
+        if (u < 1) {
+          u = 1;
+        } else if (u > 255) {
+          u = 255;
+        }
+        this.UVTable[$_set](jpeg_encoder.JpegEncoder.ZIGZAG[$_get](j), u);
+      }
+      let aasf = C[2] || CT.C2;
+      let k = 0;
+      for (let row = 0; row < 8; row = row + 1) {
+        for (let col = 0; col < 8; col = col + 1) {
+          this.fdtbl_Y[$_set](k, 1.0 / (this.YTable[$_get](jpeg_encoder.JpegEncoder.ZIGZAG[$_get](k)) * aasf[$_get](row) * aasf[$_get](col) * 8.0));
+          this.fdtbl_UV[$_set](k, 1.0 / (this.UVTable[$_get](jpeg_encoder.JpegEncoder.ZIGZAG[$_get](k)) * aasf[$_get](row) * aasf[$_get](col) * 8.0));
+          k = k + 1;
+        }
+      }
+    }
+    [_computeHuffmanTbl](nrcodes, std_table) {
+      let codevalue = 0;
+      let pos_in_table = 0;
+      let HT = T.JSArrayOfListNOfint().of([T.JSArrayOfint().of([])]);
+      for (let k = 1; k <= 16; k = k + 1) {
+        for (let j = 1; j <= nrcodes[$_get](k); j = j + 1) {
+          let index = std_table[$_get](pos_in_table);
+          if (HT[$length] <= index) {
+            HT[$length] = index + 1;
+          }
+          HT[$_set](index, T.JSArrayOfint().of([codevalue, k]));
+          pos_in_table = pos_in_table + 1;
+          codevalue = codevalue + 1;
+        }
+        codevalue = codevalue * 2;
+      }
+      return HT;
+    }
+    [_initHuffmanTbl]() {
+      this.YDC_HT = this[_computeHuffmanTbl](jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_NR_CODES, jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_VALUES);
+      this.UVDC_HT = this[_computeHuffmanTbl](jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_NR_CODES, jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_VALUES);
+      this.YAC_HT = this[_computeHuffmanTbl](jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_NR_CODES, jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_VALUES);
+      this.UVAC_HT = this[_computeHuffmanTbl](jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_NR_CODES, jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_VALUES);
+    }
+    [_initCategoryNumber]() {
+      let nrlower = 1;
+      let nrupper = 2;
+      for (let cat = 1; cat <= 15; cat = cat + 1) {
+        for (let nr = nrlower; nr < nrupper; nr = nr + 1) {
+          this.category[$_set](32767 + nr, cat);
+          this.bitcode[$_set](32767 + nr, T.JSArrayOfint().of([nr, cat]));
+        }
+        for (let nrneg = -(nrupper - 1); nrneg <= -nrlower; nrneg = nrneg + 1) {
+          this.category[$_set](32767 + nrneg, cat);
+          this.bitcode[$_set](32767 + nrneg, T.JSArrayOfint().of([nrupper - 1 + nrneg, cat]));
+        }
+        nrlower = nrlower << 1 >>> 0;
+        nrupper = nrupper << 1 >>> 0;
+      }
+    }
+    [_initRGBYUVTable]() {
+      for (let i = 0; i < 256; i = i + 1) {
+        this.RGB_YUV_TABLE[$_set](i, 19595 * i);
+        this.RGB_YUV_TABLE[$_set](i + 256, 38470 * i);
+        this.RGB_YUV_TABLE[$_set](i + 512, 7471 * i + 32768);
+        this.RGB_YUV_TABLE[$_set](i + 768, -11059 * i);
+        this.RGB_YUV_TABLE[$_set](i + 1024, -21709 * i);
+        this.RGB_YUV_TABLE[$_set](i + 1280, 32768 * i + 8421375);
+        this.RGB_YUV_TABLE[$_set](i + 1536, -27439 * i);
+        this.RGB_YUV_TABLE[$_set](i + 1792, -5329 * i);
+      }
+    }
+    [_fDCTQuant](data, fdtbl) {
+      let dataOff = 0;
+      for (let i = 0; i < 8; i = i + 1) {
+        let d0 = data[$_get](dataOff);
+        let d1 = data[$_get](dataOff + 1);
+        let d2 = data[$_get](dataOff + 2);
+        let d3 = data[$_get](dataOff + 3);
+        let d4 = data[$_get](dataOff + 4);
+        let d5 = data[$_get](dataOff + 5);
+        let d6 = data[$_get](dataOff + 6);
+        let d7 = data[$_get](dataOff + 7);
+        let tmp0 = d0 + d7;
+        let tmp7 = d0 - d7;
+        let tmp1 = d1 + d6;
+        let tmp6 = d1 - d6;
+        let tmp2 = d2 + d5;
+        let tmp5 = d2 - d5;
+        let tmp3 = d3 + d4;
+        let tmp4 = d3 - d4;
+        let tmp10 = tmp0 + tmp3;
+        let tmp13 = tmp0 - tmp3;
+        let tmp11 = tmp1 + tmp2;
+        let tmp12 = tmp1 - tmp2;
+        data[$_set](dataOff, tmp10 + tmp11);
+        data[$_set](dataOff + 4, tmp10 - tmp11);
+        let z1 = (tmp12 + tmp13) * 0.707106781;
+        data[$_set](dataOff + 2, tmp13 + z1);
+        data[$_set](dataOff + 6, tmp13 - z1);
+        tmp10 = tmp4 + tmp5;
+        tmp11 = tmp5 + tmp6;
+        tmp12 = tmp6 + tmp7;
+        let z5 = (tmp10 - tmp12) * 0.382683433;
+        let z2 = 0.5411961 * tmp10 + z5;
+        let z4 = 1.306562965 * tmp12 + z5;
+        let z3 = tmp11 * 0.707106781;
+        let z11 = tmp7 + z3;
+        let z13 = tmp7 - z3;
+        data[$_set](dataOff + 5, z13 + z2);
+        data[$_set](dataOff + 3, z13 - z2);
+        data[$_set](dataOff + 1, z11 + z4);
+        data[$_set](dataOff + 7, z11 - z4);
+        dataOff = dataOff + 8;
+      }
+      dataOff = 0;
+      for (let i = 0; i < 8; i = i + 1) {
+        let d0 = data[$_get](dataOff);
+        let d1 = data[$_get](dataOff + 8);
+        let d2 = data[$_get](dataOff + 16);
+        let d3 = data[$_get](dataOff + 24);
+        let d4 = data[$_get](dataOff + 32);
+        let d5 = data[$_get](dataOff + 40);
+        let d6 = data[$_get](dataOff + 48);
+        let d7 = data[$_get](dataOff + 56);
+        let tmp0p2 = d0 + d7;
+        let tmp7p2 = d0 - d7;
+        let tmp1p2 = d1 + d6;
+        let tmp6p2 = d1 - d6;
+        let tmp2p2 = d2 + d5;
+        let tmp5p2 = d2 - d5;
+        let tmp3p2 = d3 + d4;
+        let tmp4p2 = d3 - d4;
+        let tmp10p2 = tmp0p2 + tmp3p2;
+        let tmp13p2 = tmp0p2 - tmp3p2;
+        let tmp11p2 = tmp1p2 + tmp2p2;
+        let tmp12p2 = tmp1p2 - tmp2p2;
+        data[$_set](dataOff, tmp10p2 + tmp11p2);
+        data[$_set](dataOff + 32, tmp10p2 - tmp11p2);
+        let z1p2 = (tmp12p2 + tmp13p2) * 0.707106781;
+        data[$_set](dataOff + 16, tmp13p2 + z1p2);
+        data[$_set](dataOff + 48, tmp13p2 - z1p2);
+        tmp10p2 = tmp4p2 + tmp5p2;
+        tmp11p2 = tmp5p2 + tmp6p2;
+        tmp12p2 = tmp6p2 + tmp7p2;
+        let z5p2 = (tmp10p2 - tmp12p2) * 0.382683433;
+        let z2p2 = 0.5411961 * tmp10p2 + z5p2;
+        let z4p2 = 1.306562965 * tmp12p2 + z5p2;
+        let z3p2 = tmp11p2 * 0.707106781;
+        let z11p2 = tmp7p2 + z3p2;
+        let z13p2 = tmp7p2 - z3p2;
+        data[$_set](dataOff + 40, z13p2 + z2p2);
+        data[$_set](dataOff + 24, z13p2 - z2p2);
+        data[$_set](dataOff + 8, z11p2 + z4p2);
+        data[$_set](dataOff + 56, z11p2 - z4p2);
+        dataOff = dataOff + 1;
+      }
+      for (let i = 0; i < 64; i = i + 1) {
+        let fDCTQuant = data[$_get](i) * fdtbl[$_get](i);
+        this.outputfDCTQuant[$_set](i, fDCTQuant > 0.0 ? (fDCTQuant + 0.5)[$toInt]() : (fDCTQuant - 0.5)[$toInt]());
+      }
+      return this.outputfDCTQuant;
+    }
+    [_writeAPP0](out) {
+      this[_writeMarker](out, 224);
+      out.writeUint16(16);
+      out.writeByte(74);
+      out.writeByte(70);
+      out.writeByte(73);
+      out.writeByte(70);
+      out.writeByte(0);
+      out.writeByte(1);
+      out.writeByte(1);
+      out.writeByte(0);
+      out.writeUint16(1);
+      out.writeUint16(1);
+      out.writeByte(0);
+      out.writeByte(0);
+    }
+    [_writeAPP1](out, exif) {
+      if (exif.rawData == null) {
+        return;
+      }
+      for (let rawData of dart.nullCheck(exif.rawData)) {
+        this[_writeMarker](out, 225);
+        out.writeUint16(rawData[$length] + 2);
+        out.writeBytes(rawData);
+      }
+    }
+    [_writeSOF0](out, width, height) {
+      this[_writeMarker](out, 192);
+      out.writeUint16(17);
+      out.writeByte(8);
+      out.writeUint16(height);
+      out.writeUint16(width);
+      out.writeByte(3);
+      out.writeByte(1);
+      out.writeByte(17);
+      out.writeByte(0);
+      out.writeByte(2);
+      out.writeByte(17);
+      out.writeByte(1);
+      out.writeByte(3);
+      out.writeByte(17);
+      out.writeByte(1);
+    }
+    [_writeDQT](out) {
+      this[_writeMarker](out, 219);
+      out.writeUint16(132);
+      out.writeByte(0);
+      for (let i = 0; i < 64; i = i + 1) {
+        out.writeByte(this.YTable[$_get](i));
+      }
+      out.writeByte(1);
+      for (let j = 0; j < 64; j = j + 1) {
+        out.writeByte(this.UVTable[$_get](j));
+      }
+    }
+    [_writeDHT](out) {
+      this[_writeMarker](out, 196);
+      out.writeUint16(418);
+      out.writeByte(0);
+      for (let i = 0; i < 16; i = i + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_NR_CODES[$_get](i + 1));
+      }
+      for (let j = 0; j <= 11; j = j + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_VALUES[$_get](j));
+      }
+      out.writeByte(16);
+      for (let k = 0; k < 16; k = k + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_NR_CODES[$_get](k + 1));
+      }
+      for (let l = 0; l <= 161; l = l + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_VALUES[$_get](l));
+      }
+      out.writeByte(1);
+      for (let m = 0; m < 16; m = m + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_NR_CODES[$_get](m + 1));
+      }
+      for (let n = 0; n <= 11; n = n + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_VALUES[$_get](n));
+      }
+      out.writeByte(17);
+      for (let o = 0; o < 16; o = o + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_NR_CODES[$_get](o + 1));
+      }
+      for (let p = 0; p <= 161; p = p + 1) {
+        out.writeByte(jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_VALUES[$_get](p));
+      }
+    }
+    [_writeSOS](out) {
+      this[_writeMarker](out, 218);
+      out.writeUint16(12);
+      out.writeByte(3);
+      out.writeByte(1);
+      out.writeByte(0);
+      out.writeByte(2);
+      out.writeByte(17);
+      out.writeByte(3);
+      out.writeByte(17);
+      out.writeByte(0);
+      out.writeByte(63);
+      out.writeByte(0);
+    }
+    [_processDU](out, CDU, fdtbl, DC, HTDC, HTAC) {
+      let EOB = HTAC[$_get](0);
+      let M16zeroes = HTAC[$_get](240);
+      let pos = null;
+      let DU_DCT = this[_fDCTQuant](CDU, fdtbl);
+      for (let j = 0; j < 64; j = j + 1) {
+        this.DU[$_set](jpeg_encoder.JpegEncoder.ZIGZAG[$_get](j), DU_DCT[$_get](j));
+      }
+      let Diff = dart.nullCheck(this.DU[$_get](0)) - DC;
+      DC = dart.nullCheck(this.DU[$_get](0));
+      if (Diff === 0) {
+        this[_writeBits](out, dart.nullCheck(dart.nullCheck(HTDC)[$_get](0)));
+      } else {
+        pos = 32767 + Diff;
+        this[_writeBits](out, dart.nullCheck(dart.nullCheck(HTDC)[$_get](dart.nullCheck(this.category[$_get](pos)))));
+        this[_writeBits](out, dart.nullCheck(this.bitcode[$_get](pos)));
+      }
+      let end0pos = 63;
+      for (; end0pos > 0 && this.DU[$_get](end0pos) === 0; end0pos = end0pos - 1) {
+      }
+      if (end0pos === 0) {
+        this[_writeBits](out, dart.nullCheck(EOB));
+        return DC;
+      }
+      let i = 1;
+      let lng = null;
+      while (i <= end0pos) {
+        let startpos = i;
+        for (; this.DU[$_get](i) === 0 && i <= end0pos; i = i + 1) {
+        }
+        let nrzeroes = i - startpos;
+        if (nrzeroes >= 16) {
+          lng = nrzeroes[$rightShift](4);
+          for (let nrmarker = 1; nrmarker <= lng; nrmarker = nrmarker + 1) {
+            this[_writeBits](out, dart.nullCheck(M16zeroes));
+          }
+          nrzeroes = nrzeroes & 15;
+        }
+        pos = 32767 + dart.nullCheck(this.DU[$_get](i));
+        this[_writeBits](out, dart.nullCheck(HTAC[$_get]((nrzeroes << 4 >>> 0) + dart.nullCheck(this.category[$_get](pos)))));
+        this[_writeBits](out, dart.nullCheck(this.bitcode[$_get](pos)));
+        i = i + 1;
+      }
+      if (end0pos !== 63) {
+        this[_writeBits](out, dart.nullCheck(EOB));
+      }
+      return DC;
+    }
+    [_writeBits](out, bits) {
+      let value = bits[$_get](0);
+      let posval = bits[$_get](1) - 1;
+      while (posval >= 0) {
+        if ((value & (1)[$leftShift](posval)) !== 0) {
+          this[_bytenew] = (this[_bytenew] | (1)[$leftShift](this[_bytepos])) >>> 0;
+        }
+        posval = posval - 1;
+        this[_bytepos] = this[_bytepos] - 1;
+        if (this[_bytepos] < 0) {
+          if (this[_bytenew] === 255) {
+            out.writeByte(255);
+            out.writeByte(0);
+          } else {
+            out.writeByte(this[_bytenew]);
+          }
+          this[_bytepos] = 7;
+          this[_bytenew] = 0;
+        }
+      }
+    }
+    [_resetBits]() {
+      this[_bytenew] = 0;
+      this[_bytepos] = 7;
+    }
+    get YAC_HT() {
+      let t0;
+      t0 = this[__JpegEncoder_YAC_HT];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("YAC_HT")) : t0;
+    }
+    set YAC_HT(YAC_HT$35param) {
+      this[__JpegEncoder_YAC_HT] = YAC_HT$35param;
+    }
+    get UVAC_HT() {
+      let t0;
+      t0 = this[__JpegEncoder_UVAC_HT];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("UVAC_HT")) : t0;
+    }
+    set UVAC_HT(UVAC_HT$35param) {
+      this[__JpegEncoder_UVAC_HT] = UVAC_HT$35param;
+    }
+  };
+  (jpeg_encoder.JpegEncoder.new = function(opts) {
+    let quality = opts && 'quality' in opts ? opts.quality : 100;
+    this[YTable] = _native_typed_data.NativeUint8List.new(64);
+    this[UVTable] = _native_typed_data.NativeUint8List.new(64);
+    this[fdtbl_Y] = _native_typed_data.NativeFloat32List.new(64);
+    this[fdtbl_UV] = _native_typed_data.NativeFloat32List.new(64);
+    this[YDC_HT] = null;
+    this[UVDC_HT] = null;
+    this[__JpegEncoder_YAC_HT] = null;
+    this[__JpegEncoder_UVAC_HT] = null;
+    this[bitcode] = T.ListOfListNOfint().filled(65535, null);
+    this[category] = T.ListOfintN().filled(65535, null);
+    this[outputfDCTQuant] = T.ListOfintN().filled(64, null);
+    this[DU] = T.ListOfintN().filled(64, null);
+    this[YDU] = _native_typed_data.NativeFloat32List.new(64);
+    this[UDU] = _native_typed_data.NativeFloat32List.new(64);
+    this[VDU] = _native_typed_data.NativeFloat32List.new(64);
+    this[RGB_YUV_TABLE] = _native_typed_data.NativeInt32List.new(2048);
+    this[currentQuality] = null;
+    this[_bytenew] = 0;
+    this[_bytepos] = 7;
+    this[_initHuffmanTbl]();
+    this[_initCategoryNumber]();
+    this[_initRGBYUVTable]();
+    this.setQuality(quality);
+  }).prototype = jpeg_encoder.JpegEncoder.prototype;
+  dart.addTypeTests(jpeg_encoder.JpegEncoder);
+  dart.addTypeCaches(jpeg_encoder.JpegEncoder);
+  dart.setMethodSignature(jpeg_encoder.JpegEncoder, () => ({
+    __proto__: dart.getMethods(jpeg_encoder.JpegEncoder.__proto__),
+    setQuality: dart.fnType(dart.void, [core.int]),
+    encodeImage: dart.fnType(core.List$(core.int), [image.Image]),
+    [_writeMarker]: dart.fnType(dart.void, [output_buffer.OutputBuffer, core.int]),
+    [_initQuantTables]: dart.fnType(dart.void, [core.int]),
+    [_computeHuffmanTbl]: dart.fnType(core.List$(dart.nullable(core.List$(core.int))), [core.List$(core.int), core.List$(core.int)]),
+    [_initHuffmanTbl]: dart.fnType(dart.void, []),
+    [_initCategoryNumber]: dart.fnType(dart.void, []),
+    [_initRGBYUVTable]: dart.fnType(dart.void, []),
+    [_fDCTQuant]: dart.fnType(core.List$(dart.nullable(core.int)), [core.List$(core.double), core.List$(core.double)]),
+    [_writeAPP0]: dart.fnType(dart.void, [output_buffer.OutputBuffer]),
+    [_writeAPP1]: dart.fnType(dart.void, [output_buffer.OutputBuffer, exif_data.ExifData]),
+    [_writeSOF0]: dart.fnType(dart.void, [output_buffer.OutputBuffer, core.int, core.int]),
+    [_writeDQT]: dart.fnType(dart.void, [output_buffer.OutputBuffer]),
+    [_writeDHT]: dart.fnType(dart.void, [output_buffer.OutputBuffer]),
+    [_writeSOS]: dart.fnType(dart.void, [output_buffer.OutputBuffer]),
+    [_processDU]: dart.fnType(dart.nullable(core.int), [output_buffer.OutputBuffer, core.List$(core.double), core.List$(core.double), core.int, dart.nullable(core.List$(dart.nullable(core.List$(core.int)))), core.List$(dart.nullable(core.List$(core.int)))]),
+    [_writeBits]: dart.fnType(dart.void, [output_buffer.OutputBuffer, core.List$(core.int)]),
+    [_resetBits]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(jpeg_encoder.JpegEncoder, () => ({
+    __proto__: dart.getGetters(jpeg_encoder.JpegEncoder.__proto__),
+    YAC_HT: core.List$(dart.nullable(core.List$(core.int))),
+    UVAC_HT: core.List$(dart.nullable(core.List$(core.int)))
+  }));
+  dart.setSetterSignature(jpeg_encoder.JpegEncoder, () => ({
+    __proto__: dart.getSetters(jpeg_encoder.JpegEncoder.__proto__),
+    YAC_HT: core.List$(dart.nullable(core.List$(core.int))),
+    UVAC_HT: core.List$(dart.nullable(core.List$(core.int)))
+  }));
+  dart.setLibraryUri(jpeg_encoder.JpegEncoder, I[0]);
+  dart.setFieldSignature(jpeg_encoder.JpegEncoder, () => ({
+    __proto__: dart.getFields(jpeg_encoder.JpegEncoder.__proto__),
+    YTable: dart.finalFieldType(typed_data.Uint8List),
+    UVTable: dart.finalFieldType(typed_data.Uint8List),
+    fdtbl_Y: dart.finalFieldType(typed_data.Float32List),
+    fdtbl_UV: dart.finalFieldType(typed_data.Float32List),
+    YDC_HT: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.List$(core.int))))),
+    UVDC_HT: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.List$(core.int))))),
+    [__JpegEncoder_YAC_HT]: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.List$(core.int))))),
+    [__JpegEncoder_UVAC_HT]: dart.fieldType(dart.nullable(core.List$(dart.nullable(core.List$(core.int))))),
+    bitcode: dart.finalFieldType(core.List$(dart.nullable(core.List$(core.int)))),
+    category: dart.finalFieldType(core.List$(dart.nullable(core.int))),
+    outputfDCTQuant: dart.finalFieldType(core.List$(dart.nullable(core.int))),
+    DU: dart.finalFieldType(core.List$(dart.nullable(core.int))),
+    YDU: dart.finalFieldType(typed_data.Float32List),
+    UDU: dart.finalFieldType(typed_data.Float32List),
+    VDU: dart.finalFieldType(typed_data.Float32List),
+    RGB_YUV_TABLE: dart.finalFieldType(typed_data.Int32List),
+    currentQuality: dart.fieldType(dart.nullable(core.int)),
+    [_bytenew]: dart.fieldType(core.int),
+    [_bytepos]: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(jpeg_encoder.JpegEncoder, () => ['ZIGZAG', 'STD_DC_LUMINANCE_NR_CODES', 'STD_DC_LUMINANCE_VALUES', 'STD_AC_LUMINANCE_NR_CODES', 'STD_AC_LUMINANCE_VALUES', 'STD_DC_CHROMINANCE_NR_CODES', 'STD_DC_CHROMINANCE_VALUES', 'STD_AC_CHROMINANCE_NR_CODES', 'STD_AC_CHROMINANCE_VALUES']);
+  dart.defineLazy(jpeg_encoder.JpegEncoder, {
+    /*jpeg_encoder.JpegEncoder.ZIGZAG*/get ZIGZAG() {
+      return C[3] || CT.C3;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_NR_CODES*/get STD_DC_LUMINANCE_NR_CODES() {
+      return C[4] || CT.C4;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_DC_LUMINANCE_VALUES*/get STD_DC_LUMINANCE_VALUES() {
+      return C[5] || CT.C5;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_NR_CODES*/get STD_AC_LUMINANCE_NR_CODES() {
+      return C[6] || CT.C6;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_AC_LUMINANCE_VALUES*/get STD_AC_LUMINANCE_VALUES() {
+      return C[7] || CT.C7;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_NR_CODES*/get STD_DC_CHROMINANCE_NR_CODES() {
+      return C[8] || CT.C8;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_DC_CHROMINANCE_VALUES*/get STD_DC_CHROMINANCE_VALUES() {
+      return C[5] || CT.C5;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_NR_CODES*/get STD_AC_CHROMINANCE_NR_CODES() {
+      return C[9] || CT.C9;
+    },
+    /*jpeg_encoder.JpegEncoder.STD_AC_CHROMINANCE_VALUES*/get STD_AC_CHROMINANCE_VALUES() {
+      return C[10] || CT.C10;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/jpeg_encoder.dart", {
+    "package:image/src/formats/jpeg_encoder.dart": jpeg_encoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["jpeg_encoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/formats/jpeg_encoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__jpeg_encoder: jpeg_encoder
+  };
+}));
+
+//# sourceMappingURL=jpeg_encoder.dart.lib.js.map

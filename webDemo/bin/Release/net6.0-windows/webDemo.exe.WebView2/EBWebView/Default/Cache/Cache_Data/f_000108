@@ -1,0 +1,423 @@
+define(['dart_sdk', 'packages/cc_library/src/gson/src/prog.dart'], (function load__packages__cc_library__src__gson__src__values_dart(dart_sdk, packages__cc_library__src__gson__src__prog$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const prog = packages__cc_library__src__gson__src__prog$46dart.src__gson__src__prog;
+  var values = Object.create(dart.library);
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:cc_library/src/gson/src/values.dart"];
+  values.GsonValue = class GsonValue extends core.Object {};
+  (values.GsonValue.new = function() {
+    ;
+  }).prototype = values.GsonValue.prototype;
+  dart.addTypeTests(values.GsonValue);
+  dart.addTypeCaches(values.GsonValue);
+  dart.setLibraryUri(values.GsonValue, I[0]);
+  var content$ = dart.privateName(values, "CustomValue.content");
+  values.CustomValue = class CustomValue extends values.GsonValue {
+    get content() {
+      return this[content$];
+    }
+    set content(value) {
+      this[content$] = value;
+    }
+    static ['_#new#tearOff'](content) {
+      return new values.CustomValue.new(content);
+    }
+    toString() {
+      return dart.toString(this.content);
+    }
+    toSimple() {
+      return this.toString();
+    }
+  };
+  (values.CustomValue.new = function(content) {
+    this[content$] = null;
+    this.content = content;
+  }).prototype = values.CustomValue.prototype;
+  dart.addTypeTests(values.CustomValue);
+  dart.addTypeCaches(values.CustomValue);
+  dart.setMethodSignature(values.CustomValue, () => ({
+    __proto__: dart.getMethods(values.CustomValue.__proto__),
+    toSimple: dart.fnType(core.String, [])
+  }));
+  dart.setLibraryUri(values.CustomValue, I[0]);
+  dart.setFieldSignature(values.CustomValue, () => ({
+    __proto__: dart.getFields(values.CustomValue.__proto__),
+    content: dart.fieldType(dart.dynamic)
+  }));
+  dart.defineExtensionMethods(values.CustomValue, ['toString']);
+  var _gen = dart.privateName(values, "_gen");
+  values.NumberValue = class NumberValue extends values.GsonValue {};
+  (values.NumberValue.new = function() {
+    this[_gen] = new prog.ErrorGenerator.new();
+    ;
+  }).prototype = values.NumberValue.prototype;
+  dart.addTypeTests(values.NumberValue);
+  dart.addTypeCaches(values.NumberValue);
+  dart.setLibraryUri(values.NumberValue, I[0]);
+  dart.setFieldSignature(values.NumberValue, () => ({
+    __proto__: dart.getFields(values.NumberValue.__proto__),
+    [_gen]: dart.fieldType(prog.ErrorGenerator)
+  }));
+  var __Byte__number = dart.privateName(values, "_#Byte#_number");
+  var _number = dart.privateName(values, "_number");
+  values.Byte = class Byte extends values.NumberValue {
+    get [_number]() {
+      let t0;
+      t0 = this[__Byte__number];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_number")) : t0;
+    }
+    set [_number](library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param) {
+      this[__Byte__number] = library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param;
+    }
+    get value() {
+      return this[_number];
+    }
+    get boolValue() {
+      return this[_number] === 0 ? false : this[_number] === 1 ? true : null;
+    }
+    get isBool() {
+      return this[_number] === 0 || this[_number] === 1;
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Byte.new(num, {error_generator: error_generator});
+    }
+    static ['_#Boolean#tearOff'](b, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Byte.Boolean(b, {error_generator: error_generator});
+    }
+    set(v) {
+      if (typeof v == 'boolean') {
+        v = dart.test(v) ? 1 : 0;
+      } else if (!core.int.is(v)) {
+        dart.throw(this[_gen].error("You must give a boolean or a number to the set function"));
+      }
+      if (dart.dtest(dart.dsend(v, '>', [127])) || dart.dtest(dart.dsend(v, '<', [-128]))) {
+        dart.throw(this[_gen].error("Byte must be between -128 and 127"));
+      }
+      this[_number] = core.int.as(v);
+    }
+    toString() {
+      return dart.str(this[_number]) + "b";
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Byte.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[__Byte__number] = null;
+    values.Byte.__proto__.new.call(this);
+    this.set(num);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Byte.prototype;
+  (values.Byte.Boolean = function(b, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[__Byte__number] = null;
+    values.Byte.__proto__.new.call(this);
+    this.set(b);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Byte.prototype;
+  dart.addTypeTests(values.Byte);
+  dart.addTypeCaches(values.Byte);
+  dart.setMethodSignature(values.Byte, () => ({
+    __proto__: dart.getMethods(values.Byte.__proto__),
+    set: dart.fnType(dart.void, [dart.dynamic]),
+    toSimple: dart.fnType(core.int, [])
+  }));
+  dart.setGetterSignature(values.Byte, () => ({
+    __proto__: dart.getGetters(values.Byte.__proto__),
+    [_number]: core.int,
+    value: core.int,
+    boolValue: dart.nullable(core.bool),
+    isBool: core.bool
+  }));
+  dart.setSetterSignature(values.Byte, () => ({
+    __proto__: dart.getSetters(values.Byte.__proto__),
+    [_number]: core.int
+  }));
+  dart.setLibraryUri(values.Byte, I[0]);
+  dart.setFieldSignature(values.Byte, () => ({
+    __proto__: dart.getFields(values.Byte.__proto__),
+    [__Byte__number]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(values.Byte, ['toString']);
+  var __Short__number = dart.privateName(values, "_#Short#_number");
+  values.Short = class Short extends values.NumberValue {
+    get [_number]() {
+      let t0;
+      t0 = this[__Short__number];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_number")) : t0;
+    }
+    set [_number](library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param) {
+      this[__Short__number] = library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param;
+    }
+    get value() {
+      return this[_number];
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Short.new(num, {error_generator: error_generator});
+    }
+    set(v) {
+      if (v > 32767 || v < -32768) {
+        dart.throw(this[_gen].error("Byte must be between -32768 and 32767"));
+      }
+      this[_number] = v;
+    }
+    toString() {
+      return dart.str(this[_number]) + "s";
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Short.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[__Short__number] = null;
+    values.Short.__proto__.new.call(this);
+    this.set(num);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Short.prototype;
+  dart.addTypeTests(values.Short);
+  dart.addTypeCaches(values.Short);
+  dart.setMethodSignature(values.Short, () => ({
+    __proto__: dart.getMethods(values.Short.__proto__),
+    set: dart.fnType(dart.void, [core.int]),
+    toSimple: dart.fnType(core.int, [])
+  }));
+  dart.setGetterSignature(values.Short, () => ({
+    __proto__: dart.getGetters(values.Short.__proto__),
+    [_number]: core.int,
+    value: core.int
+  }));
+  dart.setSetterSignature(values.Short, () => ({
+    __proto__: dart.getSetters(values.Short.__proto__),
+    [_number]: core.int
+  }));
+  dart.setLibraryUri(values.Short, I[0]);
+  dart.setFieldSignature(values.Short, () => ({
+    __proto__: dart.getFields(values.Short.__proto__),
+    [__Short__number]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(values.Short, ['toString']);
+  var __Integer__number = dart.privateName(values, "_#Integer#_number");
+  values.Integer = class Integer extends values.NumberValue {
+    get [_number]() {
+      let t0;
+      t0 = this[__Integer__number];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_number")) : t0;
+    }
+    set [_number](library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param) {
+      this[__Integer__number] = library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param;
+    }
+    get value() {
+      return this[_number];
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Integer.new(num, {error_generator: error_generator});
+    }
+    set(v) {
+      if (v > 2147483647 || v < -2147483648) {
+        dart.throw(this[_gen].error("Byte must be between -2147483648 and 2147483647"));
+      }
+      this[_number] = v;
+    }
+    toString() {
+      return this[_number][$toString]();
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Integer.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[__Integer__number] = null;
+    values.Integer.__proto__.new.call(this);
+    this.set(num);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Integer.prototype;
+  dart.addTypeTests(values.Integer);
+  dart.addTypeCaches(values.Integer);
+  dart.setMethodSignature(values.Integer, () => ({
+    __proto__: dart.getMethods(values.Integer.__proto__),
+    set: dart.fnType(dart.void, [core.int]),
+    toSimple: dart.fnType(core.int, [])
+  }));
+  dart.setGetterSignature(values.Integer, () => ({
+    __proto__: dart.getGetters(values.Integer.__proto__),
+    [_number]: core.int,
+    value: core.int
+  }));
+  dart.setSetterSignature(values.Integer, () => ({
+    __proto__: dart.getSetters(values.Integer.__proto__),
+    [_number]: core.int
+  }));
+  dart.setLibraryUri(values.Integer, I[0]);
+  dart.setFieldSignature(values.Integer, () => ({
+    __proto__: dart.getFields(values.Integer.__proto__),
+    [__Integer__number]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(values.Integer, ['toString']);
+  var __Long__number = dart.privateName(values, "_#Long#_number");
+  values.Long = class Long extends values.NumberValue {
+    get [_number]() {
+      let t0;
+      t0 = this[__Long__number];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_number")) : t0;
+    }
+    set [_number](library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param) {
+      this[__Long__number] = library$32package$58cc_library$47src$47gson$47src$47values$46dart$58$58_number$35param;
+    }
+    get value() {
+      return this[_number];
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Long.new(num, {error_generator: error_generator});
+    }
+    set(v) {
+      if (v > 9007199254740991 || v < -9007199254740991) {
+        dart.throw(this[_gen].error("Byte must be between -9223372036854775808 and 9223372036854775807"));
+      }
+      this[_number] = v;
+    }
+    toString() {
+      return dart.str(this[_number]) + "l";
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Long.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[__Long__number] = null;
+    values.Long.__proto__.new.call(this);
+    this.set(num);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Long.prototype;
+  dart.addTypeTests(values.Long);
+  dart.addTypeCaches(values.Long);
+  dart.setMethodSignature(values.Long, () => ({
+    __proto__: dart.getMethods(values.Long.__proto__),
+    set: dart.fnType(dart.void, [core.int]),
+    toSimple: dart.fnType(core.int, [])
+  }));
+  dart.setGetterSignature(values.Long, () => ({
+    __proto__: dart.getGetters(values.Long.__proto__),
+    [_number]: core.int,
+    value: core.int
+  }));
+  dart.setSetterSignature(values.Long, () => ({
+    __proto__: dart.getSetters(values.Long.__proto__),
+    [_number]: core.int
+  }));
+  dart.setLibraryUri(values.Long, I[0]);
+  dart.setFieldSignature(values.Long, () => ({
+    __proto__: dart.getFields(values.Long.__proto__),
+    [__Long__number]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(values.Long, ['toString']);
+  values.Float = class Float extends values.NumberValue {
+    get value() {
+      return this[_number];
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Float.new(num, {error_generator: error_generator});
+    }
+    set(v) {
+      this[_number] = v;
+    }
+    toString() {
+      return dart.str(this[_number]) + "f";
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Float.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[_number] = num;
+    values.Float.__proto__.new.call(this);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Float.prototype;
+  dart.addTypeTests(values.Float);
+  dart.addTypeCaches(values.Float);
+  dart.setMethodSignature(values.Float, () => ({
+    __proto__: dart.getMethods(values.Float.__proto__),
+    set: dart.fnType(dart.void, [core.double]),
+    toSimple: dart.fnType(core.double, [])
+  }));
+  dart.setGetterSignature(values.Float, () => ({
+    __proto__: dart.getGetters(values.Float.__proto__),
+    value: core.double
+  }));
+  dart.setLibraryUri(values.Float, I[0]);
+  dart.setFieldSignature(values.Float, () => ({
+    __proto__: dart.getFields(values.Float.__proto__),
+    [_number]: dart.fieldType(core.double)
+  }));
+  dart.defineExtensionMethods(values.Float, ['toString']);
+  values.Double = class Double extends values.NumberValue {
+    get value() {
+      return this[_number];
+    }
+    static ['_#new#tearOff'](num, opts) {
+      let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+      return new values.Double.new(num, {error_generator: error_generator});
+    }
+    set(v) {
+      this[_number] = v;
+    }
+    toString() {
+      return dart.str(this[_number]) + "d";
+    }
+    toSimple() {
+      return this.value;
+    }
+  };
+  (values.Double.new = function(num, opts) {
+    let error_generator = opts && 'error_generator' in opts ? opts.error_generator : null;
+    this[_number] = num;
+    values.Double.__proto__.new.call(this);
+    if (error_generator != null) this[_gen] = error_generator;
+  }).prototype = values.Double.prototype;
+  dart.addTypeTests(values.Double);
+  dart.addTypeCaches(values.Double);
+  dart.setMethodSignature(values.Double, () => ({
+    __proto__: dart.getMethods(values.Double.__proto__),
+    set: dart.fnType(dart.void, [core.double]),
+    toSimple: dart.fnType(core.double, [])
+  }));
+  dart.setGetterSignature(values.Double, () => ({
+    __proto__: dart.getGetters(values.Double.__proto__),
+    value: core.double
+  }));
+  dart.setLibraryUri(values.Double, I[0]);
+  dart.setFieldSignature(values.Double, () => ({
+    __proto__: dart.getFields(values.Double.__proto__),
+    [_number]: dart.fieldType(core.double)
+  }));
+  dart.defineExtensionMethods(values.Double, ['toString']);
+  dart.trackLibraries("packages/cc_library/src/gson/src/values.dart", {
+    "package:cc_library/src/gson/src/values.dart": values
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["values.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/src/gson/src/values.dart.lib.js"}');
+  // Exports:
+  return {
+    src__gson__src__values: values
+  };
+}));
+
+//# sourceMappingURL=values.dart.lib.js.map

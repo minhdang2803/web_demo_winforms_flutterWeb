@@ -1,0 +1,365 @@
+define(['dart_sdk', 'packages/collection/src/iterable_extensions.dart'], (function load__packages__cc_library__util__cc_define_prototypes_dart(dart_sdk, packages__collection__src__iterable_extensions$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const iterable_extensions = packages__collection__src__iterable_extensions$46dart.src__iterable_extensions;
+  var cc_define_prototypes = Object.create(dart.library);
+  var $toLowerCase = dartx.toLowerCase;
+  var $contains = dartx.contains;
+  var $replaceAllMapped = dartx.replaceAllMapped;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $replaceAll = dartx.replaceAll;
+  var $_get = dartx._get;
+  var $toUpperCase = dartx.toUpperCase;
+  var $substring = dartx.substring;
+  var $add = dartx.add;
+  var $first = dartx.first;
+  var $forEach = dartx.forEach;
+  var $length = dartx.length;
+  var $containsKey = dartx.containsKey;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    VoidToString: () => (T$.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    StringTovoid: () => (T$.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    StringTodouble: () => (T$.StringTodouble = dart.constFn(dart.fnType(core.double, [core.String])))(),
+    VoidTobool: () => (T$.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    StringTobool: () => (T$.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
+    MatchToString: () => (T$.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))(),
+    ObjectN: () => (T$.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    JSArrayOfObjectN: () => (T$.JSArrayOfObjectN = dart.constFn(_interceptors.JSArray$(T$.ObjectN())))(),
+    __ToString: () => (T$.__ToString = dart.constFn(dart.fnType(core.String, [], {cutoff: core.int}, {})))(),
+    DateTimeN: () => (T$.DateTimeN = dart.constFn(dart.nullable(core.DateTime)))(),
+    VoidToDateTimeN: () => (T$.VoidToDateTimeN = dart.constFn(dart.fnType(T$.DateTimeN(), [])))(),
+    FunctionToListOfTN: () => (T$.FunctionToListOfTN = dart.constFn(dart.gFnType(T => {
+      var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+      var __t$ListOfTN = () => (__t$ListOfTN = dart.constFn(core.List$(__t$TN())))();
+      return [__t$ListOfTN(), [core.Function]];
+    }, T => {
+      var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+      var __t$ListOfTN = () => (__t$ListOfTN = dart.constFn(core.List$(__t$TN())))();
+      return [T$.ObjectN()];
+    })))(),
+    dynamicTovoid: () => (T$.dynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic])))(),
+    __ToTN: () => (T$.__ToTN = dart.constFn(dart.gFnType(T => {
+      var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+      return [__t$TN(), [], {f: dart.dynamic}, {}];
+    }, T => {
+      var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+      return [T$.ObjectN()];
+    })))(),
+    dynamicTobool: () => (T$.dynamicTobool = dart.constFn(dart.fnType(core.bool, [dart.dynamic])))(),
+    __Todynamic: () => (T$.__Todynamic = dart.constFn(dart.gFnType(T => [dart.dynamic, [], {defaultValue: dart.dynamic, f: dart.dynamic}, {}], T => [T$.ObjectN()])))(),
+    dynamicTodynamic: () => (T$.dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic])))(),
+    __Tobool: () => (T$.__Tobool = dart.constFn(dart.fnType(core.bool, [], {f: dart.dynamic}, {})))(),
+    StringTodynamic: () => (T$.StringTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.String])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  cc_define_prototypes['S1|ctmConvertNull'] = function S1$124ctmConvertNull($this) {
+    if ($this == null) {
+      return "";
+    }
+    return dart.nullCheck($this);
+  };
+  cc_define_prototypes['S1|get#ctmConvertNull'] = function S1$124get$35ctmConvertNull($this) {
+    return dart.fn(() => cc_define_prototypes['S1|ctmConvertNull']($this), T$.VoidToString());
+  };
+  cc_define_prototypes['S1|get#isNullOrEmpty'] = function S1$124get$35isNullOrEmpty($this) {
+    if ($this == null) {
+      return true;
+    }
+    return cc_define_prototypes['S|get#isNullOrEmpty'](dart.nullCheck($this));
+  };
+  cc_define_prototypes['S|setHello'] = function S$124setHello($this, value) {
+    core.print($this);
+  };
+  cc_define_prototypes['S|get#setHello'] = function S$124get$35setHello($this) {
+    return dart.fn(value => cc_define_prototypes['S|setHello']($this, value), T$.StringTovoid());
+  };
+  cc_define_prototypes['S|isNumeric'] = function S$124isNumeric($this) {
+    if (cc_define_prototypes['S|get#isNullOrEmpty']($this)) {
+      return false;
+    }
+    return core.double.parse($this, dart.fn(e => 0.0, T$.StringTodouble())) !== 0;
+  };
+  cc_define_prototypes['S|get#isNumeric'] = function S$124get$35isNumeric($this) {
+    return dart.fn(() => cc_define_prototypes['S|isNumeric']($this), T$.VoidTobool());
+  };
+  cc_define_prototypes['S|ctmContain'] = function S$124ctmContain($this, request) {
+    if (cc_define_prototypes['S|get#isNullOrEmpty']($this) && cc_define_prototypes['S|get#isNullOrEmpty'](request)) {
+      return true;
+    }
+    let strRoot = cc_define_prototypes['S|get#removeUnicode']($this[$toLowerCase]());
+    let strRequest = cc_define_prototypes['S|get#removeUnicode'](request[$toLowerCase]());
+    if (strRoot[$contains](strRequest)) {
+      return true;
+    }
+    return false;
+  };
+  cc_define_prototypes['S|get#ctmContain'] = function S$124get$35ctmContain($this) {
+    return dart.fn(request => cc_define_prototypes['S|ctmContain']($this, request), T$.StringTobool());
+  };
+  cc_define_prototypes['S|get#getHello'] = function S$124get$35getHello($this) {
+    return $this;
+  };
+  cc_define_prototypes['S|get#removeUnicode'] = function S$124get$35removeUnicode($this) {
+    let regex = core.RegExp.new("/|à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|/g");
+    let str = $this[$replaceAllMapped](regex, dart.fn(match => "a", T$.MatchToString()));
+    regex = core.RegExp.new("/|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "e", T$.MatchToString()));
+    regex = core.RegExp.new("/|ì|í|ị|ỉ|ĩ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "i", T$.MatchToString()));
+    regex = core.RegExp.new("/|ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "o", T$.MatchToString()));
+    regex = core.RegExp.new("/|ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "u", T$.MatchToString()));
+    regex = core.RegExp.new("/|ỳ|ý|ỵ|ỷ|ỹ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "y", T$.MatchToString()));
+    regex = core.RegExp.new("/|đ|/g");
+    str = str[$replaceAllMapped](regex, dart.fn(match => "d", T$.MatchToString()));
+    return str;
+  };
+  cc_define_prototypes['S|get#isNotNull'] = function S$124get$35isNotNull($this) {
+    return $this !== null && $this[$isNotEmpty];
+  };
+  cc_define_prototypes['S|get#isNullOrEmpty'] = function S$124get$35isNullOrEmpty($this) {
+    if (!cc_define_prototypes['S|get#isNotNull']($this)) {
+      return true;
+    }
+    return T$.JSArrayOfObjectN().of(["", "null", "{}", null, false, 0])[$contains]($this[$replaceAll](" ", ""));
+  };
+  cc_define_prototypes['S|ctmConvertNull'] = function S$124ctmConvertNull($this) {
+    if (cc_define_prototypes['S|get#isNullOrEmpty']($this)) {
+      return "";
+    }
+    return $this;
+  };
+  cc_define_prototypes['S|get#ctmConvertNull'] = function S$124get$35ctmConvertNull($this) {
+    return dart.fn(() => cc_define_prototypes['S|ctmConvertNull']($this), T$.VoidToString());
+  };
+  cc_define_prototypes['S|get#capitalize'] = function S$124get$35capitalize($this) {
+    return dart.fn(() => cc_define_prototypes['S|capitalize']($this), T$.VoidToString());
+  };
+  cc_define_prototypes['S|capitalize'] = function S$124capitalize($this) {
+    if (!cc_define_prototypes['S|get#isNotNull']($this)) {
+      return "";
+    }
+    return $this[$_get](0)[$toUpperCase]() + $this[$substring](1);
+  };
+  cc_define_prototypes['S|lowerFirst'] = function S$124lowerFirst($this) {
+    if (!cc_define_prototypes['S|get#isNotNull']($this)) {
+      return "";
+    }
+    return $this[$_get](0)[$toLowerCase]() + $this[$substring](1);
+  };
+  cc_define_prototypes['S|get#lowerFirst'] = function S$124get$35lowerFirst($this) {
+    return dart.fn(() => cc_define_prototypes['S|lowerFirst']($this), T$.VoidToString());
+  };
+  cc_define_prototypes['S|truncateWithEllipsis'] = function S$124truncateWithEllipsis($this, opts) {
+    let cutoff = opts && 'cutoff' in opts ? opts.cutoff : null;
+    return $this.length <= cutoff ? $this : $this[$substring](0, cutoff) + "...";
+  };
+  cc_define_prototypes['S|get#truncateWithEllipsis'] = function S$124get$35truncateWithEllipsis($this) {
+    return dart.fn(opts => {
+      let cutoff = opts && 'cutoff' in opts ? opts.cutoff : null;
+      return cc_define_prototypes['S|truncateWithEllipsis']($this, {cutoff: cutoff});
+    }, T$.__ToString());
+  };
+  cc_define_prototypes['I|get#isNotNullAndNotZezo'] = function I$124get$35isNotNullAndNotZezo($this) {
+    if ($this == null) {
+      return false;
+    }
+    if (dart.nullCheck($this) <= 0) {
+      return false;
+    }
+    return true;
+  };
+  cc_define_prototypes['I|get#isNullOrZezo'] = function I$124get$35isNullOrZezo($this) {
+    if ($this == null) {
+      return true;
+    }
+    if (dart.nullCheck($this) <= 0) {
+      return true;
+    }
+    return false;
+  };
+  cc_define_prototypes['I|ctmToDateTimeFromMillisecondsSinceEpoch'] = function I$124ctmToDateTimeFromMillisecondsSinceEpoch($this) {
+    if ($this == null) {
+      return null;
+    }
+    return new core.DateTime.fromMillisecondsSinceEpoch(dart.nullCheck($this));
+  };
+  cc_define_prototypes['I|get#ctmToDateTimeFromMillisecondsSinceEpoch'] = function I$124get$35ctmToDateTimeFromMillisecondsSinceEpoch($this) {
+    return dart.fn(() => cc_define_prototypes['I|ctmToDateTimeFromMillisecondsSinceEpoch']($this), T$.VoidToDateTimeN());
+  };
+  cc_define_prototypes['I|get#isNotNull'] = function I$124get$35isNotNull($this) {
+    return $this != null;
+  };
+  cc_define_prototypes['A|pluck'] = function A$124pluck(T, $this, f) {
+    if (cc_define_prototypes['A|get#isArrayNullOrEmpty']($this)) {
+      return _interceptors.JSArray$(dart.nullable(T)).of([]);
+    }
+    let arr = _interceptors.JSArray$(dart.nullable(T)).of([]);
+    for (let item of dart.nullCheck($this)) {
+      arr[$add](dart.nullable(T).as(dart.dcall(f, [item])));
+    }
+    return arr;
+  };
+  cc_define_prototypes['A|get#pluck'] = function A$124get$35pluck($this) {
+    return dart.fn((T, f) => cc_define_prototypes['A|pluck'](T, $this, f), T$.FunctionToListOfTN());
+  };
+  cc_define_prototypes['A|ctmGetMax'] = function A$124ctmGetMax(T, $this, opts) {
+    let f = opts && 'f' in opts ? opts.f : null;
+    if (cc_define_prototypes['A|get#isArrayNullOrEmpty']($this)) {
+      return null;
+    }
+    let max = dart.nullable(T).as(dart.nullCheck($this)[$first]);
+    dart.nullCheck($this)[$forEach](dart.fn(x => {
+      if (dart.dtest(dart.dsend(dart.dcall(f, [x]), '>', [dart.dcall(f, [max])]))) max = dart.nullable(T).as(x);
+    }, T$.dynamicTovoid()));
+    return max;
+  };
+  cc_define_prototypes['A|get#ctmGetMax'] = function A$124get$35ctmGetMax($this) {
+    return dart.fn((T, opts) => {
+      let f = opts && 'f' in opts ? opts.f : null;
+      return cc_define_prototypes['A|ctmGetMax'](T, $this, {f: f});
+    }, T$.__ToTN());
+  };
+  cc_define_prototypes['A|ctmFirstOrDefault'] = function A$124ctmFirstOrDefault(T, $this, opts) {
+    let t31;
+    let f = opts && 'f' in opts ? opts.f : null;
+    if (cc_define_prototypes['A|get#isArrayNullOrEmpty']($this)) {
+      return null;
+    }
+    if (core.Function.is(f)) {
+      let x = dart.nullable(T).as((t31 = $this, t31 == null ? null : iterable_extensions['IterableExtension|firstWhereOrNull'](dart.dynamic, t31, dart.fn(x => core.bool.as(dart.dcall(f, [x])), T$.dynamicTobool()))));
+      if (x == null) {
+        return null;
+      }
+      return x;
+    } else {
+      return dart.nullable(T).as(dart.nullCheck($this)[$first]);
+    }
+  };
+  cc_define_prototypes['A|get#ctmFirstOrDefault'] = function A$124get$35ctmFirstOrDefault($this) {
+    return dart.fn((T, opts) => {
+      let f = opts && 'f' in opts ? opts.f : null;
+      return cc_define_prototypes['A|ctmFirstOrDefault'](T, $this, {f: f});
+    }, T$.__ToTN());
+  };
+  cc_define_prototypes['A|get#ctmSum'] = function A$124get$35ctmSum($this) {
+    return dart.fn((T, opts) => {
+      let f = opts && 'f' in opts ? opts.f : null;
+      let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : 0;
+      return cc_define_prototypes['A|ctmSum'](T, $this, {f: f, defaultValue: defaultValue});
+    }, T$.__Todynamic());
+  };
+  cc_define_prototypes['A|ctmSum'] = function A$124ctmSum(T, $this, opts) {
+    let f = opts && 'f' in opts ? opts.f : null;
+    let defaultValue = opts && 'defaultValue' in opts ? opts.defaultValue : 0;
+    if (cc_define_prototypes['A|get#isArrayNullOrEmpty']($this)) {
+      return defaultValue;
+    }
+    let rs = defaultValue;
+    if (core.Function.is(f)) {
+      for (let item of dart.nullCheck($this)) {
+        rs = dart.dsend(rs, '+', [dart.dcall(f, [item])]);
+      }
+      return rs;
+    } else {
+      for (let item of dart.nullCheck($this)) {
+        rs = dart.dsend(rs, '+', [item]);
+      }
+      return rs;
+    }
+  };
+  cc_define_prototypes['A|ctmAny'] = function A$124ctmAny($this, opts) {
+    let f = opts && 'f' in opts ? opts.f : null;
+    if (cc_define_prototypes['A|get#isArrayNullOrEmpty']($this)) {
+      return false;
+    }
+    if (core.Function.is(f)) {
+      return cc_define_prototypes['A|ctmFirstOrDefault'](dart.dynamic, $this, {f: dart.fn(x => dart.dcall(f, [x]), T$.dynamicTodynamic())}) != null;
+    }
+    return true;
+  };
+  cc_define_prototypes['A|get#ctmAny'] = function A$124get$35ctmAny($this) {
+    return dart.fn(opts => {
+      let f = opts && 'f' in opts ? opts.f : null;
+      return cc_define_prototypes['A|ctmAny']($this, {f: f});
+    }, T$.__Tobool());
+  };
+  cc_define_prototypes['A|get#isArrayNullOrEmpty'] = function A$124get$35isArrayNullOrEmpty($this) {
+    if ($this == null || dart.nullCheck($this)[$length] === 0) {
+      return true;
+    }
+    return false;
+  };
+  cc_define_prototypes['Dy|get#isNotNull'] = function Dy$124get$35isNotNull($this) {
+    return $this != null;
+  };
+  cc_define_prototypes['Dy|get#isArrayNullOrEmpty'] = function Dy$124get$35isArrayNullOrEmpty($this) {
+    if ($this == null) {
+      return true;
+    }
+    return false;
+  };
+  cc_define_prototypes['D|get#isNotNull'] = function D$124get$35isNotNull($this) {
+    return $this != null;
+  };
+  cc_define_prototypes['D|get#isNotNullAndNotZezo'] = function D$124get$35isNotNullAndNotZezo($this) {
+    if ($this == null) {
+      return false;
+    }
+    if (dart.nullCheck($this) <= 0) {
+      return false;
+    }
+    return true;
+  };
+  cc_define_prototypes['B|get#isNotNull'] = function B$124get$35isNotNull($this) {
+    return $this != null;
+  };
+  cc_define_prototypes['N|get#isNotNull'] = function N$124get$35isNotNull($this) {
+    return false;
+  };
+  cc_define_prototypes['N|get#isEmpty'] = function N$124get$35isEmpty($this) {
+    return true;
+  };
+  cc_define_prototypes['N|get#isArrayNullOrEmpty'] = function N$124get$35isArrayNullOrEmpty($this) {
+    return true;
+  };
+  cc_define_prototypes['N|get#isNotNullAndNotZezo'] = function N$124get$35isNotNullAndNotZezo($this) {
+    return false;
+  };
+  cc_define_prototypes['N|ctmConvertNull'] = function N$124ctmConvertNull($this) {
+    return "";
+  };
+  cc_define_prototypes['N|get#ctmConvertNull'] = function N$124get$35ctmConvertNull($this) {
+    return dart.fn(() => cc_define_prototypes['N|ctmConvertNull']($this), T$.VoidToString());
+  };
+  cc_define_prototypes['M|ctmKeyDefault'] = function M$124ctmKeyDefault($this, key) {
+    if ($this == null) {
+      return null;
+    } else if (dart.nullCheck($this)[$containsKey](key)) {
+      return dart.nullCheck($this)[$_get](key);
+    }
+    return null;
+  };
+  cc_define_prototypes['M|get#ctmKeyDefault'] = function M$124get$35ctmKeyDefault($this) {
+    return dart.fn(key => cc_define_prototypes['M|ctmKeyDefault']($this, key), T$.StringTodynamic());
+  };
+  dart.trackLibraries("packages/cc_library/util/cc_define_prototypes.dart", {
+    "package:cc_library/util/cc_define_prototypes.dart": cc_define_prototypes
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["cc_define_prototypes.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAOI,QAAS;AACP,YAAO;;AAET,UAAW;EACb;;AALO;EAKP;;AAGE,QAAS;AACP,YAAO;;AAET,UAAa,6CAAF;EACb;qEAIqB;AACR,IAAX;EACF;;AAFK,mBAAgB,mDAAhB,KAAK;EAEV;;AAGE,QAAS;AACP,YAAO;;AAGT,UAAc,AAAwB,0BAAX,QAAC,KAAM,+BAAO;EAC3C;;AANK;EAML;yEAEuB;AACrB,QAAS,sDAAyB,4CAAR,OAAO;AAC/B,YAAO;;AAEF,kBAA6B,4CAAd;AACf,qBAAmC,4CAAtB,AAAQ,OAAD;AAC3B,QAAI,AAAQ,OAAD,YAAU,UAAU;AAC7B,YAAO;;AAET,UAAO;EACT;;AAVK,mBAAkB,uDAAlB,OAAO;EAUZ;;AAGE;EACF;;AAGM,gBAAY,gBAAO;AAChB,cAAW,yBAAiB,KAAK,EAAE,QAAC,SAAU;AAIJ,IAAjD,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAER,IAArC,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAEgB,IAA7D,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAEI,IAAjD,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAER,IAArC,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAEhB,IAA7B,QAAY,gBAAO;AAC8B,IAAjD,MAAM,AAAI,GAAD,oBAAkB,KAAK,EAAE,QAAC,SAAU;AAC7C,UAAO,IAAG;EACZ;;AAGE,UAAoB,mBAAQ;EAC9B;;AAGE,SAAU;AACR,YAAO;;AAET,UAAO,AAAmC,2BAAlC,IAAI,QAAQ,MAAM,MAAM,OAAO,eAAiB,mBAAW,KAAK;EAC1E;;AAGE,QAAS;AACP,YAAO;;AAET;EACF;;AALO;EAKP;;AAEO;EAKP;;AAJE,SAAU;AACR,YAAO;;AAET,UAAc,AAAI,AAAmC,cAAtC,qBAAwB,kBAAU;EACnD;;AAGE,SAAU;AACR,YAAO;;AAET,UAAc,AAAI,AAAmC,cAAtC,qBAAwB,kBAAU;EACnD;;AALO;EAKP;;QAE0C;AACxC,UAAa,AAAO,iBAAG,MAAM,WAAmB,AAAyB,kBAAf,GAAG,MAAM,IAAE;EACvE;;AAFO;UAAmC;AAAnC,kFAAM;;EAEb;;AAKE,QAAS;AACP,YAAO;;AAET,QAAQ,AAAE,yBAAG;AACX,YAAO;;AAET,UAAO;EACT;;AAGE,QAAS;AACP,YAAO;;AAET,QAAQ,AAAE,yBAAG;AACX,YAAO;;AAET,UAAO;EACT;;AAGE,QAAS;AACP,YAAO;;AAET,UAAgB,8CAA+B;EACjD;;AALU;EAKV;;AAGE,UAAY;EACd;kEAI2B;AACzB,QAAS;AACP,YAAO;;AAEA,cAAM;AACf,aAAS,OAAY;AACH,MAAhB,AAAI,GAAD,2BAAM,WAAD,CAAC,GAAC,IAAI;;AAEhB,UAAO,IAAG;EACZ;;AATS,uBAAkB,gDAAlB,CAAC;EASV;;QAEiB;AACf,QAAS;AACP,YAAO;;AAEN,kCAAU,AAAE;AAGb,IAFE,AAAE,gCAAQ,QAAC;AACb,qBAAS,WAAJ,WAAD,CAAC,GAAC,CAAC,UAAK,WAAD,CAAC,GAAC,GAAG,OAAU,MAAP,oBAAM,CAAC;;AAE5B,UAAO,IAAG;EACZ;;AATG;UAAc;AAAd,gEAAC;;EASJ;;;QAEyB;AACvB,QAAS;AACP,YAAO;;AAET,QAAM,iBAAF,CAAC;AACA,8DAAI,OAAM,6EAAiB,QAAC,kBAAO,WAAD,CAAC,GAAC,CAAC;AACxC,UAAI,AAAE,CAAD;AACH,cAAO;;AAET,YAAO,EAAC;;AAER,iCAAW,AAAE;;EAEjB;;AAbG;UAAsB;AAAtB,wEAAC;;EAaJ;;AAEA;UAAW;UAAG;AAAd,6DAAC,gBAAD,YAAY;;EAgBZ;;QAhBW;QAAG;AACZ,QAAS;AACP,YAAO,aAAY;;AAEjB,aAAK,YAAY;AACrB,QAAM,iBAAF,CAAC;AACH,eAAS,OAAY;AACN,QAAb,KAAG,WAAH,EAAE,QAAK,WAAD,CAAC,GAAC,IAAI;;AAEd,YAAO,GAAE;;AAET,eAAS,OAAY;AACT,QAAV,KAAG,WAAH,EAAE,QAAI,IAAI;;AAEZ,YAAO,GAAE;;EAEb;;QAEa;AACX,QAAS;AACP,YAAO;;AAET,QAAM,iBAAF,CAAC;AACH,YAAY,AAAkC,sEAAb,QAAC,KAAO,WAAD,CAAC,GAAC,CAAC;;AAE7C,UAAO;EACT;;AARK;UAAQ;AAAR,0DAAC;;EAQN;;AAGE,QAAS,iBAAe,AAAE,AAAO,mCAAG;AAClC,YAAO;;AAET,UAAO;EACT;;AAKE,UAAY;EACd;;AAGE,QAAS;AACP,YAAO;;AAET,UAAO;EACT;;AAKE,UAAY;EACd;;AAGE,QAAS;AACP,YAAO;;AAET,QAAQ,AAAE,yBAAG;AACX,YAAO;;AAET,UAAO;EACT;;AAKE,UAAY;EACd;;AAKE,UAAO;EACT;;AAGE,UAAO;EACT;;AAGE,UAAO;EACT;;AAGE,UAAO;EACT;;AAGE,UAAO;EACT;;AAFO;EAEP;+EAIqB;AACnB,QAAS;AACP,YAAO;UACF,KAAQ,AAAE,oCAAY,GAAG;AAC9B,YAAW,AAAC,8BAAC,GAAG;;AAElB,UAAO;EACT;;AAPA,mBAAqB,sDAArB,GAAG;EAOH","file":"../../../../../../../../../../../../packages/cc_library/util/cc_define_prototypes.dart.lib.js"}');
+  // Exports:
+  return {
+    util__cc_define_prototypes: cc_define_prototypes
+  };
+}));
+
+//# sourceMappingURL=cc_define_prototypes.dart.lib.js.map

@@ -1,0 +1,654 @@
+define(['dart_sdk'], (function load__packages__pdf__src__pdf__color_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var color$ = Object.create(dart.library);
+  var $rightShift = dartx['>>'];
+  var $startsWith = dartx.startsWith;
+  var $substring = dartx.substring;
+  var $times = dartx['*'];
+  var $_get = dartx._get;
+  var $round = dartx.round;
+  var $toRadixString = dartx.toRadixString;
+  var $toDouble = dartx.toDouble;
+  var $clamp = dartx.clamp;
+  var $runtimeType = dartx.runtimeType;
+  var $modulo = dartx['%'];
+  var $abs = dartx.abs;
+  var $isNaN = dartx.isNaN;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfdouble: () => (T.ListOfdouble = dart.constFn(core.List$(core.double)))(),
+    doubleAnddoubleAnddoubleTodouble: () => (T.doubleAnddoubleAnddoubleTodouble = dart.constFn(dart.fnType(core.double, [core.double, core.double, core.double])))(),
+    JSArrayOfPdfColorHsv: () => (T.JSArrayOfPdfColorHsv = dart.constFn(_interceptors.JSArray$(color$.PdfColorHsv)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([1, 1, 1], core.double);
+    },
+    get C2() {
+      return C[2] = dart.constList([1, 1, 0], core.double);
+    },
+    get C3() {
+      return C[3] = dart.constList([1, 0, 0], core.double);
+    },
+    get C4() {
+      return C[4] = dart.constList([1, 0.5, 0], core.double);
+    },
+    get C5() {
+      return C[5] = dart.constList([0.163, 0.373, 0.6], core.double);
+    },
+    get C6() {
+      return C[6] = dart.constList([0, 0.66, 0.2], core.double);
+    },
+    get C7() {
+      return C[7] = dart.constList([0.5, 0, 0.5], core.double);
+    },
+    get C8() {
+      return C[8] = dart.constList([0.2, 0.094, 0], core.double);
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T.ListOfdouble());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: color$.PdfColor.prototype,
+        [blue$]: 1,
+        [green$]: 1,
+        [red$]: 1,
+        [alpha$]: 1
+      });
+    }
+  }, false);
+  var C = Array(10).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pdf-3.8.4/lib/src/pdf/color.dart",
+    "package:pdf/src/pdf/color.dart"
+  ];
+  var alpha$ = dart.privateName(color$, "PdfColor.alpha");
+  var red$ = dart.privateName(color$, "PdfColor.red");
+  var green$ = dart.privateName(color$, "PdfColor.green");
+  var blue$ = dart.privateName(color$, "PdfColor.blue");
+  color$.PdfColor = class PdfColor extends core.Object {
+    get alpha() {
+      return this[alpha$];
+    }
+    set alpha(value) {
+      super.alpha = value;
+    }
+    get red() {
+      return this[red$];
+    }
+    set red(value) {
+      super.red = value;
+    }
+    get green() {
+      return this[green$];
+    }
+    set green(value) {
+      super.green = value;
+    }
+    get blue() {
+      return this[blue$];
+    }
+    set blue(value) {
+      super.blue = value;
+    }
+    static ['_#new#tearOff'](red, green, blue, alpha = 1) {
+      return new color$.PdfColor.new(red, green, blue, alpha);
+    }
+    static ['_#fromInt#tearOff'](color) {
+      return new color$.PdfColor.fromInt(color);
+    }
+    static fromHex(color) {
+      if (color[$startsWith]("#")) {
+        color = color[$substring](1);
+      }
+      let red = null;
+      let green = null;
+      let blue = null;
+      let alpha = 1.0;
+      if (color.length === 3) {
+        red = core.int.parse(color[$substring](0, 1)[$times](2), {radix: 16}) / 255;
+        green = core.int.parse(color[$substring](1, 2)[$times](2), {radix: 16}) / 255;
+        blue = core.int.parse(color[$substring](2, 3)[$times](2), {radix: 16}) / 255;
+        return new color$.PdfColor.new(red, green, blue, alpha);
+      }
+      if (!(color.length === 3 || color.length === 6 || color.length === 8)) dart.assertFailed(null, I[0], 60, 12, "color.length == 3 || color.length == 6 || color.length == 8");
+      red = core.int.parse(color[$substring](0, 2), {radix: 16}) / 255;
+      green = core.int.parse(color[$substring](2, 4), {radix: 16}) / 255;
+      blue = core.int.parse(color[$substring](4, 6), {radix: 16}) / 255;
+      if (color.length === 8) {
+        alpha = core.int.parse(color[$substring](6, 8), {radix: 16}) / 255;
+      }
+      return new color$.PdfColor.new(red, green, blue, alpha);
+    }
+    static ['_#fromHex#tearOff'](color) {
+      return color$.PdfColor.fromHex(color);
+    }
+    static fromRYB(red, yellow, blue, alpha = 1) {
+      if (!(red >= 0 && red <= 1)) dart.assertFailed(null, I[0], 76, 12, "red >= 0 && red <= 1");
+      if (!(yellow >= 0 && yellow <= 1)) dart.assertFailed(null, I[0], 77, 12, "yellow >= 0 && yellow <= 1");
+      if (!(blue >= 0 && blue <= 1)) dart.assertFailed(null, I[0], 78, 12, "blue >= 0 && blue <= 1");
+      if (!(alpha >= 0 && alpha <= 1)) dart.assertFailed(null, I[0], 79, 12, "alpha >= 0 && alpha <= 1");
+      let magic = C[0] || CT.C0;
+      function cubicInt(t, A, B) {
+        let weight = t * t * (3 - 2 * t);
+        return A + weight * (B - A);
+      }
+      dart.fn(cubicInt, T.doubleAnddoubleAnddoubleTodouble());
+      function getRed(iR, iY, iB) {
+        let x0 = cubicInt(iB, magic[$_get](0)[$_get](0), magic[$_get](4)[$_get](0));
+        let x1 = cubicInt(iB, magic[$_get](1)[$_get](0), magic[$_get](5)[$_get](0));
+        let x2 = cubicInt(iB, magic[$_get](2)[$_get](0), magic[$_get](6)[$_get](0));
+        let x3 = cubicInt(iB, magic[$_get](3)[$_get](0), magic[$_get](7)[$_get](0));
+        let y0 = cubicInt(iY, x0, x1);
+        let y1 = cubicInt(iY, x2, x3);
+        return cubicInt(iR, y0, y1);
+      }
+      dart.fn(getRed, T.doubleAnddoubleAnddoubleTodouble());
+      function getGreen(iR, iY, iB) {
+        let x0 = cubicInt(iB, magic[$_get](0)[$_get](1), magic[$_get](4)[$_get](1));
+        let x1 = cubicInt(iB, magic[$_get](1)[$_get](1), magic[$_get](5)[$_get](1));
+        let x2 = cubicInt(iB, magic[$_get](2)[$_get](1), magic[$_get](6)[$_get](1));
+        let x3 = cubicInt(iB, magic[$_get](3)[$_get](1), magic[$_get](7)[$_get](1));
+        let y0 = cubicInt(iY, x0, x1);
+        let y1 = cubicInt(iY, x2, x3);
+        return cubicInt(iR, y0, y1);
+      }
+      dart.fn(getGreen, T.doubleAnddoubleAnddoubleTodouble());
+      function getBlue(iR, iY, iB) {
+        let x0 = cubicInt(iB, magic[$_get](0)[$_get](2), magic[$_get](4)[$_get](2));
+        let x1 = cubicInt(iB, magic[$_get](1)[$_get](2), magic[$_get](5)[$_get](2));
+        let x2 = cubicInt(iB, magic[$_get](2)[$_get](2), magic[$_get](6)[$_get](2));
+        let x3 = cubicInt(iB, magic[$_get](3)[$_get](2), magic[$_get](7)[$_get](2));
+        let y0 = cubicInt(iY, x0, x1);
+        let y1 = cubicInt(iY, x2, x3);
+        return cubicInt(iR, y0, y1);
+      }
+      dart.fn(getBlue, T.doubleAnddoubleAnddoubleTodouble());
+      let redValue = getRed(red, yellow, blue);
+      let greenValue = getGreen(red, yellow, blue);
+      let blueValue = getBlue(red, yellow, blue);
+      return new color$.PdfColor.new(redValue, greenValue, blueValue, alpha);
+    }
+    static ['_#fromRYB#tearOff'](red, yellow, blue, alpha = 1) {
+      return color$.PdfColor.fromRYB(red, yellow, blue, alpha);
+    }
+    toInt() {
+      return ((((this.alpha * 255.0)[$round]() & 255) << 24 | ((this.red * 255.0)[$round]() & 255) << 16 | ((this.green * 255.0)[$round]() & 255) << 8 | ((this.blue * 255.0)[$round]() & 255) << 0) & 4294967295) >>> 0;
+    }
+    toHex() {
+      let i = this.toInt();
+      let rgb = (i & 16777215)[$toRadixString](16);
+      let a = ((i & 4278190080) >>> 24)[$toRadixString](16);
+      return "#" + rgb + a;
+    }
+    toCmyk() {
+      return new color$.PdfColorCmyk.fromRgb(this.red, this.green, this.blue, this.alpha);
+    }
+    toHsv() {
+      return color$.PdfColorHsv.fromRgb(this.red, this.green, this.blue, this.alpha);
+    }
+    toHsl() {
+      return color$.PdfColorHsl.fromRgb(this.red, this.green, this.blue, this.alpha);
+    }
+    static _linearizeColorComponent(component) {
+      if (component <= 0.03928) {
+        return component / 12.92;
+      }
+      return math.pow((component + 0.055) / 1.055, 2.4)[$toDouble]();
+    }
+    get isLight() {
+      return !this.isDark;
+    }
+    get isDark() {
+      let relativeLuminance = this.luminance;
+      return (relativeLuminance + 0.05) * (relativeLuminance + 0.05) > 0.15;
+    }
+    get luminance() {
+      let R = color$.PdfColor._linearizeColorComponent(this.red);
+      let G = color$.PdfColor._linearizeColorComponent(this.green);
+      let B = color$.PdfColor._linearizeColorComponent(this.blue);
+      return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+    }
+    shade(strength) {
+      let ds = 1.5 - strength;
+      let hsl = this.toHsl();
+      return color$.PdfColorHsl.new(hsl.hue, hsl.saturation, (hsl.lightness * ds)[$clamp](0.0, 1.0));
+    }
+    get complementary() {
+      return this.toHsv().complementary;
+    }
+    get monochromatic() {
+      return this.toHsv().monochromatic;
+    }
+    get splitcomplementary() {
+      return this.toHsv().splitcomplementary;
+    }
+    get tetradic() {
+      return this.toHsv().tetradic;
+    }
+    get triadic() {
+      return this.toHsv().triadic;
+    }
+    get analagous() {
+      return this.toHsv().analagous;
+    }
+    flatten(opts) {
+      let background = opts && 'background' in opts ? opts.background : C[9] || CT.C9;
+      return new color$.PdfColor.new(this.alpha * this.red + (1 - this.alpha) * background.red, this.alpha * this.green + (1 - this.alpha) * background.green, this.alpha * this.blue + (1 - this.alpha) * background.blue, background.alpha);
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + dart.str(this.red) + ", " + dart.str(this.green) + ", " + dart.str(this.blue) + ", " + dart.str(this.alpha) + ")";
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) {
+        return true;
+      }
+      if (!other[$runtimeType]._equals(this[$runtimeType])) {
+        return false;
+      }
+      return color$.PdfColor.is(other) && other.red === this.red && other.green === this.green && other.blue === this.blue && other.alpha === this.alpha;
+    }
+    get hashCode() {
+      return this.toInt();
+    }
+  };
+  (color$.PdfColor.new = function(red, green, blue, alpha = 1) {
+    this[red$] = red;
+    this[green$] = green;
+    this[blue$] = blue;
+    this[alpha$] = alpha;
+    if (!(red >= 0 && red <= 1)) dart.assertFailed(null, I[0], 24, 16, "red >= 0 && red <= 1");
+    if (!(green >= 0 && green <= 1)) dart.assertFailed(null, I[0], 25, 16, "green >= 0 && green <= 1");
+    if (!(blue >= 0 && blue <= 1)) dart.assertFailed(null, I[0], 26, 16, "blue >= 0 && blue <= 1");
+    if (!(alpha >= 0 && alpha <= 1)) dart.assertFailed(null, I[0], 27, 16, "alpha >= 0 && alpha <= 1");
+    ;
+  }).prototype = color$.PdfColor.prototype;
+  (color$.PdfColor.fromInt = function(color) {
+    this[red$] = (color >> 16 & 255) / 255.0;
+    this[green$] = (color >> 8 & 255) / 255.0;
+    this[blue$] = (color & 255) / 255.0;
+    this[alpha$] = (color[$rightShift](24) & 255) / 255.0;
+    ;
+  }).prototype = color$.PdfColor.prototype;
+  dart.addTypeTests(color$.PdfColor);
+  dart.addTypeCaches(color$.PdfColor);
+  dart.setMethodSignature(color$.PdfColor, () => ({
+    __proto__: dart.getMethods(color$.PdfColor.__proto__),
+    toInt: dart.fnType(core.int, []),
+    toHex: dart.fnType(core.String, []),
+    toCmyk: dart.fnType(color$.PdfColorCmyk, []),
+    toHsv: dart.fnType(color$.PdfColorHsv, []),
+    toHsl: dart.fnType(color$.PdfColorHsl, []),
+    shade: dart.fnType(color$.PdfColor, [core.double]),
+    flatten: dart.fnType(color$.PdfColor, [], {background: color$.PdfColor}, {})
+  }));
+  dart.setStaticMethodSignature(color$.PdfColor, () => ['fromHex', 'fromRYB', '_linearizeColorComponent']);
+  dart.setGetterSignature(color$.PdfColor, () => ({
+    __proto__: dart.getGetters(color$.PdfColor.__proto__),
+    isLight: core.bool,
+    isDark: core.bool,
+    luminance: core.double,
+    complementary: color$.PdfColor,
+    monochromatic: core.List$(color$.PdfColor),
+    splitcomplementary: core.List$(color$.PdfColor),
+    tetradic: core.List$(color$.PdfColor),
+    triadic: core.List$(color$.PdfColor),
+    analagous: core.List$(color$.PdfColor)
+  }));
+  dart.setLibraryUri(color$.PdfColor, I[1]);
+  dart.setFieldSignature(color$.PdfColor, () => ({
+    __proto__: dart.getFields(color$.PdfColor.__proto__),
+    alpha: dart.finalFieldType(core.double),
+    red: dart.finalFieldType(core.double),
+    green: dart.finalFieldType(core.double),
+    blue: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(color$.PdfColor, ['toString', '_equals']);
+  dart.defineExtensionAccessors(color$.PdfColor, ['hashCode']);
+  color$.PdfColorGrey = class PdfColorGrey extends color$.PdfColor {
+    static ['_#new#tearOff'](color, alpha = 1) {
+      return new color$.PdfColorGrey.new(color, alpha);
+    }
+  };
+  (color$.PdfColorGrey.new = function(color, alpha = 1) {
+    color$.PdfColorGrey.__proto__.new.call(this, color, color, color, alpha);
+    ;
+  }).prototype = color$.PdfColorGrey.prototype;
+  dart.addTypeTests(color$.PdfColorGrey);
+  dart.addTypeCaches(color$.PdfColorGrey);
+  dart.setLibraryUri(color$.PdfColorGrey, I[1]);
+  var cyan$ = dart.privateName(color$, "PdfColorCmyk.cyan");
+  var magenta$ = dart.privateName(color$, "PdfColorCmyk.magenta");
+  var yellow$ = dart.privateName(color$, "PdfColorCmyk.yellow");
+  var black$ = dart.privateName(color$, "PdfColorCmyk.black");
+  color$.PdfColorCmyk = class PdfColorCmyk extends color$.PdfColor {
+    get cyan() {
+      return this[cyan$];
+    }
+    set cyan(value) {
+      super.cyan = value;
+    }
+    get magenta() {
+      return this[magenta$];
+    }
+    set magenta(value) {
+      super.magenta = value;
+    }
+    get yellow() {
+      return this[yellow$];
+    }
+    set yellow(value) {
+      super.yellow = value;
+    }
+    get black() {
+      return this[black$];
+    }
+    set black(value) {
+      super.black = value;
+    }
+    static ['_#new#tearOff'](cyan, magenta, yellow, black, a = 1) {
+      return new color$.PdfColorCmyk.new(cyan, magenta, yellow, black, a);
+    }
+    static ['_#fromRgb#tearOff'](r, g, b, a = 1) {
+      return new color$.PdfColorCmyk.fromRgb(r, g, b, a);
+    }
+    toCmyk() {
+      return this;
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + dart.str(this.cyan) + ", " + dart.str(this.magenta) + ", " + dart.str(this.yellow) + ", " + dart.str(this.black) + ", " + dart.str(this.alpha) + ")";
+    }
+  };
+  (color$.PdfColorCmyk.new = function(cyan, magenta, yellow, black, a = 1) {
+    this[cyan$] = cyan;
+    this[magenta$] = magenta;
+    this[yellow$] = yellow;
+    this[black$] = black;
+    color$.PdfColorCmyk.__proto__.new.call(this, (1.0 - cyan) * (1.0 - black), (1.0 - magenta) * (1.0 - black), (1.0 - yellow) * (1.0 - black), a);
+    ;
+  }).prototype = color$.PdfColorCmyk.prototype;
+  (color$.PdfColorCmyk.fromRgb = function(r, g, b, a = 1) {
+    this[black$] = 1.0 - r > g ? r : g > b ? r > g ? r : g : b;
+    this[cyan$] = (1.0 - r - (1.0 - r > g ? r : g > b ? r > g ? r : g : b)) / (1.0 - (1.0 - r > g ? r : g > b ? r > g ? r : g : b));
+    this[magenta$] = (1.0 - g - (1.0 - r > g ? r : g > b ? r > g ? r : g : b)) / (1.0 - (1.0 - r > g ? r : g > b ? r > g ? r : g : b));
+    this[yellow$] = (1.0 - b - (1.0 - r > g ? r : g > b ? r > g ? r : g : b)) / (1.0 - (1.0 - r > g ? r : g > b ? r > g ? r : g : b));
+    color$.PdfColorCmyk.__proto__.new.call(this, r, g, b, a);
+    ;
+  }).prototype = color$.PdfColorCmyk.prototype;
+  dart.addTypeTests(color$.PdfColorCmyk);
+  dart.addTypeCaches(color$.PdfColorCmyk);
+  dart.setLibraryUri(color$.PdfColorCmyk, I[1]);
+  dart.setFieldSignature(color$.PdfColorCmyk, () => ({
+    __proto__: dart.getFields(color$.PdfColorCmyk.__proto__),
+    cyan: dart.finalFieldType(core.double),
+    magenta: dart.finalFieldType(core.double),
+    yellow: dart.finalFieldType(core.double),
+    black: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(color$.PdfColorCmyk, ['toString']);
+  var hue$ = dart.privateName(color$, "PdfColorHsv.hue");
+  var saturation$ = dart.privateName(color$, "PdfColorHsv.saturation");
+  var value$ = dart.privateName(color$, "PdfColorHsv.value");
+  color$.PdfColorHsv = class PdfColorHsv extends color$.PdfColor {
+    get hue() {
+      return this[hue$];
+    }
+    set hue(value) {
+      super.hue = value;
+    }
+    get saturation() {
+      return this[saturation$];
+    }
+    set saturation(value) {
+      super.saturation = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    static new(hue, saturation, value, alpha = 1) {
+      let chroma = saturation * value;
+      let secondary = chroma * (1.0 - ((hue / 60.0)[$modulo](2.0) - 1.0)[$abs]());
+      let match = value - chroma;
+      let red = null;
+      let green = null;
+      let blue = null;
+      if (hue < 60.0) {
+        red = chroma;
+        green = secondary;
+        blue = 0.0;
+      } else if (hue < 120.0) {
+        red = secondary;
+        green = chroma;
+        blue = 0.0;
+      } else if (hue < 180.0) {
+        red = 0.0;
+        green = chroma;
+        blue = secondary;
+      } else if (hue < 240.0) {
+        red = 0.0;
+        green = secondary;
+        blue = chroma;
+      } else if (hue < 300.0) {
+        red = secondary;
+        green = 0.0;
+        blue = chroma;
+      } else {
+        red = chroma;
+        green = 0.0;
+        blue = secondary;
+      }
+      return new color$.PdfColorHsv.__(hue, saturation, value, (red + match)[$clamp](0.0, 1.0), (green + match)[$clamp](0.0, 1.0), (blue + match)[$clamp](0.0, 1.0), alpha);
+    }
+    static ['_#new#tearOff'](hue, saturation, value, alpha = 1) {
+      return color$.PdfColorHsv.new(hue, saturation, value, alpha);
+    }
+    static ['_#_#tearOff'](hue, saturation, value, red, green, blue, alpha) {
+      return new color$.PdfColorHsv.__(hue, saturation, value, red, green, blue, alpha);
+    }
+    static fromRgb(red, green, blue, alpha = 1) {
+      let max = math.max(core.double, red, math.max(core.double, green, blue));
+      let min = math.min(core.double, red, math.min(core.double, green, blue));
+      let delta = max - min;
+      let hue = color$._getHue(red, green, blue, max, delta);
+      let saturation = max === 0.0 ? 0.0 : delta / max;
+      return new color$.PdfColorHsv.__(hue, saturation, max, red, green, blue, alpha);
+    }
+    static ['_#fromRgb#tearOff'](red, green, blue, alpha = 1) {
+      return color$.PdfColorHsv.fromRgb(red, green, blue, alpha);
+    }
+    toHsv() {
+      return this;
+    }
+    get complementary() {
+      return color$.PdfColorHsv.new((this.hue - 120)[$modulo](360), this.saturation, this.value, this.alpha);
+    }
+    get monochromatic() {
+      return T.JSArrayOfPdfColorHsv().of([color$.PdfColorHsv.new(this.hue, (this.saturation > 0.5 ? this.saturation - 0.2 : this.saturation + 0.2)[$clamp](0.0, 1.0), (this.value > 0.5 ? this.value - 0.1 : this.value + 0.1)[$clamp](0.0, 1.0)), color$.PdfColorHsv.new(this.hue, (this.saturation > 0.5 ? this.saturation - 0.4 : this.saturation + 0.4)[$clamp](0.0, 1.0), (this.value > 0.5 ? this.value - 0.2 : this.value + 0.2)[$clamp](0.0, 1.0)), color$.PdfColorHsv.new(this.hue, (this.saturation > 0.5 ? this.saturation - 0.15 : this.saturation + 0.15)[$clamp](0.0, 1.0), (this.value > 0.5 ? this.value - 0.05 : this.value + 0.05)[$clamp](0.0, 1.0))]);
+    }
+    get splitcomplementary() {
+      return T.JSArrayOfPdfColorHsv().of([color$.PdfColorHsv.new((this.hue - 150)[$modulo](360), this.saturation, this.value, this.alpha), color$.PdfColorHsv.new((this.hue - 180)[$modulo](360), this.saturation, this.value, this.alpha)]);
+    }
+    get triadic() {
+      return T.JSArrayOfPdfColorHsv().of([color$.PdfColorHsv.new((this.hue + 80)[$modulo](360), this.saturation, this.value, this.alpha), color$.PdfColorHsv.new((this.hue - 120)[$modulo](360), this.saturation, this.value, this.alpha)]);
+    }
+    get tetradic() {
+      return T.JSArrayOfPdfColorHsv().of([color$.PdfColorHsv.new((this.hue + 120)[$modulo](360), this.saturation, this.value, this.alpha), color$.PdfColorHsv.new((this.hue - 150)[$modulo](360), this.saturation, this.value, this.alpha), color$.PdfColorHsv.new((this.hue + 60)[$modulo](360), this.saturation, this.value, this.alpha)]);
+    }
+    get analagous() {
+      return T.JSArrayOfPdfColorHsv().of([color$.PdfColorHsv.new((this.hue + 30)[$modulo](360), this.saturation, this.value, this.alpha), color$.PdfColorHsv.new((this.hue - 20)[$modulo](360), this.saturation, this.value, this.alpha)]);
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + dart.str(this.hue) + ", " + dart.str(this.saturation) + ", " + dart.str(this.value) + ", " + dart.str(this.alpha) + ")";
+    }
+  };
+  (color$.PdfColorHsv.__ = function(hue, saturation, value, red, green, blue, alpha) {
+    this[hue$] = hue;
+    this[saturation$] = saturation;
+    this[value$] = value;
+    if (!(hue >= 0 && hue < 360)) dart.assertFailed(null, I[0], 425, 16, "hue >= 0 && hue < 360");
+    if (!(saturation >= 0 && saturation <= 1)) dart.assertFailed(null, I[0], 426, 16, "saturation >= 0 && saturation <= 1");
+    if (!(value >= 0 && value <= 1)) dart.assertFailed(null, I[0], 427, 16, "value >= 0 && value <= 1");
+    color$.PdfColorHsv.__proto__.new.call(this, red, green, blue, alpha);
+    ;
+  }).prototype = color$.PdfColorHsv.prototype;
+  dart.addTypeTests(color$.PdfColorHsv);
+  dart.addTypeCaches(color$.PdfColorHsv);
+  dart.setStaticMethodSignature(color$.PdfColorHsv, () => ['new', 'fromRgb']);
+  dart.setGetterSignature(color$.PdfColorHsv, () => ({
+    __proto__: dart.getGetters(color$.PdfColorHsv.__proto__),
+    complementary: color$.PdfColorHsv,
+    monochromatic: core.List$(color$.PdfColorHsv),
+    splitcomplementary: core.List$(color$.PdfColorHsv),
+    triadic: core.List$(color$.PdfColorHsv),
+    tetradic: core.List$(color$.PdfColorHsv),
+    analagous: core.List$(color$.PdfColorHsv)
+  }));
+  dart.setLibraryUri(color$.PdfColorHsv, I[1]);
+  dart.setFieldSignature(color$.PdfColorHsv, () => ({
+    __proto__: dart.getFields(color$.PdfColorHsv.__proto__),
+    hue: dart.finalFieldType(core.double),
+    saturation: dart.finalFieldType(core.double),
+    value: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(color$.PdfColorHsv, ['toString']);
+  var hue$0 = dart.privateName(color$, "PdfColorHsl.hue");
+  var saturation$0 = dart.privateName(color$, "PdfColorHsl.saturation");
+  var lightness$ = dart.privateName(color$, "PdfColorHsl.lightness");
+  color$.PdfColorHsl = class PdfColorHsl extends color$.PdfColor {
+    get hue() {
+      return this[hue$0];
+    }
+    set hue(value) {
+      super.hue = value;
+    }
+    get saturation() {
+      return this[saturation$0];
+    }
+    set saturation(value) {
+      super.saturation = value;
+    }
+    get lightness() {
+      return this[lightness$];
+    }
+    set lightness(value) {
+      super.lightness = value;
+    }
+    static new(hue, saturation, lightness, alpha = 1) {
+      let chroma = (1.0 - (2.0 * lightness - 1.0)[$abs]()) * saturation;
+      let secondary = chroma * (1.0 - ((hue / 60.0)[$modulo](2.0) - 1.0)[$abs]());
+      let match = lightness - chroma / 2.0;
+      let red = null;
+      let green = null;
+      let blue = null;
+      if (hue < 60.0) {
+        red = chroma;
+        green = secondary;
+        blue = 0.0;
+      } else if (hue < 120.0) {
+        red = secondary;
+        green = chroma;
+        blue = 0.0;
+      } else if (hue < 180.0) {
+        red = 0.0;
+        green = chroma;
+        blue = secondary;
+      } else if (hue < 240.0) {
+        red = 0.0;
+        green = secondary;
+        blue = chroma;
+      } else if (hue < 300.0) {
+        red = secondary;
+        green = 0.0;
+        blue = chroma;
+      } else {
+        red = chroma;
+        green = 0.0;
+        blue = secondary;
+      }
+      return new color$.PdfColorHsl.__(hue, saturation, lightness, alpha, (red + match)[$clamp](0.0, 1.0), (green + match)[$clamp](0.0, 1.0), (blue + match)[$clamp](0.0, 1.0));
+    }
+    static ['_#new#tearOff'](hue, saturation, lightness, alpha = 1) {
+      return color$.PdfColorHsl.new(hue, saturation, lightness, alpha);
+    }
+    static ['_#_#tearOff'](hue, saturation, lightness, alpha, red, green, blue) {
+      return new color$.PdfColorHsl.__(hue, saturation, lightness, alpha, red, green, blue);
+    }
+    static fromRgb(red, green, blue, alpha = 1) {
+      let max = math.max(core.double, red, math.max(core.double, green, blue));
+      let min = math.min(core.double, red, math.min(core.double, green, blue));
+      let delta = max - min;
+      let hue = color$._getHue(red, green, blue, max, delta);
+      let lightness = (max + min) / 2.0;
+      let saturation = lightness === 1.0 ? 0.0 : (delta / (1.0 - (2.0 * lightness - 1.0)[$abs]()))[$clamp](0.0, 1.0);
+      return new color$.PdfColorHsl.__(hue, saturation, lightness, alpha, red, green, blue);
+    }
+    static ['_#fromRgb#tearOff'](red, green, blue, alpha = 1) {
+      return color$.PdfColorHsl.fromRgb(red, green, blue, alpha);
+    }
+    toHsl() {
+      return this;
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "(" + dart.str(this.hue) + ", " + dart.str(this.saturation) + ", " + dart.str(this.lightness) + ", " + dart.str(this.alpha) + ")";
+    }
+  };
+  (color$.PdfColorHsl.__ = function(hue, saturation, lightness, alpha, red, green, blue) {
+    this[hue$0] = hue;
+    this[saturation$0] = saturation;
+    this[lightness$] = lightness;
+    if (!(hue >= 0 && hue < 360)) dart.assertFailed(null, I[0], 561, 16, "hue >= 0 && hue < 360");
+    if (!(saturation >= 0 && saturation <= 1)) dart.assertFailed(null, I[0], 562, 16, "saturation >= 0 && saturation <= 1");
+    if (!(lightness >= 0 && lightness <= 1)) dart.assertFailed(null, I[0], 563, 16, "lightness >= 0 && lightness <= 1");
+    color$.PdfColorHsl.__proto__.new.call(this, red, green, blue, alpha);
+    ;
+  }).prototype = color$.PdfColorHsl.prototype;
+  dart.addTypeTests(color$.PdfColorHsl);
+  dart.addTypeCaches(color$.PdfColorHsl);
+  dart.setStaticMethodSignature(color$.PdfColorHsl, () => ['new', 'fromRgb']);
+  dart.setLibraryUri(color$.PdfColorHsl, I[1]);
+  dart.setFieldSignature(color$.PdfColorHsl, () => ({
+    __proto__: dart.getFields(color$.PdfColorHsl.__proto__),
+    hue: dart.finalFieldType(core.double),
+    saturation: dart.finalFieldType(core.double),
+    lightness: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(color$.PdfColorHsl, ['toString']);
+  color$._getHue = function _getHue(red, green, blue, max, delta) {
+    let hue = 0 / 0;
+    if (max === 0.0) {
+      hue = 0.0;
+    } else if (max === red) {
+      hue = 60.0 * ((green - blue) / delta)[$modulo](6);
+    } else if (max === green) {
+      hue = 60.0 * ((blue - red) / delta + 2);
+    } else if (max === blue) {
+      hue = 60.0 * ((red - green) / delta + 4);
+    }
+    hue = hue[$isNaN] ? 0.0 : hue;
+    return hue;
+  };
+  dart.trackLibraries("packages/pdf/src/pdf/color.dart", {
+    "package:pdf/src/pdf/color.dart": color$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["color.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/pdf/src/pdf/color.dart.lib.js"}');
+  // Exports:
+  return {
+    src__pdf__color: color$
+  };
+}));
+
+//# sourceMappingURL=color.dart.lib.js.map

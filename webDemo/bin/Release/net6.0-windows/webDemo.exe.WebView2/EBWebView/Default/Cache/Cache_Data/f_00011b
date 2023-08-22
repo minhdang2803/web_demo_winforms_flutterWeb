@@ -1,0 +1,519 @@
+define(['dart_sdk'], (function load__packages__pdf__src__pdf__font__arabic_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var arabic = Object.create(dart.library);
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $contains = dartx.contains;
+  var $containsValue = dartx.containsValue;
+  var $reversed = dartx.reversed;
+  var $toList = dartx.toList;
+  var $length = dartx.length;
+  var $insert = dartx.insert;
+  var $clear = dartx.clear;
+  var $isEmpty = dartx.isEmpty;
+  var $insertAll = dartx.insertAll;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $split = dartx.split;
+  var $codeUnitAt = dartx.codeUnitAt;
+  var $skip = dartx.skip;
+  var $map = dartx.map;
+  var $firstWhere = dartx.firstWhere;
+  var $add = dartx.add;
+  var $addAll = dartx.addAll;
+  var $join = dartx.join;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    JSArrayOfListOfint: () => (T.JSArrayOfListOfint = dart.constFn(_interceptors.JSArray$(T.ListOfint())))(),
+    StringToint: () => (T.StringToint = dart.constFn(dart.fnType(core.int, [core.String])))(),
+    intTobool: () => (T.intTobool = dart.constFn(dart.fnType(core.bool, [core.int])))(),
+    VoidToint: () => (T.VoidToint = dart.constFn(dart.fnType(core.int, [])))(),
+    SyncIterableOfString: () => (T.SyncIterableOfString = dart.constFn(_js_helper.SyncIterable$(core.String)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([1600, 1600, 1600, 1600], core.int);
+    },
+    get C2() {
+      return C[2] = dart.constList([1569], core.int);
+    },
+    get C3() {
+      return C[3] = dart.constList([1570, 65154], core.int);
+    },
+    get C4() {
+      return C[4] = dart.constList([1571, 65156], core.int);
+    },
+    get C5() {
+      return C[5] = dart.constList([1572, 65158], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constList([1573, 65160], core.int);
+    },
+    get C7() {
+      return C[7] = dart.constList([1574, 65162, 65163, 65164], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([1575, 65166], core.int);
+    },
+    get C9() {
+      return C[9] = dart.constList([1576, 65168, 65169, 65170], core.int);
+    },
+    get C10() {
+      return C[10] = dart.constList([1577, 65172], core.int);
+    },
+    get C11() {
+      return C[11] = dart.constList([1578, 65174, 65175, 65176], core.int);
+    },
+    get C12() {
+      return C[12] = dart.constList([1579, 65178, 65179, 65180], core.int);
+    },
+    get C13() {
+      return C[13] = dart.constList([1580, 65182, 65183, 65184], core.int);
+    },
+    get C14() {
+      return C[14] = dart.constList([1581, 65186, 65187, 65188], core.int);
+    },
+    get C15() {
+      return C[15] = dart.constList([1582, 65190, 65191, 65192], core.int);
+    },
+    get C16() {
+      return C[16] = dart.constList([1583, 65194], core.int);
+    },
+    get C17() {
+      return C[17] = dart.constList([1584, 65196], core.int);
+    },
+    get C18() {
+      return C[18] = dart.constList([1585, 65198], core.int);
+    },
+    get C19() {
+      return C[19] = dart.constList([1586, 65200], core.int);
+    },
+    get C20() {
+      return C[20] = dart.constList([1587, 65202, 65203, 65204], core.int);
+    },
+    get C21() {
+      return C[21] = dart.constList([1588, 65206, 65207, 65208], core.int);
+    },
+    get C22() {
+      return C[22] = dart.constList([1589, 65210, 65211, 65212], core.int);
+    },
+    get C23() {
+      return C[23] = dart.constList([1590, 65214, 65215, 65216], core.int);
+    },
+    get C24() {
+      return C[24] = dart.constList([1591, 65218, 65219, 65220], core.int);
+    },
+    get C25() {
+      return C[25] = dart.constList([1592, 65222, 65223, 65224], core.int);
+    },
+    get C26() {
+      return C[26] = dart.constList([1593, 65226, 65227, 65228], core.int);
+    },
+    get C27() {
+      return C[27] = dart.constList([1594, 65230, 65231, 65232], core.int);
+    },
+    get C28() {
+      return C[28] = dart.constList([1601, 65234, 65235, 65236], core.int);
+    },
+    get C29() {
+      return C[29] = dart.constList([1602, 65238, 65239, 65240], core.int);
+    },
+    get C30() {
+      return C[30] = dart.constList([1603, 65242, 65243, 65244], core.int);
+    },
+    get C31() {
+      return C[31] = dart.constList([1604, 65246, 65247, 65248], core.int);
+    },
+    get C32() {
+      return C[32] = dart.constList([1605, 65250, 65251, 65252], core.int);
+    },
+    get C33() {
+      return C[33] = dart.constList([1606, 65254, 65255, 65256], core.int);
+    },
+    get C34() {
+      return C[34] = dart.constList([1607, 65258, 65259, 65260], core.int);
+    },
+    get C35() {
+      return C[35] = dart.constList([1608, 65262], core.int);
+    },
+    get C36() {
+      return C[36] = dart.constList([1609, 65264, 64488, 64489], core.int);
+    },
+    get C37() {
+      return C[37] = dart.constList([1610, 65266, 65267, 65268], core.int);
+    },
+    get C38() {
+      return C[38] = dart.constList([64336, 64337], core.int);
+    },
+    get C39() {
+      return C[39] = dart.constList([64477], core.int);
+    },
+    get C40() {
+      return C[40] = dart.constList([64358, 64359, 64360, 64361], core.int);
+    },
+    get C41() {
+      return C[41] = dart.constList([64350, 64351, 64352, 64353], core.int);
+    },
+    get C42() {
+      return C[42] = dart.constList([64338, 64339, 64340, 64341], core.int);
+    },
+    get C43() {
+      return C[43] = dart.constList([64342, 64343, 64344, 64345], core.int);
+    },
+    get C44() {
+      return C[44] = dart.constList([64354, 64355, 64356, 64357], core.int);
+    },
+    get C45() {
+      return C[45] = dart.constList([64346, 64347, 64348, 64349], core.int);
+    },
+    get C46() {
+      return C[46] = dart.constList([64374, 64375, 64376, 64377], core.int);
+    },
+    get C47() {
+      return C[47] = dart.constList([64370, 64371, 64372, 64373], core.int);
+    },
+    get C48() {
+      return C[48] = dart.constList([64378, 64379, 64380, 64381], core.int);
+    },
+    get C49() {
+      return C[49] = dart.constList([64382, 64383, 64384, 64385], core.int);
+    },
+    get C50() {
+      return C[50] = dart.constList([64392, 64393], core.int);
+    },
+    get C51() {
+      return C[51] = dart.constList([64388, 64389], core.int);
+    },
+    get C52() {
+      return C[52] = dart.constList([64386, 64387], core.int);
+    },
+    get C53() {
+      return C[53] = dart.constList([64390, 64391], core.int);
+    },
+    get C54() {
+      return C[54] = dart.constList([64396, 64397], core.int);
+    },
+    get C55() {
+      return C[55] = dart.constList([64394, 64395], core.int);
+    },
+    get C56() {
+      return C[56] = dart.constList([64362, 64363, 64364, 64365], core.int);
+    },
+    get C57() {
+      return C[57] = dart.constList([64366, 64367, 64368, 64369], core.int);
+    },
+    get C58() {
+      return C[58] = dart.constList([64398, 64399, 64400, 64401], core.int);
+    },
+    get C59() {
+      return C[59] = dart.constList([64467, 64468, 64469, 64470], core.int);
+    },
+    get C60() {
+      return C[60] = dart.constList([64402, 64403, 64404, 64405], core.int);
+    },
+    get C61() {
+      return C[61] = dart.constList([64410, 64411, 64412, 64413], core.int);
+    },
+    get C62() {
+      return C[62] = dart.constList([64406, 64407, 64408, 64409], core.int);
+    },
+    get C63() {
+      return C[63] = dart.constList([64414, 64415], core.int);
+    },
+    get C64() {
+      return C[64] = dart.constList([64416, 64417, 64418, 64419], core.int);
+    },
+    get C65() {
+      return C[65] = dart.constList([64426, 64427, 64428, 64429], core.int);
+    },
+    get C66() {
+      return C[66] = dart.constList([64420, 64421], core.int);
+    },
+    get C67() {
+      return C[67] = dart.constList([64422, 64423, 64424, 64425], core.int);
+    },
+    get C68() {
+      return C[68] = dart.constList([64480, 64481], core.int);
+    },
+    get C69() {
+      return C[69] = dart.constList([64473, 64474], core.int);
+    },
+    get C70() {
+      return C[70] = dart.constList([64471, 64472], core.int);
+    },
+    get C71() {
+      return C[71] = dart.constList([64475, 64476], core.int);
+    },
+    get C72() {
+      return C[72] = dart.constList([64482, 64483], core.int);
+    },
+    get C73() {
+      return C[73] = dart.constList([64478, 64479], core.int);
+    },
+    get C74() {
+      return C[74] = dart.constList([64508, 64509, 64510, 64511], core.int);
+    },
+    get C75() {
+      return C[75] = dart.constList([64484, 64485, 64486, 64487], core.int);
+    },
+    get C76() {
+      return C[76] = dart.constList([64430, 64431], core.int);
+    },
+    get C77() {
+      return C[77] = dart.constList([64432, 64433], core.int);
+    },
+    get C0() {
+      return C[0] = dart.constMap(core.int, dart.dynamic, [1600, C[1] || CT.C1, 1569, C[2] || CT.C2, 1570, C[3] || CT.C3, 1571, C[4] || CT.C4, 1572, C[5] || CT.C5, 1573, C[6] || CT.C6, 1574, C[7] || CT.C7, 1575, C[8] || CT.C8, 1576, C[9] || CT.C9, 1577, C[10] || CT.C10, 1578, C[11] || CT.C11, 1579, C[12] || CT.C12, 1580, C[13] || CT.C13, 1581, C[14] || CT.C14, 1582, C[15] || CT.C15, 1583, C[16] || CT.C16, 1584, C[17] || CT.C17, 1585, C[18] || CT.C18, 1586, C[19] || CT.C19, 1587, C[20] || CT.C20, 1588, C[21] || CT.C21, 1589, C[22] || CT.C22, 1590, C[23] || CT.C23, 1591, C[24] || CT.C24, 1592, C[25] || CT.C25, 1593, C[26] || CT.C26, 1594, C[27] || CT.C27, 1601, C[28] || CT.C28, 1602, C[29] || CT.C29, 1603, C[30] || CT.C30, 1604, C[31] || CT.C31, 1605, C[32] || CT.C32, 1606, C[33] || CT.C33, 1607, C[34] || CT.C34, 1608, C[35] || CT.C35, 1609, C[36] || CT.C36, 1610, C[37] || CT.C37, 1649, C[38] || CT.C38, 1655, C[39] || CT.C39, 1657, C[40] || CT.C40, 1658, C[41] || CT.C41, 1659, C[42] || CT.C42, 1662, C[43] || CT.C43, 1663, C[44] || CT.C44, 1664, C[45] || CT.C45, 1667, C[46] || CT.C46, 1668, C[47] || CT.C47, 1670, C[48] || CT.C48, 1671, C[49] || CT.C49, 1672, C[50] || CT.C50, 1676, C[51] || CT.C51, 1677, C[52] || CT.C52, 1678, C[53] || CT.C53, 1681, C[54] || CT.C54, 1688, C[55] || CT.C55, 1700, C[56] || CT.C56, 1702, C[57] || CT.C57, 1705, C[58] || CT.C58, 1709, C[59] || CT.C59, 1711, C[60] || CT.C60, 1713, C[61] || CT.C61, 1715, C[62] || CT.C62, 1722, C[63] || CT.C63, 1723, C[64] || CT.C64, 1726, C[65] || CT.C65, 1728, C[66] || CT.C66, 1729, C[67] || CT.C67, 1733, C[68] || CT.C68, 1734, C[69] || CT.C69, 1735, C[70] || CT.C70, 1736, C[71] || CT.C71, 1737, C[72] || CT.C72, 1739, C[73] || CT.C73, 1740, C[74] || CT.C74, 1744, C[75] || CT.C75, 1746, C[76] || CT.C76, 1747, C[77] || CT.C77]);
+    },
+    get C79() {
+      return C[79] = dart.constMap(core.int, core.int, [1612, 64606, 1613, 64607, 1614, 64608, 1615, 64609, 1616, 64610, 1648, 64611]);
+    },
+    get C78() {
+      return C[78] = dart.constMap(core.int, dart.dynamic, [1617, C[79] || CT.C79]);
+    },
+    get C81() {
+      return C[81] = dart.constMap(core.int, core.int, [65154, 65269, 65156, 65271, 65160, 65273, 65166, 65275]);
+    },
+    get C82() {
+      return C[82] = dart.constMap(core.int, core.int, [65154, 65270, 65156, 65272, 65160, 65274, 65166, 65276]);
+    },
+    get C85() {
+      return C[85] = dart.constMap(core.int, core.int, [65258, 65010]);
+    },
+    get C84() {
+      return C[84] = dart.constMap(core.int, dart.dynamic, [65248, C[85] || CT.C85]);
+    },
+    get C83() {
+      return C[83] = dart.constMap(core.int, dart.dynamic, [65247, C[84] || CT.C84]);
+    },
+    get C80() {
+      return C[80] = dart.constMap(core.int, dart.dynamic, [65247, C[81] || CT.C81, 65248, C[82] || CT.C82, 65165, C[83] || CT.C83]);
+    },
+    get C86() {
+      return C[86] = dart.constList([1570, 1571, 1573, 1575], core.int);
+    },
+    get C87() {
+      return C[87] = dart.constMap(core.int, core.int, [1611, 1611, 1612, 1612, 1613, 1613, 1614, 1614, 1615, 1615, 1616, 1616, 1617, 1617, 1618, 1618, 1648, 1648, 64606, 64606, 64607, 64607, 64608, 64608, 64609, 64609, 64610, 64610, 64611, 64611]);
+    }
+  }, false);
+  var C = Array(88).fill(void 0);
+  arabic._isInArabicSubstitutionA = function _isInArabicSubstitutionA(letter) {
+    return arabic._arabicSubstitionA[$containsKey](letter);
+  };
+  arabic._isArabicLetter = function _isArabicLetter(letter) {
+    return letter >= 1536 && letter <= 1791 || letter >= 1872 && letter <= 1919 || letter >= 2160 && letter <= 2207 || letter >= 2208 && letter <= 2303 || letter >= 64336 && letter <= 65023 || letter >= 65136 && letter <= 65279 || letter >= 69216 && letter <= 69247 || letter >= 126064 && letter <= 126143 || letter >= 126208 && letter <= 126287 || letter >= 126464 && letter <= 126719;
+  };
+  arabic._isArabicEndLetter = function _isArabicEndLetter(letter) {
+    return arabic._isArabicLetter(letter) && arabic._isInArabicSubstitutionA(letter) && dart.dtest(dart.dsend(dart.dload(arabic._arabicSubstitionA[$_get](letter), 'length'), '<=', [2]));
+  };
+  arabic._isArabicAlfLetter = function _isArabicAlfLetter(letter) {
+    return arabic._isArabicLetter(letter) && arabic._alfletter[$contains](letter);
+  };
+  arabic._arabicLetterHasFinalForm = function _arabicLetterHasFinalForm(letter) {
+    return arabic._isArabicLetter(letter) && arabic._isInArabicSubstitutionA(letter) && dart.dtest(dart.dsend(dart.dload(arabic._arabicSubstitionA[$_get](letter), 'length'), '>=', [2]));
+  };
+  arabic._arabicLetterHasMedialForm = function _arabicLetterHasMedialForm(letter) {
+    return arabic._isArabicLetter(letter) && arabic._isInArabicSubstitutionA(letter) && dart.equals(dart.dload(arabic._arabicSubstitionA[$_get](letter), 'length'), 4);
+  };
+  arabic._isArabicDiacritic = function _isArabicDiacritic(letter) {
+    return arabic._arabicDiacritics[$containsKey](letter);
+  };
+  arabic.isArabicDiacriticValue = function isArabicDiacriticValue(letter) {
+    return arabic._arabicDiacritics[$containsValue](letter);
+  };
+  arabic._resolveLigatures = function _resolveLigatures(lettersq) {
+    let result = T.JSArrayOfint().of([]);
+    let tmpLigatures = arabic._ligatures;
+    let tmpDiacritic = arabic._diacriticLigatures;
+    let letters = lettersq[$reversed][$toList]();
+    let effectedLetters = T.JSArrayOfint().of([]);
+    let effectedDiacritics = T.JSArrayOfint().of([]);
+    let finalDiacritics = T.JSArrayOfint().of([]);
+    for (let i = 0; i < letters[$length]; i = i + 1) {
+      if (arabic.isArabicDiacriticValue(letters[$_get](i))) {
+        effectedDiacritics[$insert](0, letters[$_get](i));
+        if (dart.dtest(dart.dsend(tmpDiacritic, 'containsKey', [letters[$_get](i)]))) {
+          tmpDiacritic = dart.dsend(tmpDiacritic, '_get', [letters[$_get](i)]);
+          if (core.int.is(tmpDiacritic)) {
+            finalDiacritics[$insert](0, tmpDiacritic);
+            tmpDiacritic = arabic._diacriticLigatures;
+            effectedDiacritics[$clear]();
+          }
+        } else {
+          tmpDiacritic = arabic._diacriticLigatures;
+          if (effectedLetters[$isEmpty]) {
+            result[$insertAll](0, finalDiacritics);
+            result[$insertAll](0, effectedDiacritics);
+            finalDiacritics[$clear]();
+            effectedDiacritics[$clear]();
+          }
+        }
+      } else if (dart.dtest(dart.dsend(tmpLigatures, 'containsKey', [letters[$_get](i)]))) {
+        effectedLetters[$insert](0, letters[$_get](i));
+        tmpLigatures = dart.dsend(tmpLigatures, '_get', [letters[$_get](i)]);
+        if (core.int.is(tmpLigatures)) {
+          result[$insert](0, tmpLigatures);
+          tmpLigatures = arabic._ligatures;
+          effectedLetters[$clear]();
+        }
+      } else {
+        tmpLigatures = arabic._ligatures;
+        if (effectedLetters[$isNotEmpty]) {
+          result[$insertAll](0, effectedLetters);
+          effectedLetters[$clear]();
+        }
+        if (effectedLetters[$isEmpty] && effectedDiacritics[$isNotEmpty]) {
+          result[$insertAll](0, effectedDiacritics);
+          effectedDiacritics[$clear]();
+        }
+        result[$insert](0, letters[$_get](i));
+      }
+      if (effectedLetters[$isEmpty] && finalDiacritics[$isNotEmpty]) {
+        result[$insertAll](0, finalDiacritics);
+        finalDiacritics[$clear]();
+      }
+    }
+    return result;
+  };
+  arabic._getCorrectForm = function _getCorrectForm(currentChar, beforeChar, nextChar) {
+    if (arabic._isInArabicSubstitutionA(currentChar) === false) {
+      return -1;
+    }
+    if (!arabic._arabicLetterHasFinalForm(currentChar) || !arabic._isArabicLetter(beforeChar) && !arabic._isArabicLetter(nextChar) || !arabic._isArabicLetter(nextChar) && arabic._isArabicEndLetter(beforeChar) || arabic._isArabicEndLetter(currentChar) && !arabic._isArabicLetter(beforeChar) || arabic._isArabicEndLetter(currentChar) && arabic._isArabicAlfLetter(beforeChar) || arabic._isArabicEndLetter(currentChar) && arabic._isArabicEndLetter(beforeChar)) {
+      return 0;
+    }
+    if (arabic._arabicLetterHasMedialForm(currentChar) && arabic._isArabicLetter(beforeChar) && !arabic._isArabicEndLetter(beforeChar) && arabic._isArabicLetter(nextChar) && arabic._arabicLetterHasFinalForm(nextChar)) {
+      return 3;
+    }
+    if (arabic._isArabicEndLetter(currentChar) || !arabic._isArabicLetter(nextChar)) {
+      return 1;
+    }
+    return 2;
+  };
+  arabic._parse = function _parse(text) {
+    return new (T.SyncIterableOfString()).new(function* _parse() {
+      let words = text[$split](" ");
+      let notArabicWords = T.JSArrayOfListOfint().of([]);
+      let first = true;
+      for (let word of words) {
+        let newWord = T.JSArrayOfint().of([]);
+        let isNewWordArabic = false;
+        let prevLetter = 0;
+        for (let j = 0; j < word.length; j = j + 1) {
+          let currentLetter = word[$codeUnitAt](j);
+          if (arabic._isArabicDiacritic(currentLetter)) {
+            newWord[$insert](0, dart.nullCheck(arabic._arabicDiacritics[$_get](currentLetter)));
+            continue;
+          }
+          let nextLetter = word[$split]("")[$skip](j + 1)[$map](core.int, dart.fn(e => e[$codeUnitAt](0), T.StringToint()))[$firstWhere](dart.fn(element => !arabic._isArabicDiacritic(element), T.intTobool()), {orElse: dart.fn(() => 0, T.VoidToint())});
+          if (arabic._isArabicLetter(currentLetter)) {
+            isNewWordArabic = true;
+            let position = arabic._getCorrectForm(currentLetter, prevLetter, nextLetter);
+            prevLetter = currentLetter;
+            if (position !== -1) {
+              newWord[$insert](0, core.int.as(dart.dsend(arabic._arabicSubstitionA[$_get](currentLetter), '_get', [position])));
+            } else {
+              newWord[$add](currentLetter);
+            }
+          } else {
+            prevLetter = 0;
+            if (isNewWordArabic && currentLetter > 32) {
+              newWord[$insert](0, currentLetter);
+            } else {
+              newWord[$add](currentLetter);
+            }
+          }
+        }
+        if (!first && isNewWordArabic) {
+          yield " ";
+        }
+        first = false;
+        if (isNewWordArabic) {
+          isNewWordArabic = false;
+          for (let notArabicNewWord of notArabicWords) {
+            yield core.String.fromCharCodes(notArabicNewWord) + " ";
+          }
+          notArabicWords[$clear]();
+          yield core.String.fromCharCodes(arabic._resolveLigatures(newWord));
+        } else {
+          notArabicWords[$insert](0, newWord);
+        }
+      }
+      for (let i = 0; i < notArabicWords[$length]; i = i + 1) {
+        if (!first) {
+          yield " ";
+        }
+        yield core.String.fromCharCodes(notArabicWords[$_get](i));
+      }
+    });
+  };
+  arabic.convert = function convert(input) {
+    let lines = input[$split]("\n");
+    let parsed = T.JSArrayOfString().of([]);
+    for (let i = 0; i < lines[$length]; i = i + 1) {
+      if (lines[$_get](i)[$isEmpty]) {
+        continue;
+      }
+      parsed[$addAll]((() => {
+        let t0 = T.ListOfString().of(arabic._parse(lines[$_get](i)));
+        if (i !== lines[$length] - 1) t0.push("\n");
+        return t0;
+      })());
+    }
+    return parsed[$join]();
+  };
+  dart.defineLazy(arabic, {
+    /*arabic._arabicSubstitionA*/get _arabicSubstitionA() {
+      return C[0] || CT.C0;
+    },
+    /*arabic._diacriticLigatures*/get _diacriticLigatures() {
+      return C[78] || CT.C78;
+    },
+    /*arabic._ligatures*/get _ligatures() {
+      return C[80] || CT.C80;
+    },
+    /*arabic._alfletter*/get _alfletter() {
+      return C[86] || CT.C86;
+    },
+    /*arabic._arabicDiacritics*/get _arabicDiacritics() {
+      return C[87] || CT.C87;
+    },
+    /*arabic._noChangeInForm*/get _noChangeInForm() {
+      return -1;
+    },
+    /*arabic._isolatedForm*/get _isolatedForm() {
+      return 0;
+    },
+    /*arabic._finalForm*/get _finalForm() {
+      return 1;
+    },
+    /*arabic._initialForm*/get _initialForm() {
+      return 2;
+    },
+    /*arabic._medialForm*/get _medialForm() {
+      return 3;
+    }
+  }, false);
+  dart.trackLibraries("packages/pdf/src/pdf/font/arabic.dart", {
+    "package:pdf/src/pdf/font/arabic.dart": arabic
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["arabic.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/pdf/src/pdf/font/arabic.dart.lib.js"}');
+  // Exports:
+  return {
+    src__pdf__font__arabic: arabic
+  };
+}));
+
+//# sourceMappingURL=arabic.dart.lib.js.map

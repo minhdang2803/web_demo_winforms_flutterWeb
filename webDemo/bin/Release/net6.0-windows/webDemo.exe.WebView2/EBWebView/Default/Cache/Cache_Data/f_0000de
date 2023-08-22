@@ -1,0 +1,362 @@
+define(['dart_sdk', 'packages/image/src/util/input_buffer.dart', 'packages/image/src/formats/webp/webp_info.dart', 'packages/image/src/formats/webp/webp_huffman.dart', 'packages/image/src/formats/webp/vp8_types.dart', 'packages/image/src/formats/webp/webp_frame.dart', 'packages/image/src/animation.dart', 'packages/image/src/image.dart', 'packages/image/src/transform/copy_into.dart', 'packages/image/src/color.dart', 'packages/image/src/formats/decoder.dart'], (function load__packages__image__src__formats__webp_decoder_dart(dart_sdk, packages__image__src__util__input_buffer$46dart, packages__image__src__formats__webp__webp_info$46dart, packages__image__src__formats__webp__webp_huffman$46dart, packages__image__src__formats__webp__vp8_types$46dart, packages__image__src__formats__webp__webp_frame$46dart, packages__image__src__animation$46dart, packages__image__src__image$46dart, packages__image__src__transform__copy_into$46dart, packages__image__src__color$46dart, packages__image__src__formats__decoder$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  const webp_info = packages__image__src__formats__webp__webp_info$46dart.src__formats__webp__webp_info;
+  const vp8l$ = packages__image__src__formats__webp__webp_huffman$46dart.src__formats__webp__vp8l;
+  const vp8$ = packages__image__src__formats__webp__vp8_types$46dart.src__formats__webp__vp8;
+  const webp_frame = packages__image__src__formats__webp__webp_frame$46dart.src__formats__webp__webp_frame;
+  const animation = packages__image__src__animation$46dart.src__animation;
+  const image$ = packages__image__src__image$46dart.src__image;
+  const copy_into = packages__image__src__transform__copy_into$46dart.src__transform__copy_into;
+  const color = packages__image__src__color$46dart.src__color;
+  const decoder = packages__image__src__formats__decoder$46dart.src__formats__decoder;
+  var webp_decoder = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $rightShift = dartx['>>'];
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:image/src/formats/webp_decoder.dart"];
+  var _info = dart.privateName(webp_decoder, "_info");
+  var _input = dart.privateName(webp_decoder, "_input");
+  var _getHeader = dart.privateName(webp_decoder, "_getHeader");
+  var _getInfo = dart.privateName(webp_decoder, "_getInfo");
+  var _decodeFrame = dart.privateName(webp_decoder, "_decodeFrame");
+  var _getVp8xInfo = dart.privateName(webp_decoder, "_getVp8xInfo");
+  var _getAnimInfo = dart.privateName(webp_decoder, "_getAnimInfo");
+  var _getAnimFrameInfo = dart.privateName(webp_decoder, "_getAnimFrameInfo");
+  webp_decoder.WebPDecoder = class WebPDecoder extends decoder.Decoder {
+    static ['_#new#tearOff'](bytes = null) {
+      return new webp_decoder.WebPDecoder.new(bytes);
+    }
+    get info() {
+      return this[_info];
+    }
+    isValidFile(bytes) {
+      this[_input] = new input_buffer.InputBuffer.new(bytes);
+      if (!this[_getHeader](dart.nullCheck(this[_input]))) {
+        return false;
+      }
+      return true;
+    }
+    numFrames() {
+      return this[_info] != null ? dart.nullCheck(this[_info]).numFrames : 0;
+    }
+    startDecode(bytes) {
+      this[_input] = new input_buffer.InputBuffer.new(bytes);
+      if (!this[_getHeader](dart.nullCheck(this[_input]))) {
+        return null;
+      }
+      this[_info] = new webp_info.InternalWebPInfo.new();
+      if (!this[_getInfo](dart.nullCheck(this[_input]), this[_info])) {
+        return null;
+      }
+      switch (dart.nullCheck(this[_info]).format) {
+        case 3:
+          {
+            dart.nullCheck(this[_info]).numFrames = dart.nullCheck(this[_info]).frames[$length];
+            return this[_info];
+          }
+        case 2:
+          {
+            dart.nullCheck(this[_input]).offset = dart.nullCheck(this[_info]).vp8Position;
+            let vp8l = new vp8l$.VP8L.new(dart.nullCheck(this[_input]), dart.nullCheck(this[_info]));
+            if (!vp8l.decodeHeader()) {
+              return null;
+            }
+            dart.nullCheck(this[_info]).numFrames = dart.nullCheck(this[_info]).frames[$length];
+            return this[_info];
+          }
+        case 1:
+          {
+            dart.nullCheck(this[_input]).offset = dart.nullCheck(this[_info]).vp8Position;
+            let vp8 = new vp8$.VP8.new(dart.nullCheck(this[_input]), dart.nullCheck(this[_info]));
+            if (!vp8.decodeHeader()) {
+              return null;
+            }
+            dart.nullCheck(this[_info]).numFrames = dart.nullCheck(this[_info]).frames[$length];
+            return this[_info];
+          }
+      }
+      return null;
+    }
+    decodeFrame(frame) {
+      if (this[_input] == null || this[_info] == null) {
+        return null;
+      }
+      if (dart.nullCheck(this[_info]).hasAnimation) {
+        if (frame >= dart.nullCheck(this[_info]).frames[$length] || frame < 0) {
+          return null;
+        }
+        let f = webp_frame.InternalWebPFrame.as(dart.nullCheck(this[_info]).frames[$_get](frame));
+        let frameData = dart.nullCheck(this[_input]).subset(f.frameSize, {position: f.framePosition});
+        return this[_decodeFrame](frameData, {frame: frame});
+      }
+      if (dart.nullCheck(this[_info]).format === 2) {
+        let data = dart.nullCheck(this[_input]).subset(dart.nullCheck(this[_info]).vp8Size, {position: dart.nullCheck(this[_info]).vp8Position});
+        return new vp8l$.VP8L.new(data, dart.nullCheck(this[_info])).decode();
+      } else if (dart.nullCheck(this[_info]).format === 1) {
+        let data = dart.nullCheck(this[_input]).subset(dart.nullCheck(this[_info]).vp8Size, {position: dart.nullCheck(this[_info]).vp8Position});
+        return new vp8$.VP8.new(data, dart.nullCheck(this[_info])).decode();
+      }
+      return null;
+    }
+    decodeImage(bytes, opts) {
+      let frame = opts && 'frame' in opts ? opts.frame : 0;
+      this.startDecode(bytes);
+      dart.nullCheck(this[_info]).frame = 0;
+      dart.nullCheck(this[_info]).numFrames = 1;
+      return this.decodeFrame(frame);
+    }
+    decodeAnimation(bytes) {
+      if (this.startDecode(bytes) == null) {
+        return null;
+      }
+      let anim = new animation.Animation.new();
+      anim.width = dart.nullCheck(this[_info]).width;
+      anim.height = dart.nullCheck(this[_info]).height;
+      anim.loopCount = dart.nullCheck(this[_info]).animLoopCount;
+      if (dart.nullCheck(this[_info]).hasAnimation) {
+        let lastImage = new image$.Image.new(dart.nullCheck(this[_info]).width, dart.nullCheck(this[_info]).height);
+        for (let i = 0; i < dart.nullCheck(this[_info]).numFrames; i = i + 1) {
+          dart.nullCheck(this[_info]).frame = i;
+          lastImage = new image$.Image.from(lastImage);
+          let frame = dart.nullCheck(this[_info]).frames[$_get](i);
+          let image = this.decodeFrame(i);
+          if (image == null) {
+            return null;
+          }
+          if (frame.clearFrame) {
+            lastImage.fill(0);
+          }
+          copy_into.copyInto(lastImage, image, {dstX: frame.x, dstY: frame.y});
+          lastImage.duration = frame.duration;
+          anim.addFrame(lastImage);
+        }
+      } else {
+        let image = this.decodeImage(bytes);
+        if (image == null) {
+          return null;
+        }
+        anim.addFrame(image);
+      }
+      return anim;
+    }
+    [_decodeFrame](input, opts) {
+      let frame = opts && 'frame' in opts ? opts.frame : 0;
+      let webp = new webp_info.InternalWebPInfo.new();
+      if (!this[_getInfo](input, webp)) {
+        return null;
+      }
+      if (webp.format === 0) {
+        return null;
+      }
+      webp.frame = dart.nullCheck(this[_info]).frame;
+      webp.numFrames = dart.nullCheck(this[_info]).numFrames;
+      if (webp.hasAnimation) {
+        if (frame >= webp.frames[$length] || frame < 0) {
+          return null;
+        }
+        let f = webp_frame.InternalWebPFrame.as(webp.frames[$_get](frame));
+        let frameData = input.subset(f.frameSize, {position: f.framePosition});
+        return this[_decodeFrame](frameData, {frame: frame});
+      } else {
+        let data = input.subset(webp.vp8Size, {position: webp.vp8Position});
+        if (webp.format === 2) {
+          return new vp8l$.VP8L.new(data, webp).decode();
+        } else if (webp.format === 1) {
+          return new vp8$.VP8.new(data, webp).decode();
+        }
+      }
+      return null;
+    }
+    [_getHeader](input) {
+      let tag = input.readString(4);
+      if (tag !== "RIFF") {
+        return false;
+      }
+      input.readUint32();
+      tag = input.readString(4);
+      if (tag !== "WEBP") {
+        return false;
+      }
+      return true;
+    }
+    [_getInfo](input, webp) {
+      let found = false;
+      while (!input.isEOS && !found) {
+        let tag = input.readString(4);
+        let size = input.readUint32();
+        let diskSize = (size + 1)[$rightShift](1) << 1 >>> 0;
+        let p = input.position;
+        switch (tag) {
+          case "VP8X":
+            {
+              if (!this[_getVp8xInfo](input, webp)) {
+                return false;
+              }
+              break;
+            }
+          case "VP8 ":
+            {
+              dart.nullCheck(webp).vp8Position = input.position;
+              webp.vp8Size = size;
+              webp.format = 1;
+              found = true;
+              break;
+            }
+          case "VP8L":
+            {
+              dart.nullCheck(webp).vp8Position = input.position;
+              webp.vp8Size = size;
+              webp.format = 2;
+              found = true;
+              break;
+            }
+          case "ALPH":
+            {
+              dart.nullCheck(webp).alphaData = new input_buffer.InputBuffer.new(input.buffer, {bigEndian: input.bigEndian});
+              dart.nullCheck(webp.alphaData).offset = input.offset;
+              webp.alphaSize = size;
+              input.skip(diskSize);
+              break;
+            }
+          case "ANIM":
+            {
+              dart.nullCheck(webp).format = 3;
+              if (!this[_getAnimInfo](input, webp)) {
+                return false;
+              }
+              break;
+            }
+          case "ANMF":
+            {
+              if (!this[_getAnimFrameInfo](input, webp, size)) {
+                return false;
+              }
+              break;
+            }
+          case "ICCP":
+            {
+              dart.nullCheck(webp).iccp = input.readBytes(size).toUint8List();
+              break;
+            }
+          case "EXIF":
+            {
+              dart.nullCheck(webp).exif = input.readString(size);
+              break;
+            }
+          case "XMP ":
+            {
+              dart.nullCheck(webp).xmp = input.readString(size);
+              break;
+            }
+          default:
+            {
+              core.print("UNKNOWN WEBP TAG: " + tag);
+              input.skip(diskSize);
+              break;
+            }
+        }
+        let remainder = diskSize - (input.position - p);
+        if (remainder > 0) {
+          input.skip(remainder);
+        }
+      }
+      if (!dart.nullCheck(webp).hasAlpha) {
+        webp.hasAlpha = webp.alphaData != null;
+      }
+      return webp.format !== 0;
+    }
+    [_getVp8xInfo](input, webp) {
+      let b = input.readByte();
+      if ((b & 192) !== 0) {
+        return false;
+      }
+      let alpha = b >> 4 & 1;
+      let a = b >> 1 & 1;
+      if ((b & 1) !== 0) {
+        return false;
+      }
+      if (input.readUint24() !== 0) {
+        return false;
+      }
+      let w = input.readUint24() + 1;
+      let h = input.readUint24() + 1;
+      dart.nullCheck(webp).width = w;
+      webp.height = h;
+      webp.hasAnimation = a !== 0;
+      webp.hasAlpha = alpha !== 0;
+      return true;
+    }
+    [_getAnimInfo](input, webp) {
+      let c = input.readUint32();
+      webp.animLoopCount = input.readUint16();
+      let a = color.getRed(c);
+      let r = color.getGreen(c);
+      let g = color.getBlue(c);
+      let b = color.getAlpha(c);
+      webp.backgroundColor = color.getColor(r, g, b, a);
+      return true;
+    }
+    [_getAnimFrameInfo](input, webp, size) {
+      let frame = new webp_frame.InternalWebPFrame.new(input, size);
+      if (!frame.isValid) {
+        return false;
+      }
+      dart.nullCheck(webp).frames[$add](frame);
+      return true;
+    }
+  };
+  (webp_decoder.WebPDecoder.new = function(bytes = null) {
+    this[_info] = null;
+    this[_input] = null;
+    if (bytes != null) {
+      this.startDecode(bytes);
+    }
+  }).prototype = webp_decoder.WebPDecoder.prototype;
+  dart.addTypeTests(webp_decoder.WebPDecoder);
+  dart.addTypeCaches(webp_decoder.WebPDecoder);
+  dart.setMethodSignature(webp_decoder.WebPDecoder, () => ({
+    __proto__: dart.getMethods(webp_decoder.WebPDecoder.__proto__),
+    isValidFile: dart.fnType(core.bool, [core.List$(core.int)]),
+    numFrames: dart.fnType(core.int, []),
+    startDecode: dart.fnType(dart.nullable(webp_info.WebPInfo), [core.List$(core.int)]),
+    decodeFrame: dart.fnType(dart.nullable(image$.Image), [core.int]),
+    decodeImage: dart.fnType(dart.nullable(image$.Image), [core.List$(core.int)], {frame: core.int}, {}),
+    decodeAnimation: dart.fnType(dart.nullable(animation.Animation), [core.List$(core.int)]),
+    [_decodeFrame]: dart.fnType(dart.nullable(image$.Image), [input_buffer.InputBuffer], {frame: core.int}, {}),
+    [_getHeader]: dart.fnType(core.bool, [input_buffer.InputBuffer]),
+    [_getInfo]: dart.fnType(core.bool, [input_buffer.InputBuffer, dart.nullable(webp_info.InternalWebPInfo)]),
+    [_getVp8xInfo]: dart.fnType(core.bool, [input_buffer.InputBuffer, dart.nullable(webp_info.WebPInfo)]),
+    [_getAnimInfo]: dart.fnType(core.bool, [input_buffer.InputBuffer, webp_info.WebPInfo]),
+    [_getAnimFrameInfo]: dart.fnType(core.bool, [input_buffer.InputBuffer, dart.nullable(webp_info.WebPInfo), core.int])
+  }));
+  dart.setGetterSignature(webp_decoder.WebPDecoder, () => ({
+    __proto__: dart.getGetters(webp_decoder.WebPDecoder.__proto__),
+    info: dart.nullable(webp_info.WebPInfo)
+  }));
+  dart.setLibraryUri(webp_decoder.WebPDecoder, I[0]);
+  dart.setFieldSignature(webp_decoder.WebPDecoder, () => ({
+    __proto__: dart.getFields(webp_decoder.WebPDecoder.__proto__),
+    [_info]: dart.fieldType(dart.nullable(webp_info.InternalWebPInfo)),
+    [_input]: dart.fieldType(dart.nullable(input_buffer.InputBuffer))
+  }));
+  dart.trackLibraries("packages/image/src/formats/webp_decoder.dart", {
+    "package:image/src/formats/webp_decoder.dart": webp_decoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["webp_decoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/formats/webp_decoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__webp_decoder: webp_decoder
+  };
+}));
+
+//# sourceMappingURL=webp_decoder.dart.lib.js.map

@@ -1,0 +1,474 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__visibility_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__foundation__debug$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const ticker_provider = packages__flutter__src__widgets__title$46dart.src__widgets__ticker_provider;
+  const sliver = packages__flutter__src__widgets__title$46dart.src__widgets__sliver;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  var visibility = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 30,
+        [_Location_line]: 58,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[1] || CT.C1,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Visibility",
+        [_Location_column]: 9,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "IgnorePointer",
+        [_Location_column]: 18,
+        [_Location_line]: 219,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Opacity",
+        [_Location_column]: 14,
+        [_Location_line]: 225,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TickerMode",
+        [_Location_column]: 18,
+        [_Location_line]: 237,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Offstage",
+        [_Location_column]: 14,
+        [_Location_line]: 239,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SliverToBoxAdapter",
+        [_Location_column]: 36,
+        [_Location_line]: 303,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: basic.SliverToBoxAdapter.prototype,
+        [Widget__location]: C[8] || CT.C8,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SliverVisibility",
+        [_Location_column]: 9,
+        [_Location_line]: 300,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SliverIgnorePointer",
+        [_Location_column]: 18,
+        [_Location_line]: 457,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SliverOpacity",
+        [_Location_column]: 14,
+        [_Location_line]: 463,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "TickerMode",
+        [_Location_column]: 18,
+        [_Location_line]: 475,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SliverOffstage",
+        [_Location_column]: 14,
+        [_Location_line]: 477,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart"
+      });
+    }
+  }, false);
+  var C = Array(14).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/visibility.dart",
+    "package:flutter/src/widgets/visibility.dart"
+  ];
+  var child$ = dart.privateName(visibility, "Visibility.child");
+  var replacement$ = dart.privateName(visibility, "Visibility.replacement");
+  var visible$ = dart.privateName(visibility, "Visibility.visible");
+  var maintainState$ = dart.privateName(visibility, "Visibility.maintainState");
+  var maintainAnimation$ = dart.privateName(visibility, "Visibility.maintainAnimation");
+  var maintainSize$ = dart.privateName(visibility, "Visibility.maintainSize");
+  var maintainSemantics$ = dart.privateName(visibility, "Visibility.maintainSemantics");
+  var maintainInteractivity$ = dart.privateName(visibility, "Visibility.maintainInteractivity");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  visibility.Visibility = class Visibility extends framework.StatelessWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get replacement() {
+      return this[replacement$];
+    }
+    set replacement(value) {
+      super.replacement = value;
+    }
+    get visible() {
+      return this[visible$];
+    }
+    set visible(value) {
+      super.visible = value;
+    }
+    get maintainState() {
+      return this[maintainState$];
+    }
+    set maintainState(value) {
+      super.maintainState = value;
+    }
+    get maintainAnimation() {
+      return this[maintainAnimation$];
+    }
+    set maintainAnimation(value) {
+      super.maintainAnimation = value;
+    }
+    get maintainSize() {
+      return this[maintainSize$];
+    }
+    set maintainSize(value) {
+      super.maintainSize = value;
+    }
+    get maintainSemantics() {
+      return this[maintainSemantics$];
+    }
+    set maintainSemantics(value) {
+      super.maintainSemantics = value;
+    }
+    get maintainInteractivity() {
+      return this[maintainInteractivity$];
+    }
+    set maintainInteractivity(value) {
+      super.maintainInteractivity = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let replacement = opts && 'replacement' in opts ? opts.replacement : C[0] || CT.C0;
+      let visible = opts && 'visible' in opts ? opts.visible : true;
+      let maintainState = opts && 'maintainState' in opts ? opts.maintainState : false;
+      let maintainAnimation = opts && 'maintainAnimation' in opts ? opts.maintainAnimation : false;
+      let maintainSize = opts && 'maintainSize' in opts ? opts.maintainSize : false;
+      let maintainSemantics = opts && 'maintainSemantics' in opts ? opts.maintainSemantics : false;
+      let maintainInteractivity = opts && 'maintainInteractivity' in opts ? opts.maintainInteractivity : false;
+      return new visibility.Visibility.new({key: key, child: child, replacement: replacement, visible: visible, maintainState: maintainState, maintainAnimation: maintainAnimation, maintainSize: maintainSize, maintainSemantics: maintainSemantics, maintainInteractivity: maintainInteractivity, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+    }
+    build(context) {
+      if (this.maintainSize) {
+        let result = this.child;
+        if (!this.maintainInteractivity) {
+          result = new basic.IgnorePointer.new({ignoring: !this.visible, ignoringSemantics: !this.visible && !this.maintainSemantics, child: this.child, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+        }
+        return new basic.Opacity.new({opacity: this.visible ? 1.0 : 0.0, alwaysIncludeSemantics: this.maintainSemantics, child: result, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+      }
+      if (!!this.maintainInteractivity) dart.assertFailed(null, I[0], 231, 12, "!maintainInteractivity");
+      if (!!this.maintainSemantics) dart.assertFailed(null, I[0], 232, 12, "!maintainSemantics");
+      if (!!this.maintainSize) dart.assertFailed(null, I[0], 233, 12, "!maintainSize");
+      if (this.maintainState) {
+        let result = this.child;
+        if (!this.maintainAnimation) {
+          result = new ticker_provider.TickerMode.new({enabled: this.visible, child: this.child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+        }
+        return new basic.Offstage.new({offstage: !this.visible, child: result, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+      }
+      if (!!this.maintainAnimation) dart.assertFailed(null, I[0], 244, 12, "!maintainAnimation");
+      if (!!this.maintainState) dart.assertFailed(null, I[0], 245, 12, "!maintainState");
+      return this.visible ? this.child : this.replacement;
+    }
+    debugFillProperties(properties) {
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.FlagProperty.new("visible", {value: this.visible, ifFalse: "hidden", ifTrue: "visible"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainState", {value: this.maintainState, ifFalse: "maintainState"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainAnimation", {value: this.maintainAnimation, ifFalse: "maintainAnimation"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainSize", {value: this.maintainSize, ifFalse: "maintainSize"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainSemantics", {value: this.maintainSemantics, ifFalse: "maintainSemantics"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainInteractivity", {value: this.maintainInteractivity, ifFalse: "maintainInteractivity"}));
+    }
+  };
+  (visibility.Visibility.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let replacement = opts && 'replacement' in opts ? opts.replacement : C[0] || CT.C0;
+    let visible = opts && 'visible' in opts ? opts.visible : true;
+    let maintainState = opts && 'maintainState' in opts ? opts.maintainState : false;
+    let maintainAnimation = opts && 'maintainAnimation' in opts ? opts.maintainAnimation : false;
+    let maintainSize = opts && 'maintainSize' in opts ? opts.maintainSize : false;
+    let maintainSemantics = opts && 'maintainSemantics' in opts ? opts.maintainSemantics : false;
+    let maintainInteractivity = opts && 'maintainInteractivity' in opts ? opts.maintainInteractivity : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[replacement$] = replacement;
+    this[visible$] = visible;
+    this[maintainState$] = maintainState;
+    this[maintainAnimation$] = maintainAnimation;
+    this[maintainSize$] = maintainSize;
+    this[maintainSemantics$] = maintainSemantics;
+    this[maintainInteractivity$] = maintainInteractivity;
+    if (!(child !== null)) dart.assertFailed(null, I[0], 65, 15, "child != null");
+    if (!(replacement !== null)) dart.assertFailed(null, I[0], 66, 15, "replacement != null");
+    if (!(visible !== null)) dart.assertFailed(null, I[0], 67, 15, "visible != null");
+    if (!(maintainState !== null)) dart.assertFailed(null, I[0], 68, 15, "maintainState != null");
+    if (!(maintainAnimation !== null)) dart.assertFailed(null, I[0], 69, 15, "maintainAnimation != null");
+    if (!(maintainSize !== null)) dart.assertFailed(null, I[0], 70, 15, "maintainSize != null");
+    if (!(maintainState === true || maintainAnimation === false)) dart.assertFailed("Cannot maintain animations if the state is not also maintained.", I[0], 72, 10, "maintainState == true || maintainAnimation == false");
+    if (!(maintainAnimation === true || maintainSize === false)) dart.assertFailed("Cannot maintain size if animations are not maintained.", I[0], 76, 10, "maintainAnimation == true || maintainSize == false");
+    if (!(maintainSize === true || maintainSemantics === false)) dart.assertFailed("Cannot maintain semantics if size is not maintained.", I[0], 80, 10, "maintainSize == true || maintainSemantics == false");
+    if (!(maintainSize === true || maintainInteractivity === false)) dart.assertFailed("Cannot maintain interactivity if size is not maintained.", I[0], 84, 10, "maintainSize == true || maintainInteractivity == false");
+    visibility.Visibility.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = visibility.Visibility.prototype;
+  dart.addTypeTests(visibility.Visibility);
+  dart.addTypeCaches(visibility.Visibility);
+  dart.setMethodSignature(visibility.Visibility, () => ({
+    __proto__: dart.getMethods(visibility.Visibility.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(visibility.Visibility, I[1]);
+  dart.setFieldSignature(visibility.Visibility, () => ({
+    __proto__: dart.getFields(visibility.Visibility.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    replacement: dart.finalFieldType(framework.Widget),
+    visible: dart.finalFieldType(core.bool),
+    maintainState: dart.finalFieldType(core.bool),
+    maintainAnimation: dart.finalFieldType(core.bool),
+    maintainSize: dart.finalFieldType(core.bool),
+    maintainSemantics: dart.finalFieldType(core.bool),
+    maintainInteractivity: dart.finalFieldType(core.bool)
+  }));
+  var sliver$ = dart.privateName(visibility, "SliverVisibility.sliver");
+  var replacementSliver$ = dart.privateName(visibility, "SliverVisibility.replacementSliver");
+  var visible$0 = dart.privateName(visibility, "SliverVisibility.visible");
+  var maintainState$0 = dart.privateName(visibility, "SliverVisibility.maintainState");
+  var maintainAnimation$0 = dart.privateName(visibility, "SliverVisibility.maintainAnimation");
+  var maintainSize$0 = dart.privateName(visibility, "SliverVisibility.maintainSize");
+  var maintainSemantics$0 = dart.privateName(visibility, "SliverVisibility.maintainSemantics");
+  var maintainInteractivity$0 = dart.privateName(visibility, "SliverVisibility.maintainInteractivity");
+  visibility.SliverVisibility = class SliverVisibility extends framework.StatelessWidget {
+    get sliver() {
+      return this[sliver$];
+    }
+    set sliver(value) {
+      super.sliver = value;
+    }
+    get replacementSliver() {
+      return this[replacementSliver$];
+    }
+    set replacementSliver(value) {
+      super.replacementSliver = value;
+    }
+    get visible() {
+      return this[visible$0];
+    }
+    set visible(value) {
+      super.visible = value;
+    }
+    get maintainState() {
+      return this[maintainState$0];
+    }
+    set maintainState(value) {
+      super.maintainState = value;
+    }
+    get maintainAnimation() {
+      return this[maintainAnimation$0];
+    }
+    set maintainAnimation(value) {
+      super.maintainAnimation = value;
+    }
+    get maintainSize() {
+      return this[maintainSize$0];
+    }
+    set maintainSize(value) {
+      super.maintainSize = value;
+    }
+    get maintainSemantics() {
+      return this[maintainSemantics$0];
+    }
+    set maintainSemantics(value) {
+      super.maintainSemantics = value;
+    }
+    get maintainInteractivity() {
+      return this[maintainInteractivity$0];
+    }
+    set maintainInteractivity(value) {
+      super.maintainInteractivity = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let sliver = opts && 'sliver' in opts ? opts.sliver : null;
+      let replacementSliver = opts && 'replacementSliver' in opts ? opts.replacementSliver : C[7] || CT.C7;
+      let visible = opts && 'visible' in opts ? opts.visible : true;
+      let maintainState = opts && 'maintainState' in opts ? opts.maintainState : false;
+      let maintainAnimation = opts && 'maintainAnimation' in opts ? opts.maintainAnimation : false;
+      let maintainSize = opts && 'maintainSize' in opts ? opts.maintainSize : false;
+      let maintainSemantics = opts && 'maintainSemantics' in opts ? opts.maintainSemantics : false;
+      let maintainInteractivity = opts && 'maintainInteractivity' in opts ? opts.maintainInteractivity : false;
+      return new visibility.SliverVisibility.new({key: key, sliver: sliver, replacementSliver: replacementSliver, visible: visible, maintainState: maintainState, maintainAnimation: maintainAnimation, maintainSize: maintainSize, maintainSemantics: maintainSemantics, maintainInteractivity: maintainInteractivity, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+    }
+    build(context) {
+      if (this.maintainSize) {
+        let result = this.sliver;
+        if (!this.maintainInteractivity) {
+          result = new sliver.SliverIgnorePointer.new({sliver: this.sliver, ignoring: !this.visible, ignoringSemantics: !this.visible && !this.maintainSemantics, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+        }
+        return new sliver.SliverOpacity.new({opacity: this.visible ? 1.0 : 0.0, alwaysIncludeSemantics: this.maintainSemantics, sliver: result, $creationLocationd_0dea112b090073317d4: C[11] || CT.C11});
+      }
+      if (!!this.maintainInteractivity) dart.assertFailed(null, I[0], 469, 12, "!maintainInteractivity");
+      if (!!this.maintainSemantics) dart.assertFailed(null, I[0], 470, 12, "!maintainSemantics");
+      if (!!this.maintainSize) dart.assertFailed(null, I[0], 471, 12, "!maintainSize");
+      if (this.maintainState) {
+        let result = this.sliver;
+        if (!this.maintainAnimation) {
+          result = new ticker_provider.TickerMode.new({enabled: this.visible, child: this.sliver, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+        }
+        return new sliver.SliverOffstage.new({sliver: result, offstage: !this.visible, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13});
+      }
+      if (!!this.maintainAnimation) dart.assertFailed(null, I[0], 482, 12, "!maintainAnimation");
+      if (!!this.maintainState) dart.assertFailed(null, I[0], 483, 12, "!maintainState");
+      return this.visible ? this.sliver : this.replacementSliver;
+    }
+    debugFillProperties(properties) {
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.FlagProperty.new("visible", {value: this.visible, ifFalse: "hidden", ifTrue: "visible"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainState", {value: this.maintainState, ifFalse: "maintainState"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainAnimation", {value: this.maintainAnimation, ifFalse: "maintainAnimation"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainSize", {value: this.maintainSize, ifFalse: "maintainSize"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainSemantics", {value: this.maintainSemantics, ifFalse: "maintainSemantics"}));
+      properties.add(new diagnostics.FlagProperty.new("maintainInteractivity", {value: this.maintainInteractivity, ifFalse: "maintainInteractivity"}));
+    }
+  };
+  (visibility.SliverVisibility.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
+    let replacementSliver = opts && 'replacementSliver' in opts ? opts.replacementSliver : C[7] || CT.C7;
+    let visible = opts && 'visible' in opts ? opts.visible : true;
+    let maintainState = opts && 'maintainState' in opts ? opts.maintainState : false;
+    let maintainAnimation = opts && 'maintainAnimation' in opts ? opts.maintainAnimation : false;
+    let maintainSize = opts && 'maintainSize' in opts ? opts.maintainSize : false;
+    let maintainSemantics = opts && 'maintainSemantics' in opts ? opts.maintainSemantics : false;
+    let maintainInteractivity = opts && 'maintainInteractivity' in opts ? opts.maintainInteractivity : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[sliver$] = sliver;
+    this[replacementSliver$] = replacementSliver;
+    this[visible$0] = visible;
+    this[maintainState$0] = maintainState;
+    this[maintainAnimation$0] = maintainAnimation;
+    this[maintainSize$0] = maintainSize;
+    this[maintainSemantics$0] = maintainSemantics;
+    this[maintainInteractivity$0] = maintainInteractivity;
+    if (!(sliver !== null)) dart.assertFailed(null, I[0], 310, 15, "sliver != null");
+    if (!(replacementSliver !== null)) dart.assertFailed(null, I[0], 311, 15, "replacementSliver != null");
+    if (!(visible !== null)) dart.assertFailed(null, I[0], 312, 15, "visible != null");
+    if (!(maintainState !== null)) dart.assertFailed(null, I[0], 313, 15, "maintainState != null");
+    if (!(maintainAnimation !== null)) dart.assertFailed(null, I[0], 314, 15, "maintainAnimation != null");
+    if (!(maintainSize !== null)) dart.assertFailed(null, I[0], 315, 15, "maintainSize != null");
+    if (!(maintainSemantics !== null)) dart.assertFailed(null, I[0], 316, 15, "maintainSemantics != null");
+    if (!(maintainInteractivity !== null)) dart.assertFailed(null, I[0], 317, 15, "maintainInteractivity != null");
+    if (!(maintainState === true || maintainAnimation === false)) dart.assertFailed("Cannot maintain animations if the state is not also maintained.", I[0], 319, 10, "maintainState == true || maintainAnimation == false");
+    if (!(maintainAnimation === true || maintainSize === false)) dart.assertFailed("Cannot maintain size if animations are not maintained.", I[0], 323, 10, "maintainAnimation == true || maintainSize == false");
+    if (!(maintainSize === true || maintainSemantics === false)) dart.assertFailed("Cannot maintain semantics if size is not maintained.", I[0], 327, 10, "maintainSize == true || maintainSemantics == false");
+    if (!(maintainSize === true || maintainInteractivity === false)) dart.assertFailed("Cannot maintain interactivity if size is not maintained.", I[0], 331, 10, "maintainSize == true || maintainInteractivity == false");
+    visibility.SliverVisibility.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = visibility.SliverVisibility.prototype;
+  dart.addTypeTests(visibility.SliverVisibility);
+  dart.addTypeCaches(visibility.SliverVisibility);
+  dart.setMethodSignature(visibility.SliverVisibility, () => ({
+    __proto__: dart.getMethods(visibility.SliverVisibility.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(visibility.SliverVisibility, I[1]);
+  dart.setFieldSignature(visibility.SliverVisibility, () => ({
+    __proto__: dart.getFields(visibility.SliverVisibility.__proto__),
+    sliver: dart.finalFieldType(framework.Widget),
+    replacementSliver: dart.finalFieldType(framework.Widget),
+    visible: dart.finalFieldType(core.bool),
+    maintainState: dart.finalFieldType(core.bool),
+    maintainAnimation: dart.finalFieldType(core.bool),
+    maintainSize: dart.finalFieldType(core.bool),
+    maintainSemantics: dart.finalFieldType(core.bool),
+    maintainInteractivity: dart.finalFieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/flutter/src/widgets/visibility.dart", {
+    "package:flutter/src/widgets/visibility.dart": visibility
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["visibility.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/widgets/visibility.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__visibility: visibility
+  };
+}));
+
+//# sourceMappingURL=visibility.dart.lib.js.map

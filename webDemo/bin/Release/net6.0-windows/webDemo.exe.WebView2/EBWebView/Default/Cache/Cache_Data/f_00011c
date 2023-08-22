@@ -1,0 +1,295 @@
+define(['dart_sdk', 'packages/pdf/src/pdf/font/ttf_parser.dart'], (function load__packages__pdf__src__pdf__font__ttf_writer_dart(dart_sdk, packages__pdf__src__pdf__font__ttf_parser$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const ttf_parser = packages__pdf__src__pdf__font__ttf_parser$46dart.src__pdf__font__ttf_parser;
+  var ttf_writer = Object.create(dart.library);
+  var $modulo = dartx['%'];
+  var $lengthInBytes = dartx.lengthInBytes;
+  var $getUint32 = dartx.getUint32;
+  var $buffer = dartx.buffer;
+  var $offsetInBytes = dartx.offsetInBytes;
+  var $asByteData = dartx.asByteData;
+  var $getUint16 = dartx.getUint16;
+  var $_get = dartx._get;
+  var $setUint16 = dartx.setUint16;
+  var $length = dartx.length;
+  var $add = dartx.add;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
+  var $isEmpty = dartx.isEmpty;
+  var $firstWhere = dartx.firstWhere;
+  var $indexOf = dartx.indexOf;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $truncate = dartx.truncate;
+  var $setUint32 = dartx.setUint32;
+  var $setAll = dartx.setAll;
+  var $asUint8List = dartx.asUint8List;
+  var $getInt16 = dartx.getInt16;
+  var $setInt16 = dartx.setInt16;
+  var $toInt = dartx.toInt;
+  var $runes = dartx.runes;
+  var $toList = dartx.toList;
+  var $setUint8 = dartx.setUint8;
+  var $forEach = dartx.forEach;
+  var $addAll = dartx.addAll;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    IdentityMapOfString$Uint8List: () => (T.IdentityMapOfString$Uint8List = dart.constFn(_js_helper.IdentityMap$(core.String, typed_data.Uint8List)))(),
+    IdentityMapOfString$int: () => (T.IdentityMapOfString$int = dart.constFn(_js_helper.IdentityMap$(core.String, core.int)))(),
+    JSArrayOfTtfGlyphInfo: () => (T.JSArrayOfTtfGlyphInfo = dart.constFn(_interceptors.JSArray$(ttf_parser.TtfGlyphInfo)))(),
+    IdentityMapOfint$int: () => (T.IdentityMapOfint$int = dart.constFn(_js_helper.IdentityMap$(core.int, core.int)))(),
+    TtfGlyphInfoTobool: () => (T.TtfGlyphInfoTobool = dart.constFn(dart.fnType(core.bool, [ttf_parser.TtfGlyphInfo])))(),
+    VoidToTtfGlyphInfo: () => (T.VoidToTtfGlyphInfo = dart.constFn(dart.fnType(ttf_parser.TtfGlyphInfo, [])))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    StringAndUint8ListTovoid: () => (T.StringAndUint8ListTovoid = dart.constFn(dart.fnType(dart.void, [core.String, typed_data.Uint8List])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([], core.int);
+    }
+  }, false);
+  var C = [void 0];
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pdf-3.8.4/lib/src/pdf/font/ttf_writer.dart",
+    "package:pdf/src/pdf/font/ttf_writer.dart"
+  ];
+  var ttf$ = dart.privateName(ttf_writer, "TtfWriter.ttf");
+  var _calcTableChecksum = dart.privateName(ttf_writer, "_calcTableChecksum");
+  var _updateCompoundGlyph = dart.privateName(ttf_writer, "_updateCompoundGlyph");
+  var _wordAlign = dart.privateName(ttf_writer, "_wordAlign");
+  ttf_writer.TtfWriter = class TtfWriter extends core.Object {
+    get ttf() {
+      return this[ttf$];
+    }
+    set ttf(value) {
+      super.ttf = value;
+    }
+    static ['_#new#tearOff'](ttf) {
+      return new ttf_writer.TtfWriter.new(ttf);
+    }
+    [_calcTableChecksum](table) {
+      if (!(table[$lengthInBytes][$modulo](4) === 0)) dart.assertFailed(null, I[0], 34, 12, "table.lengthInBytes % 4 == 0");
+      let sum = 0;
+      for (let i = 0; i < table[$lengthInBytes] - 3; i = i + 4) {
+        sum = (sum + table[$getUint32](i) & 4294967295) >>> 0;
+      }
+      return sum;
+    }
+    [_updateCompoundGlyph](glyph, compoundMap) {
+      let offset = 10;
+      let bytes = glyph.data[$buffer][$asByteData](glyph.data[$offsetInBytes], glyph.data[$lengthInBytes]);
+      let flags = 32;
+      while ((flags & 32) !== 0) {
+        flags = bytes[$getUint16](offset);
+        let glyphIndex = bytes[$getUint16](offset + 2);
+        bytes[$setUint16](offset + 2, dart.nullCheck(compoundMap[$_get](glyphIndex)));
+        offset = offset + ((flags & 1) !== 0 ? 8 : 6);
+      }
+    }
+    [_wordAlign](offset, align = 2) {
+      return offset + (align - offset[$modulo](align))[$modulo](align);
+    }
+    withChars(chars) {
+      let t0;
+      let tables = new (T.IdentityMapOfString$Uint8List()).new();
+      let tablesLength = new (T.IdentityMapOfString$int()).new();
+      let glyphsInfo = T.JSArrayOfTtfGlyphInfo().of([]);
+      let compounds = new (T.IdentityMapOfint$int()).new();
+      for (let index = 0; index < chars[$length]; index = index + 1) {
+        if (chars[$_get](index) === 32) {
+          let glyph = new ttf_parser.TtfGlyphInfo.new(32, _native_typed_data.NativeUint8List.new(0), C[0] || CT.C0);
+          glyphsInfo[$add](glyph);
+          continue;
+        }
+        let glyphIndex = (t0 = this.ttf.charToGlyphIndexMap[$_get](chars[$_get](index)), t0 == null ? 0 : t0);
+        if (glyphIndex >= this.ttf.glyphOffsets[$length]) {
+          continue;
+        }
+        let glyph = this.ttf.readGlyph(glyphIndex).copy();
+        for (let g of glyph.compounds) {
+          compounds[$_set](g, -1);
+        }
+        glyphsInfo[$add](glyph);
+      }
+      for (let compound of compounds[$keys]) {
+        let index = glyphsInfo[$firstWhere](dart.fn(glyph => glyph.index === compound, T.TtfGlyphInfoTobool()), {orElse: dart.fn(() => {
+            let glyph = this.ttf.readGlyph(compound);
+            if (!glyph.compounds[$isEmpty]) dart.assertFailed("This is not a simple glyph", I[0], 97, 18, "glyph.compounds.isEmpty");
+            glyphsInfo[$add](glyph);
+            return glyph;
+          }, T.VoidToTtfGlyphInfo())});
+        compounds[$_set](compound, glyphsInfo[$indexOf](index));
+        if (!(dart.nullCheck(compounds[$_get](compound)) >= 0)) dart.assertFailed("Unable to find the glyph", I[0], 105, 14, "compounds[compound]! >= 0");
+      }
+      let glyph = new ttf_parser.TtfGlyphInfo.new(32, _native_typed_data.NativeUint8List.new(0), C[0] || CT.C0);
+      glyphsInfo[$add](glyph);
+      for (let glyph of glyphsInfo) {
+        if (glyph.compounds[$isNotEmpty]) {
+          this[_updateCompoundGlyph](glyph, compounds);
+        }
+      }
+      let glyphsTableLength = 0;
+      for (let glyph of glyphsInfo) {
+        glyphsTableLength = this[_wordAlign](glyphsTableLength + glyph.data[$lengthInBytes]);
+      }
+      let offset = 0;
+      let glyphsTable = _native_typed_data.NativeUint8List.new(this[_wordAlign](glyphsTableLength, 4));
+      tables[$_set]("glyf", glyphsTable);
+      tablesLength[$_set]("glyf", glyphsTableLength);
+      if (this.ttf.indexToLocFormat === 0) {
+        tables[$_set]("loca", _native_typed_data.NativeUint8List.new(this[_wordAlign](glyphsInfo[$length] * 2, 4)));
+        tablesLength[$_set]("loca", glyphsInfo[$length] * 2);
+      } else {
+        tables[$_set]("loca", _native_typed_data.NativeUint8List.new(this[_wordAlign](glyphsInfo[$length] * 4, 4)));
+        tablesLength[$_set]("loca", glyphsInfo[$length] * 4);
+      }
+      {
+        let loca = dart.nullCheck(tables[$_get]("loca"))[$buffer][$asByteData]();
+        let index = 0;
+        for (let glyph of glyphsInfo) {
+          if (this.ttf.indexToLocFormat === 0) {
+            loca[$setUint16](index, (offset / 2)[$truncate]());
+            index = index + 2;
+          } else {
+            loca[$setUint32](index, offset);
+            index = index + 4;
+          }
+          glyphsTable[$setAll](offset, glyph.data);
+          offset = this[_wordAlign](offset + glyph.data[$lengthInBytes]);
+        }
+      }
+      {
+        let start = dart.nullCheck(this.ttf.tableOffsets[$_get]("head"));
+        let len = dart.nullCheck(this.ttf.tableSize[$_get]("head"));
+        let head = _native_typed_data.NativeUint8List.fromList(this.ttf.bytes[$buffer][$asUint8List](start, this[_wordAlign](len, 4)));
+        head[$buffer][$asByteData]()[$setUint32](8, 0);
+        tables[$_set]("head", head);
+        tablesLength[$_set]("head", len);
+      }
+      {
+        let start = dart.nullCheck(this.ttf.tableOffsets[$_get]("maxp"));
+        let len = dart.nullCheck(this.ttf.tableSize[$_get]("maxp"));
+        let maxp = _native_typed_data.NativeUint8List.fromList(this.ttf.bytes[$buffer][$asUint8List](start, this[_wordAlign](len, 4)));
+        maxp[$buffer][$asByteData]()[$setUint16](4, glyphsInfo[$length]);
+        tables[$_set]("maxp", maxp);
+        tablesLength[$_set]("maxp", len);
+      }
+      {
+        let start = dart.nullCheck(this.ttf.tableOffsets[$_get]("hhea"));
+        let len = dart.nullCheck(this.ttf.tableSize[$_get]("hhea"));
+        let hhea = _native_typed_data.NativeUint8List.fromList(this.ttf.bytes[$buffer][$asUint8List](start, this[_wordAlign](len, 4)));
+        hhea[$buffer][$asByteData]()[$setUint16](34, glyphsInfo[$length]);
+        tables[$_set]("hhea", hhea);
+        tablesLength[$_set]("hhea", len);
+      }
+      {
+        let len = 4 * glyphsInfo[$length];
+        let hmtx = _native_typed_data.NativeUint8List.new(this[_wordAlign](len, 4));
+        let hmtxOffset = dart.nullCheck(this.ttf.tableOffsets[$_get]("hmtx"));
+        let hmtxData = hmtx[$buffer][$asByteData]();
+        let numOfLongHorMetrics = this.ttf.numOfLongHorMetrics;
+        let defaultadvanceWidth = this.ttf.bytes[$getUint16](hmtxOffset + (numOfLongHorMetrics - 1) * 4);
+        let index = 0;
+        for (let glyph of glyphsInfo) {
+          let advanceWidth = glyph.index < numOfLongHorMetrics ? this.ttf.bytes[$getUint16](hmtxOffset + glyph.index * 4) : defaultadvanceWidth;
+          let leftBearing = glyph.index < numOfLongHorMetrics ? this.ttf.bytes[$getInt16](hmtxOffset + glyph.index * 4 + 2) : this.ttf.bytes[$getInt16](hmtxOffset + numOfLongHorMetrics * 4 + (glyph.index - numOfLongHorMetrics) * 2);
+          hmtxData[$setUint16](index, advanceWidth);
+          hmtxData[$setInt16](index + 2, leftBearing);
+          index = index + 4;
+        }
+        tables[$_set]("hmtx", hmtx);
+        tablesLength[$_set]("hmtx", len);
+      }
+      {
+        let cmap = _native_typed_data.NativeUint8List.new(this[_wordAlign](40, 4));
+        let cmapData = cmap[$buffer][$asByteData]();
+        cmapData[$setUint16](0, 0);
+        cmapData[$setUint16](2, 1);
+        cmapData[$setUint16](4, 3);
+        cmapData[$setUint16](6, 1);
+        cmapData[$setUint32](8, 12);
+        cmapData[$setUint16](12, 12);
+        cmapData[$setUint32](16, 28);
+        cmapData[$setUint32](20, 1);
+        cmapData[$setUint32](24, 1);
+        cmapData[$setUint32](28, 32);
+        cmapData[$setUint32](32, chars[$length] + 31);
+        cmapData[$setUint32](36, 0);
+        tables[$_set]("cmap", cmap);
+        tablesLength[$_set]("cmap", 40);
+      }
+      {
+        let bytes = T.JSArrayOfint().of([]);
+        let numTables = tables[$length];
+        let start = _native_typed_data.NativeByteData.new(12 + numTables * 16);
+        start[$setUint32](0, 65536);
+        start[$setUint16](4, numTables);
+        let pot = numTables;
+        while ((pot & pot - 1) !== 0) {
+          pot = pot + 1;
+        }
+        start[$setUint16](6, pot * 16);
+        start[$setUint16](8, math.log(pot)[$toInt]());
+        start[$setUint16](10, pot * 16 - numTables * 16);
+        let count = 0;
+        let offset = 12 + numTables * 16;
+        tables[$forEach](dart.fn((name, data) => {
+          let runes = name[$runes][$toList]();
+          start[$setUint8](12 + count * 16, runes[$_get](0));
+          start[$setUint8](12 + count * 16 + 1, runes[$_get](1));
+          start[$setUint8](12 + count * 16 + 2, runes[$_get](2));
+          start[$setUint8](12 + count * 16 + 3, runes[$_get](3));
+          start[$setUint32](12 + count * 16 + 4, this[_calcTableChecksum](data[$buffer][$asByteData]()));
+          start[$setUint32](12 + count * 16 + 8, offset);
+          start[$setUint32](12 + count * 16 + 12, dart.nullCheck(tablesLength[$_get](name)));
+          offset = offset + data[$lengthInBytes];
+          count = count + 1;
+        }, T.StringAndUint8ListTovoid()));
+        bytes[$addAll](start[$buffer][$asUint8List]());
+        tables[$forEach](dart.fn((name, data) => {
+          bytes[$addAll](data[$buffer][$asUint8List]());
+        }, T.StringAndUint8ListTovoid()));
+        return _native_typed_data.NativeUint8List.fromList(bytes);
+      }
+    }
+  };
+  (ttf_writer.TtfWriter.new = function(ttf) {
+    this[ttf$] = ttf;
+    ;
+  }).prototype = ttf_writer.TtfWriter.prototype;
+  dart.addTypeTests(ttf_writer.TtfWriter);
+  dart.addTypeCaches(ttf_writer.TtfWriter);
+  dart.setMethodSignature(ttf_writer.TtfWriter, () => ({
+    __proto__: dart.getMethods(ttf_writer.TtfWriter.__proto__),
+    [_calcTableChecksum]: dart.fnType(core.int, [typed_data.ByteData]),
+    [_updateCompoundGlyph]: dart.fnType(dart.void, [ttf_parser.TtfGlyphInfo, core.Map$(core.int, dart.nullable(core.int))]),
+    [_wordAlign]: dart.fnType(core.int, [core.int], [core.int]),
+    withChars: dart.fnType(typed_data.Uint8List, [core.List$(core.int)])
+  }));
+  dart.setLibraryUri(ttf_writer.TtfWriter, I[1]);
+  dart.setFieldSignature(ttf_writer.TtfWriter, () => ({
+    __proto__: dart.getFields(ttf_writer.TtfWriter.__proto__),
+    ttf: dart.finalFieldType(ttf_parser.TtfParser)
+  }));
+  dart.trackLibraries("packages/pdf/src/pdf/font/ttf_writer.dart", {
+    "package:pdf/src/pdf/font/ttf_writer.dart": ttf_writer
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["ttf_writer.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/pdf/src/pdf/font/ttf_writer.dart.lib.js"}');
+  // Exports:
+  return {
+    src__pdf__font__ttf_writer: ttf_writer
+  };
+}));
+
+//# sourceMappingURL=ttf_writer.dart.lib.js.map

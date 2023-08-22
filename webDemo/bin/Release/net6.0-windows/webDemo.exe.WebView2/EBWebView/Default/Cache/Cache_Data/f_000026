@@ -1,0 +1,322 @@
+define(['dart_sdk', 'packages/cross_file/src/web_helpers/web_helpers.dart', 'packages/cross_file/src/types/base.dart'], (function load__packages__cross_file__src__types__html_dart(dart_sdk, packages__cross_file__src__web_helpers__web_helpers$46dart, packages__cross_file__src__types__base$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const html = dart_sdk.html;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const web_helpers = packages__cross_file__src__web_helpers__web_helpers$46dart.src__web_helpers__web_helpers;
+  const base = packages__cross_file__src__types__base$46dart.src__types__base;
+  var html$ = Object.create(dart.library);
+  var $type = dartx.type;
+  var $response = dartx.response;
+  var $size = dartx.size;
+  var $slice = dartx.slice;
+  var $onLoadEnd = dartx.onLoadEnd;
+  var $result = dartx.result;
+  var $children = dartx.children;
+  var $clear = dartx.clear;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    VoidToHttpRequest: () => (T.VoidToHttpRequest = dart.constFn(dart.fnType(html.HttpRequest, [])))(),
+    HttpRequestTodynamic: () => (T.HttpRequestTodynamic = dart.constFn(dart.fnType(dart.dynamic, [html.HttpRequest])))(),
+    BlobN: () => (T.BlobN = dart.constFn(dart.nullable(html.Blob)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    ListOfintToString: () => (T.ListOfintToString = dart.constFn(dart.fnType(core.String, [T.ListOfint()])))(),
+    _AsyncStarImplOfUint8List: () => (T._AsyncStarImplOfUint8List = dart.constFn(async._AsyncStarImpl$(typed_data.Uint8List)))(),
+    Uint8ListN: () => (T.Uint8ListN = dart.constFn(dart.nullable(typed_data.Uint8List)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: convert.Utf8Codec.prototype,
+        [Utf8Codec__allowMalformed]: false
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/cross_file-0.3.3+2/lib/src/types/html.dart",
+    "package:cross_file/src/types/html.dart"
+  ];
+  var __XFile__path = dart.privateName(html$, "_#XFile#_path");
+  var _browserBlob = dart.privateName(html$, "_browserBlob");
+  var __XFile__target = dart.privateName(html$, "_#XFile#_target");
+  var _mimeType = dart.privateName(html$, "_mimeType");
+  var _length = dart.privateName(html$, "_length");
+  var _overrides = dart.privateName(html$, "_overrides");
+  var _lastModified = dart.privateName(html$, "_lastModified");
+  var _name = dart.privateName(html$, "_name");
+  var _createBlobFromBytes = dart.privateName(html$, "_createBlobFromBytes");
+  var _path = dart.privateName(html$, "_path");
+  var _target = dart.privateName(html$, "_target");
+  var _hasTestOverrides = dart.privateName(html$, "_hasTestOverrides");
+  var _blob = dart.privateName(html$, "_blob");
+  var _blobToByteBuffer = dart.privateName(html$, "_blobToByteBuffer");
+  var Utf8Codec__allowMalformed = dart.privateName(convert, "Utf8Codec._allowMalformed");
+  html$.XFile = class XFile extends base.XFileBase {
+    static ['_#new#tearOff'](path, opts) {
+      let mimeType = opts && 'mimeType' in opts ? opts.mimeType : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let length = opts && 'length' in opts ? opts.length : null;
+      let bytes = opts && 'bytes' in opts ? opts.bytes : null;
+      let lastModified = opts && 'lastModified' in opts ? opts.lastModified : null;
+      let overrides = opts && 'overrides' in opts ? opts.overrides : null;
+      return new html$.XFile.new(path, {mimeType: mimeType, name: name, length: length, bytes: bytes, lastModified: lastModified, overrides: overrides});
+    }
+    static ['_#fromData#tearOff'](bytes, opts) {
+      let mimeType = opts && 'mimeType' in opts ? opts.mimeType : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let length = opts && 'length' in opts ? opts.length : null;
+      let lastModified = opts && 'lastModified' in opts ? opts.lastModified : null;
+      let path = opts && 'path' in opts ? opts.path : null;
+      let overrides = opts && 'overrides' in opts ? opts.overrides : null;
+      return new html$.XFile.fromData(bytes, {mimeType: mimeType, name: name, length: length, lastModified: lastModified, path: path, overrides: overrides});
+    }
+    [_createBlobFromBytes](bytes, mimeType) {
+      return mimeType == null ? html.Blob.new([bytes]) : html.Blob.new([bytes], mimeType);
+    }
+    get [_path]() {
+      let t0;
+      t0 = this[__XFile__path];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_path")) : t0;
+    }
+    set [_path](library$32package$58cross_file$47src$47types$47html$46dart$58$58_path$35param) {
+      this[__XFile__path] = library$32package$58cross_file$47src$47types$47html$46dart$58$58_path$35param;
+    }
+    get [_target]() {
+      let t0;
+      t0 = this[__XFile__target];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_target")) : t0;
+    }
+    set [_target](library$32package$58cross_file$47src$47types$47html$46dart$58$58_target$35param) {
+      this[__XFile__target] = library$32package$58cross_file$47src$47types$47html$46dart$58$58_target$35param;
+    }
+    get [_hasTestOverrides]() {
+      return this[_overrides] != null;
+    }
+    get mimeType() {
+      return this[_mimeType];
+    }
+    get name() {
+      return this[_name];
+    }
+    get path() {
+      return this[_path];
+    }
+    lastModified() {
+      return async.async(core.DateTime, (function* lastModified() {
+        return this[_lastModified];
+      }).bind(this));
+    }
+    get [_blob]() {
+      return async.async(html.Blob, (function* _blob() {
+        if (this[_browserBlob] != null) {
+          return dart.nullCheck(this[_browserBlob]);
+        }
+        if (web_helpers.isSafari() && this[_length] != null && dart.nullCheck(this[_length]) >= 4294967296.0) {
+          dart.throw(core.Exception.new("Safari cannot handle XFiles larger than 4GB."));
+        }
+        let request = null;
+        function request$35get() {
+          let t1;
+          t1 = request;
+          return t1 == null ? dart.throw(new _internal.LateError.localNI("request")) : t1;
+        }
+        dart.fn(request$35get, T.VoidToHttpRequest());
+        function request$35set(request$35param) {
+          return request = request$35param;
+        }
+        dart.fn(request$35set, T.HttpRequestTodynamic());
+        try {
+          request$35set(yield html.HttpRequest.request(this.path, {responseType: "blob"}));
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          if (html.ProgressEvent.is(e)) {
+            if (e[$type] === "error") {
+              dart.throw(core.Exception.new("Could not load Blob from its URL. Has it been revoked?"));
+            }
+            dart.rethrow(e$);
+          } else
+            throw e$;
+        }
+        this[_browserBlob] = T.BlobN().as(request$35get()[$response]);
+        if (!(this[_browserBlob] != null)) dart.assertFailed("The Blob backing this XFile cannot be null!", I[0], 146, 12, "_browserBlob != null");
+        return dart.nullCheck(this[_browserBlob]);
+      }).bind(this));
+    }
+    readAsBytes() {
+      return async.async(typed_data.Uint8List, (function* readAsBytes() {
+        return this[_blob].then(typed_data.Uint8List, dart.bind(this, _blobToByteBuffer));
+      }).bind(this));
+    }
+    length() {
+      return async.async(core.int, (function* length() {
+        let t4;
+        t4 = this[_length];
+        return t4 == null ? (yield this[_blob])[$size] : t4;
+      }).bind(this));
+    }
+    readAsString(opts) {
+      let encoding = opts && 'encoding' in opts ? opts.encoding : C[0] || CT.C0;
+      return async.async(core.String, (function* readAsString() {
+        return this.readAsBytes().then(core.String, T.ListOfintToString().as(dart.bind(encoding, 'decode')));
+      }).bind(this));
+    }
+    openRead(start = null, end = null) {
+      return new (T._AsyncStarImplOfUint8List()).new((function* openRead(stream) {
+        let t4, t4$;
+        let blob = (yield this[_blob]);
+        let slice = blob[$slice]((t4 = start, t4 == null ? 0 : t4), (t4$ = end, t4$ == null ? blob[$size] : t4$), blob[$type]);
+        let convertedSlice = (yield this[_blobToByteBuffer](slice));
+        if (stream.add(convertedSlice)) return;
+        yield;
+      }).bind(this)).stream;
+    }
+    [_blobToByteBuffer](blob) {
+      return async.async(typed_data.Uint8List, function* _blobToByteBuffer() {
+        let reader = html.FileReader.new();
+        reader.readAsArrayBuffer(blob);
+        yield reader[$onLoadEnd].first;
+        let result = T.Uint8ListN().as(reader[$result]);
+        if (result == null) {
+          dart.throw(core.Exception.new("Cannot read bytes from Blob. Is it still available?"));
+        }
+        return result;
+      });
+    }
+    saveTo(path) {
+      return async.async(dart.void, (function* saveTo() {
+        let t6, t5, t4;
+        this[_target] = web_helpers.ensureInitialized("__x_file_dom_element");
+        let element = this[_hasTestOverrides] ? html.AnchorElement.as((t4 = dart.nullCheck(this[_overrides]), t5 = this.path, t6 = this.name, t4.createAnchorElement(t5, t6))) : web_helpers.createAnchorElement(this.path, this.name);
+        this[_target][$children][$clear]();
+        web_helpers.addElementToContainerAndClick(this[_target], element);
+      }).bind(this));
+    }
+  };
+  (html$.XFile.new = function(path, opts) {
+    let t0, t0$;
+    let mimeType = opts && 'mimeType' in opts ? opts.mimeType : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let length = opts && 'length' in opts ? opts.length : null;
+    let bytes = opts && 'bytes' in opts ? opts.bytes : null;
+    let lastModified = opts && 'lastModified' in opts ? opts.lastModified : null;
+    let overrides = opts && 'overrides' in opts ? opts.overrides : null;
+    this[__XFile__path] = null;
+    this[_browserBlob] = null;
+    this[__XFile__target] = null;
+    this[_mimeType] = mimeType;
+    this[__XFile__path] = path;
+    this[_length] = length;
+    this[_overrides] = overrides;
+    this[_lastModified] = (t0 = lastModified, t0 == null ? new core.DateTime.fromMillisecondsSinceEpoch(0) : t0);
+    this[_name] = (t0$ = name, t0$ == null ? "" : t0$);
+    html$.XFile.__proto__.new.call(this, path);
+    if (bytes != null) {
+      this[_browserBlob] = this[_createBlobFromBytes](bytes, mimeType);
+    }
+  }).prototype = html$.XFile.prototype;
+  (html$.XFile.fromData = function(bytes, opts) {
+    let t0, t0$;
+    let mimeType = opts && 'mimeType' in opts ? opts.mimeType : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let length = opts && 'length' in opts ? opts.length : null;
+    let lastModified = opts && 'lastModified' in opts ? opts.lastModified : null;
+    let path = opts && 'path' in opts ? opts.path : null;
+    let overrides = opts && 'overrides' in opts ? opts.overrides : null;
+    this[__XFile__path] = null;
+    this[_browserBlob] = null;
+    this[__XFile__target] = null;
+    this[_mimeType] = mimeType;
+    this[_length] = length;
+    this[_overrides] = overrides;
+    this[_lastModified] = (t0 = lastModified, t0 == null ? new core.DateTime.fromMillisecondsSinceEpoch(0) : t0);
+    this[_name] = (t0$ = name, t0$ == null ? "" : t0$);
+    html$.XFile.__proto__.new.call(this, path);
+    if (path == null) {
+      this[_browserBlob] = this[_createBlobFromBytes](bytes, mimeType);
+      this[_path] = html.Url.createObjectUrl(this[_browserBlob]);
+    } else {
+      this[_path] = path;
+    }
+  }).prototype = html$.XFile.prototype;
+  dart.addTypeTests(html$.XFile);
+  dart.addTypeCaches(html$.XFile);
+  dart.setMethodSignature(html$.XFile, () => ({
+    __proto__: dart.getMethods(html$.XFile.__proto__),
+    [_createBlobFromBytes]: dart.fnType(html.Blob, [typed_data.Uint8List, dart.nullable(core.String)]),
+    [_blobToByteBuffer]: dart.fnType(async.Future$(typed_data.Uint8List), [html.Blob])
+  }));
+  dart.setGetterSignature(html$.XFile, () => ({
+    __proto__: dart.getGetters(html$.XFile.__proto__),
+    [_path]: core.String,
+    [_target]: html.Element,
+    [_hasTestOverrides]: core.bool,
+    [_blob]: async.Future$(html.Blob)
+  }));
+  dart.setSetterSignature(html$.XFile, () => ({
+    __proto__: dart.getSetters(html$.XFile.__proto__),
+    [_path]: core.String,
+    [_target]: html.Element
+  }));
+  dart.setLibraryUri(html$.XFile, I[1]);
+  dart.setFieldSignature(html$.XFile, () => ({
+    __proto__: dart.getFields(html$.XFile.__proto__),
+    [_mimeType]: dart.finalFieldType(dart.nullable(core.String)),
+    [_name]: dart.finalFieldType(core.String),
+    [__XFile__path]: dart.fieldType(dart.nullable(core.String)),
+    [_length]: dart.finalFieldType(dart.nullable(core.int)),
+    [_lastModified]: dart.finalFieldType(core.DateTime),
+    [_browserBlob]: dart.fieldType(dart.nullable(html.Blob)),
+    [__XFile__target]: dart.fieldType(dart.nullable(html.Element)),
+    [_overrides]: dart.finalFieldType(dart.nullable(html$.CrossFileTestOverrides))
+  }));
+  var createAnchorElement$ = dart.privateName(html$, "CrossFileTestOverrides.createAnchorElement");
+  html$.CrossFileTestOverrides = class CrossFileTestOverrides extends core.Object {
+    get createAnchorElement() {
+      return this[createAnchorElement$];
+    }
+    set createAnchorElement(value) {
+      this[createAnchorElement$] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let createAnchorElement = opts && 'createAnchorElement' in opts ? opts.createAnchorElement : null;
+      return new html$.CrossFileTestOverrides.new({createAnchorElement: createAnchorElement});
+    }
+  };
+  (html$.CrossFileTestOverrides.new = function(opts) {
+    let createAnchorElement = opts && 'createAnchorElement' in opts ? opts.createAnchorElement : null;
+    this[createAnchorElement$] = createAnchorElement;
+    ;
+  }).prototype = html$.CrossFileTestOverrides.prototype;
+  dart.addTypeTests(html$.CrossFileTestOverrides);
+  dart.addTypeCaches(html$.CrossFileTestOverrides);
+  dart.setLibraryUri(html$.CrossFileTestOverrides, I[1]);
+  dart.setFieldSignature(html$.CrossFileTestOverrides, () => ({
+    __proto__: dart.getFields(html$.CrossFileTestOverrides.__proto__),
+    createAnchorElement: dart.fieldType(dart.fnType(html.Element, [core.String, core.String]))
+  }));
+  dart.defineLazy(html$, {
+    /*html$._fourGigabytes*/get _fourGigabytes() {
+      return 4294967296.0;
+    }
+  }, false);
+  dart.trackLibraries("packages/cross_file/src/types/html.dart", {
+    "package:cross_file/src/types/html.dart": html$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["html.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2BAyEsC,OAAe;AACjD,YAAQ,AAAS,SAAD,WACV,cAAc,CAAC,KAAK,KACpB,cAAc,CAAC,KAAK,GAAG,QAAQ;IACvC;;;AASY;;IAAK;gBAAL;;IAAK;;;AAcJ;;IAAO;kBAAP;;IAAO;;AAOU,YAAA,AAAW;IAAO;;AAGxB;IAAS;;AAGd;IAAK;;AAGL;IAAK;;AAGK;AAAY;MAAa;;;AAE/B;AACrB,YAAI;AACF,gBAAmB,gBAAZ;;AAKT,YAAI,0BAAc,yBAA0B,AAAE,eAAT;AAC4B,UAA/D,WAAM,mBAAU;;AAGD;;;;;;;;;;;AACjB;AACiE,UAA/D,cAAU,MAAkB,yBAAQ,0BAAoB;;cAChC;AAAxB;AACA,gBAAI,AAAE,AAAK,CAAN,YAAS;AAEiD,cAD7D,WAAM,mBACF;;AAEC,YAAP;;;;AAG6B,6BAA/B,aAAe,AAAQ;AAEvB,cAAO,AAAa,+CAAS;AAE7B,cAAmB,gBAAZ;MACT;;;AAG6B;AAC3B,cAAO,AAAM,kDAAK;MACpB;;;AAGkB;;AAAY;4BAAyB,CAAb,MAAM;MAAW;;;UAGrB;AAAX;AACzB,cAAO,AAAc,+DAAc,UAAT,QAAQ;MACpC;;aAIiC,cAAY;AAAnB;;AACb,oBAAO,MAAM;AAEb,oBAAQ,AAAK,IAAD,UAAa,KAAN,KAAK,EAAL,aAAS,UAAO,MAAJ,GAAG,EAAH,cAAO,AAAK,IAAD,gBAAO,AAAK,IAAD;AAEhD,8BAAiB,MAAM,wBAAkB,KAAK;AAE9D,uBAAM,cAAc;QAApB;MACF;;wBAGyC;AAAN;AAChB,qBAAS;AACI,QAA9B,AAAO,MAAD,mBAAmB,IAAI;AAED,QAA5B,MAAM,AAAO,AAAU,MAAX;AAEK,qBAAuB,kBAAd,AAAO,MAAD;AAEhC,YAAI,AAAO,MAAD;AAC8D,UAAtE,WAAM,mBAAU;;AAGlB,cAAO,OAAM;MACf;;WAO2B;AAAR;;AAEkC,QAAnD,gBAAU,8BAAkB;AAIR,sBAAU,0BACyB,4BAAvC,eAAV,wBAAqC,gBAAM,WAAZ,mCAC/B,gCAAyB,WAAM;AAGb,QAAxB,AAAQ,AAAS;AAC8B,QAA/C,0CAA8B,eAAS,OAAO;MAChD;;;8BApLS;;QACC;QACA;QACH;QACM;QACD;QACiC;0BAmDjC;IAUN;4BAIO;IAhEG,kBAAE,QAAQ;IACd,sBAAE,IAAI;IACJ,gBAAE,MAAM;IACL,mBAAE,SAAS;IACR,uBAAe,KAAb,YAAY,EAAZ,aAAyB,6CAA2B;IAC9D,eAAO,MAAL,IAAI,EAAJ,cAAQ;AAChB,yCAAM,IAAI;AAEd,QAAI,KAAK;AAC6C,MAApD,qBAAe,2BAAqB,KAAK,EAAE,QAAQ;;EAEvD;mCAIY;;QACF;QACA;QACH;QACK;QACF;QACmC;0BA6BjC;IAUN;4BAIO;IA1CG,kBAAE,QAAQ;IACZ,gBAAE,MAAM;IACL,mBAAE,SAAS;IACR,uBAAe,KAAb,YAAY,EAAZ,aAAyB,6CAA2B;IAC9D,eAAO,MAAL,IAAI,EAAJ,cAAQ;AAChB,yCAAM,IAAI;AACd,QAAI,AAAK,IAAD;AAC8C,MAApD,qBAAe,2BAAqB,KAAK,EAAE,QAAQ;AACV,MAAzC,cAAY,yBAAgB;;AAEhB,MAAZ,cAAQ,IAAI;;EAEhB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAuJoD;;;;;;;;;;;;QAHd;;;EAAqB;;;;;;;;;MA3MnD,oBAAc","file":"../../../../../../../../../../../../packages/cross_file/src/types/html.dart.lib.js"}');
+  // Exports:
+  return {
+    src__types__html: html$
+  };
+}));
+
+//# sourceMappingURL=html.dart.lib.js.map

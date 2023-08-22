@@ -1,0 +1,311 @@
+define(['dart_sdk', 'packages/webviewx/src/utils/source_type.dart', 'packages/webviewx/src/utils/embedded_js_content.dart', 'packages/webviewx/src/utils/dart_callback.dart', 'packages/webviewx/src/utils/webview_flutter_original_utils.dart', 'packages/webviewx/src/utils/web_specific_params.dart', 'packages/webviewx/src/utils/css_loader.dart', 'packages/webviewx/src/utils/web_url_bypass_proxy.dart', 'packages/webviewx/src/utils/mobile_specific_params.dart', 'packages/webviewx/src/controller/interface.dart'], (function load__packages__webviewx__src__view__interface_dart(dart_sdk, packages__webviewx__src__utils__source_type$46dart, packages__webviewx__src__utils__embedded_js_content$46dart, packages__webviewx__src__utils__dart_callback$46dart, packages__webviewx__src__utils__webview_flutter_original_utils$46dart, packages__webviewx__src__utils__web_specific_params$46dart, packages__webviewx__src__utils__css_loader$46dart, packages__webviewx__src__utils__web_url_bypass_proxy$46dart, packages__webviewx__src__utils__mobile_specific_params$46dart, packages__webviewx__src__controller__interface$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const source_type = packages__webviewx__src__utils__source_type$46dart.src__utils__source_type;
+  const embedded_js_content = packages__webviewx__src__utils__embedded_js_content$46dart.src__utils__embedded_js_content;
+  const dart_callback = packages__webviewx__src__utils__dart_callback$46dart.src__utils__dart_callback;
+  const webview_flutter_original_utils = packages__webviewx__src__utils__webview_flutter_original_utils$46dart.src__utils__webview_flutter_original_utils;
+  const web_specific_params = packages__webviewx__src__utils__web_specific_params$46dart.src__utils__web_specific_params;
+  const css_loader = packages__webviewx__src__utils__css_loader$46dart.src__utils__css_loader;
+  const web_url_bypass_proxy = packages__webviewx__src__utils__web_url_bypass_proxy$46dart.src__utils__web_url_bypass_proxy;
+  const mobile_specific_params = packages__webviewx__src__utils__mobile_specific_params$46dart.src__utils__mobile_specific_params;
+  const $interface = packages__webviewx__src__controller__interface$46dart.src__controller__interface;
+  var $interface$ = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: source_type.SourceType.prototype,
+        [_Enum__name]: "url",
+        [_Enum_index]: 1
+      });
+    },
+    get C1() {
+      return C[1] = dart.constSet(embedded_js_content.EmbeddedJsContent, []);
+    },
+    get C2() {
+      return C[2] = dart.constSet(dart_callback.DartCallback, []);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: webview_flutter_original_utils.JavascriptMode.prototype,
+        [_Enum__name]: "unrestricted",
+        [_Enum_index]: 1
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: webview_flutter_original_utils.AutoMediaPlaybackPolicy.prototype,
+        [_Enum__name]: "requireUserActionForAllMediaTypes",
+        [_Enum_index]: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: css_loader.CssLoader.prototype,
+        [CssLoader_loaderClassName]: "loader",
+        [CssLoader_style]: "    .loader {\n      position: absolute;\n      top: calc(50% - 25px);\n      left: calc(50% - 25px);\n      width: 50px;\n      height: 50px;\n      background-color: #333;\n      border-radius: 50%;  \n      animation: loader 1s infinite ease-in-out;\n    }\n    @keyframes loader {\n      0% {\n      transform: scale(0);\n      }\n      100% {\n      transform: scale(1);\n      opacity: 0;\n      }\n    }\n    "
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList(["accelerometer", "clipboard-write", "encrypted-media", "gyroscope", "picture-in-picture"], core.String);
+    },
+    get C8() {
+      return C[8] = dart.constList(["allow-downloads", "allow-forms", "allow-modals", "allow-orientation-lock", "allow-pointer-lock", "allow-popups", "allow-popups-to-escape-sandbox", "allow-presentation", "allow-same-origin"], core.String);
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: web_url_bypass_proxy.BridgedBypassProxy.prototype
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: web_url_bypass_proxy.CodeTabsBypassProxy.prototype
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: web_url_bypass_proxy.WeCorsAnyWhereProxy.prototype
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], web_url_bypass_proxy.BypassProxy);
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: web_specific_params.WebSpecificParams.prototype,
+        [WebSpecificParams_cssLoadingIndicator]: C[6] || CT.C6,
+        [WebSpecificParams_additionalAllowOptions]: C[7] || CT.C7,
+        [WebSpecificParams_additionalSandboxOptions]: C[8] || CT.C8,
+        [WebSpecificParams_webAllowFullscreenContent]: true,
+        [WebSpecificParams_printDebugInfo]: false,
+        [WebSpecificParams_applyProxyLoadBalancing]: true,
+        [WebSpecificParams__proxyList]: C[9] || CT.C9
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: mobile_specific_params.MobileSpecificParams.prototype,
+        [MobileSpecificParams_androidEnableHybridComposition]: false,
+        [MobileSpecificParams_gestureNavigationEnabled]: false,
+        [MobileSpecificParams_debuggingEnabled]: false,
+        [MobileSpecificParams_mobileGestureRecognizers]: null
+      });
+    }
+  }, false);
+  var C = Array(14).fill(void 0);
+  var I = ["package:webviewx/src/view/interface.dart"];
+  var initialContent$ = dart.privateName($interface$, "WebViewX.initialContent");
+  var initialSourceType$ = dart.privateName($interface$, "WebViewX.initialSourceType");
+  var userAgent$ = dart.privateName($interface$, "WebViewX.userAgent");
+  var width$ = dart.privateName($interface$, "WebViewX.width");
+  var height$ = dart.privateName($interface$, "WebViewX.height");
+  var onWebViewCreated$ = dart.privateName($interface$, "WebViewX.onWebViewCreated");
+  var jsContent$ = dart.privateName($interface$, "WebViewX.jsContent");
+  var dartCallBacks$ = dart.privateName($interface$, "WebViewX.dartCallBacks");
+  var ignoreAllGestures$ = dart.privateName($interface$, "WebViewX.ignoreAllGestures");
+  var javascriptMode$ = dart.privateName($interface$, "WebViewX.javascriptMode");
+  var initialMediaPlaybackPolicy$ = dart.privateName($interface$, "WebViewX.initialMediaPlaybackPolicy");
+  var onPageStarted$ = dart.privateName($interface$, "WebViewX.onPageStarted");
+  var onPageFinished$ = dart.privateName($interface$, "WebViewX.onPageFinished");
+  var navigationDelegate$ = dart.privateName($interface$, "WebViewX.navigationDelegate");
+  var onWebResourceError$ = dart.privateName($interface$, "WebViewX.onWebResourceError");
+  var webSpecificParams$ = dart.privateName($interface$, "WebViewX.webSpecificParams");
+  var mobileSpecificParams$ = dart.privateName($interface$, "WebViewX.mobileSpecificParams");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var CssLoader_loaderClassName = dart.privateName(css_loader, "CssLoader.loaderClassName");
+  var CssLoader_style = dart.privateName(css_loader, "CssLoader.style");
+  var WebSpecificParams_cssLoadingIndicator = dart.privateName(web_specific_params, "WebSpecificParams.cssLoadingIndicator");
+  var WebSpecificParams_additionalAllowOptions = dart.privateName(web_specific_params, "WebSpecificParams.additionalAllowOptions");
+  var WebSpecificParams_additionalSandboxOptions = dart.privateName(web_specific_params, "WebSpecificParams.additionalSandboxOptions");
+  var WebSpecificParams_webAllowFullscreenContent = dart.privateName(web_specific_params, "WebSpecificParams.webAllowFullscreenContent");
+  var WebSpecificParams_printDebugInfo = dart.privateName(web_specific_params, "WebSpecificParams.printDebugInfo");
+  var WebSpecificParams_applyProxyLoadBalancing = dart.privateName(web_specific_params, "WebSpecificParams.applyProxyLoadBalancing");
+  var WebSpecificParams__proxyList = dart.privateName(web_specific_params, "WebSpecificParams._proxyList");
+  var MobileSpecificParams_androidEnableHybridComposition = dart.privateName(mobile_specific_params, "MobileSpecificParams.androidEnableHybridComposition");
+  var MobileSpecificParams_gestureNavigationEnabled = dart.privateName(mobile_specific_params, "MobileSpecificParams.gestureNavigationEnabled");
+  var MobileSpecificParams_debuggingEnabled = dart.privateName(mobile_specific_params, "MobileSpecificParams.debuggingEnabled");
+  var MobileSpecificParams_mobileGestureRecognizers = dart.privateName(mobile_specific_params, "MobileSpecificParams.mobileGestureRecognizers");
+  $interface$.WebViewX = class WebViewX extends core.Object {
+    get initialContent() {
+      return this[initialContent$];
+    }
+    set initialContent(value) {
+      super.initialContent = value;
+    }
+    get initialSourceType() {
+      return this[initialSourceType$];
+    }
+    set initialSourceType(value) {
+      super.initialSourceType = value;
+    }
+    get userAgent() {
+      return this[userAgent$];
+    }
+    set userAgent(value) {
+      super.userAgent = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get onWebViewCreated() {
+      return this[onWebViewCreated$];
+    }
+    set onWebViewCreated(value) {
+      super.onWebViewCreated = value;
+    }
+    get jsContent() {
+      return this[jsContent$];
+    }
+    set jsContent(value) {
+      super.jsContent = value;
+    }
+    get dartCallBacks() {
+      return this[dartCallBacks$];
+    }
+    set dartCallBacks(value) {
+      super.dartCallBacks = value;
+    }
+    get ignoreAllGestures() {
+      return this[ignoreAllGestures$];
+    }
+    set ignoreAllGestures(value) {
+      super.ignoreAllGestures = value;
+    }
+    get javascriptMode() {
+      return this[javascriptMode$];
+    }
+    set javascriptMode(value) {
+      super.javascriptMode = value;
+    }
+    get initialMediaPlaybackPolicy() {
+      return this[initialMediaPlaybackPolicy$];
+    }
+    set initialMediaPlaybackPolicy(value) {
+      super.initialMediaPlaybackPolicy = value;
+    }
+    get onPageStarted() {
+      return this[onPageStarted$];
+    }
+    set onPageStarted(value) {
+      super.onPageStarted = value;
+    }
+    get onPageFinished() {
+      return this[onPageFinished$];
+    }
+    set onPageFinished(value) {
+      super.onPageFinished = value;
+    }
+    get navigationDelegate() {
+      return this[navigationDelegate$];
+    }
+    set navigationDelegate(value) {
+      super.navigationDelegate = value;
+    }
+    get onWebResourceError() {
+      return this[onWebResourceError$];
+    }
+    set onWebResourceError(value) {
+      super.onWebResourceError = value;
+    }
+    get webSpecificParams() {
+      return this[webSpecificParams$];
+    }
+    set webSpecificParams(value) {
+      super.webSpecificParams = value;
+    }
+    get mobileSpecificParams() {
+      return this[mobileSpecificParams$];
+    }
+    set mobileSpecificParams(value) {
+      super.mobileSpecificParams = value;
+    }
+  };
+  ($interface$.WebViewX.new = function(opts) {
+    let initialContent = opts && 'initialContent' in opts ? opts.initialContent : "about:blank";
+    let initialSourceType = opts && 'initialSourceType' in opts ? opts.initialSourceType : C[0] || CT.C0;
+    let userAgent = opts && 'userAgent' in opts ? opts.userAgent : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let onWebViewCreated = opts && 'onWebViewCreated' in opts ? opts.onWebViewCreated : null;
+    let jsContent = opts && 'jsContent' in opts ? opts.jsContent : C[1] || CT.C1;
+    let dartCallBacks = opts && 'dartCallBacks' in opts ? opts.dartCallBacks : C[2] || CT.C2;
+    let ignoreAllGestures = opts && 'ignoreAllGestures' in opts ? opts.ignoreAllGestures : false;
+    let javascriptMode = opts && 'javascriptMode' in opts ? opts.javascriptMode : C[3] || CT.C3;
+    let initialMediaPlaybackPolicy = opts && 'initialMediaPlaybackPolicy' in opts ? opts.initialMediaPlaybackPolicy : C[4] || CT.C4;
+    let onPageStarted = opts && 'onPageStarted' in opts ? opts.onPageStarted : null;
+    let onPageFinished = opts && 'onPageFinished' in opts ? opts.onPageFinished : null;
+    let navigationDelegate = opts && 'navigationDelegate' in opts ? opts.navigationDelegate : null;
+    let onWebResourceError = opts && 'onWebResourceError' in opts ? opts.onWebResourceError : null;
+    let webSpecificParams = opts && 'webSpecificParams' in opts ? opts.webSpecificParams : C[5] || CT.C5;
+    let mobileSpecificParams = opts && 'mobileSpecificParams' in opts ? opts.mobileSpecificParams : C[13] || CT.C13;
+    this[initialContent$] = initialContent;
+    this[initialSourceType$] = initialSourceType;
+    this[userAgent$] = userAgent;
+    this[width$] = width;
+    this[height$] = height;
+    this[onWebViewCreated$] = onWebViewCreated;
+    this[jsContent$] = jsContent;
+    this[dartCallBacks$] = dartCallBacks;
+    this[ignoreAllGestures$] = ignoreAllGestures;
+    this[javascriptMode$] = javascriptMode;
+    this[initialMediaPlaybackPolicy$] = initialMediaPlaybackPolicy;
+    this[onPageStarted$] = onPageStarted;
+    this[onPageFinished$] = onPageFinished;
+    this[navigationDelegate$] = navigationDelegate;
+    this[onWebResourceError$] = onWebResourceError;
+    this[webSpecificParams$] = webSpecificParams;
+    this[mobileSpecificParams$] = mobileSpecificParams;
+    ;
+  }).prototype = $interface$.WebViewX.prototype;
+  dart.addTypeTests($interface$.WebViewX);
+  dart.addTypeCaches($interface$.WebViewX);
+  dart.setLibraryUri($interface$.WebViewX, I[0]);
+  dart.setFieldSignature($interface$.WebViewX, () => ({
+    __proto__: dart.getFields($interface$.WebViewX.__proto__),
+    initialContent: dart.finalFieldType(core.String),
+    initialSourceType: dart.finalFieldType(source_type.SourceType),
+    userAgent: dart.finalFieldType(dart.nullable(core.String)),
+    width: dart.finalFieldType(core.double),
+    height: dart.finalFieldType(core.double),
+    onWebViewCreated: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, [$interface.WebViewXController]))),
+    jsContent: dart.finalFieldType(core.Set$(embedded_js_content.EmbeddedJsContent)),
+    dartCallBacks: dart.finalFieldType(core.Set$(dart_callback.DartCallback)),
+    ignoreAllGestures: dart.finalFieldType(core.bool),
+    javascriptMode: dart.finalFieldType(webview_flutter_original_utils.JavascriptMode),
+    initialMediaPlaybackPolicy: dart.finalFieldType(webview_flutter_original_utils.AutoMediaPlaybackPolicy),
+    onPageStarted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    onPageFinished: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    navigationDelegate: dart.finalFieldType(dart.nullable(dart.fnType(async.FutureOr$(webview_flutter_original_utils.NavigationDecision), [webview_flutter_original_utils.NavigationRequest]))),
+    onWebResourceError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [webview_flutter_original_utils.WebResourceError]))),
+    webSpecificParams: dart.finalFieldType(web_specific_params.WebSpecificParams),
+    mobileSpecificParams: dart.finalFieldType(mobile_specific_params.MobileSpecificParams)
+  }));
+  dart.trackLibraries("packages/webviewx/src/view/interface.dart", {
+    "package:webviewx/src/view/interface.dart": $interface$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["interface.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAMe;;;;;;IAOI;;;;;;IAIH;;;;;;IAGD;;;;;;IAGA;;;;;;IAIkC;;;;;;IASlB;;;;;;IAOL;;;;;;IAKb;;;;;;IAGU;;;;;;IAIS;;;;;;IAGG;;;;;;IAGA;;;;;;IAGP;;;;;;IAGmB;;;;;;IAKrB;;;;;;IAKG;;;;;;;;QAIpB;QACA;QACA;QACS;QACA;QACT;QACA;QACA;QACA;QACA;QACA;QAEA;QACA;QACA;QACA;QACA;QACA;IAjBA;IACA;IACA;IACS;IACA;IACT;IACA;IACA;IACA;IACA;IACA;IAEA;IACA;IACA;IACA;IACA;IACA;;EACL","file":"../../../../../../../../../../../../packages/webviewx/src/view/interface.dart.lib.js"}');
+  // Exports:
+  return {
+    src__view__interface: $interface$
+  };
+}));
+
+//# sourceMappingURL=interface.dart.lib.js.map

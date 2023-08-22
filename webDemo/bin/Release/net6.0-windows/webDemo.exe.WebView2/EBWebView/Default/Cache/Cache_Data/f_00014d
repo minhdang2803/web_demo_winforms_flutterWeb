@@ -1,0 +1,550 @@
+define(['dart_sdk', 'packages/image/src/image_exception.dart', 'packages/image/src/formats/jpeg/jpeg.dart', 'packages/image/src/formats/jpeg/jpeg_component.dart', 'packages/image/src/util/input_buffer.dart', 'packages/image/src/formats/jpeg/jpeg_frame.dart'], (function load__packages__image__src__formats__jpeg__jpeg_scan_dart(dart_sdk, packages__image__src__image_exception$46dart, packages__image__src__formats__jpeg__jpeg$46dart, packages__image__src__formats__jpeg__jpeg_component$46dart, packages__image__src__util__input_buffer$46dart, packages__image__src__formats__jpeg__jpeg_frame$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const image_exception = packages__image__src__image_exception$46dart.src__image_exception;
+  const jpeg = packages__image__src__formats__jpeg__jpeg$46dart.src__formats__jpeg__jpeg;
+  const jpeg_component = packages__image__src__formats__jpeg__jpeg_component$46dart.src__formats__jpeg__jpeg_component;
+  const input_buffer = packages__image__src__util__input_buffer$46dart.src__util__input_buffer;
+  const jpeg_frame = packages__image__src__formats__jpeg__jpeg_frame$46dart.src__formats__jpeg__jpeg_frame;
+  var jpeg_scan = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $rightShift = dartx['>>'];
+  var $toRadixString = dartx.toRadixString;
+  var $toInt = dartx.toInt;
+  var $leftShift = dartx['<<'];
+  var $_set = dartx._set;
+  var $truncate = dartx.truncate;
+  var $modulo = dartx['%'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:image/src/formats/jpeg/jpeg_scan.dart"];
+  var input$ = dart.privateName(jpeg_scan, "JpegScan.input");
+  var frame$ = dart.privateName(jpeg_scan, "JpegScan.frame");
+  var precision = dart.privateName(jpeg_scan, "JpegScan.precision");
+  var samplesPerLine = dart.privateName(jpeg_scan, "JpegScan.samplesPerLine");
+  var scanLines = dart.privateName(jpeg_scan, "JpegScan.scanLines");
+  var progressive = dart.privateName(jpeg_scan, "JpegScan.progressive");
+  var maxH = dart.privateName(jpeg_scan, "JpegScan.maxH");
+  var maxV = dart.privateName(jpeg_scan, "JpegScan.maxV");
+  var components$ = dart.privateName(jpeg_scan, "JpegScan.components");
+  var resetInterval$ = dart.privateName(jpeg_scan, "JpegScan.resetInterval");
+  var spectralStart$ = dart.privateName(jpeg_scan, "JpegScan.spectralStart");
+  var spectralEnd$ = dart.privateName(jpeg_scan, "JpegScan.spectralEnd");
+  var successivePrev$ = dart.privateName(jpeg_scan, "JpegScan.successivePrev");
+  var successive$ = dart.privateName(jpeg_scan, "JpegScan.successive");
+  var bitsData = dart.privateName(jpeg_scan, "JpegScan.bitsData");
+  var bitsCount = dart.privateName(jpeg_scan, "JpegScan.bitsCount");
+  var eobrun = dart.privateName(jpeg_scan, "JpegScan.eobrun");
+  var successiveACState = dart.privateName(jpeg_scan, "JpegScan.successiveACState");
+  var __JpegScan_mcusPerLine = dart.privateName(jpeg_scan, "_#JpegScan#mcusPerLine");
+  var __JpegScan_successiveACNextValue = dart.privateName(jpeg_scan, "_#JpegScan#successiveACNextValue");
+  var _decodeDCFirst = dart.privateName(jpeg_scan, "_decodeDCFirst");
+  var _decodeDCSuccessive = dart.privateName(jpeg_scan, "_decodeDCSuccessive");
+  var _decodeACFirst = dart.privateName(jpeg_scan, "_decodeACFirst");
+  var _decodeACSuccessive = dart.privateName(jpeg_scan, "_decodeACSuccessive");
+  var _decodeBaseline = dart.privateName(jpeg_scan, "_decodeBaseline");
+  var _decodeBlock = dart.privateName(jpeg_scan, "_decodeBlock");
+  var _decodeMcu = dart.privateName(jpeg_scan, "_decodeMcu");
+  var _readBit = dart.privateName(jpeg_scan, "_readBit");
+  var _decodeHuffman = dart.privateName(jpeg_scan, "_decodeHuffman");
+  var _receive = dart.privateName(jpeg_scan, "_receive");
+  var _receiveAndExtend = dart.privateName(jpeg_scan, "_receiveAndExtend");
+  jpeg_scan.JpegScan = class JpegScan extends core.Object {
+    get input() {
+      return this[input$];
+    }
+    set input(value) {
+      this[input$] = value;
+    }
+    get frame() {
+      return this[frame$];
+    }
+    set frame(value) {
+      this[frame$] = value;
+    }
+    get precision() {
+      return this[precision];
+    }
+    set precision(value) {
+      this[precision] = value;
+    }
+    get samplesPerLine() {
+      return this[samplesPerLine];
+    }
+    set samplesPerLine(value) {
+      this[samplesPerLine] = value;
+    }
+    get scanLines() {
+      return this[scanLines];
+    }
+    set scanLines(value) {
+      this[scanLines] = value;
+    }
+    get progressive() {
+      return this[progressive];
+    }
+    set progressive(value) {
+      this[progressive] = value;
+    }
+    get maxH() {
+      return this[maxH];
+    }
+    set maxH(value) {
+      this[maxH] = value;
+    }
+    get maxV() {
+      return this[maxV];
+    }
+    set maxV(value) {
+      this[maxV] = value;
+    }
+    get components() {
+      return this[components$];
+    }
+    set components(value) {
+      this[components$] = value;
+    }
+    get resetInterval() {
+      return this[resetInterval$];
+    }
+    set resetInterval(value) {
+      this[resetInterval$] = value;
+    }
+    get spectralStart() {
+      return this[spectralStart$];
+    }
+    set spectralStart(value) {
+      this[spectralStart$] = value;
+    }
+    get spectralEnd() {
+      return this[spectralEnd$];
+    }
+    set spectralEnd(value) {
+      this[spectralEnd$] = value;
+    }
+    get successivePrev() {
+      return this[successivePrev$];
+    }
+    set successivePrev(value) {
+      this[successivePrev$] = value;
+    }
+    get successive() {
+      return this[successive$];
+    }
+    set successive(value) {
+      this[successive$] = value;
+    }
+    get bitsData() {
+      return this[bitsData];
+    }
+    set bitsData(value) {
+      this[bitsData] = value;
+    }
+    get bitsCount() {
+      return this[bitsCount];
+    }
+    set bitsCount(value) {
+      this[bitsCount] = value;
+    }
+    get eobrun() {
+      return this[eobrun];
+    }
+    set eobrun(value) {
+      this[eobrun] = value;
+    }
+    get successiveACState() {
+      return this[successiveACState];
+    }
+    set successiveACState(value) {
+      this[successiveACState] = value;
+    }
+    get mcusPerLine() {
+      let t0;
+      t0 = this[__JpegScan_mcusPerLine];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("mcusPerLine")) : t0;
+    }
+    set mcusPerLine(mcusPerLine$35param) {
+      this[__JpegScan_mcusPerLine] = mcusPerLine$35param;
+    }
+    get successiveACNextValue() {
+      let t0;
+      t0 = this[__JpegScan_successiveACNextValue];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("successiveACNextValue")) : t0;
+    }
+    set successiveACNextValue(successiveACNextValue$35param) {
+      this[__JpegScan_successiveACNextValue] = successiveACNextValue$35param;
+    }
+    static ['_#new#tearOff'](input, frame, components, resetInterval, spectralStart, spectralEnd, successivePrev, successive) {
+      return new jpeg_scan.JpegScan.new(input, frame, components, resetInterval, spectralStart, spectralEnd, successivePrev, successive);
+    }
+    decode() {
+      let t0;
+      let componentsLength = this.components[$length];
+      let component = null;
+      let decodeFn = null;
+      if (dart.nullCheck(this.progressive)) {
+        if (this.spectralStart === 0) {
+          decodeFn = this.successivePrev === 0 ? dart.bind(this, _decodeDCFirst) : dart.bind(this, _decodeDCSuccessive);
+        } else {
+          decodeFn = this.successivePrev === 0 ? dart.bind(this, _decodeACFirst) : dart.bind(this, _decodeACSuccessive);
+        }
+      } else {
+        decodeFn = dart.bind(this, _decodeBaseline);
+      }
+      let mcu = 0;
+      let mcuExpected = null;
+      if (componentsLength === 1) {
+        mcuExpected = this.components[$_get](0).blocksPerLine * this.components[$_get](0).blocksPerColumn;
+      } else {
+        mcuExpected = this.mcusPerLine * this.frame.mcusPerColumn;
+      }
+      if (this.resetInterval == null || this.resetInterval === 0) {
+        this.resetInterval = mcuExpected;
+      }
+      let h = null;
+      let v = null;
+      while (mcu < dart.notNull(mcuExpected)) {
+        for (let i = 0; i < componentsLength; i = i + 1) {
+          this.components[$_get](i).pred = 0;
+        }
+        this.eobrun = 0;
+        if (componentsLength === 1) {
+          component = this.components[$_get](0);
+          for (let n = 0; n < dart.nullCheck(this.resetInterval); n = n + 1) {
+            this[_decodeBlock](component, decodeFn, mcu);
+            mcu = mcu + 1;
+          }
+        } else {
+          for (let n = 0; n < dart.nullCheck(this.resetInterval); n = n + 1) {
+            for (let i = 0; i < componentsLength; i = i + 1) {
+              component = this.components[$_get](i);
+              h = component.hSamples;
+              v = component.vSamples;
+              for (let j = 0; j < v; j = j + 1) {
+                for (let k = 0; k < h; k = k + 1) {
+                  this[_decodeMcu](component, decodeFn, mcu, j, k);
+                }
+              }
+            }
+            mcu = mcu + 1;
+          }
+        }
+        this.bitsCount = 0;
+        let m1 = this.input._get(0);
+        let m2 = this.input._get(1);
+        if (m1 === 255) {
+          if (m2 >= 208 && m2 <= 215) {
+            t0 = this.input;
+            t0.offset = t0.offset + 2;
+          } else {
+            break;
+          }
+        }
+      }
+    }
+    [_readBit]() {
+      if (this.bitsCount > 0) {
+        this.bitsCount = this.bitsCount - 1;
+        return this.bitsData[$rightShift](this.bitsCount) & 1;
+      }
+      if (this.input.isEOS) {
+        return null;
+      }
+      this.bitsData = this.input.readByte();
+      if (this.bitsData === 255) {
+        let nextByte = this.input.readByte();
+        if (nextByte !== 0) {
+          dart.throw(new image_exception.ImageException.new("unexpected marker: " + ((this.bitsData << 8 | nextByte) >>> 0)[$toRadixString](16)));
+        }
+      }
+      this.bitsCount = 7;
+      return this.bitsData >> 7 & 1;
+    }
+    [_decodeHuffman](tree) {
+      let node = tree;
+      let bit = null;
+      while ((bit = this[_readBit]()) != null) {
+        node = core.List.as(node)[$_get](dart.nullCheck(bit));
+        if (typeof node == 'number') {
+          return node[$toInt]();
+        }
+      }
+      return null;
+    }
+    [_receive](length) {
+      let n = 0;
+      while (length > 0) {
+        let bit = this[_readBit]();
+        if (bit == null) {
+          return null;
+        }
+        n = (n << 1 | dart.notNull(bit)) >>> 0;
+        length = length - 1;
+      }
+      return n;
+    }
+    [_receiveAndExtend](length) {
+      if (length === 1) {
+        return this[_readBit]() === 1 ? 1 : -1;
+      }
+      let n = dart.nullCheck(this[_receive](dart.nullCheck(length)));
+      if (n >= (1)[$leftShift](dart.notNull(length) - 1)) {
+        return n;
+      }
+      return n + (-1)[$leftShift](length) + 1;
+    }
+    [_decodeBaseline](component, zz) {
+      let t0;
+      let t = this[_decodeHuffman](component.huffmanTableDC);
+      let diff = t === 0 ? 0 : this[_receiveAndExtend](t);
+      t0 = component;
+      t0.pred = t0.pred + diff;
+      zz[$_set](0, component.pred);
+      let k = 1;
+      while (k < 64) {
+        let rs = dart.nullCheck(this[_decodeHuffman](component.huffmanTableAC));
+        let s = rs & 15;
+        let r = rs[$rightShift](4);
+        if (s === 0) {
+          if (r < 15) {
+            break;
+          }
+          k = k + 16;
+          continue;
+        }
+        k = k + r;
+        s = this[_receiveAndExtend](s);
+        let z = jpeg.Jpeg.dctZigZag[$_get](k);
+        zz[$_set](z, s);
+        k = k + 1;
+      }
+    }
+    [_decodeDCFirst](component, zz) {
+      let t0;
+      let t = this[_decodeHuffman](component.huffmanTableDC);
+      let diff = t === 0 ? 0 : this[_receiveAndExtend](t)[$leftShift](this.successive);
+      t0 = component;
+      t0.pred = t0.pred + diff;
+      zz[$_set](0, component.pred);
+    }
+    [_decodeDCSuccessive](component, zz) {
+      zz[$_set](0, (zz[$_get](0) | dart.nullCheck(this[_readBit]())[$leftShift](this.successive)) >>> 0);
+    }
+    [_decodeACFirst](component, zz) {
+      if (this.eobrun > 0) {
+        this.eobrun = this.eobrun - 1;
+        return;
+      }
+      let k = this.spectralStart;
+      let e = this.spectralEnd;
+      while (k <= e) {
+        let rs = dart.nullCheck(this[_decodeHuffman](component.huffmanTableAC));
+        let s = rs & 15;
+        let r = rs[$rightShift](4);
+        if (s === 0) {
+          if (r < 15) {
+            this.eobrun = dart.nullCheck(this[_receive](r)) + (1)[$leftShift](r) - 1;
+            break;
+          }
+          k = k + 16;
+          continue;
+        }
+        k = k + r;
+        let z = jpeg.Jpeg.dctZigZag[$_get](k);
+        zz[$_set](z, this[_receiveAndExtend](s) * (1)[$leftShift](this.successive));
+        k = k + 1;
+      }
+    }
+    [_decodeACSuccessive](component, zz) {
+      let t0, t0$, t0$0;
+      let k = this.spectralStart;
+      let e = this.spectralEnd;
+      let s = 0;
+      let r = 0;
+      while (k <= e) {
+        let z = jpeg.Jpeg.dctZigZag[$_get](k);
+        switch (this.successiveACState) {
+          case 0:
+            {
+              let rs = this[_decodeHuffman](component.huffmanTableAC);
+              if (rs == null) dart.throw(new image_exception.ImageException.new("Invalid progressive encoding"));
+              s = dart.notNull(rs) & 15;
+              r = rs[$rightShift](4);
+              if (s === 0) {
+                if (r < 15) {
+                  this.eobrun = dart.nullCheck(this[_receive](r)) + (1)[$leftShift](r);
+                  this.successiveACState = 4;
+                } else {
+                  r = 16;
+                  this.successiveACState = 1;
+                }
+              } else {
+                if (s !== 1) {
+                  dart.throw(new image_exception.ImageException.new("invalid ACn encoding"));
+                }
+                this.successiveACNextValue = this[_receiveAndExtend](s);
+                this.successiveACState = r !== 0 ? 2 : 3;
+              }
+              continue;
+            }
+          case 1:
+          case 2:
+            {
+              if (zz[$_get](z) !== 0) {
+                t0 = zz;
+                t0[$_set](z, t0[$_get](z) + dart.nullCheck(this[_readBit]())[$leftShift](this.successive));
+              } else {
+                r = r - 1;
+                if (r === 0) {
+                  this.successiveACState = this.successiveACState === 2 ? 3 : 0;
+                }
+              }
+              break;
+            }
+          case 3:
+            {
+              if (zz[$_get](z) !== 0) {
+                t0$ = zz;
+                t0$[$_set](z, t0$[$_get](z) + dart.nullCheck(this[_readBit]())[$leftShift](this.successive));
+              } else {
+                zz[$_set](z, this.successiveACNextValue[$leftShift](this.successive));
+                this.successiveACState = 0;
+              }
+              break;
+            }
+          case 4:
+            {
+              if (zz[$_get](z) !== 0) {
+                t0$0 = zz;
+                t0$0[$_set](z, t0$0[$_get](z) + dart.nullCheck(this[_readBit]())[$leftShift](this.successive));
+              }
+              break;
+            }
+        }
+        k = k + 1;
+      }
+      if (this.successiveACState === 4) {
+        this.eobrun = this.eobrun - 1;
+        if (this.eobrun === 0) {
+          this.successiveACState = 0;
+        }
+      }
+    }
+    [_decodeMcu](component, decodeFn, mcu, row, col) {
+      let mcuRow = (mcu / this.mcusPerLine)[$truncate]();
+      let mcuCol = mcu[$modulo](this.mcusPerLine);
+      let blockRow = mcuRow * component.vSamples + row;
+      let blockCol = mcuCol * component.hSamples + col;
+      if (blockRow >= component.blocks[$length]) {
+        return;
+      }
+      let numCols = component.blocks[$_get](blockRow)[$length];
+      if (blockCol >= numCols) {
+        return;
+      }
+      decodeFn(component, component.blocks[$_get](blockRow)[$_get](blockCol));
+    }
+    [_decodeBlock](component, decodeFn, mcu) {
+      let blockRow = (mcu / component.blocksPerLine)[$truncate]();
+      let blockCol = mcu[$modulo](component.blocksPerLine);
+      decodeFn(component, component.blocks[$_get](blockRow)[$_get](blockCol));
+    }
+  };
+  (jpeg_scan.JpegScan.new = function(input, frame, components, resetInterval, spectralStart, spectralEnd, successivePrev, successive) {
+    this[precision] = null;
+    this[samplesPerLine] = null;
+    this[scanLines] = null;
+    this[__JpegScan_mcusPerLine] = null;
+    this[progressive] = null;
+    this[maxH] = null;
+    this[maxV] = null;
+    this[bitsData] = 0;
+    this[bitsCount] = 0;
+    this[eobrun] = 0;
+    this[successiveACState] = 0;
+    this[__JpegScan_successiveACNextValue] = null;
+    this[input$] = input;
+    this[frame$] = frame;
+    this[components$] = components;
+    this[resetInterval$] = resetInterval;
+    this[spectralStart$] = spectralStart;
+    this[spectralEnd$] = spectralEnd;
+    this[successivePrev$] = successivePrev;
+    this[successive$] = successive;
+    this.precision = this.frame.precision;
+    this.samplesPerLine = this.frame.samplesPerLine;
+    this.scanLines = this.frame.scanLines;
+    this.mcusPerLine = this.frame.mcusPerLine;
+    this.progressive = this.frame.progressive;
+    this.maxH = this.frame.maxHSamples;
+    this.maxV = this.frame.maxVSamples;
+  }).prototype = jpeg_scan.JpegScan.prototype;
+  dart.addTypeTests(jpeg_scan.JpegScan);
+  dart.addTypeCaches(jpeg_scan.JpegScan);
+  dart.setMethodSignature(jpeg_scan.JpegScan, () => ({
+    __proto__: dart.getMethods(jpeg_scan.JpegScan.__proto__),
+    decode: dart.fnType(dart.void, []),
+    [_readBit]: dart.fnType(dart.nullable(core.int), []),
+    [_decodeHuffman]: dart.fnType(dart.nullable(core.int), [core.List]),
+    [_receive]: dart.fnType(dart.nullable(core.int), [core.int]),
+    [_receiveAndExtend]: dart.fnType(core.int, [dart.nullable(core.int)]),
+    [_decodeBaseline]: dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List]),
+    [_decodeDCFirst]: dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List]),
+    [_decodeDCSuccessive]: dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List$(core.int)]),
+    [_decodeACFirst]: dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List]),
+    [_decodeACSuccessive]: dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List$(core.int)]),
+    [_decodeMcu]: dart.fnType(dart.void, [jpeg_component.JpegComponent, dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List$(core.int)]), core.int, core.int, core.int]),
+    [_decodeBlock]: dart.fnType(dart.void, [jpeg_component.JpegComponent, dart.fnType(dart.void, [jpeg_component.JpegComponent, core.List$(core.int)]), core.int])
+  }));
+  dart.setGetterSignature(jpeg_scan.JpegScan, () => ({
+    __proto__: dart.getGetters(jpeg_scan.JpegScan.__proto__),
+    mcusPerLine: core.int,
+    successiveACNextValue: core.int
+  }));
+  dart.setSetterSignature(jpeg_scan.JpegScan, () => ({
+    __proto__: dart.getSetters(jpeg_scan.JpegScan.__proto__),
+    mcusPerLine: core.int,
+    successiveACNextValue: core.int
+  }));
+  dart.setLibraryUri(jpeg_scan.JpegScan, I[0]);
+  dart.setFieldSignature(jpeg_scan.JpegScan, () => ({
+    __proto__: dart.getFields(jpeg_scan.JpegScan.__proto__),
+    input: dart.fieldType(input_buffer.InputBuffer),
+    frame: dart.fieldType(jpeg_frame.JpegFrame),
+    precision: dart.fieldType(dart.nullable(core.int)),
+    samplesPerLine: dart.fieldType(dart.nullable(core.int)),
+    scanLines: dart.fieldType(dart.nullable(core.int)),
+    [__JpegScan_mcusPerLine]: dart.fieldType(dart.nullable(core.int)),
+    progressive: dart.fieldType(dart.nullable(core.bool)),
+    maxH: dart.fieldType(dart.nullable(core.int)),
+    maxV: dart.fieldType(dart.nullable(core.int)),
+    components: dart.fieldType(core.List$(jpeg_component.JpegComponent)),
+    resetInterval: dart.fieldType(dart.nullable(core.int)),
+    spectralStart: dart.fieldType(core.int),
+    spectralEnd: dart.fieldType(core.int),
+    successivePrev: dart.fieldType(core.int),
+    successive: dart.fieldType(core.int),
+    bitsData: dart.fieldType(core.int),
+    bitsCount: dart.fieldType(core.int),
+    eobrun: dart.fieldType(core.int),
+    successiveACState: dart.fieldType(core.int),
+    [__JpegScan_successiveACNextValue]: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.trackLibraries("packages/image/src/formats/jpeg/jpeg_scan.dart", {
+    "package:image/src/formats/jpeg/jpeg_scan.dart": jpeg_scan
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["jpeg_scan.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/jpeg/jpeg_scan.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__jpeg__jpeg_scan: jpeg_scan
+  };
+}));
+
+//# sourceMappingURL=jpeg_scan.dart.lib.js.map

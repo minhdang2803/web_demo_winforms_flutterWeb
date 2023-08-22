@@ -1,0 +1,209 @@
+define(['dart_sdk', 'packages/get/get_core/src/get_main.dart'], (function load__packages__get__get_utils__src__extensions__internacionalization_dart(dart_sdk, packages__get__get_core__src__get_main$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const get_main = packages__get__get_core__src__get_main$46dart.get_core__src__get_main;
+  var internacionalization = Object.create(dart.library);
+  var $addAll = dartx.addAll;
+  var $clear = dartx.clear;
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $forEach = dartx.forEach;
+  var $first = dartx.first;
+  var $split = dartx.split;
+  var $map = dartx.map;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $toString = dartx.toString;
+  var $replaceFirst = dartx.replaceFirst;
+  var $replaceAll = dartx.replaceAll;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    MapOfString$String: () => (T.MapOfString$String = dart.constFn(core.Map$(core.String, core.String)))(),
+    IdentityMapOfString$MapOfString$String: () => (T.IdentityMapOfString$MapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, T.MapOfString$String())))(),
+    MapOfString$MapOfString$String: () => (T.MapOfString$MapOfString$String = dart.constFn(core.Map$(core.String, T.MapOfString$String())))(),
+    MapOfString$MapOfString$StringTovoid: () => (T.MapOfString$MapOfString$StringTovoid = dart.constFn(dart.fnType(dart.void, [T.MapOfString$MapOfString$String()])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    StringAndMapOfString$StringTovoid: () => (T.StringAndMapOfString$StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String, T.MapOfString$String()])))(),
+    MapEntryOfString$MapOfString$String: () => (T.MapEntryOfString$MapOfString$String = dart.constFn(core.MapEntry$(core.String, T.MapOfString$String())))(),
+    StringAndMapOfString$StringToMapEntryOfString$MapOfString$String: () => (T.StringAndMapOfString$StringToMapEntryOfString$MapOfString$String = dart.constFn(dart.fnType(T.MapEntryOfString$MapOfString$String(), [core.String, T.MapOfString$String()])))(),
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))(),
+    ListOfStringToString: () => (T.ListOfStringToString = dart.constFn(dart.fnType(core.String, [], [T.ListOfString()])))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    StringNAndintNAndListOfStringToString: () => (T.StringNAndintNAndListOfStringToString = dart.constFn(dart.fnType(core.String, [], [T.StringN(), T.intN(), T.ListOfString()])))(),
+    StringAndStringTovoid: () => (T.StringAndStringTovoid = dart.constFn(dart.fnType(dart.void, [core.String, core.String])))(),
+    MapOfString$StringToString: () => (T.MapOfString$StringToString = dart.constFn(dart.fnType(core.String, [], [T.MapOfString$String()])))(),
+    StringNAndintNAndMapOfString$StringToString: () => (T.StringNAndintNAndMapOfString$StringToString = dart.constFn(dart.fnType(core.String, [], [T.StringN(), T.intN(), T.MapOfString$String()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constList([], core.String);
+    },
+    get C1() {
+      return C[1] = dart.constMap(core.String, core.String, []);
+    }
+  }, false);
+  var C = Array(2).fill(void 0);
+  var I = ["package:get/get_utils/src/extensions/internacionalization.dart"];
+  internacionalization._IntlHost = class _IntlHost extends core.Object {
+    static ['_#new#tearOff']() {
+      return new internacionalization._IntlHost.new();
+    }
+  };
+  (internacionalization._IntlHost.new = function() {
+    this.locale = null;
+    this.fallbackLocale = null;
+    this.translations = new (T.IdentityMapOfString$MapOfString$String()).new();
+    ;
+  }).prototype = internacionalization._IntlHost.prototype;
+  dart.addTypeTests(internacionalization._IntlHost);
+  dart.addTypeCaches(internacionalization._IntlHost);
+  dart.setLibraryUri(internacionalization._IntlHost, I[0]);
+  dart.setFieldSignature(internacionalization._IntlHost, () => ({
+    __proto__: dart.getFields(internacionalization._IntlHost.__proto__),
+    locale: dart.fieldType(dart.nullable(ui.Locale)),
+    fallbackLocale: dart.fieldType(dart.nullable(ui.Locale)),
+    translations: dart.fieldType(core.Map$(core.String, core.Map$(core.String, core.String)))
+  }));
+  internacionalization['FirstWhereExt|firstWhereOrNull'] = function FirstWhereExt$124firstWhereOrNull(T, $this, test) {
+    for (let element of $this) {
+      if (test(element)) return element;
+    }
+    return null;
+  };
+  internacionalization['FirstWhereExt|get#firstWhereOrNull'] = function FirstWhereExt$124get$35firstWhereOrNull(T, $this) {
+    return dart.fn(test => internacionalization['FirstWhereExt|firstWhereOrNull'](T, $this, test), dart.fnType(dart.nullable(T), [dart.fnType(core.bool, [T])]));
+  };
+  internacionalization['LocalesIntl|get#locale'] = function LocalesIntl$124get$35locale($this) {
+    return internacionalization['LocalesIntl|_intlHost'].locale;
+  };
+  internacionalization['LocalesIntl|get#fallbackLocale'] = function LocalesIntl$124get$35fallbackLocale($this) {
+    return internacionalization['LocalesIntl|_intlHost'].fallbackLocale;
+  };
+  internacionalization['LocalesIntl|set#locale'] = function LocalesIntl$124set$35locale($this, newLocale) {
+    return internacionalization['LocalesIntl|_intlHost'].locale = newLocale;
+  };
+  internacionalization['LocalesIntl|set#fallbackLocale'] = function LocalesIntl$124set$35fallbackLocale($this, newLocale) {
+    return internacionalization['LocalesIntl|_intlHost'].fallbackLocale = newLocale;
+  };
+  internacionalization['LocalesIntl|get#translations'] = function LocalesIntl$124get$35translations($this) {
+    return internacionalization['LocalesIntl|_intlHost'].translations;
+  };
+  internacionalization['LocalesIntl|addTranslations'] = function LocalesIntl$124addTranslations($this, tr) {
+    internacionalization['LocalesIntl|get#translations']($this)[$addAll](tr);
+  };
+  internacionalization['LocalesIntl|get#addTranslations'] = function LocalesIntl$124get$35addTranslations($this) {
+    return dart.fn(tr => internacionalization['LocalesIntl|addTranslations']($this, tr), T.MapOfString$MapOfString$StringTovoid());
+  };
+  internacionalization['LocalesIntl|clearTranslations'] = function LocalesIntl$124clearTranslations($this) {
+    internacionalization['LocalesIntl|get#translations']($this)[$clear]();
+  };
+  internacionalization['LocalesIntl|get#clearTranslations'] = function LocalesIntl$124get$35clearTranslations($this) {
+    return dart.fn(() => internacionalization['LocalesIntl|clearTranslations']($this), T.VoidTovoid());
+  };
+  internacionalization['LocalesIntl|appendTranslations'] = function LocalesIntl$124appendTranslations($this, tr) {
+    tr[$forEach](dart.fn((key, map) => {
+      if (internacionalization['LocalesIntl|get#translations']($this)[$containsKey](key)) {
+        dart.nullCheck(internacionalization['LocalesIntl|get#translations']($this)[$_get](key))[$addAll](map);
+      } else {
+        internacionalization['LocalesIntl|get#translations']($this)[$_set](key, map);
+      }
+    }, T.StringAndMapOfString$StringTovoid()));
+  };
+  internacionalization['LocalesIntl|get#appendTranslations'] = function LocalesIntl$124get$35appendTranslations($this) {
+    return dart.fn(tr => internacionalization['LocalesIntl|appendTranslations']($this, tr), T.MapOfString$MapOfString$StringTovoid());
+  };
+  internacionalization['Trans|get#_fullLocaleAndKey'] = function Trans$124get$35_fullLocaleAndKey($this) {
+    return internacionalization['LocalesIntl|get#translations'](get_main.Get)[$containsKey](dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).languageCode + "_" + dart.str(dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).countryCode)) && dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).languageCode + "_" + dart.str(dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).countryCode)))[$containsKey]($this);
+  };
+  internacionalization['Trans|get#_getSimilarLanguageTranslation'] = function Trans$124get$35_getSimilarLanguageTranslation($this) {
+    let translationsWithNoCountry = internacionalization['LocalesIntl|get#translations'](get_main.Get)[$map](core.String, T.MapOfString$String(), dart.fn((key, value) => new (T.MapEntryOfString$MapOfString$String()).__(key[$split]("_")[$first], value), T.StringAndMapOfString$StringToMapEntryOfString$MapOfString$String()));
+    let containsKey = translationsWithNoCountry[$containsKey](dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).languageCode[$split]("_")[$first]);
+    if (!containsKey) {
+      return null;
+    }
+    return translationsWithNoCountry[$_get](dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).languageCode[$split]("_")[$first]);
+  };
+  internacionalization['Trans|get#tr'] = function Trans$124get$35tr($this) {
+    let t16;
+    if ((t16 = internacionalization['LocalesIntl|get#locale'](get_main.Get), t16 == null ? null : t16.languageCode) == null) return $this;
+    if (internacionalization['Trans|get#_fullLocaleAndKey']($this)) {
+      return dart.nullCheck(dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).languageCode + "_" + dart.str(dart.nullCheck(internacionalization['LocalesIntl|get#locale'](get_main.Get)).countryCode)))[$_get]($this));
+    }
+    let similarTranslation = internacionalization['Trans|get#_getSimilarLanguageTranslation']($this);
+    if (similarTranslation != null && similarTranslation[$containsKey]($this)) {
+      return dart.nullCheck(similarTranslation[$_get]($this));
+    } else if (internacionalization['LocalesIntl|get#fallbackLocale'](get_main.Get) != null) {
+      let fallback = dart.nullCheck(internacionalization['LocalesIntl|get#fallbackLocale'](get_main.Get));
+      let key = fallback.languageCode + "_" + dart.str(fallback.countryCode);
+      if (internacionalization['LocalesIntl|get#translations'](get_main.Get)[$containsKey](key) && dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](key))[$containsKey]($this)) {
+        return dart.nullCheck(dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](key))[$_get]($this));
+      }
+      if (internacionalization['LocalesIntl|get#translations'](get_main.Get)[$containsKey](fallback.languageCode) && dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](fallback.languageCode))[$containsKey]($this)) {
+        return dart.nullCheck(dart.nullCheck(internacionalization['LocalesIntl|get#translations'](get_main.Get)[$_get](fallback.languageCode))[$_get]($this));
+      }
+      return $this;
+    } else {
+      return $this;
+    }
+  };
+  internacionalization['Trans|trArgs'] = function Trans$124trArgs($this, args = C[0] || CT.C0) {
+    let key = internacionalization['Trans|get#tr']($this);
+    if (args[$isNotEmpty]) {
+      for (let arg of args) {
+        key = key[$replaceFirst](core.RegExp.new("%s"), arg[$toString]());
+      }
+    }
+    return key;
+  };
+  internacionalization['Trans|get#trArgs'] = function Trans$124get$35trArgs($this) {
+    return dart.fn((args = C[0] || CT.C0) => internacionalization['Trans|trArgs']($this, args), T.ListOfStringToString());
+  };
+  internacionalization['Trans|trPlural'] = function Trans$124trPlural($this, pluralKey = null, i = null, args = C[0] || CT.C0) {
+    return i === 1 ? internacionalization['Trans|trArgs']($this, args) : internacionalization['Trans|trArgs'](dart.nullCheck(pluralKey), args);
+  };
+  internacionalization['Trans|get#trPlural'] = function Trans$124get$35trPlural($this) {
+    return dart.fn((pluralKey = null, i = null, args = C[0] || CT.C0) => internacionalization['Trans|trPlural']($this, pluralKey, i, args), T.StringNAndintNAndListOfStringToString());
+  };
+  internacionalization['Trans|trParams'] = function Trans$124trParams($this, params = C[1] || CT.C1) {
+    let trans = internacionalization['Trans|get#tr']($this);
+    if (params[$isNotEmpty]) {
+      params[$forEach](dart.fn((key, value) => {
+        trans = trans[$replaceAll]("@" + key, value);
+      }, T.StringAndStringTovoid()));
+    }
+    return trans;
+  };
+  internacionalization['Trans|get#trParams'] = function Trans$124get$35trParams($this) {
+    return dart.fn((params = C[1] || CT.C1) => internacionalization['Trans|trParams']($this, params), T.MapOfString$StringToString());
+  };
+  internacionalization['Trans|trPluralParams'] = function Trans$124trPluralParams($this, pluralKey = null, i = null, params = C[1] || CT.C1) {
+    return i === 1 ? internacionalization['Trans|trParams']($this, params) : internacionalization['Trans|trParams'](dart.nullCheck(pluralKey), params);
+  };
+  internacionalization['Trans|get#trPluralParams'] = function Trans$124get$35trPluralParams($this) {
+    return dart.fn((pluralKey = null, i = null, params = C[1] || CT.C1) => internacionalization['Trans|trPluralParams']($this, pluralKey, i, params), T.StringNAndintNAndMapOfString$StringToString());
+  };
+  dart.defineLazy(internacionalization, {
+    /*internacionalization['LocalesIntl|_intlHost']*/get ['LocalesIntl|_intlHost']() {
+      return new internacionalization._IntlHost.new();
+    }
+  }, false);
+  dart.trackLibraries("packages/get/get_utils/src/extensions/internacionalization.dart", {
+    "package:get/get_utils/src/extensions/internacionalization.dart": internacionalization
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["internacionalization.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/get/get_utils/src/extensions/internacionalization.dart.lib.js"}');
+  // Exports:
+  return {
+    get_utils__src__extensions__internacionalization: internacionalization
+  };
+}));
+
+//# sourceMappingURL=internacionalization.dart.lib.js.map

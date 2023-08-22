@@ -1,0 +1,391 @@
+define(['dart_sdk', 'packages/image/src/formats/pvrtc/pvrtc_bit_utility.dart', 'packages/image/src/formats/pvrtc/pvrtc_color.dart'], (function load__packages__image__src__formats__pvrtc__pvrtc_packet_dart(dart_sdk, packages__image__src__formats__pvrtc__pvrtc_bit_utility$46dart, packages__image__src__formats__pvrtc__pvrtc_color$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const typed_data = dart_sdk.typed_data;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const pvrtc_bit_utility = packages__image__src__formats__pvrtc__pvrtc_bit_utility$46dart.src__formats__pvrtc__pvrtc_bit_utility;
+  const pvrtc_color = packages__image__src__formats__pvrtc__pvrtc_color$46dart.src__formats__pvrtc__pvrtc_color;
+  var pvrtc_packet = Object.create(dart.library);
+  var $buffer = dartx.buffer;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $rightShift = dartx['>>'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([4, 4, 4, 4], core.int);
+    },
+    get C2() {
+      return C[2] = dart.constList([2, 6, 2, 6], core.int);
+    },
+    get C3() {
+      return C[3] = dart.constList([8, 0, 8, 0], core.int);
+    },
+    get C4() {
+      return C[4] = dart.constList([6, 2, 6, 2], core.int);
+    },
+    get C5() {
+      return C[5] = dart.constList([2, 2, 6, 6], core.int);
+    },
+    get C6() {
+      return C[6] = dart.constList([1, 3, 3, 9], core.int);
+    },
+    get C7() {
+      return C[7] = dart.constList([4, 0, 12, 0], core.int);
+    },
+    get C8() {
+      return C[8] = dart.constList([3, 1, 9, 3], core.int);
+    },
+    get C9() {
+      return C[9] = dart.constList([8, 8, 0, 0], core.int);
+    },
+    get C10() {
+      return C[10] = dart.constList([4, 12, 0, 0], core.int);
+    },
+    get C11() {
+      return C[11] = dart.constList([16, 0, 0, 0], core.int);
+    },
+    get C12() {
+      return C[12] = dart.constList([12, 4, 0, 0], core.int);
+    },
+    get C13() {
+      return C[13] = dart.constList([6, 6, 2, 2], core.int);
+    },
+    get C14() {
+      return C[14] = dart.constList([3, 9, 1, 3], core.int);
+    },
+    get C15() {
+      return C[15] = dart.constList([12, 0, 4, 0], core.int);
+    },
+    get C16() {
+      return C[16] = dart.constList([9, 3, 3, 1], core.int);
+    },
+    get C0() {
+      return C[0] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16], T.ListOfint());
+    },
+    get C18() {
+      return C[18] = dart.constList([5, 3, 5, 3], core.int);
+    },
+    get C19() {
+      return C[19] = dart.constList([3, 5, 3, 5], core.int);
+    },
+    get C20() {
+      return C[20] = dart.constList([0, 8, 0, 8], core.int);
+    },
+    get C21() {
+      return C[21] = dart.constList([4, 4, 0, 0], core.int);
+    },
+    get C17() {
+      return C[17] = dart.constList([C[3] || CT.C3, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[3] || CT.C3, C[1] || CT.C1, C[21] || CT.C21, C[20] || CT.C20], T.ListOfint());
+    },
+    get C22() {
+      return C[22] = dart.constList([0, 1, 4, 5, 16, 17, 20, 21, 64, 65, 68, 69, 80, 81, 84, 85, 256, 257, 260, 261, 272, 273, 276, 277, 320, 321, 324, 325, 336, 337, 340, 341, 1024, 1025, 1028, 1029, 1040, 1041, 1044, 1045, 1088, 1089, 1092, 1093, 1104, 1105, 1108, 1109, 1280, 1281, 1284, 1285, 1296, 1297, 1300, 1301, 1344, 1345, 1348, 1349, 1360, 1361, 1364, 1365, 4096, 4097, 4100, 4101, 4112, 4113, 4116, 4117, 4160, 4161, 4164, 4165, 4176, 4177, 4180, 4181, 4352, 4353, 4356, 4357, 4368, 4369, 4372, 4373, 4416, 4417, 4420, 4421, 4432, 4433, 4436, 4437, 5120, 5121, 5124, 5125, 5136, 5137, 5140, 5141, 5184, 5185, 5188, 5189, 5200, 5201, 5204, 5205, 5376, 5377, 5380, 5381, 5392, 5393, 5396, 5397, 5440, 5441, 5444, 5445, 5456, 5457, 5460, 5461, 16384, 16385, 16388, 16389, 16400, 16401, 16404, 16405, 16448, 16449, 16452, 16453, 16464, 16465, 16468, 16469, 16640, 16641, 16644, 16645, 16656, 16657, 16660, 16661, 16704, 16705, 16708, 16709, 16720, 16721, 16724, 16725, 17408, 17409, 17412, 17413, 17424, 17425, 17428, 17429, 17472, 17473, 17476, 17477, 17488, 17489, 17492, 17493, 17664, 17665, 17668, 17669, 17680, 17681, 17684, 17685, 17728, 17729, 17732, 17733, 17744, 17745, 17748, 17749, 20480, 20481, 20484, 20485, 20496, 20497, 20500, 20501, 20544, 20545, 20548, 20549, 20560, 20561, 20564, 20565, 20736, 20737, 20740, 20741, 20752, 20753, 20756, 20757, 20800, 20801, 20804, 20805, 20816, 20817, 20820, 20821, 21504, 21505, 21508, 21509, 21520, 21521, 21524, 21525, 21568, 21569, 21572, 21573, 21584, 21585, 21588, 21589, 21760, 21761, 21764, 21765, 21776, 21777, 21780, 21781, 21824, 21825, 21828, 21829, 21840, 21841, 21844, 21845], core.int);
+    }
+  }, false);
+  var C = Array(23).fill(void 0);
+  var I = ["package:image/src/formats/pvrtc/pvrtc_packet.dart"];
+  var rawData = dart.privateName(pvrtc_packet, "PvrtcPacket.rawData");
+  var __PvrtcPacket_index = dart.privateName(pvrtc_packet, "_#PvrtcPacket#index");
+  var _usePunchthroughAlpha = dart.privateName(pvrtc_packet, "_usePunchthroughAlpha");
+  var _colorA = dart.privateName(pvrtc_packet, "_colorA");
+  var _colorAIsOpaque = dart.privateName(pvrtc_packet, "_colorAIsOpaque");
+  var _colorB = dart.privateName(pvrtc_packet, "_colorB");
+  var _colorBIsOpaque = dart.privateName(pvrtc_packet, "_colorBIsOpaque");
+  var _update = dart.privateName(pvrtc_packet, "_update");
+  var _getColorData = dart.privateName(pvrtc_packet, "_getColorData");
+  pvrtc_packet.PvrtcPacket = class PvrtcPacket extends core.Object {
+    get rawData() {
+      return this[rawData];
+    }
+    set rawData(value) {
+      this[rawData] = value;
+    }
+    get index() {
+      let t0;
+      t0 = this[__PvrtcPacket_index];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("index")) : t0;
+    }
+    set index(index$35param) {
+      this[__PvrtcPacket_index] = index$35param;
+    }
+    static ['_#new#tearOff'](data) {
+      return new pvrtc_packet.PvrtcPacket.new(data);
+    }
+    setBlock(x, y) {
+      return this.setIndex(pvrtc_packet.PvrtcPacket._getMortonNumber(x, y));
+    }
+    setIndex(i) {
+      this.index = i << 1 >>> 0;
+      this[_update]();
+    }
+    get modulationData() {
+      return this.rawData[$_get](this.index);
+    }
+    set modulationData(x) {
+      let t2, t1, t0;
+      t0 = this.rawData;
+      t1 = this.index;
+      t2 = x;
+      t0[$_set](t1, t2);
+      return t2;
+    }
+    get colorData() {
+      return this.rawData[$_get](this.index + 1);
+    }
+    set colorData(x) {
+      let t2, t1, t0;
+      t0 = this.rawData;
+      t1 = this.index + 1;
+      t2 = x;
+      t0[$_set](t1, t2);
+      return t2;
+    }
+    get usePunchthroughAlpha() {
+      return this[_usePunchthroughAlpha];
+    }
+    set usePunchthroughAlpha(x) {
+      this[_usePunchthroughAlpha] = x;
+      this.colorData = this[_getColorData]();
+    }
+    get colorA() {
+      return this[_colorA];
+    }
+    set colorA(x) {
+      this[_colorA] = x;
+      this.colorData = this[_getColorData]();
+    }
+    get colorAIsOpaque() {
+      return this[_colorAIsOpaque];
+    }
+    set colorAIsOpaque(x) {
+      this[_colorAIsOpaque] = x;
+      this.colorData = this[_getColorData]();
+    }
+    get colorB() {
+      return this[_colorB];
+    }
+    set colorB(x) {
+      this[_colorB] = x;
+      this.colorData = this[_getColorData]();
+    }
+    get colorBIsOpaque() {
+      return this[_colorBIsOpaque];
+    }
+    set colorBIsOpaque(x) {
+      this[_colorBIsOpaque] = x;
+      this.colorData = this[_getColorData]();
+    }
+    setColorRgbA(c) {
+      let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_FLOOR[$_get](c.r);
+      let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_FLOOR[$_get](c.g);
+      let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_FLOOR[$_get](c.b);
+      this.colorA = (r << 9 | g << 4 >>> 0 | b) >>> 0;
+      this.colorAIsOpaque = 1;
+    }
+    setColorRgbaA(c) {
+      let a = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_3_FLOOR[$_get](c.a);
+      if (a === 7) {
+        let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_FLOOR[$_get](c.r);
+        let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_FLOOR[$_get](c.g);
+        let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_FLOOR[$_get](c.b);
+        this.colorA = (r << 9 | g << 4 >>> 0 | b) >>> 0;
+        this.colorAIsOpaque = 1;
+      } else {
+        let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_FLOOR[$_get](c.r);
+        let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_FLOOR[$_get](c.g);
+        let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_3_FLOOR[$_get](c.b);
+        this.colorA = (a << 11 | r << 7 >>> 0 | g << 3 >>> 0 | b) >>> 0;
+        this.colorAIsOpaque = 0;
+      }
+    }
+    setColorRgbB(c) {
+      let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.r);
+      let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.g);
+      let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.b);
+      this.colorB = (r << 10 | g << 5 >>> 0 | b) >>> 0;
+      this.colorBIsOpaque = 1;
+    }
+    setColorRgbaB(c) {
+      let a = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_3_CEIL[$_get](c.a);
+      if (a === 7) {
+        let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.r);
+        let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.g);
+        let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_5_CEIL[$_get](c.b);
+        this.colorB = (r << 10 | g << 5 >>> 0 | b) >>> 0;
+        this.colorBIsOpaque = 1;
+      } else {
+        let r = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_CEIL[$_get](c.r);
+        let g = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_CEIL[$_get](c.g);
+        let b = pvrtc_bit_utility.BitUtility.BITSCALE_8_TO_4_CEIL[$_get](c.b);
+        this.colorB = (a << 12 | r << 8 >>> 0 | g << 4 >>> 0 | b) >>> 0;
+        this.colorBIsOpaque = 0;
+      }
+    }
+    getColorRgbA() {
+      if (this.colorAIsOpaque !== 0) {
+        let r = this.colorA[$rightShift](9);
+        let g = this.colorA >> 4 & 31;
+        let b = this.colorA & 15;
+        return new pvrtc_color.PvrtcColorRgb.new(pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](b));
+      } else {
+        let r = this.colorA >> 7 & 15;
+        let g = this.colorA >> 3 & 15;
+        let b = this.colorA & 7;
+        return new pvrtc_color.PvrtcColorRgb.new(pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_3_TO_8[$_get](b));
+      }
+    }
+    getColorRgbaA() {
+      if (this.colorAIsOpaque !== 0) {
+        let r = this.colorA[$rightShift](9);
+        let g = this.colorA >> 4 & 31;
+        let b = this.colorA & 15;
+        return new pvrtc_color.PvrtcColorRgba.new(pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](b), 255);
+      } else {
+        let a = this.colorA >> 11 & 7;
+        let r = this.colorA >> 7 & 15;
+        let g = this.colorA >> 3 & 15;
+        let b = this.colorA & 7;
+        return new pvrtc_color.PvrtcColorRgba.new(pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_3_TO_8[$_get](b), pvrtc_bit_utility.BitUtility.BITSCALE_3_TO_8[$_get](a));
+      }
+    }
+    getColorRgbB() {
+      if (this.colorBIsOpaque !== 0) {
+        let r = this.colorB[$rightShift](10);
+        let g = this.colorB >> 5 & 31;
+        let b = this.colorB & 31;
+        return new pvrtc_color.PvrtcColorRgb.new(pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](b));
+      } else {
+        let r = this.colorB >> 8 & 15;
+        let g = this.colorB >> 4 & 15;
+        let b = this.colorB & 15;
+        return new pvrtc_color.PvrtcColorRgb.new(pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](b));
+      }
+    }
+    getColorRgbaB() {
+      if (this.colorBIsOpaque !== 0) {
+        let r = this.colorB[$rightShift](10);
+        let g = this.colorB >> 5 & 31;
+        let b = this.colorB & 31;
+        return new pvrtc_color.PvrtcColorRgba.new(pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_5_TO_8[$_get](b), 255);
+      } else {
+        let a = this.colorB >> 12 & 7;
+        let r = this.colorB >> 8 & 15;
+        let g = this.colorB >> 4 & 15;
+        let b = this.colorB & 15;
+        return new pvrtc_color.PvrtcColorRgba.new(pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](r), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](g), pvrtc_bit_utility.BitUtility.BITSCALE_4_TO_8[$_get](b), pvrtc_bit_utility.BitUtility.BITSCALE_3_TO_8[$_get](a));
+      }
+    }
+    [_getColorData]() {
+      return (this.usePunchthroughAlpha & 1 | (this.colorA & 16383) >>> 0 << 1 >>> 0 | (this.colorAIsOpaque & 1) << 15 | (this.colorB & 32767) >>> 0 << 16 >>> 0 | (this.colorBIsOpaque & 1) << 31 >>> 0) >>> 0;
+    }
+    [_update]() {
+      let x = this.colorData;
+      this.usePunchthroughAlpha = x & 1;
+      this.colorA = (x[$rightShift](1) & 16383) >>> 0;
+      this.colorAIsOpaque = x >> 15 & 1;
+      this.colorB = (x[$rightShift](16) & 32767) >>> 0;
+      this.colorBIsOpaque = x[$rightShift](31) & 1;
+    }
+    static _getMortonNumber(x, y) {
+      return (pvrtc_packet.PvrtcPacket.MORTON_TABLE[$_get](x[$rightShift](8)) << 17 | pvrtc_packet.PvrtcPacket.MORTON_TABLE[$_get](y[$rightShift](8)) << 16 >>> 0 | pvrtc_packet.PvrtcPacket.MORTON_TABLE[$_get](x & 255) << 1 >>> 0 | pvrtc_packet.PvrtcPacket.MORTON_TABLE[$_get](y & 255)) >>> 0;
+    }
+  };
+  (pvrtc_packet.PvrtcPacket.new = function(data) {
+    this[__PvrtcPacket_index] = null;
+    this[_usePunchthroughAlpha] = 0;
+    this[_colorA] = 0;
+    this[_colorAIsOpaque] = 0;
+    this[_colorB] = 0;
+    this[_colorBIsOpaque] = 0;
+    this[rawData] = typed_data.Uint32List.view(data[$buffer]);
+    ;
+  }).prototype = pvrtc_packet.PvrtcPacket.prototype;
+  dart.addTypeTests(pvrtc_packet.PvrtcPacket);
+  dart.addTypeCaches(pvrtc_packet.PvrtcPacket);
+  dart.setMethodSignature(pvrtc_packet.PvrtcPacket, () => ({
+    __proto__: dart.getMethods(pvrtc_packet.PvrtcPacket.__proto__),
+    setBlock: dart.fnType(dart.void, [core.int, core.int]),
+    setIndex: dart.fnType(dart.void, [core.int]),
+    setColorRgbA: dart.fnType(dart.void, [pvrtc_color.PvrtcColorRgb]),
+    setColorRgbaA: dart.fnType(dart.void, [pvrtc_color.PvrtcColorRgba]),
+    setColorRgbB: dart.fnType(dart.void, [pvrtc_color.PvrtcColorRgb]),
+    setColorRgbaB: dart.fnType(dart.void, [pvrtc_color.PvrtcColorRgba]),
+    getColorRgbA: dart.fnType(pvrtc_color.PvrtcColorRgb, []),
+    getColorRgbaA: dart.fnType(pvrtc_color.PvrtcColorRgba, []),
+    getColorRgbB: dart.fnType(pvrtc_color.PvrtcColorRgb, []),
+    getColorRgbaB: dart.fnType(pvrtc_color.PvrtcColorRgba, []),
+    [_getColorData]: dart.fnType(core.int, []),
+    [_update]: dart.fnType(dart.void, [])
+  }));
+  dart.setStaticMethodSignature(pvrtc_packet.PvrtcPacket, () => ['_getMortonNumber']);
+  dart.setGetterSignature(pvrtc_packet.PvrtcPacket, () => ({
+    __proto__: dart.getGetters(pvrtc_packet.PvrtcPacket.__proto__),
+    index: core.int,
+    modulationData: core.int,
+    colorData: core.int,
+    usePunchthroughAlpha: core.int,
+    colorA: core.int,
+    colorAIsOpaque: core.int,
+    colorB: core.int,
+    colorBIsOpaque: core.int
+  }));
+  dart.setSetterSignature(pvrtc_packet.PvrtcPacket, () => ({
+    __proto__: dart.getSetters(pvrtc_packet.PvrtcPacket.__proto__),
+    index: core.int,
+    modulationData: core.int,
+    colorData: core.int,
+    usePunchthroughAlpha: core.int,
+    colorA: core.int,
+    colorAIsOpaque: core.int,
+    colorB: core.int,
+    colorBIsOpaque: core.int
+  }));
+  dart.setLibraryUri(pvrtc_packet.PvrtcPacket, I[0]);
+  dart.setFieldSignature(pvrtc_packet.PvrtcPacket, () => ({
+    __proto__: dart.getFields(pvrtc_packet.PvrtcPacket.__proto__),
+    rawData: dart.fieldType(typed_data.Uint32List),
+    [__PvrtcPacket_index]: dart.fieldType(dart.nullable(core.int)),
+    [_usePunchthroughAlpha]: dart.fieldType(core.int),
+    [_colorA]: dart.fieldType(core.int),
+    [_colorAIsOpaque]: dart.fieldType(core.int),
+    [_colorB]: dart.fieldType(core.int),
+    [_colorBIsOpaque]: dart.fieldType(core.int)
+  }));
+  dart.setStaticFieldSignature(pvrtc_packet.PvrtcPacket, () => ['BITS_14', 'BITS_15', 'BILINEAR_FACTORS', 'WEIGHTS', 'MORTON_TABLE']);
+  dart.defineLazy(pvrtc_packet.PvrtcPacket, {
+    /*pvrtc_packet.PvrtcPacket.BITS_14*/get BITS_14() {
+      return 16383;
+    },
+    /*pvrtc_packet.PvrtcPacket.BITS_15*/get BITS_15() {
+      return 32767;
+    },
+    /*pvrtc_packet.PvrtcPacket.BILINEAR_FACTORS*/get BILINEAR_FACTORS() {
+      return C[0] || CT.C0;
+    },
+    /*pvrtc_packet.PvrtcPacket.WEIGHTS*/get WEIGHTS() {
+      return C[17] || CT.C17;
+    },
+    /*pvrtc_packet.PvrtcPacket.MORTON_TABLE*/get MORTON_TABLE() {
+      return C[22] || CT.C22;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/pvrtc/pvrtc_packet.dart", {
+    "package:image/src/formats/pvrtc/pvrtc_packet.dart": pvrtc_packet
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["pvrtc_packet.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/image/src/formats/pvrtc/pvrtc_packet.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__pvrtc__pvrtc_packet: pvrtc_packet
+  };
+}));
+
+//# sourceMappingURL=pvrtc_packet.dart.lib.js.map

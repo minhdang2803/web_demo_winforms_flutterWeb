@@ -1,0 +1,940 @@
+define(['dart_sdk', 'packages/webviewx/src/utils/source_type.dart', 'packages/webviewx/src/utils/embedded_js_content.dart', 'packages/webviewx/src/utils/dart_callback.dart', 'packages/webviewx/src/utils/webview_flutter_original_utils.dart', 'packages/webviewx/src/utils/web_specific_params.dart', 'packages/webviewx/src/utils/css_loader.dart', 'packages/webviewx/src/utils/web_url_bypass_proxy.dart', 'packages/webviewx/src/utils/mobile_specific_params.dart', 'packages/flutter/src/widgets/title.dart', 'packages/webviewx/src/view/interface.dart', 'packages/webviewx/src/controller/interface.dart', 'packages/webviewx/src/controller/impl/web.dart', 'packages/flutter/src/widgets/platform_view.dart', 'packages/pointer_interceptor/src/web.dart', 'packages/webviewx/src/utils/html_utils.dart', 'packages/webviewx/src/utils/webview_content_model.dart', 'packages/http/src/multipart_request.dart', 'packages/webviewx/src/utils/logger.dart'], (function load__packages__webviewx__src__view__impl__web_dart(dart_sdk, packages__webviewx__src__utils__source_type$46dart, packages__webviewx__src__utils__embedded_js_content$46dart, packages__webviewx__src__utils__dart_callback$46dart, packages__webviewx__src__utils__webview_flutter_original_utils$46dart, packages__webviewx__src__utils__web_specific_params$46dart, packages__webviewx__src__utils__css_loader$46dart, packages__webviewx__src__utils__web_url_bypass_proxy$46dart, packages__webviewx__src__utils__mobile_specific_params$46dart, packages__flutter__src__widgets__title$46dart, packages__webviewx__src__view__interface$46dart, packages__webviewx__src__controller__interface$46dart, packages__webviewx__src__controller__impl__web$46dart, packages__flutter__src__widgets__platform_view$46dart, packages__pointer_interceptor__src__web$46dart, packages__webviewx__src__utils__html_utils$46dart, packages__webviewx__src__utils__webview_content_model$46dart, packages__http__src__multipart_request$46dart, packages__webviewx__src__utils__logger$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const ui = dart_sdk.ui;
+  const html = dart_sdk.html;
+  const js = dart_sdk.js;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const source_type = packages__webviewx__src__utils__source_type$46dart.src__utils__source_type;
+  const embedded_js_content = packages__webviewx__src__utils__embedded_js_content$46dart.src__utils__embedded_js_content;
+  const dart_callback = packages__webviewx__src__utils__dart_callback$46dart.src__utils__dart_callback;
+  const webview_flutter_original_utils = packages__webviewx__src__utils__webview_flutter_original_utils$46dart.src__utils__webview_flutter_original_utils;
+  const web_specific_params = packages__webviewx__src__utils__web_specific_params$46dart.src__utils__web_specific_params;
+  const css_loader = packages__webviewx__src__utils__css_loader$46dart.src__utils__css_loader;
+  const web_url_bypass_proxy = packages__webviewx__src__utils__web_url_bypass_proxy$46dart.src__utils__web_url_bypass_proxy;
+  const mobile_specific_params = packages__webviewx__src__utils__mobile_specific_params$46dart.src__utils__mobile_specific_params;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const $interface = packages__webviewx__src__view__interface$46dart.src__view__interface;
+  const $interface$ = packages__webviewx__src__controller__interface$46dart.src__controller__interface;
+  const web = packages__webviewx__src__controller__impl__web$46dart.src__controller__impl__web;
+  const platform_view = packages__flutter__src__widgets__platform_view$46dart.src__widgets__platform_view;
+  const web$ = packages__pointer_interceptor__src__web$46dart.src__web;
+  const html_utils = packages__webviewx__src__utils__html_utils$46dart.src__utils__html_utils;
+  const webview_content_model = packages__webviewx__src__utils__webview_content_model$46dart.src__utils__webview_content_model;
+  const http = packages__http__src__multipart_request$46dart.http;
+  const logger = packages__webviewx__src__utils__logger$46dart.src__utils__logger;
+  var web$0 = Object.create(dart.library);
+  var $onLoad = dartx.onLoad;
+  var $id = dartx.id;
+  var $border = dartx.border;
+  var $style = dartx.style;
+  var $toInt = dartx.toInt;
+  var $toString = dartx.toString;
+  var $forEach = dartx.forEach;
+  var $add = dartx.add;
+  var $reduce = dartx.reduce;
+  var $isEmpty = dartx.isEmpty;
+  var $startsWith = dartx.startsWith;
+  var $href = dartx.href;
+  var $location = dartx.location;
+  var $contentWindow = dartx.contentWindow;
+  var $_get = dartx._get;
+  var $map = dartx.map;
+  var $addEntries = dartx.addEntries;
+  var $putIfAbsent = dartx.putIfAbsent;
+  var $length = dartx.length;
+  var $runtimeType = dartx.runtimeType;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    FutureOfNull: () => (T.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    intToIFrameElement: () => (T.intToIFrameElement = dart.constFn(dart.fnType(html.IFrameElement, [core.int])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    JsObjectToNull: () => (T.JsObjectToNull = dart.constFn(dart.fnType(core.Null, [js.JsObject])))(),
+    EventTovoid: () => (T.EventTovoid = dart.constFn(dart.fnType(dart.void, [html.Event])))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    StringAndStringToString: () => (T.StringAndStringToString = dart.constFn(dart.fnType(core.String, [core.String, core.String])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    IdentityMapOfString$String: () => (T.IdentityMapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, core.String)))(),
+    MapEntryOfString$String: () => (T.MapEntryOfString$String = dart.constFn(core.MapEntry$(core.String, core.String)))(),
+    dynamicToMapEntryOfString$String: () => (T.dynamicToMapEntryOfString$String = dart.constFn(dart.fnType(T.MapEntryOfString$String(), [dart.dynamic])))(),
+    StringToNull: () => (T.StringToNull = dart.constFn(dart.fnType(core.Null, [core.String])))(),
+    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    FutureOfString: () => (T.FutureOfString = dart.constFn(async.Future$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: source_type.SourceType.prototype,
+        [_Enum__name]: "url",
+        [_Enum_index]: 1
+      });
+    },
+    get C1() {
+      return C[1] = dart.constSet(embedded_js_content.EmbeddedJsContent, []);
+    },
+    get C2() {
+      return C[2] = dart.constSet(dart_callback.DartCallback, []);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: webview_flutter_original_utils.JavascriptMode.prototype,
+        [_Enum__name]: "unrestricted",
+        [_Enum_index]: 1
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: webview_flutter_original_utils.AutoMediaPlaybackPolicy.prototype,
+        [_Enum__name]: "requireUserActionForAllMediaTypes",
+        [_Enum_index]: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: css_loader.CssLoader.prototype,
+        [CssLoader_loaderClassName]: "loader",
+        [CssLoader_style]: "    .loader {\n      position: absolute;\n      top: calc(50% - 25px);\n      left: calc(50% - 25px);\n      width: 50px;\n      height: 50px;\n      background-color: #333;\n      border-radius: 50%;  \n      animation: loader 1s infinite ease-in-out;\n    }\n    @keyframes loader {\n      0% {\n      transform: scale(0);\n      }\n      100% {\n      transform: scale(1);\n      opacity: 0;\n      }\n    }\n    "
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList(["accelerometer", "clipboard-write", "encrypted-media", "gyroscope", "picture-in-picture"], core.String);
+    },
+    get C8() {
+      return C[8] = dart.constList(["allow-downloads", "allow-forms", "allow-modals", "allow-orientation-lock", "allow-pointer-lock", "allow-popups", "allow-popups-to-escape-sandbox", "allow-presentation", "allow-same-origin"], core.String);
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: web_url_bypass_proxy.BridgedBypassProxy.prototype
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: web_url_bypass_proxy.CodeTabsBypassProxy.prototype
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: web_url_bypass_proxy.WeCorsAnyWhereProxy.prototype
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], web_url_bypass_proxy.BypassProxy);
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: web_specific_params.WebSpecificParams.prototype,
+        [WebSpecificParams_cssLoadingIndicator]: C[6] || CT.C6,
+        [WebSpecificParams_additionalAllowOptions]: C[7] || CT.C7,
+        [WebSpecificParams_additionalSandboxOptions]: C[8] || CT.C8,
+        [WebSpecificParams_webAllowFullscreenContent]: true,
+        [WebSpecificParams_printDebugInfo]: false,
+        [WebSpecificParams_applyProxyLoadBalancing]: true,
+        [WebSpecificParams__proxyList]: C[9] || CT.C9
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: mobile_specific_params.MobileSpecificParams.prototype,
+        [MobileSpecificParams_androidEnableHybridComposition]: false,
+        [MobileSpecificParams_gestureNavigationEnabled]: false,
+        [MobileSpecificParams_debuggingEnabled]: false,
+        [MobileSpecificParams_mobileGestureRecognizers]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "WebViewX",
+        [_Location_column]: 9,
+        [_Location_line]: 114,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "HtmlElementView",
+        [_Location_column]: 18,
+        [_Location_line]: 308,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "RepaintBoundary",
+        [_Location_column]: 16,
+        [_Location_line]: 307,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "AbsorbPointer",
+        [_Location_column]: 14,
+        [_Location_line]: 306,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 29,
+        [_Location_line]: 303,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 22,
+        [_Location_line]: 332,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "PointerInterceptor",
+        [_Location_column]: 20,
+        [_Location_line]: 331,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Positioned",
+        [_Location_column]: 22,
+        [_Location_line]: 330,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 17,
+        [_Location_line]: 336,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[23] || CT.C23,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Stack",
+        [_Location_column]: 12,
+        [_Location_line]: 326,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/webviewx-0.2.1/lib/src/view/impl/web.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: source_type.SourceType.prototype,
+        [_Enum__name]: "html",
+        [_Enum_index]: 0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: source_type.SourceType.prototype,
+        [_Enum__name]: "urlBypass",
+        [_Enum_index]: 2
+      });
+    }
+  }, false);
+  var C = Array(27).fill(void 0);
+  var I = ["package:webviewx/src/view/impl/web.dart"];
+  var initialContent$ = dart.privateName(web$0, "WebViewX.initialContent");
+  var initialSourceType$ = dart.privateName(web$0, "WebViewX.initialSourceType");
+  var userAgent$ = dart.privateName(web$0, "WebViewX.userAgent");
+  var width$ = dart.privateName(web$0, "WebViewX.width");
+  var height$ = dart.privateName(web$0, "WebViewX.height");
+  var onWebViewCreated$ = dart.privateName(web$0, "WebViewX.onWebViewCreated");
+  var jsContent$ = dart.privateName(web$0, "WebViewX.jsContent");
+  var dartCallBacks$ = dart.privateName(web$0, "WebViewX.dartCallBacks");
+  var ignoreAllGestures$ = dart.privateName(web$0, "WebViewX.ignoreAllGestures");
+  var javascriptMode$ = dart.privateName(web$0, "WebViewX.javascriptMode");
+  var initialMediaPlaybackPolicy$ = dart.privateName(web$0, "WebViewX.initialMediaPlaybackPolicy");
+  var onPageStarted$ = dart.privateName(web$0, "WebViewX.onPageStarted");
+  var onPageFinished$ = dart.privateName(web$0, "WebViewX.onPageFinished");
+  var navigationDelegate$ = dart.privateName(web$0, "WebViewX.navigationDelegate");
+  var onWebResourceError$ = dart.privateName(web$0, "WebViewX.onWebResourceError");
+  var webSpecificParams$ = dart.privateName(web$0, "WebViewX.webSpecificParams");
+  var mobileSpecificParams$ = dart.privateName(web$0, "WebViewX.mobileSpecificParams");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  var CssLoader_loaderClassName = dart.privateName(css_loader, "CssLoader.loaderClassName");
+  var CssLoader_style = dart.privateName(css_loader, "CssLoader.style");
+  var WebSpecificParams_cssLoadingIndicator = dart.privateName(web_specific_params, "WebSpecificParams.cssLoadingIndicator");
+  var WebSpecificParams_additionalAllowOptions = dart.privateName(web_specific_params, "WebSpecificParams.additionalAllowOptions");
+  var WebSpecificParams_additionalSandboxOptions = dart.privateName(web_specific_params, "WebSpecificParams.additionalSandboxOptions");
+  var WebSpecificParams_webAllowFullscreenContent = dart.privateName(web_specific_params, "WebSpecificParams.webAllowFullscreenContent");
+  var WebSpecificParams_printDebugInfo = dart.privateName(web_specific_params, "WebSpecificParams.printDebugInfo");
+  var WebSpecificParams_applyProxyLoadBalancing = dart.privateName(web_specific_params, "WebSpecificParams.applyProxyLoadBalancing");
+  var WebSpecificParams__proxyList = dart.privateName(web_specific_params, "WebSpecificParams._proxyList");
+  var MobileSpecificParams_androidEnableHybridComposition = dart.privateName(mobile_specific_params, "MobileSpecificParams.androidEnableHybridComposition");
+  var MobileSpecificParams_gestureNavigationEnabled = dart.privateName(mobile_specific_params, "MobileSpecificParams.gestureNavigationEnabled");
+  var MobileSpecificParams_debuggingEnabled = dart.privateName(mobile_specific_params, "MobileSpecificParams.debuggingEnabled");
+  var MobileSpecificParams_mobileGestureRecognizers = dart.privateName(mobile_specific_params, "MobileSpecificParams.mobileGestureRecognizers");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  web$0.WebViewX = class WebViewX extends framework.StatefulWidget {
+    get initialContent() {
+      return this[initialContent$];
+    }
+    set initialContent(value) {
+      super.initialContent = value;
+    }
+    get initialSourceType() {
+      return this[initialSourceType$];
+    }
+    set initialSourceType(value) {
+      super.initialSourceType = value;
+    }
+    get userAgent() {
+      return this[userAgent$];
+    }
+    set userAgent(value) {
+      super.userAgent = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get onWebViewCreated() {
+      return this[onWebViewCreated$];
+    }
+    set onWebViewCreated(value) {
+      super.onWebViewCreated = value;
+    }
+    get jsContent() {
+      return this[jsContent$];
+    }
+    set jsContent(value) {
+      super.jsContent = value;
+    }
+    get dartCallBacks() {
+      return this[dartCallBacks$];
+    }
+    set dartCallBacks(value) {
+      super.dartCallBacks = value;
+    }
+    get ignoreAllGestures() {
+      return this[ignoreAllGestures$];
+    }
+    set ignoreAllGestures(value) {
+      super.ignoreAllGestures = value;
+    }
+    get javascriptMode() {
+      return this[javascriptMode$];
+    }
+    set javascriptMode(value) {
+      super.javascriptMode = value;
+    }
+    get initialMediaPlaybackPolicy() {
+      return this[initialMediaPlaybackPolicy$];
+    }
+    set initialMediaPlaybackPolicy(value) {
+      super.initialMediaPlaybackPolicy = value;
+    }
+    get onPageStarted() {
+      return this[onPageStarted$];
+    }
+    set onPageStarted(value) {
+      super.onPageStarted = value;
+    }
+    get onPageFinished() {
+      return this[onPageFinished$];
+    }
+    set onPageFinished(value) {
+      super.onPageFinished = value;
+    }
+    get navigationDelegate() {
+      return this[navigationDelegate$];
+    }
+    set navigationDelegate(value) {
+      super.navigationDelegate = value;
+    }
+    get onWebResourceError() {
+      return this[onWebResourceError$];
+    }
+    set onWebResourceError(value) {
+      super.onWebResourceError = value;
+    }
+    get webSpecificParams() {
+      return this[webSpecificParams$];
+    }
+    set webSpecificParams(value) {
+      super.webSpecificParams = value;
+    }
+    get mobileSpecificParams() {
+      return this[mobileSpecificParams$];
+    }
+    set mobileSpecificParams(value) {
+      super.mobileSpecificParams = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let initialContent = opts && 'initialContent' in opts ? opts.initialContent : "about:blank";
+      let initialSourceType = opts && 'initialSourceType' in opts ? opts.initialSourceType : C[0] || CT.C0;
+      let userAgent = opts && 'userAgent' in opts ? opts.userAgent : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let onWebViewCreated = opts && 'onWebViewCreated' in opts ? opts.onWebViewCreated : null;
+      let jsContent = opts && 'jsContent' in opts ? opts.jsContent : C[1] || CT.C1;
+      let dartCallBacks = opts && 'dartCallBacks' in opts ? opts.dartCallBacks : C[2] || CT.C2;
+      let ignoreAllGestures = opts && 'ignoreAllGestures' in opts ? opts.ignoreAllGestures : false;
+      let javascriptMode = opts && 'javascriptMode' in opts ? opts.javascriptMode : C[3] || CT.C3;
+      let initialMediaPlaybackPolicy = opts && 'initialMediaPlaybackPolicy' in opts ? opts.initialMediaPlaybackPolicy : C[4] || CT.C4;
+      let onPageStarted = opts && 'onPageStarted' in opts ? opts.onPageStarted : null;
+      let onPageFinished = opts && 'onPageFinished' in opts ? opts.onPageFinished : null;
+      let navigationDelegate = opts && 'navigationDelegate' in opts ? opts.navigationDelegate : null;
+      let onWebResourceError = opts && 'onWebResourceError' in opts ? opts.onWebResourceError : null;
+      let webSpecificParams = opts && 'webSpecificParams' in opts ? opts.webSpecificParams : C[5] || CT.C5;
+      let mobileSpecificParams = opts && 'mobileSpecificParams' in opts ? opts.mobileSpecificParams : C[13] || CT.C13;
+      return new web$0.WebViewX.new({key: key, initialContent: initialContent, initialSourceType: initialSourceType, userAgent: userAgent, width: width, height: height, onWebViewCreated: onWebViewCreated, jsContent: jsContent, dartCallBacks: dartCallBacks, ignoreAllGestures: ignoreAllGestures, javascriptMode: javascriptMode, initialMediaPlaybackPolicy: initialMediaPlaybackPolicy, onPageStarted: onPageStarted, onPageFinished: onPageFinished, navigationDelegate: navigationDelegate, onWebResourceError: onWebResourceError, webSpecificParams: webSpecificParams, mobileSpecificParams: mobileSpecificParams, $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+    }
+    createState() {
+      return new web$0._WebViewXState.new();
+    }
+  };
+  (web$0.WebViewX.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let initialContent = opts && 'initialContent' in opts ? opts.initialContent : "about:blank";
+    let initialSourceType = opts && 'initialSourceType' in opts ? opts.initialSourceType : C[0] || CT.C0;
+    let userAgent = opts && 'userAgent' in opts ? opts.userAgent : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let onWebViewCreated = opts && 'onWebViewCreated' in opts ? opts.onWebViewCreated : null;
+    let jsContent = opts && 'jsContent' in opts ? opts.jsContent : C[1] || CT.C1;
+    let dartCallBacks = opts && 'dartCallBacks' in opts ? opts.dartCallBacks : C[2] || CT.C2;
+    let ignoreAllGestures = opts && 'ignoreAllGestures' in opts ? opts.ignoreAllGestures : false;
+    let javascriptMode = opts && 'javascriptMode' in opts ? opts.javascriptMode : C[3] || CT.C3;
+    let initialMediaPlaybackPolicy = opts && 'initialMediaPlaybackPolicy' in opts ? opts.initialMediaPlaybackPolicy : C[4] || CT.C4;
+    let onPageStarted = opts && 'onPageStarted' in opts ? opts.onPageStarted : null;
+    let onPageFinished = opts && 'onPageFinished' in opts ? opts.onPageFinished : null;
+    let navigationDelegate = opts && 'navigationDelegate' in opts ? opts.navigationDelegate : null;
+    let onWebResourceError = opts && 'onWebResourceError' in opts ? opts.onWebResourceError : null;
+    let webSpecificParams = opts && 'webSpecificParams' in opts ? opts.webSpecificParams : C[5] || CT.C5;
+    let mobileSpecificParams = opts && 'mobileSpecificParams' in opts ? opts.mobileSpecificParams : C[13] || CT.C13;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[initialContent$] = initialContent;
+    this[initialSourceType$] = initialSourceType;
+    this[userAgent$] = userAgent;
+    this[width$] = width;
+    this[height$] = height;
+    this[onWebViewCreated$] = onWebViewCreated;
+    this[jsContent$] = jsContent;
+    this[dartCallBacks$] = dartCallBacks;
+    this[ignoreAllGestures$] = ignoreAllGestures;
+    this[javascriptMode$] = javascriptMode;
+    this[initialMediaPlaybackPolicy$] = initialMediaPlaybackPolicy;
+    this[onPageStarted$] = onPageStarted;
+    this[onPageFinished$] = onPageFinished;
+    this[navigationDelegate$] = navigationDelegate;
+    this[onWebResourceError$] = onWebResourceError;
+    this[webSpecificParams$] = webSpecificParams;
+    this[mobileSpecificParams$] = mobileSpecificParams;
+    web$0.WebViewX.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = web$0.WebViewX.prototype;
+  dart.addTypeTests(web$0.WebViewX);
+  dart.addTypeCaches(web$0.WebViewX);
+  web$0.WebViewX[dart.implements] = () => [$interface.WebViewX];
+  dart.setMethodSignature(web$0.WebViewX, () => ({
+    __proto__: dart.getMethods(web$0.WebViewX.__proto__),
+    createState: dart.fnType(web$0._WebViewXState, [])
+  }));
+  dart.setLibraryUri(web$0.WebViewX, I[0]);
+  dart.setFieldSignature(web$0.WebViewX, () => ({
+    __proto__: dart.getFields(web$0.WebViewX.__proto__),
+    initialContent: dart.finalFieldType(core.String),
+    initialSourceType: dart.finalFieldType(source_type.SourceType),
+    userAgent: dart.finalFieldType(dart.nullable(core.String)),
+    width: dart.finalFieldType(core.double),
+    height: dart.finalFieldType(core.double),
+    onWebViewCreated: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, [$interface$.WebViewXController]))),
+    jsContent: dart.finalFieldType(core.Set$(embedded_js_content.EmbeddedJsContent)),
+    dartCallBacks: dart.finalFieldType(core.Set$(dart_callback.DartCallback)),
+    ignoreAllGestures: dart.finalFieldType(core.bool),
+    javascriptMode: dart.finalFieldType(webview_flutter_original_utils.JavascriptMode),
+    initialMediaPlaybackPolicy: dart.finalFieldType(webview_flutter_original_utils.AutoMediaPlaybackPolicy),
+    onPageStarted: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    onPageFinished: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.String]))),
+    navigationDelegate: dart.finalFieldType(dart.nullable(dart.fnType(async.FutureOr$(webview_flutter_original_utils.NavigationDecision), [webview_flutter_original_utils.NavigationRequest]))),
+    onWebResourceError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [webview_flutter_original_utils.WebResourceError]))),
+    webSpecificParams: dart.finalFieldType(web_specific_params.WebSpecificParams),
+    mobileSpecificParams: dart.finalFieldType(mobile_specific_params.MobileSpecificParams)
+  }));
+  var ___WebViewXState_iframe = dart.privateName(web$0, "_#_WebViewXState#iframe");
+  var ___WebViewXState_iframeViewType = dart.privateName(web$0, "_#_WebViewXState#iframeViewType");
+  var ___WebViewXState_iframeOnLoadSubscription = dart.privateName(web$0, "_#_WebViewXState#iframeOnLoadSubscription");
+  var ___WebViewXState_jsWindowObject = dart.privateName(web$0, "_#_WebViewXState#jsWindowObject");
+  var ___WebViewXState_webViewXController = dart.privateName(web$0, "_#_WebViewXState#webViewXController");
+  var ___WebViewXState__didLoadInitialContent = dart.privateName(web$0, "_#_WebViewXState#_didLoadInitialContent");
+  var ___WebViewXState__ignoreAllGestures = dart.privateName(web$0, "_#_WebViewXState#_ignoreAllGestures");
+  var _didLoadInitialContent = dart.privateName(web$0, "_didLoadInitialContent");
+  var _ignoreAllGestures = dart.privateName(web$0, "_ignoreAllGestures");
+  var _createViewType = dart.privateName(web$0, "_createViewType");
+  var _createIFrame = dart.privateName(web$0, "_createIFrame");
+  var _registerView = dart.privateName(web$0, "_registerView");
+  var _createWebViewXController = dart.privateName(web$0, "_createWebViewXController");
+  var _callOnWebViewCreatedCallback = dart.privateName(web$0, "_callOnWebViewCreatedCallback");
+  var _connectJsToFlutter = dart.privateName(web$0, "_connectJsToFlutter");
+  var _registerIframeOnLoadCallback = dart.privateName(web$0, "_registerIframeOnLoadCallback");
+  var _updateSource = dart.privateName(web$0, "_updateSource");
+  var _handleChange = dart.privateName(web$0, "_handleChange");
+  var _handleIgnoreGesturesChange = dart.privateName(web$0, "_handleIgnoreGesturesChange");
+  var _handleOnIframeClick = dart.privateName(web$0, "_handleOnIframeClick");
+  var _debugLog = dart.privateName(web$0, "_debugLog");
+  var _callOnPageStartedCallback = dart.privateName(web$0, "_callOnPageStartedCallback");
+  var _callOnPageFinishedCallback = dart.privateName(web$0, "_callOnPageFinishedCallback");
+  var _iframeIgnorePointer = dart.privateName(web$0, "_iframeIgnorePointer");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var _checkNavigationAllowed = dart.privateName(web$0, "_checkNavigationAllowed");
+  var _tryFetchRemoteSource = dart.privateName(web$0, "_tryFetchRemoteSource");
+  var _fetchPageSourceBypass = dart.privateName(web$0, "_fetchPageSourceBypass");
+  var _setPageSourceAfterBypass = dart.privateName(web$0, "_setPageSourceAfterBypass");
+  web$0._WebViewXState = class _WebViewXState extends framework.State$(web$0.WebViewX) {
+    get iframe() {
+      let t0;
+      t0 = this[___WebViewXState_iframe];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("iframe")) : t0;
+    }
+    set iframe(iframe$35param) {
+      this[___WebViewXState_iframe] = iframe$35param;
+    }
+    get iframeViewType() {
+      let t0;
+      t0 = this[___WebViewXState_iframeViewType];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("iframeViewType")) : t0;
+    }
+    set iframeViewType(iframeViewType$35param) {
+      this[___WebViewXState_iframeViewType] = iframeViewType$35param;
+    }
+    get iframeOnLoadSubscription() {
+      let t0;
+      t0 = this[___WebViewXState_iframeOnLoadSubscription];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("iframeOnLoadSubscription")) : t0;
+    }
+    set iframeOnLoadSubscription(iframeOnLoadSubscription$35param) {
+      this[___WebViewXState_iframeOnLoadSubscription] = iframeOnLoadSubscription$35param;
+    }
+    get jsWindowObject() {
+      let t0;
+      t0 = this[___WebViewXState_jsWindowObject];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("jsWindowObject")) : t0;
+    }
+    set jsWindowObject(jsWindowObject$35param) {
+      this[___WebViewXState_jsWindowObject] = jsWindowObject$35param;
+    }
+    get webViewXController() {
+      let t0;
+      t0 = this[___WebViewXState_webViewXController];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("webViewXController")) : t0;
+    }
+    set webViewXController(webViewXController$35param) {
+      this[___WebViewXState_webViewXController] = webViewXController$35param;
+    }
+    set [_didLoadInitialContent](library$32package$58webviewx$47src$47view$47impl$47web$46dart$58$58_didLoadInitialContent$35param) {
+      this[___WebViewXState__didLoadInitialContent] = library$32package$58webviewx$47src$47view$47impl$47web$46dart$58$58_didLoadInitialContent$35param;
+    }
+    get [_didLoadInitialContent]() {
+      let t0;
+      t0 = this[___WebViewXState__didLoadInitialContent];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_didLoadInitialContent")) : t0;
+    }
+    get [_ignoreAllGestures]() {
+      let t0;
+      t0 = this[___WebViewXState__ignoreAllGestures];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_ignoreAllGestures")) : t0;
+    }
+    set [_ignoreAllGestures](library$32package$58webviewx$47src$47view$47impl$47web$46dart$58$58_ignoreAllGestures$35param) {
+      this[___WebViewXState__ignoreAllGestures] = library$32package$58webviewx$47src$47view$47impl$47web$46dart$58$58_ignoreAllGestures$35param;
+    }
+    initState() {
+      super.initState();
+      this[_didLoadInitialContent] = false;
+      this[_ignoreAllGestures] = this.widget.ignoreAllGestures;
+      this.iframeViewType = this[_createViewType]();
+      this.iframe = this[_createIFrame]();
+      this[_registerView](this.iframeViewType);
+      this.webViewXController = this[_createWebViewXController]();
+      if (this.widget.initialSourceType === source_type.SourceType.html || this.widget.initialSourceType === source_type.SourceType.urlBypass || this.widget.initialSourceType === source_type.SourceType.url && this.widget.initialContent === "about:blank") {
+        this[_connectJsToFlutter]({then: dart.bind(this, _callOnWebViewCreatedCallback)});
+      } else {
+        this[_callOnWebViewCreatedCallback]();
+      }
+      this[_registerIframeOnLoadCallback]();
+      T.FutureOfNull().delayed(core.Duration.zero, dart.fn(() => {
+        this[_updateSource](this.webViewXController.value);
+      }, T.VoidToNull()));
+    }
+    [_registerView](viewType) {
+      ui.platformViewRegistry.registerViewFactory(viewType, dart.fn(viewId => this.iframe, T.intToIFrameElement()));
+    }
+    [_createWebViewXController]() {
+      let t0;
+      t0 = new web.WebViewXController.new({initialContent: this.widget.initialContent, initialSourceType: this.widget.initialSourceType, ignoreAllGestures: this[_ignoreAllGestures]});
+      return (() => {
+        t0.addListener(dart.bind(this, _handleChange));
+        t0.addIgnoreGesturesListener(dart.bind(this, _handleIgnoreGesturesChange));
+        return t0;
+      })();
+    }
+    [_connectJsToFlutter](opts) {
+      let then = opts && 'then' in opts ? opts.then : null;
+      js.context._set("connect_js_to_flutter" + this.iframeViewType, dart.fn(window => {
+        let t0;
+        this.jsWindowObject = window;
+        for (let cb of this.widget.dartCallBacks) {
+          this.jsWindowObject._set(cb.name, cb.callBack);
+        }
+        this.jsWindowObject._set("WebOnClickInsideIframe", dart.fn(onClickCallbackObject => {
+          this[_handleOnIframeClick](core.String.as(onClickCallbackObject));
+        }, T.dynamicToNull()));
+        this.webViewXController.connector = this.jsWindowObject;
+        t0 = then;
+        t0 == null ? null : t0();
+      }, T.JsObjectToNull()));
+    }
+    [_registerIframeOnLoadCallback]() {
+      this.iframeOnLoadSubscription = this.iframe[$onLoad].listen(dart.fn(event => {
+        this[_debugLog]("IFrame " + this.iframeViewType + " has been (re)loaded.");
+        if (!this[_didLoadInitialContent]) {
+          this[_didLoadInitialContent] = true;
+          this[_callOnPageStartedCallback](this.webViewXController.value.source);
+        } else {
+          this[_callOnPageFinishedCallback](this.webViewXController.value.source);
+        }
+      }, T.EventTovoid()));
+    }
+    [_callOnWebViewCreatedCallback]() {
+      let t0;
+      t0 = this.widget.onWebViewCreated;
+      t0 == null ? null : t0(this.webViewXController);
+    }
+    [_callOnPageStartedCallback](src) {
+      let t0;
+      t0 = this.widget.onPageStarted;
+      t0 == null ? null : t0(src);
+    }
+    [_callOnPageFinishedCallback](src) {
+      let t0;
+      t0 = this.widget.onPageFinished;
+      t0 == null ? null : t0(src);
+    }
+    build(context) {
+      let htmlElementView = new basic.SizedBox.new({width: this.widget.width, height: this.widget.height, child: new basic.AbsorbPointer.new({child: new basic.RepaintBoundary.new({child: new platform_view.HtmlElementView.new({key: this.widget.key, viewType: this.iframeViewType, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+      return this[_iframeIgnorePointer]({ignoring: this[_ignoreAllGestures], child: htmlElementView});
+    }
+    [_iframeIgnorePointer](opts) {
+      let ignoring = opts && 'ignoring' in opts ? opts.ignoring : false;
+      let child = opts && 'child' in opts ? opts.child : null;
+      return new basic.Stack.new({children: (() => {
+          let t0 = T.JSArrayOfWidget().of([child]);
+          if (ignoring)
+            t0.push(new basic.Positioned.fill({child: new web$.PointerInterceptor.new({child: new container.Container.new({$creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20}), $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}));
+          else
+            t0.push(C[22] || CT.C22);
+          return t0;
+        })(), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+    }
+    [_createViewType]() {
+      return html_utils.HtmlUtils.buildIframeViewType();
+    }
+    [_createIFrame]() {
+      let t1;
+      let iframeElement = (t1 = html.IFrameElement.new(), (() => {
+        t1[$id] = "id_" + this.iframeViewType;
+        t1.name = "name_" + this.iframeViewType;
+        t1[$style][$border] = "none";
+        t1.width = this.widget.width[$toInt]()[$toString]();
+        t1.height = this.widget.height[$toInt]()[$toString]();
+        t1.allowFullscreen = this.widget.webSpecificParams.webAllowFullscreenContent;
+        return t1;
+      })());
+      this.widget.webSpecificParams.additionalSandboxOptions[$forEach](dart.bind(dart.nullCheck(iframeElement.sandbox), 'add'));
+      if (this.widget.javascriptMode === webview_flutter_original_utils.JavascriptMode.unrestricted) {
+        dart.nullCheck(iframeElement.sandbox).add("allow-scripts");
+      }
+      let allow = this.widget.webSpecificParams.additionalAllowOptions;
+      if (this.widget.initialMediaPlaybackPolicy === webview_flutter_original_utils.AutoMediaPlaybackPolicy.alwaysAllow) {
+        allow[$add]("autoplay");
+      }
+      iframeElement.allow = allow[$reduce](dart.fn((curr, next) => curr + "; " + next, T.StringAndStringToString()));
+      return iframeElement;
+    }
+    [_handleChange]() {
+      let model = this.webViewXController.value;
+      let source = model.source;
+      this[_callOnPageStartedCallback](source);
+      this[_updateSource](model);
+    }
+    [_handleIgnoreGesturesChange]() {
+      this.setState(dart.fn(() => {
+        this[_ignoreAllGestures] = this.webViewXController.ignoresAllGestures;
+      }, T.VoidTovoid()));
+    }
+    [_checkNavigationAllowed](pageSource, sourceType) {
+      return async.async(core.bool, (function* _checkNavigationAllowed() {
+        if (this.widget.navigationDelegate == null) {
+          return true;
+        }
+        let decision = (yield dart.nullCheck(this.widget.navigationDelegate)(new webview_flutter_original_utils.NavigationRequest.new({content: new webview_flutter_original_utils.NavigationContent.new(pageSource, sourceType), isForMainFrame: true})));
+        return decision === webview_flutter_original_utils.NavigationDecision.navigate;
+      }).bind(this));
+    }
+    [_updateSource](model) {
+      let source = model.source;
+      if (source[$isEmpty]) {
+        this[_debugLog]("Cannot set empty source on webview.");
+        return;
+      }
+      switch (model.sourceType) {
+        case C[25] || CT.C25:
+          {
+            this.iframe.srcdoc = html_utils.HtmlUtils.preprocessSource(source, {jsContent: this.widget.jsContent, windowDisambiguator: this.iframeViewType, forWeb: true});
+            break;
+          }
+        case C[0] || CT.C0:
+        case C[26] || CT.C26:
+          {
+            if (source === "about:blank") {
+              this.iframe.srcdoc = html_utils.HtmlUtils.preprocessSource("<br>", {jsContent: this.widget.jsContent, windowDisambiguator: this.iframeViewType, forWeb: true});
+              break;
+            }
+            if (!source[$startsWith](core.RegExp.new("http[s]?://", {caseSensitive: false}))) {
+              this[_debugLog]("Invalid URL supplied for webview: " + source);
+              return;
+            }
+            if (model.sourceType === source_type.SourceType.url) {
+              dart.nullCheck(this.iframe[$contentWindow])[$location][$href] = source;
+            } else {
+              this[_tryFetchRemoteSource]({method: "get", url: source, headers: model.headers});
+            }
+            break;
+          }
+      }
+    }
+    [_handleOnIframeClick](receivedObject) {
+      return async.async(dart.void, (function* _handleOnIframeClick() {
+        let t1;
+        let dartObj = T.MapOfString$dynamic().as(convert.jsonDecode(receivedObject));
+        let href = core.String.as(dartObj[$_get]("href"));
+        this[_debugLog](dartObj[$toString]());
+        if (!(yield this[_checkNavigationAllowed](href, this.webViewXController.value.sourceType))) {
+          this[_debugLog]("Navigation not allowed for source:\n" + href + "\n");
+          return;
+        }
+        if (href === "javascript:history.back()") {
+          this.webViewXController.goBack();
+          return;
+        } else if (href === "javascript:history.forward()") {
+          this.webViewXController.goForward();
+          return;
+        }
+        let method = core.String.as(dartObj[$_get]("method"));
+        let body = dartObj[$_get]("body");
+        let bodyMap = body == null ? null : (t1 = new (T.IdentityMapOfString$String()).new(), (() => {
+          t1[$addEntries](core.List.as(body)[$map](T.MapEntryOfString$String(), dart.fn(e => new (T.MapEntryOfString$String()).__(dart.toString(dart.dsend(e, '_get', [0])), dart.toString(dart.dsend(e, '_get', [1]))), T.dynamicToMapEntryOfString$String())));
+          return t1;
+        })());
+        this[_tryFetchRemoteSource]({method: method, url: href, headers: this.webViewXController.value.headers, body: bodyMap});
+      }).bind(this));
+    }
+    [_tryFetchRemoteSource](opts) {
+      let method = opts && 'method' in opts ? opts.method : null;
+      let url = opts && 'url' in opts ? opts.url : null;
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      this[_fetchPageSourceBypass]({method: method, url: url, headers: headers, body: body}).then(core.Null, dart.fn(source => {
+        this[_setPageSourceAfterBypass](url, source);
+        this.webViewXController.webRegisterNewHistoryEntry(new webview_content_model.WebViewContent.new({source: url, sourceType: source_type.SourceType.urlBypass, headers: headers, webPostRequestBody: body}));
+        this[_debugLog]("Got a new history entry: " + url + "\n");
+      }, T.StringToNull())).catchError(dart.fn(e => {
+        let t1;
+        t1 = this.widget.onWebResourceError;
+        t1 == null ? null : t1(new webview_flutter_original_utils.WebResourceError.new({description: "Failed to fetch the page at " + url + "\nError:\n" + dart.str(e) + "\n", errorCode: webview_flutter_original_utils.WebResourceErrorType.connect.index, errorType: webview_flutter_original_utils.WebResourceErrorType.connect, domain: core.Uri.parse(url).authority, failingUrl: url}));
+        this[_debugLog]("Failed to fetch the page at " + url + "\nError:\n" + dart.str(e) + "\n");
+      }, T.dynamicToNull()));
+    }
+    [_fetchPageSourceBypass](opts) {
+      let method = opts && 'method' in opts ? opts.method : null;
+      let url = opts && 'url' in opts ? opts.url : null;
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      return async.async(core.String, (function* _fetchPageSourceBypass() {
+        let t1;
+        let proxyList = this.widget.webSpecificParams.proxyList;
+        if (this.widget.userAgent != null) {
+          (t1 = headers, t1 == null ? headers = new (T.IdentityMapOfString$String()).new() : t1)[$putIfAbsent]("User-Agent", dart.fn(() => dart.nullCheck(this.widget.userAgent), T.VoidToString()));
+        }
+        for (let i = 0; i < proxyList[$length]; i = i + 1) {
+          let proxy = proxyList[$_get](i);
+          this[_debugLog]("Using proxy: " + dart.str(proxy[$runtimeType]));
+          let proxiedUri = core.Uri.parse(proxy.buildProxyUrl(core.Uri.encodeFull(url)));
+          let request = null;
+          if (method === "get") {
+            request = http.get(proxiedUri, {headers: headers});
+          } else {
+            request = http.post(proxiedUri, {headers: headers, body: body});
+          }
+          try {
+            let response = (yield request);
+            return proxy.extractPageSource(response.body);
+          } catch (e$) {
+            let e = dart.getThrown(e$);
+            if (core.Object.is(e)) {
+              this[_debugLog]("Failed to fetch the page at " + url + " from proxy " + dart.str(proxy[$runtimeType]) + ".");
+              if (i === proxyList[$length] - 1) {
+                return T.FutureOfString().error("None of the provided proxies were able to fetch the given page.");
+              }
+              continue;
+            } else
+              throw e$;
+          }
+        }
+        return T.FutureOfString().error("Bad state");
+      }).bind(this));
+    }
+    [_setPageSourceAfterBypass](pageUrl, pageSource) {
+      let replacedPageSource = html_utils.HtmlUtils.embedClickListenersInPageSource(pageUrl, pageSource);
+      this.iframe.srcdoc = html_utils.HtmlUtils.preprocessSource(replacedPageSource, {jsContent: this.widget.jsContent, windowDisambiguator: this.iframeViewType, forWeb: true});
+    }
+    [_debugLog](text) {
+      if (this.widget.webSpecificParams.printDebugInfo) {
+        logger.log(text);
+      }
+    }
+    dispose() {
+      this.iframeOnLoadSubscription.cancel();
+      this.webViewXController.removeListener(dart.bind(this, _handleChange));
+      this.webViewXController.removeIgnoreGesturesListener(dart.bind(this, _handleIgnoreGesturesChange));
+      super.dispose();
+    }
+    static ['_#new#tearOff']() {
+      return new web$0._WebViewXState.new();
+    }
+  };
+  (web$0._WebViewXState.new = function() {
+    this[___WebViewXState_iframe] = null;
+    this[___WebViewXState_iframeViewType] = null;
+    this[___WebViewXState_iframeOnLoadSubscription] = null;
+    this[___WebViewXState_jsWindowObject] = null;
+    this[___WebViewXState_webViewXController] = null;
+    this[___WebViewXState__didLoadInitialContent] = null;
+    this[___WebViewXState__ignoreAllGestures] = null;
+    web$0._WebViewXState.__proto__.new.call(this);
+    ;
+  }).prototype = web$0._WebViewXState.prototype;
+  dart.addTypeTests(web$0._WebViewXState);
+  dart.addTypeCaches(web$0._WebViewXState);
+  dart.setMethodSignature(web$0._WebViewXState, () => ({
+    __proto__: dart.getMethods(web$0._WebViewXState.__proto__),
+    [_registerView]: dart.fnType(dart.void, [core.String]),
+    [_createWebViewXController]: dart.fnType(web.WebViewXController, []),
+    [_connectJsToFlutter]: dart.fnType(dart.void, [], {then: dart.nullable(dart.fnType(dart.void, []))}, {}),
+    [_registerIframeOnLoadCallback]: dart.fnType(dart.void, []),
+    [_callOnWebViewCreatedCallback]: dart.fnType(dart.void, []),
+    [_callOnPageStartedCallback]: dart.fnType(dart.void, [core.String]),
+    [_callOnPageFinishedCallback]: dart.fnType(dart.void, [core.String]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_iframeIgnorePointer]: dart.fnType(framework.Widget, [], {ignoring: core.bool}, {child: framework.Widget}),
+    [_createViewType]: dart.fnType(core.String, []),
+    [_createIFrame]: dart.fnType(html.IFrameElement, []),
+    [_handleChange]: dart.fnType(dart.void, []),
+    [_handleIgnoreGesturesChange]: dart.fnType(dart.void, []),
+    [_checkNavigationAllowed]: dart.fnType(async.Future$(core.bool), [core.String, source_type.SourceType]),
+    [_updateSource]: dart.fnType(dart.void, [webview_content_model.WebViewContent]),
+    [_handleOnIframeClick]: dart.fnType(async.Future$(dart.void), [core.String]),
+    [_tryFetchRemoteSource]: dart.fnType(dart.void, [], {body: dart.nullable(core.Object), headers: dart.nullable(core.Map$(core.String, core.String))}, {method: core.String, url: core.String}),
+    [_fetchPageSourceBypass]: dart.fnType(async.Future$(core.String), [], {body: dart.nullable(core.Object), headers: dart.nullable(core.Map$(core.String, core.String))}, {method: core.String, url: core.String}),
+    [_setPageSourceAfterBypass]: dart.fnType(dart.void, [core.String, core.String]),
+    [_debugLog]: dart.fnType(dart.void, [core.String])
+  }));
+  dart.setGetterSignature(web$0._WebViewXState, () => ({
+    __proto__: dart.getGetters(web$0._WebViewXState.__proto__),
+    iframe: html.IFrameElement,
+    iframeViewType: core.String,
+    iframeOnLoadSubscription: async.StreamSubscription,
+    jsWindowObject: js.JsObject,
+    webViewXController: web.WebViewXController,
+    [_didLoadInitialContent]: core.bool,
+    [_ignoreAllGestures]: core.bool
+  }));
+  dart.setSetterSignature(web$0._WebViewXState, () => ({
+    __proto__: dart.getSetters(web$0._WebViewXState.__proto__),
+    iframe: html.IFrameElement,
+    iframeViewType: core.String,
+    iframeOnLoadSubscription: async.StreamSubscription,
+    jsWindowObject: js.JsObject,
+    webViewXController: web.WebViewXController,
+    [_didLoadInitialContent]: core.bool,
+    [_ignoreAllGestures]: core.bool
+  }));
+  dart.setLibraryUri(web$0._WebViewXState, I[0]);
+  dart.setFieldSignature(web$0._WebViewXState, () => ({
+    __proto__: dart.getFields(web$0._WebViewXState.__proto__),
+    [___WebViewXState_iframe]: dart.fieldType(dart.nullable(html.IFrameElement)),
+    [___WebViewXState_iframeViewType]: dart.fieldType(dart.nullable(core.String)),
+    [___WebViewXState_iframeOnLoadSubscription]: dart.fieldType(dart.nullable(async.StreamSubscription)),
+    [___WebViewXState_jsWindowObject]: dart.fieldType(dart.nullable(js.JsObject)),
+    [___WebViewXState_webViewXController]: dart.fieldType(dart.nullable(web.WebViewXController)),
+    [___WebViewXState__didLoadInitialContent]: dart.fieldType(dart.nullable(core.bool)),
+    [___WebViewXState__ignoreAllGestures]: dart.fieldType(dart.nullable(core.bool))
+  }));
+  dart.trackLibraries("packages/webviewx/src/view/impl/web.dart", {
+    "package:webviewx/src/view/impl/web.dart": web$0
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["web.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/webviewx/src/view/impl/web.dart.lib.js"}');
+  // Exports:
+  return {
+    src__view__impl__web: web$0
+  };
+}));
+
+//# sourceMappingURL=web.dart.lib.js.map

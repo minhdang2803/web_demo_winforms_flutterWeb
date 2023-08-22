@@ -1,0 +1,620 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/get/get_state_manager/src/rx_flutter/rx_obx_widget.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/cc_library/widget/responsive_table/model/responsive_table_model.dart'], (function load__packages__cc_library__widget__responsive_table__view__bottom_table_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__rendering__flex$46dart, packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__cc_library__widget__responsive_table__model__responsive_table_model$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const gesture_detector = packages__flutter__src__widgets__title$46dart.src__widgets__gesture_detector;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const rx_obx_widget = packages__get__get_state_manager__src__rx_flutter__rx_obx_widget$46dart.get_state_manager__src__rx_flutter__rx_obx_widget;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const responsive_table_model = packages__cc_library__widget__responsive_table__model__responsive_table_model$46dart.widget__responsive_table__model__responsive_table_model;
+  var bottom_table = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $addAll = dartx.addAll;
+  var $values = dartx.values;
+  var $asMap = dartx.asMap;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    JSArrayOfWidget: () => (T$.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    intToWidget: () => (T$.intToWidget = dart.constFn(dart.fnType(framework.Widget, [core.int])))(),
+    VoidToRow: () => (T$.VoidToRow = dart.constFn(dart.fnType(basic.Row, [])))(),
+    MapEntryOfint$Widget: () => (T$.MapEntryOfint$Widget = dart.constFn(core.MapEntry$(core.int, framework.Widget)))(),
+    intAndStringToMapEntryOfint$Widget: () => (T$.intAndStringToMapEntryOfint$Widget = dart.constFn(dart.fnType(T$.MapEntryOfint$Widget(), [core.int, core.String])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "BottomTable",
+        [_Location_column]: 9,
+        [_Location_line]: 7,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 18,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 9,
+        [_Location_line]: 13,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 12,
+        [_Location_line]: 11,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 22,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 15,
+        [_Location_line]: 44,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 14,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 12,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 14,
+        [_Location_line]: 91,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 87,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 18,
+        [_Location_line]: 119,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 16,
+        [_Location_line]: 107,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 14,
+        [_Location_line]: 103,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 12,
+        [_Location_line]: 99,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 17,
+        [_Location_line]: 159,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 16,
+        [_Location_line]: 145,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Flexible",
+        [_Location_column]: 12,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "BottomTableMobile",
+        [_Location_column]: 9,
+        [_Location_line]: 166,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 24,
+        [_Location_line]: 189,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 15,
+        [_Location_line]: 173,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 15,
+        [_Location_line]: 196,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Column",
+        [_Location_column]: 12,
+        [_Location_line]: 170,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 22,
+        [_Location_line]: 212,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 210,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 220,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 218,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 228,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 226,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 24,
+        [_Location_line]: 235,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWell",
+        [_Location_column]: 13,
+        [_Location_line]: 233,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Row",
+        [_Location_column]: 15,
+        [_Location_line]: 205,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Obx",
+        [_Location_column]: 14,
+        [_Location_line]: 204,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Expanded",
+        [_Location_column]: 12,
+        [_Location_line]: 203,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 14,
+        [_Location_line]: 252,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 12,
+        [_Location_line]: 248,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 18,
+        [_Location_line]: 280,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 16,
+        [_Location_line]: 268,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 14,
+        [_Location_line]: 264,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "GestureDetector",
+        [_Location_column]: 12,
+        [_Location_line]: 260,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/view/bottom_table.dart"
+      });
+    }
+  }, false);
+  var C = Array(46).fill(void 0);
+  var I = ["package:cc_library/widget/responsive_table/view/bottom_table.dart"];
+  var model$ = dart.privateName(bottom_table, "BottomTable.model");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const _is_BottomTable_default = Symbol('_is_BottomTable_default');
+  bottom_table.BottomTable$ = dart.generic(T => {
+    class BottomTable extends framework.StatelessWidget {
+      get model() {
+        return this[model$];
+      }
+      set model(value) {
+        super.model = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let model = opts && 'model' in opts ? opts.model : null;
+        return new (bottom_table.BottomTable$(T)).new({model: model, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+      }
+      build(context) {
+        let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4;
+        return new basic.Column.new({children: T$.JSArrayOfWidget().of([new container.Container.new({alignment: alignment.Alignment.center, decoration: new box_decoration.BoxDecoration.new({color: (t0 = this.model.backgroundBottom, t0 == null ? colors.Colors.white : t0), border: dart.notNull((t0$ = this.model.widthBorder, t0$ == null ? 0.0 : t0$)) > 0 ? new box_border.Border.new({bottom: new borders.BorderSide.new({color: (t0$0 = this.model.colorBorder, t0$0 == null ? colors.Colors.grey : t0$0), width: (t0$1 = this.model.widthBorder, t0$1 == null ? 0.0 : t0$1)}), top: new borders.BorderSide.new({color: (t0$2 = this.model.colorBorder, t0$2 == null ? colors.Colors.grey : t0$2).withOpacity(0.2), width: (t0$3 = this.model.widthBorder, t0$3 == null ? 0.0 : t0$3)})}) : null}), height: (t0$4 = this.model.rowHeight, t0$4 == null ? 30.0 : t0$4), child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.center, mainAxisSize: flex.MainAxisSize.max, children: this.buildBottoms(context), $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), this.BuildBottomPage()]), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+      }
+      BuildBottomPage() {
+        return new basic.Expanded.new({child: new rx_obx_widget.Obx.new(dart.fn(() => new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.center, mainAxisAlignment: flex.MainAxisAlignment.end, mainAxisSize: flex.MainAxisSize.max, children: (() => {
+              let t0 = T$.JSArrayOfWidget().of([new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goFirstPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.first_page_sharp, {color: this.model.currentPage.value <= 1 ? colors.Colors.grey : colors.Colors.black, size: 20.0, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goPrevPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.keyboard_arrow_left, {color: this.model.currentPage.value > 1 ? colors.Colors.black : colors.Colors.grey, size: 20.0, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7})]);
+              t0[$addAll](this.model.listPageView[$map](framework.Widget, dart.fn(e => this.buildPageNumber(e), T$.intToWidget()))[$toList]());
+              t0.push(new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goNextPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.keyboard_arrow_right, {color: this.model.currentPage.value < this.model.totalPage.value ? colors.Colors.black : colors.Colors.grey, size: 20.0, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}));
+              t0.push(new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goLastPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.last_page_sharp, {color: this.model.currentPage.value >= this.model.totalPage.value ? colors.Colors.grey : colors.Colors.black, size: 20.0, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11}));
+              t0.push(this.buildViewPage());
+              return t0;
+            })(), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), T$.VoidToRow()), {$creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+      }
+      buildViewPage() {
+        return new container.Container.new({width: 100.0, margin: new edge_insets.EdgeInsets.symmetric({horizontal: 20.0}), alignment: alignment.Alignment.center, child: new text.Text.new("Trang: " + dart.str(this.model.currentPage.value) + "/" + dart.str(this.model.totalPage.value), {style: this.model.bottomStyle, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+      }
+      buildPageNumber(page) {
+        return new gesture_detector.GestureDetector.new({onTap: dart.fn(() => {
+            if (page !== this.model.currentPage.value) this.model.goToPage(page);
+          }, T$.VoidTovoid()), child: new container.Container.new({alignment: alignment.Alignment.center, color: colors.Colors.transparent, width: 20.0, child: new container.Container.new({decoration: new box_decoration.BoxDecoration.new({border: new box_border.Border.new({bottom: new borders.BorderSide.new({color: page === this.model.currentPage.value ? dart.nullCheck(dart.nullCheck(this.model.bottomStyle).color) : colors.Colors.transparent, width: 2.0}), top: new borders.BorderSide.new({color: colors.Colors.transparent, width: 2.0})})}), child: new text.Text.new(dart.str(page), {style: page > this.model.totalPage.value ? dart.nullCheck(this.model.bottomStyle).copyWith({color: colors.Colors.grey}) : page === this.model.currentPage.value ? dart.nullCheck(this.model.bottomStyle).copyWith({fontWeight: ui.FontWeight.bold}) : this.model.bottomStyle, $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+      }
+      buildBottoms(context) {
+        if (this.model.bottomCustom != null) {
+          return dart.nullCheck(this.model.bottomCustom);
+        }
+        return dart.nullCheck(this.model.headerTitle)[$asMap]()[$map](core.int, framework.Widget, dart.fn((i, element) => new (T$.MapEntryOfint$Widget()).__(i, this.buildItemBottom(i, context)), T$.intAndStringToMapEntryOfint$Widget()))[$values][$toList]();
+      }
+      buildItemBottom(index, context) {
+        let t1, t1$, t1$0;
+        return new basic.Flexible.new({flex: this.model.flexs[$_get](index), child: new container.Container.new({alignment: alignment.Alignment.center, decoration: new box_decoration.BoxDecoration.new({border: dart.notNull((t1 = this.model.widthBorder, t1 == null ? 0.0 : t1)) > 0 ? index < this.model.countColumn - 1 ? new box_border.Border.new({right: new borders.BorderSide.new({color: (t1$ = this.model.colorBorder, t1$ == null ? colors.Colors.grey : t1$), width: (t1$0 = this.model.widthBorder, t1$0 == null ? 0.0 : t1$0)})}) : null : null}), child: this.model.builderBottom != null ? dart.nullCheck(this.model.builderBottom)(context, this.model.currentPage.value, index) : new basic.SizedBox.new({$creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+      }
+    }
+    (BottomTable.new = function(opts) {
+      let model = opts && 'model' in opts ? opts.model : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[model$] = model;
+      BottomTable.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = BottomTable.prototype;
+    dart.addTypeTests(BottomTable);
+    BottomTable.prototype[_is_BottomTable_default] = true;
+    dart.addTypeCaches(BottomTable);
+    dart.setMethodSignature(BottomTable, () => ({
+      __proto__: dart.getMethods(BottomTable.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      BuildBottomPage: dart.fnType(framework.Widget, []),
+      buildViewPage: dart.fnType(container.Container, []),
+      buildPageNumber: dart.fnType(framework.Widget, [core.int]),
+      buildBottoms: dart.fnType(core.List$(framework.Widget), [framework.BuildContext]),
+      buildItemBottom: dart.fnType(framework.Widget, [core.int, framework.BuildContext])
+    }));
+    dart.setLibraryUri(BottomTable, I[0]);
+    dart.setFieldSignature(BottomTable, () => ({
+      __proto__: dart.getFields(BottomTable.__proto__),
+      model: dart.finalFieldType(responsive_table_model.ResponsiveTableModel)
+    }));
+    return BottomTable;
+  });
+  bottom_table.BottomTable = bottom_table.BottomTable$();
+  dart.addTypeTests(bottom_table.BottomTable, _is_BottomTable_default);
+  var model$0 = dart.privateName(bottom_table, "BottomTableMobile.model");
+  const _is_BottomTableMobile_default = Symbol('_is_BottomTableMobile_default');
+  bottom_table.BottomTableMobile$ = dart.generic(T => {
+    class BottomTableMobile extends framework.StatelessWidget {
+      get model() {
+        return this[model$0];
+      }
+      set model(value) {
+        super.model = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let model = opts && 'model' in opts ? opts.model : null;
+        return new (bottom_table.BottomTableMobile$(T)).new({model: model, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+      }
+      build(context) {
+        let t1, t1$, t1$0, t1$1, t1$2, t1$3, t1$4;
+        return new basic.Column.new({children: T$.JSArrayOfWidget().of([this.model.bottomCustom != null ? new container.Container.new({alignment: alignment.Alignment.center, decoration: new box_decoration.BoxDecoration.new({color: (t1 = this.model.backgroundBottom, t1 == null ? colors.Colors.white : t1), border: dart.notNull((t1$ = this.model.widthBorder, t1$ == null ? 0.0 : t1$)) > 0 ? new box_border.Border.new({bottom: new borders.BorderSide.new({color: (t1$0 = this.model.colorBorder, t1$0 == null ? colors.Colors.grey : t1$0), width: (t1$1 = this.model.widthBorder, t1$1 == null ? 0.0 : t1$1)}), top: new borders.BorderSide.new({color: (t1$2 = this.model.colorBorder, t1$2 == null ? colors.Colors.grey : t1$2).withOpacity(0.2), width: (t1$3 = this.model.widthBorder, t1$3 == null ? 0.0 : t1$3)})}) : null}), height: (t1$4 = this.model.rowHeight, t1$4 == null ? 30.0 : t1$4), child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.center, mainAxisSize: flex.MainAxisSize.max, children: this.buildBottoms(context), $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26}) : new basic.SizedBox.new({$creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), this.BuildBottomPage()]), $creationLocationd_0dea112b090073317d4: C[28] || CT.C28});
+      }
+      BuildBottomPage() {
+        return new basic.Expanded.new({child: new rx_obx_widget.Obx.new(dart.fn(() => new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.center, mainAxisAlignment: flex.MainAxisAlignment.end, mainAxisSize: flex.MainAxisSize.max, children: (() => {
+              let t1 = T$.JSArrayOfWidget().of([new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goFirstPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.first_page_sharp, {color: this.model.currentPage.value <= 1 ? colors.Colors.grey : colors.Colors.black, size: 20.0, $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goPrevPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.keyboard_arrow_left, {color: this.model.currentPage.value > 1 ? colors.Colors.black : colors.Colors.grey, size: 20.0, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32})]);
+              t1[$addAll](this.model.listPageView[$map](framework.Widget, dart.fn(e => this.buildPageNumber(e), T$.intToWidget()))[$toList]());
+              t1.push(new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goNextPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.keyboard_arrow_right, {color: this.model.currentPage.value < this.model.totalPage.value ? colors.Colors.black : colors.Colors.grey, size: 20.0, $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}));
+              t1.push(new ink_well.InkWell.new({onTap: dart.fn(() => this.model.goLastPage(), T$.VoidTovoid()), child: new icon.Icon.new(icons.Icons.last_page_sharp, {color: this.model.currentPage.value >= this.model.totalPage.value ? colors.Colors.grey : colors.Colors.black, size: 20.0, $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}));
+              t1.push(this.buildViewPage());
+              return t1;
+            })(), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}), T$.VoidToRow()), {$creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39});
+      }
+      buildViewPage() {
+        return new container.Container.new({width: 100.0, margin: new edge_insets.EdgeInsets.symmetric({horizontal: 20.0}), alignment: alignment.Alignment.center, child: new text.Text.new("Trang: " + dart.str(this.model.currentPage.value) + "/" + dart.str(this.model.totalPage.value), {style: this.model.bottomStyle, $creationLocationd_0dea112b090073317d4: C[40] || CT.C40}), $creationLocationd_0dea112b090073317d4: C[41] || CT.C41});
+      }
+      buildPageNumber(page) {
+        return new gesture_detector.GestureDetector.new({onTap: dart.fn(() => {
+            if (page !== this.model.currentPage.value) this.model.goToPage(page);
+          }, T$.VoidTovoid()), child: new container.Container.new({alignment: alignment.Alignment.center, color: colors.Colors.transparent, width: 20.0, child: new container.Container.new({decoration: new box_decoration.BoxDecoration.new({border: new box_border.Border.new({bottom: new borders.BorderSide.new({color: page === this.model.currentPage.value ? dart.nullCheck(dart.nullCheck(this.model.bottomStyle).color) : colors.Colors.transparent, width: 2.0}), top: new borders.BorderSide.new({color: colors.Colors.transparent, width: 2.0})})}), child: new text.Text.new(dart.str(page), {style: page > this.model.totalPage.value ? dart.nullCheck(this.model.bottomStyle).copyWith({color: colors.Colors.grey}) : page === this.model.currentPage.value ? dart.nullCheck(this.model.bottomStyle).copyWith({fontWeight: ui.FontWeight.bold}) : this.model.bottomStyle, $creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43}), $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}), $creationLocationd_0dea112b090073317d4: C[45] || CT.C45});
+      }
+      buildBottoms(context) {
+        return dart.nullCheck(this.model.bottomCustom);
+      }
+    }
+    (BottomTableMobile.new = function(opts) {
+      let model = opts && 'model' in opts ? opts.model : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[model$0] = model;
+      BottomTableMobile.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = BottomTableMobile.prototype;
+    dart.addTypeTests(BottomTableMobile);
+    BottomTableMobile.prototype[_is_BottomTableMobile_default] = true;
+    dart.addTypeCaches(BottomTableMobile);
+    dart.setMethodSignature(BottomTableMobile, () => ({
+      __proto__: dart.getMethods(BottomTableMobile.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext]),
+      BuildBottomPage: dart.fnType(framework.Widget, []),
+      buildViewPage: dart.fnType(container.Container, []),
+      buildPageNumber: dart.fnType(framework.Widget, [core.int]),
+      buildBottoms: dart.fnType(core.List$(framework.Widget), [framework.BuildContext])
+    }));
+    dart.setLibraryUri(BottomTableMobile, I[0]);
+    dart.setFieldSignature(BottomTableMobile, () => ({
+      __proto__: dart.getFields(BottomTableMobile.__proto__),
+      model: dart.finalFieldType(responsive_table_model.ResponsiveTableModel)
+    }));
+    return BottomTableMobile;
+  });
+  bottom_table.BottomTableMobile = bottom_table.BottomTableMobile$();
+  dart.addTypeTests(bottom_table.BottomTableMobile, _is_BottomTableMobile_default);
+  dart.trackLibraries("packages/cc_library/widget/responsive_table/view/bottom_table.dart", {
+    "package:cc_library/widget/responsive_table/view/bottom_table.dart": bottom_table
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["bottom_table.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/responsive_table/view/bottom_table.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__responsive_table__view__bottom_table: bottom_table
+  };
+}));
+
+//# sourceMappingURL=bottom_table.dart.lib.js.map

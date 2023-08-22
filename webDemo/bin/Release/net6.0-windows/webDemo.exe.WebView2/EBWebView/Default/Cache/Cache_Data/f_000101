@@ -1,0 +1,529 @@
+define(['dart_sdk'], (function load__packages__deep_collection__src__set_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var set$ = Object.create(dart.library);
+  var map$ = Object.create(dart.library);
+  var list$ = Object.create(dart.library);
+  var $toList = dartx.toList;
+  var $toSet = dartx.toSet;
+  var $keys = dartx.keys;
+  var $_get = dartx._get;
+  var $isEmpty = dartx.isEmpty;
+  var $removeWhere = dartx.removeWhere;
+  var $cast = dartx.cast;
+  var $entries = dartx.entries;
+  var $where = dartx.where;
+  var $sort = dartx.sort;
+  var $_set = dartx._set;
+  var $forEach = dartx.forEach;
+  var $length = dartx.length;
+  var $addAll = dartx.addAll;
+  var $containsKey = dartx.containsKey;
+  var $addEntries = dartx.addEntries;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $runtimeType = dartx.runtimeType;
+  var $add = dartx.add;
+  var $elementAt = dartx.elementAt;
+  var $whereType = dartx.whereType;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ObjectN: () => (T.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
+    FnToSet: () => (T.FnToSet = dart.constFn(dart.gFnType(V => {
+      var __t$VTobool = () => (__t$VTobool = dart.constFn(dart.fnType(core.bool, [V])))();
+      return [core.Set, [__t$VTobool()]];
+    }, V => {
+      var __t$VTobool = () => (__t$VTobool = dart.constFn(dart.fnType(core.bool, [V])))();
+      return [T.ObjectN()];
+    })))(),
+    dynamicTodynamic: () => (T.dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic])))(),
+    dynamicToObjectN: () => (T.dynamicToObjectN = dart.constFn(dart.fnType(T.ObjectN(), [dart.dynamic])))(),
+    dynamicAnddynamicTobool: () => (T.dynamicAnddynamicTobool = dart.constFn(dart.fnType(core.bool, [dart.dynamic, dart.dynamic])))(),
+    ObjectNTobool: () => (T.ObjectNTobool = dart.constFn(dart.fnType(core.bool, [T.ObjectN()])))(),
+    FnToMap: () => (T.FnToMap = dart.constFn(dart.fnType(core.Map, [T.ObjectNTobool()])))(),
+    FnToMap$1: () => (T.FnToMap$1 = dart.constFn(dart.gFnType(E => {
+      var __t$ETobool = () => (__t$ETobool = dart.constFn(dart.fnType(core.bool, [E])))();
+      return [core.Map, [__t$ETobool()]];
+    }, E => {
+      var __t$ETobool = () => (__t$ETobool = dart.constFn(dart.fnType(core.bool, [E])))();
+      return [T.ObjectN()];
+    })))(),
+    LinkedHashMapOfdynamic$ObjectN: () => (T.LinkedHashMapOfdynamic$ObjectN = dart.constFn(collection.LinkedHashMap$(dart.dynamic, T.ObjectN())))(),
+    dynamicAnddynamicToint: () => (T.dynamicAnddynamicToint = dart.constFn(dart.fnType(core.int, [dart.dynamic, dart.dynamic])))(),
+    dynamicAnddynamicTovoid: () => (T.dynamicAnddynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic, dart.dynamic])))(),
+    JSArrayOfMapEntry: () => (T.JSArrayOfMapEntry = dart.constFn(_interceptors.JSArray$(core.MapEntry)))(),
+    MapToMap: () => (T.MapToMap = dart.constFn(dart.fnType(core.Map, [core.Map])))(),
+    VoidToMap: () => (T.VoidToMap = dart.constFn(dart.fnType(core.Map, [])))(),
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))(),
+    JSArrayOfList: () => (T.JSArrayOfList = dart.constFn(_interceptors.JSArray$(core.List)))(),
+    LinkedHashSetOfList: () => (T.LinkedHashSetOfList = dart.constFn(collection.LinkedHashSet$(core.List)))(),
+    JSArrayOfSet: () => (T.JSArrayOfSet = dart.constFn(_interceptors.JSArray$(core.Set)))(),
+    LinkedHashSetOfSet: () => (T.LinkedHashSetOfSet = dart.constFn(collection.LinkedHashSet$(core.Set)))(),
+    JSArrayOfMap: () => (T.JSArrayOfMap = dart.constFn(_interceptors.JSArray$(core.Map)))(),
+    LinkedHashSetOfMap: () => (T.LinkedHashSetOfMap = dart.constFn(collection.LinkedHashSet$(core.Map)))(),
+    FnToList: () => (T.FnToList = dart.constFn(dart.gFnType(V => {
+      var __t$VTobool = () => (__t$VTobool = dart.constFn(dart.fnType(core.bool, [V])))();
+      return [core.List, [__t$VTobool()]];
+    }, V => {
+      var __t$VTobool = () => (__t$VTobool = dart.constFn(dart.fnType(core.bool, [V])))();
+      return [T.ObjectN()];
+    })))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(list$._sortByLengthRecipe, T.dynamicAnddynamicToint());
+    }
+  }, false);
+  var C = [void 0];
+  set$['DeepSet|deepReverse'] = function DeepSet$124deepReverse(E, $this) {
+    return list$['DeepList|deepReverse'](E, $this[$toList]({growable: false}))[$toSet]().cast(E);
+  };
+  set$['DeepSet|get#deepReverse'] = function DeepSet$124get$35deepReverse(E, $this) {
+    return dart.fn(() => set$['DeepSet|deepReverse'](E, $this), dart.fnType(core.Set$(E), []));
+  };
+  set$['DeepSet|deepSort'] = function DeepSet$124deepSort(E, $this) {
+    return list$['DeepList|deepSort'](E, $this[$toList]({growable: false}))[$toSet]().cast(E);
+  };
+  set$['DeepSet|get#deepSort'] = function DeepSet$124get$35deepSort(E, $this) {
+    return dart.fn(() => set$['DeepSet|deepSort'](E, $this), dart.fnType(core.Set$(E), []));
+  };
+  set$['DeepSet|deepCopy'] = function DeepSet$124deepCopy(E, $this) {
+    return list$['DeepList|deepCopy'](E, $this[$toList]({growable: false}))[$toSet]().cast(E);
+  };
+  set$['DeepSet|get#deepCopy'] = function DeepSet$124get$35deepCopy(E, $this) {
+    return dart.fn(() => set$['DeepSet|deepCopy'](E, $this), dart.fnType(core.Set$(E), []));
+  };
+  set$['DeepSet|deepSearchByValue'] = function DeepSet$124deepSearchByValue(E, V, $this, predicate) {
+    return list$['DeepList|deepSearchByValue'](E, V, $this[$toList]({growable: false}), predicate)[$toSet]().cast(E);
+  };
+  set$['DeepSet|get#deepSearchByValue'] = function DeepSet$124get$35deepSearchByValue(E, $this) {
+    return dart.fn((V, predicate) => set$['DeepSet|deepSearchByValue'](E, V, $this, predicate), T.FnToSet());
+  };
+  map$['DeepMap|deepSearchByKey'] = function DeepMap$124deepSearchByKey(K, V, $this, predicate) {
+    let t9;
+    t9 = collection.LinkedHashMap.fromIterable($this[$keys], {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => {
+        if (core.Map.is($this[$_get](k))) {
+          return map$['DeepMap|deepSearchByKey'](dart.dynamic, dart.dynamic, core.Map.as($this[$_get](k)), predicate);
+        } else if (predicate(k)) {
+          return $this[$_get](k);
+        }
+      }, T.dynamicToObjectN())});
+    return (() => {
+      t9[$removeWhere](dart.fn((key, value) => value == null || core.Map.is(value) && value[$isEmpty], T.dynamicAnddynamicTobool()));
+      return t9;
+    })();
+  };
+  map$['DeepMap|get#deepSearchByKey'] = function DeepMap$124get$35deepSearchByKey(K, V, $this) {
+    return dart.fn(predicate => map$['DeepMap|deepSearchByKey'](K, V, $this, predicate), T.FnToMap());
+  };
+  map$['DeepMap|deepSearchByValue'] = function DeepMap$124deepSearchByValue(K, V, E, $this, predicate) {
+    let t11;
+    t11 = collection.LinkedHashMap.fromIterable($this[$keys], {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => {
+        if (core.Map.is($this[$_get](k))) {
+          return map$['DeepMap|deepSearchByValue'](dart.dynamic, dart.dynamic, E, core.Map.as($this[$_get](k)), predicate);
+        } else if (core.List.is($this[$_get](k))) {
+          return list$['DeepList|deepSearchByValue'](dart.dynamic, E, core.List.as($this[$_get](k)), predicate);
+        } else if (core.Set.is($this[$_get](k))) {
+          return set$['DeepSet|deepSearchByValue'](dart.dynamic, E, core.Set.as($this[$_get](k)), predicate);
+        } else if (E.is($this[$_get](k)) && predicate(E.as($this[$_get](k)))) {
+          return $this[$_get](k);
+        }
+      }, T.dynamicToObjectN())});
+    return (() => {
+      t11[$removeWhere](dart.fn((key, value) => value == null || core.Map.is(value) && value[$isEmpty], T.dynamicAnddynamicTobool()));
+      return t11;
+    })();
+  };
+  map$['DeepMap|get#deepSearchByValue'] = function DeepMap$124get$35deepSearchByValue(K, V, $this) {
+    return dart.fn((E, predicate) => map$['DeepMap|deepSearchByValue'](K, V, E, $this, predicate), T.FnToMap$1());
+  };
+  map$['DeepMap|deepReverse'] = function DeepMap$124deepReverse(K, V, $this) {
+    let reversedKeys = list$['DeepList|deepReverse'](K, $this[$keys][$toList]({growable: false}));
+    let reversedMap = T.LinkedHashMapOfdynamic$ObjectN().fromIterable((() => {
+      let t13 = core.List$(K).of(reversedKeys);
+      return t13;
+    })(), {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => {
+        if (core.Map.is($this[$_get](k))) {
+          return map$['DeepMap|deepReverse'](dart.dynamic, dart.dynamic, core.Map.as($this[$_get](k)));
+        } else if (core.Set.is($this[$_get](k))) {
+          return set$['DeepSet|deepReverse'](dart.dynamic, core.Set.as($this[$_get](k)));
+        } else if (core.List.is($this[$_get](k))) {
+          return list$['DeepList|deepReverse'](dart.dynamic, core.List.as($this[$_get](k)));
+        } else {
+          return $this[$_get](k);
+        }
+      }, T.dynamicToObjectN())});
+    return reversedMap[$cast](K, V);
+  };
+  map$['DeepMap|get#deepReverse'] = function DeepMap$124get$35deepReverse(K, V, $this) {
+    return dart.fn(() => map$['DeepMap|deepReverse'](K, V, $this), dart.fnType(core.Map$(K, V), []));
+  };
+  map$['DeepMap|deepSortByKey'] = function DeepMap$124deepSortByKey(K, V, $this) {
+    return T.LinkedHashMapOfdynamic$ObjectN().fromIterable((() => {
+      let t16 = core.List.of(list$['DeepList|deepSort'](K, $this[$keys][$toList]({growable: false})));
+      return t16;
+    })(), {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => {
+        if (core.Map.is($this[$_get](k))) {
+          return map$['DeepMap|deepSortByKey'](dart.dynamic, dart.dynamic, core.Map.as($this[$_get](k)));
+        } else if (core.Set.is($this[$_get](k))) {
+          return map$._deepSortByKeyInSet(dart.dynamic, core.Set.as($this[$_get](k)));
+        } else if (core.List.is($this[$_get](k))) {
+          return map$._deepSortByKeyInList(dart.dynamic, core.List.as($this[$_get](k)));
+        } else {
+          return $this[$_get](k);
+        }
+      }, T.dynamicToObjectN())})[$cast](K, V);
+  };
+  map$['DeepMap|get#deepSortByKey'] = function DeepMap$124get$35deepSortByKey(K, V, $this) {
+    return dart.fn(() => map$['DeepMap|deepSortByKey'](K, V, $this), dart.fnType(core.Map$(K, V), []));
+  };
+  map$['DeepMap|deepSortByValue'] = function DeepMap$124deepSortByValue(K, V, $this) {
+    let t19, t19$, t19$0, t19$1, t19$2;
+    let intAndDoubleValues = core.Map.fromEntries($this[$entries][$where](dart.fn(element => core.int.is(element.value) || typeof element.value == 'number', dart.fnType(core.bool, [core.MapEntry$(K, V)]))));
+    let sortedKeysFromIntAndDoubleValues = (t19 = intAndDoubleValues[$keys][$toList]({growable: false}), (() => {
+      t19[$sort](dart.fn((a, b) => core.int.as(dart.dsend(intAndDoubleValues[$_get](a), 'compareTo', [intAndDoubleValues[$_get](b)])), T.dynamicAnddynamicToint()));
+      return t19;
+    })());
+    let sortedIntAndDoubleValues = collection.LinkedHashMap.fromIterable(sortedKeysFromIntAndDoubleValues, {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => intAndDoubleValues[$_get](k), T.dynamicTodynamic())});
+    let stringValues = core.Map.fromEntries($this[$entries][$where](dart.fn(element => typeof element.value == 'string', dart.fnType(core.bool, [core.MapEntry$(K, V)]))));
+    let sortedKeysFromStringValues = (t19$ = stringValues[$keys][$toList]({growable: false}), (() => {
+      t19$[$sort](dart.fn((a, b) => core.int.as(dart.dsend(stringValues[$_get](a), 'compareTo', [stringValues[$_get](b)])), T.dynamicAnddynamicToint()));
+      return t19$;
+    })());
+    let sortedStringValues = collection.LinkedHashMap.fromIterable(sortedKeysFromStringValues, {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => stringValues[$_get](k), T.dynamicTodynamic())});
+    let listValues = core.Map.fromEntries($this[$entries][$where](dart.fn(element => core.List.is(element.value), dart.fnType(core.bool, [core.MapEntry$(K, V)]))));
+    listValues[$forEach](dart.fn((key, value) => {
+      listValues[$_set](key, list$['DeepList|deepSort'](dart.dynamic, core.List.as(value)));
+    }, T.dynamicAnddynamicTovoid()));
+    let sortedKeysFromListValues = (t19$0 = listValues[$keys][$toList]({growable: false}), (() => {
+      t19$0[$sort](dart.fn((a, b) => core.List.as(listValues[$_get](a))[$length] < core.List.as(listValues[$_get](b))[$length] ? -1 : 1, T.dynamicAnddynamicToint()));
+      return t19$0;
+    })());
+    let sortedListValues = collection.LinkedHashMap.fromIterable(sortedKeysFromListValues, {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => listValues[$_get](k), T.dynamicTodynamic())});
+    let setValues = core.Map.fromEntries($this[$entries][$where](dart.fn(element => core.Set.is(element.value), dart.fnType(core.bool, [core.MapEntry$(K, V)]))));
+    setValues[$forEach](dart.fn((key, value) => {
+      setValues[$_set](key, set$['DeepSet|deepSort'](dart.dynamic, core.Set.as(value)));
+    }, T.dynamicAnddynamicTovoid()));
+    let sortedKeysFromSetValues = (t19$1 = setValues[$keys][$toList]({growable: false}), (() => {
+      t19$1[$sort](dart.fn((a, b) => core.Set.as(setValues[$_get](a))[$length] < core.Set.as(setValues[$_get](b))[$length] ? -1 : 1, T.dynamicAnddynamicToint()));
+      return t19$1;
+    })());
+    let sortedSetValues = collection.LinkedHashMap.fromIterable(sortedKeysFromSetValues, {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => setValues[$_get](k), T.dynamicTodynamic())});
+    let mapValues = core.Map.fromEntries($this[$entries][$where](dart.fn(element => core.Map.is(element.value), dart.fnType(core.bool, [core.MapEntry$(K, V)]))));
+    mapValues[$forEach](dart.fn((key, value) => {
+      mapValues[$_set](key, map$['DeepMap|deepSortByValue'](dart.dynamic, dart.dynamic, core.Map.as(value)));
+    }, T.dynamicAnddynamicTovoid()));
+    let sortedKeysFromMapValues = (t19$2 = mapValues[$keys][$toList]({growable: false}), (() => {
+      t19$2[$sort](dart.fn((a, b) => core.Map.as(mapValues[$_get](a))[$length] < core.Map.as(mapValues[$_get](b))[$length] ? -1 : 1, T.dynamicAnddynamicToint()));
+      return t19$2;
+    })());
+    let sortedMapValues = collection.LinkedHashMap.fromIterable(sortedKeysFromMapValues, {key: dart.fn(k => k, T.dynamicTodynamic()), value: dart.fn(k => mapValues[$_get](k), T.dynamicTodynamic())});
+    return (() => {
+      let t19 = collection.LinkedHashMap$(K, V).of(sortedIntAndDoubleValues[$cast](K, V));
+      t19[$addAll](sortedStringValues[$cast](K, V));
+      t19[$addAll](sortedListValues[$cast](K, V));
+      t19[$addAll](sortedSetValues[$cast](K, V));
+      t19[$addAll](sortedMapValues[$cast](K, V));
+      return t19;
+    })();
+  };
+  map$['DeepMap|get#deepSortByValue'] = function DeepMap$124get$35deepSortByValue(K, V, $this) {
+    return dart.fn(() => map$['DeepMap|deepSortByValue'](K, V, $this), dart.fnType(core.Map$(K, V), []));
+  };
+  map$['DeepMap|deepDifferenceByValue'] = function DeepMap$124deepDifferenceByValue(K, V, $this, toCompare) {
+    let diff = new _js_helper.LinkedMap.new();
+    $this[$forEach](dart.fn((key, value) => {
+      let t22, t22$;
+      if (!toCompare[$containsKey](key)) {
+        diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+      } else if (core.Map.is(value) && core.Map.is(toCompare[$_get](key))) {
+        let deepDiff = map$['DeepMap|deepDifferenceByValue'](dart.dynamic, dart.dynamic, value, core.Map.as(toCompare[$_get](key)));
+        if (deepDiff[$isNotEmpty]) {
+          diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, deepDiff)]));
+        }
+      } else if (!dart.equals((t22 = value, t22 == null ? null : dart.runtimeType(t22)), (t22$ = toCompare[$_get](key), t22$ == null ? null : dart.runtimeType(t22$))) || !dart.equals(value, toCompare[$_get](key))) {
+        diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+      }
+    }, dart.fnType(dart.void, [K, V])));
+    return diff;
+  };
+  map$['DeepMap|get#deepDifferenceByValue'] = function DeepMap$124get$35deepDifferenceByValue(K, V, $this) {
+    return dart.fn(toCompare => map$['DeepMap|deepDifferenceByValue'](K, V, $this, toCompare), T.MapToMap());
+  };
+  map$['DeepMap|deepDifferenceByKey'] = function DeepMap$124deepDifferenceByKey(K, V, $this, toCompare) {
+    let diff = new _js_helper.LinkedMap.new();
+    $this[$forEach](dart.fn((key, value) => {
+      if (!toCompare[$containsKey](key)) {
+        diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+      } else if (core.Map.is(value) && core.Map.is(toCompare[$_get](key))) {
+        let deepDiff = map$['DeepMap|deepDifferenceByKey'](dart.dynamic, dart.dynamic, value, core.Map.as(toCompare[$_get](key)));
+        if (deepDiff[$isNotEmpty]) {
+          diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, deepDiff)]));
+        }
+      } else if (core.Map.is(value)) {
+        diff[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+      }
+    }, dart.fnType(dart.void, [K, V])));
+    return diff;
+  };
+  map$['DeepMap|get#deepDifferenceByKey'] = function DeepMap$124get$35deepDifferenceByKey(K, V, $this) {
+    return dart.fn(toCompare => map$['DeepMap|deepDifferenceByKey'](K, V, $this, toCompare), T.MapToMap());
+  };
+  map$['DeepMap|deepIntersectionByValue'] = function DeepMap$124deepIntersectionByValue(K, V, $this, toCompare) {
+    let intersection = new _js_helper.LinkedMap.new();
+    $this[$forEach](dart.fn((key, value) => {
+      let t26, t26$;
+      if (toCompare[$containsKey](key)) {
+        if (core.Map.is(value) && core.Map.is(toCompare[$_get](key))) {
+          let deepIntersection = map$['DeepMap|deepIntersectionByValue'](dart.dynamic, dart.dynamic, value, core.Map.as(toCompare[$_get](key)));
+          if (deepIntersection[$isNotEmpty]) {
+            intersection[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, deepIntersection)]));
+          }
+        } else if (dart.equals((t26 = value, t26 == null ? null : dart.runtimeType(t26)), (t26$ = toCompare[$_get](key), t26$ == null ? null : dart.runtimeType(t26$))) && dart.equals(value, toCompare[$_get](key))) {
+          intersection[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+        }
+      }
+    }, dart.fnType(dart.void, [K, V])));
+    return intersection;
+  };
+  map$['DeepMap|get#deepIntersectionByValue'] = function DeepMap$124get$35deepIntersectionByValue(K, V, $this) {
+    return dart.fn(toCompare => map$['DeepMap|deepIntersectionByValue'](K, V, $this, toCompare), T.MapToMap());
+  };
+  map$['DeepMap|deepIntersectionByKey'] = function DeepMap$124deepIntersectionByKey(K, V, $this, toCompare) {
+    let intersection = new _js_helper.LinkedMap.new();
+    $this[$forEach](dart.fn((key, value) => {
+      if (toCompare[$containsKey](key)) {
+        if (core.Map.is(value) && core.Map.is(toCompare[$_get](key))) {
+          let deepIntersection = map$['DeepMap|deepIntersectionByKey'](dart.dynamic, dart.dynamic, value, core.Map.as(toCompare[$_get](key)));
+          if (deepIntersection[$isNotEmpty]) {
+            intersection[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, deepIntersection)]));
+          }
+        } else if (core.Map.is(value) && !core.Map.is(toCompare[$_get](key))) {
+          intersection[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, new _js_helper.LinkedMap.new())]));
+        } else {
+          intersection[$addEntries](T.JSArrayOfMapEntry().of([new core.MapEntry.__(key, value)]));
+        }
+      }
+    }, dart.fnType(dart.void, [K, V])));
+    return intersection;
+  };
+  map$['DeepMap|get#deepIntersectionByKey'] = function DeepMap$124get$35deepIntersectionByKey(K, V, $this) {
+    return dart.fn(toCompare => map$['DeepMap|deepIntersectionByKey'](K, V, $this, toCompare), T.MapToMap());
+  };
+  map$['DeepMap|deepMerge'] = function DeepMap$124deepMerge(K, V, $this, toMerge) {
+    let source = (() => {
+      let t30 = collection.LinkedHashMap$(K, dart.dynamic).of($this);
+      return t30;
+    })();
+    for (let key of toMerge[$keys]) {
+      if (source[$containsKey](key) && core.Map.is(source[$_get](key))) {
+        if (core.Map.is(toMerge[$_get](key))) {
+          source[$_set](K.as(key), map$['DeepMap|deepMerge'](dart.dynamic, dart.dynamic, core.Map.as(source[$_get](key)), core.Map.as(toMerge[$_get](key))));
+        } else {
+          source[$_set](K.as(key), map$['DeepMap|deepMerge'](dart.dynamic, dart.dynamic, core.Map.as(source[$_get](key)), new _js_helper.LinkedMap.from([key, toMerge[$_get](key)])));
+        }
+      } else if (source[$containsKey](key) && toMerge[$containsKey](key)) {
+        source[$_set](K.as(key), [source[$_get](key), toMerge[$_get](key)]);
+      } else {
+        source[$_set](K.as(key), toMerge[$_get](key));
+      }
+    }
+    return source;
+  };
+  map$['DeepMap|get#deepMerge'] = function DeepMap$124get$35deepMerge(K, V, $this) {
+    return dart.fn(toMerge => map$['DeepMap|deepMerge'](K, V, $this, toMerge), T.MapToMap());
+  };
+  map$['DeepMap|deepCopy'] = function DeepMap$124deepCopy(K, V, $this) {
+    let newMap = new _js_helper.LinkedMap.new();
+    $this[$forEach](dart.fn((key, value) => {
+      if (core.Map.is(value)) {
+        newMap[$addAll](new _js_helper.LinkedMap.from([key, map$['DeepMap|deepCopy'](dart.dynamic, dart.dynamic, value)]));
+      } else if (core.List.is(value)) {
+        newMap[$addAll](new _js_helper.LinkedMap.from([key, list$['DeepList|deepCopy'](dart.dynamic, value)]));
+      } else if (core.Set.is(value)) {
+        newMap[$addAll](new _js_helper.LinkedMap.from([key, set$['DeepSet|deepCopy'](dart.dynamic, value)]));
+      } else {
+        newMap[$addAll](new _js_helper.LinkedMap.from([key, value]));
+      }
+    }, dart.fnType(dart.void, [K, V])));
+    return newMap;
+  };
+  map$['DeepMap|get#deepCopy'] = function DeepMap$124get$35deepCopy(K, V, $this) {
+    return dart.fn(() => map$['DeepMap|deepCopy'](K, V, $this), T.VoidToMap());
+  };
+  map$._deepSortByKeyInSet = function _deepSortByKeyInSet(E, set) {
+    let values = collection.LinkedHashSet.new();
+    for (let value of set) {
+      if (core.Map.is(value)) {
+        values.add(map$['DeepMap|deepSortByKey'](dart.dynamic, dart.dynamic, value));
+      } else if (core.List.is(value)) {
+        values.add(map$._deepSortByKeyInList(dart.dynamic, value));
+      } else if (core.Set.is(value)) {
+        values.add(map$._deepSortByKeyInSet(dart.dynamic, value));
+      } else {
+        values.add(value);
+      }
+    }
+    return values.cast(E);
+  };
+  map$._deepSortByKeyInList = function _deepSortByKeyInList(E, list) {
+    let values = [];
+    for (let value of list) {
+      if (core.Map.is(value)) {
+        values[$add](map$['DeepMap|deepSortByKey'](dart.dynamic, dart.dynamic, value));
+      } else if (core.List.is(value)) {
+        values[$add](map$._deepSortByKeyInList(dart.dynamic, value));
+      } else if (core.Set.is(value)) {
+        values[$add](map$._deepSortByKeyInSet(dart.dynamic, value));
+      } else {
+        values[$add](value);
+      }
+    }
+    return values[$cast](E);
+  };
+  list$['DeepList|deepReverse'] = function DeepList$124deepReverse(E, $this) {
+    let result = _interceptors.JSArray$(E).of([]);
+    for (let i = $this[$length] - 1; i >= 0; i = i - 1) {
+      let element = null;
+      element = $this[$elementAt](i);
+      if (core.Set.is(element)) {
+        element = set$['DeepSet|deepReverse'](dart.dynamic, element);
+      } else if (core.List.is(element)) {
+        element = list$['DeepList|deepReverse'](dart.dynamic, element);
+      } else if (core.Map.is(element)) {
+        element = map$['DeepMap|deepReverse'](dart.dynamic, dart.dynamic, element);
+      }
+      result[$add](E.as(element));
+    }
+    return result;
+  };
+  list$['DeepList|get#deepReverse'] = function DeepList$124get$35deepReverse(E, $this) {
+    return dart.fn(() => list$['DeepList|deepReverse'](E, $this), dart.fnType(core.List$(E), []));
+  };
+  list$['DeepList|deepSort'] = function DeepList$124deepSort(E, $this) {
+    let t38, t39, t40, t41, t42;
+    let intDoubleValues = (t38 = (() => {
+      let t37 = core.List.of($this[$whereType](core.int));
+      t37[$addAll]($this[$whereType](core.double));
+      return t37;
+    })(), (() => {
+      t38[$sort]();
+      return t38;
+    })());
+    let stringValues = (t39 = (() => {
+      let t38 = T.ListOfString().of($this[$whereType](core.String));
+      return t38;
+    })(), (() => {
+      t39[$sort]();
+      return t39;
+    })());
+    let lists = (t40 = (() => {
+      let t39 = T.JSArrayOfList().of([]);
+      for (let list of $this[$whereType](core.List))
+        t39[$addAll](T.LinkedHashSetOfList().from([list$['DeepList|deepSort'](dart.dynamic, list)]));
+      return t39;
+    })(), (() => {
+      t40[$sort](C[0] || CT.C0);
+      return t40;
+    })());
+    let sets = (t41 = (() => {
+      let t40 = T.JSArrayOfSet().of([]);
+      for (let set of $this[$whereType](core.Set))
+        t40[$addAll](T.LinkedHashSetOfSet().from([set$['DeepSet|deepSort'](dart.dynamic, set)]));
+      return t40;
+    })(), (() => {
+      t41[$sort](C[0] || CT.C0);
+      return t41;
+    })());
+    let maps = (t42 = (() => {
+      let t41 = T.JSArrayOfMap().of([]);
+      for (let map of $this[$whereType](core.Map))
+        t41[$addAll](T.LinkedHashSetOfMap().from([map$['DeepMap|deepSortByValue'](dart.dynamic, dart.dynamic, map)]));
+      return t41;
+    })(), (() => {
+      t42[$sort](C[0] || CT.C0);
+      return t42;
+    })());
+    return (() => {
+      let t42 = core.List$(E).of(intDoubleValues[$cast](E));
+      t42[$addAll](stringValues[$cast](E));
+      t42[$addAll](lists[$cast](E));
+      t42[$addAll](sets[$cast](E));
+      t42[$addAll](maps[$cast](E));
+      return t42;
+    })();
+  };
+  list$['DeepList|get#deepSort'] = function DeepList$124get$35deepSort(E, $this) {
+    return dart.fn(() => list$['DeepList|deepSort'](E, $this), dart.fnType(core.List$(E), []));
+  };
+  list$['DeepList|deepCopy'] = function DeepList$124deepCopy(E, $this) {
+    let newList = [];
+    $this[$forEach](dart.fn(el => {
+      if (core.List.is(el)) {
+        newList[$add](list$['DeepList|deepCopy'](dart.dynamic, el));
+      } else if (core.Set.is(el)) {
+        newList[$add](set$['DeepSet|deepCopy'](dart.dynamic, el));
+      } else if (core.Map.is(el)) {
+        newList[$add](map$['DeepMap|deepCopy'](dart.dynamic, dart.dynamic, el));
+      } else {
+        newList[$add](el);
+      }
+    }, dart.fnType(dart.void, [E])));
+    return newList[$cast](E);
+  };
+  list$['DeepList|get#deepCopy'] = function DeepList$124get$35deepCopy(E, $this) {
+    return dart.fn(() => list$['DeepList|deepCopy'](E, $this), dart.fnType(core.List$(E), []));
+  };
+  list$['DeepList|deepSearchByValue'] = function DeepList$124deepSearchByValue(E, V, $this, predicate) {
+    let newList = [];
+    $this[$forEach](dart.fn(element => {
+      if (core.List.is(element)) {
+        let newElement = list$['DeepList|deepSearchByValue'](dart.dynamic, V, element, predicate);
+        if (newElement[$isNotEmpty]) {
+          newList[$add](newElement);
+        }
+      } else if (core.Set.is(element)) {
+        let newElement = set$['DeepSet|deepSearchByValue'](dart.dynamic, V, element, predicate);
+        if (newElement[$isNotEmpty]) {
+          newList[$add](newElement);
+        }
+      } else if (core.Map.is(element)) {
+        let newElement = map$['DeepMap|deepSearchByValue'](dart.dynamic, dart.dynamic, V, element, predicate);
+        if (newElement[$isNotEmpty]) {
+          newList[$add](newElement);
+        }
+      } else if (V.is(element) && predicate(element)) {
+        newList[$add](element);
+      }
+    }, dart.fnType(dart.void, [E])));
+    return newList;
+  };
+  list$['DeepList|get#deepSearchByValue'] = function DeepList$124get$35deepSearchByValue(E, $this) {
+    return dart.fn((V, predicate) => list$['DeepList|deepSearchByValue'](E, V, $this, predicate), T.FnToList());
+  };
+  list$._sortByLengthRecipe = function _sortByLengthRecipe(a, b) {
+    return dart.dtest(dart.dsend(dart.dload(a, 'length'), '<', [dart.dload(b, 'length')])) ? -1 : 1;
+  };
+  dart.trackLibraries("packages/deep_collection/src/set.dart", {
+    "package:deep_collection/src/set.dart": set$,
+    "package:deep_collection/src/map.dart": map$,
+    "package:deep_collection/src/list.dart": list$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["set.dart","map.dart","list.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/deep_collection/src/set.dart.lib.js"}');
+  // Exports:
+  return {
+    src__set: set$,
+    src__map: map$,
+    src__list: list$
+  };
+}));
+
+//# sourceMappingURL=set.dart.lib.js.map

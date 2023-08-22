@@ -1,0 +1,2091 @@
+define(['dart_sdk', 'packages/intl/src/intl/date_format.dart'], (function load__packages__data__entities__receipt__response__output_sale_search_res_dart(dart_sdk, packages__intl__src__intl__date_format$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  var output_sale_search_res = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $_set = dartx._set;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $length = dartx.length;
+  var $forEach = dartx.forEach;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    JSArrayOfOutputSaleDetail: () => (T.JSArrayOfOutputSaleDetail = dart.constFn(_interceptors.JSArray$(output_sale_search_res.OutputSaleDetail)))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    JSArrayOfOutputSaleDiscount: () => (T.JSArrayOfOutputSaleDiscount = dart.constFn(_interceptors.JSArray$(output_sale_search_res.OutputSaleDiscount)))(),
+    LinkedMapOfString$dynamic: () => (T.LinkedMapOfString$dynamic = dart.constFn(_js_helper.LinkedMap$(core.String, dart.dynamic)))(),
+    OutputSaleDetailToMapOfString$dynamic: () => (T.OutputSaleDetailToMapOfString$dynamic = dart.constFn(dart.fnType(T.MapOfString$dynamic(), [output_sale_search_res.OutputSaleDetail])))(),
+    OutputSaleDiscountToMapOfString$dynamic: () => (T.OutputSaleDiscountToMapOfString$dynamic = dart.constFn(dart.fnType(T.MapOfString$dynamic(), [output_sale_search_res.OutputSaleDiscount])))(),
+    JSArrayOfOutputSaleSearchRes: () => (T.JSArrayOfOutputSaleSearchRes = dart.constFn(_interceptors.JSArray$(output_sale_search_res.OutputSaleSearchRes)))(),
+    dynamicTovoid: () => (T.dynamicTovoid = dart.constFn(dart.fnType(dart.void, [dart.dynamic])))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:data/entities/receipt/response/output_sale_search_res.dart"];
+  var oSID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.oSID");
+  var outputSaleID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputSaleID");
+  var returnInputCode$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.returnInputCode");
+  var outputTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputTypeID");
+  var userStoreID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.userStoreID");
+  var userDepartmentID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.userDepartmentID");
+  var outputStoreID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputStoreID");
+  var staffUser$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.staffUser");
+  var deliveryUser$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.deliveryUser");
+  var customerID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerID");
+  var customerName$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerName");
+  var customerAddress$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerAddress");
+  var customerPhone$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerPhone");
+  var customerEmail$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerEmail");
+  var customerTax$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerTax");
+  var totalQuantity$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalQuantity");
+  var orderDiscount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.orderDiscount");
+  var discountProduct$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.discountProduct");
+  var totalDiscount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalDiscount");
+  var totalTaxAmount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalTaxAmount");
+  var totalAmount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalAmount");
+  var currencyUnitID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.currencyUnitID");
+  var currencyExchange$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.currencyExchange");
+  var isPaymented$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isPaymented");
+  var isReview$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isReview");
+  var isRequiredVAT$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isRequiredVAT");
+  var returnInputExpiredDate$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.returnInputExpiredDate");
+  var isReturnException$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isReturnException");
+  var description$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.description");
+  var deliveryTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.deliveryTypeID");
+  var createdDate$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.createdDate");
+  var createdUser$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.createdUser");
+  var updatedDate$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.updatedDate");
+  var updatedUser$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.updatedUser");
+  var isDeleted$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isDeleted");
+  var isInit$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isInit");
+  var totalRecord$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalRecord");
+  var paymentTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.paymentTypeID");
+  var outputTypeName$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputTypeName");
+  var isOrderPromotion$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isOrderPromotion");
+  var outputSaleDetail$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputSaleDetail");
+  var outputSaleDiscount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.outputSaleDiscount");
+  var pointPercent$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.pointPercent");
+  var customerDiscount$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.customerDiscount");
+  var totalAmountAll$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.totalAmountAll");
+  var isNotOutputEInvoice$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isNotOutputEInvoice");
+  var revokeTypeID = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.revokeTypeID");
+  var revokeTypeName = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.revokeTypeName");
+  var memberTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.memberTypeID");
+  var memberTypeName$ = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.memberTypeName");
+  var isCardPaymented = dart.privateName(output_sale_search_res, "OutputSaleSearchRes.isCardPaymented");
+  output_sale_search_res.OutputSaleSearchRes = class OutputSaleSearchRes extends core.Object {
+    get oSID() {
+      return this[oSID$];
+    }
+    set oSID(value) {
+      this[oSID$] = value;
+    }
+    get outputSaleID() {
+      return this[outputSaleID$];
+    }
+    set outputSaleID(value) {
+      this[outputSaleID$] = value;
+    }
+    get returnInputCode() {
+      return this[returnInputCode$];
+    }
+    set returnInputCode(value) {
+      this[returnInputCode$] = value;
+    }
+    get outputTypeID() {
+      return this[outputTypeID$];
+    }
+    set outputTypeID(value) {
+      this[outputTypeID$] = value;
+    }
+    get userStoreID() {
+      return this[userStoreID$];
+    }
+    set userStoreID(value) {
+      this[userStoreID$] = value;
+    }
+    get userDepartmentID() {
+      return this[userDepartmentID$];
+    }
+    set userDepartmentID(value) {
+      this[userDepartmentID$] = value;
+    }
+    get outputStoreID() {
+      return this[outputStoreID$];
+    }
+    set outputStoreID(value) {
+      this[outputStoreID$] = value;
+    }
+    get staffUser() {
+      return this[staffUser$];
+    }
+    set staffUser(value) {
+      this[staffUser$] = value;
+    }
+    get deliveryUser() {
+      return this[deliveryUser$];
+    }
+    set deliveryUser(value) {
+      this[deliveryUser$] = value;
+    }
+    get customerID() {
+      return this[customerID$];
+    }
+    set customerID(value) {
+      this[customerID$] = value;
+    }
+    get customerName() {
+      return this[customerName$];
+    }
+    set customerName(value) {
+      this[customerName$] = value;
+    }
+    get customerAddress() {
+      return this[customerAddress$];
+    }
+    set customerAddress(value) {
+      this[customerAddress$] = value;
+    }
+    get customerPhone() {
+      return this[customerPhone$];
+    }
+    set customerPhone(value) {
+      this[customerPhone$] = value;
+    }
+    get customerEmail() {
+      return this[customerEmail$];
+    }
+    set customerEmail(value) {
+      this[customerEmail$] = value;
+    }
+    get customerTax() {
+      return this[customerTax$];
+    }
+    set customerTax(value) {
+      this[customerTax$] = value;
+    }
+    get totalQuantity() {
+      return this[totalQuantity$];
+    }
+    set totalQuantity(value) {
+      this[totalQuantity$] = value;
+    }
+    get orderDiscount() {
+      return this[orderDiscount$];
+    }
+    set orderDiscount(value) {
+      this[orderDiscount$] = value;
+    }
+    get discountProduct() {
+      return this[discountProduct$];
+    }
+    set discountProduct(value) {
+      this[discountProduct$] = value;
+    }
+    get totalDiscount() {
+      return this[totalDiscount$];
+    }
+    set totalDiscount(value) {
+      this[totalDiscount$] = value;
+    }
+    get totalTaxAmount() {
+      return this[totalTaxAmount$];
+    }
+    set totalTaxAmount(value) {
+      this[totalTaxAmount$] = value;
+    }
+    get totalAmount() {
+      return this[totalAmount$];
+    }
+    set totalAmount(value) {
+      this[totalAmount$] = value;
+    }
+    get currencyUnitID() {
+      return this[currencyUnitID$];
+    }
+    set currencyUnitID(value) {
+      this[currencyUnitID$] = value;
+    }
+    get currencyExchange() {
+      return this[currencyExchange$];
+    }
+    set currencyExchange(value) {
+      this[currencyExchange$] = value;
+    }
+    get isPaymented() {
+      return this[isPaymented$];
+    }
+    set isPaymented(value) {
+      this[isPaymented$] = value;
+    }
+    get isReview() {
+      return this[isReview$];
+    }
+    set isReview(value) {
+      this[isReview$] = value;
+    }
+    get isRequiredVAT() {
+      return this[isRequiredVAT$];
+    }
+    set isRequiredVAT(value) {
+      this[isRequiredVAT$] = value;
+    }
+    get returnInputExpiredDate() {
+      return this[returnInputExpiredDate$];
+    }
+    set returnInputExpiredDate(value) {
+      this[returnInputExpiredDate$] = value;
+    }
+    get isReturnException() {
+      return this[isReturnException$];
+    }
+    set isReturnException(value) {
+      this[isReturnException$] = value;
+    }
+    get description() {
+      return this[description$];
+    }
+    set description(value) {
+      this[description$] = value;
+    }
+    get deliveryTypeID() {
+      return this[deliveryTypeID$];
+    }
+    set deliveryTypeID(value) {
+      this[deliveryTypeID$] = value;
+    }
+    get createdDate() {
+      return this[createdDate$];
+    }
+    set createdDate(value) {
+      this[createdDate$] = value;
+    }
+    get createdUser() {
+      return this[createdUser$];
+    }
+    set createdUser(value) {
+      this[createdUser$] = value;
+    }
+    get updatedDate() {
+      return this[updatedDate$];
+    }
+    set updatedDate(value) {
+      this[updatedDate$] = value;
+    }
+    get updatedUser() {
+      return this[updatedUser$];
+    }
+    set updatedUser(value) {
+      this[updatedUser$] = value;
+    }
+    get isDeleted() {
+      return this[isDeleted$];
+    }
+    set isDeleted(value) {
+      this[isDeleted$] = value;
+    }
+    get isInit() {
+      return this[isInit$];
+    }
+    set isInit(value) {
+      this[isInit$] = value;
+    }
+    get totalRecord() {
+      return this[totalRecord$];
+    }
+    set totalRecord(value) {
+      this[totalRecord$] = value;
+    }
+    get paymentTypeID() {
+      return this[paymentTypeID$];
+    }
+    set paymentTypeID(value) {
+      this[paymentTypeID$] = value;
+    }
+    get outputTypeName() {
+      return this[outputTypeName$];
+    }
+    set outputTypeName(value) {
+      this[outputTypeName$] = value;
+    }
+    get isOrderPromotion() {
+      return this[isOrderPromotion$];
+    }
+    set isOrderPromotion(value) {
+      this[isOrderPromotion$] = value;
+    }
+    get outputSaleDetail() {
+      return this[outputSaleDetail$];
+    }
+    set outputSaleDetail(value) {
+      this[outputSaleDetail$] = value;
+    }
+    get outputSaleDiscount() {
+      return this[outputSaleDiscount$];
+    }
+    set outputSaleDiscount(value) {
+      this[outputSaleDiscount$] = value;
+    }
+    get pointPercent() {
+      return this[pointPercent$];
+    }
+    set pointPercent(value) {
+      this[pointPercent$] = value;
+    }
+    get customerDiscount() {
+      return this[customerDiscount$];
+    }
+    set customerDiscount(value) {
+      this[customerDiscount$] = value;
+    }
+    get totalAmountAll() {
+      return this[totalAmountAll$];
+    }
+    set totalAmountAll(value) {
+      this[totalAmountAll$] = value;
+    }
+    get isNotOutputEInvoice() {
+      return this[isNotOutputEInvoice$];
+    }
+    set isNotOutputEInvoice(value) {
+      this[isNotOutputEInvoice$] = value;
+    }
+    get revokeTypeID() {
+      return this[revokeTypeID];
+    }
+    set revokeTypeID(value) {
+      this[revokeTypeID] = value;
+    }
+    get revokeTypeName() {
+      return this[revokeTypeName];
+    }
+    set revokeTypeName(value) {
+      this[revokeTypeName] = value;
+    }
+    get memberTypeID() {
+      return this[memberTypeID$];
+    }
+    set memberTypeID(value) {
+      this[memberTypeID$] = value;
+    }
+    get memberTypeName() {
+      return this[memberTypeName$];
+    }
+    set memberTypeName(value) {
+      this[memberTypeName$] = value;
+    }
+    get isCardPaymented() {
+      return this[isCardPaymented];
+    }
+    set isCardPaymented(value) {
+      this[isCardPaymented] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let oSID = opts && 'oSID' in opts ? opts.oSID : null;
+      let outputSaleID = opts && 'outputSaleID' in opts ? opts.outputSaleID : null;
+      let returnInputCode = opts && 'returnInputCode' in opts ? opts.returnInputCode : null;
+      let outputTypeID = opts && 'outputTypeID' in opts ? opts.outputTypeID : null;
+      let userStoreID = opts && 'userStoreID' in opts ? opts.userStoreID : null;
+      let userDepartmentID = opts && 'userDepartmentID' in opts ? opts.userDepartmentID : null;
+      let outputStoreID = opts && 'outputStoreID' in opts ? opts.outputStoreID : null;
+      let staffUser = opts && 'staffUser' in opts ? opts.staffUser : null;
+      let deliveryUser = opts && 'deliveryUser' in opts ? opts.deliveryUser : null;
+      let customerID = opts && 'customerID' in opts ? opts.customerID : null;
+      let customerName = opts && 'customerName' in opts ? opts.customerName : null;
+      let customerAddress = opts && 'customerAddress' in opts ? opts.customerAddress : null;
+      let customerPhone = opts && 'customerPhone' in opts ? opts.customerPhone : null;
+      let customerEmail = opts && 'customerEmail' in opts ? opts.customerEmail : null;
+      let customerTax = opts && 'customerTax' in opts ? opts.customerTax : null;
+      let totalQuantity = opts && 'totalQuantity' in opts ? opts.totalQuantity : null;
+      let orderDiscount = opts && 'orderDiscount' in opts ? opts.orderDiscount : null;
+      let discountProduct = opts && 'discountProduct' in opts ? opts.discountProduct : null;
+      let totalDiscount = opts && 'totalDiscount' in opts ? opts.totalDiscount : null;
+      let totalTaxAmount = opts && 'totalTaxAmount' in opts ? opts.totalTaxAmount : null;
+      let totalAmount = opts && 'totalAmount' in opts ? opts.totalAmount : null;
+      let currencyUnitID = opts && 'currencyUnitID' in opts ? opts.currencyUnitID : null;
+      let currencyExchange = opts && 'currencyExchange' in opts ? opts.currencyExchange : null;
+      let isPaymented = opts && 'isPaymented' in opts ? opts.isPaymented : null;
+      let isReview = opts && 'isReview' in opts ? opts.isReview : null;
+      let isRequiredVAT = opts && 'isRequiredVAT' in opts ? opts.isRequiredVAT : null;
+      let returnInputExpiredDate = opts && 'returnInputExpiredDate' in opts ? opts.returnInputExpiredDate : null;
+      let isReturnException = opts && 'isReturnException' in opts ? opts.isReturnException : null;
+      let description = opts && 'description' in opts ? opts.description : null;
+      let deliveryTypeID = opts && 'deliveryTypeID' in opts ? opts.deliveryTypeID : null;
+      let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+      let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+      let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+      let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+      let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+      let isInit = opts && 'isInit' in opts ? opts.isInit : null;
+      let totalRecord = opts && 'totalRecord' in opts ? opts.totalRecord : null;
+      let paymentTypeID = opts && 'paymentTypeID' in opts ? opts.paymentTypeID : null;
+      let outputTypeName = opts && 'outputTypeName' in opts ? opts.outputTypeName : null;
+      let isOrderPromotion = opts && 'isOrderPromotion' in opts ? opts.isOrderPromotion : null;
+      let outputSaleDetail = opts && 'outputSaleDetail' in opts ? opts.outputSaleDetail : null;
+      let outputSaleDiscount = opts && 'outputSaleDiscount' in opts ? opts.outputSaleDiscount : null;
+      let pointPercent = opts && 'pointPercent' in opts ? opts.pointPercent : null;
+      let customerDiscount = opts && 'customerDiscount' in opts ? opts.customerDiscount : null;
+      let totalAmountAll = opts && 'totalAmountAll' in opts ? opts.totalAmountAll : null;
+      let memberTypeID = opts && 'memberTypeID' in opts ? opts.memberTypeID : null;
+      let memberTypeName = opts && 'memberTypeName' in opts ? opts.memberTypeName : null;
+      let isNotOutputEInvoice = opts && 'isNotOutputEInvoice' in opts ? opts.isNotOutputEInvoice : null;
+      return new output_sale_search_res.OutputSaleSearchRes.new({oSID: oSID, outputSaleID: outputSaleID, returnInputCode: returnInputCode, outputTypeID: outputTypeID, userStoreID: userStoreID, userDepartmentID: userDepartmentID, outputStoreID: outputStoreID, staffUser: staffUser, deliveryUser: deliveryUser, customerID: customerID, customerName: customerName, customerAddress: customerAddress, customerPhone: customerPhone, customerEmail: customerEmail, customerTax: customerTax, totalQuantity: totalQuantity, orderDiscount: orderDiscount, discountProduct: discountProduct, totalDiscount: totalDiscount, totalTaxAmount: totalTaxAmount, totalAmount: totalAmount, currencyUnitID: currencyUnitID, currencyExchange: currencyExchange, isPaymented: isPaymented, isReview: isReview, isRequiredVAT: isRequiredVAT, returnInputExpiredDate: returnInputExpiredDate, isReturnException: isReturnException, description: description, deliveryTypeID: deliveryTypeID, createdDate: createdDate, createdUser: createdUser, updatedDate: updatedDate, updatedUser: updatedUser, isDeleted: isDeleted, isInit: isInit, totalRecord: totalRecord, paymentTypeID: paymentTypeID, outputTypeName: outputTypeName, isOrderPromotion: isOrderPromotion, outputSaleDetail: outputSaleDetail, outputSaleDiscount: outputSaleDiscount, pointPercent: pointPercent, customerDiscount: customerDiscount, totalAmountAll: totalAmountAll, memberTypeID: memberTypeID, memberTypeName: memberTypeName, isNotOutputEInvoice: isNotOutputEInvoice});
+    }
+    static ['_#fromJson#tearOff'](json) {
+      return new output_sale_search_res.OutputSaleSearchRes.fromJson(json);
+    }
+    static ['_#fromJsonLocal#tearOff'](json, length) {
+      return new output_sale_search_res.OutputSaleSearchRes.fromJsonLocal(json, length);
+    }
+    toJson() {
+      let t0, t0$;
+      let data = new (T.LinkedMapOfString$dynamic()).new();
+      data[$_set]("OSID", this.oSID);
+      data[$_set]("OutputSaleID", this.outputSaleID);
+      data[$_set]("ReturnInputCode", this.returnInputCode);
+      data[$_set]("OutputTypeID", this.outputTypeID);
+      data[$_set]("UserStoreID", this.userStoreID);
+      data[$_set]("UserDepartmentID", this.userDepartmentID);
+      data[$_set]("OutputStoreID", this.outputStoreID);
+      data[$_set]("StaffUser", this.staffUser);
+      data[$_set]("DeliveryUser", this.deliveryUser);
+      data[$_set]("CustomerID", this.customerID);
+      data[$_set]("CustomerName", this.customerName);
+      data[$_set]("CustomerAddress", this.customerAddress);
+      data[$_set]("CustomerPhone", this.customerPhone);
+      data[$_set]("CustomerEmail", this.customerEmail);
+      data[$_set]("CustomerTax", this.customerTax);
+      data[$_set]("TotalQuantity", this.totalQuantity);
+      data[$_set]("OrderDiscount", this.orderDiscount);
+      data[$_set]("DiscountProduct", this.discountProduct);
+      data[$_set]("TotalDiscount", this.totalDiscount);
+      data[$_set]("TotalTaxAmount", this.totalTaxAmount);
+      data[$_set]("TotalAmount", this.totalAmount);
+      data[$_set]("CurrencyUnitID", this.currencyUnitID);
+      data[$_set]("CurrencyExchange", this.currencyExchange);
+      data[$_set]("IsPaymented", this.isPaymented);
+      data[$_set]("IsReview", this.isReview);
+      data[$_set]("IsRequiredVAT", this.isRequiredVAT);
+      data[$_set]("ReturnInputExpiredDate", this.returnInputExpiredDate);
+      data[$_set]("IsReturnException", this.isReturnException);
+      data[$_set]("Description", this.description);
+      data[$_set]("DeliveryTypeID", this.deliveryTypeID);
+      data[$_set]("CreatedDate", this.createdDate);
+      data[$_set]("CreatedUser", this.createdUser);
+      data[$_set]("UpdatedDate", this.updatedDate);
+      data[$_set]("UpdatedUser", this.updatedUser);
+      data[$_set]("IsDeleted", this.isDeleted);
+      data[$_set]("IsInit", this.isInit);
+      data[$_set]("TotalRecord", this.totalRecord);
+      data[$_set]("PaymentTypeID", this.paymentTypeID);
+      data[$_set]("OutputTypeName", this.outputTypeName);
+      data[$_set]("IsOrderPromotion", this.isOrderPromotion);
+      if (this.outputSaleDetail == null) {
+        data[$_set]("OutputSaleDetail", (t0 = this.outputSaleDetail, t0 == null ? null : t0[$map](T.MapOfString$dynamic(), dart.fn(v => v.toJson(), T.OutputSaleDetailToMapOfString$dynamic()))[$toList]()));
+      }
+      if (this.outputSaleDiscount == null) {
+        data[$_set]("OutputSaleDiscount", (t0$ = this.outputSaleDiscount, t0$ == null ? null : t0$[$map](T.MapOfString$dynamic(), dart.fn(v => v.toJson(), T.OutputSaleDiscountToMapOfString$dynamic()))[$toList]()));
+      }
+      data[$_set]("PointPercent", this.pointPercent);
+      data[$_set]("CustomerDiscount", this.customerDiscount);
+      data[$_set]("TotalAmountAll", this.totalAmountAll);
+      data[$_set]("IsNotOutputEInvoice", this.isNotOutputEInvoice);
+      data[$_set]("MemberTypeID", this.memberTypeID);
+      data[$_set]("MemberTypeName", this.memberTypeName);
+      return data;
+    }
+    static fromListJson(listJson) {
+      let lst = T.JSArrayOfOutputSaleSearchRes().of([]);
+      if (listJson != null && listJson[$length] > 0) {
+        listJson[$forEach](dart.fn(v => {
+          lst[$add](new output_sale_search_res.OutputSaleSearchRes.fromJson(T.MapOfString$dynamic().as(v)));
+        }, T.dynamicTovoid()));
+        return lst;
+      }
+      return T.JSArrayOfOutputSaleSearchRes().of([]);
+    }
+    exportRowTable() {
+      let t0;
+      return T.JSArrayOfString().of([dart.str(this.oSID), new date_format.DateFormat.new("dd-MM-yyy HH:mm").format(dart.nullCheck(this.createdDate)), dart.str(this.customerName), dart.str(this.customerPhone), dart.str(dart.test((t0 = this.isRequiredVAT, t0 == null ? false : t0)) ? 1 : 0), dart.str(this.totalAmount), dart.str(this.description)]);
+    }
+  };
+  (output_sale_search_res.OutputSaleSearchRes.new = function(opts) {
+    let oSID = opts && 'oSID' in opts ? opts.oSID : null;
+    let outputSaleID = opts && 'outputSaleID' in opts ? opts.outputSaleID : null;
+    let returnInputCode = opts && 'returnInputCode' in opts ? opts.returnInputCode : null;
+    let outputTypeID = opts && 'outputTypeID' in opts ? opts.outputTypeID : null;
+    let userStoreID = opts && 'userStoreID' in opts ? opts.userStoreID : null;
+    let userDepartmentID = opts && 'userDepartmentID' in opts ? opts.userDepartmentID : null;
+    let outputStoreID = opts && 'outputStoreID' in opts ? opts.outputStoreID : null;
+    let staffUser = opts && 'staffUser' in opts ? opts.staffUser : null;
+    let deliveryUser = opts && 'deliveryUser' in opts ? opts.deliveryUser : null;
+    let customerID = opts && 'customerID' in opts ? opts.customerID : null;
+    let customerName = opts && 'customerName' in opts ? opts.customerName : null;
+    let customerAddress = opts && 'customerAddress' in opts ? opts.customerAddress : null;
+    let customerPhone = opts && 'customerPhone' in opts ? opts.customerPhone : null;
+    let customerEmail = opts && 'customerEmail' in opts ? opts.customerEmail : null;
+    let customerTax = opts && 'customerTax' in opts ? opts.customerTax : null;
+    let totalQuantity = opts && 'totalQuantity' in opts ? opts.totalQuantity : null;
+    let orderDiscount = opts && 'orderDiscount' in opts ? opts.orderDiscount : null;
+    let discountProduct = opts && 'discountProduct' in opts ? opts.discountProduct : null;
+    let totalDiscount = opts && 'totalDiscount' in opts ? opts.totalDiscount : null;
+    let totalTaxAmount = opts && 'totalTaxAmount' in opts ? opts.totalTaxAmount : null;
+    let totalAmount = opts && 'totalAmount' in opts ? opts.totalAmount : null;
+    let currencyUnitID = opts && 'currencyUnitID' in opts ? opts.currencyUnitID : null;
+    let currencyExchange = opts && 'currencyExchange' in opts ? opts.currencyExchange : null;
+    let isPaymented = opts && 'isPaymented' in opts ? opts.isPaymented : null;
+    let isReview = opts && 'isReview' in opts ? opts.isReview : null;
+    let isRequiredVAT = opts && 'isRequiredVAT' in opts ? opts.isRequiredVAT : null;
+    let returnInputExpiredDate = opts && 'returnInputExpiredDate' in opts ? opts.returnInputExpiredDate : null;
+    let isReturnException = opts && 'isReturnException' in opts ? opts.isReturnException : null;
+    let description = opts && 'description' in opts ? opts.description : null;
+    let deliveryTypeID = opts && 'deliveryTypeID' in opts ? opts.deliveryTypeID : null;
+    let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+    let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+    let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+    let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+    let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+    let isInit = opts && 'isInit' in opts ? opts.isInit : null;
+    let totalRecord = opts && 'totalRecord' in opts ? opts.totalRecord : null;
+    let paymentTypeID = opts && 'paymentTypeID' in opts ? opts.paymentTypeID : null;
+    let outputTypeName = opts && 'outputTypeName' in opts ? opts.outputTypeName : null;
+    let isOrderPromotion = opts && 'isOrderPromotion' in opts ? opts.isOrderPromotion : null;
+    let outputSaleDetail = opts && 'outputSaleDetail' in opts ? opts.outputSaleDetail : null;
+    let outputSaleDiscount = opts && 'outputSaleDiscount' in opts ? opts.outputSaleDiscount : null;
+    let pointPercent = opts && 'pointPercent' in opts ? opts.pointPercent : null;
+    let customerDiscount = opts && 'customerDiscount' in opts ? opts.customerDiscount : null;
+    let totalAmountAll = opts && 'totalAmountAll' in opts ? opts.totalAmountAll : null;
+    let memberTypeID = opts && 'memberTypeID' in opts ? opts.memberTypeID : null;
+    let memberTypeName = opts && 'memberTypeName' in opts ? opts.memberTypeName : null;
+    let isNotOutputEInvoice = opts && 'isNotOutputEInvoice' in opts ? opts.isNotOutputEInvoice : null;
+    this[revokeTypeID] = null;
+    this[revokeTypeName] = null;
+    this[isCardPaymented] = null;
+    this[oSID$] = oSID;
+    this[outputSaleID$] = outputSaleID;
+    this[returnInputCode$] = returnInputCode;
+    this[outputTypeID$] = outputTypeID;
+    this[userStoreID$] = userStoreID;
+    this[userDepartmentID$] = userDepartmentID;
+    this[outputStoreID$] = outputStoreID;
+    this[staffUser$] = staffUser;
+    this[deliveryUser$] = deliveryUser;
+    this[customerID$] = customerID;
+    this[customerName$] = customerName;
+    this[customerAddress$] = customerAddress;
+    this[customerPhone$] = customerPhone;
+    this[customerEmail$] = customerEmail;
+    this[customerTax$] = customerTax;
+    this[totalQuantity$] = totalQuantity;
+    this[orderDiscount$] = orderDiscount;
+    this[discountProduct$] = discountProduct;
+    this[totalDiscount$] = totalDiscount;
+    this[totalTaxAmount$] = totalTaxAmount;
+    this[totalAmount$] = totalAmount;
+    this[currencyUnitID$] = currencyUnitID;
+    this[currencyExchange$] = currencyExchange;
+    this[isPaymented$] = isPaymented;
+    this[isReview$] = isReview;
+    this[isRequiredVAT$] = isRequiredVAT;
+    this[returnInputExpiredDate$] = returnInputExpiredDate;
+    this[isReturnException$] = isReturnException;
+    this[description$] = description;
+    this[deliveryTypeID$] = deliveryTypeID;
+    this[createdDate$] = createdDate;
+    this[createdUser$] = createdUser;
+    this[updatedDate$] = updatedDate;
+    this[updatedUser$] = updatedUser;
+    this[isDeleted$] = isDeleted;
+    this[isInit$] = isInit;
+    this[totalRecord$] = totalRecord;
+    this[paymentTypeID$] = paymentTypeID;
+    this[outputTypeName$] = outputTypeName;
+    this[isOrderPromotion$] = isOrderPromotion;
+    this[outputSaleDetail$] = outputSaleDetail;
+    this[outputSaleDiscount$] = outputSaleDiscount;
+    this[pointPercent$] = pointPercent;
+    this[customerDiscount$] = customerDiscount;
+    this[totalAmountAll$] = totalAmountAll;
+    this[memberTypeID$] = memberTypeID;
+    this[memberTypeName$] = memberTypeName;
+    this[isNotOutputEInvoice$] = isNotOutputEInvoice;
+    ;
+  }).prototype = output_sale_search_res.OutputSaleSearchRes.prototype;
+  (output_sale_search_res.OutputSaleSearchRes.fromJson = function(json) {
+    let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5;
+    this[revokeTypeID] = null;
+    this[revokeTypeName] = null;
+    this[isCardPaymented] = null;
+    this[isNotOutputEInvoice$] = null;
+    this[memberTypeName$] = null;
+    this[memberTypeID$] = null;
+    this[totalAmountAll$] = null;
+    this[customerDiscount$] = null;
+    this[pointPercent$] = null;
+    this[outputSaleDiscount$] = null;
+    this[outputSaleDetail$] = null;
+    this[isOrderPromotion$] = null;
+    this[outputTypeName$] = null;
+    this[paymentTypeID$] = null;
+    this[totalRecord$] = null;
+    this[isInit$] = null;
+    this[isDeleted$] = null;
+    this[updatedUser$] = null;
+    this[updatedDate$] = null;
+    this[createdUser$] = null;
+    this[createdDate$] = null;
+    this[deliveryTypeID$] = null;
+    this[description$] = null;
+    this[isReturnException$] = null;
+    this[returnInputExpiredDate$] = null;
+    this[isRequiredVAT$] = null;
+    this[isReview$] = null;
+    this[isPaymented$] = null;
+    this[currencyExchange$] = null;
+    this[currencyUnitID$] = null;
+    this[totalAmount$] = null;
+    this[totalTaxAmount$] = null;
+    this[totalDiscount$] = null;
+    this[discountProduct$] = null;
+    this[orderDiscount$] = null;
+    this[totalQuantity$] = null;
+    this[customerTax$] = null;
+    this[customerEmail$] = null;
+    this[customerPhone$] = null;
+    this[customerAddress$] = null;
+    this[customerName$] = null;
+    this[customerID$] = null;
+    this[deliveryUser$] = null;
+    this[staffUser$] = null;
+    this[outputStoreID$] = null;
+    this[userDepartmentID$] = null;
+    this[userStoreID$] = null;
+    this[outputTypeID$] = null;
+    this[returnInputCode$] = null;
+    this[outputSaleID$] = null;
+    this[oSID$] = null;
+    this.oSID = T.intN().as(json[$_get]("OSID"));
+    this.outputSaleID = T.StringN().as(json[$_get]("OutputSaleID"));
+    this.returnInputCode = T.StringN().as(json[$_get]("ReturnInputCode"));
+    this.outputTypeID = T.intN().as(json[$_get]("OutputTypeID"));
+    this.userStoreID = T.intN().as(json[$_get]("UserStoreID"));
+    this.userDepartmentID = T.intN().as(json[$_get]("UserDepartmentID"));
+    this.outputStoreID = T.intN().as(json[$_get]("OutputStoreID"));
+    this.staffUser = T.intN().as(json[$_get]("StaffUser"));
+    this.deliveryUser = T.intN().as(json[$_get]("DeliveryUser"));
+    this.customerID = T.intN().as(json[$_get]("CustomerID"));
+    this.customerName = T.StringN().as(json[$_get]("CustomerName"));
+    this.customerAddress = T.StringN().as(json[$_get]("CustomerAddress"));
+    this.customerPhone = T.StringN().as(json[$_get]("CustomerPhone"));
+    this.customerEmail = T.StringN().as(json[$_get]("CustomerEmail"));
+    this.customerTax = T.StringN().as(json[$_get]("CustomerTax"));
+    this.totalQuantity = T.doubleN().as(json[$_get]("TotalQuantity"));
+    this.orderDiscount = T.doubleN().as(json[$_get]("OrderDiscount"));
+    this.discountProduct = T.doubleN().as(json[$_get]("DiscountProduct"));
+    this.totalDiscount = T.doubleN().as(json[$_get]("TotalDiscount"));
+    this.totalTaxAmount = T.doubleN().as(json[$_get]("TotalTaxAmount"));
+    this.totalAmount = T.doubleN().as(json[$_get]("TotalAmount"));
+    this.currencyUnitID = T.intN().as(json[$_get]("CurrencyUnitID"));
+    this.currencyExchange = T.doubleN().as(json[$_get]("CurrencyExchange"));
+    this.isPaymented = T.boolN().as((t0 = json[$_get]("IsPaymented"), t0 == null ? false : t0));
+    this.isReview = T.intN().as((t0$ = json[$_get]("IsReview"), t0$ == null ? false : t0$));
+    this.isRequiredVAT = T.boolN().as((t0$0 = json[$_get]("IsRequiredVAT"), t0$0 == null ? false : t0$0));
+    this.returnInputExpiredDate = T.StringN().as(json[$_get]("ReturnInputExpiredDate"));
+    this.isReturnException = T.boolN().as((t0$1 = json[$_get]("IsReturnException"), t0$1 == null ? false : t0$1));
+    this.description = T.StringN().as(json[$_get]("Description"));
+    this.deliveryTypeID = T.intN().as(json[$_get]("DeliveryTypeID"));
+    if (json[$_get]("CreatedDate") != null) {
+      this.createdDate = core.DateTime.parse(core.String.as(json[$_get]("CreatedDate")));
+    }
+    this.createdUser = T.intN().as(json[$_get]("CreatedUser"));
+    if (json[$_get]("UpdatedDate") != null) {
+      this.updatedDate = core.DateTime.parse(core.String.as(json[$_get]("UpdatedDate")));
+    }
+    this.updatedUser = T.intN().as(json[$_get]("UpdatedUser"));
+    this.isDeleted = T.boolN().as((t0$2 = json[$_get]("IsDeleted"), t0$2 == null ? false : t0$2));
+    this.isInit = T.boolN().as((t0$3 = json[$_get]("IsInit"), t0$3 == null ? false : t0$3));
+    this.totalRecord = T.intN().as(json[$_get]("TotalRecord"));
+    this.paymentTypeID = T.intN().as(json[$_get]("PaymentTypeID"));
+    this.outputTypeName = T.StringN().as(json[$_get]("OutputTypeName"));
+    this.isOrderPromotion = T.boolN().as((t0$4 = json[$_get]("IsOrderPromotion"), t0$4 == null ? false : t0$4));
+    if (json[$_get]("OutputSaleDetail") != null) {
+      this.outputSaleDetail = T.JSArrayOfOutputSaleDetail().of([]);
+      dart.dsend(json[$_get]("OutputSaleDetail"), 'forEach', [dart.fn(v => {
+          let t0;
+          t0 = this.outputSaleDetail;
+          t0 == null ? null : t0[$add](new output_sale_search_res.OutputSaleDetail.fromJson(T.MapOfString$dynamic().as(v)));
+        }, T.dynamicToNull())]);
+    }
+    if (json[$_get]("OutputSaleDiscount") != null) {
+      this.outputSaleDiscount = T.JSArrayOfOutputSaleDiscount().of([]);
+      dart.dsend(json[$_get]("OutputSaleDiscount"), 'forEach', [dart.fn(v => {
+          let t0;
+          t0 = this.outputSaleDiscount;
+          t0 == null ? null : t0[$add](new output_sale_search_res.OutputSaleDiscount.fromJson(T.MapOfString$dynamic().as(v)));
+        }, T.dynamicToNull())]);
+    }
+    this.pointPercent = T.doubleN().as(json[$_get]("PointPercent"));
+    this.customerDiscount = T.doubleN().as(json[$_get]("CustomerDiscount"));
+    this.totalAmountAll = T.doubleN().as(json[$_get]("TotalAmountAll"));
+    this.isNotOutputEInvoice = T.boolN().as((t0$5 = json[$_get]("IsNotOutputEInvoice"), t0$5 == null ? false : t0$5));
+    this.memberTypeID = T.intN().as(json[$_get]("MemberTypeID"));
+    this.memberTypeName = T.StringN().as(json[$_get]("MemberTypeName"));
+  }).prototype = output_sale_search_res.OutputSaleSearchRes.prototype;
+  (output_sale_search_res.OutputSaleSearchRes.fromJsonLocal = function(json, length) {
+    let t0;
+    this[revokeTypeID] = null;
+    this[revokeTypeName] = null;
+    this[isCardPaymented] = null;
+    this[isNotOutputEInvoice$] = null;
+    this[memberTypeName$] = null;
+    this[memberTypeID$] = null;
+    this[totalAmountAll$] = null;
+    this[customerDiscount$] = null;
+    this[pointPercent$] = null;
+    this[outputSaleDiscount$] = null;
+    this[outputSaleDetail$] = null;
+    this[isOrderPromotion$] = null;
+    this[outputTypeName$] = null;
+    this[paymentTypeID$] = null;
+    this[totalRecord$] = null;
+    this[isInit$] = null;
+    this[isDeleted$] = null;
+    this[updatedUser$] = null;
+    this[updatedDate$] = null;
+    this[createdUser$] = null;
+    this[createdDate$] = null;
+    this[deliveryTypeID$] = null;
+    this[description$] = null;
+    this[isReturnException$] = null;
+    this[returnInputExpiredDate$] = null;
+    this[isRequiredVAT$] = null;
+    this[isReview$] = null;
+    this[isPaymented$] = null;
+    this[currencyExchange$] = null;
+    this[currencyUnitID$] = null;
+    this[totalAmount$] = null;
+    this[totalTaxAmount$] = null;
+    this[totalDiscount$] = null;
+    this[discountProduct$] = null;
+    this[orderDiscount$] = null;
+    this[totalQuantity$] = null;
+    this[customerTax$] = null;
+    this[customerEmail$] = null;
+    this[customerPhone$] = null;
+    this[customerAddress$] = null;
+    this[customerName$] = null;
+    this[customerID$] = null;
+    this[deliveryUser$] = null;
+    this[staffUser$] = null;
+    this[outputStoreID$] = null;
+    this[userDepartmentID$] = null;
+    this[userStoreID$] = null;
+    this[outputTypeID$] = null;
+    this[returnInputCode$] = null;
+    this[outputSaleID$] = null;
+    this[oSID$] = null;
+    this.oSID = T.intN().as(json[$_get]("OSID"));
+    this.outputSaleID = T.StringN().as(json[$_get]("OutputSaleID"));
+    this.outputTypeID = T.intN().as(json[$_get]("OutputTypeID"));
+    this.customerID = T.intN().as(json[$_get]("CustomerID"));
+    this.customerName = T.StringN().as(json[$_get]("CustomerName"));
+    this.customerPhone = T.StringN().as(json[$_get]("CustomerPhone"));
+    this.totalAmount = T.doubleN().as(json[$_get]("TotalAmount"));
+    this.isRequiredVAT = T.boolN().as((t0 = json[$_get]("IsRequiredVAT"), t0 == null ? false : t0));
+    this.description = T.StringN().as(json[$_get]("Description"));
+    if (json[$_get]("CreatedDate") != null) {
+      this.createdDate = new core.DateTime.fromMillisecondsSinceEpoch(core.int.as(json[$_get]("CreatedDate")));
+    }
+    this.outputStoreID = T.intN().as(json[$_get]("OutputStoreID"));
+    this.totalRecord = length;
+  }).prototype = output_sale_search_res.OutputSaleSearchRes.prototype;
+  dart.addTypeTests(output_sale_search_res.OutputSaleSearchRes);
+  dart.addTypeCaches(output_sale_search_res.OutputSaleSearchRes);
+  dart.setMethodSignature(output_sale_search_res.OutputSaleSearchRes, () => ({
+    __proto__: dart.getMethods(output_sale_search_res.OutputSaleSearchRes.__proto__),
+    toJson: dart.fnType(core.Map$(core.String, dart.dynamic), []),
+    exportRowTable: dart.fnType(core.List$(core.String), [])
+  }));
+  dart.setStaticMethodSignature(output_sale_search_res.OutputSaleSearchRes, () => ['fromListJson']);
+  dart.setLibraryUri(output_sale_search_res.OutputSaleSearchRes, I[0]);
+  dart.setFieldSignature(output_sale_search_res.OutputSaleSearchRes, () => ({
+    __proto__: dart.getFields(output_sale_search_res.OutputSaleSearchRes.__proto__),
+    oSID: dart.fieldType(dart.nullable(core.int)),
+    outputSaleID: dart.fieldType(dart.nullable(core.String)),
+    returnInputCode: dart.fieldType(dart.nullable(core.String)),
+    outputTypeID: dart.fieldType(dart.nullable(core.int)),
+    userStoreID: dart.fieldType(dart.nullable(core.int)),
+    userDepartmentID: dart.fieldType(dart.nullable(core.int)),
+    outputStoreID: dart.fieldType(dart.nullable(core.int)),
+    staffUser: dart.fieldType(dart.nullable(core.int)),
+    deliveryUser: dart.fieldType(dart.nullable(core.int)),
+    customerID: dart.fieldType(dart.nullable(core.int)),
+    customerName: dart.fieldType(dart.nullable(core.String)),
+    customerAddress: dart.fieldType(dart.nullable(core.String)),
+    customerPhone: dart.fieldType(dart.nullable(core.String)),
+    customerEmail: dart.fieldType(dart.nullable(core.String)),
+    customerTax: dart.fieldType(dart.nullable(core.String)),
+    totalQuantity: dart.fieldType(dart.nullable(core.double)),
+    orderDiscount: dart.fieldType(dart.nullable(core.double)),
+    discountProduct: dart.fieldType(dart.nullable(core.double)),
+    totalDiscount: dart.fieldType(dart.nullable(core.double)),
+    totalTaxAmount: dart.fieldType(dart.nullable(core.double)),
+    totalAmount: dart.fieldType(dart.nullable(core.double)),
+    currencyUnitID: dart.fieldType(dart.nullable(core.int)),
+    currencyExchange: dart.fieldType(dart.nullable(core.double)),
+    isPaymented: dart.fieldType(dart.nullable(core.bool)),
+    isReview: dart.fieldType(dart.nullable(core.int)),
+    isRequiredVAT: dart.fieldType(dart.nullable(core.bool)),
+    returnInputExpiredDate: dart.fieldType(dart.nullable(core.String)),
+    isReturnException: dart.fieldType(dart.nullable(core.bool)),
+    description: dart.fieldType(dart.nullable(core.String)),
+    deliveryTypeID: dart.fieldType(dart.nullable(core.int)),
+    createdDate: dart.fieldType(dart.nullable(core.DateTime)),
+    createdUser: dart.fieldType(dart.nullable(core.int)),
+    updatedDate: dart.fieldType(dart.nullable(core.DateTime)),
+    updatedUser: dart.fieldType(dart.nullable(core.int)),
+    isDeleted: dart.fieldType(dart.nullable(core.bool)),
+    isInit: dart.fieldType(dart.nullable(core.bool)),
+    totalRecord: dart.fieldType(dart.nullable(core.int)),
+    paymentTypeID: dart.fieldType(dart.nullable(core.int)),
+    outputTypeName: dart.fieldType(dart.nullable(core.String)),
+    isOrderPromotion: dart.fieldType(dart.nullable(core.bool)),
+    outputSaleDetail: dart.fieldType(dart.nullable(core.List$(output_sale_search_res.OutputSaleDetail))),
+    outputSaleDiscount: dart.fieldType(dart.nullable(core.List$(output_sale_search_res.OutputSaleDiscount))),
+    pointPercent: dart.fieldType(dart.nullable(core.double)),
+    customerDiscount: dart.fieldType(dart.nullable(core.double)),
+    totalAmountAll: dart.fieldType(dart.nullable(core.double)),
+    isNotOutputEInvoice: dart.fieldType(dart.nullable(core.bool)),
+    revokeTypeID: dart.fieldType(dart.nullable(core.int)),
+    revokeTypeName: dart.fieldType(dart.nullable(core.String)),
+    memberTypeID: dart.fieldType(dart.nullable(core.int)),
+    memberTypeName: dart.fieldType(dart.nullable(core.String)),
+    isCardPaymented: dart.fieldType(dart.nullable(core.bool))
+  }));
+  var outputSaleDetailId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputSaleDetailId");
+  var osid$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.osid");
+  var outputSaleId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputSaleId");
+  var outputStoreId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputStoreId");
+  var outputTypeId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputTypeId");
+  var returnIsid$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.returnIsid");
+  var returnInputSaleId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.returnInputSaleId");
+  var returnInputStoreId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.returnInputStoreId");
+  var pid$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.pid");
+  var productId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.productId");
+  var referenceId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.referenceId");
+  var managerCode$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.managerCode");
+  var giftCode$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.giftCode");
+  var promotionId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.promotionId");
+  var applyProductId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.applyProductId");
+  var isCombo$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isCombo");
+  var isGift$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isGift");
+  var promotionComboId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.promotionComboId");
+  var quantity$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.quantity");
+  var vat$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.vat");
+  var vatPercent$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.vatPercent");
+  var averagePrice$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.averagePrice");
+  var quotedPrice$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.quotedPrice");
+  var salePriceVat$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.salePriceVat");
+  var salePriceBfvat$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.salePriceBfvat");
+  var taxAmount$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.taxAmount");
+  var priceAmount$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.priceAmount");
+  var discountPercent$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.discountPercent");
+  var discountProduct$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.discountProduct");
+  var totalDiscount$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.totalDiscount");
+  var discountFromOrder$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.discountFromOrder");
+  var discountFromCustomer$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.discountFromCustomer");
+  var isPrint$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isPrint");
+  var isPrintVat$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isPrintVat");
+  var isScanBarCode$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isScanBarCode");
+  var description$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.description");
+  var createdDate$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.createdDate");
+  var createdUser$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.createdUser");
+  var updatedDate$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.updatedDate");
+  var updatedUser$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.updatedUser");
+  var isDeleted$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.isDeleted");
+  var deletedNote$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.deletedNote");
+  var outputQuantity$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputQuantity");
+  var inputQuantity$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.inputQuantity");
+  var quantityCanInput$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.quantityCanInput");
+  var productName$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.productName");
+  var isDelivery$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isDelivery");
+  var originalDeliveryPrice$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.originalDeliveryPrice");
+  var categoryId$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.categoryId");
+  var outputTypeName$0 = dart.privateName(output_sale_search_res, "OutputSaleDetail.outputTypeName");
+  var isUsed$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isUsed");
+  var isOnline$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isOnline");
+  var storeInput$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.storeInput");
+  var userInput$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.userInput");
+  var createdDateInput$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.createdDateInput");
+  var comboID$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.comboID");
+  var comboName$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.comboName");
+  var comboQuantity$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.comboQuantity");
+  var promotionTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.promotionTypeID");
+  var orderPointMembership$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.orderPointMembership");
+  var endDate$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.endDate");
+  var isOTP$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.isOTP");
+  var defectTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleDetail.defectTypeID");
+  output_sale_search_res.OutputSaleDetail = class OutputSaleDetail extends core.Object {
+    get outputSaleDetailId() {
+      return this[outputSaleDetailId$];
+    }
+    set outputSaleDetailId(value) {
+      this[outputSaleDetailId$] = value;
+    }
+    get osid() {
+      return this[osid$];
+    }
+    set osid(value) {
+      this[osid$] = value;
+    }
+    get outputSaleId() {
+      return this[outputSaleId$];
+    }
+    set outputSaleId(value) {
+      this[outputSaleId$] = value;
+    }
+    get outputStoreId() {
+      return this[outputStoreId$];
+    }
+    set outputStoreId(value) {
+      this[outputStoreId$] = value;
+    }
+    get outputTypeId() {
+      return this[outputTypeId$];
+    }
+    set outputTypeId(value) {
+      this[outputTypeId$] = value;
+    }
+    get returnIsid() {
+      return this[returnIsid$];
+    }
+    set returnIsid(value) {
+      this[returnIsid$] = value;
+    }
+    get returnInputSaleId() {
+      return this[returnInputSaleId$];
+    }
+    set returnInputSaleId(value) {
+      this[returnInputSaleId$] = value;
+    }
+    get returnInputStoreId() {
+      return this[returnInputStoreId$];
+    }
+    set returnInputStoreId(value) {
+      this[returnInputStoreId$] = value;
+    }
+    get pid() {
+      return this[pid$];
+    }
+    set pid(value) {
+      this[pid$] = value;
+    }
+    get productId() {
+      return this[productId$];
+    }
+    set productId(value) {
+      this[productId$] = value;
+    }
+    get referenceId() {
+      return this[referenceId$];
+    }
+    set referenceId(value) {
+      this[referenceId$] = value;
+    }
+    get managerCode() {
+      return this[managerCode$];
+    }
+    set managerCode(value) {
+      this[managerCode$] = value;
+    }
+    get giftCode() {
+      return this[giftCode$];
+    }
+    set giftCode(value) {
+      this[giftCode$] = value;
+    }
+    get promotionId() {
+      return this[promotionId$];
+    }
+    set promotionId(value) {
+      this[promotionId$] = value;
+    }
+    get applyProductId() {
+      return this[applyProductId$];
+    }
+    set applyProductId(value) {
+      this[applyProductId$] = value;
+    }
+    get isCombo() {
+      return this[isCombo$];
+    }
+    set isCombo(value) {
+      this[isCombo$] = value;
+    }
+    get isGift() {
+      return this[isGift$];
+    }
+    set isGift(value) {
+      this[isGift$] = value;
+    }
+    get promotionComboId() {
+      return this[promotionComboId$];
+    }
+    set promotionComboId(value) {
+      this[promotionComboId$] = value;
+    }
+    get quantity() {
+      return this[quantity$];
+    }
+    set quantity(value) {
+      this[quantity$] = value;
+    }
+    get vat() {
+      return this[vat$];
+    }
+    set vat(value) {
+      this[vat$] = value;
+    }
+    get vatPercent() {
+      return this[vatPercent$];
+    }
+    set vatPercent(value) {
+      this[vatPercent$] = value;
+    }
+    get averagePrice() {
+      return this[averagePrice$];
+    }
+    set averagePrice(value) {
+      this[averagePrice$] = value;
+    }
+    get quotedPrice() {
+      return this[quotedPrice$];
+    }
+    set quotedPrice(value) {
+      this[quotedPrice$] = value;
+    }
+    get salePriceVat() {
+      return this[salePriceVat$];
+    }
+    set salePriceVat(value) {
+      this[salePriceVat$] = value;
+    }
+    get salePriceBfvat() {
+      return this[salePriceBfvat$];
+    }
+    set salePriceBfvat(value) {
+      this[salePriceBfvat$] = value;
+    }
+    get taxAmount() {
+      return this[taxAmount$];
+    }
+    set taxAmount(value) {
+      this[taxAmount$] = value;
+    }
+    get priceAmount() {
+      return this[priceAmount$];
+    }
+    set priceAmount(value) {
+      this[priceAmount$] = value;
+    }
+    get discountPercent() {
+      return this[discountPercent$];
+    }
+    set discountPercent(value) {
+      this[discountPercent$] = value;
+    }
+    get discountProduct() {
+      return this[discountProduct$0];
+    }
+    set discountProduct(value) {
+      this[discountProduct$0] = value;
+    }
+    get totalDiscount() {
+      return this[totalDiscount$0];
+    }
+    set totalDiscount(value) {
+      this[totalDiscount$0] = value;
+    }
+    get discountFromOrder() {
+      return this[discountFromOrder$];
+    }
+    set discountFromOrder(value) {
+      this[discountFromOrder$] = value;
+    }
+    get discountFromCustomer() {
+      return this[discountFromCustomer$];
+    }
+    set discountFromCustomer(value) {
+      this[discountFromCustomer$] = value;
+    }
+    get isPrint() {
+      return this[isPrint$];
+    }
+    set isPrint(value) {
+      this[isPrint$] = value;
+    }
+    get isPrintVat() {
+      return this[isPrintVat$];
+    }
+    set isPrintVat(value) {
+      this[isPrintVat$] = value;
+    }
+    get isScanBarCode() {
+      return this[isScanBarCode$];
+    }
+    set isScanBarCode(value) {
+      this[isScanBarCode$] = value;
+    }
+    get description() {
+      return this[description$0];
+    }
+    set description(value) {
+      this[description$0] = value;
+    }
+    get createdDate() {
+      return this[createdDate$0];
+    }
+    set createdDate(value) {
+      this[createdDate$0] = value;
+    }
+    get createdUser() {
+      return this[createdUser$0];
+    }
+    set createdUser(value) {
+      this[createdUser$0] = value;
+    }
+    get updatedDate() {
+      return this[updatedDate$0];
+    }
+    set updatedDate(value) {
+      this[updatedDate$0] = value;
+    }
+    get updatedUser() {
+      return this[updatedUser$0];
+    }
+    set updatedUser(value) {
+      this[updatedUser$0] = value;
+    }
+    get isDeleted() {
+      return this[isDeleted$0];
+    }
+    set isDeleted(value) {
+      this[isDeleted$0] = value;
+    }
+    get deletedNote() {
+      return this[deletedNote$];
+    }
+    set deletedNote(value) {
+      this[deletedNote$] = value;
+    }
+    get outputQuantity() {
+      return this[outputQuantity$];
+    }
+    set outputQuantity(value) {
+      this[outputQuantity$] = value;
+    }
+    get inputQuantity() {
+      return this[inputQuantity$];
+    }
+    set inputQuantity(value) {
+      this[inputQuantity$] = value;
+    }
+    get quantityCanInput() {
+      return this[quantityCanInput$];
+    }
+    set quantityCanInput(value) {
+      this[quantityCanInput$] = value;
+    }
+    get productName() {
+      return this[productName$];
+    }
+    set productName(value) {
+      this[productName$] = value;
+    }
+    get isDelivery() {
+      return this[isDelivery$];
+    }
+    set isDelivery(value) {
+      this[isDelivery$] = value;
+    }
+    get originalDeliveryPrice() {
+      return this[originalDeliveryPrice$];
+    }
+    set originalDeliveryPrice(value) {
+      this[originalDeliveryPrice$] = value;
+    }
+    get categoryId() {
+      return this[categoryId$];
+    }
+    set categoryId(value) {
+      this[categoryId$] = value;
+    }
+    get outputTypeName() {
+      return this[outputTypeName$0];
+    }
+    set outputTypeName(value) {
+      this[outputTypeName$0] = value;
+    }
+    get isUsed() {
+      return this[isUsed$];
+    }
+    set isUsed(value) {
+      this[isUsed$] = value;
+    }
+    get isOnline() {
+      return this[isOnline$];
+    }
+    set isOnline(value) {
+      this[isOnline$] = value;
+    }
+    get storeInput() {
+      return this[storeInput$];
+    }
+    set storeInput(value) {
+      this[storeInput$] = value;
+    }
+    get userInput() {
+      return this[userInput$];
+    }
+    set userInput(value) {
+      this[userInput$] = value;
+    }
+    get createdDateInput() {
+      return this[createdDateInput$];
+    }
+    set createdDateInput(value) {
+      this[createdDateInput$] = value;
+    }
+    get comboID() {
+      return this[comboID$];
+    }
+    set comboID(value) {
+      this[comboID$] = value;
+    }
+    get comboName() {
+      return this[comboName$];
+    }
+    set comboName(value) {
+      this[comboName$] = value;
+    }
+    get comboQuantity() {
+      return this[comboQuantity$];
+    }
+    set comboQuantity(value) {
+      this[comboQuantity$] = value;
+    }
+    get promotionTypeID() {
+      return this[promotionTypeID$];
+    }
+    set promotionTypeID(value) {
+      this[promotionTypeID$] = value;
+    }
+    get orderPointMembership() {
+      return this[orderPointMembership$];
+    }
+    set orderPointMembership(value) {
+      this[orderPointMembership$] = value;
+    }
+    get endDate() {
+      return this[endDate$];
+    }
+    set endDate(value) {
+      this[endDate$] = value;
+    }
+    get isOTP() {
+      return this[isOTP$];
+    }
+    set isOTP(value) {
+      this[isOTP$] = value;
+    }
+    get defectTypeID() {
+      return this[defectTypeID$];
+    }
+    set defectTypeID(value) {
+      this[defectTypeID$] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let outputSaleDetailId = opts && 'outputSaleDetailId' in opts ? opts.outputSaleDetailId : null;
+      let osid = opts && 'osid' in opts ? opts.osid : null;
+      let outputSaleId = opts && 'outputSaleId' in opts ? opts.outputSaleId : null;
+      let outputStoreId = opts && 'outputStoreId' in opts ? opts.outputStoreId : null;
+      let outputTypeId = opts && 'outputTypeId' in opts ? opts.outputTypeId : null;
+      let returnIsid = opts && 'returnIsid' in opts ? opts.returnIsid : null;
+      let returnInputSaleId = opts && 'returnInputSaleId' in opts ? opts.returnInputSaleId : null;
+      let returnInputStoreId = opts && 'returnInputStoreId' in opts ? opts.returnInputStoreId : null;
+      let pid = opts && 'pid' in opts ? opts.pid : null;
+      let productId = opts && 'productId' in opts ? opts.productId : null;
+      let referenceId = opts && 'referenceId' in opts ? opts.referenceId : null;
+      let managerCode = opts && 'managerCode' in opts ? opts.managerCode : null;
+      let giftCode = opts && 'giftCode' in opts ? opts.giftCode : null;
+      let promotionId = opts && 'promotionId' in opts ? opts.promotionId : null;
+      let applyProductId = opts && 'applyProductId' in opts ? opts.applyProductId : null;
+      let isCombo = opts && 'isCombo' in opts ? opts.isCombo : null;
+      let isGift = opts && 'isGift' in opts ? opts.isGift : null;
+      let promotionComboId = opts && 'promotionComboId' in opts ? opts.promotionComboId : null;
+      let quantity = opts && 'quantity' in opts ? opts.quantity : null;
+      let vat = opts && 'vat' in opts ? opts.vat : null;
+      let vatPercent = opts && 'vatPercent' in opts ? opts.vatPercent : null;
+      let averagePrice = opts && 'averagePrice' in opts ? opts.averagePrice : null;
+      let quotedPrice = opts && 'quotedPrice' in opts ? opts.quotedPrice : null;
+      let salePriceVat = opts && 'salePriceVat' in opts ? opts.salePriceVat : null;
+      let salePriceBfvat = opts && 'salePriceBfvat' in opts ? opts.salePriceBfvat : null;
+      let taxAmount = opts && 'taxAmount' in opts ? opts.taxAmount : null;
+      let priceAmount = opts && 'priceAmount' in opts ? opts.priceAmount : null;
+      let discountPercent = opts && 'discountPercent' in opts ? opts.discountPercent : null;
+      let discountProduct = opts && 'discountProduct' in opts ? opts.discountProduct : null;
+      let totalDiscount = opts && 'totalDiscount' in opts ? opts.totalDiscount : null;
+      let discountFromOrder = opts && 'discountFromOrder' in opts ? opts.discountFromOrder : null;
+      let discountFromCustomer = opts && 'discountFromCustomer' in opts ? opts.discountFromCustomer : null;
+      let isPrint = opts && 'isPrint' in opts ? opts.isPrint : null;
+      let isPrintVat = opts && 'isPrintVat' in opts ? opts.isPrintVat : null;
+      let isScanBarCode = opts && 'isScanBarCode' in opts ? opts.isScanBarCode : null;
+      let description = opts && 'description' in opts ? opts.description : null;
+      let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+      let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+      let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+      let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+      let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+      let deletedNote = opts && 'deletedNote' in opts ? opts.deletedNote : null;
+      let outputQuantity = opts && 'outputQuantity' in opts ? opts.outputQuantity : null;
+      let inputQuantity = opts && 'inputQuantity' in opts ? opts.inputQuantity : null;
+      let quantityCanInput = opts && 'quantityCanInput' in opts ? opts.quantityCanInput : null;
+      let productName = opts && 'productName' in opts ? opts.productName : null;
+      let isDelivery = opts && 'isDelivery' in opts ? opts.isDelivery : null;
+      let originalDeliveryPrice = opts && 'originalDeliveryPrice' in opts ? opts.originalDeliveryPrice : null;
+      let categoryId = opts && 'categoryId' in opts ? opts.categoryId : null;
+      let outputTypeName = opts && 'outputTypeName' in opts ? opts.outputTypeName : null;
+      let isUsed = opts && 'isUsed' in opts ? opts.isUsed : null;
+      let isOnline = opts && 'isOnline' in opts ? opts.isOnline : null;
+      let storeInput = opts && 'storeInput' in opts ? opts.storeInput : null;
+      let userInput = opts && 'userInput' in opts ? opts.userInput : null;
+      let createdDateInput = opts && 'createdDateInput' in opts ? opts.createdDateInput : null;
+      let comboID = opts && 'comboID' in opts ? opts.comboID : null;
+      let comboName = opts && 'comboName' in opts ? opts.comboName : null;
+      let comboQuantity = opts && 'comboQuantity' in opts ? opts.comboQuantity : null;
+      let promotionTypeID = opts && 'promotionTypeID' in opts ? opts.promotionTypeID : null;
+      let orderPointMembership = opts && 'orderPointMembership' in opts ? opts.orderPointMembership : null;
+      let endDate = opts && 'endDate' in opts ? opts.endDate : null;
+      let isOTP = opts && 'isOTP' in opts ? opts.isOTP : null;
+      let defectTypeID = opts && 'defectTypeID' in opts ? opts.defectTypeID : null;
+      return new output_sale_search_res.OutputSaleDetail.new({outputSaleDetailId: outputSaleDetailId, osid: osid, outputSaleId: outputSaleId, outputStoreId: outputStoreId, outputTypeId: outputTypeId, returnIsid: returnIsid, returnInputSaleId: returnInputSaleId, returnInputStoreId: returnInputStoreId, pid: pid, productId: productId, referenceId: referenceId, managerCode: managerCode, giftCode: giftCode, promotionId: promotionId, applyProductId: applyProductId, isCombo: isCombo, isGift: isGift, promotionComboId: promotionComboId, quantity: quantity, vat: vat, vatPercent: vatPercent, averagePrice: averagePrice, quotedPrice: quotedPrice, salePriceVat: salePriceVat, salePriceBfvat: salePriceBfvat, taxAmount: taxAmount, priceAmount: priceAmount, discountPercent: discountPercent, discountProduct: discountProduct, totalDiscount: totalDiscount, discountFromOrder: discountFromOrder, discountFromCustomer: discountFromCustomer, isPrint: isPrint, isPrintVat: isPrintVat, isScanBarCode: isScanBarCode, description: description, createdDate: createdDate, createdUser: createdUser, updatedDate: updatedDate, updatedUser: updatedUser, isDeleted: isDeleted, deletedNote: deletedNote, outputQuantity: outputQuantity, inputQuantity: inputQuantity, quantityCanInput: quantityCanInput, productName: productName, isDelivery: isDelivery, originalDeliveryPrice: originalDeliveryPrice, categoryId: categoryId, outputTypeName: outputTypeName, isUsed: isUsed, isOnline: isOnline, storeInput: storeInput, userInput: userInput, createdDateInput: createdDateInput, comboID: comboID, comboName: comboName, comboQuantity: comboQuantity, promotionTypeID: promotionTypeID, orderPointMembership: orderPointMembership, endDate: endDate, isOTP: isOTP, defectTypeID: defectTypeID});
+    }
+    static ['_#fromJson#tearOff'](json) {
+      return new output_sale_search_res.OutputSaleDetail.fromJson(json);
+    }
+    toJson() {
+      let data = new (T.LinkedMapOfString$dynamic()).new();
+      data[$_set]("OutputSaleDetailId", this.outputSaleDetailId);
+      data[$_set]("Osid", this.osid);
+      data[$_set]("OutputSaleId", this.outputSaleId);
+      data[$_set]("OutputStoreId", this.outputStoreId);
+      data[$_set]("OutputTypeId", this.outputTypeId);
+      data[$_set]("ReturnIsid", this.returnIsid);
+      data[$_set]("ReturnInputSaleId", this.returnInputSaleId);
+      data[$_set]("ReturnInputStoreId", this.returnInputStoreId);
+      data[$_set]("Pid", this.pid);
+      data[$_set]("ProductId", this.productId);
+      data[$_set]("ReferenceId", this.referenceId);
+      data[$_set]("ManagerCode", this.managerCode);
+      data[$_set]("GiftCode", this.giftCode);
+      data[$_set]("PromotionId", this.promotionId);
+      data[$_set]("ApplyProductId", this.applyProductId);
+      data[$_set]("IsCombo", this.isCombo);
+      data[$_set]("IsGift", this.isGift);
+      data[$_set]("PromotionComboId", this.promotionComboId);
+      data[$_set]("Quantity", this.quantity);
+      data[$_set]("Vat", this.vat);
+      data[$_set]("VatPercent", this.vatPercent);
+      data[$_set]("AveragePrice", this.averagePrice);
+      data[$_set]("QuotedPrice", this.quotedPrice);
+      data[$_set]("SalePriceVat", this.salePriceVat);
+      data[$_set]("SalePriceBfvat", this.salePriceBfvat);
+      data[$_set]("TaxAmount", this.taxAmount);
+      data[$_set]("PriceAmount", this.priceAmount);
+      data[$_set]("DiscountPercent", this.discountPercent);
+      data[$_set]("DiscountProduct", this.discountProduct);
+      data[$_set]("TotalDiscount", this.totalDiscount);
+      data[$_set]("DiscountFromOrder", this.discountFromOrder);
+      data[$_set]("DiscountFromCustomer", this.discountFromCustomer);
+      data[$_set]("IsPrint", this.isPrint);
+      data[$_set]("IsPrintVat", this.isPrintVat);
+      data[$_set]("IsScanBarCode", this.isScanBarCode);
+      data[$_set]("Description", this.description);
+      data[$_set]("CreatedDate", this.createdDate);
+      data[$_set]("CreatedUser", this.createdUser);
+      data[$_set]("UpdatedDate", this.updatedDate);
+      data[$_set]("UpdatedUser", this.updatedUser);
+      data[$_set]("IsDeleted", this.isDeleted);
+      data[$_set]("DeletedNote", this.deletedNote);
+      data[$_set]("OutputQuantity", this.outputQuantity);
+      data[$_set]("InputQuantity", this.inputQuantity);
+      data[$_set]("QuantityCanInput", this.quantityCanInput);
+      data[$_set]("ProductName", this.productName);
+      data[$_set]("IsDelivery", this.isDelivery);
+      data[$_set]("OriginalDeliveryPrice", this.originalDeliveryPrice);
+      data[$_set]("CategoryId", this.categoryId);
+      data[$_set]("OutputTypeName", this.outputTypeName);
+      data[$_set]("IsUsed", this.isUsed);
+      data[$_set]("IsOnline", this.isOnline);
+      data[$_set]("StoreInput", this.storeInput);
+      data[$_set]("UserInput", this.userInput);
+      data[$_set]("CreatedDateInput", this.createdDateInput);
+      data[$_set]("ComboID", this.comboID);
+      data[$_set]("ComboName", this.comboName);
+      data[$_set]("ComboQuantity", this.comboQuantity);
+      data[$_set]("PromotionTypeID", this.promotionTypeID);
+      data[$_set]("OrderPointMembership", this.orderPointMembership);
+      data[$_set]("EndDate", this.endDate);
+      data[$_set]("IsOTP", this.isOTP);
+      data[$_set]("DefectTypeID", this.defectTypeID);
+      return data;
+    }
+  };
+  (output_sale_search_res.OutputSaleDetail.new = function(opts) {
+    let outputSaleDetailId = opts && 'outputSaleDetailId' in opts ? opts.outputSaleDetailId : null;
+    let osid = opts && 'osid' in opts ? opts.osid : null;
+    let outputSaleId = opts && 'outputSaleId' in opts ? opts.outputSaleId : null;
+    let outputStoreId = opts && 'outputStoreId' in opts ? opts.outputStoreId : null;
+    let outputTypeId = opts && 'outputTypeId' in opts ? opts.outputTypeId : null;
+    let returnIsid = opts && 'returnIsid' in opts ? opts.returnIsid : null;
+    let returnInputSaleId = opts && 'returnInputSaleId' in opts ? opts.returnInputSaleId : null;
+    let returnInputStoreId = opts && 'returnInputStoreId' in opts ? opts.returnInputStoreId : null;
+    let pid = opts && 'pid' in opts ? opts.pid : null;
+    let productId = opts && 'productId' in opts ? opts.productId : null;
+    let referenceId = opts && 'referenceId' in opts ? opts.referenceId : null;
+    let managerCode = opts && 'managerCode' in opts ? opts.managerCode : null;
+    let giftCode = opts && 'giftCode' in opts ? opts.giftCode : null;
+    let promotionId = opts && 'promotionId' in opts ? opts.promotionId : null;
+    let applyProductId = opts && 'applyProductId' in opts ? opts.applyProductId : null;
+    let isCombo = opts && 'isCombo' in opts ? opts.isCombo : null;
+    let isGift = opts && 'isGift' in opts ? opts.isGift : null;
+    let promotionComboId = opts && 'promotionComboId' in opts ? opts.promotionComboId : null;
+    let quantity = opts && 'quantity' in opts ? opts.quantity : null;
+    let vat = opts && 'vat' in opts ? opts.vat : null;
+    let vatPercent = opts && 'vatPercent' in opts ? opts.vatPercent : null;
+    let averagePrice = opts && 'averagePrice' in opts ? opts.averagePrice : null;
+    let quotedPrice = opts && 'quotedPrice' in opts ? opts.quotedPrice : null;
+    let salePriceVat = opts && 'salePriceVat' in opts ? opts.salePriceVat : null;
+    let salePriceBfvat = opts && 'salePriceBfvat' in opts ? opts.salePriceBfvat : null;
+    let taxAmount = opts && 'taxAmount' in opts ? opts.taxAmount : null;
+    let priceAmount = opts && 'priceAmount' in opts ? opts.priceAmount : null;
+    let discountPercent = opts && 'discountPercent' in opts ? opts.discountPercent : null;
+    let discountProduct = opts && 'discountProduct' in opts ? opts.discountProduct : null;
+    let totalDiscount = opts && 'totalDiscount' in opts ? opts.totalDiscount : null;
+    let discountFromOrder = opts && 'discountFromOrder' in opts ? opts.discountFromOrder : null;
+    let discountFromCustomer = opts && 'discountFromCustomer' in opts ? opts.discountFromCustomer : null;
+    let isPrint = opts && 'isPrint' in opts ? opts.isPrint : null;
+    let isPrintVat = opts && 'isPrintVat' in opts ? opts.isPrintVat : null;
+    let isScanBarCode = opts && 'isScanBarCode' in opts ? opts.isScanBarCode : null;
+    let description = opts && 'description' in opts ? opts.description : null;
+    let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+    let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+    let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+    let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+    let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+    let deletedNote = opts && 'deletedNote' in opts ? opts.deletedNote : null;
+    let outputQuantity = opts && 'outputQuantity' in opts ? opts.outputQuantity : null;
+    let inputQuantity = opts && 'inputQuantity' in opts ? opts.inputQuantity : null;
+    let quantityCanInput = opts && 'quantityCanInput' in opts ? opts.quantityCanInput : null;
+    let productName = opts && 'productName' in opts ? opts.productName : null;
+    let isDelivery = opts && 'isDelivery' in opts ? opts.isDelivery : null;
+    let originalDeliveryPrice = opts && 'originalDeliveryPrice' in opts ? opts.originalDeliveryPrice : null;
+    let categoryId = opts && 'categoryId' in opts ? opts.categoryId : null;
+    let outputTypeName = opts && 'outputTypeName' in opts ? opts.outputTypeName : null;
+    let isUsed = opts && 'isUsed' in opts ? opts.isUsed : null;
+    let isOnline = opts && 'isOnline' in opts ? opts.isOnline : null;
+    let storeInput = opts && 'storeInput' in opts ? opts.storeInput : null;
+    let userInput = opts && 'userInput' in opts ? opts.userInput : null;
+    let createdDateInput = opts && 'createdDateInput' in opts ? opts.createdDateInput : null;
+    let comboID = opts && 'comboID' in opts ? opts.comboID : null;
+    let comboName = opts && 'comboName' in opts ? opts.comboName : null;
+    let comboQuantity = opts && 'comboQuantity' in opts ? opts.comboQuantity : null;
+    let promotionTypeID = opts && 'promotionTypeID' in opts ? opts.promotionTypeID : null;
+    let orderPointMembership = opts && 'orderPointMembership' in opts ? opts.orderPointMembership : null;
+    let endDate = opts && 'endDate' in opts ? opts.endDate : null;
+    let isOTP = opts && 'isOTP' in opts ? opts.isOTP : null;
+    let defectTypeID = opts && 'defectTypeID' in opts ? opts.defectTypeID : null;
+    this[outputSaleDetailId$] = outputSaleDetailId;
+    this[osid$] = osid;
+    this[outputSaleId$] = outputSaleId;
+    this[outputStoreId$] = outputStoreId;
+    this[outputTypeId$] = outputTypeId;
+    this[returnIsid$] = returnIsid;
+    this[returnInputSaleId$] = returnInputSaleId;
+    this[returnInputStoreId$] = returnInputStoreId;
+    this[pid$] = pid;
+    this[productId$] = productId;
+    this[referenceId$] = referenceId;
+    this[managerCode$] = managerCode;
+    this[giftCode$] = giftCode;
+    this[promotionId$] = promotionId;
+    this[applyProductId$] = applyProductId;
+    this[isCombo$] = isCombo;
+    this[isGift$] = isGift;
+    this[promotionComboId$] = promotionComboId;
+    this[quantity$] = quantity;
+    this[vat$] = vat;
+    this[vatPercent$] = vatPercent;
+    this[averagePrice$] = averagePrice;
+    this[quotedPrice$] = quotedPrice;
+    this[salePriceVat$] = salePriceVat;
+    this[salePriceBfvat$] = salePriceBfvat;
+    this[taxAmount$] = taxAmount;
+    this[priceAmount$] = priceAmount;
+    this[discountPercent$] = discountPercent;
+    this[discountProduct$0] = discountProduct;
+    this[totalDiscount$0] = totalDiscount;
+    this[discountFromOrder$] = discountFromOrder;
+    this[discountFromCustomer$] = discountFromCustomer;
+    this[isPrint$] = isPrint;
+    this[isPrintVat$] = isPrintVat;
+    this[isScanBarCode$] = isScanBarCode;
+    this[description$0] = description;
+    this[createdDate$0] = createdDate;
+    this[createdUser$0] = createdUser;
+    this[updatedDate$0] = updatedDate;
+    this[updatedUser$0] = updatedUser;
+    this[isDeleted$0] = isDeleted;
+    this[deletedNote$] = deletedNote;
+    this[outputQuantity$] = outputQuantity;
+    this[inputQuantity$] = inputQuantity;
+    this[quantityCanInput$] = quantityCanInput;
+    this[productName$] = productName;
+    this[isDelivery$] = isDelivery;
+    this[originalDeliveryPrice$] = originalDeliveryPrice;
+    this[categoryId$] = categoryId;
+    this[outputTypeName$0] = outputTypeName;
+    this[isUsed$] = isUsed;
+    this[isOnline$] = isOnline;
+    this[storeInput$] = storeInput;
+    this[userInput$] = userInput;
+    this[createdDateInput$] = createdDateInput;
+    this[comboID$] = comboID;
+    this[comboName$] = comboName;
+    this[comboQuantity$] = comboQuantity;
+    this[promotionTypeID$] = promotionTypeID;
+    this[orderPointMembership$] = orderPointMembership;
+    this[endDate$] = endDate;
+    this[isOTP$] = isOTP;
+    this[defectTypeID$] = defectTypeID;
+    ;
+  }).prototype = output_sale_search_res.OutputSaleDetail.prototype;
+  (output_sale_search_res.OutputSaleDetail.fromJson = function(json) {
+    this[defectTypeID$] = null;
+    this[isOTP$] = null;
+    this[endDate$] = null;
+    this[orderPointMembership$] = null;
+    this[promotionTypeID$] = null;
+    this[comboQuantity$] = null;
+    this[comboName$] = null;
+    this[comboID$] = null;
+    this[createdDateInput$] = null;
+    this[userInput$] = null;
+    this[storeInput$] = null;
+    this[isOnline$] = null;
+    this[isUsed$] = null;
+    this[outputTypeName$0] = null;
+    this[categoryId$] = null;
+    this[originalDeliveryPrice$] = null;
+    this[isDelivery$] = null;
+    this[productName$] = null;
+    this[quantityCanInput$] = null;
+    this[inputQuantity$] = null;
+    this[outputQuantity$] = null;
+    this[deletedNote$] = null;
+    this[isDeleted$0] = null;
+    this[updatedUser$0] = null;
+    this[updatedDate$0] = null;
+    this[createdUser$0] = null;
+    this[createdDate$0] = null;
+    this[description$0] = null;
+    this[isScanBarCode$] = null;
+    this[isPrintVat$] = null;
+    this[isPrint$] = null;
+    this[discountFromCustomer$] = null;
+    this[discountFromOrder$] = null;
+    this[totalDiscount$0] = null;
+    this[discountProduct$0] = null;
+    this[discountPercent$] = null;
+    this[priceAmount$] = null;
+    this[taxAmount$] = null;
+    this[salePriceBfvat$] = null;
+    this[salePriceVat$] = null;
+    this[quotedPrice$] = null;
+    this[averagePrice$] = null;
+    this[vatPercent$] = null;
+    this[vat$] = null;
+    this[quantity$] = null;
+    this[promotionComboId$] = null;
+    this[isGift$] = null;
+    this[isCombo$] = null;
+    this[applyProductId$] = null;
+    this[promotionId$] = null;
+    this[giftCode$] = null;
+    this[managerCode$] = null;
+    this[referenceId$] = null;
+    this[productId$] = null;
+    this[pid$] = null;
+    this[returnInputStoreId$] = null;
+    this[returnInputSaleId$] = null;
+    this[returnIsid$] = null;
+    this[outputTypeId$] = null;
+    this[outputStoreId$] = null;
+    this[outputSaleId$] = null;
+    this[osid$] = null;
+    this[outputSaleDetailId$] = null;
+    this.outputSaleDetailId = T.intN().as(json[$_get]("OutputSaleDetailId"));
+    this.osid = T.intN().as(json[$_get]("Osid"));
+    this.outputSaleId = T.StringN().as(json[$_get]("OutputSaleId"));
+    this.outputStoreId = T.intN().as(json[$_get]("OutputStoreId"));
+    this.outputTypeId = T.intN().as(json[$_get]("OutputTypeId"));
+    this.returnIsid = T.intN().as(json[$_get]("ReturnIsid"));
+    this.returnInputSaleId = T.StringN().as(json[$_get]("ReturnInputSaleId"));
+    this.returnInputStoreId = T.intN().as(json[$_get]("ReturnInputStoreId"));
+    this.pid = T.intN().as(json[$_get]("Pid"));
+    this.productId = T.StringN().as(json[$_get]("ProductId"));
+    this.referenceId = T.StringN().as(json[$_get]("ReferenceId"));
+    this.managerCode = T.StringN().as(json[$_get]("ManagerCode"));
+    this.giftCode = T.StringN().as(json[$_get]("GiftCode"));
+    this.promotionId = T.intN().as(json[$_get]("PromotionId"));
+    this.applyProductId = T.StringN().as(json[$_get]("ApplyProductId"));
+    this.isCombo = T.boolN().as(json[$_get]("IsCombo"));
+    this.isGift = T.boolN().as(json[$_get]("IsGift"));
+    this.promotionComboId = T.intN().as(json[$_get]("PromotionComboId"));
+    this.quantity = T.intN().as(json[$_get]("Quantity"));
+    this.vat = T.intN().as(json[$_get]("Vat"));
+    this.vatPercent = T.intN().as(json[$_get]("VatPercent"));
+    this.averagePrice = T.intN().as(json[$_get]("AveragePrice"));
+    this.quotedPrice = T.intN().as(json[$_get]("QuotedPrice"));
+    this.salePriceVat = T.intN().as(json[$_get]("SalePriceVat"));
+    this.salePriceBfvat = T.intN().as(json[$_get]("SalePriceBfvat"));
+    this.taxAmount = T.intN().as(json[$_get]("TaxAmount"));
+    this.priceAmount = T.intN().as(json[$_get]("PriceAmount"));
+    this.discountPercent = T.intN().as(json[$_get]("DiscountPercent"));
+    this.discountProduct = T.intN().as(json[$_get]("DiscountProduct"));
+    this.totalDiscount = T.intN().as(json[$_get]("TotalDiscount"));
+    this.discountFromOrder = T.intN().as(json[$_get]("DiscountFromOrder"));
+    this.discountFromCustomer = T.intN().as(json[$_get]("DiscountFromCustomer"));
+    this.isPrint = T.boolN().as(json[$_get]("IsPrint"));
+    this.isPrintVat = T.boolN().as(json[$_get]("IsPrintVat"));
+    this.isScanBarCode = T.boolN().as(json[$_get]("IsScanBarCode"));
+    this.description = T.StringN().as(json[$_get]("Description"));
+    this.createdDate = T.StringN().as(json[$_get]("CreatedDate"));
+    this.createdUser = T.intN().as(json[$_get]("CreatedUser"));
+    this.updatedDate = T.StringN().as(json[$_get]("UpdatedDate"));
+    this.updatedUser = T.intN().as(json[$_get]("UpdatedUser"));
+    this.isDeleted = T.boolN().as(json[$_get]("IsDeleted"));
+    this.deletedNote = T.StringN().as(json[$_get]("DeletedNote"));
+    this.outputQuantity = T.intN().as(json[$_get]("OutputQuantity"));
+    this.inputQuantity = T.intN().as(json[$_get]("InputQuantity"));
+    this.quantityCanInput = T.intN().as(json[$_get]("QuantityCanInput"));
+    this.productName = T.StringN().as(json[$_get]("ProductName"));
+    this.isDelivery = T.boolN().as(json[$_get]("IsDelivery"));
+    this.originalDeliveryPrice = T.intN().as(json[$_get]("OriginalDeliveryPrice"));
+    this.categoryId = T.intN().as(json[$_get]("CategoryId"));
+    this.outputTypeName = T.StringN().as(json[$_get]("OutputTypeName"));
+    this.isUsed = T.boolN().as(json[$_get]("IsUsed"));
+    this.isOnline = T.boolN().as(json[$_get]("IsOnline"));
+    this.storeInput = T.StringN().as(json[$_get]("StoreInput"));
+    this.userInput = T.StringN().as(json[$_get]("UserInput"));
+    this.createdDateInput = T.StringN().as(json[$_get]("CreatedDateInput"));
+    this.comboID = T.StringN().as(json[$_get]("ComboID"));
+    this.comboName = T.StringN().as(json[$_get]("ComboName"));
+    this.comboQuantity = T.intN().as(json[$_get]("ComboQuantity"));
+    this.promotionTypeID = T.intN().as(json[$_get]("PromotionTypeID"));
+    this.orderPointMembership = T.intN().as(json[$_get]("OrderPointMembership"));
+    this.endDate = T.StringN().as(json[$_get]("EndDate"));
+    this.isOTP = T.boolN().as(json[$_get]("IsOTP"));
+    this.defectTypeID = T.intN().as(json[$_get]("DefectTypeID"));
+  }).prototype = output_sale_search_res.OutputSaleDetail.prototype;
+  dart.addTypeTests(output_sale_search_res.OutputSaleDetail);
+  dart.addTypeCaches(output_sale_search_res.OutputSaleDetail);
+  dart.setMethodSignature(output_sale_search_res.OutputSaleDetail, () => ({
+    __proto__: dart.getMethods(output_sale_search_res.OutputSaleDetail.__proto__),
+    toJson: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setLibraryUri(output_sale_search_res.OutputSaleDetail, I[0]);
+  dart.setFieldSignature(output_sale_search_res.OutputSaleDetail, () => ({
+    __proto__: dart.getFields(output_sale_search_res.OutputSaleDetail.__proto__),
+    outputSaleDetailId: dart.fieldType(dart.nullable(core.int)),
+    osid: dart.fieldType(dart.nullable(core.int)),
+    outputSaleId: dart.fieldType(dart.nullable(core.String)),
+    outputStoreId: dart.fieldType(dart.nullable(core.int)),
+    outputTypeId: dart.fieldType(dart.nullable(core.int)),
+    returnIsid: dart.fieldType(dart.nullable(core.int)),
+    returnInputSaleId: dart.fieldType(dart.nullable(core.String)),
+    returnInputStoreId: dart.fieldType(dart.nullable(core.int)),
+    pid: dart.fieldType(dart.nullable(core.int)),
+    productId: dart.fieldType(dart.nullable(core.String)),
+    referenceId: dart.fieldType(dart.nullable(core.String)),
+    managerCode: dart.fieldType(dart.nullable(core.String)),
+    giftCode: dart.fieldType(dart.nullable(core.String)),
+    promotionId: dart.fieldType(dart.nullable(core.int)),
+    applyProductId: dart.fieldType(dart.nullable(core.String)),
+    isCombo: dart.fieldType(dart.nullable(core.bool)),
+    isGift: dart.fieldType(dart.nullable(core.bool)),
+    promotionComboId: dart.fieldType(dart.nullable(core.int)),
+    quantity: dart.fieldType(dart.nullable(core.int)),
+    vat: dart.fieldType(dart.nullable(core.int)),
+    vatPercent: dart.fieldType(dart.nullable(core.int)),
+    averagePrice: dart.fieldType(dart.nullable(core.int)),
+    quotedPrice: dart.fieldType(dart.nullable(core.int)),
+    salePriceVat: dart.fieldType(dart.nullable(core.int)),
+    salePriceBfvat: dart.fieldType(dart.nullable(core.int)),
+    taxAmount: dart.fieldType(dart.nullable(core.int)),
+    priceAmount: dart.fieldType(dart.nullable(core.int)),
+    discountPercent: dart.fieldType(dart.nullable(core.int)),
+    discountProduct: dart.fieldType(dart.nullable(core.int)),
+    totalDiscount: dart.fieldType(dart.nullable(core.int)),
+    discountFromOrder: dart.fieldType(dart.nullable(core.int)),
+    discountFromCustomer: dart.fieldType(dart.nullable(core.int)),
+    isPrint: dart.fieldType(dart.nullable(core.bool)),
+    isPrintVat: dart.fieldType(dart.nullable(core.bool)),
+    isScanBarCode: dart.fieldType(dart.nullable(core.bool)),
+    description: dart.fieldType(dart.nullable(core.String)),
+    createdDate: dart.fieldType(dart.nullable(core.String)),
+    createdUser: dart.fieldType(dart.nullable(core.int)),
+    updatedDate: dart.fieldType(dart.nullable(core.String)),
+    updatedUser: dart.fieldType(dart.nullable(core.int)),
+    isDeleted: dart.fieldType(dart.nullable(core.bool)),
+    deletedNote: dart.fieldType(dart.nullable(core.String)),
+    outputQuantity: dart.fieldType(dart.nullable(core.int)),
+    inputQuantity: dart.fieldType(dart.nullable(core.int)),
+    quantityCanInput: dart.fieldType(dart.nullable(core.int)),
+    productName: dart.fieldType(dart.nullable(core.String)),
+    isDelivery: dart.fieldType(dart.nullable(core.bool)),
+    originalDeliveryPrice: dart.fieldType(dart.nullable(core.int)),
+    categoryId: dart.fieldType(dart.nullable(core.int)),
+    outputTypeName: dart.fieldType(dart.nullable(core.String)),
+    isUsed: dart.fieldType(dart.nullable(core.bool)),
+    isOnline: dart.fieldType(dart.nullable(core.bool)),
+    storeInput: dart.fieldType(dart.nullable(core.String)),
+    userInput: dart.fieldType(dart.nullable(core.String)),
+    createdDateInput: dart.fieldType(dart.nullable(core.String)),
+    comboID: dart.fieldType(dart.nullable(core.String)),
+    comboName: dart.fieldType(dart.nullable(core.String)),
+    comboQuantity: dart.fieldType(dart.nullable(core.int)),
+    promotionTypeID: dart.fieldType(dart.nullable(core.int)),
+    orderPointMembership: dart.fieldType(dart.nullable(core.int)),
+    endDate: dart.fieldType(dart.nullable(core.String)),
+    isOTP: dart.fieldType(dart.nullable(core.bool)),
+    defectTypeID: dart.fieldType(dart.nullable(core.int))
+  }));
+  var voucherDiscountID$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.voucherDiscountID");
+  var oSID$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.oSID");
+  var outputSaleID$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.outputSaleID");
+  var discountTypeID$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.discountTypeID");
+  var promotionID$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.promotionID");
+  var managerCode$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.managerCode");
+  var codeCard$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.codeCard");
+  var discountValue$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.discountValue");
+  var discountPercent$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.discountPercent");
+  var isCombo$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.isCombo");
+  var rate$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.rate");
+  var isSale$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.isSale");
+  var createdDate$1 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.createdDate");
+  var createdUser$1 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.createdUser");
+  var updatedDate$1 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.updatedDate");
+  var updatedUser$1 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.updatedUser");
+  var isDeleted$1 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.isDeleted");
+  var deletedNote$0 = dart.privateName(output_sale_search_res, "OutputSaleDiscount.deletedNote");
+  var productID$ = dart.privateName(output_sale_search_res, "OutputSaleDiscount.productID");
+  output_sale_search_res.OutputSaleDiscount = class OutputSaleDiscount extends core.Object {
+    get voucherDiscountID() {
+      return this[voucherDiscountID$];
+    }
+    set voucherDiscountID(value) {
+      this[voucherDiscountID$] = value;
+    }
+    get oSID() {
+      return this[oSID$0];
+    }
+    set oSID(value) {
+      this[oSID$0] = value;
+    }
+    get outputSaleID() {
+      return this[outputSaleID$0];
+    }
+    set outputSaleID(value) {
+      this[outputSaleID$0] = value;
+    }
+    get discountTypeID() {
+      return this[discountTypeID$];
+    }
+    set discountTypeID(value) {
+      this[discountTypeID$] = value;
+    }
+    get promotionID() {
+      return this[promotionID$];
+    }
+    set promotionID(value) {
+      this[promotionID$] = value;
+    }
+    get managerCode() {
+      return this[managerCode$0];
+    }
+    set managerCode(value) {
+      this[managerCode$0] = value;
+    }
+    get codeCard() {
+      return this[codeCard$];
+    }
+    set codeCard(value) {
+      this[codeCard$] = value;
+    }
+    get discountValue() {
+      return this[discountValue$];
+    }
+    set discountValue(value) {
+      this[discountValue$] = value;
+    }
+    get discountPercent() {
+      return this[discountPercent$0];
+    }
+    set discountPercent(value) {
+      this[discountPercent$0] = value;
+    }
+    get isCombo() {
+      return this[isCombo$0];
+    }
+    set isCombo(value) {
+      this[isCombo$0] = value;
+    }
+    get rate() {
+      return this[rate$];
+    }
+    set rate(value) {
+      this[rate$] = value;
+    }
+    get isSale() {
+      return this[isSale$];
+    }
+    set isSale(value) {
+      this[isSale$] = value;
+    }
+    get createdDate() {
+      return this[createdDate$1];
+    }
+    set createdDate(value) {
+      this[createdDate$1] = value;
+    }
+    get createdUser() {
+      return this[createdUser$1];
+    }
+    set createdUser(value) {
+      this[createdUser$1] = value;
+    }
+    get updatedDate() {
+      return this[updatedDate$1];
+    }
+    set updatedDate(value) {
+      this[updatedDate$1] = value;
+    }
+    get updatedUser() {
+      return this[updatedUser$1];
+    }
+    set updatedUser(value) {
+      this[updatedUser$1] = value;
+    }
+    get isDeleted() {
+      return this[isDeleted$1];
+    }
+    set isDeleted(value) {
+      this[isDeleted$1] = value;
+    }
+    get deletedNote() {
+      return this[deletedNote$0];
+    }
+    set deletedNote(value) {
+      this[deletedNote$0] = value;
+    }
+    get productID() {
+      return this[productID$];
+    }
+    set productID(value) {
+      this[productID$] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let voucherDiscountID = opts && 'voucherDiscountID' in opts ? opts.voucherDiscountID : null;
+      let oSID = opts && 'oSID' in opts ? opts.oSID : null;
+      let outputSaleID = opts && 'outputSaleID' in opts ? opts.outputSaleID : null;
+      let discountTypeID = opts && 'discountTypeID' in opts ? opts.discountTypeID : null;
+      let promotionID = opts && 'promotionID' in opts ? opts.promotionID : null;
+      let managerCode = opts && 'managerCode' in opts ? opts.managerCode : null;
+      let codeCard = opts && 'codeCard' in opts ? opts.codeCard : null;
+      let discountValue = opts && 'discountValue' in opts ? opts.discountValue : null;
+      let discountPercent = opts && 'discountPercent' in opts ? opts.discountPercent : null;
+      let isCombo = opts && 'isCombo' in opts ? opts.isCombo : null;
+      let rate = opts && 'rate' in opts ? opts.rate : null;
+      let isSale = opts && 'isSale' in opts ? opts.isSale : null;
+      let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+      let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+      let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+      let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+      let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+      let deletedNote = opts && 'deletedNote' in opts ? opts.deletedNote : null;
+      let productID = opts && 'productID' in opts ? opts.productID : null;
+      return new output_sale_search_res.OutputSaleDiscount.new({voucherDiscountID: voucherDiscountID, oSID: oSID, outputSaleID: outputSaleID, discountTypeID: discountTypeID, promotionID: promotionID, managerCode: managerCode, codeCard: codeCard, discountValue: discountValue, discountPercent: discountPercent, isCombo: isCombo, rate: rate, isSale: isSale, createdDate: createdDate, createdUser: createdUser, updatedDate: updatedDate, updatedUser: updatedUser, isDeleted: isDeleted, deletedNote: deletedNote, productID: productID});
+    }
+    static ['_#fromJson#tearOff'](json) {
+      return new output_sale_search_res.OutputSaleDiscount.fromJson(json);
+    }
+    toJson() {
+      let data = new (T.LinkedMapOfString$dynamic()).new();
+      data[$_set]("VoucherDiscountID", this.voucherDiscountID);
+      data[$_set]("OSID", this.oSID);
+      data[$_set]("OutputSaleID", this.outputSaleID);
+      data[$_set]("DiscountTypeID", this.discountTypeID);
+      data[$_set]("PromotionID", this.promotionID);
+      data[$_set]("ManagerCode", this.managerCode);
+      data[$_set]("CodeCard", this.codeCard);
+      data[$_set]("DiscountValue", this.discountValue);
+      data[$_set]("DiscountPercent", this.discountPercent);
+      data[$_set]("IsCombo", this.isCombo);
+      data[$_set]("Rate", this.rate);
+      data[$_set]("IsSale", this.isSale);
+      data[$_set]("CreatedDate", this.createdDate);
+      data[$_set]("CreatedUser", this.createdUser);
+      data[$_set]("UpdatedDate", this.updatedDate);
+      data[$_set]("UpdatedUser", this.updatedUser);
+      data[$_set]("IsDeleted", this.isDeleted);
+      data[$_set]("DeletedNote", this.deletedNote);
+      data[$_set]("ProductID", this.productID);
+      return data;
+    }
+  };
+  (output_sale_search_res.OutputSaleDiscount.new = function(opts) {
+    let voucherDiscountID = opts && 'voucherDiscountID' in opts ? opts.voucherDiscountID : null;
+    let oSID = opts && 'oSID' in opts ? opts.oSID : null;
+    let outputSaleID = opts && 'outputSaleID' in opts ? opts.outputSaleID : null;
+    let discountTypeID = opts && 'discountTypeID' in opts ? opts.discountTypeID : null;
+    let promotionID = opts && 'promotionID' in opts ? opts.promotionID : null;
+    let managerCode = opts && 'managerCode' in opts ? opts.managerCode : null;
+    let codeCard = opts && 'codeCard' in opts ? opts.codeCard : null;
+    let discountValue = opts && 'discountValue' in opts ? opts.discountValue : null;
+    let discountPercent = opts && 'discountPercent' in opts ? opts.discountPercent : null;
+    let isCombo = opts && 'isCombo' in opts ? opts.isCombo : null;
+    let rate = opts && 'rate' in opts ? opts.rate : null;
+    let isSale = opts && 'isSale' in opts ? opts.isSale : null;
+    let createdDate = opts && 'createdDate' in opts ? opts.createdDate : null;
+    let createdUser = opts && 'createdUser' in opts ? opts.createdUser : null;
+    let updatedDate = opts && 'updatedDate' in opts ? opts.updatedDate : null;
+    let updatedUser = opts && 'updatedUser' in opts ? opts.updatedUser : null;
+    let isDeleted = opts && 'isDeleted' in opts ? opts.isDeleted : null;
+    let deletedNote = opts && 'deletedNote' in opts ? opts.deletedNote : null;
+    let productID = opts && 'productID' in opts ? opts.productID : null;
+    this[voucherDiscountID$] = voucherDiscountID;
+    this[oSID$0] = oSID;
+    this[outputSaleID$0] = outputSaleID;
+    this[discountTypeID$] = discountTypeID;
+    this[promotionID$] = promotionID;
+    this[managerCode$0] = managerCode;
+    this[codeCard$] = codeCard;
+    this[discountValue$] = discountValue;
+    this[discountPercent$0] = discountPercent;
+    this[isCombo$0] = isCombo;
+    this[rate$] = rate;
+    this[isSale$] = isSale;
+    this[createdDate$1] = createdDate;
+    this[createdUser$1] = createdUser;
+    this[updatedDate$1] = updatedDate;
+    this[updatedUser$1] = updatedUser;
+    this[isDeleted$1] = isDeleted;
+    this[deletedNote$0] = deletedNote;
+    this[productID$] = productID;
+    ;
+  }).prototype = output_sale_search_res.OutputSaleDiscount.prototype;
+  (output_sale_search_res.OutputSaleDiscount.fromJson = function(json) {
+    this[productID$] = null;
+    this[deletedNote$0] = null;
+    this[isDeleted$1] = null;
+    this[updatedUser$1] = null;
+    this[updatedDate$1] = null;
+    this[createdUser$1] = null;
+    this[createdDate$1] = null;
+    this[isSale$] = null;
+    this[rate$] = null;
+    this[isCombo$0] = null;
+    this[discountPercent$0] = null;
+    this[discountValue$] = null;
+    this[codeCard$] = null;
+    this[managerCode$0] = null;
+    this[promotionID$] = null;
+    this[discountTypeID$] = null;
+    this[outputSaleID$0] = null;
+    this[oSID$0] = null;
+    this[voucherDiscountID$] = null;
+    this.voucherDiscountID = T.intN().as(json[$_get]("VoucherDiscountID"));
+    this.oSID = T.intN().as(json[$_get]("OSID"));
+    this.outputSaleID = T.StringN().as(json[$_get]("OutputSaleID"));
+    this.discountTypeID = T.intN().as(json[$_get]("DiscountTypeID"));
+    this.promotionID = T.intN().as(json[$_get]("PromotionID"));
+    this.managerCode = T.StringN().as(json[$_get]("ManagerCode"));
+    this.codeCard = T.StringN().as(json[$_get]("CodeCard"));
+    this.discountValue = T.intN().as(json[$_get]("DiscountValue"));
+    this.discountPercent = T.intN().as(json[$_get]("DiscountPercent"));
+    this.isCombo = T.boolN().as(json[$_get]("IsCombo"));
+    this.rate = T.intN().as(json[$_get]("Rate"));
+    this.isSale = T.intN().as(json[$_get]("IsSale"));
+    this.createdDate = T.StringN().as(json[$_get]("CreatedDate"));
+    this.createdUser = T.intN().as(json[$_get]("CreatedUser"));
+    this.updatedDate = T.StringN().as(json[$_get]("UpdatedDate"));
+    this.updatedUser = T.intN().as(json[$_get]("UpdatedUser"));
+    this.isDeleted = T.boolN().as(json[$_get]("IsDeleted"));
+    this.deletedNote = T.StringN().as(json[$_get]("DeletedNote"));
+    this.productID = T.StringN().as(json[$_get]("ProductID"));
+  }).prototype = output_sale_search_res.OutputSaleDiscount.prototype;
+  dart.addTypeTests(output_sale_search_res.OutputSaleDiscount);
+  dart.addTypeCaches(output_sale_search_res.OutputSaleDiscount);
+  dart.setMethodSignature(output_sale_search_res.OutputSaleDiscount, () => ({
+    __proto__: dart.getMethods(output_sale_search_res.OutputSaleDiscount.__proto__),
+    toJson: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setLibraryUri(output_sale_search_res.OutputSaleDiscount, I[0]);
+  dart.setFieldSignature(output_sale_search_res.OutputSaleDiscount, () => ({
+    __proto__: dart.getFields(output_sale_search_res.OutputSaleDiscount.__proto__),
+    voucherDiscountID: dart.fieldType(dart.nullable(core.int)),
+    oSID: dart.fieldType(dart.nullable(core.int)),
+    outputSaleID: dart.fieldType(dart.nullable(core.String)),
+    discountTypeID: dart.fieldType(dart.nullable(core.int)),
+    promotionID: dart.fieldType(dart.nullable(core.int)),
+    managerCode: dart.fieldType(dart.nullable(core.String)),
+    codeCard: dart.fieldType(dart.nullable(core.String)),
+    discountValue: dart.fieldType(dart.nullable(core.int)),
+    discountPercent: dart.fieldType(dart.nullable(core.int)),
+    isCombo: dart.fieldType(dart.nullable(core.bool)),
+    rate: dart.fieldType(dart.nullable(core.int)),
+    isSale: dart.fieldType(dart.nullable(core.int)),
+    createdDate: dart.fieldType(dart.nullable(core.String)),
+    createdUser: dart.fieldType(dart.nullable(core.int)),
+    updatedDate: dart.fieldType(dart.nullable(core.String)),
+    updatedUser: dart.fieldType(dart.nullable(core.int)),
+    isDeleted: dart.fieldType(dart.nullable(core.bool)),
+    deletedNote: dart.fieldType(dart.nullable(core.String)),
+    productID: dart.fieldType(dart.nullable(core.String))
+  }));
+  dart.trackLibraries("packages/data/entities/receipt/response/output_sale_search_res.dart", {
+    "package:data/entities/receipt/response/output_sale_search_res.dart": output_sale_search_res
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["output_sale_search_res.dart"],"names":[],"mappings":"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CjC,gBAAM;AAChC,UAAI,QAAQ,YAAY,AAAS,AAAO,QAAR,YAAU;AAGtC,QAFF,AAAS,QAAD,WAAS,QAAC;AACwB,UAAxC,AAAI,GAAD,OAAyB,mFAAS,CAAC;;AAExC,cAAO,IAAG;;AAEZ,YAAO;IACT;;;AAGE,YAAe,yBACN,SAAL,YACC,AAA8B,+BAAnB,0BAAqC,eAAX,oBACzB,SAAb,oBACc,SAAd,qBACmC,oBAAnB,yBAAd,aAAiB,eAAS,IAAI,IACpB,SAAZ,mBACY,SAAZ;IAEN;;;QAnNU;QACD;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IAtDJ;IACG;IAGF;IAGI;IACD;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAqB;kEAEoB;;IAxD7C;IACG;IAGF;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAqDe,gBAAnB,YAAO,AAAI,IAAA,QAAC;AACuB,wBAAnC,eAAe,AAAI,IAAA,QAAC;AACqB,2BAAzC,eAAkB,AAAI,IAAA,QAAC;AACY,wBAAnC,YAAe,AAAI,IAAA,QAAC;AACa,uBAAjC,YAAc,AAAI,IAAA,QAAC;AACwB,4BAA3C,YAAmB,AAAI,IAAA,QAAC;AACa,yBAArC,YAAgB,AAAI,IAAA,QAAC;AACQ,qBAA7B,YAAY,AAAI,IAAA,QAAC;AACkB,wBAAnC,YAAe,AAAI,IAAA,QAAC;AACW,sBAA/B,YAAa,AAAI,IAAA,QAAC;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B,MAAhD,AAAI,IAAA,QAAC,oBAA2B;AACF,MAA9B,AAAI,IAAA,QAAC,WAAkB;AACW,MAAlC,AAAI,IAAA,QAAC,aAAoB;AACiB,MAA1C,AAAI,IAAA,QAAC,iBAAwB;AACiB,MAA9C,AAAI,IAAA,QAAC,mBAA0B;AACyB,MAAxD,AAAI,IAAA,QAAC,wBAA+B;AACN,MAA9B,AAAI,IAAA,QAAC,WAAkB;AACG,MAA1B,AAAI,IAAA,QAAC,SAAgB;AACmB,MAAxC,AAAI,IAAA,QAAC,gBAAuB;AAC5B,YAAO,KAAI;IACb;;;QApMU;QACD;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IA9DC;IACD;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAc;+DAEwB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACE,8BAA/C,YAAqB,AAAI,IAAA,QAAC;AACP,gBAAnB,YAAO,AAAI,IAAA,QAAC;AACuB,wBAAnC,eAAe,AAAI,IAAA,QAAC;AACiB,yBAArC,YAAgB,AAAI,IAAA,QAAC;AACc,wBAAnC,YAAe,AAAI,IAAA,QAAC;AACW,sBAA/B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","file":"../../../../../../../../../../../packages/data/entities/receipt/response/output_sale_search_res.dart.lib.js"}');
+  // Exports:
+  return {
+    entities__receipt__response__output_sale_search_res: output_sale_search_res
+  };
+}));
+
+//# sourceMappingURL=output_sale_search_res.dart.lib.js.map

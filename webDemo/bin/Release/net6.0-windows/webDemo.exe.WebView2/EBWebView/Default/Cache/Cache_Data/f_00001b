@@ -1,0 +1,1372 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/intl/src/intl/number_parser.dart', 'packages/easy_localization/src/plural_rules.dart', 'packages/easy_localization/src/translations.dart', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/shared_preferences/shared_preferences.dart', 'packages/intl/intl_browser.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/easy_logger/src/logger_printer.dart', 'packages/flutter_localizations/src/material_localizations.dart', 'packages/flutter_localizations/src/widgets_localizations.dart', 'packages/flutter_localizations/src/l10n/generated_cupertino_localizations.dart'], (function load__packages__easy_localization__src__public_ext_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__intl__src__intl__number_parser$46dart, packages__easy_localization__src__plural_rules$46dart, packages__easy_localization__src__translations$46dart, packages__flutter__src__services__text_editing_delta$46dart, packages__flutter__src__foundation__debug$46dart, packages__shared_preferences__shared_preferences$46dart, packages__intl__intl_browser$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__easy_logger__src__logger_printer$46dart, packages__flutter_localizations__src__material_localizations$46dart, packages__flutter_localizations__src__widgets_localizations$46dart, packages__flutter_localizations__src__l10n__generated_cupertino_localizations$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text = packages__flutter__src__widgets__title$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const localizations = packages__flutter__src__widgets__title$46dart.src__widgets__localizations;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const number_format = packages__intl__src__intl__number_parser$46dart.src__intl__number_format;
+  const plural_rules = packages__easy_localization__src__plural_rules$46dart.src__plural_rules;
+  const translations = packages__easy_localization__src__translations$46dart.src__translations;
+  const asset_bundle = packages__flutter__src__services__text_editing_delta$46dart.src__services__asset_bundle;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const shared_preferences = packages__shared_preferences__shared_preferences$46dart.shared_preferences;
+  const intl_browser = packages__intl__intl_browser$46dart.intl_browser;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const logger = packages__easy_logger__src__logger_printer$46dart.src__logger;
+  const material_localizations = packages__flutter_localizations__src__material_localizations$46dart.src__material_localizations;
+  const widgets_localizations = packages__flutter_localizations__src__widgets_localizations$46dart.src__widgets_localizations;
+  const cupertino_localizations = packages__flutter_localizations__src__l10n__generated_cupertino_localizations$46dart.src__cupertino_localizations;
+  var public_ext = Object.create(dart.library);
+  var $public = Object.create(dart.library);
+  var localization = Object.create(dart.library);
+  var asset_loader = Object.create(dart.library);
+  var easy_localization_controller = Object.create(dart.library);
+  var easy_localization_app = Object.create(dart.library);
+  var easy_localization = Object.create(dart.library);
+  var $toUpperCase = dartx.toUpperCase;
+  var $toLowerCase = dartx.toLowerCase;
+  var $_get = dartx._get;
+  var $substring = dartx.substring;
+  var $first = dartx.first;
+  var $replaceAll = dartx.replaceAll;
+  var $containsKey = dartx.containsKey;
+  var $keys = dartx.keys;
+  var $toString = dartx.toString;
+  var $isEmpty = dartx.isEmpty;
+  var $replaceFirst = dartx.replaceFirst;
+  var $forEach = dartx.forEach;
+  var $addAll = dartx.addAll;
+  var $_set = dartx._set;
+  var $firstWhere = dartx.firstWhere;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $contains = dartx.contains;
+  var $split = dartx.split;
+  var $last = dartx.last;
+  var $length = dartx.length;
+  var $join = dartx.join;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))(),
+    ListNOfString: () => (T.ListNOfString = dart.constFn(dart.nullable(T.ListOfString())))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    MapOfString$String: () => (T.MapOfString$String = dart.constFn(core.Map$(core.String, core.String)))(),
+    MapNOfString$String: () => (T.MapNOfString$String = dart.constFn(dart.nullable(T.MapOfString$String())))(),
+    __ToText: () => (T.__ToText = dart.constFn(dart.fnType(text.Text, [], {args: T.ListNOfString(), gender: T.StringN(), namedArgs: T.MapNOfString$String()}, {})))(),
+    NumberFormatN: () => (T.NumberFormatN = dart.constFn(dart.nullable(number_format.NumberFormat)))(),
+    num__ToText: () => (T.num__ToText = dart.constFn(dart.fnType(text.Text, [core.num], {args: T.ListNOfString(), format: T.NumberFormatN(), name: T.StringN(), namedArgs: T.MapNOfString$String()}, {})))(),
+    __ToString: () => (T.__ToString = dart.constFn(dart.fnType(core.String, [], {args: T.ListNOfString(), gender: T.StringN(), namedArgs: T.MapNOfString$String()}, {})))(),
+    num__ToString: () => (T.num__ToString = dart.constFn(dart.fnType(core.String, [core.num], {args: T.ListNOfString(), format: T.NumberFormatN(), name: T.StringN(), namedArgs: T.MapNOfString$String()}, {})))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    LocaleToFutureOfvoid: () => (T.LocaleToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [ui.Locale])))(),
+    VoidToFutureOfvoid: () => (T.VoidToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [])))(),
+    StringNToString: () => (T.StringNToString = dart.constFn(dart.fnType(core.String, [T.StringN()])))(),
+    IdentityMapOfString$StringNToString: () => (T.IdentityMapOfString$StringNToString = dart.constFn(_js_helper.IdentityMap$(core.String, T.StringNToString())))(),
+    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    StringTodynamic: () => (T.StringTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.String])))(),
+    StringAndStringTovoid: () => (T.StringAndStringTovoid = dart.constFn(dart.fnType(dart.void, [core.String, core.String])))(),
+    VoidToPluralCase: () => (T.VoidToPluralCase = dart.constFn(dart.fnType(plural_rules.PluralCase, [])))(),
+    PluralCaseTodynamic: () => (T.PluralCaseTodynamic = dart.constFn(dart.fnType(dart.dynamic, [plural_rules.PluralCase])))(),
+    IdentityMapOfString$String: () => (T.IdentityMapOfString$String = dart.constFn(_js_helper.IdentityMap$(core.String, core.String)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    MapNOfString$dynamic: () => (T.MapNOfString$dynamic = dart.constFn(dart.nullable(T.MapOfString$dynamic())))(),
+    FutureOrOfMapNOfString$dynamic: () => (T.FutureOrOfMapNOfString$dynamic = dart.constFn(async.FutureOr$(T.MapNOfString$dynamic())))(),
+    LocaleTobool: () => (T.LocaleTobool = dart.constFn(dart.fnType(core.bool, [ui.Locale])))(),
+    VoidToLocale: () => (T.VoidToLocale = dart.constFn(dart.fnType(ui.Locale, [])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    FlutterErrorToNull: () => (T.FlutterErrorToNull = dart.constFn(dart.fnType(core.Null, [assertions.FlutterError])))(),
+    JSArrayOfLocalizationsDelegate: () => (T.JSArrayOfLocalizationsDelegate = dart.constFn(_interceptors.JSArray$(localizations.LocalizationsDelegate)))(),
+    FutureOfLocalization: () => (T.FutureOfLocalization = dart.constFn(async.Future$(localization.Localization)))(),
+    LocalizationsDelegateOfLocalization: () => (T.LocalizationsDelegateOfLocalization = dart.constFn(localizations.LocalizationsDelegate$(localization.Localization)))(),
+    __ToString$1: () => (T.__ToString$1 = dart.constFn(dart.fnType(core.String, [], {separator: core.String}, {})))(),
+    __ToLocale: () => (T.__ToLocale = dart.constFn(dart.fnType(ui.Locale, [], {separator: core.String}, {})))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 7,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/public_ext.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Text",
+        [_Location_column]: 7,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/public_ext.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "ZERO",
+        [_Enum_index]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "ONE",
+        [_Enum_index]: 1
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "TWO",
+        [_Enum_index]: 2
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "FEW",
+        [_Enum_index]: 3
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "MANY",
+        [_Enum_index]: 4
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_Enum__name]: "OTHER",
+        [_Enum_index]: 5
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: asset_loader.RootBundleAssetLoader.prototype
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "EasyLocalization",
+        [_Location_column]: 3,
+        [_Location_line]: 79,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/easy_localization_app.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "ErrorWidget",
+        [_Location_column]: 13,
+        [_Location_line]: 157,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/easy_localization_app.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_EasyLocalizationProvider",
+        [_Location_column]: 12,
+        [_Location_line]: 159,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/easy_localization_app.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_EasyLocalizationProvider",
+        [_Location_column]: 3,
+        [_Location_line]: 198,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/easy_localization_app.dart"
+      });
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
+  var I = [
+    "package:easy_localization/src/localization.dart",
+    "package:easy_localization/src/asset_loader.dart",
+    "package:easy_localization/src/easy_localization_controller.dart",
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/easy_localization-3.0.1/lib/src/easy_localization_app.dart",
+    "package:easy_localization/src/easy_localization_app.dart"
+  ];
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  public_ext['TextTranslateExtension|tr'] = function TextTranslateExtension$124tr($this, opts) {
+    let t1;
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let gender = opts && 'gender' in opts ? opts.gender : null;
+    return new text.Text.new($public.tr((t1 = $this.data, t1 == null ? "" : t1), {args: args, namedArgs: namedArgs, gender: gender}), {key: $this.key, style: $this.style, strutStyle: $this.strutStyle, textAlign: $this.textAlign, textDirection: $this.textDirection, locale: $this.locale, softWrap: $this.softWrap, overflow: $this.overflow, textScaleFactor: $this.textScaleFactor, maxLines: $this.maxLines, semanticsLabel: $this.semanticsLabel, textWidthBasis: $this.textWidthBasis, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+  };
+  public_ext['TextTranslateExtension|get#tr'] = function TextTranslateExtension$124get$35tr($this) {
+    return dart.fn(opts => {
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let gender = opts && 'gender' in opts ? opts.gender : null;
+      return public_ext['TextTranslateExtension|tr']($this, {args: args, namedArgs: namedArgs, gender: gender});
+    }, T.__ToText());
+  };
+  public_ext['TextTranslateExtension|plural'] = function TextTranslateExtension$124plural($this, value, opts) {
+    let t3;
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let format = opts && 'format' in opts ? opts.format : null;
+    return new text.Text.new($public.plural((t3 = $this.data, t3 == null ? "" : t3), value, {args: args, namedArgs: namedArgs, name: name, format: format}), {key: $this.key, style: $this.style, strutStyle: $this.strutStyle, textAlign: $this.textAlign, textDirection: $this.textDirection, locale: $this.locale, softWrap: $this.softWrap, overflow: $this.overflow, textScaleFactor: $this.textScaleFactor, maxLines: $this.maxLines, semanticsLabel: $this.semanticsLabel, textWidthBasis: $this.textWidthBasis, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+  };
+  public_ext['TextTranslateExtension|get#plural'] = function TextTranslateExtension$124get$35plural($this) {
+    return dart.fn((value, opts) => {
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let format = opts && 'format' in opts ? opts.format : null;
+      return public_ext['TextTranslateExtension|plural']($this, value, {args: args, namedArgs: namedArgs, name: name, format: format});
+    }, T.num__ToText());
+  };
+  public_ext['StringTranslateExtension|tr'] = function StringTranslateExtension$124tr($this, opts) {
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let gender = opts && 'gender' in opts ? opts.gender : null;
+    return $public.tr($this, {args: args, namedArgs: namedArgs, gender: gender});
+  };
+  public_ext['StringTranslateExtension|get#tr'] = function StringTranslateExtension$124get$35tr($this) {
+    return dart.fn(opts => {
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let gender = opts && 'gender' in opts ? opts.gender : null;
+      return public_ext['StringTranslateExtension|tr']($this, {args: args, namedArgs: namedArgs, gender: gender});
+    }, T.__ToString());
+  };
+  public_ext['StringTranslateExtension|plural'] = function StringTranslateExtension$124plural($this, value, opts) {
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let format = opts && 'format' in opts ? opts.format : null;
+    return $public.plural($this, value, {args: args, namedArgs: namedArgs, name: name, format: format});
+  };
+  public_ext['StringTranslateExtension|get#plural'] = function StringTranslateExtension$124get$35plural($this) {
+    return dart.fn((value, opts) => {
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let format = opts && 'format' in opts ? opts.format : null;
+      return public_ext['StringTranslateExtension|plural']($this, value, {args: args, namedArgs: namedArgs, name: name, format: format});
+    }, T.num__ToString());
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#locale'] = function BuildContextEasyLocalizationExtension$124get$35locale($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).locale;
+  };
+  public_ext['BuildContextEasyLocalizationExtension|setLocale'] = function BuildContextEasyLocalizationExtension$124setLocale($this, val) {
+    return async.async(dart.void, function* BuildContextEasyLocalizationExtension$124setLocale() {
+      return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).setLocale(val);
+    });
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#setLocale'] = function BuildContextEasyLocalizationExtension$124get$35setLocale($this) {
+    return dart.fn(val => public_ext['BuildContextEasyLocalizationExtension|setLocale']($this, val), T.LocaleToFutureOfvoid());
+  };
+  public_ext['BuildContextEasyLocalizationExtension|set#locale'] = function BuildContextEasyLocalizationExtension$124set$35locale($this, val) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).setLocale(val);
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#supportedLocales'] = function BuildContextEasyLocalizationExtension$124get$35supportedLocales($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).supportedLocales;
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#fallbackLocale'] = function BuildContextEasyLocalizationExtension$124get$35fallbackLocale($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).fallbackLocale;
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#localizationDelegates'] = function BuildContextEasyLocalizationExtension$124get$35localizationDelegates($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).delegates;
+  };
+  public_ext['BuildContextEasyLocalizationExtension|deleteSaveLocale'] = function BuildContextEasyLocalizationExtension$124deleteSaveLocale($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).deleteSaveLocale();
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#deleteSaveLocale'] = function BuildContextEasyLocalizationExtension$124get$35deleteSaveLocale($this) {
+    return dart.fn(() => public_ext['BuildContextEasyLocalizationExtension|deleteSaveLocale']($this), T.VoidToFutureOfvoid());
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#deviceLocale'] = function BuildContextEasyLocalizationExtension$124get$35deviceLocale($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).deviceLocale;
+  };
+  public_ext['BuildContextEasyLocalizationExtension|resetLocale'] = function BuildContextEasyLocalizationExtension$124resetLocale($this) {
+    return dart.nullCheck(easy_localization_app.EasyLocalization.of($this)).resetLocale();
+  };
+  public_ext['BuildContextEasyLocalizationExtension|get#resetLocale'] = function BuildContextEasyLocalizationExtension$124get$35resetLocale($this) {
+    return dart.fn(() => public_ext['BuildContextEasyLocalizationExtension|resetLocale']($this), T.VoidToFutureOfvoid());
+  };
+  $public.tr = function tr(key, opts) {
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let gender = opts && 'gender' in opts ? opts.gender : null;
+    return localization.Localization.instance.tr(key, {args: args, namedArgs: namedArgs, gender: gender});
+  };
+  $public.plural = function plural(key, value, opts) {
+    let args = opts && 'args' in opts ? opts.args : null;
+    let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let format = opts && 'format' in opts ? opts.format : null;
+    return localization.Localization.instance.plural(key, value, {args: args, namedArgs: namedArgs, name: name, format: format});
+  };
+  var _translations = dart.privateName(localization, "_translations");
+  var _fallbackTranslations = dart.privateName(localization, "_fallbackTranslations");
+  var __Localization__locale = dart.privateName(localization, "_#Localization#_locale");
+  var _replaceArgRegex = dart.privateName(localization, "_replaceArgRegex");
+  var _linkKeyMatcher = dart.privateName(localization, "_linkKeyMatcher");
+  var _linkKeyPrefixMatcher = dart.privateName(localization, "_linkKeyPrefixMatcher");
+  var _bracketsMatcher = dart.privateName(localization, "_bracketsMatcher");
+  var _modifiers = dart.privateName(localization, "_modifiers");
+  var _locale = dart.privateName(localization, "_locale");
+  var _gender = dart.privateName(localization, "_gender");
+  var _resolve = dart.privateName(localization, "_resolve");
+  var _replaceLinks = dart.privateName(localization, "_replaceLinks");
+  var _replaceNamedArgs = dart.privateName(localization, "_replaceNamedArgs");
+  var _replaceArgs = dart.privateName(localization, "_replaceArgs");
+  var _resolvePlural = dart.privateName(localization, "_resolvePlural");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  localization.Localization = class Localization extends core.Object {
+    get [_locale]() {
+      let t20;
+      t20 = this[__Localization__locale];
+      return t20 == null ? dart.throw(new _internal.LateError.fieldNI("_locale")) : t20;
+    }
+    set [_locale](library$32package$58easy_localization$47src$47localization$46dart$58$58_locale$35param) {
+      this[__Localization__locale] = library$32package$58easy_localization$47src$47localization$46dart$58$58_locale$35param;
+    }
+    static ['_#new#tearOff']() {
+      return new localization.Localization.new();
+    }
+    static get instance() {
+      let t20;
+      t20 = localization.Localization._instance;
+      return t20 == null ? localization.Localization._instance = new localization.Localization.new() : t20;
+    }
+    static of(context) {
+      return localizations.Localizations.of(localization.Localization, context, dart.wrapType(localization.Localization));
+    }
+    static load(locale, opts) {
+      let translations = opts && 'translations' in opts ? opts.translations : null;
+      let fallbackTranslations = opts && 'fallbackTranslations' in opts ? opts.fallbackTranslations : null;
+      localization.Localization.instance[_locale] = locale;
+      localization.Localization.instance[_translations] = translations;
+      localization.Localization.instance[_fallbackTranslations] = fallbackTranslations;
+      return translations == null ? false : true;
+    }
+    tr(key, opts) {
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let gender = opts && 'gender' in opts ? opts.gender : null;
+      let res = null;
+      function res$35get() {
+        let t21;
+        t21 = res;
+        return t21 == null ? dart.throw(new _internal.LateError.localNI("res")) : t21;
+      }
+      dart.fn(res$35get, T.VoidToString());
+      function res$35set(res$35param) {
+        return res = res$35param;
+      }
+      dart.fn(res$35set, T.StringTodynamic());
+      if (gender != null) {
+        res$35set(this[_gender](key, {gender: gender}));
+      } else {
+        res$35set(this[_resolve](key));
+      }
+      res$35set(this[_replaceLinks](res$35get()));
+      res$35set(this[_replaceNamedArgs](res$35get(), namedArgs));
+      return this[_replaceArgs](res$35get(), args);
+    }
+    [_replaceLinks](res, opts) {
+      let logging = opts && 'logging' in opts ? opts.logging : true;
+      let matches = this[_linkKeyMatcher].allMatches(res);
+      let result = res;
+      for (let match of matches) {
+        let link = dart.nullCheck(match._get(0));
+        let linkPrefixMatches = this[_linkKeyPrefixMatcher].allMatches(link);
+        let linkPrefix = dart.nullCheck(linkPrefixMatches[$first]._get(0));
+        let formatterName = linkPrefixMatches[$first]._get(1);
+        let linkPlaceholder = link[$replaceAll](linkPrefix, "")[$replaceAll](this[_bracketsMatcher], "");
+        let translated = this[_resolve](linkPlaceholder);
+        if (formatterName != null) {
+          if (this[_modifiers][$containsKey](formatterName)) {
+            translated = dart.nullCheck(this[_modifiers][$_get](formatterName))(translated);
+          } else {
+            if (logging) {
+              easy_localization_app.EasyLocalization.logger.warning("Undefined modifier " + dart.str(formatterName) + ", available modifiers: " + this[_modifiers][$keys][$toString]());
+            }
+          }
+        }
+        result = translated[$isEmpty] ? result : result[$replaceAll](link, translated);
+      }
+      return result;
+    }
+    [_replaceArgs](res, args) {
+      if (args == null || args[$isEmpty]) return res;
+      for (let str of args) {
+        res = res[$replaceFirst](this[_replaceArgRegex], str);
+      }
+      return res;
+    }
+    [_replaceNamedArgs](res, args) {
+      if (args == null || args[$isEmpty]) return res;
+      args[$forEach](dart.fn((key, value) => res = res[$replaceAll](core.RegExp.new("{" + key + "}"), value), T.StringAndStringTovoid()));
+      return res;
+    }
+    static _pluralRule(locale, howMany) {
+      plural_rules.startRuleEvaluation(howMany);
+      return plural_rules.pluralRules[$_get](locale);
+    }
+    plural(key, value, opts) {
+      let t31;
+      let args = opts && 'args' in opts ? opts.args : null;
+      let namedArgs = opts && 'namedArgs' in opts ? opts.namedArgs : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let format = opts && 'format' in opts ? opts.format : null;
+      let pluralCase = null;
+      function pluralCase$35get() {
+        let t24;
+        t24 = pluralCase;
+        return t24 == null ? dart.throw(new _internal.LateError.localNI("pluralCase")) : t24;
+      }
+      dart.fn(pluralCase$35get, T.VoidToPluralCase());
+      function pluralCase$35set(pluralCase$35param) {
+        return pluralCase = pluralCase$35param;
+      }
+      dart.fn(pluralCase$35set, T.PluralCaseTodynamic());
+      let res = null;
+      function res$35get() {
+        let t27;
+        t27 = res;
+        return t27 == null ? dart.throw(new _internal.LateError.localNI("res")) : t27;
+      }
+      dart.fn(res$35get, T.VoidToString());
+      function res$35set(res$35param) {
+        return res = res$35param;
+      }
+      dart.fn(res$35set, T.StringTodynamic());
+      let pluralRule = localization.Localization._pluralRule(this[_locale].languageCode, value);
+      switch (value) {
+        case 0:
+          {
+            pluralCase$35set(plural_rules.PluralCase.ZERO);
+            break;
+          }
+        case 1:
+          {
+            pluralCase$35set(plural_rules.PluralCase.ONE);
+            break;
+          }
+        case 2:
+          {
+            pluralCase$35set(plural_rules.PluralCase.TWO);
+            break;
+          }
+        default:
+          {
+            pluralCase$35set(dart.nullCheck(pluralRule)());
+          }
+      }
+      switch (pluralCase$35get()) {
+        case C[2] || CT.C2:
+          {
+            res$35set(this[_resolvePlural](key, "zero"));
+            break;
+          }
+        case C[3] || CT.C3:
+          {
+            res$35set(this[_resolvePlural](key, "one"));
+            break;
+          }
+        case C[4] || CT.C4:
+          {
+            res$35set(this[_resolvePlural](key, "two"));
+            break;
+          }
+        case C[5] || CT.C5:
+          {
+            res$35set(this[_resolvePlural](key, "few"));
+            break;
+          }
+        case C[6] || CT.C6:
+          {
+            res$35set(this[_resolvePlural](key, "many"));
+            break;
+          }
+        case C[7] || CT.C7:
+          {
+            res$35set(this[_resolvePlural](key, "other"));
+            break;
+          }
+        default:
+          {
+            dart.throw(new core.ArgumentError.value(value, "howMany", "Invalid plural argument"));
+          }
+      }
+      let formattedValue = format == null ? dart.str(value) : format.format(value);
+      if (name != null) {
+        namedArgs = (() => {
+          let t29 = new (T.IdentityMapOfString$String()).new();
+          let t30 = namedArgs;
+          if (t30 != null) t29[$addAll](t30);
+          t29[$_set](name, formattedValue);
+          return t29;
+        })();
+      }
+      res$35set(this[_replaceNamedArgs](res$35get(), namedArgs));
+      return this[_replaceArgs](res$35get(), (t31 = args, t31 == null ? T.JSArrayOfString().of([formattedValue]) : t31));
+    }
+    [_gender](key, opts) {
+      let gender = opts && 'gender' in opts ? opts.gender : null;
+      return this[_resolve](key + "." + gender);
+    }
+    [_resolvePlural](key, subKey) {
+      if (subKey === "other") return this[_resolve](key + ".other");
+      let tag = key + "." + subKey;
+      let resource = this[_resolve](tag, {logging: false, fallback: false});
+      if (resource === tag) {
+        resource = this[_resolve](key + ".other");
+      }
+      return resource;
+    }
+    [_resolve](key, opts) {
+      let t31, t31$;
+      let logging = opts && 'logging' in opts ? opts.logging : true;
+      let fallback = opts && 'fallback' in opts ? opts.fallback : true;
+      let resource = (t31 = this[_translations], t31 == null ? null : t31.get(key));
+      if (resource == null) {
+        if (logging) {
+          easy_localization_app.EasyLocalization.logger.warning("Localization key [" + key + "] not found");
+        }
+        if (this[_fallbackTranslations] == null || !fallback) {
+          return key;
+        } else {
+          resource = (t31$ = this[_fallbackTranslations], t31$ == null ? null : t31$.get(key));
+          if (resource == null) {
+            if (logging) {
+              easy_localization_app.EasyLocalization.logger.warning("Fallback localization key [" + key + "] not found");
+            }
+            return key;
+          }
+        }
+      }
+      return resource;
+    }
+  };
+  (localization.Localization.new = function() {
+    this[_translations] = null;
+    this[_fallbackTranslations] = null;
+    this[__Localization__locale] = null;
+    this[_replaceArgRegex] = core.RegExp.new("{}");
+    this[_linkKeyMatcher] = core.RegExp.new("(?:@(?:\\.[a-z]+)?:(?:[\\w\\-_|.]+|\\([\\w\\-_|.]+\\)))");
+    this[_linkKeyPrefixMatcher] = core.RegExp.new("^@(?:\\.([a-z]+))?:");
+    this[_bracketsMatcher] = core.RegExp.new("[()]");
+    this[_modifiers] = new (T.IdentityMapOfString$StringNToString()).from(["upper", dart.fn(val => dart.nullCheck(val)[$toUpperCase](), T.StringNToString()), "lower", dart.fn(val => dart.nullCheck(val)[$toLowerCase](), T.StringNToString()), "capitalize", dart.fn(val => dart.nullCheck(val)[$_get](0)[$toUpperCase]() + val[$substring](1), T.StringNToString())]);
+    ;
+  }).prototype = localization.Localization.prototype;
+  dart.addTypeTests(localization.Localization);
+  dart.addTypeCaches(localization.Localization);
+  dart.setMethodSignature(localization.Localization, () => ({
+    __proto__: dart.getMethods(localization.Localization.__proto__),
+    tr: dart.fnType(core.String, [core.String], {args: dart.nullable(core.List$(core.String)), gender: dart.nullable(core.String), namedArgs: dart.nullable(core.Map$(core.String, core.String))}, {}),
+    [_replaceLinks]: dart.fnType(core.String, [core.String], {logging: core.bool}, {}),
+    [_replaceArgs]: dart.fnType(core.String, [core.String, dart.nullable(core.List$(core.String))]),
+    [_replaceNamedArgs]: dart.fnType(core.String, [core.String, dart.nullable(core.Map$(core.String, core.String))]),
+    plural: dart.fnType(core.String, [core.String, core.num], {args: dart.nullable(core.List$(core.String)), format: dart.nullable(number_format.NumberFormat), name: dart.nullable(core.String), namedArgs: dart.nullable(core.Map$(core.String, core.String))}, {}),
+    [_gender]: dart.fnType(core.String, [core.String], {}, {gender: core.String}),
+    [_resolvePlural]: dart.fnType(core.String, [core.String, core.String]),
+    [_resolve]: dart.fnType(core.String, [core.String], {fallback: core.bool, logging: core.bool}, {})
+  }));
+  dart.setStaticMethodSignature(localization.Localization, () => ['of', 'load', '_pluralRule']);
+  dart.setGetterSignature(localization.Localization, () => ({
+    __proto__: dart.getGetters(localization.Localization.__proto__),
+    [_locale]: ui.Locale
+  }));
+  dart.setSetterSignature(localization.Localization, () => ({
+    __proto__: dart.getSetters(localization.Localization.__proto__),
+    [_locale]: ui.Locale
+  }));
+  dart.setStaticGetterSignature(localization.Localization, () => ['instance']);
+  dart.setLibraryUri(localization.Localization, I[0]);
+  dart.setFieldSignature(localization.Localization, () => ({
+    __proto__: dart.getFields(localization.Localization.__proto__),
+    [_translations]: dart.fieldType(dart.nullable(translations.Translations)),
+    [_fallbackTranslations]: dart.fieldType(dart.nullable(translations.Translations)),
+    [__Localization__locale]: dart.fieldType(dart.nullable(ui.Locale)),
+    [_replaceArgRegex]: dart.finalFieldType(core.RegExp),
+    [_linkKeyMatcher]: dart.finalFieldType(core.RegExp),
+    [_linkKeyPrefixMatcher]: dart.finalFieldType(core.RegExp),
+    [_bracketsMatcher]: dart.finalFieldType(core.RegExp),
+    [_modifiers]: dart.finalFieldType(core.Map$(core.String, dart.fnType(core.String, [dart.nullable(core.String)])))
+  }));
+  dart.setStaticFieldSignature(localization.Localization, () => ['_instance']);
+  dart.defineLazy(localization.Localization, {
+    /*localization.Localization._instance*/get _instance() {
+      return null;
+    },
+    set _instance(_) {}
+  }, false);
+  asset_loader.AssetLoader = class AssetLoader extends core.Object {};
+  (asset_loader.AssetLoader.new = function() {
+    ;
+  }).prototype = asset_loader.AssetLoader.prototype;
+  dart.addTypeTests(asset_loader.AssetLoader);
+  dart.addTypeCaches(asset_loader.AssetLoader);
+  dart.setLibraryUri(asset_loader.AssetLoader, I[1]);
+  asset_loader.RootBundleAssetLoader = class RootBundleAssetLoader extends asset_loader.AssetLoader {
+    static ['_#new#tearOff']() {
+      return new asset_loader.RootBundleAssetLoader.new();
+    }
+    getLocalePath(basePath, locale) {
+      return basePath + "/" + easy_localization_app['LocaleToStringHelper|toStringWithSeparator'](locale, {separator: "-"}) + ".json";
+    }
+    load(path, locale) {
+      return async.async(T.MapNOfString$dynamic(), (function* load() {
+        let localePath = this.getLocalePath(path, locale);
+        easy_localization_app.EasyLocalization.logger.debug("Load asset from " + path);
+        return T.FutureOrOfMapNOfString$dynamic().as(convert.json.decode(yield asset_bundle.rootBundle.loadString(localePath)));
+      }).bind(this));
+    }
+  };
+  (asset_loader.RootBundleAssetLoader.new = function() {
+    asset_loader.RootBundleAssetLoader.__proto__.new.call(this);
+    ;
+  }).prototype = asset_loader.RootBundleAssetLoader.prototype;
+  dart.addTypeTests(asset_loader.RootBundleAssetLoader);
+  dart.addTypeCaches(asset_loader.RootBundleAssetLoader);
+  dart.setMethodSignature(asset_loader.RootBundleAssetLoader, () => ({
+    __proto__: dart.getMethods(asset_loader.RootBundleAssetLoader.__proto__),
+    getLocalePath: dart.fnType(core.String, [core.String, ui.Locale]),
+    load: dart.fnType(async.Future$(dart.nullable(core.Map$(core.String, dart.dynamic))), [core.String, ui.Locale])
+  }));
+  dart.setLibraryUri(asset_loader.RootBundleAssetLoader, I[1]);
+  var onLoadError$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.onLoadError");
+  var assetLoader$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.assetLoader");
+  var path$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.path");
+  var useFallbackTranslations$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.useFallbackTranslations");
+  var saveLocale$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.saveLocale");
+  var useOnlyLangCode$ = dart.privateName(easy_localization_controller, "EasyLocalizationController.useOnlyLangCode");
+  var __EasyLocalizationController__locale = dart.privateName(easy_localization_controller, "_#EasyLocalizationController#_locale");
+  var _fallbackLocale = dart.privateName(easy_localization_controller, "_fallbackLocale");
+  var _translations$ = dart.privateName(easy_localization_controller, "_translations");
+  var _fallbackTranslations$ = dart.privateName(easy_localization_controller, "_fallbackTranslations");
+  var _locale$ = dart.privateName(easy_localization_controller, "_locale");
+  var _saveLocale = dart.privateName(easy_localization_controller, "_saveLocale");
+  easy_localization_controller.EasyLocalizationController = class EasyLocalizationController extends change_notifier.ChangeNotifier {
+    get onLoadError() {
+      return this[onLoadError$];
+    }
+    set onLoadError(value) {
+      super.onLoadError = value;
+    }
+    get assetLoader() {
+      return this[assetLoader$];
+    }
+    set assetLoader(value) {
+      super.assetLoader = value;
+    }
+    get path() {
+      return this[path$];
+    }
+    set path(value) {
+      super.path = value;
+    }
+    get useFallbackTranslations() {
+      return this[useFallbackTranslations$];
+    }
+    set useFallbackTranslations(value) {
+      super.useFallbackTranslations = value;
+    }
+    get saveLocale() {
+      return this[saveLocale$];
+    }
+    set saveLocale(value) {
+      super.saveLocale = value;
+    }
+    get useOnlyLangCode() {
+      return this[useOnlyLangCode$];
+    }
+    set useOnlyLangCode(value) {
+      super.useOnlyLangCode = value;
+    }
+    static get _deviceLocale() {
+      let t31;
+      t31 = easy_localization_controller.EasyLocalizationController['_#_deviceLocale'];
+      return t31 == null ? dart.throw(new _internal.LateError.fieldNI("_deviceLocale")) : t31;
+    }
+    static set _deviceLocale(library$32package$58easy_localization$47src$47easy_localization_controller$46dart$58$58_deviceLocale$35param) {
+      easy_localization_controller.EasyLocalizationController['_#_deviceLocale'] = library$32package$58easy_localization$47src$47easy_localization_controller$46dart$58$58_deviceLocale$35param;
+    }
+    get [_locale$]() {
+      let t31;
+      t31 = this[__EasyLocalizationController__locale];
+      return t31 == null ? dart.throw(new _internal.LateError.fieldNI("_locale")) : t31;
+    }
+    set [_locale$](library$32package$58easy_localization$47src$47easy_localization_controller$46dart$58$58_locale$35param) {
+      this[__EasyLocalizationController__locale] = library$32package$58easy_localization$47src$47easy_localization_controller$46dart$58$58_locale$35param;
+    }
+    get translations() {
+      return this[_translations$];
+    }
+    get fallbackTranslations() {
+      return this[_fallbackTranslations$];
+    }
+    static ['_#new#tearOff'](opts) {
+      let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+      let useFallbackTranslations = opts && 'useFallbackTranslations' in opts ? opts.useFallbackTranslations : null;
+      let saveLocale = opts && 'saveLocale' in opts ? opts.saveLocale : null;
+      let assetLoader = opts && 'assetLoader' in opts ? opts.assetLoader : null;
+      let path = opts && 'path' in opts ? opts.path : null;
+      let useOnlyLangCode = opts && 'useOnlyLangCode' in opts ? opts.useOnlyLangCode : null;
+      let onLoadError = opts && 'onLoadError' in opts ? opts.onLoadError : null;
+      let startLocale = opts && 'startLocale' in opts ? opts.startLocale : null;
+      let fallbackLocale = opts && 'fallbackLocale' in opts ? opts.fallbackLocale : null;
+      let forceLocale = opts && 'forceLocale' in opts ? opts.forceLocale : null;
+      return new easy_localization_controller.EasyLocalizationController.new({supportedLocales: supportedLocales, useFallbackTranslations: useFallbackTranslations, saveLocale: saveLocale, assetLoader: assetLoader, path: path, useOnlyLangCode: useOnlyLangCode, onLoadError: onLoadError, startLocale: startLocale, fallbackLocale: fallbackLocale, forceLocale: forceLocale});
+    }
+    static selectLocaleFrom(supportedLocales, deviceLocale, opts) {
+      let fallbackLocale = opts && 'fallbackLocale' in opts ? opts.fallbackLocale : null;
+      let selectedLocale = supportedLocales[$firstWhere](dart.fn(locale => easy_localization_controller['LocaleExtension|supports'](locale, deviceLocale), T.LocaleTobool()), {orElse: dart.fn(() => easy_localization_controller.EasyLocalizationController._getFallbackLocale(supportedLocales, fallbackLocale), T.VoidToLocale())});
+      return selectedLocale;
+    }
+    static _getFallbackLocale(supportedLocales, fallbackLocale) {
+      if (fallbackLocale != null) {
+        return fallbackLocale;
+      } else {
+        return supportedLocales[$first];
+      }
+    }
+    loadTranslations() {
+      return async.async(dart.dynamic, (function* loadTranslations() {
+        let t33, t33$;
+        let data = null;
+        try {
+          data = T.MapOfString$dynamic().as(yield this.loadTranslationData(this[_locale$]));
+          this[_translations$] = new translations.Translations.new(data);
+          if (this.useFallbackTranslations && this[_fallbackLocale] != null) {
+            let baseLangData = null;
+            if (this[_locale$].countryCode != null && dart.nullCheck(this[_locale$].countryCode)[$isNotEmpty]) {
+              baseLangData = (yield this.loadBaseLangTranslationData(new ui.Locale.new(this.locale.languageCode)));
+            }
+            data = T.MapOfString$dynamic().as(yield this.loadTranslationData(dart.nullCheck(this[_fallbackLocale])));
+            if (baseLangData != null) {
+              data[$addAll](baseLangData);
+            }
+            this[_fallbackTranslations$] = new translations.Translations.new(data);
+          }
+        } catch (e$) {
+          let ex = dart.getThrown(e$);
+          if (assertions.FlutterError.is(ex)) {
+            let e = ex;
+            t33$ = e;
+            this.onLoadError(t33$);
+          } else if (core.Object.is(ex)) {
+            let e = ex;
+            t33 = assertions.FlutterError.new(e[$toString]());
+            this.onLoadError(t33);
+          } else
+            throw e$;
+        }
+      }).bind(this));
+    }
+    loadBaseLangTranslationData(locale) {
+      return async.async(T.MapNOfString$dynamic(), (function* loadBaseLangTranslationData() {
+        try {
+          return T.FutureOrOfMapNOfString$dynamic().as(yield this.loadTranslationData(new ui.Locale.new(locale.languageCode)));
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          if (assertions.FlutterError.is(e)) {
+            easy_localization_app.EasyLocalization.logger.warning(e.message);
+          } else
+            throw e$;
+        }
+        return null;
+      }).bind(this));
+    }
+    loadTranslationData(locale) {
+      return async.async(dart.dynamic, (function* loadTranslationData() {
+        if (this.useOnlyLangCode) {
+          return dart.dsend(this.assetLoader, 'load', [this.path, new ui.Locale.new(locale.languageCode)]);
+        } else {
+          return dart.dsend(this.assetLoader, 'load', [this.path, locale]);
+        }
+      }).bind(this));
+    }
+    get locale() {
+      return this[_locale$];
+    }
+    setLocale(l) {
+      return async.async(dart.void, (function* setLocale() {
+        this[_locale$] = l;
+        yield this.loadTranslations();
+        this.notifyListeners();
+        easy_localization_app.EasyLocalization.logger.call("Locale " + dart.str(this.locale) + " changed");
+        yield this[_saveLocale](this[_locale$]);
+      }).bind(this));
+    }
+    [_saveLocale](locale) {
+      return async.async(dart.void, (function* _saveLocale() {
+        if (!this.saveLocale) return;
+        let preferences = (yield shared_preferences.SharedPreferences.getInstance());
+        yield preferences.setString("locale", dart.toString(locale));
+        easy_localization_app.EasyLocalization.logger.call("Locale " + dart.str(locale) + " saved");
+      }).bind(this));
+    }
+    static initEasyLocation() {
+      return async.async(dart.void, function* initEasyLocation() {
+        let t34;
+        let preferences = (yield shared_preferences.SharedPreferences.getInstance());
+        let strLocale = preferences.getString("locale");
+        easy_localization_controller.EasyLocalizationController._savedLocale = (t34 = strLocale, t34 == null ? null : easy_localization_app['StringToLocaleHelper|toLocale'](t34));
+        let foundPlatformLocale = (yield intl_browser.findSystemLocale());
+        easy_localization_controller.EasyLocalizationController._deviceLocale = easy_localization_app['StringToLocaleHelper|toLocale'](foundPlatformLocale);
+        easy_localization_app.EasyLocalization.logger.debug("Localization initialized");
+      });
+    }
+    deleteSaveLocale() {
+      return async.async(dart.void, function* deleteSaveLocale() {
+        easy_localization_controller.EasyLocalizationController._savedLocale = null;
+        let preferences = (yield shared_preferences.SharedPreferences.getInstance());
+        yield preferences.remove("locale");
+        easy_localization_app.EasyLocalization.logger.call("Saved locale deleted");
+      });
+    }
+    get deviceLocale() {
+      return easy_localization_controller.EasyLocalizationController._deviceLocale;
+    }
+    resetLocale() {
+      return async.async(dart.void, (function* resetLocale() {
+        easy_localization_app.EasyLocalization.logger.call("Reset locale to platform locale " + dart.str(easy_localization_controller.EasyLocalizationController._deviceLocale));
+        yield this.setLocale(easy_localization_controller.EasyLocalizationController._deviceLocale);
+      }).bind(this));
+    }
+  };
+  (easy_localization_controller.EasyLocalizationController.new = function(opts) {
+    let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+    let useFallbackTranslations = opts && 'useFallbackTranslations' in opts ? opts.useFallbackTranslations : null;
+    let saveLocale = opts && 'saveLocale' in opts ? opts.saveLocale : null;
+    let assetLoader = opts && 'assetLoader' in opts ? opts.assetLoader : null;
+    let path = opts && 'path' in opts ? opts.path : null;
+    let useOnlyLangCode = opts && 'useOnlyLangCode' in opts ? opts.useOnlyLangCode : null;
+    let onLoadError = opts && 'onLoadError' in opts ? opts.onLoadError : null;
+    let startLocale = opts && 'startLocale' in opts ? opts.startLocale : null;
+    let fallbackLocale = opts && 'fallbackLocale' in opts ? opts.fallbackLocale : null;
+    let forceLocale = opts && 'forceLocale' in opts ? opts.forceLocale : null;
+    this[__EasyLocalizationController__locale] = null;
+    this[_fallbackLocale] = null;
+    this[_translations$] = null;
+    this[_fallbackTranslations$] = null;
+    this[useFallbackTranslations$] = useFallbackTranslations;
+    this[saveLocale$] = saveLocale;
+    this[assetLoader$] = assetLoader;
+    this[path$] = path;
+    this[useOnlyLangCode$] = useOnlyLangCode;
+    this[onLoadError$] = onLoadError;
+    easy_localization_controller.EasyLocalizationController.__proto__.new.call(this);
+    this[_fallbackLocale] = fallbackLocale;
+    if (forceLocale != null) {
+      this[_locale$] = forceLocale;
+    } else if (easy_localization_controller.EasyLocalizationController._savedLocale == null && startLocale != null) {
+      this[_locale$] = easy_localization_controller.EasyLocalizationController._getFallbackLocale(supportedLocales, startLocale);
+      easy_localization_app.EasyLocalization.logger.call("Start locale loaded " + this[_locale$].toString());
+    } else if (this.saveLocale && easy_localization_controller.EasyLocalizationController._savedLocale != null) {
+      easy_localization_app.EasyLocalization.logger.call("Saved locale loaded " + dart.toString(easy_localization_controller.EasyLocalizationController._savedLocale));
+      this[_locale$] = dart.nullCheck(easy_localization_controller.EasyLocalizationController._savedLocale);
+    } else {
+      this[_locale$] = easy_localization_controller.EasyLocalizationController.selectLocaleFrom(supportedLocales, easy_localization_controller.EasyLocalizationController._deviceLocale, {fallbackLocale: fallbackLocale});
+    }
+  }).prototype = easy_localization_controller.EasyLocalizationController.prototype;
+  dart.addTypeTests(easy_localization_controller.EasyLocalizationController);
+  dart.addTypeCaches(easy_localization_controller.EasyLocalizationController);
+  dart.setMethodSignature(easy_localization_controller.EasyLocalizationController, () => ({
+    __proto__: dart.getMethods(easy_localization_controller.EasyLocalizationController.__proto__),
+    loadTranslations: dart.fnType(async.Future, []),
+    loadBaseLangTranslationData: dart.fnType(async.Future$(dart.nullable(core.Map$(core.String, dart.dynamic))), [ui.Locale]),
+    loadTranslationData: dart.fnType(async.Future, [ui.Locale]),
+    setLocale: dart.fnType(async.Future$(dart.void), [ui.Locale]),
+    [_saveLocale]: dart.fnType(async.Future$(dart.void), [dart.nullable(ui.Locale)]),
+    deleteSaveLocale: dart.fnType(async.Future$(dart.void), []),
+    resetLocale: dart.fnType(async.Future$(dart.void), [])
+  }));
+  dart.setStaticMethodSignature(easy_localization_controller.EasyLocalizationController, () => ['selectLocaleFrom', '_getFallbackLocale', 'initEasyLocation']);
+  dart.setGetterSignature(easy_localization_controller.EasyLocalizationController, () => ({
+    __proto__: dart.getGetters(easy_localization_controller.EasyLocalizationController.__proto__),
+    [_locale$]: ui.Locale,
+    translations: dart.nullable(translations.Translations),
+    fallbackTranslations: dart.nullable(translations.Translations),
+    locale: ui.Locale,
+    deviceLocale: ui.Locale
+  }));
+  dart.setSetterSignature(easy_localization_controller.EasyLocalizationController, () => ({
+    __proto__: dart.getSetters(easy_localization_controller.EasyLocalizationController.__proto__),
+    [_locale$]: ui.Locale
+  }));
+  dart.setStaticGetterSignature(easy_localization_controller.EasyLocalizationController, () => ['_deviceLocale']);
+  dart.setStaticSetterSignature(easy_localization_controller.EasyLocalizationController, () => ['_deviceLocale']);
+  dart.setLibraryUri(easy_localization_controller.EasyLocalizationController, I[2]);
+  dart.setFieldSignature(easy_localization_controller.EasyLocalizationController, () => ({
+    __proto__: dart.getFields(easy_localization_controller.EasyLocalizationController.__proto__),
+    [__EasyLocalizationController__locale]: dart.fieldType(dart.nullable(ui.Locale)),
+    [_fallbackLocale]: dart.fieldType(dart.nullable(ui.Locale)),
+    onLoadError: dart.finalFieldType(dart.fnType(dart.dynamic, [assertions.FlutterError])),
+    assetLoader: dart.finalFieldType(dart.dynamic),
+    path: dart.finalFieldType(core.String),
+    useFallbackTranslations: dart.finalFieldType(core.bool),
+    saveLocale: dart.finalFieldType(core.bool),
+    useOnlyLangCode: dart.finalFieldType(core.bool),
+    [_translations$]: dart.fieldType(dart.nullable(translations.Translations)),
+    [_fallbackTranslations$]: dart.fieldType(dart.nullable(translations.Translations))
+  }));
+  dart.setStaticFieldSignature(easy_localization_controller.EasyLocalizationController, () => ['_savedLocale', '_#_deviceLocale']);
+  dart.defineLazy(easy_localization_controller.EasyLocalizationController, {
+    /*easy_localization_controller.EasyLocalizationController._savedLocale*/get _savedLocale() {
+      return null;
+    },
+    set _savedLocale(_) {},
+    /*easy_localization_controller.EasyLocalizationController['_#_deviceLocale']*/get ['_#_deviceLocale']() {
+      return null;
+    },
+    set ['_#_deviceLocale'](_) {}
+  }, false);
+  easy_localization_controller['LocaleExtension|supports'] = function LocaleExtension$124supports($this, locale) {
+    if ($this._equals(locale)) {
+      return true;
+    }
+    if ($this.languageCode !== locale.languageCode) {
+      return false;
+    }
+    if ($this.countryCode != null && dart.nullCheck($this.countryCode)[$isNotEmpty] && $this.countryCode != locale.countryCode) {
+      return false;
+    }
+    if ($this.scriptCode != null && $this.scriptCode != locale.scriptCode) {
+      return false;
+    }
+    return true;
+  };
+  easy_localization_controller['LocaleExtension|get#supports'] = function LocaleExtension$124get$35supports($this) {
+    return dart.fn(locale => easy_localization_controller['LocaleExtension|supports']($this, locale), T.LocaleTobool());
+  };
+  var child$ = dart.privateName(easy_localization_app, "EasyLocalization.child");
+  var supportedLocales$ = dart.privateName(easy_localization_app, "EasyLocalization.supportedLocales");
+  var fallbackLocale$ = dart.privateName(easy_localization_app, "EasyLocalization.fallbackLocale");
+  var startLocale$ = dart.privateName(easy_localization_app, "EasyLocalization.startLocale");
+  var useOnlyLangCode$0 = dart.privateName(easy_localization_app, "EasyLocalization.useOnlyLangCode");
+  var useFallbackTranslations$0 = dart.privateName(easy_localization_app, "EasyLocalization.useFallbackTranslations");
+  var path$0 = dart.privateName(easy_localization_app, "EasyLocalization.path");
+  var assetLoader$0 = dart.privateName(easy_localization_app, "EasyLocalization.assetLoader");
+  var saveLocale$0 = dart.privateName(easy_localization_app, "EasyLocalization.saveLocale");
+  var errorWidget$ = dart.privateName(easy_localization_app, "EasyLocalization.errorWidget");
+  easy_localization_app.EasyLocalization = class EasyLocalization extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get supportedLocales() {
+      return this[supportedLocales$];
+    }
+    set supportedLocales(value) {
+      super.supportedLocales = value;
+    }
+    get fallbackLocale() {
+      return this[fallbackLocale$];
+    }
+    set fallbackLocale(value) {
+      super.fallbackLocale = value;
+    }
+    get startLocale() {
+      return this[startLocale$];
+    }
+    set startLocale(value) {
+      super.startLocale = value;
+    }
+    get useOnlyLangCode() {
+      return this[useOnlyLangCode$0];
+    }
+    set useOnlyLangCode(value) {
+      super.useOnlyLangCode = value;
+    }
+    get useFallbackTranslations() {
+      return this[useFallbackTranslations$0];
+    }
+    set useFallbackTranslations(value) {
+      super.useFallbackTranslations = value;
+    }
+    get path() {
+      return this[path$0];
+    }
+    set path(value) {
+      super.path = value;
+    }
+    get assetLoader() {
+      return this[assetLoader$0];
+    }
+    set assetLoader(value) {
+      super.assetLoader = value;
+    }
+    get saveLocale() {
+      return this[saveLocale$0];
+    }
+    set saveLocale(value) {
+      super.saveLocale = value;
+    }
+    get errorWidget() {
+      return this[errorWidget$];
+    }
+    set errorWidget(value) {
+      super.errorWidget = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+      let path = opts && 'path' in opts ? opts.path : null;
+      let fallbackLocale = opts && 'fallbackLocale' in opts ? opts.fallbackLocale : null;
+      let startLocale = opts && 'startLocale' in opts ? opts.startLocale : null;
+      let useOnlyLangCode = opts && 'useOnlyLangCode' in opts ? opts.useOnlyLangCode : false;
+      let useFallbackTranslations = opts && 'useFallbackTranslations' in opts ? opts.useFallbackTranslations : false;
+      let assetLoader = opts && 'assetLoader' in opts ? opts.assetLoader : C[8] || CT.C8;
+      let saveLocale = opts && 'saveLocale' in opts ? opts.saveLocale : true;
+      let errorWidget = opts && 'errorWidget' in opts ? opts.errorWidget : null;
+      return new easy_localization_app.EasyLocalization.new({key: key, child: child, supportedLocales: supportedLocales, path: path, fallbackLocale: fallbackLocale, startLocale: startLocale, useOnlyLangCode: useOnlyLangCode, useFallbackTranslations: useFallbackTranslations, assetLoader: assetLoader, saveLocale: saveLocale, errorWidget: errorWidget, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+    }
+    createState() {
+      return new easy_localization_app._EasyLocalizationState.new();
+    }
+    static of(context) {
+      return easy_localization_app._EasyLocalizationProvider.of(context);
+    }
+    static ensureInitialized() {
+      return async.async(dart.void, function* ensureInitialized() {
+        return yield easy_localization_controller.EasyLocalizationController.initEasyLocation();
+      });
+    }
+  };
+  (easy_localization_app.EasyLocalization.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+    let path = opts && 'path' in opts ? opts.path : null;
+    let fallbackLocale = opts && 'fallbackLocale' in opts ? opts.fallbackLocale : null;
+    let startLocale = opts && 'startLocale' in opts ? opts.startLocale : null;
+    let useOnlyLangCode = opts && 'useOnlyLangCode' in opts ? opts.useOnlyLangCode : false;
+    let useFallbackTranslations = opts && 'useFallbackTranslations' in opts ? opts.useFallbackTranslations : false;
+    let assetLoader = opts && 'assetLoader' in opts ? opts.assetLoader : C[8] || CT.C8;
+    let saveLocale = opts && 'saveLocale' in opts ? opts.saveLocale : true;
+    let errorWidget = opts && 'errorWidget' in opts ? opts.errorWidget : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[supportedLocales$] = supportedLocales;
+    this[path$0] = path;
+    this[fallbackLocale$] = fallbackLocale;
+    this[startLocale$] = startLocale;
+    this[useOnlyLangCode$0] = useOnlyLangCode;
+    this[useFallbackTranslations$0] = useFallbackTranslations;
+    this[assetLoader$0] = assetLoader;
+    this[saveLocale$0] = saveLocale;
+    this[errorWidget$] = errorWidget;
+    if (!supportedLocales[$isNotEmpty]) dart.assertFailed(null, I[3], 91, 16, "supportedLocales.isNotEmpty");
+    if (!path[$isNotEmpty]) dart.assertFailed(null, I[3], 92, 16, "path.isNotEmpty");
+    easy_localization_app.EasyLocalization.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    easy_localization_app.EasyLocalization.logger.debug("Start");
+  }).prototype = easy_localization_app.EasyLocalization.prototype;
+  dart.addTypeTests(easy_localization_app.EasyLocalization);
+  dart.addTypeCaches(easy_localization_app.EasyLocalization);
+  dart.setMethodSignature(easy_localization_app.EasyLocalization, () => ({
+    __proto__: dart.getMethods(easy_localization_app.EasyLocalization.__proto__),
+    createState: dart.fnType(easy_localization_app._EasyLocalizationState, [])
+  }));
+  dart.setStaticMethodSignature(easy_localization_app.EasyLocalization, () => ['of', 'ensureInitialized']);
+  dart.setLibraryUri(easy_localization_app.EasyLocalization, I[4]);
+  dart.setFieldSignature(easy_localization_app.EasyLocalization, () => ({
+    __proto__: dart.getFields(easy_localization_app.EasyLocalization.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    supportedLocales: dart.finalFieldType(core.List$(ui.Locale)),
+    fallbackLocale: dart.finalFieldType(dart.nullable(ui.Locale)),
+    startLocale: dart.finalFieldType(dart.nullable(ui.Locale)),
+    useOnlyLangCode: dart.finalFieldType(core.bool),
+    useFallbackTranslations: dart.finalFieldType(core.bool),
+    path: dart.finalFieldType(core.String),
+    assetLoader: dart.finalFieldType(dart.dynamic),
+    saveLocale: dart.finalFieldType(core.bool),
+    errorWidget: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [dart.nullable(assertions.FlutterError)])))
+  }));
+  dart.setStaticFieldSignature(easy_localization_app.EasyLocalization, () => ['logger']);
+  dart.defineLazy(easy_localization_app.EasyLocalization, {
+    /*easy_localization_app.EasyLocalization.logger*/get logger() {
+      return new logger.EasyLogger.new({name: "🌎 Easy Localization"});
+    },
+    set logger(_) {}
+  }, false);
+  easy_localization_app._EasyLocalizationState = class _EasyLocalizationState extends framework.State$(easy_localization_app.EasyLocalization) {
+    initState() {
+      easy_localization_app.EasyLocalization.logger.debug("Init state");
+      this.localizationController = new easy_localization_controller.EasyLocalizationController.new({saveLocale: this.widget.saveLocale, fallbackLocale: this.widget.fallbackLocale, supportedLocales: this.widget.supportedLocales, startLocale: this.widget.startLocale, assetLoader: this.widget.assetLoader, useOnlyLangCode: this.widget.useOnlyLangCode, useFallbackTranslations: this.widget.useFallbackTranslations, path: this.widget.path, onLoadError: dart.fn(e => {
+          this.setState(dart.fn(() => {
+            this.translationsLoadError = e;
+          }, T.VoidTovoid()));
+        }, T.FlutterErrorToNull())});
+      dart.nullCheck(this.localizationController).addListener(dart.fn(() => {
+        if (this.mounted) this.setState(dart.fn(() => {
+        }, T.VoidTovoid()));
+      }, T.VoidTovoid()));
+      super.initState();
+    }
+    dispose() {
+      dart.nullCheck(this.localizationController).dispose();
+      super.dispose();
+    }
+    build(context) {
+      easy_localization_app.EasyLocalization.logger.debug("Build");
+      if (this.translationsLoadError != null) {
+        return this.widget.errorWidget != null ? dart.nullCheck(this.widget.errorWidget)(this.translationsLoadError) : new framework.ErrorWidget.new(dart.nullCheck(this.translationsLoadError), {$creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+      }
+      return new easy_localization_app._EasyLocalizationProvider.new(this.widget, dart.nullCheck(this.localizationController), {delegate: new easy_localization_app._EasyLocalizationDelegate.new({localizationController: this.localizationController, supportedLocales: this.widget.supportedLocales}), $creationLocationd_0dea112b090073317d4: C[11] || CT.C11});
+    }
+    static ['_#new#tearOff']() {
+      return new easy_localization_app._EasyLocalizationState.new();
+    }
+  };
+  (easy_localization_app._EasyLocalizationState.new = function() {
+    this.delegate = null;
+    this.localizationController = null;
+    this.translationsLoadError = null;
+    easy_localization_app._EasyLocalizationState.__proto__.new.call(this);
+    ;
+  }).prototype = easy_localization_app._EasyLocalizationState.prototype;
+  dart.addTypeTests(easy_localization_app._EasyLocalizationState);
+  dart.addTypeCaches(easy_localization_app._EasyLocalizationState);
+  dart.setMethodSignature(easy_localization_app._EasyLocalizationState, () => ({
+    __proto__: dart.getMethods(easy_localization_app._EasyLocalizationState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(easy_localization_app._EasyLocalizationState, I[4]);
+  dart.setFieldSignature(easy_localization_app._EasyLocalizationState, () => ({
+    __proto__: dart.getFields(easy_localization_app._EasyLocalizationState.__proto__),
+    delegate: dart.fieldType(dart.nullable(easy_localization_app._EasyLocalizationDelegate)),
+    localizationController: dart.fieldType(dart.nullable(easy_localization_controller.EasyLocalizationController)),
+    translationsLoadError: dart.fieldType(dart.nullable(assertions.FlutterError))
+  }));
+  var _localeState$ = dart.privateName(easy_localization_app, "_localeState");
+  easy_localization_app._EasyLocalizationProvider = class _EasyLocalizationProvider extends framework.InheritedWidget {
+    get delegates() {
+      return T.JSArrayOfLocalizationsDelegate().of([this.delegate, material_localizations.GlobalMaterialLocalizations.delegate, widgets_localizations.GlobalWidgetsLocalizations.delegate, cupertino_localizations.GlobalCupertinoLocalizations.delegate]);
+    }
+    get supportedLocales() {
+      return this.parent.supportedLocales;
+    }
+    static ['_#new#tearOff'](parent, _localeState, opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+      return new easy_localization_app._EasyLocalizationProvider.new(parent, _localeState, {key: key, delegate: delegate, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+    }
+    get locale() {
+      return this[_localeState$].locale;
+    }
+    get fallbackLocale() {
+      return this.parent.fallbackLocale;
+    }
+    setLocale(locale) {
+      return async.async(dart.void, (function* setLocale() {
+        if (!locale._equals(this[_localeState$].locale)) {
+          if (!this.parent.supportedLocales[$contains](locale)) dart.assertFailed(null, I[3], 216, 14, "parent.supportedLocales.contains(locale)");
+          yield this[_localeState$].setLocale(locale);
+        }
+      }).bind(this));
+    }
+    deleteSaveLocale() {
+      return async.async(dart.void, (function* deleteSaveLocale() {
+        yield this[_localeState$].deleteSaveLocale();
+      }).bind(this));
+    }
+    get deviceLocale() {
+      return this[_localeState$].deviceLocale;
+    }
+    resetLocale() {
+      return this[_localeState$].resetLocale();
+    }
+    updateShouldNotify(oldWidget) {
+      easy_localization_app._EasyLocalizationProvider.as(oldWidget);
+      return !dart.equals(oldWidget.currentLocale, this.locale);
+    }
+    static of(context) {
+      return context.dependOnInheritedWidgetOfExactType(easy_localization_app._EasyLocalizationProvider);
+    }
+  };
+  (easy_localization_app._EasyLocalizationProvider.new = function(parent, _localeState, opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this.parent = parent;
+    this[_localeState$] = _localeState;
+    this.delegate = delegate;
+    this.currentLocale = _localeState.locale;
+    easy_localization_app._EasyLocalizationProvider.__proto__.new.call(this, {key: key, child: parent.child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    easy_localization_app.EasyLocalization.logger.debug("Init provider");
+  }).prototype = easy_localization_app._EasyLocalizationProvider.prototype;
+  dart.addTypeTests(easy_localization_app._EasyLocalizationProvider);
+  dart.addTypeCaches(easy_localization_app._EasyLocalizationProvider);
+  dart.setMethodSignature(easy_localization_app._EasyLocalizationProvider, () => ({
+    __proto__: dart.getMethods(easy_localization_app._EasyLocalizationProvider.__proto__),
+    setLocale: dart.fnType(async.Future$(dart.void), [ui.Locale]),
+    deleteSaveLocale: dart.fnType(async.Future$(dart.void), []),
+    resetLocale: dart.fnType(async.Future$(dart.void), []),
+    updateShouldNotify: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setStaticMethodSignature(easy_localization_app._EasyLocalizationProvider, () => ['of']);
+  dart.setGetterSignature(easy_localization_app._EasyLocalizationProvider, () => ({
+    __proto__: dart.getGetters(easy_localization_app._EasyLocalizationProvider.__proto__),
+    delegates: core.List$(localizations.LocalizationsDelegate),
+    supportedLocales: core.List$(ui.Locale),
+    locale: ui.Locale,
+    fallbackLocale: dart.nullable(ui.Locale),
+    deviceLocale: ui.Locale
+  }));
+  dart.setLibraryUri(easy_localization_app._EasyLocalizationProvider, I[4]);
+  dart.setFieldSignature(easy_localization_app._EasyLocalizationProvider, () => ({
+    __proto__: dart.getFields(easy_localization_app._EasyLocalizationProvider.__proto__),
+    parent: dart.finalFieldType(easy_localization_app.EasyLocalization),
+    [_localeState$]: dart.finalFieldType(easy_localization_controller.EasyLocalizationController),
+    currentLocale: dart.finalFieldType(dart.nullable(ui.Locale)),
+    delegate: dart.finalFieldType(easy_localization_app._EasyLocalizationDelegate)
+  }));
+  easy_localization_app._EasyLocalizationDelegate = class _EasyLocalizationDelegate extends localizations.LocalizationsDelegate$(localization.Localization) {
+    static ['_#new#tearOff'](opts) {
+      let localizationController = opts && 'localizationController' in opts ? opts.localizationController : null;
+      let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+      return new easy_localization_app._EasyLocalizationDelegate.new({localizationController: localizationController, supportedLocales: supportedLocales});
+    }
+    isSupported(locale) {
+      return dart.nullCheck(this.supportedLocales)[$contains](locale);
+    }
+    load(value) {
+      return async.async(localization.Localization, (function* load() {
+        easy_localization_app.EasyLocalization.logger.debug("Load Localization Delegate");
+        if (dart.nullCheck(this.localizationController).translations == null) {
+          yield dart.nullCheck(this.localizationController).loadTranslations();
+        }
+        localization.Localization.load(value, {translations: dart.nullCheck(this.localizationController).translations, fallbackTranslations: dart.nullCheck(this.localizationController).fallbackTranslations});
+        return T.FutureOfLocalization().value(localization.Localization.instance);
+      }).bind(this));
+    }
+    shouldReload(old) {
+      T.LocalizationsDelegateOfLocalization().as(old);
+      return false;
+    }
+  };
+  (easy_localization_app._EasyLocalizationDelegate.new = function(opts) {
+    let localizationController = opts && 'localizationController' in opts ? opts.localizationController : null;
+    let supportedLocales = opts && 'supportedLocales' in opts ? opts.supportedLocales : null;
+    this.localizationController = localizationController;
+    this.supportedLocales = supportedLocales;
+    easy_localization_app._EasyLocalizationDelegate.__proto__.new.call(this);
+    easy_localization_app.EasyLocalization.logger.debug("Init Localization Delegate");
+  }).prototype = easy_localization_app._EasyLocalizationDelegate.prototype;
+  dart.addTypeTests(easy_localization_app._EasyLocalizationDelegate);
+  dart.addTypeCaches(easy_localization_app._EasyLocalizationDelegate);
+  dart.setMethodSignature(easy_localization_app._EasyLocalizationDelegate, () => ({
+    __proto__: dart.getMethods(easy_localization_app._EasyLocalizationDelegate.__proto__),
+    isSupported: dart.fnType(core.bool, [ui.Locale]),
+    load: dart.fnType(async.Future$(localization.Localization), [ui.Locale]),
+    shouldReload: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(easy_localization_app._EasyLocalizationDelegate, I[4]);
+  dart.setFieldSignature(easy_localization_app._EasyLocalizationDelegate, () => ({
+    __proto__: dart.getFields(easy_localization_app._EasyLocalizationDelegate.__proto__),
+    supportedLocales: dart.finalFieldType(dart.nullable(core.List$(ui.Locale))),
+    localizationController: dart.finalFieldType(dart.nullable(easy_localization_controller.EasyLocalizationController))
+  }));
+  easy_localization_app.localeFromString = function localeFromString(localeString) {
+    let localeList = localeString[$split]("_");
+    switch (localeList[$length]) {
+      case 2:
+        {
+          return new ui.Locale.new(localeList[$first], localeList[$last]);
+        }
+      case 3:
+        {
+          return new ui.Locale.fromSubtags({languageCode: localeList[$first], scriptCode: localeList[$_get](1), countryCode: localeList[$last]});
+        }
+      default:
+        {
+          return new ui.Locale.new(localeList[$first]);
+        }
+    }
+  };
+  easy_localization_app.localeToString = function localeToString(locale, opts) {
+    let separator = opts && 'separator' in opts ? opts.separator : "_";
+    return locale.toString()[$split]("_")[$join](separator);
+  };
+  easy_localization_app['LocaleToStringHelper|toStringWithSeparator'] = function LocaleToStringHelper$124toStringWithSeparator($this, opts) {
+    let separator = opts && 'separator' in opts ? opts.separator : "_";
+    return $this.toString()[$split]("_")[$join](separator);
+  };
+  easy_localization_app['LocaleToStringHelper|get#toStringWithSeparator'] = function LocaleToStringHelper$124get$35toStringWithSeparator($this) {
+    return dart.fn(opts => {
+      let separator = opts && 'separator' in opts ? opts.separator : "_";
+      return easy_localization_app['LocaleToStringHelper|toStringWithSeparator']($this, {separator: separator});
+    }, T.__ToString$1());
+  };
+  easy_localization_app['StringToLocaleHelper|toLocale'] = function StringToLocaleHelper$124toLocale($this, opts) {
+    let separator = opts && 'separator' in opts ? opts.separator : "_";
+    let localeList = $this[$split](separator);
+    switch (localeList[$length]) {
+      case 2:
+        {
+          return new ui.Locale.new(localeList[$first], localeList[$last]);
+        }
+      case 3:
+        {
+          return new ui.Locale.fromSubtags({languageCode: localeList[$first], scriptCode: localeList[$_get](1), countryCode: localeList[$last]});
+        }
+      default:
+        {
+          return new ui.Locale.new(localeList[$first]);
+        }
+    }
+  };
+  easy_localization_app['StringToLocaleHelper|get#toLocale'] = function StringToLocaleHelper$124get$35toLocale($this) {
+    return dart.fn(opts => {
+      let separator = opts && 'separator' in opts ? opts.separator : "_";
+      return easy_localization_app['StringToLocaleHelper|toLocale']($this, {separator: separator});
+    }, T.__ToLocale());
+  };
+  dart.trackLibraries("packages/easy_localization/src/public_ext.dart", {
+    "package:easy_localization/src/public_ext.dart": public_ext,
+    "package:easy_localization/src/public.dart": $public,
+    "package:easy_localization/src/localization.dart": localization,
+    "package:easy_localization/src/asset_loader.dart": asset_loader,
+    "package:easy_localization/src/easy_localization_controller.dart": easy_localization_controller,
+    "package:easy_localization/src/easy_localization_app.dart": easy_localization_app,
+    "package:easy_localization/easy_localization.dart": easy_localization
+  }, {
+    "package:easy_localization/src/easy_localization_app.dart": ["utils.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["public_ext.dart","public.dart","localization.dart","asset_loader.dart","easy_localization_controller.dart","easy_localization_app.dart","utils.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/easy_localization/src/public_ext.dart.lib.js"}');
+  // Exports:
+  return {
+    src__public_ext: public_ext,
+    src__public: $public,
+    src__localization: localization,
+    src__asset_loader: asset_loader,
+    src__easy_localization_controller: easy_localization_controller,
+    src__easy_localization_app: easy_localization_app,
+    easy_localization: easy_localization
+  };
+}));
+
+//# sourceMappingURL=public_ext.dart.lib.js.map

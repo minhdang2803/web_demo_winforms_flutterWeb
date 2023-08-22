@@ -1,0 +1,1289 @@
+define(['dart_sdk', 'packages/pdf/src/pdf/color.dart'], (function load__packages__pdf__src__svg__colors_dart(dart_sdk, packages__pdf__src__pdf__color$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const color = packages__pdf__src__pdf__color$46dart.src__pdf__color;
+  var colors = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5098039215686274,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.29411764705882354,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.8431372549019608,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7058823529411765,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.13333333333333333,
+        [PdfColor_green]: 0.13333333333333333,
+        [PdfColor_red]: 0.6980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.3607843137254902,
+        [PdfColor_green]: 0.3607843137254902,
+        [PdfColor_red]: 0.803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8823529411764706,
+        [PdfColor_green]: 0.8941176470588236,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.1843137254901961,
+        [PdfColor_green]: 0.4196078431372549,
+        [PdfColor_red]: 0.3333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5607843137254902,
+        [PdfColor_green]: 0.7372549019607844,
+        [PdfColor_red]: 0.5607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.796078431372549,
+        [PdfColor_green]: 0.7529411764705882,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.2784313725490196,
+        [PdfColor_green]: 0.38823529411764707,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.27058823529411763,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6784313725490196,
+        [PdfColor_green]: 0.8705882352941177,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.596078431372549,
+        [PdfColor_green]: 0.984313725490196,
+        [PdfColor_red]: 0.596078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.30980392156862746,
+        [PdfColor_green]: 0.30980392156862746,
+        [PdfColor_red]: 0.1843137254901961,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.1843137254901961,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.6784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5294117647058824,
+        [PdfColor_green]: 0.7215686274509804,
+        [PdfColor_red]: 0.8705882352941177,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6039215686274509,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8352941176470589,
+        [PdfColor_green]: 0.9372549019607843,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.803921568627451,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 0
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.4980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.4117647058823529,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 0.4117647058823529,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7254901960784313,
+        [PdfColor_green]: 0.8549019607843137,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.4980392156862745,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8313725490196079,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.4980392156862745,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.6470588235294118,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.47843137254901963,
+        [PdfColor_green]: 0.6274509803921569,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.16470588235294117,
+        [PdfColor_green]: 0.16470588235294117,
+        [PdfColor_red]: 0.6470588235294118,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9411764705882353,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.5647058823529412,
+        [PdfColor_red]: 0.11764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.24705882352941178,
+        [PdfColor_green]: 0.5215686274509804,
+        [PdfColor_red]: 0.803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.9882352941176471,
+        [PdfColor_red]: 0.48627450980392156,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.11764705882352941,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 0.8235294117647058,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.23529411764705882,
+        [PdfColor_green]: 0.0784313725490196,
+        [PdfColor_red]: 0.8627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.13333333333333333,
+        [PdfColor_green]: 0.5450980392156862,
+        [PdfColor_red]: 0.13333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6627450980392157,
+        [PdfColor_green]: 0.6627450980392157,
+        [PdfColor_red]: 0.6627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6666666666666666,
+        [PdfColor_green]: 0.6980392156862745,
+        [PdfColor_red]: 0.12549019607843137,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7529411764705882,
+        [PdfColor_green]: 0.7529411764705882,
+        [PdfColor_red]: 0.7529411764705882,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8431372549019608,
+        [PdfColor_green]: 0.9215686274509803,
+        [PdfColor_red]: 0.9803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8274509803921568,
+        [PdfColor_green]: 0.3333333333333333,
+        [PdfColor_red]: 0.7294117647058823,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9215686274509803,
+        [PdfColor_green]: 0.807843137254902,
+        [PdfColor_red]: 0.5294117647058824,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8196078431372549,
+        [PdfColor_green]: 0.807843137254902,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.12549019607843137,
+        [PdfColor_green]: 0.6470588235294118,
+        [PdfColor_red]: 0.8549019607843137,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.39215686274509803,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9411764705882353,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8274509803921568,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.5803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7098039215686275,
+        [PdfColor_green]: 0.8941176470588236,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.07450980392156863,
+        [PdfColor_green]: 0.27058823529411763,
+        [PdfColor_red]: 0.5450980392156862,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5450980392156862,
+        [PdfColor_green]: 0.23921568627450981,
+        [PdfColor_red]: 0.2823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.807843137254902,
+        [PdfColor_red]: 0.5294117647058824,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7568627450980392,
+        [PdfColor_green]: 0.7137254901960784,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5215686274509804,
+        [PdfColor_green]: 0.08235294117647059,
+        [PdfColor_red]: 0.7803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5647058823529412,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.4392156862745098,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5764705882352941,
+        [PdfColor_green]: 0.0784313725490196,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.19607843137254902,
+        [PdfColor_green]: 0.803921568627451,
+        [PdfColor_red]: 0.19607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5450980392156862,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.5450980392156862,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6666666666666666,
+        [PdfColor_green]: 0.9098039215686274,
+        [PdfColor_red]: 0.9333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8666666666666667,
+        [PdfColor_green]: 0.6274509803921569,
+        [PdfColor_red]: 0.8666666666666667,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8156862745098039,
+        [PdfColor_green]: 0.8784313725490196,
+        [PdfColor_red]: 0.25098039215686274,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8274509803921568,
+        [PdfColor_green]: 0.8274509803921568,
+        [PdfColor_red]: 0.8274509803921568,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8235294117647058,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 0.9803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.043137254901960784,
+        [PdfColor_green]: 0.5254901960784314,
+        [PdfColor_red]: 0.7215686274509804,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.9019607843137255,
+        [PdfColor_red]: 0.9019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.19607843137254902,
+        [PdfColor_green]: 0.803921568627451,
+        [PdfColor_red]: 0.6039215686274509,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.3764705882352941,
+        [PdfColor_green]: 0.6431372549019608,
+        [PdfColor_red]: 0.9568627450980393,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8470588235294118,
+        [PdfColor_green]: 0.7490196078431373,
+        [PdfColor_red]: 0.8470588235294118,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.5098039215686274,
+        [PdfColor_red]: 0.9333333333333333,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5490196078431373,
+        [PdfColor_green]: 0.7058823529411765,
+        [PdfColor_red]: 0.8235294117647058,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5607843137254902,
+        [PdfColor_green]: 0.5607843137254902,
+        [PdfColor_red]: 0.7372549019607844,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.13725490196078433,
+        [PdfColor_green]: 0.5568627450980392,
+        [PdfColor_red]: 0.4196078431372549,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9019607843137255,
+        [PdfColor_green]: 0.8470588235294118,
+        [PdfColor_red]: 0.6784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.9725490196078431,
+        [PdfColor_red]: 0.9725490196078431,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9411764705882353,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9294117647058824,
+        [PdfColor_green]: 0.5843137254901961,
+        [PdfColor_red]: 0.39215686274509803,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.803921568627451,
+        [PdfColor_green]: 0.35294117647058826,
+        [PdfColor_red]: 0.41568627450980394,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9019607843137255,
+        [PdfColor_green]: 0.9411764705882353,
+        [PdfColor_red]: 0.9803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5450980392156862,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9019607843137255,
+        [PdfColor_green]: 0.8784313725490196,
+        [PdfColor_red]: 0.6901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.3411764705882353,
+        [PdfColor_green]: 0.5450980392156862,
+        [PdfColor_red]: 0.1803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.4196078431372549,
+        [PdfColor_green]: 0.7176470588235294,
+        [PdfColor_red]: 0.7411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9803921568627451,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.17647058823529413,
+        [PdfColor_green]: 0.3215686274509804,
+        [PdfColor_red]: 0.6274509803921569,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.803921568627451,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8823529411764706,
+        [PdfColor_green]: 0.4117647058823529,
+        [PdfColor_red]: 0.2549019607843137,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.8784313725490196,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8588235294117647,
+        [PdfColor_green]: 0.4392156862745098,
+        [PdfColor_red]: 0.5764705882352941,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.4392156862745098,
+        [PdfColor_green]: 0.09803921568627451,
+        [PdfColor_red]: 0.09803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8627450980392157,
+        [PdfColor_green]: 0.9725490196078431,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.9333333333333333,
+        [PdfColor_red]: 0.6862745098039216,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7686274509803922,
+        [PdfColor_green]: 0.8941176470588236,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5450980392156862,
+        [PdfColor_green]: 0.5450980392156862,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5490196078431373,
+        [PdfColor_green]: 0.9019607843137255,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7019607843137254,
+        [PdfColor_green]: 0.8705882352941177,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8,
+        [PdfColor_green]: 0.19607843137254902,
+        [PdfColor_red]: 0.6,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.7490196078431373,
+        [PdfColor_red]: 0,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.4470588235294118,
+        [PdfColor_green]: 0.5019607843137255,
+        [PdfColor_red]: 0.9803921568627451,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.5450980392156862,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.7058823529411765,
+        [PdfColor_green]: 0.5098039215686274,
+        [PdfColor_red]: 0.27450980392156865,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5764705882352941,
+        [PdfColor_green]: 0.4392156862745098,
+        [PdfColor_red]: 0.8588235294117647,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6,
+        [PdfColor_green]: 0.5333333333333333,
+        [PdfColor_red]: 0.4666666666666667,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 0.9725490196078431,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5647058823529412,
+        [PdfColor_green]: 0.9333333333333333,
+        [PdfColor_red]: 0.5647058823529412,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8392156862745098,
+        [PdfColor_green]: 0.4392156862745098,
+        [PdfColor_red]: 0.8549019607843137,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8627450980392157,
+        [PdfColor_green]: 0.8627450980392157,
+        [PdfColor_red]: 0.8627450980392157,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.44313725490196076,
+        [PdfColor_green]: 0.7019607843137254,
+        [PdfColor_red]: 0.23529411764705882,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8,
+        [PdfColor_green]: 0.8196078431372549,
+        [PdfColor_red]: 0.2823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.803921568627451,
+        [PdfColor_green]: 0.9803921568627451,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6274509803921569,
+        [PdfColor_green]: 0.6196078431372549,
+        [PdfColor_red]: 0.37254901960784315,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8784313725490196,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9607843137254902,
+        [PdfColor_green]: 0.9411764705882353,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.3137254901960784,
+        [PdfColor_green]: 0.4980392156862745,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.5019607843137255,
+        [PdfColor_green]: 0,
+        [PdfColor_red]: 0.5019607843137255,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9607843137254902,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9333333333333333,
+        [PdfColor_green]: 0.40784313725490196,
+        [PdfColor_red]: 0.4823529411764706,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0,
+        [PdfColor_green]: 0.5490196078431373,
+        [PdfColor_red]: 1,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.6666666666666666,
+        [PdfColor_green]: 0.803921568627451,
+        [PdfColor_red]: 0.4,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.47843137254901963,
+        [PdfColor_green]: 0.5882352941176471,
+        [PdfColor_red]: 0.9137254901960784,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8627450980392157,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.9607843137254902,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8862745098039215,
+        [PdfColor_green]: 0.16862745098039217,
+        [PdfColor_red]: 0.5411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 1,
+        [PdfColor_green]: 1,
+        [PdfColor_red]: 0.9411764705882353,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.8705882352941177,
+        [PdfColor_green]: 0.7686274509803922,
+        [PdfColor_red]: 0.6901960784313725,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: color.PdfColor.prototype,
+        [PdfColor_blue]: 0.9019607843137255,
+        [PdfColor_green]: 0.9607843137254902,
+        [PdfColor_red]: 0.9921568627450981,
+        [PdfColor_alpha]: 1
+      });
+    },
+    get C0() {
+      return C[0] = dart.constMap(core.String, color.PdfColor, ["indigo", C[1] || CT.C1, "gold", C[2] || CT.C2, "hotpink", C[3] || CT.C3, "firebrick", C[4] || CT.C4, "indianred", C[5] || CT.C5, "yellow", C[6] || CT.C6, "mistyrose", C[7] || CT.C7, "darkolivegreen", C[8] || CT.C8, "olive", C[9] || CT.C9, "darkseagreen", C[10] || CT.C10, "pink", C[11] || CT.C11, "tomato", C[12] || CT.C12, "lightcoral", C[13] || CT.C13, "orangered", C[14] || CT.C14, "navajowhite", C[15] || CT.C15, "lime", C[16] || CT.C16, "palegreen", C[17] || CT.C17, "darkslategrey", C[18] || CT.C18, "greenyellow", C[19] || CT.C19, "burlywood", C[20] || CT.C20, "seashell", C[21] || CT.C21, "mediumspringgreen", C[22] || CT.C22, "fuchsia", C[23] || CT.C23, "papayawhip", C[24] || CT.C24, "blanchedalmond", C[25] || CT.C25, "transparent", C[26] || CT.C26, "chartreuse", C[27] || CT.C27, "dimgray", C[28] || CT.C28, "black", C[29] || CT.C29, "peachpuff", C[30] || CT.C30, "springgreen", C[31] || CT.C31, "aquamarine", C[32] || CT.C32, "white", C[33] || CT.C33, "orange", C[34] || CT.C34, "lightsalmon", C[35] || CT.C35, "darkslategray", C[18] || CT.C18, "brown", C[36] || CT.C36, "ivory", C[37] || CT.C37, "dodgerblue", C[38] || CT.C38, "peru", C[39] || CT.C39, "lawngreen", C[40] || CT.C40, "chocolate", C[41] || CT.C41, "crimson", C[42] || CT.C42, "forestgreen", C[43] || CT.C43, "darkgrey", C[44] || CT.C44, "lightseagreen", C[45] || CT.C45, "cyan", C[46] || CT.C46, "mintcream", C[47] || CT.C47, "silver", C[48] || CT.C48, "antiquewhite", C[49] || CT.C49, "mediumorchid", C[50] || CT.C50, "skyblue", C[51] || CT.C51, "gray", C[52] || CT.C52, "darkturquoise", C[53] || CT.C53, "goldenrod", C[54] || CT.C54, "darkgreen", C[55] || CT.C55, "floralwhite", C[56] || CT.C56, "darkviolet", C[57] || CT.C57, "darkgray", C[44] || CT.C44, "moccasin", C[58] || CT.C58, "saddlebrown", C[59] || CT.C59, "grey", C[52] || CT.C52, "darkslateblue", C[60] || CT.C60, "lightskyblue", C[61] || CT.C61, "lightpink", C[62] || CT.C62, "mediumvioletred", C[63] || CT.C63, "slategrey", C[64] || CT.C64, "red", C[65] || CT.C65, "deeppink", C[66] || CT.C66, "limegreen", C[67] || CT.C67, "darkmagenta", C[68] || CT.C68, "palegoldenrod", C[69] || CT.C69, "plum", C[70] || CT.C70, "turquoise", C[71] || CT.C71, "lightgrey", C[72] || CT.C72, "lightgoldenrodyellow", C[73] || CT.C73, "darkgoldenrod", C[74] || CT.C74, "lavender", C[75] || CT.C75, "maroon", C[76] || CT.C76, "yellowgreen", C[77] || CT.C77, "sandybrown", C[78] || CT.C78, "thistle", C[79] || CT.C79, "violet", C[80] || CT.C80, "navy", C[81] || CT.C81, "magenta", C[23] || CT.C23, "dimgrey", C[28] || CT.C28, "tan", C[82] || CT.C82, "rosybrown", C[83] || CT.C83, "olivedrab", C[84] || CT.C84, "blue", C[85] || CT.C85, "lightblue", C[86] || CT.C86, "ghostwhite", C[87] || CT.C87, "honeydew", C[88] || CT.C88, "cornflowerblue", C[89] || CT.C89, "slateblue", C[90] || CT.C90, "linen", C[91] || CT.C91, "darkblue", C[92] || CT.C92, "powderblue", C[93] || CT.C93, "seagreen", C[94] || CT.C94, "darkkhaki", C[95] || CT.C95, "snow", C[96] || CT.C96, "sienna", C[97] || CT.C97, "mediumblue", C[98] || CT.C98, "royalblue", C[99] || CT.C99, "lightcyan", C[100] || CT.C100, "green", C[101] || CT.C101, "mediumpurple", C[102] || CT.C102, "midnightblue", C[103] || CT.C103, "cornsilk", C[104] || CT.C104, "paleturquoise", C[105] || CT.C105, "bisque", C[106] || CT.C106, "slategray", C[64] || CT.C64, "darkcyan", C[107] || CT.C107, "khaki", C[108] || CT.C108, "wheat", C[109] || CT.C109, "teal", C[110] || CT.C110, "darkorchid", C[111] || CT.C111, "deepskyblue", C[112] || CT.C112, "salmon", C[113] || CT.C113, "darkred", C[114] || CT.C114, "steelblue", C[115] || CT.C115, "palevioletred", C[116] || CT.C116, "lightslategray", C[117] || CT.C117, "aliceblue", C[118] || CT.C118, "lightslategrey", C[117] || CT.C117, "lightgreen", C[119] || CT.C119, "orchid", C[120] || CT.C120, "gainsboro", C[121] || CT.C121, "mediumseagreen", C[122] || CT.C122, "lightgray", C[72] || CT.C72, "mediumturquoise", C[123] || CT.C123, "lemonchiffon", C[124] || CT.C124, "cadetblue", C[125] || CT.C125, "lightyellow", C[126] || CT.C126, "lavenderblush", C[127] || CT.C127, "coral", C[128] || CT.C128, "purple", C[129] || CT.C129, "aqua", C[46] || CT.C46, "whitesmoke", C[130] || CT.C130, "mediumslateblue", C[131] || CT.C131, "darkorange", C[132] || CT.C132, "mediumaquamarine", C[133] || CT.C133, "darksalmon", C[134] || CT.C134, "beige", C[135] || CT.C135, "blueviolet", C[136] || CT.C136, "azure", C[137] || CT.C137, "lightsteelblue", C[138] || CT.C138, "oldlace", C[139] || CT.C139]);
+    }
+  }, false);
+  var C = Array(140).fill(void 0);
+  var PdfColor_blue = dart.privateName(color, "PdfColor.blue");
+  var PdfColor_green = dart.privateName(color, "PdfColor.green");
+  var PdfColor_red = dart.privateName(color, "PdfColor.red");
+  var PdfColor_alpha = dart.privateName(color, "PdfColor.alpha");
+  dart.defineLazy(colors, {
+    /*colors.svgColors*/get svgColors() {
+      return C[0] || CT.C0;
+    }
+  }, false);
+  dart.trackLibraries("packages/pdf/src/svg/colors.dart", {
+    "package:pdf/src/svg/colors.dart": colors
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["colors.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAkBM,gBAAS","file":"../../../../../../../../../../../../packages/pdf/src/svg/colors.dart.lib.js"}');
+  // Exports:
+  return {
+    src__svg__colors: colors
+  };
+}));
+
+//# sourceMappingURL=colors.dart.lib.js.map

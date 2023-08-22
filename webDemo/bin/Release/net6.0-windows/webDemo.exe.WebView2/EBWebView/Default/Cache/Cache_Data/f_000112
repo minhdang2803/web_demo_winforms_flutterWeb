@@ -1,0 +1,425 @@
+define(['dart_sdk', 'packages/xml/src/xml/utils/simple_name.dart', 'packages/xml/src/xml/dtd/external_id.dart', 'packages/xml/src/xml/enums/attribute_type.dart', 'packages/xml/src/xml/entities/entity_mapping.dart'], (function load__packages__xml__src__xml__builder_dart(dart_sdk, packages__xml__src__xml__utils__simple_name$46dart, packages__xml__src__xml__dtd__external_id$46dart, packages__xml__src__xml__enums__attribute_type$46dart, packages__xml__src__xml__entities__entity_mapping$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text$ = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__text;
+  const cdata = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__cdata;
+  const declaration$ = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__declaration;
+  const doctype = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__doctype;
+  const processing = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__processing;
+  const comment = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__comment;
+  const attribute$ = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__attribute;
+  const document_fragment = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__document_fragment;
+  const document = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__document;
+  const namespace = packages__xml__src__xml__utils__simple_name$46dart.src__xml__utils__namespace;
+  const name$ = packages__xml__src__xml__utils__simple_name$46dart.src__xml__utils__name;
+  const node = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__node;
+  const element = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__element;
+  const data = packages__xml__src__xml__utils__simple_name$46dart.src__xml__nodes__data;
+  const external_id = packages__xml__src__xml__dtd__external_id$46dart.src__xml__dtd__external_id;
+  const attribute_type = packages__xml__src__xml__enums__attribute_type$46dart.src__xml__enums__attribute_type;
+  const entity_mapping = packages__xml__src__xml__entities__entity_mapping$46dart.src__xml__entities__entity_mapping;
+  var builder = Object.create(dart.library);
+  var $last = dartx.last;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $toString = dartx.toString;
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $firstWhere = dartx.firstWhere;
+  var $remove = dartx.remove;
+  var $removeLast = dartx.removeLast;
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  var $any = dartx.any;
+  var $values = dartx.values;
+  var $_set = dartx._set;
+  var $length = dartx.length;
+  var $clear = dartx.clear;
+  var $lastWhere = dartx.lastWhere;
+  var $isEmpty = dartx.isEmpty;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfNodeBuilder: () => (T.JSArrayOfNodeBuilder = dart.constFn(_interceptors.JSArray$(builder.NodeBuilder)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
+    XmlAttributeTobool: () => (T.XmlAttributeTobool = dart.constFn(dart.fnType(core.bool, [attribute$.XmlAttribute])))(),
+    StringAndNamespaceDataTovoid: () => (T.StringAndNamespaceDataTovoid = dart.constFn(dart.fnType(dart.void, [core.String, builder.NamespaceData])))(),
+    NodeBuilderTobool: () => (T.NodeBuilderTobool = dart.constFn(dart.fnType(core.bool, [builder.NodeBuilder])))(),
+    NamespaceDataTobool: () => (T.NamespaceDataTobool = dart.constFn(dart.fnType(core.bool, [builder.NamespaceData])))(),
+    NodeBuilderToXmlDocument: () => (T.NodeBuilderToXmlDocument = dart.constFn(dart.fnType(document.XmlDocument, [builder.NodeBuilder])))(),
+    NodeBuilderToXmlDocumentFragment: () => (T.NodeBuilderToXmlDocumentFragment = dart.constFn(dart.fnType(document_fragment.XmlDocumentFragment, [builder.NodeBuilder])))(),
+    VoidToNever: () => (T.VoidToNever = dart.constFn(dart.fnType(dart.Never, [])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    XmlNodeToXmlNode: () => (T.XmlNodeToXmlNode = dart.constFn(dart.fnType(node.XmlNode, [node.XmlNode])))(),
+    IdentityMapOfString$NamespaceData: () => (T.IdentityMapOfString$NamespaceData = dart.constFn(_js_helper.IdentityMap$(core.String, builder.NamespaceData)))(),
+    JSArrayOfXmlAttribute: () => (T.JSArrayOfXmlAttribute = dart.constFn(_interceptors.JSArray$(attribute$.XmlAttribute)))(),
+    JSArrayOfXmlNode: () => (T.JSArrayOfXmlNode = dart.constFn(_interceptors.JSArray$(node.XmlNode)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.constMap(core.String, core.String, []);
+    },
+    get C1() {
+      return C[1] = dart.constMap(core.String, T.StringN(), []);
+    }
+  }, false);
+  var C = Array(2).fill(void 0);
+  var I = ["package:xml/src/xml/builder.dart"];
+  var optimizeNamespaces$ = dart.privateName(builder, "XmlBuilder.optimizeNamespaces");
+  var _stack = dart.privateName(builder, "_stack");
+  var _reset = dart.privateName(builder, "_reset");
+  var _insert = dart.privateName(builder, "_insert");
+  var _buildName = dart.privateName(builder, "_buildName");
+  var _build = dart.privateName(builder, "_build");
+  var _lookup = dart.privateName(builder, "_lookup");
+  builder.XmlBuilder = class XmlBuilder extends core.Object {
+    get optimizeNamespaces() {
+      return this[optimizeNamespaces$];
+    }
+    set optimizeNamespaces(value) {
+      super.optimizeNamespaces = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let optimizeNamespaces = opts && 'optimizeNamespaces' in opts ? opts.optimizeNamespaces : false;
+      return new builder.XmlBuilder.new({optimizeNamespaces: optimizeNamespaces});
+    }
+    text(text) {
+      let children = this[_stack][$last].children;
+      if (children[$isNotEmpty]) {
+        let lastChild = children[$last];
+        if (text$.XmlText.is(lastChild)) {
+          lastChild.text = lastChild.text + text[$toString]();
+          return;
+        }
+      }
+      children[$add](new text$.XmlText.new(text[$toString]()));
+    }
+    cdata(text) {
+      this[_stack][$last].children[$add](new cdata.XmlCDATA.new(text[$toString]()));
+    }
+    declaration(opts) {
+      let t0;
+      let version = opts && 'version' in opts ? opts.version : "1.0";
+      let encoding = opts && 'encoding' in opts ? opts.encoding : null;
+      let attributes = opts && 'attributes' in opts ? opts.attributes : C[0] || CT.C0;
+      let declaration = (t0 = new declaration$.XmlDeclaration.new(), (() => {
+        t0.version = version;
+        t0.encoding = encoding;
+        return t0;
+      })());
+      attributes[$forEach](dart.bind(declaration, 'setAttribute'));
+      this[_stack][$last].children[$add](declaration);
+    }
+    doctype(name, opts) {
+      let publicId = opts && 'publicId' in opts ? opts.publicId : null;
+      let systemId = opts && 'systemId' in opts ? opts.systemId : null;
+      let internalSubset = opts && 'internalSubset' in opts ? opts.internalSubset : null;
+      if (publicId != null && systemId == null) {
+        dart.throw(new core.ArgumentError.new("A system ID is required, if a public ID is provided"));
+      }
+      let externalId = publicId != null && systemId != null ? new external_id.DtdExternalId.public(publicId, attribute_type.XmlAttributeType.DOUBLE_QUOTE, systemId, attribute_type.XmlAttributeType.DOUBLE_QUOTE) : publicId == null && systemId != null ? new external_id.DtdExternalId.system(systemId, attribute_type.XmlAttributeType.DOUBLE_QUOTE) : null;
+      this[_stack][$last].children[$add](new doctype.XmlDoctype.new(name, externalId, internalSubset));
+    }
+    processing(target, text) {
+      this[_stack][$last].children[$add](new processing.XmlProcessing.new(target, text[$toString]()));
+    }
+    comment(text) {
+      this[_stack][$last].children[$add](new comment.XmlComment.new(text[$toString]()));
+    }
+    element(name, opts) {
+      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
+      let namespaces = opts && 'namespaces' in opts ? opts.namespaces : C[1] || CT.C1;
+      let attributes = opts && 'attributes' in opts ? opts.attributes : C[0] || CT.C0;
+      let isSelfClosing = opts && 'isSelfClosing' in opts ? opts.isSelfClosing : true;
+      let nest = opts && 'nest' in opts ? opts.nest : null;
+      let element = new builder.NodeBuilder.new();
+      this[_stack][$add](element);
+      try {
+        namespaces[$forEach](dart.bind(this, 'namespace'));
+        attributes[$forEach](dart.bind(this, 'attribute'));
+        if (nest != null) {
+          this[_insert](nest);
+        }
+        element.name = this[_buildName](name, namespace);
+        element.isSelfClosing = isSelfClosing;
+        if (this.optimizeNamespaces) {
+          element.namespaces[$forEach](dart.fn((uri, meta) => {
+            if (!meta.used) {
+              let name = meta.name;
+              let attribute = element.attributes[$firstWhere](dart.fn(attribute => attribute.name._equals(name), T.XmlAttributeTobool()));
+              element.attributes[$remove](attribute);
+            }
+          }, T.StringAndNamespaceDataTovoid()));
+        }
+      } finally {
+        this[_stack][$removeLast]();
+      }
+      this[_stack][$last].children[$add](element.buildElement());
+    }
+    attribute(name, value, opts) {
+      let t0;
+      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
+      let attributeType = opts && 'attributeType' in opts ? opts.attributeType : null;
+      let attribute = new attribute$.XmlAttribute.new(this[_buildName](name, namespace), value[$toString](), (t0 = attributeType, t0 == null ? attribute_type.XmlAttributeType.DOUBLE_QUOTE : t0));
+      this[_stack][$last].attributes[$add](attribute);
+    }
+    xml(input, opts) {
+      let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+      let fragment = document_fragment.XmlDocumentFragment.parse(input, {entityMapping: entityMapping});
+      this[_stack][$last].children[$add](fragment);
+    }
+    namespace(uri, prefix = null) {
+      if (prefix === "xmlns" || prefix === "xml") {
+        dart.throw(new core.ArgumentError.new("The \"" + dart.str(prefix) + "\" prefix cannot be bound."));
+      }
+      if (this.optimizeNamespaces && this[_stack][$any](dart.fn(builder => builder.namespaces[$containsKey](uri) && dart.nullCheck(builder.namespaces[$_get](uri)).prefix == prefix, T.NodeBuilderTobool()))) {
+        return;
+      }
+      if (this[_stack][$last].namespaces[$values][$any](dart.fn(meta => meta.prefix == prefix, T.NamespaceDataTobool()))) {
+        dart.throw(new core.ArgumentError.new("The \"" + dart.str(prefix) + "\" prefix conflicts with existing binding."));
+      }
+      let meta = new builder.NamespaceData.new(prefix, false);
+      this[_stack][$last].attributes[$add](new attribute$.XmlAttribute.new(meta.name, uri, attribute_type.XmlAttributeType.DOUBLE_QUOTE));
+      this[_stack][$last].namespaces[$_set](uri, meta);
+    }
+    buildDocument() {
+      return this[_build](document.XmlDocument, dart.fn(builder => builder.buildDocument(), T.NodeBuilderToXmlDocument()));
+    }
+    buildFragment() {
+      return this[_build](document_fragment.XmlDocumentFragment, dart.fn(builder => builder.buildFragment(), T.NodeBuilderToXmlDocumentFragment()));
+    }
+    [_build](T, builder) {
+      if (this[_stack][$length] !== 1) {
+        dart.throw(new core.StateError.new("Unable to build an incomplete DOM element."));
+      }
+      try {
+        return builder(this[_stack][$last]);
+      } finally {
+        this[_reset]();
+      }
+    }
+    [_reset]() {
+      this[_stack][$clear]();
+      let node = new builder.NodeBuilder.new();
+      node.namespaces[$_set](namespace.xmlUri, builder.NamespaceData.xmlData);
+      this[_stack][$add](node);
+    }
+    [_buildName](name, uri) {
+      if (uri != null && uri[$isNotEmpty]) {
+        let meta = this[_lookup](uri);
+        meta.used = true;
+        return name$.XmlName.new(name, meta.prefix);
+      } else {
+        return name$.XmlName.fromString(name);
+      }
+    }
+    [_lookup](uri) {
+      let builder = this[_stack][$lastWhere](dart.fn(builder => builder.namespaces[$containsKey](uri), T.NodeBuilderTobool()), {orElse: dart.fn(() => dart.throw(new core.ArgumentError.new("Undefined namespace: " + uri)), T.VoidToNever())});
+      return dart.nullCheck(builder.namespaces[$_get](uri));
+    }
+    [_insert](value) {
+      if (T.VoidTovoid().is(value)) {
+        value();
+      } else if (core.Iterable.is(value)) {
+        value[$forEach](dart.bind(this, _insert));
+      } else if (node.XmlNode.is(value)) {
+        if (text$.XmlText.is(value)) {
+          this.text(value.text);
+        } else if (attribute$.XmlAttribute.is(value)) {
+          this[_stack][$last].attributes[$add](value.copy());
+        } else if (element.XmlElement.is(value) || data.XmlData.is(value)) {
+          this[_stack][$last].children[$add](value.copy());
+        } else if (document_fragment.XmlDocumentFragment.is(value)) {
+          value.children.map(node.XmlNode, dart.fn(element => element.copy(), T.XmlNodeToXmlNode()))[$forEach](dart.bind(this, _insert));
+        } else {
+          dart.throw(new core.ArgumentError.new("Unable to add element of type " + dart.str(value.nodeType)));
+        }
+      } else {
+        this.text(dart.toString(value));
+      }
+    }
+  };
+  (builder.XmlBuilder.new = function(opts) {
+    let optimizeNamespaces = opts && 'optimizeNamespaces' in opts ? opts.optimizeNamespaces : false;
+    this[_stack] = T.JSArrayOfNodeBuilder().of([]);
+    this[optimizeNamespaces$] = optimizeNamespaces;
+    this[_reset]();
+  }).prototype = builder.XmlBuilder.prototype;
+  dart.addTypeTests(builder.XmlBuilder);
+  dart.addTypeCaches(builder.XmlBuilder);
+  dart.setMethodSignature(builder.XmlBuilder, () => ({
+    __proto__: dart.getMethods(builder.XmlBuilder.__proto__),
+    text: dart.fnType(dart.void, [core.Object]),
+    cdata: dart.fnType(dart.void, [core.Object]),
+    declaration: dart.fnType(dart.void, [], {attributes: core.Map$(core.String, core.String), encoding: dart.nullable(core.String), version: core.String}, {}),
+    doctype: dart.fnType(dart.void, [core.String], {internalSubset: dart.nullable(core.String), publicId: dart.nullable(core.String), systemId: dart.nullable(core.String)}, {}),
+    processing: dart.fnType(dart.void, [core.String, core.Object]),
+    comment: dart.fnType(dart.void, [core.Object]),
+    element: dart.fnType(dart.void, [core.String], {attributes: core.Map$(core.String, core.String), isSelfClosing: core.bool, namespace: dart.nullable(core.String), namespaces: core.Map$(core.String, dart.nullable(core.String)), nest: dart.nullable(core.Object)}, {}),
+    attribute: dart.fnType(dart.void, [core.String, core.Object], {attributeType: dart.nullable(attribute_type.XmlAttributeType), namespace: dart.nullable(core.String)}, {}),
+    xml: dart.fnType(dart.void, [core.String], {entityMapping: dart.nullable(entity_mapping.XmlEntityMapping)}, {}),
+    namespace: dart.fnType(dart.void, [core.String], [dart.nullable(core.String)]),
+    buildDocument: dart.fnType(document.XmlDocument, []),
+    buildFragment: dart.fnType(document_fragment.XmlDocumentFragment, []),
+    [_build]: dart.gFnType(T => [T, [dart.fnType(T, [builder.NodeBuilder])]], T => [node.XmlNode]),
+    [_reset]: dart.fnType(dart.void, []),
+    [_buildName]: dart.fnType(name$.XmlName, [core.String, dart.nullable(core.String)]),
+    [_lookup]: dart.fnType(builder.NamespaceData, [core.String]),
+    [_insert]: dart.fnType(dart.void, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(builder.XmlBuilder, I[0]);
+  dart.setFieldSignature(builder.XmlBuilder, () => ({
+    __proto__: dart.getFields(builder.XmlBuilder.__proto__),
+    optimizeNamespaces: dart.finalFieldType(core.bool),
+    [_stack]: dart.finalFieldType(core.List$(builder.NodeBuilder))
+  }));
+  var prefix$ = dart.privateName(builder, "NamespaceData.prefix");
+  var used$ = dart.privateName(builder, "NamespaceData.used");
+  builder.NamespaceData = class NamespaceData extends core.Object {
+    get prefix() {
+      return this[prefix$];
+    }
+    set prefix(value) {
+      super.prefix = value;
+    }
+    get used() {
+      return this[used$];
+    }
+    set used(value) {
+      this[used$] = value;
+    }
+    static ['_#new#tearOff'](prefix, used = false) {
+      return new builder.NamespaceData.new(prefix, used);
+    }
+    get name() {
+      return this.prefix == null || dart.nullCheck(this.prefix)[$isEmpty] ? name$.XmlName.new("xmlns") : name$.XmlName.new(dart.nullCheck(this.prefix), "xmlns");
+    }
+  };
+  (builder.NamespaceData.new = function(prefix, used = false) {
+    this[prefix$] = prefix;
+    this[used$] = used;
+    ;
+  }).prototype = builder.NamespaceData.prototype;
+  dart.addTypeTests(builder.NamespaceData);
+  dart.addTypeCaches(builder.NamespaceData);
+  dart.setGetterSignature(builder.NamespaceData, () => ({
+    __proto__: dart.getGetters(builder.NamespaceData.__proto__),
+    name: name$.XmlName
+  }));
+  dart.setLibraryUri(builder.NamespaceData, I[0]);
+  dart.setFieldSignature(builder.NamespaceData, () => ({
+    __proto__: dart.getFields(builder.NamespaceData.__proto__),
+    prefix: dart.finalFieldType(dart.nullable(core.String)),
+    used: dart.fieldType(core.bool)
+  }));
+  dart.setStaticFieldSignature(builder.NamespaceData, () => ['xmlData']);
+  dart.defineLazy(builder.NamespaceData, {
+    /*builder.NamespaceData.xmlData*/get xmlData() {
+      return new builder.NamespaceData.new("xml", true);
+    }
+  }, false);
+  var namespaces = dart.privateName(builder, "NodeBuilder.namespaces");
+  var attributes = dart.privateName(builder, "NodeBuilder.attributes");
+  var children = dart.privateName(builder, "NodeBuilder.children");
+  var isSelfClosing = dart.privateName(builder, "NodeBuilder.isSelfClosing");
+  var __NodeBuilder_name = dart.privateName(builder, "_#NodeBuilder#name");
+  builder.NodeBuilder = class NodeBuilder extends core.Object {
+    get namespaces() {
+      return this[namespaces];
+    }
+    set namespaces(value) {
+      super.namespaces = value;
+    }
+    get attributes() {
+      return this[attributes];
+    }
+    set attributes(value) {
+      super.attributes = value;
+    }
+    get children() {
+      return this[children];
+    }
+    set children(value) {
+      super.children = value;
+    }
+    get isSelfClosing() {
+      return this[isSelfClosing];
+    }
+    set isSelfClosing(value) {
+      this[isSelfClosing] = value;
+    }
+    get name() {
+      let t0;
+      t0 = this[__NodeBuilder_name];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("name")) : t0;
+    }
+    set name(name$35param) {
+      if (this[__NodeBuilder_name] == null)
+        this[__NodeBuilder_name] = name$35param;
+      else
+        dart.throw(new _internal.LateError.fieldAI("name"));
+    }
+    buildElement() {
+      return new element.XmlElement.new(this.name, this.attributes, this.children, this.isSelfClosing);
+    }
+    buildDocument() {
+      return new document.XmlDocument.new(this.children);
+    }
+    buildFragment() {
+      return new document_fragment.XmlDocumentFragment.new(this.children);
+    }
+    static ['_#new#tearOff']() {
+      return new builder.NodeBuilder.new();
+    }
+  };
+  (builder.NodeBuilder.new = function() {
+    this[namespaces] = new (T.IdentityMapOfString$NamespaceData()).new();
+    this[attributes] = T.JSArrayOfXmlAttribute().of([]);
+    this[children] = T.JSArrayOfXmlNode().of([]);
+    this[isSelfClosing] = true;
+    this[__NodeBuilder_name] = null;
+    ;
+  }).prototype = builder.NodeBuilder.prototype;
+  dart.addTypeTests(builder.NodeBuilder);
+  dart.addTypeCaches(builder.NodeBuilder);
+  dart.setMethodSignature(builder.NodeBuilder, () => ({
+    __proto__: dart.getMethods(builder.NodeBuilder.__proto__),
+    buildElement: dart.fnType(element.XmlElement, []),
+    buildDocument: dart.fnType(document.XmlDocument, []),
+    buildFragment: dart.fnType(document_fragment.XmlDocumentFragment, [])
+  }));
+  dart.setGetterSignature(builder.NodeBuilder, () => ({
+    __proto__: dart.getGetters(builder.NodeBuilder.__proto__),
+    name: name$.XmlName
+  }));
+  dart.setSetterSignature(builder.NodeBuilder, () => ({
+    __proto__: dart.getSetters(builder.NodeBuilder.__proto__),
+    name: name$.XmlName
+  }));
+  dart.setLibraryUri(builder.NodeBuilder, I[0]);
+  dart.setFieldSignature(builder.NodeBuilder, () => ({
+    __proto__: dart.getFields(builder.NodeBuilder.__proto__),
+    namespaces: dart.finalFieldType(core.Map$(core.String, builder.NamespaceData)),
+    attributes: dart.finalFieldType(core.List$(attribute$.XmlAttribute)),
+    children: dart.finalFieldType(core.List$(node.XmlNode)),
+    isSelfClosing: dart.fieldType(core.bool),
+    [__NodeBuilder_name]: dart.fieldType(dart.nullable(name$.XmlName))
+  }));
+  dart.trackLibraries("packages/xml/src/xml/builder.dart", {
+    "package:xml/src/xml/builder.dart": builder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["builder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/xml/src/xml/builder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__xml__builder: builder
+  };
+}));
+
+//# sourceMappingURL=builder.dart.lib.js.map

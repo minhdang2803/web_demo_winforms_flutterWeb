@@ -1,0 +1,814 @@
+define(['dart_sdk', 'packages/get/get_rx/src/rx_types/rx_types.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/material/colors.dart', 'packages/cc_library/responsive/screen_size_config.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/painting/alignment.dart'], (function load__packages__cc_library__widget__responsive_table__model__responsive_table_model_dart(dart_sdk, packages__get__get_rx__src__rx_types__rx_types$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__material__colors$46dart, packages__cc_library__responsive__screen_size_config$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__painting__alignment$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const rx_types = packages__get__get_rx__src__rx_types__rx_types$46dart.get_rx__src__rx_types__rx_types;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const screen_size_config = packages__cc_library__responsive__screen_size_config$46dart.responsive__screen_size_config;
+  const scroll_controller = packages__flutter__src__widgets__title$46dart.src__widgets__scroll_controller;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  var responsive_table_model = Object.create(dart.library);
+  var $length = dartx.length;
+  var $sort = dartx.sort;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $clear = dartx.clear;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    JSArrayOfDeviceScreen: () => (T$.JSArrayOfDeviceScreen = dart.constFn(_interceptors.JSArray$(screen_size_config.DeviceScreen)))(),
+    JSArrayOfint: () => (T$.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/responsive_table/model/responsive_table_model.dart",
+    "package:cc_library/widget/responsive_table/model/responsive_table_model.dart"
+  ];
+  var scrollController$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.scrollController");
+  var countColumn$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.countColumn");
+  var flexs$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.flexs");
+  var widthBorder$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.widthBorder");
+  var colorBorder$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.colorBorder");
+  var width$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.width");
+  var height$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.height");
+  var headerTitle$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerTitle");
+  var headerCustom$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerCustom");
+  var builderHeaderItem$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.builderHeaderItem");
+  var headerClick$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerClick");
+  var headerTitleStyle$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerTitleStyle");
+  var headerTitleStyleMobile = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerTitleStyleMobile");
+  var headerAlignment$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerAlignment");
+  var backgroundHeader$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.backgroundHeader");
+  var headerHeight$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.headerHeight");
+  var totalPage = dart.privateName(responsive_table_model, "ResponsiveTableModel.totalPage");
+  var pageSize$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.pageSize");
+  var currentPage = dart.privateName(responsive_table_model, "ResponsiveTableModel.currentPage");
+  var backgroundBottom$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.backgroundBottom");
+  var bottomHeight$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.bottomHeight");
+  var bottomStyle$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.bottomStyle");
+  var bottomCustom$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.bottomCustom");
+  var builderBottom$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.builderBottom");
+  var contentOptions$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.contentOptions");
+  var builderMobile$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.builderMobile");
+  var backgroundContent$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.backgroundContent");
+  var contentData$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.contentData");
+  var contentMapData = dart.privateName(responsive_table_model, "ResponsiveTableModel.contentMapData");
+  var rowHeight$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.rowHeight");
+  var thumbColor$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.thumbColor");
+  var thickness$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.thickness");
+  var applyMobileUI$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.applyMobileUI");
+  var onRefresh$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.onRefresh");
+  var onGoToPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.onGoToPage");
+  var nextPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.nextPage");
+  var prevPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.prevPage");
+  var lastPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.lastPage");
+  var firstPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.firstPage");
+  var getDataOfPage$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.getDataOfPage");
+  var sortDataCondition$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.sortDataCondition");
+  var emptyDataCustom$ = dart.privateName(responsive_table_model, "ResponsiveTableModel.emptyDataCustom");
+  const _is_ResponsiveTableModel_default = Symbol('_is_ResponsiveTableModel_default');
+  responsive_table_model.ResponsiveTableModel$ = dart.generic(T => {
+    var __t$JSArrayOfT = () => (__t$JSArrayOfT = dart.constFn(_interceptors.JSArray$(T)))();
+    var __t$ListOfT = () => (__t$ListOfT = dart.constFn(core.List$(T)))();
+    var __t$LinkedMapOfint$ListOfT = () => (__t$LinkedMapOfint$ListOfT = dart.constFn(_js_helper.LinkedMap$(core.int, __t$ListOfT())))();
+    var __t$ItemContentTableOptionOfT = () => (__t$ItemContentTableOptionOfT = dart.constFn(responsive_table_model.ItemContentTableOption$(T)))();
+    var __t$ListOfItemContentTableOptionOfT = () => (__t$ListOfItemContentTableOptionOfT = dart.constFn(core.List$(__t$ItemContentTableOptionOfT())))();
+    var __t$ListNOfItemContentTableOptionOfT = () => (__t$ListNOfItemContentTableOptionOfT = dart.constFn(dart.nullable(__t$ListOfItemContentTableOptionOfT())))();
+    var __t$FutureOfListOfT = () => (__t$FutureOfListOfT = dart.constFn(async.Future$(__t$ListOfT())))();
+    var __t$VoidToFutureOfListOfT = () => (__t$VoidToFutureOfListOfT = dart.constFn(dart.fnType(__t$FutureOfListOfT(), [])))();
+    var __t$VoidToNFutureOfListOfT = () => (__t$VoidToNFutureOfListOfT = dart.constFn(dart.nullable(__t$VoidToFutureOfListOfT())))();
+    var __t$intAndintToFutureOfListOfT = () => (__t$intAndintToFutureOfListOfT = dart.constFn(dart.fnType(__t$FutureOfListOfT(), [core.int, core.int])))();
+    var __t$intAndintToNFutureOfListOfT = () => (__t$intAndintToNFutureOfListOfT = dart.constFn(dart.nullable(__t$intAndintToFutureOfListOfT())))();
+    var __t$TAndTToint = () => (__t$TAndTToint = dart.constFn(dart.fnType(core.int, [T, T])))();
+    class ResponsiveTableModel extends core.Object {
+      get scrollController() {
+        return this[scrollController$];
+      }
+      set scrollController(value) {
+        this[scrollController$] = value;
+      }
+      get countColumn() {
+        return this[countColumn$];
+      }
+      set countColumn(value) {
+        super.countColumn = value;
+      }
+      get flexs() {
+        return this[flexs$];
+      }
+      set flexs(value) {
+        super.flexs = value;
+      }
+      get widthBorder() {
+        return this[widthBorder$];
+      }
+      set widthBorder(value) {
+        this[widthBorder$] = value;
+      }
+      get colorBorder() {
+        return this[colorBorder$];
+      }
+      set colorBorder(value) {
+        this[colorBorder$] = value;
+      }
+      get width() {
+        return this[width$];
+      }
+      set width(value) {
+        this[width$] = value;
+      }
+      get height() {
+        return this[height$];
+      }
+      set height(value) {
+        this[height$] = value;
+      }
+      get headerTitle() {
+        return this[headerTitle$];
+      }
+      set headerTitle(value) {
+        this[headerTitle$] = value;
+      }
+      get headerCustom() {
+        return this[headerCustom$];
+      }
+      set headerCustom(value) {
+        this[headerCustom$] = value;
+      }
+      get builderHeaderItem() {
+        return this[builderHeaderItem$];
+      }
+      set builderHeaderItem(value) {
+        this[builderHeaderItem$] = value;
+      }
+      get headerClick() {
+        return this[headerClick$];
+      }
+      set headerClick(value) {
+        this[headerClick$] = value;
+      }
+      get headerTitleStyle() {
+        return this[headerTitleStyle$];
+      }
+      set headerTitleStyle(value) {
+        this[headerTitleStyle$] = value;
+      }
+      get headerTitleStyleMobile() {
+        return this[headerTitleStyleMobile];
+      }
+      set headerTitleStyleMobile(value) {
+        this[headerTitleStyleMobile] = value;
+      }
+      get headerAlignment() {
+        return this[headerAlignment$];
+      }
+      set headerAlignment(value) {
+        this[headerAlignment$] = value;
+      }
+      get backgroundHeader() {
+        return this[backgroundHeader$];
+      }
+      set backgroundHeader(value) {
+        this[backgroundHeader$] = value;
+      }
+      get headerHeight() {
+        return this[headerHeight$];
+      }
+      set headerHeight(value) {
+        this[headerHeight$] = value;
+      }
+      get totalPage() {
+        return this[totalPage];
+      }
+      set totalPage(value) {
+        super.totalPage = value;
+      }
+      get pageSize() {
+        return this[pageSize$];
+      }
+      set pageSize(value) {
+        this[pageSize$] = value;
+      }
+      get currentPage() {
+        return this[currentPage];
+      }
+      set currentPage(value) {
+        super.currentPage = value;
+      }
+      get backgroundBottom() {
+        return this[backgroundBottom$];
+      }
+      set backgroundBottom(value) {
+        this[backgroundBottom$] = value;
+      }
+      get bottomHeight() {
+        return this[bottomHeight$];
+      }
+      set bottomHeight(value) {
+        this[bottomHeight$] = value;
+      }
+      get bottomStyle() {
+        return this[bottomStyle$];
+      }
+      set bottomStyle(value) {
+        this[bottomStyle$] = value;
+      }
+      get bottomCustom() {
+        return this[bottomCustom$];
+      }
+      set bottomCustom(value) {
+        this[bottomCustom$] = value;
+      }
+      get builderBottom() {
+        return this[builderBottom$];
+      }
+      set builderBottom(value) {
+        this[builderBottom$] = value;
+      }
+      get contentOptions() {
+        return this[contentOptions$];
+      }
+      set contentOptions(value) {
+        this[contentOptions$] = __t$ListNOfItemContentTableOptionOfT().as(value);
+      }
+      get builderMobile() {
+        return this[builderMobile$];
+      }
+      set builderMobile(value) {
+        this[builderMobile$] = value;
+      }
+      get backgroundContent() {
+        return this[backgroundContent$];
+      }
+      set backgroundContent(value) {
+        this[backgroundContent$] = value;
+      }
+      get contentData() {
+        return this[contentData$];
+      }
+      set contentData(value) {
+        super.contentData = value;
+      }
+      get contentMapData() {
+        return this[contentMapData];
+      }
+      set contentMapData(value) {
+        super.contentMapData = value;
+      }
+      get rowHeight() {
+        return this[rowHeight$];
+      }
+      set rowHeight(value) {
+        this[rowHeight$] = value;
+      }
+      get thumbColor() {
+        return this[thumbColor$];
+      }
+      set thumbColor(value) {
+        this[thumbColor$] = value;
+      }
+      get thickness() {
+        return this[thickness$];
+      }
+      set thickness(value) {
+        this[thickness$] = value;
+      }
+      get applyMobileUI() {
+        return this[applyMobileUI$];
+      }
+      set applyMobileUI(value) {
+        this[applyMobileUI$] = value;
+      }
+      get onRefresh() {
+        return this[onRefresh$];
+      }
+      set onRefresh(value) {
+        this[onRefresh$] = __t$VoidToNFutureOfListOfT().as(value);
+      }
+      get onGoToPage() {
+        return this[onGoToPage$];
+      }
+      set onGoToPage(value) {
+        this[onGoToPage$] = value;
+      }
+      get nextPage() {
+        return this[nextPage$];
+      }
+      set nextPage(value) {
+        this[nextPage$] = value;
+      }
+      get prevPage() {
+        return this[prevPage$];
+      }
+      set prevPage(value) {
+        this[prevPage$] = value;
+      }
+      get lastPage() {
+        return this[lastPage$];
+      }
+      set lastPage(value) {
+        this[lastPage$] = value;
+      }
+      get firstPage() {
+        return this[firstPage$];
+      }
+      set firstPage(value) {
+        this[firstPage$] = value;
+      }
+      get getDataOfPage() {
+        return this[getDataOfPage$];
+      }
+      set getDataOfPage(value) {
+        this[getDataOfPage$] = __t$intAndintToNFutureOfListOfT().as(value);
+      }
+      get sortDataCondition() {
+        return this[sortDataCondition$];
+      }
+      set sortDataCondition(value) {
+        this[sortDataCondition$] = value;
+      }
+      get emptyDataCustom() {
+        return this[emptyDataCustom$];
+      }
+      set emptyDataCustom(value) {
+        this[emptyDataCustom$] = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let scrollController = opts && 'scrollController' in opts ? opts.scrollController : null;
+        let countColumn = opts && 'countColumn' in opts ? opts.countColumn : null;
+        let flexs = opts && 'flexs' in opts ? opts.flexs : null;
+        let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+        let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+        let width = opts && 'width' in opts ? opts.width : null;
+        let height = opts && 'height' in opts ? opts.height : null;
+        let headerTitle = opts && 'headerTitle' in opts ? opts.headerTitle : null;
+        let headerCustom = opts && 'headerCustom' in opts ? opts.headerCustom : null;
+        let builderHeaderItem = opts && 'builderHeaderItem' in opts ? opts.builderHeaderItem : null;
+        let headerTitleStyle = opts && 'headerTitleStyle' in opts ? opts.headerTitleStyle : null;
+        let headerAlignment = opts && 'headerAlignment' in opts ? opts.headerAlignment : null;
+        let headerHeight = opts && 'headerHeight' in opts ? opts.headerHeight : null;
+        let bottomHeight = opts && 'bottomHeight' in opts ? opts.bottomHeight : null;
+        let builderBottom = opts && 'builderBottom' in opts ? opts.builderBottom : null;
+        let bottomCustom = opts && 'bottomCustom' in opts ? opts.bottomCustom : null;
+        let backgroundHeader = opts && 'backgroundHeader' in opts ? opts.backgroundHeader : null;
+        let pageSize = opts && 'pageSize' in opts ? opts.pageSize : null;
+        let backgroundBottom = opts && 'backgroundBottom' in opts ? opts.backgroundBottom : null;
+        let contentOptions = opts && 'contentOptions' in opts ? opts.contentOptions : null;
+        let builderMobile = opts && 'builderMobile' in opts ? opts.builderMobile : null;
+        let backgroundContent = opts && 'backgroundContent' in opts ? opts.backgroundContent : null;
+        let contentData = opts && 'contentData' in opts ? opts.contentData : null;
+        let rowHeight = opts && 'rowHeight' in opts ? opts.rowHeight : null;
+        let onRefresh = opts && 'onRefresh' in opts ? opts.onRefresh : null;
+        let onGoToPage = opts && 'onGoToPage' in opts ? opts.onGoToPage : null;
+        let totalPageIndex = opts && 'totalPageIndex' in opts ? opts.totalPageIndex : null;
+        let nextPage = opts && 'nextPage' in opts ? opts.nextPage : null;
+        let prevPage = opts && 'prevPage' in opts ? opts.prevPage : null;
+        let firstPage = opts && 'firstPage' in opts ? opts.firstPage : null;
+        let lastPage = opts && 'lastPage' in opts ? opts.lastPage : null;
+        let thumbColor = opts && 'thumbColor' in opts ? opts.thumbColor : null;
+        let thickness = opts && 'thickness' in opts ? opts.thickness : null;
+        let bottomStyle = opts && 'bottomStyle' in opts ? opts.bottomStyle : null;
+        let getDataOfPage = opts && 'getDataOfPage' in opts ? opts.getDataOfPage : null;
+        let sortDataCondition = opts && 'sortDataCondition' in opts ? opts.sortDataCondition : null;
+        let headerClick = opts && 'headerClick' in opts ? opts.headerClick : null;
+        let applyMobileUI = opts && 'applyMobileUI' in opts ? opts.applyMobileUI : null;
+        let emptyDataCustom = opts && 'emptyDataCustom' in opts ? opts.emptyDataCustom : null;
+        return new (responsive_table_model.ResponsiveTableModel$(T)).new({scrollController: scrollController, countColumn: countColumn, flexs: flexs, widthBorder: widthBorder, colorBorder: colorBorder, width: width, height: height, headerTitle: headerTitle, headerCustom: headerCustom, builderHeaderItem: builderHeaderItem, headerTitleStyle: headerTitleStyle, headerAlignment: headerAlignment, headerHeight: headerHeight, bottomHeight: bottomHeight, builderBottom: builderBottom, bottomCustom: bottomCustom, backgroundHeader: backgroundHeader, pageSize: pageSize, backgroundBottom: backgroundBottom, contentOptions: contentOptions, builderMobile: builderMobile, backgroundContent: backgroundContent, contentData: contentData, rowHeight: rowHeight, onRefresh: onRefresh, onGoToPage: onGoToPage, totalPageIndex: totalPageIndex, nextPage: nextPage, prevPage: prevPage, firstPage: firstPage, lastPage: lastPage, thumbColor: thumbColor, thickness: thickness, bottomStyle: bottomStyle, getDataOfPage: getDataOfPage, sortDataCondition: sortDataCondition, headerClick: headerClick, applyMobileUI: applyMobileUI, emptyDataCustom: emptyDataCustom});
+      }
+      set totalPageIndex(v) {
+        this.totalPage.value = v;
+      }
+      get totalPageIndex() {
+        return this.totalPage.value;
+      }
+      set currentPageIndex(v) {
+        this.currentPage.value = v;
+      }
+      get currentPageIndex() {
+        return this.currentPage.value;
+      }
+      initDataTable(list, pageIndex) {
+        __t$ListOfT().as(list);
+        return async.async(dart.void, (function* initDataTable() {
+          if (this.totalPage._equals(0)) {
+            this.totalPage.value = pageIndex;
+          }
+          if (this.sortDataCondition != null) {
+            list[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+          }
+          this.contentData.addAll(list);
+          this.contentMapData[$_set](pageIndex, list);
+          this.currentPage.value = pageIndex;
+        }).bind(this));
+      }
+      goNextPage() {
+        return async.async(dart.void, (function* goNextPage() {
+          let indexNextPage = this.currentPage.value + 1;
+          if (indexNextPage > this.totalPage.value) {
+            return;
+          }
+          if (this.contentMapData[$_get](indexNextPage) != null && dart.nullCheck(this.contentMapData[$_get](indexNextPage))[$length] > 0) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](indexNextPage));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.currentPage.value = indexNextPage;
+          } else {
+            yield this.getDataPage(indexNextPage);
+          }
+          if (this.prevPage != null) {
+            dart.dcall(dart.nullCheck(this.nextPage), [indexNextPage]);
+          }
+        }).bind(this));
+      }
+      goLastPage() {
+        return async.async(dart.void, (function* goLastPage() {
+          let indexLastPage = this.totalPage.value;
+          if (this.contentMapData[$_get](indexLastPage) != null && dart.nullCheck(this.contentMapData[$_get](indexLastPage))[$length] > 0) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](indexLastPage));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.currentPage.value = indexLastPage;
+          } else {
+            yield this.getDataPage(indexLastPage);
+          }
+          if (this.prevPage != null) {
+            dart.dcall(dart.nullCheck(this.lastPage), [indexLastPage]);
+          }
+        }).bind(this));
+      }
+      goFirstPage() {
+        return async.async(dart.void, (function* goFirstPage() {
+          let indexFirstPage = 1;
+          if (this.contentMapData[$_get](indexFirstPage) != null && dart.nullCheck(this.contentMapData[$_get](indexFirstPage))[$length] > 0) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](indexFirstPage));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.currentPage.value = indexFirstPage;
+          } else {
+            yield this.getDataPage(indexFirstPage);
+          }
+          if (this.prevPage != null) {
+            dart.dcall(dart.nullCheck(this.firstPage), [indexFirstPage]);
+          }
+        }).bind(this));
+      }
+      goPrevPage() {
+        return async.async(dart.void, (function* goPrevPage() {
+          let indexPrevPage = this.currentPage.value - 1;
+          if (indexPrevPage < 1) {
+            return;
+          }
+          if (this.contentMapData[$_get](indexPrevPage) != null && dart.nullCheck(this.contentMapData[$_get](indexPrevPage))[$length] > 0) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](indexPrevPage));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.currentPage.value = indexPrevPage;
+          } else {
+            yield this.getDataPage(indexPrevPage);
+          }
+          if (this.prevPage != null) {
+            dart.dcall(dart.nullCheck(this.prevPage), [indexPrevPage]);
+          }
+        }).bind(this));
+      }
+      goToPage(indexPage) {
+        return async.async(dart.void, (function* goToPage() {
+          if (indexPage < 1) {
+            return;
+          }
+          if (indexPage > this.totalPage.value) {
+            return;
+          }
+          if (this.contentMapData[$_get](indexPage) != null && dart.nullCheck(this.contentMapData[$_get](indexPage))[$length] > 0) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](indexPage));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.currentPage.value = indexPage;
+          } else {
+            yield this.getDataPage(indexPage);
+            if (this.onGoToPage != null) {
+              dart.dcall(dart.nullCheck(this.onGoToPage), [indexPage]);
+            }
+          }
+        }).bind(this));
+      }
+      getDataPage(indexPage) {
+        return async.async(dart.void, (function* getDataPage() {
+          let t0;
+          if (this.getDataOfPage != null) {
+            let data = (yield dart.nullCheck(this.getDataOfPage)(indexPage, (t0 = this.pageSize, t0 == null ? 0 : t0)));
+            this.contentData[$clear]();
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+            this.contentMapData[$_set](indexPage, data);
+            this.currentPage.value = indexPage;
+          }
+        }).bind(this));
+      }
+      refreshData() {
+        return async.async(dart.void, (function* refreshData() {
+          if (this.onRefresh != null) {
+            this.contentMapData[$clear]();
+            this.currentPage.value = 1;
+            let data = (yield dart.nullCheck(this.onRefresh)());
+            if (data[$isNotEmpty]) {
+              this.contentData[$clear]();
+              if (this.sortDataCondition != null) {
+                data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+              }
+              this.contentData.addAll(data);
+              this.contentMapData[$_set](1, data);
+              this.currentPage.value = 1;
+            }
+          }
+        }).bind(this));
+      }
+      clearData() {
+        return async.async(dart.void, (function* clearData() {
+          this.contentData[$clear]();
+          this.contentMapData[$clear]();
+          this.currentPage.value = 1;
+        }).bind(this));
+      }
+      sortData() {
+        return async.async(dart.void, (function* sortData() {
+          if (this.sortDataCondition != null) {
+            this.contentData[$clear]();
+            let data = dart.nullCheck(this.contentMapData[$_get](this.currentPage.value));
+            if (this.sortDataCondition != null) {
+              data[$sort](dart.fn((a, b) => dart.nullCheck(this.sortDataCondition)(a, b), __t$TAndTToint()));
+            }
+            this.contentData.addAll(data);
+          }
+        }).bind(this));
+      }
+      get listPageView() {
+        let ls = T$.JSArrayOfint().of([]);
+        let start = 1;
+        let end = 6;
+        if (this.currentPage.value - 2 >= start) {
+          start = this.currentPage.value - 2;
+          end = this.currentPage.value + 3;
+        }
+        for (let i = start; i < end; i = i + 1) {
+          ls[$add](i);
+        }
+        return ls;
+      }
+    }
+    (ResponsiveTableModel.new = function(opts) {
+      let t0;
+      let scrollController = opts && 'scrollController' in opts ? opts.scrollController : null;
+      let countColumn = opts && 'countColumn' in opts ? opts.countColumn : null;
+      let flexs = opts && 'flexs' in opts ? opts.flexs : null;
+      let widthBorder = opts && 'widthBorder' in opts ? opts.widthBorder : null;
+      let colorBorder = opts && 'colorBorder' in opts ? opts.colorBorder : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let headerTitle = opts && 'headerTitle' in opts ? opts.headerTitle : null;
+      let headerCustom = opts && 'headerCustom' in opts ? opts.headerCustom : null;
+      let builderHeaderItem = opts && 'builderHeaderItem' in opts ? opts.builderHeaderItem : null;
+      let headerTitleStyle = opts && 'headerTitleStyle' in opts ? opts.headerTitleStyle : null;
+      let headerAlignment = opts && 'headerAlignment' in opts ? opts.headerAlignment : null;
+      let headerHeight = opts && 'headerHeight' in opts ? opts.headerHeight : null;
+      let bottomHeight = opts && 'bottomHeight' in opts ? opts.bottomHeight : null;
+      let builderBottom = opts && 'builderBottom' in opts ? opts.builderBottom : null;
+      let bottomCustom = opts && 'bottomCustom' in opts ? opts.bottomCustom : null;
+      let backgroundHeader = opts && 'backgroundHeader' in opts ? opts.backgroundHeader : null;
+      let pageSize = opts && 'pageSize' in opts ? opts.pageSize : null;
+      let backgroundBottom = opts && 'backgroundBottom' in opts ? opts.backgroundBottom : null;
+      let contentOptions = opts && 'contentOptions' in opts ? opts.contentOptions : null;
+      let builderMobile = opts && 'builderMobile' in opts ? opts.builderMobile : null;
+      let backgroundContent = opts && 'backgroundContent' in opts ? opts.backgroundContent : null;
+      let contentData = opts && 'contentData' in opts ? opts.contentData : null;
+      let rowHeight = opts && 'rowHeight' in opts ? opts.rowHeight : null;
+      let onRefresh = opts && 'onRefresh' in opts ? opts.onRefresh : null;
+      let onGoToPage = opts && 'onGoToPage' in opts ? opts.onGoToPage : null;
+      let totalPageIndex = opts && 'totalPageIndex' in opts ? opts.totalPageIndex : null;
+      let nextPage = opts && 'nextPage' in opts ? opts.nextPage : null;
+      let prevPage = opts && 'prevPage' in opts ? opts.prevPage : null;
+      let firstPage = opts && 'firstPage' in opts ? opts.firstPage : null;
+      let lastPage = opts && 'lastPage' in opts ? opts.lastPage : null;
+      let thumbColor = opts && 'thumbColor' in opts ? opts.thumbColor : null;
+      let thickness = opts && 'thickness' in opts ? opts.thickness : null;
+      let bottomStyle = opts && 'bottomStyle' in opts ? opts.bottomStyle : null;
+      let getDataOfPage = opts && 'getDataOfPage' in opts ? opts.getDataOfPage : null;
+      let sortDataCondition = opts && 'sortDataCondition' in opts ? opts.sortDataCondition : null;
+      let headerClick = opts && 'headerClick' in opts ? opts.headerClick : null;
+      let applyMobileUI = opts && 'applyMobileUI' in opts ? opts.applyMobileUI : null;
+      let emptyDataCustom = opts && 'emptyDataCustom' in opts ? opts.emptyDataCustom : null;
+      this[headerTitleStyleMobile] = null;
+      this[totalPage] = rx_types['IntExtension|get#obs'](0);
+      this[currentPage] = rx_types['IntExtension|get#obs'](0);
+      this[contentData$] = rx_types['ListExtension|get#obs'](T, __t$JSArrayOfT().of([]));
+      this[contentMapData] = new (__t$LinkedMapOfint$ListOfT()).new();
+      this[scrollController$] = scrollController;
+      this[countColumn$] = countColumn;
+      this[flexs$] = flexs;
+      this[widthBorder$] = widthBorder;
+      this[colorBorder$] = colorBorder;
+      this[width$] = width;
+      this[height$] = height;
+      this[headerTitle$] = headerTitle;
+      this[headerCustom$] = headerCustom;
+      this[builderHeaderItem$] = builderHeaderItem;
+      this[headerTitleStyle$] = headerTitleStyle;
+      this[headerAlignment$] = headerAlignment;
+      this[headerHeight$] = headerHeight;
+      this[bottomHeight$] = bottomHeight;
+      this[builderBottom$] = builderBottom;
+      this[bottomCustom$] = bottomCustom;
+      this[backgroundHeader$] = backgroundHeader;
+      this[pageSize$] = pageSize;
+      this[backgroundBottom$] = backgroundBottom;
+      this[contentOptions$] = contentOptions;
+      this[builderMobile$] = builderMobile;
+      this[backgroundContent$] = backgroundContent;
+      this[rowHeight$] = rowHeight;
+      this[onRefresh$] = onRefresh;
+      this[onGoToPage$] = onGoToPage;
+      this[nextPage$] = nextPage;
+      this[prevPage$] = prevPage;
+      this[firstPage$] = firstPage;
+      this[lastPage$] = lastPage;
+      this[thumbColor$] = thumbColor;
+      this[thickness$] = thickness;
+      this[bottomStyle$] = bottomStyle;
+      this[getDataOfPage$] = getDataOfPage;
+      this[sortDataCondition$] = sortDataCondition;
+      this[headerClick$] = headerClick;
+      this[applyMobileUI$] = applyMobileUI;
+      this[emptyDataCustom$] = emptyDataCustom;
+      if (!(this.countColumn === this.flexs[$length])) dart.assertFailed(null, I[0], 123, 12, "countColumn == flexs.length");
+      if (!(this.countColumn === dart.nullCheck(this.headerTitle)[$length])) dart.assertFailed(null, I[0], 124, 12, "countColumn == headerTitle!.length");
+      if (!(this.countColumn === dart.nullCheck(this.contentOptions)[$length])) dart.assertFailed(null, I[0], 125, 12, "countColumn == contentOptions!.length");
+      if (this.bottomStyle == null) {
+        this.bottomStyle = new text_style.TextStyle.new({color: colors.Colors.black, fontSize: 12.0, fontWeight: ui.FontWeight.w400});
+      }
+      this.totalPage.value = (t0 = totalPageIndex, t0 == null ? 0 : t0);
+      if (contentData != null) {
+        this.initDataTable(contentData, 1);
+      }
+      if (this.applyMobileUI == null) {
+        this.applyMobileUI = T$.JSArrayOfDeviceScreen().of([screen_size_config.DeviceScreen.mobile]);
+      }
+    }).prototype = ResponsiveTableModel.prototype;
+    dart.addTypeTests(ResponsiveTableModel);
+    ResponsiveTableModel.prototype[_is_ResponsiveTableModel_default] = true;
+    dart.addTypeCaches(ResponsiveTableModel);
+    dart.setMethodSignature(ResponsiveTableModel, () => ({
+      __proto__: dart.getMethods(ResponsiveTableModel.__proto__),
+      initDataTable: dart.fnType(async.Future$(dart.void), [dart.nullable(core.Object), core.int]),
+      goNextPage: dart.fnType(async.Future$(dart.void), []),
+      goLastPage: dart.fnType(async.Future$(dart.void), []),
+      goFirstPage: dart.fnType(async.Future$(dart.void), []),
+      goPrevPage: dart.fnType(async.Future$(dart.void), []),
+      goToPage: dart.fnType(async.Future$(dart.void), [core.int]),
+      getDataPage: dart.fnType(async.Future$(dart.void), [core.int]),
+      refreshData: dart.fnType(async.Future$(dart.void), []),
+      clearData: dart.fnType(async.Future$(dart.void), []),
+      sortData: dart.fnType(async.Future$(dart.void), [])
+    }));
+    dart.setGetterSignature(ResponsiveTableModel, () => ({
+      __proto__: dart.getGetters(ResponsiveTableModel.__proto__),
+      totalPageIndex: core.int,
+      currentPageIndex: core.int,
+      listPageView: core.List$(core.int)
+    }));
+    dart.setSetterSignature(ResponsiveTableModel, () => ({
+      __proto__: dart.getSetters(ResponsiveTableModel.__proto__),
+      totalPageIndex: core.int,
+      currentPageIndex: core.int
+    }));
+    dart.setLibraryUri(ResponsiveTableModel, I[1]);
+    dart.setFieldSignature(ResponsiveTableModel, () => ({
+      __proto__: dart.getFields(ResponsiveTableModel.__proto__),
+      scrollController: dart.fieldType(dart.nullable(scroll_controller.ScrollController)),
+      countColumn: dart.finalFieldType(core.int),
+      flexs: dart.finalFieldType(core.List$(core.int)),
+      widthBorder: dart.fieldType(dart.nullable(core.double)),
+      colorBorder: dart.fieldType(dart.nullable(ui.Color)),
+      width: dart.fieldType(dart.nullable(core.double)),
+      height: dart.fieldType(dart.nullable(core.double)),
+      headerTitle: dart.fieldType(dart.nullable(core.List$(core.String))),
+      headerCustom: dart.fieldType(dart.nullable(core.List$(framework.Widget))),
+      builderHeaderItem: dart.fieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, dart.dynamic, core.int]))),
+      headerClick: dart.fieldType(dart.nullable(dart.fnType(dart.void, [framework.BuildContext, dart.dynamic, core.int]))),
+      headerTitleStyle: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      headerTitleStyleMobile: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      headerAlignment: dart.fieldType(dart.nullable(ui.TextAlign)),
+      backgroundHeader: dart.fieldType(dart.nullable(ui.Color)),
+      headerHeight: dart.fieldType(dart.nullable(core.double)),
+      totalPage: dart.finalFieldType(rx_types.RxInt),
+      pageSize: dart.fieldType(dart.nullable(core.int)),
+      currentPage: dart.finalFieldType(rx_types.RxInt),
+      backgroundBottom: dart.fieldType(dart.nullable(ui.Color)),
+      bottomHeight: dart.fieldType(dart.nullable(core.double)),
+      bottomStyle: dart.fieldType(dart.nullable(text_style.TextStyle)),
+      bottomCustom: dart.fieldType(dart.nullable(core.List$(framework.Widget))),
+      builderBottom: dart.fieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.int]))),
+      contentOptions: dart.fieldType(dart.nullable(core.List$(responsive_table_model.ItemContentTableOption$(T)))),
+      builderMobile: dart.fieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, dart.dynamic, core.int]))),
+      backgroundContent: dart.fieldType(dart.nullable(ui.Color)),
+      contentData: dart.finalFieldType(rx_types.RxList$(T)),
+      contentMapData: dart.finalFieldType(core.Map$(core.int, core.List$(T))),
+      rowHeight: dart.fieldType(dart.nullable(core.double)),
+      thumbColor: dart.fieldType(dart.nullable(ui.Color)),
+      thickness: dart.fieldType(dart.nullable(core.double)),
+      applyMobileUI: dart.fieldType(dart.nullable(core.List$(screen_size_config.DeviceScreen))),
+      onRefresh: dart.fieldType(dart.nullable(dart.fnType(async.Future$(core.List$(T)), []))),
+      onGoToPage: dart.fieldType(dart.nullable(core.Function)),
+      nextPage: dart.fieldType(dart.nullable(core.Function)),
+      prevPage: dart.fieldType(dart.nullable(core.Function)),
+      lastPage: dart.fieldType(dart.nullable(core.Function)),
+      firstPage: dart.fieldType(dart.nullable(core.Function)),
+      getDataOfPage: dart.fieldType(dart.nullable(dart.fnType(async.Future$(core.List$(T)), [core.int, core.int]))),
+      sortDataCondition: dart.fieldType(dart.nullable(dart.fnType(core.int, [T, T]))),
+      emptyDataCustom: dart.fieldType(dart.nullable(framework.Widget))
+    }));
+    return ResponsiveTableModel;
+  });
+  responsive_table_model.ResponsiveTableModel = responsive_table_model.ResponsiveTableModel$();
+  dart.addTypeTests(responsive_table_model.ResponsiveTableModel, _is_ResponsiveTableModel_default);
+  var builder$ = dart.privateName(responsive_table_model, "ItemContentTableOption.builder");
+  var itemAlignment$ = dart.privateName(responsive_table_model, "ItemContentTableOption.itemAlignment");
+  const _is_ItemContentTableOption_default = Symbol('_is_ItemContentTableOption_default');
+  responsive_table_model.ItemContentTableOption$ = dart.generic(T => {
+    class ItemContentTableOption extends core.Object {
+      get builder() {
+        return this[builder$];
+      }
+      set builder(value) {
+        this[builder$] = value;
+      }
+      get itemAlignment() {
+        return this[itemAlignment$];
+      }
+      set itemAlignment(value) {
+        this[itemAlignment$] = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let builder = opts && 'builder' in opts ? opts.builder : null;
+        let itemAlignment = opts && 'itemAlignment' in opts ? opts.itemAlignment : null;
+        return new (responsive_table_model.ItemContentTableOption$(T)).new({builder: builder, itemAlignment: itemAlignment});
+      }
+    }
+    (ItemContentTableOption.new = function(opts) {
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let itemAlignment = opts && 'itemAlignment' in opts ? opts.itemAlignment : null;
+      this[builder$] = builder;
+      this[itemAlignment$] = itemAlignment;
+      ;
+    }).prototype = ItemContentTableOption.prototype;
+    dart.addTypeTests(ItemContentTableOption);
+    ItemContentTableOption.prototype[_is_ItemContentTableOption_default] = true;
+    dart.addTypeCaches(ItemContentTableOption);
+    dart.setLibraryUri(ItemContentTableOption, I[1]);
+    dart.setFieldSignature(ItemContentTableOption, () => ({
+      __proto__: dart.getFields(ItemContentTableOption.__proto__),
+      builder: dart.fieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext, T]))),
+      itemAlignment: dart.fieldType(dart.nullable(alignment.Alignment))
+    }));
+    return ItemContentTableOption;
+  });
+  responsive_table_model.ItemContentTableOption = responsive_table_model.ItemContentTableOption$();
+  dart.addTypeTests(responsive_table_model.ItemContentTableOption, _is_ItemContentTableOption_default);
+  dart.trackLibraries("packages/cc_library/widget/responsive_table/model/responsive_table_model.dart", {
+    "package:cc_library/widget/responsive_table/model/responsive_table_model.dart": responsive_table_model
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["responsive_table_model.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/responsive_table/model/responsive_table_model.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__responsive_table__model__responsive_table_model: responsive_table_model
+  };
+}));
+
+//# sourceMappingURL=responsive_table_model.dart.lib.js.map

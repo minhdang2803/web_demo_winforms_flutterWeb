@@ -1,0 +1,18 @@
+2022/11/03-15:45:34.601 3a60 Reusing MANIFEST D:\CC_Project\NetProject\webDemo\webDemo\bin\Debug\net6.0-windows\webDemo.exe.WebView2\EBWebView\Default\IndexedDB\https_13520422.github.io_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/03-15:45:34.602 3a60 Recovering log #3
+2022/11/03-15:45:34.602 3a60 Reusing old log D:\CC_Project\NetProject\webDemo\webDemo\bin\Debug\net6.0-windows\webDemo.exe.WebView2\EBWebView\Default\IndexedDB\https_13520422.github.io_0.indexeddb.leveldb/000003.log 
+2022/11/03-15:45:53.144 3a60 Level-0 table #5: started
+2022/11/03-15:45:53.150 3a60 Level-0 table #5: 5645 bytes OK
+2022/11/03-15:45:53.155 3a60 Delete type=0 #3
+2022/11/03-15:45:53.155 3a60 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2022/11/03-15:45:53.156 3a60 Level-0 table #7: started
+2022/11/03-15:45:53.159 3a60 Level-0 table #7: 650 bytes OK
+2022/11/03-15:45:53.162 3a60 Delete type=0 #4
+2022/11/03-15:45:53.162 3a60 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2022/11/03-15:45:53.162 3a60 Manual compaction at level-1 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at '\x00\x02\x01\x02\x01\x0b\x00k\x00e\x00y\x00_\x00d\x00e\x00f\x00a\x00u\x00l\x00t' @ 233 : 0
+2022/11/03-15:45:53.162 3a60 Compacting 1@1 + 1@2 files
+2022/11/03-15:45:53.167 3a60 Generated table #8@1: 19 keys, 529 bytes
+2022/11/03-15:45:53.167 3a60 Compacted 1@1 + 1@2 files => 529 bytes
+2022/11/03-15:45:53.169 3a60 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/11/03-15:45:53.169 3a60 Delete type=2 #7
+2022/11/03-15:45:53.169 3a60 Manual compaction at level-1 from '\x00\x02\x01\x02\x01\x0b\x00k\x00e\x00y\x00_\x00d\x00e\x00f\x00a\x00u\x00l\x00t' @ 233 : 0 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)

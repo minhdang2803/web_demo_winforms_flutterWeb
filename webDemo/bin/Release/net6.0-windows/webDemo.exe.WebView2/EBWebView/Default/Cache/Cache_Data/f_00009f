@@ -1,0 +1,673 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/widgets/will_pop_scope.dart', 'packages/flutter/src/services/text_editing_delta.dart'], (function load__packages__flutter__src__widgets__form_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__widgets__will_pop_scope$46dart, packages__flutter__src__services__text_editing_delta$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const collection = dart_sdk.collection;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const restoration_properties = packages__flutter__src__widgets__title$46dart.src__widgets__restoration_properties;
+  const restoration = packages__flutter__src__widgets__title$46dart.src__widgets__restoration;
+  const will_pop_scope = packages__flutter__src__widgets__will_pop_scope$46dart.src__widgets__will_pop_scope;
+  const restoration$ = packages__flutter__src__services__text_editing_delta$46dart.src__services__restoration;
+  var form = Object.create(dart.library);
+  var $any = dartx.any;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T$ = {
+    LinkedHashSetOfFormFieldState: () => (T$.LinkedHashSetOfFormFieldState = dart.constFn(collection.LinkedHashSet$(form.FormFieldState)))(),
+    FormFieldStateTobool: () => (T$.FormFieldStateTobool = dart.constFn(dart.fnType(core.bool, [form.FormFieldState])))(),
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    StringN: () => (T$.StringN = dart.constFn(dart.nullable(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Form",
+        [_Location_column]: 9,
+        [_Location_line]: 40,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: form.AutovalidateMode.prototype,
+        [_Enum__name]: "always",
+        [_Enum_index]: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: form.AutovalidateMode.prototype,
+        [_Enum__name]: "onUserInteraction",
+        [_Enum_index]: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: form.AutovalidateMode.prototype,
+        [_Enum__name]: "disabled",
+        [_Enum_index]: 0
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_FormScope",
+        [_Location_column]: 14,
+        [_Location_line]: 149,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "WillPopScope",
+        [_Location_column]: 12,
+        [_Location_line]: 147,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "_FormScope",
+        [_Location_column]: 9,
+        [_Location_line]: 199,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "FormField",
+        [_Location_column]: 9,
+        [_Location_line]: 262,
+        [_Location_file]: "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[3] || CT.C3, C[1] || CT.C1, C[2] || CT.C2], form.AutovalidateMode);
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
+  var I = [
+    "file:///C:/Users/Admin/Desktop/flutter/packages/flutter/lib/src/widgets/form.dart",
+    "package:flutter/src/widgets/form.dart"
+  ];
+  var child$ = dart.privateName(form, "Form.child");
+  var onWillPop$ = dart.privateName(form, "Form.onWillPop");
+  var onChanged$ = dart.privateName(form, "Form.onChanged");
+  var autovalidateMode$ = dart.privateName(form, "Form.autovalidateMode");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _formState = dart.privateName(form, "_formState");
+  form.Form = class Form extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get onWillPop() {
+      return this[onWillPop$];
+    }
+    set onWillPop(value) {
+      super.onWillPop = value;
+    }
+    get onChanged() {
+      return this[onChanged$];
+    }
+    set onChanged(value) {
+      super.onChanged = value;
+    }
+    get autovalidateMode() {
+      return this[autovalidateMode$];
+    }
+    set autovalidateMode(value) {
+      super.autovalidateMode = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let child = opts && 'child' in opts ? opts.child : null;
+      let onWillPop = opts && 'onWillPop' in opts ? opts.onWillPop : null;
+      let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
+      let autovalidateMode = opts && 'autovalidateMode' in opts ? opts.autovalidateMode : null;
+      return new form.Form.new({key: key, child: child, onWillPop: onWillPop, onChanged: onChanged, autovalidateMode: autovalidateMode, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    static of(context) {
+      let t0;
+      let scope = context.dependOnInheritedWidgetOfExactType(form._FormScope);
+      t0 = scope;
+      return t0 == null ? null : t0[_formState];
+    }
+    createState() {
+      return new form.FormState.new();
+    }
+  };
+  (form.Form.new = function(opts) {
+    let t0;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let onWillPop = opts && 'onWillPop' in opts ? opts.onWillPop : null;
+    let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
+    let autovalidateMode = opts && 'autovalidateMode' in opts ? opts.autovalidateMode : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[onWillPop$] = onWillPop;
+    this[onChanged$] = onChanged;
+    if (!(child !== null)) dart.assertFailed(null, I[0], 46, 15, "child != null");
+    this[autovalidateMode$] = (t0 = autovalidateMode, t0 == null ? form.AutovalidateMode.disabled : t0);
+    form.Form.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = form.Form.prototype;
+  dart.addTypeTests(form.Form);
+  dart.addTypeCaches(form.Form);
+  dart.setMethodSignature(form.Form, () => ({
+    __proto__: dart.getMethods(form.Form.__proto__),
+    createState: dart.fnType(form.FormState, [])
+  }));
+  dart.setStaticMethodSignature(form.Form, () => ['of']);
+  dart.setLibraryUri(form.Form, I[1]);
+  dart.setFieldSignature(form.Form, () => ({
+    __proto__: dart.getFields(form.Form.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    onWillPop: dart.finalFieldType(dart.nullable(dart.fnType(async.Future$(core.bool), []))),
+    onChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    autovalidateMode: dart.finalFieldType(form.AutovalidateMode)
+  }));
+  var _generation = dart.privateName(form, "_generation");
+  var _hasInteractedByUser = dart.privateName(form, "_hasInteractedByUser");
+  var _fields = dart.privateName(form, "_fields");
+  var _forceRebuild = dart.privateName(form, "_forceRebuild");
+  var _fieldDidChange = dart.privateName(form, "_fieldDidChange");
+  var _register = dart.privateName(form, "_register");
+  var _unregister = dart.privateName(form, "_unregister");
+  var _validate = dart.privateName(form, "_validate");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  form.FormState = class FormState extends framework.State$(form.Form) {
+    [_fieldDidChange]() {
+      let t0;
+      t0 = this.widget.onChanged;
+      t0 == null ? null : t0();
+      this[_hasInteractedByUser] = this[_fields][$any](dart.fn(field => field[_hasInteractedByUser].value, T$.FormFieldStateTobool()));
+      this[_forceRebuild]();
+    }
+    [_forceRebuild]() {
+      this.setState(dart.fn(() => {
+        this[_generation] = this[_generation] + 1;
+      }, T$.VoidTovoid()));
+    }
+    [_register](field) {
+      this[_fields].add(field);
+    }
+    [_unregister](field) {
+      this[_fields].remove(field);
+    }
+    build(context) {
+      switch (this.widget.autovalidateMode) {
+        case C[1] || CT.C1:
+          {
+            this[_validate]();
+            break;
+          }
+        case C[2] || CT.C2:
+          {
+            if (this[_hasInteractedByUser]) {
+              this[_validate]();
+            }
+            break;
+          }
+        case C[3] || CT.C3:
+          {
+            break;
+          }
+      }
+      return new will_pop_scope.WillPopScope.new({onWillPop: this.widget.onWillPop, child: new form._FormScope.new({formState: this, generation: this[_generation], child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    save() {
+      for (let field of this[_fields]) {
+        field.save();
+      }
+    }
+    reset() {
+      for (let field of this[_fields]) {
+        field.reset();
+      }
+      this[_hasInteractedByUser] = false;
+      this[_fieldDidChange]();
+    }
+    validate() {
+      this[_hasInteractedByUser] = true;
+      this[_forceRebuild]();
+      return this[_validate]();
+    }
+    [_validate]() {
+      let hasError = false;
+      for (let field of this[_fields]) {
+        hasError = !field.validate() || hasError;
+      }
+      return !hasError;
+    }
+    static ['_#new#tearOff']() {
+      return new form.FormState.new();
+    }
+  };
+  (form.FormState.new = function() {
+    this[_generation] = 0;
+    this[_hasInteractedByUser] = false;
+    this[_fields] = T$.LinkedHashSetOfFormFieldState().new();
+    form.FormState.__proto__.new.call(this);
+    ;
+  }).prototype = form.FormState.prototype;
+  dart.addTypeTests(form.FormState);
+  dart.addTypeCaches(form.FormState);
+  dart.setMethodSignature(form.FormState, () => ({
+    __proto__: dart.getMethods(form.FormState.__proto__),
+    [_fieldDidChange]: dart.fnType(dart.void, []),
+    [_forceRebuild]: dart.fnType(dart.void, []),
+    [_register]: dart.fnType(dart.void, [form.FormFieldState]),
+    [_unregister]: dart.fnType(dart.void, [form.FormFieldState]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    save: dart.fnType(dart.void, []),
+    reset: dart.fnType(dart.void, []),
+    validate: dart.fnType(core.bool, []),
+    [_validate]: dart.fnType(core.bool, [])
+  }));
+  dart.setLibraryUri(form.FormState, I[1]);
+  dart.setFieldSignature(form.FormState, () => ({
+    __proto__: dart.getFields(form.FormState.__proto__),
+    [_generation]: dart.fieldType(core.int),
+    [_hasInteractedByUser]: dart.fieldType(core.bool),
+    [_fields]: dart.finalFieldType(core.Set$(form.FormFieldState))
+  }));
+  var _formState$ = dart.privateName(form, "_FormScope._formState");
+  var _generation$ = dart.privateName(form, "_FormScope._generation");
+  form._FormScope = class _FormScope extends framework.InheritedWidget {
+    get [_formState]() {
+      return this[_formState$];
+    }
+    set [_formState](value) {
+      super[_formState] = value;
+    }
+    get [_generation]() {
+      return this[_generation$];
+    }
+    set [_generation](value) {
+      super[_generation] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let child = opts && 'child' in opts ? opts.child : null;
+      let formState = opts && 'formState' in opts ? opts.formState : null;
+      let generation = opts && 'generation' in opts ? opts.generation : null;
+      return new form._FormScope.new({child: child, formState: formState, generation: generation, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+    }
+    get form() {
+      return this[_formState].widget;
+    }
+    updateShouldNotify(old) {
+      form._FormScope.as(old);
+      return this[_generation] !== old[_generation];
+    }
+  };
+  (form._FormScope.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let formState = opts && 'formState' in opts ? opts.formState : null;
+    let generation = opts && 'generation' in opts ? opts.generation : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_formState$] = formState;
+    this[_generation$] = generation;
+    form._FormScope.__proto__.new.call(this, {child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = form._FormScope.prototype;
+  dart.addTypeTests(form._FormScope);
+  dart.addTypeCaches(form._FormScope);
+  dart.setMethodSignature(form._FormScope, () => ({
+    __proto__: dart.getMethods(form._FormScope.__proto__),
+    updateShouldNotify: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setGetterSignature(form._FormScope, () => ({
+    __proto__: dart.getGetters(form._FormScope.__proto__),
+    form: form.Form
+  }));
+  dart.setLibraryUri(form._FormScope, I[1]);
+  dart.setFieldSignature(form._FormScope, () => ({
+    __proto__: dart.getFields(form._FormScope.__proto__),
+    [_formState]: dart.finalFieldType(form.FormState),
+    [_generation]: dart.finalFieldType(core.int)
+  }));
+  var onSaved$ = dart.privateName(form, "FormField.onSaved");
+  var validator$ = dart.privateName(form, "FormField.validator");
+  var builder$ = dart.privateName(form, "FormField.builder");
+  var initialValue$ = dart.privateName(form, "FormField.initialValue");
+  var enabled$ = dart.privateName(form, "FormField.enabled");
+  var autovalidateMode$0 = dart.privateName(form, "FormField.autovalidateMode");
+  var restorationId$ = dart.privateName(form, "FormField.restorationId");
+  const _is_FormField_default = Symbol('_is_FormField_default');
+  form.FormField$ = dart.generic(T => {
+    var __t$FormFieldStateOfT = () => (__t$FormFieldStateOfT = dart.constFn(form.FormFieldState$(T)))();
+    class FormField extends framework.StatefulWidget {
+      get onSaved() {
+        return this[onSaved$];
+      }
+      set onSaved(value) {
+        super.onSaved = value;
+      }
+      get validator() {
+        return this[validator$];
+      }
+      set validator(value) {
+        super.validator = value;
+      }
+      get builder() {
+        return this[builder$];
+      }
+      set builder(value) {
+        super.builder = value;
+      }
+      get initialValue() {
+        return this[initialValue$];
+      }
+      set initialValue(value) {
+        super.initialValue = value;
+      }
+      get enabled() {
+        return this[enabled$];
+      }
+      set enabled(value) {
+        super.enabled = value;
+      }
+      get autovalidateMode() {
+        return this[autovalidateMode$0];
+      }
+      set autovalidateMode(value) {
+        super.autovalidateMode = value;
+      }
+      get restorationId() {
+        return this[restorationId$];
+      }
+      set restorationId(value) {
+        super.restorationId = value;
+      }
+      static ['_#new#tearOff'](T, opts) {
+        let key = opts && 'key' in opts ? opts.key : null;
+        let builder = opts && 'builder' in opts ? opts.builder : null;
+        let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+        let validator = opts && 'validator' in opts ? opts.validator : null;
+        let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+        let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+        let autovalidateMode = opts && 'autovalidateMode' in opts ? opts.autovalidateMode : null;
+        let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
+        return new (form.FormField$(T)).new({key: key, builder: builder, onSaved: onSaved, validator: validator, initialValue: initialValue, enabled: enabled, autovalidateMode: autovalidateMode, restorationId: restorationId, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+      }
+      createState() {
+        return new (__t$FormFieldStateOfT()).new();
+      }
+    }
+    (FormField.new = function(opts) {
+      let t0;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let builder = opts && 'builder' in opts ? opts.builder : null;
+      let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+      let validator = opts && 'validator' in opts ? opts.validator : null;
+      let initialValue = opts && 'initialValue' in opts ? opts.initialValue : null;
+      let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+      let autovalidateMode = opts && 'autovalidateMode' in opts ? opts.autovalidateMode : null;
+      let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[builder$] = builder;
+      this[onSaved$] = onSaved;
+      this[validator$] = validator;
+      this[initialValue$] = initialValue;
+      this[enabled$] = enabled;
+      this[restorationId$] = restorationId;
+      if (!(builder !== null)) dart.assertFailed(null, I[0], 271, 15, "builder != null");
+      this[autovalidateMode$0] = (t0 = autovalidateMode, t0 == null ? form.AutovalidateMode.disabled : t0);
+      FormField.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = FormField.prototype;
+    dart.addTypeTests(FormField);
+    FormField.prototype[_is_FormField_default] = true;
+    dart.addTypeCaches(FormField);
+    dart.setMethodSignature(FormField, () => ({
+      __proto__: dart.getMethods(FormField.__proto__),
+      createState: dart.fnType(form.FormFieldState$(T), [])
+    }));
+    dart.setLibraryUri(FormField, I[1]);
+    dart.setFieldSignature(FormField, () => ({
+      __proto__: dart.getFields(FormField.__proto__),
+      onSaved: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(T)]))),
+      validator: dart.finalFieldType(dart.nullable(dart.fnType(dart.nullable(core.String), [dart.nullable(T)]))),
+      builder: dart.finalFieldType(dart.fnType(framework.Widget, [form.FormFieldState$(T)])),
+      initialValue: dart.finalFieldType(dart.nullable(T)),
+      enabled: dart.finalFieldType(core.bool),
+      autovalidateMode: dart.finalFieldType(form.AutovalidateMode),
+      restorationId: dart.finalFieldType(dart.nullable(core.String))
+    }));
+    return FormField;
+  });
+  form.FormField = form.FormField$();
+  dart.addTypeTests(form.FormField, _is_FormField_default);
+  var __FormFieldState__value = dart.privateName(form, "_#FormFieldState#_value");
+  var __FormFieldState__value_isSet = dart.privateName(form, "_#FormFieldState#_value#isSet");
+  var _errorText = dart.privateName(form, "_errorText");
+  var _value = dart.privateName(form, "_value");
+  const _is_FormFieldState_default = Symbol('_is_FormFieldState_default');
+  form.FormFieldState$ = dart.generic(T => {
+    var __t$TN = () => (__t$TN = dart.constFn(dart.nullable(T)))();
+    var __t$TNToStringN = () => (__t$TNToStringN = dart.constFn(dart.fnType(T$.StringN(), [__t$TN()])))();
+    var __t$TNToNStringN = () => (__t$TNToNStringN = dart.constFn(dart.nullable(__t$TNToStringN())))();
+    var __t$TNTovoid = () => (__t$TNTovoid = dart.constFn(dart.fnType(dart.void, [__t$TN()])))();
+    var __t$TNToNvoid = () => (__t$TNToNvoid = dart.constFn(dart.nullable(__t$TNTovoid())))();
+    var __t$FormFieldStateOfT = () => (__t$FormFieldStateOfT = dart.constFn(form.FormFieldState$(T)))();
+    var __t$FormFieldStateOfTToWidget = () => (__t$FormFieldStateOfTToWidget = dart.constFn(dart.fnType(framework.Widget, [__t$FormFieldStateOfT()])))();
+    const State_RestorationMixin$36 = class State_RestorationMixin extends framework.State$(form.FormField$(T)) {};
+    (State_RestorationMixin$36.new = function() {
+      restoration.RestorationMixin$(form.FormField$(T))[dart.mixinNew].call(this);
+      State_RestorationMixin$36.__proto__.new.call(this);
+    }).prototype = State_RestorationMixin$36.prototype;
+    dart.applyMixin(State_RestorationMixin$36, restoration.RestorationMixin$(form.FormField$(T)));
+    class FormFieldState extends State_RestorationMixin$36 {
+      get [_value]() {
+        if (!this[__FormFieldState__value_isSet]) {
+          this[__FormFieldState__value] = this.widget.initialValue;
+          this[__FormFieldState__value_isSet] = true;
+        }
+        return this[__FormFieldState__value];
+      }
+      set [_value](library$32package$58flutter$47src$47widgets$47form$46dart$58$58_value$35param) {
+        this[__FormFieldState__value_isSet] = true;
+        this[__FormFieldState__value] = library$32package$58flutter$47src$47widgets$47form$46dart$58$58_value$35param;
+      }
+      get value() {
+        return this[_value];
+      }
+      get errorText() {
+        return this[_errorText].value;
+      }
+      get hasError() {
+        return this[_errorText].value != null;
+      }
+      get isValid() {
+        let t0;
+        return (t0 = __t$TNToNStringN().as(this.widget.validator), t0 == null ? null : t0(this[_value])) == null;
+      }
+      save() {
+        let t0;
+        t0 = __t$TNToNvoid().as(this.widget.onSaved);
+        t0 == null ? null : t0(this.value);
+      }
+      reset() {
+        let t0;
+        this.setState(dart.fn(() => {
+          this[_value] = this.widget.initialValue;
+          this[_hasInteractedByUser].value = false;
+          this[_errorText].value = null;
+        }, T$.VoidTovoid()));
+        t0 = form.Form.of(this.context);
+        t0 == null ? null : t0[_fieldDidChange]();
+      }
+      validate() {
+        this.setState(dart.fn(() => {
+          this[_validate]();
+        }, T$.VoidTovoid()));
+        return !this.hasError;
+      }
+      [_validate]() {
+        if (__t$TNToNStringN().as(this.widget.validator) != null) {
+          this[_errorText].value = dart.nullCheck(__t$TNToNStringN().as(this.widget.validator))(this[_value]);
+        }
+      }
+      didChange(value) {
+        let t0;
+        __t$TN().as(value);
+        this.setState(dart.fn(() => {
+          this[_value] = value;
+          this[_hasInteractedByUser].value = true;
+        }, T$.VoidTovoid()));
+        t0 = form.Form.of(this.context);
+        t0 == null ? null : t0[_fieldDidChange]();
+      }
+      setValue(value) {
+        __t$TN().as(value);
+        this[_value] = value;
+      }
+      get restorationId() {
+        return this.widget.restorationId;
+      }
+      restoreState(oldBucket, initialRestore) {
+        this.registerForRestoration(this[_errorText], "error_text");
+        this.registerForRestoration(this[_hasInteractedByUser], "has_interacted_by_user");
+      }
+      deactivate() {
+        let t0;
+        t0 = form.Form.of(this.context);
+        t0 == null ? null : t0[_unregister](this);
+        super.deactivate();
+      }
+      build(context) {
+        let t0, t0$;
+        if (this.widget.enabled) {
+          switch (this.widget.autovalidateMode) {
+            case C[1] || CT.C1:
+              {
+                this[_validate]();
+                break;
+              }
+            case C[2] || CT.C2:
+              {
+                if (this[_hasInteractedByUser].value) {
+                  this[_validate]();
+                }
+                break;
+              }
+            case C[3] || CT.C3:
+              {
+                break;
+              }
+          }
+        }
+        t0 = form.Form.of(context);
+        t0 == null ? null : t0[_register](this);
+        t0$ = this.widget;
+        return __t$FormFieldStateOfTToWidget().as(t0$.builder)(this);
+      }
+      static ['_#new#tearOff'](T) {
+        return new (form.FormFieldState$(T)).new();
+      }
+    }
+    (FormFieldState.new = function() {
+      this[__FormFieldState__value] = null;
+      this[__FormFieldState__value_isSet] = false;
+      this[_errorText] = new restoration_properties.RestorableStringN.new(null);
+      this[_hasInteractedByUser] = new restoration_properties.RestorableBool.new(false);
+      FormFieldState.__proto__.new.call(this);
+      ;
+    }).prototype = FormFieldState.prototype;
+    dart.addTypeTests(FormFieldState);
+    FormFieldState.prototype[_is_FormFieldState_default] = true;
+    dart.addTypeCaches(FormFieldState);
+    dart.setMethodSignature(FormFieldState, () => ({
+      __proto__: dart.getMethods(FormFieldState.__proto__),
+      save: dart.fnType(dart.void, []),
+      reset: dart.fnType(dart.void, []),
+      validate: dart.fnType(core.bool, []),
+      [_validate]: dart.fnType(dart.void, []),
+      didChange: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      setValue: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+      restoreState: dart.fnType(dart.void, [dart.nullable(restoration$.RestorationBucket), core.bool]),
+      build: dart.fnType(framework.Widget, [framework.BuildContext])
+    }));
+    dart.setGetterSignature(FormFieldState, () => ({
+      __proto__: dart.getGetters(FormFieldState.__proto__),
+      [_value]: dart.nullable(T),
+      value: dart.nullable(T),
+      errorText: dart.nullable(core.String),
+      hasError: core.bool,
+      isValid: core.bool,
+      restorationId: dart.nullable(core.String)
+    }));
+    dart.setSetterSignature(FormFieldState, () => ({
+      __proto__: dart.getSetters(FormFieldState.__proto__),
+      [_value]: dart.nullable(T)
+    }));
+    dart.setLibraryUri(FormFieldState, I[1]);
+    dart.setFieldSignature(FormFieldState, () => ({
+      __proto__: dart.getFields(FormFieldState.__proto__),
+      [__FormFieldState__value]: dart.fieldType(dart.nullable(T)),
+      [__FormFieldState__value_isSet]: dart.fieldType(core.bool),
+      [_errorText]: dart.finalFieldType(restoration_properties.RestorableStringN),
+      [_hasInteractedByUser]: dart.finalFieldType(restoration_properties.RestorableBool)
+    }));
+    return FormFieldState;
+  });
+  form.FormFieldState = form.FormFieldState$();
+  dart.addTypeTests(form.FormFieldState, _is_FormFieldState_default);
+  var _name = dart.privateName(core, "_name");
+  form.AutovalidateMode = class AutovalidateMode extends core._Enum {
+    toString() {
+      return "AutovalidateMode." + this[_name];
+    }
+  };
+  (form.AutovalidateMode.new = function(index, name) {
+    form.AutovalidateMode.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = form.AutovalidateMode.prototype;
+  dart.addTypeTests(form.AutovalidateMode);
+  dart.addTypeCaches(form.AutovalidateMode);
+  dart.setLibraryUri(form.AutovalidateMode, I[1]);
+  dart.setStaticFieldSignature(form.AutovalidateMode, () => ['values', 'disabled', 'always', 'onUserInteraction']);
+  dart.defineExtensionMethods(form.AutovalidateMode, ['toString']);
+  dart.defineLazy(form.AutovalidateMode, {
+    /*form.AutovalidateMode.values*/get values() {
+      return C[8] || CT.C8;
+    },
+    /*form.AutovalidateMode.disabled*/get disabled() {
+      return C[3] || CT.C3;
+    },
+    /*form.AutovalidateMode.always*/get always() {
+      return C[1] || CT.C1;
+    },
+    /*form.AutovalidateMode.onUserInteraction*/get onUserInteraction() {
+      return C[2] || CT.C2;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/widgets/form.dart", {
+    "package:flutter/src/widgets/form.dart": form
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["form.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter/src/widgets/form.dart.lib.js"}');
+  // Exports:
+  return {
+    src__widgets__form: form
+  };
+}));
+
+//# sourceMappingURL=form.dart.lib.js.map

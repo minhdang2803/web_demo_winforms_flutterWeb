@@ -1,0 +1,670 @@
+define(['dart_sdk', 'packages/cc_library/src/extension/kotlin/when_expression.dart', 'packages/cc_library/widget/dynamic_form/enum/enum_dynamic_form.dart', 'packages/flutter/src/services/text_editing_delta.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/cc_library/theme/base_colors.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/cc_library/widget/widget_util.dart', 'packages/flutter/src/services/text_formatter.dart', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/material/icons.dart', 'packages/cc_library/widget/dynamic_form/model/select_box_model.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/cc_library/widget/inkwell/inkwell_safe.dart', 'packages/flutter/src/rendering/box.dart', 'packages/cc_library/util/extension_utils.dart', 'packages/flutter_svg/src/svg/parser_state.dart'], (function load__packages__cc_library__widget__dynamic_form__view__parameter_dart(dart_sdk, packages__cc_library__src__extension__kotlin__when_expression$46dart, packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart, packages__flutter__src__services__text_editing_delta$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__painting__borders$46dart, packages__cc_library__theme__base_colors$46dart, packages__flutter__src__painting__border_radius$46dart, packages__cc_library__widget__widget_util$46dart, packages__flutter__src__services__text_formatter$46dart, packages__flutter__src__widgets__title$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__material__icons$46dart, packages__cc_library__widget__dynamic_form__model__select_box_model$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__cc_library__widget__inkwell__inkwell_safe$46dart, packages__flutter__src__rendering__box$46dart, packages__cc_library__util__extension_utils$46dart, packages__flutter_svg__src__svg__parser_state$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const when_expression = packages__cc_library__src__extension__kotlin__when_expression$46dart.src__extension__kotlin__when_expression;
+  const enum_dynamic_form = packages__cc_library__widget__dynamic_form__enum__enum_dynamic_form$46dart.widget__dynamic_form__enum__enum_dynamic_form;
+  const text_input = packages__flutter__src__services__text_editing_delta$46dart.src__services__text_input;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const base_colors = packages__cc_library__theme__base_colors$46dart.theme__base_colors;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const widget_util = packages__cc_library__widget__widget_util$46dart.widget__widget_util;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  const basic = packages__flutter__src__widgets__title$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const image = packages__flutter__src__widgets__title$46dart.src__widgets__image;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icons = packages__flutter__src__material__icons$46dart.src__material__icons;
+  const input_base = packages__cc_library__widget__dynamic_form__model__select_box_model$46dart.widget__dynamic_form__model__input_base;
+  const text_style = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_style;
+  const inkwell_safe = packages__cc_library__widget__inkwell__inkwell_safe$46dart.widget__inkwell__inkwell_safe;
+  const box = packages__flutter__src__rendering__box$46dart.src__rendering__box;
+  const extension_utils = packages__cc_library__util__extension_utils$46dart.util__extension_utils;
+  const svg = packages__flutter_svg__src__svg__parser_state$46dart.svg;
+  var parameter = Object.create(dart.library);
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    LinkedMapOfInputObjectType$TextInputType: () => (T.LinkedMapOfInputObjectType$TextInputType = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.InputObjectType, text_input.TextInputType)))(),
+    LinkedMapOfTextTypeFormat$TextInputType: () => (T.LinkedMapOfTextTypeFormat$TextInputType = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.TextTypeFormat, text_input.TextInputType)))(),
+    InputDecorationN: () => (T.InputDecorationN = dart.constFn(dart.nullable(input_decorator.InputDecoration)))(),
+    LinkedMapOfInputObjectType$InputDecoration: () => (T.LinkedMapOfInputObjectType$InputDecoration = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.InputObjectType, input_decorator.InputDecoration)))(),
+    LinkedMapOfInputObjectType$EdgeInsets: () => (T.LinkedMapOfInputObjectType$EdgeInsets = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.InputObjectType, edge_insets.EdgeInsets)))(),
+    InputBorderN: () => (T.InputBorderN = dart.constFn(dart.nullable(input_border.InputBorder)))(),
+    LinkedMapOfBorderType$InputBorderN: () => (T.LinkedMapOfBorderType$InputBorderN = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.BorderType, T.InputBorderN())))(),
+    JSArrayOfTextInputFormatter: () => (T.JSArrayOfTextInputFormatter = dart.constFn(_interceptors.JSArray$(text_formatter.TextInputFormatter)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    LinkedMapOfSuffixType$SingleChildRenderObjectWidget: () => (T.LinkedMapOfSuffixType$SingleChildRenderObjectWidget = dart.constFn(_js_helper.LinkedMap$(enum_dynamic_form.SuffixType, framework.SingleChildRenderObjectWidget)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: text_input.TextInputType.prototype,
+        [TextInputType_decimal]: true,
+        [TextInputType_signed]: false,
+        [TextInputType_index]: 2
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 4,
+        [EdgeInsets_right]: 10,
+        [EdgeInsets_top]: 6,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 4,
+        [EdgeInsets_right]: 30,
+        [EdgeInsets_top]: 6,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 4,
+        [EdgeInsets_right]: 10,
+        [EdgeInsets_top]: 8,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 4,
+        [EdgeInsets_right]: 30,
+        [EdgeInsets_top]: 8,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 20,
+        [_Location_line]: 258,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[6] || CT.C6,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 19,
+        [_Location_line]: 267,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 18,
+        [_Location_line]: 265,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 20,
+        [_Location_line]: 263,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 16,
+        [_Location_line]: 262,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 20,
+        [_Location_line]: 277,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[12] || CT.C12,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 19,
+        [_Location_line]: 286,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 18,
+        [_Location_line]: 284,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 20,
+        [_Location_line]: 282,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 16,
+        [_Location_line]: 281,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 19,
+        [_Location_line]: 304,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 18,
+        [_Location_line]: 302,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 20,
+        [_Location_line]: 300,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 16,
+        [_Location_line]: 299,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 20,
+        [_Location_line]: 316,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[22] || CT.C22,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 30,
+        [_Location_line]: 319,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[24] || CT.C24,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 21,
+        [_Location_line]: 325,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 20,
+        [_Location_line]: 323,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 16,
+        [_Location_line]: 321,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SizedBox",
+        [_Location_column]: 26,
+        [_Location_line]: 320,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 19,
+        [_Location_line]: 342,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 18,
+        [_Location_line]: 341,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Align",
+        [_Location_column]: 27,
+        [_Location_line]: 339,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CloseCustomButtonWidget",
+        [_Location_column]: 3,
+        [_Location_line]: 359,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 5,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 5
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 14,
+        [_Location_line]: 377,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "InkWellSafe",
+        [_Location_column]: 12,
+        [_Location_line]: 375,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SvgPicture",
+        [_Location_column]: 24,
+        [_Location_line]: 389,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Image",
+        [_Location_column]: 19,
+        [_Location_line]: 392,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/dynamic_form/view/parameter.dart"
+      });
+    }
+  }, false);
+  var C = Array(38).fill(void 0);
+  var I = ["package:cc_library/widget/dynamic_form/view/parameter.dart"];
+  var TextInputType_decimal = dart.privateName(text_input, "TextInputType.decimal");
+  var TextInputType_signed = dart.privateName(text_input, "TextInputType.signed");
+  var TextInputType_index = dart.privateName(text_input, "TextInputType.index");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  parameter.InputBaseParameter = class InputBaseParameter extends core.Object {
+    static new() {
+      return parameter.InputBaseParameter.instance;
+    }
+    static ['_#new#tearOff']() {
+      return parameter.InputBaseParameter.new();
+    }
+    static ['_#_internal#tearOff']() {
+      return new parameter.InputBaseParameter._internal();
+    }
+    getTextInputType(model) {
+      return text_input.TextInputType.as(when_expression.when(enum_dynamic_form.InputObjectType, text_input.TextInputType, {variable: model.type, conditions: new (T.LinkedMapOfInputObjectType$TextInputType()).from([enum_dynamic_form.InputObjectType.INPUT_TEXT, this.getTextTypeNumberFormat(model), enum_dynamic_form.InputObjectType.INPUT_TEXT_AREA, text_input.TextInputType.multiline, enum_dynamic_form.InputObjectType.INPUT_PASSWORD, text_input.TextInputType.text, enum_dynamic_form.InputObjectType.NUMBER, this.getTextTypeNumberFormat(model), enum_dynamic_form.InputObjectType.DATE, text_input.TextInputType.text, enum_dynamic_form.InputObjectType.FILE, text_input.TextInputType.text]), orElse: text_input.TextInputType.text}));
+    }
+    getTextTypeNumberFormat(model) {
+      return text_input.TextInputType.as(when_expression.when(enum_dynamic_form.TextTypeFormat, text_input.TextInputType, {variable: model.textTypeFormat, conditions: new (T.LinkedMapOfTextTypeFormat$TextInputType()).from([enum_dynamic_form.TextTypeFormat.NONE, text_input.TextInputType.text, enum_dynamic_form.TextTypeFormat.TEXT, text_input.TextInputType.text, enum_dynamic_form.TextTypeFormat.DECIMAL, C[0] || CT.C0, enum_dynamic_form.TextTypeFormat.INTEGER, C[0] || CT.C0, enum_dynamic_form.TextTypeFormat.CURRENCY, C[0] || CT.C0]), orElse: text_input.TextInputType.text}));
+    }
+    getInputDecoration(model) {
+      return input_decorator.InputDecoration.as(when_expression.when(enum_dynamic_form.InputObjectType, T.InputDecorationN(), {variable: model.type, conditions: new (T.LinkedMapOfInputObjectType$InputDecoration()).from([enum_dynamic_form.InputObjectType.INPUT_TEXT, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.INPUT_TEXT_AREA, this.buildInputDecorationTextArea(model), enum_dynamic_form.InputObjectType.INPUT_PASSWORD, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.NUMBER, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.DATE, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.FILE, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.SELECTBOX, this.buildInputDecorationText(model), enum_dynamic_form.InputObjectType.SELECTBOX_MULTI, this.buildInputDecorationTextArea(model)]), orElse: null}));
+    }
+    buildInputDecorationText(model) {
+      let t0, t0$;
+      return new input_decorator.InputDecoration.new({filled: model.backgroundColor != null, fillColor: (t0 = model.backgroundColor, t0 == null ? colors.Colors.transparent : t0), contentPadding: this.getPadding(model), border: this.getInputBorder(model), enabledBorder: this.getInputBorder(model), disabledBorder: this.getInputBorderDisable(model), focusedBorder: this.getInputBorderFocus(model), errorBorder: this.getInputErrorBorder(model), focusedErrorBorder: this.getInputBorder(model), hintText: (t0$ = model.hint, t0$ == null ? model.label : t0$), labelText: model.label, labelStyle: this.textStyle(model), hintStyle: this.hintTextStyle(model)});
+    }
+    buildInputDecorationTextArea(model) {
+      let t0, t0$;
+      return new input_decorator.InputDecoration.new({filled: true, fillColor: (t0 = model.backgroundColor, t0 == null ? colors.Colors.transparent : t0), contentPadding: this.getPadding(model), border: this.getInputBorder(model), enabledBorder: this.getInputBorder(model), disabledBorder: this.getInputBorderDisable(model), focusedBorder: this.getInputBorderFocus(model), errorBorder: this.getInputErrorBorder(model), focusedErrorBorder: this.getInputBorder(model), hintText: (t0$ = model.hint, t0$ == null ? model.label : t0$), labelText: model.label, alignLabelWithHint: true, labelStyle: this.textStyle(model), hintStyle: this.hintTextStyle(model)});
+    }
+    getPadding(model) {
+      let t0;
+      return edge_insets.EdgeInsetsGeometry.as((t0 = model.padding, t0 == null ? when_expression.when(enum_dynamic_form.InputObjectType, edge_insets.EdgeInsets, {variable: model.type, conditions: new (T.LinkedMapOfInputObjectType$EdgeInsets()).from([enum_dynamic_form.InputObjectType.INPUT_TEXT, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[1] || CT.C1 : C[2] || CT.C2, enum_dynamic_form.InputObjectType.INPUT_TEXT_AREA, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[3] || CT.C3 : C[4] || CT.C4, enum_dynamic_form.InputObjectType.INPUT_PASSWORD, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[1] || CT.C1 : C[2] || CT.C2, enum_dynamic_form.InputObjectType.NUMBER, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[1] || CT.C1 : C[2] || CT.C2, enum_dynamic_form.InputObjectType.DATE, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[1] || CT.C1 : C[2] || CT.C2, enum_dynamic_form.InputObjectType.FILE, model.suffixType === enum_dynamic_form.SuffixType.NONE ? C[1] || CT.C1 : C[2] || CT.C2]), orElse: C[1] || CT.C1}) : t0));
+    }
+    getInputBorder(model) {
+      let t0, t0$;
+      return T.InputBorderN().as(when_expression.when(enum_dynamic_form.BorderType, T.InputBorderN(), {variable: model.border, conditions: new (T.LinkedMapOfBorderType$InputBorderN()).from([enum_dynamic_form.BorderType.NONE, null, enum_dynamic_form.BorderType.LINE, new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({color: (t0 = model.colorBorder, t0 == null ? base_colors.BaseColors.grey : t0), width: 1.0})}), enum_dynamic_form.BorderType.OUTLINE, new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(8.0)), borderSide: new borders.BorderSide.new({color: (t0$ = model.colorBorder, t0$ == null ? base_colors.BaseColors.grey : t0$), width: 1.0})})]), orElse: null}));
+    }
+    getInputBorderDisable(model) {
+      let t0, t0$;
+      return T.InputBorderN().as(when_expression.when(enum_dynamic_form.BorderType, T.InputBorderN(), {variable: model.border, conditions: new (T.LinkedMapOfBorderType$InputBorderN()).from([enum_dynamic_form.BorderType.NONE, null, enum_dynamic_form.BorderType.LINE, new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({color: (t0 = model.colorDisableBorder, t0 == null ? base_colors.BaseColors.gray : t0), width: 1.0})}), enum_dynamic_form.BorderType.OUTLINE, new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(8.0)), borderSide: new borders.BorderSide.new({color: (t0$ = model.colorDisableBorder, t0$ == null ? base_colors.BaseColors.gray : t0$), width: 1.0})})]), orElse: null}));
+    }
+    getInputBorderFocus(model) {
+      let t0, t0$;
+      return T.InputBorderN().as(when_expression.when(enum_dynamic_form.BorderType, T.InputBorderN(), {variable: model.border, conditions: new (T.LinkedMapOfBorderType$InputBorderN()).from([enum_dynamic_form.BorderType.NONE, null, enum_dynamic_form.BorderType.LINE, new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({color: (t0 = model.colorFocusedBorder, t0 == null ? base_colors.BaseColors.blue : t0), width: 1.0})}), enum_dynamic_form.BorderType.OUTLINE, new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(8.0)), borderSide: new borders.BorderSide.new({color: (t0$ = model.colorFocusedBorder, t0$ == null ? base_colors.BaseColors.blue : t0$), width: 1.0})})]), orElse: null}));
+    }
+    getInputErrorBorder(model) {
+      let t0, t0$;
+      return T.InputBorderN().as(when_expression.when(enum_dynamic_form.BorderType, T.InputBorderN(), {variable: model.border, conditions: new (T.LinkedMapOfBorderType$InputBorderN()).from([enum_dynamic_form.BorderType.NONE, null, enum_dynamic_form.BorderType.LINE, new input_border.UnderlineInputBorder.new({borderSide: new borders.BorderSide.new({color: (t0 = model.colorErrorBorder, t0 == null ? base_colors.BaseColors.red : t0), width: 1.0})}), enum_dynamic_form.BorderType.OUTLINE, new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.all(new ui.Radius.circular(8.0)), borderSide: new borders.BorderSide.new({color: (t0$ = model.colorErrorBorder, t0$ == null ? base_colors.BaseColors.red : t0$), width: 1.0})})]), orElse: null}));
+    }
+    hintTextStyle(model) {
+      let t0;
+      t0 = model.textStyleHint;
+      return t0 == null ? widget_util.WidgetUtil.getTextStyleRoboto({color: base_colors.BaseColors.grey.withOpacity(0.7), heightLine: 1.0, fontWeight: ui.FontWeight.w400, fontSize: 14.0}) : t0;
+    }
+    textStyle(model) {
+      let t0;
+      t0 = model.textStyleInput;
+      return t0 == null ? widget_util.WidgetUtil.getTextStyleRoboto({color: base_colors.BaseColors.black_70, fontWeight: ui.FontWeight.w400, heightLine: 1.0, fontSize: 14.0}) : t0;
+    }
+    textStyleCheckBox(model) {
+      let t0;
+      t0 = model.textStyleLabel;
+      return t0 == null ? widget_util.WidgetUtil.getTextStyleRoboto({color: base_colors.BaseColors.black_70, fontWeight: ui.FontWeight.w400, heightLine: 1.0, fontSize: 14.0}) : t0;
+    }
+    getMaxLine(model) {
+      let t0;
+      if (model.type === enum_dynamic_form.InputObjectType.INPUT_TEXT_AREA || model.type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI) {
+        t0 = model.numberLine;
+        return t0 == null ? 5 : t0;
+      }
+      return 1;
+    }
+    getInputFormatters(model) {
+      let listFormat = T.JSArrayOfTextInputFormatter().of([]);
+      if (model.maxLength != null) {
+        listFormat[$add](new text_formatter.LengthLimitingTextInputFormatter.new(model.maxLength));
+      }
+      if (model.textInputFormatter != null) {
+        listFormat[$add](dart.nullCheck(model.textInputFormatter));
+      }
+      if (model.type === enum_dynamic_form.InputObjectType.NUMBER) {
+        listFormat[$add](new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9.,đ]")));
+      }
+      if (model.textTypeFormat === enum_dynamic_form.TextTypeFormat.INTEGER) {
+        listFormat[$add](new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]")));
+      }
+      return listFormat;
+    }
+    getSuffix(model, opts) {
+      let onClick = opts && 'onClick' in opts ? opts.onClick : null;
+      if (!dart.nullCheck(model.enable)) {
+        return C[5] || CT.C5;
+      }
+      if (model.readOnly === true) {
+        if (model.type === enum_dynamic_form.InputObjectType.SELECTBOX || model.type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI) {
+          return new basic.SizedBox.new({child: new basic.Align.new({alignment: alignment.Alignment.centerRight, child: new parameter.CloseCustomButtonWidget.new({color: colors.Colors.transparent, icon: new icon.Icon.new(icons.Icons.arrow_drop_down, {size: 20.0, color: base_colors.BaseColors.grey, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}), onTap: dart.fn(() => {
+                }, T.VoidTovoid()), width: 35.0, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+        }
+        return C[11] || CT.C11;
+      }
+      if (!model.isShowSuffix()) {
+        if (model.type === enum_dynamic_form.InputObjectType.SELECTBOX || model.type === enum_dynamic_form.InputObjectType.SELECTBOX_MULTI) {
+          return new basic.SizedBox.new({child: new basic.Align.new({alignment: alignment.Alignment.centerRight, child: new parameter.CloseCustomButtonWidget.new({color: colors.Colors.transparent, icon: new icon.Icon.new(icons.Icons.arrow_drop_down, {size: 20.0, color: base_colors.BaseColors.grey, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), onTap: dart.fn(() => {
+                  if (onClick != null) dart.dcall(onClick, []);
+                }, T.VoidTovoid()), width: 35.0, $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+        }
+        if (model.type === enum_dynamic_form.InputObjectType.DATE) {
+          return new basic.SizedBox.new({child: new basic.Align.new({alignment: alignment.Alignment.centerRight, child: new parameter.CloseCustomButtonWidget.new({color: colors.Colors.transparent, icon: new icon.Icon.new(icons.Icons.calendar_today, {size: 20.0, color: base_colors.BaseColors.grey, $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), onTap: dart.fn(() => {
+                  if (onClick != null) dart.dcall(onClick, []);
+                }, T.VoidTovoid()), width: 35.0, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+        }
+        return C[21] || CT.C21;
+      }
+      return framework.Widget.as(when_expression.when(enum_dynamic_form.SuffixType, framework.SingleChildRenderObjectWidget, {variable: model.suffixType, conditions: new (T.LinkedMapOfSuffixType$SingleChildRenderObjectWidget()).from([enum_dynamic_form.SuffixType.NONE, C[23] || CT.C23, enum_dynamic_form.SuffixType.DELETE, new basic.SizedBox.new({child: new basic.Align.new({alignment: alignment.Alignment.centerRight, child: new parameter.CloseCustomButtonWidget.new({color: colors.Colors.transparent, icon: new icon.Icon.new(icons.Icons.cancel_rounded, {size: 22.0, color: base_colors.BaseColors.grey, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), onTap: dart.fn(() => {
+                  model.value = "";
+                  if (model.onDelete != null) {
+                    dart.dcall(dart.nullCheck(model.onDelete), []);
+                  }
+                }, T.VoidTovoid()), width: 35.0, $creationLocationd_0dea112b090073317d4: C[26] || CT.C26}), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), $creationLocationd_0dea112b090073317d4: C[28] || CT.C28}), enum_dynamic_form.SuffixType.CONFIRM, new basic.Align.new({alignment: alignment.Alignment.centerRight, child: new parameter.CloseCustomButtonWidget.new({icon: new icon.Icon.new(icons.Icons.check_circle, {size: 22.0, color: base_colors.BaseColors.blue, $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), onTap: dart.fn(() => {
+                if (model.onConfirm != null) {
+                  dart.dcall(dart.nullCheck(model.onConfirm), [model.value]);
+                }
+              }, T.VoidTovoid()), width: 35.0, $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31})])}));
+    }
+  };
+  (parameter.InputBaseParameter._internal = function() {
+    ;
+  }).prototype = parameter.InputBaseParameter.prototype;
+  dart.addTypeTests(parameter.InputBaseParameter);
+  dart.addTypeCaches(parameter.InputBaseParameter);
+  dart.setMethodSignature(parameter.InputBaseParameter, () => ({
+    __proto__: dart.getMethods(parameter.InputBaseParameter.__proto__),
+    getTextInputType: dart.fnType(text_input.TextInputType, [input_base.InputObject]),
+    getTextTypeNumberFormat: dart.fnType(text_input.TextInputType, [input_base.InputObject]),
+    getInputDecoration: dart.fnType(input_decorator.InputDecoration, [input_base.InputObject]),
+    buildInputDecorationText: dart.fnType(input_decorator.InputDecoration, [input_base.InputObject]),
+    buildInputDecorationTextArea: dart.fnType(input_decorator.InputDecoration, [input_base.InputObject]),
+    getPadding: dart.fnType(edge_insets.EdgeInsetsGeometry, [input_base.InputObject]),
+    getInputBorder: dart.fnType(dart.nullable(input_border.InputBorder), [input_base.InputObject]),
+    getInputBorderDisable: dart.fnType(dart.nullable(input_border.InputBorder), [input_base.InputObject]),
+    getInputBorderFocus: dart.fnType(dart.nullable(input_border.InputBorder), [input_base.InputObject]),
+    getInputErrorBorder: dart.fnType(dart.nullable(input_border.InputBorder), [input_base.InputObject]),
+    hintTextStyle: dart.fnType(text_style.TextStyle, [input_base.InputObject]),
+    textStyle: dart.fnType(text_style.TextStyle, [input_base.InputObject]),
+    textStyleCheckBox: dart.fnType(text_style.TextStyle, [input_base.InputObject]),
+    getMaxLine: dart.fnType(core.int, [input_base.InputObject]),
+    getInputFormatters: dart.fnType(core.List$(text_formatter.TextInputFormatter), [input_base.InputObject]),
+    getSuffix: dart.fnType(framework.Widget, [input_base.InputObject], {onClick: dart.nullable(core.Function)}, {})
+  }));
+  dart.setStaticMethodSignature(parameter.InputBaseParameter, () => ['new']);
+  dart.setLibraryUri(parameter.InputBaseParameter, I[0]);
+  dart.setStaticFieldSignature(parameter.InputBaseParameter, () => ['instance']);
+  dart.defineLazy(parameter.InputBaseParameter, {
+    /*parameter.InputBaseParameter.instance*/get instance() {
+      return new parameter.InputBaseParameter._internal();
+    }
+  }, false);
+  var color$ = dart.privateName(parameter, "CloseCustomButtonWidget.color");
+  var icon$ = dart.privateName(parameter, "CloseCustomButtonWidget.icon");
+  var onTap$ = dart.privateName(parameter, "CloseCustomButtonWidget.onTap");
+  var src$ = dart.privateName(parameter, "CloseCustomButtonWidget.src");
+  var width$ = dart.privateName(parameter, "CloseCustomButtonWidget.width");
+  parameter.CloseCustomButtonWidget = class CloseCustomButtonWidget extends framework.StatelessWidget {
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    get icon() {
+      return this[icon$];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get src() {
+      return this[src$];
+    }
+    set src(value) {
+      super.src = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let src = opts && 'src' in opts ? opts.src : "";
+      let width = opts && 'width' in opts ? opts.width : null;
+      return new parameter.CloseCustomButtonWidget.new({key: key, color: color, icon: icon, onTap: onTap, src: src, width: width, $creationLocationd_0dea112b090073317d4: C[32] || CT.C32});
+    }
+    build(context) {
+      let t0;
+      return new inkwell_safe.InkWellSafe.new({onTap: dart.nullCheck(this.onTap), child: new container.Container.new({constraints: new box.BoxConstraints.new({maxHeight: 35.0}), color: (t0 = this.color, t0 == null ? colors.Colors.transparent : t0), alignment: alignment.Alignment.center, padding: C[33] || CT.C33, child: this.buildIcon(), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35});
+    }
+    buildIcon() {
+      let t0;
+      return framework.Widget.as((t0 = this.icon, t0 == null ? extension_utils.ExtensionUtils.isSvgExtension(this.src) ? new svg.SvgPicture.asset(this.src, {$creationLocationd_0dea112b090073317d4: C[36] || CT.C36}) : new image.Image.asset(this.src, {$creationLocationd_0dea112b090073317d4: C[37] || CT.C37}) : t0));
+    }
+  };
+  (parameter.CloseCustomButtonWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let src = opts && 'src' in opts ? opts.src : "";
+    let width = opts && 'width' in opts ? opts.width : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[color$] = color;
+    this[icon$] = icon;
+    this[onTap$] = onTap;
+    this[src$] = src;
+    this[width$] = width;
+    parameter.CloseCustomButtonWidget.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = parameter.CloseCustomButtonWidget.prototype;
+  dart.addTypeTests(parameter.CloseCustomButtonWidget);
+  dart.addTypeCaches(parameter.CloseCustomButtonWidget);
+  dart.setMethodSignature(parameter.CloseCustomButtonWidget, () => ({
+    __proto__: dart.getMethods(parameter.CloseCustomButtonWidget.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    buildIcon: dart.fnType(framework.Widget, [])
+  }));
+  dart.setLibraryUri(parameter.CloseCustomButtonWidget, I[0]);
+  dart.setFieldSignature(parameter.CloseCustomButtonWidget, () => ({
+    __proto__: dart.getFields(parameter.CloseCustomButtonWidget.__proto__),
+    color: dart.finalFieldType(dart.nullable(ui.Color)),
+    icon: dart.finalFieldType(dart.dynamic),
+    onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    src: dart.finalFieldType(core.String),
+    width: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  dart.trackLibraries("packages/cc_library/widget/dynamic_form/view/parameter.dart", {
+    "package:cc_library/widget/dynamic_form/view/parameter.dart": parameter
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["parameter.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../../packages/cc_library/widget/dynamic_form/view/parameter.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__dynamic_form__view__parameter: parameter
+  };
+}));
+
+//# sourceMappingURL=parameter.dart.lib.js.map

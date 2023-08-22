@@ -1,0 +1,392 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/title.dart', 'packages/flutter/src/widgets/visibility.dart', 'packages/flutter_bounceable/src/bounceable.dart', 'packages/get/get_navigation/src/snackbar/snackbar_controller.dart', 'packages/get/get_core/src/get_main.dart', 'packages/cc_library/src/screen_util/cc_size_extension.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/cc_library/widget/text/custom_text.dart', 'packages/cc_library/theme/base_colors.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/cc_library/widget/widget_util.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/cc_library/widget/flex/base_row_center.dart', 'packages/cc_library/widget/space/space_widget.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/widgets/icon_data.dart'], (function load__packages__cc_library__widget__button__debounce_widget_dart(dart_sdk, packages__flutter__src__widgets__title$46dart, packages__flutter__src__widgets__visibility$46dart, packages__flutter_bounceable__src__bounceable$46dart, packages__get__get_navigation__src__snackbar__snackbar_controller$46dart, packages__get__get_core__src__get_main$46dart, packages__cc_library__src__screen_util__cc_size_extension$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__cc_library__widget__text__custom_text$46dart, packages__cc_library__theme__base_colors$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__gradient$46dart, packages__cc_library__widget__widget_util$46dart, packages__flutter__src__widgets__icon$46dart, packages__cc_library__widget__flex__base_row_center$46dart, packages__cc_library__widget__space__space_widget$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__widgets__icon_data$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const widget_inspector = packages__flutter__src__widgets__title$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__title$46dart.src__widgets__container;
+  const framework = packages__flutter__src__widgets__title$46dart.src__widgets__framework;
+  const visibility = packages__flutter__src__widgets__visibility$46dart.src__widgets__visibility;
+  const bounceable = packages__flutter_bounceable__src__bounceable$46dart.src__bounceable;
+  const extension_navigation = packages__get__get_navigation__src__snackbar__snackbar_controller$46dart.get_navigation__src__extension_navigation;
+  const get_main = packages__get__get_core__src__get_main$46dart.get_core__src__get_main;
+  const cc_size_extension = packages__cc_library__src__screen_util__cc_size_extension$46dart.src__screen_util__cc_size_extension;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const custom_text = packages__cc_library__widget__text__custom_text$46dart.widget__text__custom_text;
+  const base_colors = packages__cc_library__theme__base_colors$46dart.theme__base_colors;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
+  const widget_util = packages__cc_library__widget__widget_util$46dart.widget__widget_util;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const base_row_center = packages__cc_library__widget__flex__base_row_center$46dart.widget__flex__base_row_center;
+  const space_widget = packages__cc_library__widget__space__space_widget$46dart.widget__space__space_widget;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  var debounce_widget = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 750000
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "DebounceWidget",
+        [_Location_column]: 9,
+        [_Location_line]: 38,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Bounceable",
+        [_Location_column]: 16,
+        [_Location_line]: 63,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Visibility",
+        [_Location_column]: 41,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Container",
+        [_Location_column]: 7,
+        [_Location_line]: 71,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "CustomText",
+        [_Location_column]: 32,
+        [_Location_line]: 81,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "Icon",
+        [_Location_column]: 25,
+        [_Location_line]: 99,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "SpaceSmallWidget",
+        [_Location_column]: 15,
+        [_Location_line]: 109,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: space_widget.SpaceSmallWidget.prototype,
+        [Widget__location]: C[8] || CT.C8,
+        [Widget_key]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_name]: "BaseRowCenter",
+        [_Location_column]: 28,
+        [_Location_line]: 105,
+        [_Location_file]: "file:///C:/Users/Admin/AppData/Local/Pub/Cache/git/cci.mobile.appbase-92a8d850addc8e5d612bef53c28acb630d12a616/modules/cc_library/lib/widget/button/debounce_widget.dart"
+      });
+    }
+  }, false);
+  var C = Array(10).fill(void 0);
+  var I = ["package:cc_library/widget/button/debounce_widget.dart"];
+  var onTap$ = dart.privateName(debounce_widget, "DebounceWidget.onTap");
+  var isEnable$ = dart.privateName(debounce_widget, "DebounceWidget.isEnable");
+  var isTextCenter$ = dart.privateName(debounce_widget, "DebounceWidget.isTextCenter");
+  var isVisible$ = dart.privateName(debounce_widget, "DebounceWidget.isVisible");
+  var borderRadius$ = dart.privateName(debounce_widget, "DebounceWidget.borderRadius");
+  var decoration$ = dart.privateName(debounce_widget, "DebounceWidget.decoration");
+  var iconColor$ = dart.privateName(debounce_widget, "DebounceWidget.iconColor");
+  var shadowColor$ = dart.privateName(debounce_widget, "DebounceWidget.shadowColor");
+  var textColor$ = dart.privateName(debounce_widget, "DebounceWidget.textColor");
+  var fontSize$ = dart.privateName(debounce_widget, "DebounceWidget.fontSize");
+  var height$ = dart.privateName(debounce_widget, "DebounceWidget.height");
+  var width$ = dart.privateName(debounce_widget, "DebounceWidget.width");
+  var cooldown$ = dart.privateName(debounce_widget, "DebounceWidget.cooldown");
+  var margin$ = dart.privateName(debounce_widget, "DebounceWidget.margin");
+  var icon$ = dart.privateName(debounce_widget, "DebounceWidget.icon");
+  var bgColor$ = dart.privateName(debounce_widget, "DebounceWidget.bgColor");
+  var title$ = dart.privateName(debounce_widget, "DebounceWidget.title");
+  var child$ = dart.privateName(debounce_widget, "DebounceWidget.child");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  debounce_widget.DebounceWidget = class DebounceWidget extends framework.StatelessWidget {
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get isEnable() {
+      return this[isEnable$];
+    }
+    set isEnable(value) {
+      super.isEnable = value;
+    }
+    get isTextCenter() {
+      return this[isTextCenter$];
+    }
+    set isTextCenter(value) {
+      super.isTextCenter = value;
+    }
+    get isVisible() {
+      return this[isVisible$];
+    }
+    set isVisible(value) {
+      super.isVisible = value;
+    }
+    get borderRadius() {
+      return this[borderRadius$];
+    }
+    set borderRadius(value) {
+      super.borderRadius = value;
+    }
+    get decoration() {
+      return this[decoration$];
+    }
+    set decoration(value) {
+      super.decoration = value;
+    }
+    get iconColor() {
+      return this[iconColor$];
+    }
+    set iconColor(value) {
+      super.iconColor = value;
+    }
+    get shadowColor() {
+      return this[shadowColor$];
+    }
+    set shadowColor(value) {
+      super.shadowColor = value;
+    }
+    get textColor() {
+      return this[textColor$];
+    }
+    set textColor(value) {
+      super.textColor = value;
+    }
+    get fontSize() {
+      return this[fontSize$];
+    }
+    set fontSize(value) {
+      super.fontSize = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get cooldown() {
+      return this[cooldown$];
+    }
+    set cooldown(value) {
+      super.cooldown = value;
+    }
+    get margin() {
+      return this[margin$];
+    }
+    set margin(value) {
+      super.margin = value;
+    }
+    get icon() {
+      return this[icon$];
+    }
+    set icon(value) {
+      super.icon = value;
+    }
+    get bgColor() {
+      return this[bgColor$];
+    }
+    set bgColor(value) {
+      super.bgColor = value;
+    }
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let width = opts && 'width' in opts ? opts.width : null;
+      let bgColor = opts && 'bgColor' in opts ? opts.bgColor : null;
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      let cooldown = opts && 'cooldown' in opts ? opts.cooldown : C[0] || CT.C0;
+      let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+      let fontSize = opts && 'fontSize' in opts ? opts.fontSize : null;
+      let icon = opts && 'icon' in opts ? opts.icon : null;
+      let iconColor = opts && 'iconColor' in opts ? opts.iconColor : null;
+      let isEnable = opts && 'isEnable' in opts ? opts.isEnable : true;
+      let isTextCenter = opts && 'isTextCenter' in opts ? opts.isTextCenter : true;
+      let isVisible = opts && 'isVisible' in opts ? opts.isVisible : true;
+      let margin = opts && 'margin' in opts ? opts.margin : null;
+      let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : null;
+      let textColor = opts && 'textColor' in opts ? opts.textColor : null;
+      let title = opts && 'title' in opts ? opts.title : "";
+      let child = opts && 'child' in opts ? opts.child : null;
+      return new debounce_widget.DebounceWidget.new({key: key, onTap: onTap, height: height, width: width, bgColor: bgColor, borderRadius: borderRadius, cooldown: cooldown, decoration: decoration, fontSize: fontSize, icon: icon, iconColor: iconColor, isEnable: isEnable, isTextCenter: isTextCenter, isVisible: isVisible, margin: margin, shadowColor: shadowColor, textColor: textColor, title: title, child: child, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+    }
+    build(context) {
+      return new visibility.Visibility.new({visible: this.isVisible, child: new bounceable.Bounceable.new({onTap: this.onTap, child: this.buildBody(), $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+    }
+    buildBody() {
+      let t1, t1$, t1$0, t1$1, t0;
+      t0 = this.child;
+      return t0 == null ? new container.Container.new({width: (t1 = this.width, t1 == null ? extension_navigation['GetNavigation|get#width'](get_main.Get) : t1), height: (t1$ = this.height, t1$ == null ? cc_size_extension['CcSizeExtension|get#ccH'](45) : t1$), alignment: alignment.Alignment.center, decoration: (t1$0 = this.decoration, t1$0 == null ? this.buildDecoration() : t1$0), margin: (t1$1 = this.margin, t1$1 == null ? new edge_insets.EdgeInsets.only({left: cc_size_extension['CcSizeExtension|get#ccL'](13.5), right: cc_size_extension['CcSizeExtension|get#ccR'](13.5)}) : t1$1), child: this.icon != null ? this.buildIconRow() : this.buildBtnText(), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}) : t0;
+    }
+    buildBtnText() {
+      let t0;
+      return new custom_text.CustomText.new(this.title, {align: this.isTextCenter ? alignment.Alignment.center : alignment.Alignment.centerLeft, color: this.isEnable ? this.textColor : base_colors.BaseColors.black_50, fontSize: (t0 = this.fontSize, t0 == null ? cc_size_extension['CcSizeExtension|get#ccSp'](16.0) : t0), fontWeight: ui.FontWeight.w500, textAlign: this.isTextCenter ? ui.TextAlign.center : ui.TextAlign.left, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    buildDecoration() {
+      let t0, t0$;
+      return new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.centerLeft, end: alignment.Alignment.centerRight, colors: (t0 = this.bgColor, t0 == null ? T.JSArrayOfColor().of([base_colors.BaseColors.pink_70, base_colors.BaseColors.pink_70]) : t0)}), borderRadius: (t0$ = this.borderRadius, t0$ == null ? widget_util.WidgetUtil.getCircleBorderRadius() : t0$)});
+    }
+    buildIcon() {
+      let t0;
+      return new icon.Icon.new(this.icon, {size: cc_size_extension['CcSizeExtension|get#ccSp'](15), color: (t0 = this.iconColor, t0 == null ? base_colors.BaseColors.white_80 : t0), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+    }
+    buildIconRow() {
+      return new base_row_center.BaseRowCenter.new({children: T.JSArrayOfWidget().of([this.buildIcon(), C[7] || CT.C7, this.buildBtnText()]), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+    }
+  };
+  (debounce_widget.DebounceWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let bgColor = opts && 'bgColor' in opts ? opts.bgColor : null;
+    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+    let cooldown = opts && 'cooldown' in opts ? opts.cooldown : C[0] || CT.C0;
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let fontSize = opts && 'fontSize' in opts ? opts.fontSize : null;
+    let icon = opts && 'icon' in opts ? opts.icon : null;
+    let iconColor = opts && 'iconColor' in opts ? opts.iconColor : null;
+    let isEnable = opts && 'isEnable' in opts ? opts.isEnable : true;
+    let isTextCenter = opts && 'isTextCenter' in opts ? opts.isTextCenter : true;
+    let isVisible = opts && 'isVisible' in opts ? opts.isVisible : true;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : null;
+    let textColor = opts && 'textColor' in opts ? opts.textColor : null;
+    let title = opts && 'title' in opts ? opts.title : "";
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[onTap$] = onTap;
+    this[height$] = height;
+    this[width$] = width;
+    this[bgColor$] = bgColor;
+    this[borderRadius$] = borderRadius;
+    this[cooldown$] = cooldown;
+    this[decoration$] = decoration;
+    this[fontSize$] = fontSize;
+    this[icon$] = icon;
+    this[iconColor$] = iconColor;
+    this[isEnable$] = isEnable;
+    this[isTextCenter$] = isTextCenter;
+    this[isVisible$] = isVisible;
+    this[margin$] = margin;
+    this[shadowColor$] = shadowColor;
+    this[textColor$] = textColor;
+    this[title$] = title;
+    this[child$] = child;
+    debounce_widget.DebounceWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = debounce_widget.DebounceWidget.prototype;
+  dart.addTypeTests(debounce_widget.DebounceWidget);
+  dart.addTypeCaches(debounce_widget.DebounceWidget);
+  dart.setMethodSignature(debounce_widget.DebounceWidget, () => ({
+    __proto__: dart.getMethods(debounce_widget.DebounceWidget.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    buildBody: dart.fnType(framework.Widget, []),
+    buildBtnText: dart.fnType(custom_text.CustomText, []),
+    buildDecoration: dart.fnType(box_decoration.BoxDecoration, []),
+    buildIcon: dart.fnType(framework.Widget, []),
+    buildIconRow: dart.fnType(framework.Widget, [])
+  }));
+  dart.setLibraryUri(debounce_widget.DebounceWidget, I[0]);
+  dart.setFieldSignature(debounce_widget.DebounceWidget, () => ({
+    __proto__: dart.getFields(debounce_widget.DebounceWidget.__proto__),
+    onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    isEnable: dart.finalFieldType(core.bool),
+    isTextCenter: dart.finalFieldType(core.bool),
+    isVisible: dart.finalFieldType(core.bool),
+    borderRadius: dart.finalFieldType(dart.nullable(border_radius.BorderRadius)),
+    decoration: dart.finalFieldType(dart.nullable(box_decoration.BoxDecoration)),
+    iconColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    shadowColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    textColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    fontSize: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    cooldown: dart.finalFieldType(dart.nullable(core.Duration)),
+    margin: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsets)),
+    icon: dart.finalFieldType(dart.nullable(icon_data.IconData)),
+    bgColor: dart.finalFieldType(dart.nullable(core.List$(ui.Color))),
+    title: dart.finalFieldType(core.String),
+    child: dart.finalFieldType(dart.nullable(framework.Widget))
+  }));
+  dart.trackLibraries("packages/cc_library/widget/button/debounce_widget.dart", {
+    "package:cc_library/widget/button/debounce_widget.dart": debounce_widget
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["debounce_widget.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAcsB;;;;;;IAET;;;;;;IAAU;;;;;;IAAc;;;;;;IAEf;;;;;;IACC;;;;;;IAER;;;;;;IAAW;;;;;;IAAa;;;;;;IAEvB;;;;;;IAAU;;;;;;IAAQ;;;;;;IAEhB;;;;;;IACE;;;;;;IAEF;;;;;;IAEG;;;;;;IAEN;;;;;;IAGC;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAyBY;AAAY,qDACvB,uBACF,sCACE,mBACA;IAEV;;;AAGD;0BACA,qCACiB,iBAAN,aAAa,gDAAJ,8BACD,mBAAP,cAAa,6CAAH,uBACG,yCACE,wBAAX,eAAc,yCACX,oBAAP,eACO,uCACiC,2DAA8C,qEACvF,AAAK,oBAAU,sBAAiB;IAAe;;;AAEjC,4CACvB,oBACO,oBAAyB,6BAAmB,uCAC5C,gBAAW,iBAAuB,4CACtB,oBAAT,aAAiB,8CAAL,yBACC,+BACZ,oBAAyB,sBAAmB;IACxD;;;AAE8B,6DACnB,wCACS,qCACF,0CACC,mBAAR,aAAW,uBAAY,gCAAoB,yDAE1B,yBAAb,cAA2B;IAC1C;;;AAEiB,+BAChB,kBACS,8CAAH,aACW,qBAAV,aAAwB;IAChC;;AAEoB,8DAAwB,wBAE3C,iCAKA;IACA;;;QA1EC;QACS;QACT;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAjBS;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AACF,kEAAW,GAAG;;EAAC","file":"../../../../../../../../../../../../../packages/cc_library/widget/button/debounce_widget.dart.lib.js"}');
+  // Exports:
+  return {
+    widget__button__debounce_widget: debounce_widget
+  };
+}));
+
+//# sourceMappingURL=debounce_widget.dart.lib.js.map

@@ -1,0 +1,354 @@
+define(['dart_sdk', 'packages/barcode/src/barcode_exception.dart'], (function load__packages__barcode__src__reedsolomon_dart(dart_sdk, packages__barcode__src__barcode_exception$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const barcode_exception = packages__barcode__src__barcode_exception$46dart.src__barcode_exception;
+  var reedsolomon = Object.create(dart.library);
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $add = dartx.add;
+  var $setAll = dartx.setAll;
+  var $_set = dartx._set;
+  var $modulo = dartx['%'];
+  var $sublist = dartx.sublist;
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
+    JSArrayOfGFPoly: () => (T.JSArrayOfGFPoly = dart.constFn(_interceptors.JSArray$(reedsolomon.GFPoly)))(),
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: barcode_exception.BarcodeException.prototype,
+        [BarcodeException_message]: "Divide by zero"
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = ["package:barcode/src/reedsolomon.dart"];
+  var gf$ = dart.privateName(reedsolomon, "ReedSolomonEncoder.gf");
+  var __ReedSolomonEncoder_polynomes = dart.privateName(reedsolomon, "_#ReedSolomonEncoder#polynomes");
+  reedsolomon.ReedSolomonEncoder = class ReedSolomonEncoder extends core.Object {
+    get gf() {
+      return this[gf$];
+    }
+    set gf(value) {
+      this[gf$] = value;
+    }
+    static ['_#new#tearOff'](gf) {
+      return new reedsolomon.ReedSolomonEncoder.new(gf);
+    }
+    get polynomes() {
+      let t0;
+      t0 = this[__ReedSolomonEncoder_polynomes];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("polynomes")) : t0;
+    }
+    set polynomes(polynomes$35param) {
+      this[__ReedSolomonEncoder_polynomes] = polynomes$35param;
+    }
+    getPolynomial(degree) {
+      if (degree >= this.polynomes[$length]) {
+        let last = this.polynomes[$_get](this.polynomes[$length] - 1);
+        for (let d = this.polynomes[$length]; d <= degree; d = d + 1) {
+          let next = last.multiply(new reedsolomon.GFPoly.new(this.gf, T.JSArrayOfint().of([1, this.gf.aLogTbl[$_get](d - 1 + this.gf.base)])));
+          this.polynomes[$add](next);
+          last = next;
+        }
+      }
+      return this.polynomes[$_get](degree);
+    }
+    encode(data, eccCount) {
+      let generator = this.getPolynomial(eccCount);
+      let info = new reedsolomon.GFPoly.new(this.gf, data);
+      info = info.multByMonominal(eccCount, 1);
+      let remainder = info.divide(generator)[$_get](1);
+      let result = T.ListOfint().filled(eccCount, 0);
+      let numZero = eccCount - remainder.coefficients[$length];
+      result[$setAll](numZero, remainder.coefficients);
+      return result;
+    }
+  };
+  (reedsolomon.ReedSolomonEncoder.new = function(gf) {
+    this[__ReedSolomonEncoder_polynomes] = null;
+    this[gf$] = gf;
+    this.polynomes = T.JSArrayOfGFPoly().of([new reedsolomon.GFPoly.new(this.gf, T.JSArrayOfint().of([1]))]);
+  }).prototype = reedsolomon.ReedSolomonEncoder.prototype;
+  dart.addTypeTests(reedsolomon.ReedSolomonEncoder);
+  dart.addTypeCaches(reedsolomon.ReedSolomonEncoder);
+  dart.setMethodSignature(reedsolomon.ReedSolomonEncoder, () => ({
+    __proto__: dart.getMethods(reedsolomon.ReedSolomonEncoder.__proto__),
+    getPolynomial: dart.fnType(reedsolomon.GFPoly, [core.int]),
+    encode: dart.fnType(core.List$(core.int), [core.List$(core.int), core.int])
+  }));
+  dart.setGetterSignature(reedsolomon.ReedSolomonEncoder, () => ({
+    __proto__: dart.getGetters(reedsolomon.ReedSolomonEncoder.__proto__),
+    polynomes: core.List$(reedsolomon.GFPoly)
+  }));
+  dart.setSetterSignature(reedsolomon.ReedSolomonEncoder, () => ({
+    __proto__: dart.getSetters(reedsolomon.ReedSolomonEncoder.__proto__),
+    polynomes: core.List$(reedsolomon.GFPoly)
+  }));
+  dart.setLibraryUri(reedsolomon.ReedSolomonEncoder, I[0]);
+  dart.setFieldSignature(reedsolomon.ReedSolomonEncoder, () => ({
+    __proto__: dart.getFields(reedsolomon.ReedSolomonEncoder.__proto__),
+    gf: dart.fieldType(reedsolomon.GaloisField),
+    [__ReedSolomonEncoder_polynomes]: dart.fieldType(dart.nullable(core.List$(reedsolomon.GFPoly)))
+  }));
+  var size$ = dart.privateName(reedsolomon, "GaloisField.size");
+  var base$ = dart.privateName(reedsolomon, "GaloisField.base");
+  var __GaloisField_aLogTbl = dart.privateName(reedsolomon, "_#GaloisField#aLogTbl");
+  var __GaloisField_logTbl = dart.privateName(reedsolomon, "_#GaloisField#logTbl");
+  var BarcodeException_message = dart.privateName(barcode_exception, "BarcodeException.message");
+  reedsolomon.GaloisField = class GaloisField extends core.Object {
+    get size() {
+      return this[size$];
+    }
+    set size(value) {
+      this[size$] = value;
+    }
+    get base() {
+      return this[base$];
+    }
+    set base(value) {
+      this[base$] = value;
+    }
+    static ['_#new#tearOff'](pp, size, base) {
+      return new reedsolomon.GaloisField.new(pp, size, base);
+    }
+    get aLogTbl() {
+      let t0;
+      t0 = this[__GaloisField_aLogTbl];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("aLogTbl")) : t0;
+    }
+    set aLogTbl(aLogTbl$35param) {
+      this[__GaloisField_aLogTbl] = aLogTbl$35param;
+    }
+    get logTbl() {
+      let t0;
+      t0 = this[__GaloisField_logTbl];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("logTbl")) : t0;
+    }
+    set logTbl(logTbl$35param) {
+      this[__GaloisField_logTbl] = logTbl$35param;
+    }
+    zero() {
+      return new reedsolomon.GFPoly.new(this, T.JSArrayOfint().of([0]));
+    }
+    addOrSub(a, b) {
+      return (a ^ b) >>> 0;
+    }
+    multiply(a, b) {
+      if (a === 0 || b === 0) {
+        return 0;
+      }
+      return this.aLogTbl[$_get]((this.logTbl[$_get](a) + this.logTbl[$_get](b))[$modulo](this.size - 1));
+    }
+    divide(a, b) {
+      if (b === 0) {
+        dart.throw(C[0] || CT.C0);
+      } else if (a === 0) {
+        return 0;
+      }
+      return this.aLogTbl[$_get]((this.logTbl[$_get](a) - this.logTbl[$_get](b))[$modulo](this.size - 1));
+    }
+    invers(num) {
+      return this.aLogTbl[$_get](this.size - 1 - this.logTbl[$_get](num));
+    }
+  };
+  (reedsolomon.GaloisField.new = function(pp, size, base) {
+    this[__GaloisField_aLogTbl] = null;
+    this[__GaloisField_logTbl] = null;
+    this[size$] = size;
+    this[base$] = base;
+    this.aLogTbl = T.ListOfint().filled(this.size, 0);
+    this.logTbl = T.ListOfint().filled(this.size, 0);
+    let x = 1;
+    for (let i = 0; i < this.size; i = i + 1) {
+      this.aLogTbl[$_set](i, x);
+      x = x * 2;
+      if (x >= this.size) {
+        x = ((x ^ pp) & this.size - 1) >>> 0;
+      }
+    }
+    for (let i = 0; i < this.size; i = i + 1) {
+      this.logTbl[$_set](this.aLogTbl[$_get](i), i);
+    }
+  }).prototype = reedsolomon.GaloisField.prototype;
+  dart.addTypeTests(reedsolomon.GaloisField);
+  dart.addTypeCaches(reedsolomon.GaloisField);
+  dart.setMethodSignature(reedsolomon.GaloisField, () => ({
+    __proto__: dart.getMethods(reedsolomon.GaloisField.__proto__),
+    zero: dart.fnType(reedsolomon.GFPoly, []),
+    addOrSub: dart.fnType(core.int, [core.int, core.int]),
+    multiply: dart.fnType(core.int, [core.int, core.int]),
+    divide: dart.fnType(core.int, [core.int, core.int]),
+    invers: dart.fnType(core.int, [core.int])
+  }));
+  dart.setGetterSignature(reedsolomon.GaloisField, () => ({
+    __proto__: dart.getGetters(reedsolomon.GaloisField.__proto__),
+    aLogTbl: core.List$(core.int),
+    logTbl: core.List$(core.int)
+  }));
+  dart.setSetterSignature(reedsolomon.GaloisField, () => ({
+    __proto__: dart.getSetters(reedsolomon.GaloisField.__proto__),
+    aLogTbl: core.List$(core.int),
+    logTbl: core.List$(core.int)
+  }));
+  dart.setLibraryUri(reedsolomon.GaloisField, I[0]);
+  dart.setFieldSignature(reedsolomon.GaloisField, () => ({
+    __proto__: dart.getFields(reedsolomon.GaloisField.__proto__),
+    size: dart.fieldType(core.int),
+    base: dart.fieldType(core.int),
+    [__GaloisField_aLogTbl]: dart.fieldType(dart.nullable(core.List$(core.int))),
+    [__GaloisField_logTbl]: dart.fieldType(dart.nullable(core.List$(core.int)))
+  }));
+  var gf$0 = dart.privateName(reedsolomon, "GFPoly.gf");
+  var coefficients$ = dart.privateName(reedsolomon, "GFPoly.coefficients");
+  reedsolomon.GFPoly = class GFPoly extends core.Object {
+    get gf() {
+      return this[gf$0];
+    }
+    set gf(value) {
+      this[gf$0] = value;
+    }
+    get coefficients() {
+      return this[coefficients$];
+    }
+    set coefficients(value) {
+      this[coefficients$] = value;
+    }
+    static ['_#new#tearOff'](gf, coefficients) {
+      return new reedsolomon.GFPoly.new(gf, coefficients);
+    }
+    static monominalPoly(field, degree, coeff) {
+      if (coeff === 0) {
+        return field.zero();
+      }
+      let result = T.ListOfint().filled(degree + 1, 0);
+      result[$_set](0, coeff);
+      return new reedsolomon.GFPoly.new(field, result);
+    }
+    static ['_#monominalPoly#tearOff'](field, degree, coeff) {
+      return reedsolomon.GFPoly.monominalPoly(field, degree, coeff);
+    }
+    getDegree() {
+      return this.coefficients[$length] - 1;
+    }
+    zero() {
+      return this.coefficients[$_get](0) === 0;
+    }
+    getCoefficient(degree) {
+      return this.coefficients[$_get](this.getDegree() - degree);
+    }
+    addOrSubstract(other) {
+      if (this.zero()) {
+        return other;
+      } else if (other.zero()) {
+        return this;
+      }
+      let smallCoeff = this.coefficients;
+      let largeCoeff = other.coefficients;
+      if (smallCoeff[$length] > largeCoeff[$length]) {
+        let swap = largeCoeff;
+        largeCoeff = smallCoeff;
+        smallCoeff = swap;
+      }
+      let sumDiff = T.ListOfint().filled(largeCoeff[$length], 0);
+      let lenDiff = largeCoeff[$length] - smallCoeff[$length];
+      sumDiff[$setAll](0, largeCoeff[$sublist](0, lenDiff));
+      for (let i = lenDiff; i < largeCoeff[$length]; i = i + 1) {
+        sumDiff[$_set](i, this.gf.addOrSub(smallCoeff[$_get](i - lenDiff), largeCoeff[$_get](i)));
+      }
+      return new reedsolomon.GFPoly.new(this.gf, sumDiff);
+    }
+    multByMonominal(degree, coeff) {
+      if (coeff === 0) {
+        return this.gf.zero();
+      }
+      let size = this.coefficients[$length];
+      let result = T.ListOfint().filled(size + degree, 0);
+      for (let i = 0; i < size; i = i + 1) {
+        result[$_set](i, this.gf.multiply(this.coefficients[$_get](i), coeff));
+      }
+      return new reedsolomon.GFPoly.new(this.gf, result);
+    }
+    multiply(other) {
+      if (this.zero() || other.zero()) {
+        return this.gf.zero();
+      }
+      let aCoeff = this.coefficients;
+      let aLen = aCoeff[$length];
+      let bCoeff = other.coefficients;
+      let bLen = bCoeff[$length];
+      let product = T.ListOfint().filled(aLen + bLen - 1, 0);
+      for (let i = 0; i < aLen; i = i + 1) {
+        let ac = aCoeff[$_get](i);
+        for (let j = 0; j < bLen; j = j + 1) {
+          let bc = bCoeff[$_get](j);
+          product[$_set](i + j, this.gf.addOrSub(product[$_get](i + j), this.gf.multiply(ac, bc)));
+        }
+      }
+      return new reedsolomon.GFPoly.new(this.gf, product);
+    }
+    divide(other) {
+      let quotient = this.gf.zero();
+      let remainder = this;
+      let fld = this.gf;
+      let denomLeadTerm = other.getCoefficient(other.getDegree());
+      let inversDenomLeadTerm = fld.invers(denomLeadTerm);
+      while (remainder.getDegree() >= other.getDegree() && !remainder.zero()) {
+        let degreeDiff = remainder.getDegree() - other.getDegree();
+        let scale = fld.multiply(remainder.getCoefficient(remainder.getDegree()), inversDenomLeadTerm);
+        let term = other.multByMonominal(degreeDiff, scale);
+        let itQuot = reedsolomon.GFPoly.monominalPoly(fld, degreeDiff, scale);
+        quotient = quotient.addOrSubstract(itQuot);
+        remainder = remainder.addOrSubstract(term);
+      }
+      return T.JSArrayOfGFPoly().of([quotient, remainder]);
+    }
+  };
+  (reedsolomon.GFPoly.new = function(gf, coefficients) {
+    this[gf$0] = gf;
+    this[coefficients$] = coefficients;
+    while (this.coefficients[$length] > 1 && this.coefficients[$_get](0) === 0) {
+      this.coefficients = this.coefficients[$sublist](1);
+    }
+  }).prototype = reedsolomon.GFPoly.prototype;
+  dart.addTypeTests(reedsolomon.GFPoly);
+  dart.addTypeCaches(reedsolomon.GFPoly);
+  dart.setMethodSignature(reedsolomon.GFPoly, () => ({
+    __proto__: dart.getMethods(reedsolomon.GFPoly.__proto__),
+    getDegree: dart.fnType(core.int, []),
+    zero: dart.fnType(core.bool, []),
+    getCoefficient: dart.fnType(core.int, [core.int]),
+    addOrSubstract: dart.fnType(reedsolomon.GFPoly, [reedsolomon.GFPoly]),
+    multByMonominal: dart.fnType(reedsolomon.GFPoly, [core.int, core.int]),
+    multiply: dart.fnType(reedsolomon.GFPoly, [reedsolomon.GFPoly]),
+    divide: dart.fnType(core.List$(reedsolomon.GFPoly), [reedsolomon.GFPoly])
+  }));
+  dart.setStaticMethodSignature(reedsolomon.GFPoly, () => ['monominalPoly']);
+  dart.setLibraryUri(reedsolomon.GFPoly, I[0]);
+  dart.setFieldSignature(reedsolomon.GFPoly, () => ({
+    __proto__: dart.getFields(reedsolomon.GFPoly.__proto__),
+    gf: dart.fieldType(reedsolomon.GaloisField),
+    coefficients: dart.fieldType(core.List$(core.int))
+  }));
+  dart.trackLibraries("packages/barcode/src/reedsolomon.dart", {
+    "package:barcode/src/reedsolomon.dart": reedsolomon
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["reedsolomon.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/barcode/src/reedsolomon.dart.lib.js"}');
+  // Exports:
+  return {
+    src__reedsolomon: reedsolomon
+  };
+}));
+
+//# sourceMappingURL=reedsolomon.dart.lib.js.map

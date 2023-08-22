@@ -1,0 +1,601 @@
+define(['dart_sdk', 'packages/image/src/util/output_buffer.dart', 'packages/archive/src/zlib_encoder.dart', 'packages/image/src/image.dart', 'packages/image/src/color.dart', 'packages/archive/src/util/crc32.dart', 'packages/image/src/formats/encoder.dart', 'packages/image/src/icc_profile_data.dart'], (function load__packages__image__src__formats__png_encoder_dart(dart_sdk, packages__image__src__util__output_buffer$46dart, packages__archive__src__zlib_encoder$46dart, packages__image__src__image$46dart, packages__image__src__color$46dart, packages__archive__src__util__crc32$46dart, packages__image__src__formats__encoder$46dart, packages__image__src__icc_profile_data$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const _internal = dart_sdk._internal;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const output_buffer = packages__image__src__util__output_buffer$46dart.src__util__output_buffer;
+  const zlib_encoder = packages__archive__src__zlib_encoder$46dart.src__zlib_encoder;
+  const image$ = packages__image__src__image$46dart.src__image;
+  const color = packages__image__src__color$46dart.src__color;
+  const crc32 = packages__archive__src__util__crc32$46dart.src__util__crc32;
+  const encoder = packages__image__src__formats__encoder$46dart.src__formats__encoder;
+  const icc_profile_data = packages__image__src__icc_profile_data$46dart.src__icc_profile_data;
+  var png_encoder = Object.create(dart.library);
+  var $keys = dartx.keys;
+  var $_get = dartx._get;
+  var $length = dartx.length;
+  var $codeUnits = dartx.codeUnits;
+  var $_set = dartx._set;
+  var $rightShift = dartx['>>'];
+  dart._checkModuleNullSafetyMode(true);
+  dart._checkModuleRuntimeTypes(false);
+  var T = {
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: zlib_encoder.ZLibEncoder.prototype
+      });
+    }
+  }, false);
+  var C = [void 0];
+  var I = ["package:image/src/formats/png_encoder.dart"];
+  var channels = dart.privateName(png_encoder, "PngEncoder.channels");
+  var filter$ = dart.privateName(png_encoder, "PngEncoder.filter");
+  var repeat = dart.privateName(png_encoder, "PngEncoder.repeat");
+  var level$ = dart.privateName(png_encoder, "PngEncoder.level");
+  var delay = dart.privateName(png_encoder, "PngEncoder.delay");
+  var sequenceNumber = dart.privateName(png_encoder, "PngEncoder.sequenceNumber");
+  var isAnimated = dart.privateName(png_encoder, "PngEncoder.isAnimated");
+  var output = dart.privateName(png_encoder, "PngEncoder.output");
+  var textData = dart.privateName(png_encoder, "PngEncoder.textData");
+  var __PngEncoder_xOffset = dart.privateName(png_encoder, "_#PngEncoder#xOffset");
+  var __PngEncoder_yOffset = dart.privateName(png_encoder, "_#PngEncoder#yOffset");
+  var __PngEncoder_disposeMethod = dart.privateName(png_encoder, "_#PngEncoder#disposeMethod");
+  var __PngEncoder_blendMethod = dart.privateName(png_encoder, "_#PngEncoder#blendMethod");
+  var __PngEncoder__width = dart.privateName(png_encoder, "_#PngEncoder#_width");
+  var __PngEncoder__height = dart.privateName(png_encoder, "_#PngEncoder#_height");
+  var __PngEncoder__frames = dart.privateName(png_encoder, "_#PngEncoder#_frames");
+  var _width = dart.privateName(png_encoder, "_width");
+  var _height = dart.privateName(png_encoder, "_height");
+  var _writeHeader = dart.privateName(png_encoder, "_writeHeader");
+  var _writeICCPChunk = dart.privateName(png_encoder, "_writeICCPChunk");
+  var _writeAnimationControlChunk = dart.privateName(png_encoder, "_writeAnimationControlChunk");
+  var _filter = dart.privateName(png_encoder, "_filter");
+  var _writeTextChunk = dart.privateName(png_encoder, "_writeTextChunk");
+  var _writeFrameControlChunk = dart.privateName(png_encoder, "_writeFrameControlChunk");
+  var _writeChunk = dart.privateName(png_encoder, "_writeChunk");
+  var _frames = dart.privateName(png_encoder, "_frames");
+  var _crc = dart.privateName(png_encoder, "_crc");
+  var _filterSub = dart.privateName(png_encoder, "_filterSub");
+  var _filterUp = dart.privateName(png_encoder, "_filterUp");
+  var _filterAverage = dart.privateName(png_encoder, "_filterAverage");
+  var _filterPaeth = dart.privateName(png_encoder, "_filterPaeth");
+  var _filterNone = dart.privateName(png_encoder, "_filterNone");
+  var _paethPredictor = dart.privateName(png_encoder, "_paethPredictor");
+  png_encoder.PngEncoder = class PngEncoder extends encoder.Encoder {
+    get channels() {
+      return this[channels];
+    }
+    set channels(value) {
+      this[channels] = value;
+    }
+    get filter() {
+      return this[filter$];
+    }
+    set filter(value) {
+      this[filter$] = value;
+    }
+    get repeat() {
+      return this[repeat];
+    }
+    set repeat(value) {
+      this[repeat] = value;
+    }
+    get level() {
+      return this[level$];
+    }
+    set level(value) {
+      this[level$] = value;
+    }
+    get delay() {
+      return this[delay];
+    }
+    set delay(value) {
+      this[delay] = value;
+    }
+    get sequenceNumber() {
+      return this[sequenceNumber];
+    }
+    set sequenceNumber(value) {
+      this[sequenceNumber] = value;
+    }
+    get isAnimated() {
+      return this[isAnimated];
+    }
+    set isAnimated(value) {
+      this[isAnimated] = value;
+    }
+    get output() {
+      return this[output];
+    }
+    set output(value) {
+      this[output] = value;
+    }
+    get textData() {
+      return this[textData];
+    }
+    set textData(value) {
+      this[textData] = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let filter = opts && 'filter' in opts ? opts.filter : 4;
+      let level = opts && 'level' in opts ? opts.level : null;
+      return new png_encoder.PngEncoder.new({filter: filter, level: level});
+    }
+    addFrame(image) {
+      this.xOffset = image.xOffset;
+      this.yOffset = image.xOffset;
+      this.delay = image.duration;
+      this.disposeMethod = image.disposeMethod;
+      this.blendMethod = image.blendMethod;
+      if (this.output == null) {
+        this.output = new output_buffer.OutputBuffer.new({bigEndian: true});
+        this.channels = image.channels;
+        this[_width] = image.width;
+        this[_height] = image.height;
+        this[_writeHeader](this[_width], this[_height]);
+        this[_writeICCPChunk](this.output, image.iccProfile);
+        if (this.isAnimated) {
+          this[_writeAnimationControlChunk]();
+        }
+      }
+      let filteredImage = _native_typed_data.NativeUint8List.new(image.width * image.height * image.numberOfChannels + image.height);
+      this[_filter](image, filteredImage);
+      let compressed = (C[0] || CT.C0).encode(filteredImage, {level: this.level});
+      if (image.textData != null) {
+        for (let key of dart.nullCheck(image.textData)[$keys]) {
+          this[_writeTextChunk](key, dart.nullCheck(dart.nullCheck(image.textData)[$_get](key)));
+        }
+      }
+      if (this.isAnimated) {
+        this[_writeFrameControlChunk]();
+        this.sequenceNumber = this.sequenceNumber + 1;
+      }
+      if (this.sequenceNumber <= 1) {
+        this[_writeChunk](dart.nullCheck(this.output), "IDAT", compressed);
+      } else {
+        let fdat = new output_buffer.OutputBuffer.new({bigEndian: true});
+        fdat.writeUint32(this.sequenceNumber);
+        fdat.writeBytes(compressed);
+        this[_writeChunk](dart.nullCheck(this.output), "fdAT", fdat.getBytes());
+        this.sequenceNumber = this.sequenceNumber + 1;
+      }
+    }
+    finish() {
+      let bytes = null;
+      if (this.output == null) {
+        return bytes;
+      }
+      this[_writeChunk](dart.nullCheck(this.output), "IEND", T.JSArrayOfint().of([]));
+      this.sequenceNumber = 0;
+      bytes = dart.nullCheck(this.output).getBytes();
+      this.output = null;
+      return bytes;
+    }
+    get supportsAnimation() {
+      return true;
+    }
+    encodeAnimation(anim) {
+      this.isAnimated = true;
+      this[_frames] = anim.frames[$length];
+      this.repeat = anim.loopCount;
+      for (let f of anim) {
+        this.addFrame(f);
+      }
+      return this.finish();
+    }
+    encodeImage(image) {
+      this.isAnimated = false;
+      this.addFrame(image);
+      return dart.nullCheck(this.finish());
+    }
+    [_writeHeader](width, height) {
+      dart.nullCheck(this.output).writeBytes(T.JSArrayOfint().of([137, 80, 78, 71, 13, 10, 26, 10]));
+      let chunk = new output_buffer.OutputBuffer.new({bigEndian: true});
+      chunk.writeUint32(width);
+      chunk.writeUint32(height);
+      chunk.writeByte(8);
+      chunk.writeByte(this.channels === image$.Channels.rgb ? 2 : 6);
+      chunk.writeByte(0);
+      chunk.writeByte(0);
+      chunk.writeByte(0);
+      this[_writeChunk](dart.nullCheck(this.output), "IHDR", chunk.getBytes());
+    }
+    [_writeAnimationControlChunk]() {
+      let chunk = new output_buffer.OutputBuffer.new({bigEndian: true});
+      chunk.writeUint32(this[_frames]);
+      chunk.writeUint32(this.repeat);
+      this[_writeChunk](dart.nullCheck(this.output), "acTL", chunk.getBytes());
+    }
+    [_writeFrameControlChunk]() {
+      let chunk = new output_buffer.OutputBuffer.new({bigEndian: true});
+      chunk.writeUint32(this.sequenceNumber);
+      chunk.writeUint32(this[_width]);
+      chunk.writeUint32(this[_height]);
+      chunk.writeUint32(this.xOffset);
+      chunk.writeUint32(this.yOffset);
+      chunk.writeUint16(dart.nullCheck(this.delay));
+      chunk.writeUint16(1000);
+      chunk.writeByte(this.disposeMethod.index);
+      chunk.writeByte(this.blendMethod.index);
+      this[_writeChunk](dart.nullCheck(this.output), "fcTL", chunk.getBytes());
+    }
+    [_writeTextChunk](keyword, text) {
+      let chunk = new output_buffer.OutputBuffer.new({bigEndian: true});
+      chunk.writeBytes(convert.latin1.encode(keyword));
+      chunk.writeByte(0);
+      chunk.writeBytes(convert.latin1.encode(text));
+      this[_writeChunk](dart.nullCheck(this.output), "tEXt", chunk.getBytes());
+    }
+    [_writeICCPChunk](out, iccp) {
+      if (iccp == null) {
+        return;
+      }
+      let chunk = new output_buffer.OutputBuffer.new({bigEndian: true});
+      chunk.writeBytes(iccp.name[$codeUnits]);
+      chunk.writeByte(0);
+      chunk.writeByte(0);
+      chunk.writeBytes(iccp.compressed());
+      this[_writeChunk](dart.nullCheck(this.output), "iCCP", chunk.getBytes());
+    }
+    [_writeChunk](out, type, chunk) {
+      out.writeUint32(chunk[$length]);
+      out.writeBytes(type[$codeUnits]);
+      out.writeBytes(chunk);
+      let crc = this[_crc](type, chunk);
+      out.writeUint32(crc);
+    }
+    [_filter](image, out) {
+      let oi = 0;
+      for (let y = 0; y < image.height; y = y + 1) {
+        switch (this.filter) {
+          case 1:
+            {
+              oi = this[_filterSub](image, oi, y, out);
+              break;
+            }
+          case 2:
+            {
+              oi = this[_filterUp](image, oi, y, out);
+              break;
+            }
+          case 3:
+            {
+              oi = this[_filterAverage](image, oi, y, out);
+              break;
+            }
+          case 4:
+            {
+              oi = this[_filterPaeth](image, oi, y, out);
+              break;
+            }
+          case 5:
+            {
+              oi = this[_filterPaeth](image, oi, y, out);
+              break;
+            }
+          default:
+            {
+              oi = this[_filterNone](image, oi, y, out);
+              break;
+            }
+        }
+      }
+    }
+    [_filterNone](image, oi, row, out) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      out[$_set]((t0 = oi, oi = t0 + 1, t0), 0);
+      for (let x = 0; x < image.width; x = x + 1) {
+        let c = image.getPixel(x, row);
+        out[$_set]((t0$ = oi, oi = t0$ + 1, t0$), color.getRed(c));
+        out[$_set]((t0$0 = oi, oi = t0$0 + 1, t0$0), color.getGreen(c));
+        out[$_set]((t0$1 = oi, oi = t0$1 + 1, t0$1), color.getBlue(c));
+        if (image.channels === image$.Channels.rgba) {
+          out[$_set]((t0$2 = oi, oi = t0$2 + 1, t0$2), color.getAlpha(image.getPixel(x, row)));
+        }
+      }
+      return oi;
+    }
+    [_filterSub](image, oi, row, out) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6;
+      out[$_set]((t0 = oi, oi = t0 + 1, t0), 1);
+      out[$_set]((t0$ = oi, oi = t0$ + 1, t0$), color.getRed(image.getPixel(0, row)));
+      out[$_set]((t0$0 = oi, oi = t0$0 + 1, t0$0), color.getGreen(image.getPixel(0, row)));
+      out[$_set]((t0$1 = oi, oi = t0$1 + 1, t0$1), color.getBlue(image.getPixel(0, row)));
+      if (image.channels === image$.Channels.rgba) {
+        out[$_set]((t0$2 = oi, oi = t0$2 + 1, t0$2), color.getAlpha(image.getPixel(0, row)));
+      }
+      for (let x = 1; x < image.width; x = x + 1) {
+        let ar = color.getRed(image.getPixel(x - 1, row));
+        let ag = color.getGreen(image.getPixel(x - 1, row));
+        let ab = color.getBlue(image.getPixel(x - 1, row));
+        let r = color.getRed(image.getPixel(x, row));
+        let g = color.getGreen(image.getPixel(x, row));
+        let b = color.getBlue(image.getPixel(x, row));
+        out[$_set]((t0$3 = oi, oi = t0$3 + 1, t0$3), r - ar & 255);
+        out[$_set]((t0$4 = oi, oi = t0$4 + 1, t0$4), g - ag & 255);
+        out[$_set]((t0$5 = oi, oi = t0$5 + 1, t0$5), b - ab & 255);
+        if (image.channels === image$.Channels.rgba) {
+          let aa = color.getAlpha(image.getPixel(x - 1, row));
+          let a = color.getAlpha(image.getPixel(x, row));
+          out[$_set]((t0$6 = oi, oi = t0$6 + 1, t0$6), a - aa & 255);
+        }
+      }
+      return oi;
+    }
+    [_filterUp](image, oi, row, out) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      out[$_set]((t0 = oi, oi = t0 + 1, t0), 2);
+      for (let x = 0; x < image.width; x = x + 1) {
+        let br = row === 0 ? 0 : color.getRed(image.getPixel(x, row - 1));
+        let bg = row === 0 ? 0 : color.getGreen(image.getPixel(x, row - 1));
+        let bb = row === 0 ? 0 : color.getBlue(image.getPixel(x, row - 1));
+        let xr = color.getRed(image.getPixel(x, row));
+        let xg = color.getGreen(image.getPixel(x, row));
+        let xb = color.getBlue(image.getPixel(x, row));
+        out[$_set]((t0$ = oi, oi = t0$ + 1, t0$), xr - br & 255);
+        out[$_set]((t0$0 = oi, oi = t0$0 + 1, t0$0), xg - bg & 255);
+        out[$_set]((t0$1 = oi, oi = t0$1 + 1, t0$1), xb - bb & 255);
+        if (image.channels === image$.Channels.rgba) {
+          let ba = row === 0 ? 0 : color.getAlpha(image.getPixel(x, row - 1));
+          let xa = color.getAlpha(image.getPixel(x, row));
+          out[$_set]((t0$2 = oi, oi = t0$2 + 1, t0$2), xa - ba & 255);
+        }
+      }
+      return oi;
+    }
+    [_filterAverage](image, oi, row, out) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      out[$_set]((t0 = oi, oi = t0 + 1, t0), 3);
+      for (let x = 0; x < image.width; x = x + 1) {
+        let ar = x === 0 ? 0 : color.getRed(image.getPixel(x - 1, row));
+        let ag = x === 0 ? 0 : color.getGreen(image.getPixel(x - 1, row));
+        let ab = x === 0 ? 0 : color.getBlue(image.getPixel(x - 1, row));
+        let br = row === 0 ? 0 : color.getRed(image.getPixel(x, row - 1));
+        let bg = row === 0 ? 0 : color.getGreen(image.getPixel(x, row - 1));
+        let bb = row === 0 ? 0 : color.getBlue(image.getPixel(x, row - 1));
+        let xr = color.getRed(image.getPixel(x, row));
+        let xg = color.getGreen(image.getPixel(x, row));
+        let xb = color.getBlue(image.getPixel(x, row));
+        out[$_set]((t0$ = oi, oi = t0$ + 1, t0$), xr - (ar + br)[$rightShift](1) & 255);
+        out[$_set]((t0$0 = oi, oi = t0$0 + 1, t0$0), xg - (ag + bg)[$rightShift](1) & 255);
+        out[$_set]((t0$1 = oi, oi = t0$1 + 1, t0$1), xb - (ab + bb)[$rightShift](1) & 255);
+        if (image.channels === image$.Channels.rgba) {
+          let aa = x === 0 ? 0 : color.getAlpha(image.getPixel(x - 1, row));
+          let ba = row === 0 ? 0 : color.getAlpha(image.getPixel(x, row - 1));
+          let xa = color.getAlpha(image.getPixel(x, row));
+          out[$_set]((t0$2 = oi, oi = t0$2 + 1, t0$2), xa - (aa + ba)[$rightShift](1) & 255);
+        }
+      }
+      return oi;
+    }
+    [_paethPredictor](a, b, c) {
+      let p = a + b - c;
+      let pa = p > a ? p - a : a - p;
+      let pb = p > b ? p - b : b - p;
+      let pc = p > c ? p - c : c - p;
+      if (pa <= pb && pa <= pc) {
+        return a;
+      } else if (pb <= pc) {
+        return b;
+      }
+      return c;
+    }
+    [_filterPaeth](image, oi, row, out) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      out[$_set]((t0 = oi, oi = t0 + 1, t0), 4);
+      for (let x = 0; x < image.width; x = x + 1) {
+        let ar = x === 0 ? 0 : color.getRed(image.getPixel(x - 1, row));
+        let ag = x === 0 ? 0 : color.getGreen(image.getPixel(x - 1, row));
+        let ab = x === 0 ? 0 : color.getBlue(image.getPixel(x - 1, row));
+        let br = row === 0 ? 0 : color.getRed(image.getPixel(x, row - 1));
+        let bg = row === 0 ? 0 : color.getGreen(image.getPixel(x, row - 1));
+        let bb = row === 0 ? 0 : color.getBlue(image.getPixel(x, row - 1));
+        let cr = row === 0 || x === 0 ? 0 : color.getRed(image.getPixel(x - 1, row - 1));
+        let cg = row === 0 || x === 0 ? 0 : color.getGreen(image.getPixel(x - 1, row - 1));
+        let cb = row === 0 || x === 0 ? 0 : color.getBlue(image.getPixel(x - 1, row - 1));
+        let xr = color.getRed(image.getPixel(x, row));
+        let xg = color.getGreen(image.getPixel(x, row));
+        let xb = color.getBlue(image.getPixel(x, row));
+        let pr = this[_paethPredictor](ar, br, cr);
+        let pg = this[_paethPredictor](ag, bg, cg);
+        let pb = this[_paethPredictor](ab, bb, cb);
+        out[$_set]((t0$ = oi, oi = t0$ + 1, t0$), xr - pr & 255);
+        out[$_set]((t0$0 = oi, oi = t0$0 + 1, t0$0), xg - pg & 255);
+        out[$_set]((t0$1 = oi, oi = t0$1 + 1, t0$1), xb - pb & 255);
+        if (image.channels === image$.Channels.rgba) {
+          let aa = x === 0 ? 0 : color.getAlpha(image.getPixel(x - 1, row));
+          let ba = row === 0 ? 0 : color.getAlpha(image.getPixel(x, row - 1));
+          let ca = row === 0 || x === 0 ? 0 : color.getAlpha(image.getPixel(x - 1, row - 1));
+          let xa = color.getAlpha(image.getPixel(x, row));
+          let pa = this[_paethPredictor](aa, ba, ca);
+          out[$_set]((t0$2 = oi, oi = t0$2 + 1, t0$2), xa - pa & 255);
+        }
+      }
+      return oi;
+    }
+    [_crc](type, bytes) {
+      let crc = crc32.getCrc32(type[$codeUnits]);
+      return crc32.getCrc32(bytes, crc);
+    }
+    get xOffset() {
+      let t0;
+      t0 = this[__PngEncoder_xOffset];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("xOffset")) : t0;
+    }
+    set xOffset(xOffset$35param) {
+      this[__PngEncoder_xOffset] = xOffset$35param;
+    }
+    set yOffset(yOffset$35param) {
+      this[__PngEncoder_yOffset] = yOffset$35param;
+    }
+    get yOffset() {
+      let t0;
+      t0 = this[__PngEncoder_yOffset];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("yOffset")) : t0;
+    }
+    set disposeMethod(disposeMethod$35param) {
+      this[__PngEncoder_disposeMethod] = disposeMethod$35param;
+    }
+    get disposeMethod() {
+      let t0;
+      t0 = this[__PngEncoder_disposeMethod];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("disposeMethod")) : t0;
+    }
+    get blendMethod() {
+      let t0;
+      t0 = this[__PngEncoder_blendMethod];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("blendMethod")) : t0;
+    }
+    set blendMethod(blendMethod$35param) {
+      this[__PngEncoder_blendMethod] = blendMethod$35param;
+    }
+    get [_width]() {
+      let t0;
+      t0 = this[__PngEncoder__width];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_width")) : t0;
+    }
+    set [_width](library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_width$35param) {
+      this[__PngEncoder__width] = library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_width$35param;
+    }
+    get [_height]() {
+      let t0;
+      t0 = this[__PngEncoder__height];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_height")) : t0;
+    }
+    set [_height](library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_height$35param) {
+      this[__PngEncoder__height] = library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_height$35param;
+    }
+    get [_frames]() {
+      let t0;
+      t0 = this[__PngEncoder__frames];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_frames")) : t0;
+    }
+    set [_frames](library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_frames$35param) {
+      this[__PngEncoder__frames] = library$32package$58image$47src$47formats$47png_encoder$46dart$58$58_frames$35param;
+    }
+  };
+  (png_encoder.PngEncoder.new = function(opts) {
+    let filter = opts && 'filter' in opts ? opts.filter : 4;
+    let level = opts && 'level' in opts ? opts.level : null;
+    this[channels] = null;
+    this[repeat] = 0;
+    this[__PngEncoder_xOffset] = null;
+    this[__PngEncoder_yOffset] = null;
+    this[delay] = null;
+    this[__PngEncoder_disposeMethod] = null;
+    this[__PngEncoder_blendMethod] = null;
+    this[__PngEncoder__width] = null;
+    this[__PngEncoder__height] = null;
+    this[__PngEncoder__frames] = null;
+    this[sequenceNumber] = 0;
+    this[isAnimated] = false;
+    this[output] = null;
+    this[textData] = null;
+    this[filter$] = filter;
+    this[level$] = level;
+    ;
+  }).prototype = png_encoder.PngEncoder.prototype;
+  dart.addTypeTests(png_encoder.PngEncoder);
+  dart.addTypeCaches(png_encoder.PngEncoder);
+  dart.setMethodSignature(png_encoder.PngEncoder, () => ({
+    __proto__: dart.getMethods(png_encoder.PngEncoder.__proto__),
+    addFrame: dart.fnType(dart.void, [image$.Image]),
+    finish: dart.fnType(dart.nullable(core.List$(core.int)), []),
+    encodeImage: dart.fnType(core.List$(core.int), [image$.Image]),
+    [_writeHeader]: dart.fnType(dart.void, [core.int, core.int]),
+    [_writeAnimationControlChunk]: dart.fnType(dart.void, []),
+    [_writeFrameControlChunk]: dart.fnType(dart.void, []),
+    [_writeTextChunk]: dart.fnType(dart.void, [core.String, core.String]),
+    [_writeICCPChunk]: dart.fnType(dart.void, [dart.nullable(output_buffer.OutputBuffer), dart.nullable(icc_profile_data.ICCProfileData)]),
+    [_writeChunk]: dart.fnType(dart.void, [output_buffer.OutputBuffer, core.String, core.List$(core.int)]),
+    [_filter]: dart.fnType(dart.void, [image$.Image, core.List$(core.int)]),
+    [_filterNone]: dart.fnType(core.int, [image$.Image, core.int, core.int, core.List$(core.int)]),
+    [_filterSub]: dart.fnType(core.int, [image$.Image, core.int, core.int, core.List$(core.int)]),
+    [_filterUp]: dart.fnType(core.int, [image$.Image, core.int, core.int, core.List$(core.int)]),
+    [_filterAverage]: dart.fnType(core.int, [image$.Image, core.int, core.int, core.List$(core.int)]),
+    [_paethPredictor]: dart.fnType(core.int, [core.int, core.int, core.int]),
+    [_filterPaeth]: dart.fnType(core.int, [image$.Image, core.int, core.int, core.List$(core.int)]),
+    [_crc]: dart.fnType(core.int, [core.String, core.List$(core.int)])
+  }));
+  dart.setGetterSignature(png_encoder.PngEncoder, () => ({
+    __proto__: dart.getGetters(png_encoder.PngEncoder.__proto__),
+    xOffset: core.int,
+    yOffset: core.int,
+    disposeMethod: image$.DisposeMode,
+    blendMethod: image$.BlendMode,
+    [_width]: core.int,
+    [_height]: core.int,
+    [_frames]: core.int
+  }));
+  dart.setSetterSignature(png_encoder.PngEncoder, () => ({
+    __proto__: dart.getSetters(png_encoder.PngEncoder.__proto__),
+    xOffset: core.int,
+    yOffset: core.int,
+    disposeMethod: image$.DisposeMode,
+    blendMethod: image$.BlendMode,
+    [_width]: core.int,
+    [_height]: core.int,
+    [_frames]: core.int
+  }));
+  dart.setLibraryUri(png_encoder.PngEncoder, I[0]);
+  dart.setFieldSignature(png_encoder.PngEncoder, () => ({
+    __proto__: dart.getFields(png_encoder.PngEncoder.__proto__),
+    channels: dart.fieldType(dart.nullable(image$.Channels)),
+    filter: dart.fieldType(core.int),
+    repeat: dart.fieldType(core.int),
+    level: dart.fieldType(dart.nullable(core.int)),
+    [__PngEncoder_xOffset]: dart.fieldType(dart.nullable(core.int)),
+    [__PngEncoder_yOffset]: dart.fieldType(dart.nullable(core.int)),
+    delay: dart.fieldType(dart.nullable(core.int)),
+    [__PngEncoder_disposeMethod]: dart.fieldType(dart.nullable(image$.DisposeMode)),
+    [__PngEncoder_blendMethod]: dart.fieldType(dart.nullable(image$.BlendMode)),
+    [__PngEncoder__width]: dart.fieldType(dart.nullable(core.int)),
+    [__PngEncoder__height]: dart.fieldType(dart.nullable(core.int)),
+    [__PngEncoder__frames]: dart.fieldType(dart.nullable(core.int)),
+    sequenceNumber: dart.fieldType(core.int),
+    isAnimated: dart.fieldType(core.bool),
+    output: dart.fieldType(dart.nullable(output_buffer.OutputBuffer)),
+    textData: dart.fieldType(dart.nullable(core.Map$(core.String, core.String)))
+  }));
+  dart.setStaticFieldSignature(png_encoder.PngEncoder, () => ['FILTER_NONE', 'FILTER_SUB', 'FILTER_UP', 'FILTER_AVERAGE', 'FILTER_PAETH', 'FILTER_AGRESSIVE']);
+  dart.defineLazy(png_encoder.PngEncoder, {
+    /*png_encoder.PngEncoder.FILTER_NONE*/get FILTER_NONE() {
+      return 0;
+    },
+    /*png_encoder.PngEncoder.FILTER_SUB*/get FILTER_SUB() {
+      return 1;
+    },
+    /*png_encoder.PngEncoder.FILTER_UP*/get FILTER_UP() {
+      return 2;
+    },
+    /*png_encoder.PngEncoder.FILTER_AVERAGE*/get FILTER_AVERAGE() {
+      return 3;
+    },
+    /*png_encoder.PngEncoder.FILTER_PAETH*/get FILTER_PAETH() {
+      return 4;
+    },
+    /*png_encoder.PngEncoder.FILTER_AGRESSIVE*/get FILTER_AGRESSIVE() {
+      return 5;
+    }
+  }, false);
+  dart.trackLibraries("packages/image/src/formats/png_encoder.dart", {
+    "package:image/src/formats/png_encoder.dart": png_encoder
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["png_encoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../packages/image/src/formats/png_encoder.dart.lib.js"}');
+  // Exports:
+  return {
+    src__formats__png_encoder: png_encoder
+  };
+}));
+
+//# sourceMappingURL=png_encoder.dart.lib.js.map
