@@ -14,4 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = webDemo
-build_property.ProjectDir = C:\Users\Admin\Downloads\webDemo\webDemo\
+build_property.ProjectDir = C:\Users\Admin\web_demo_winforms_flutterWeb\webDemo\

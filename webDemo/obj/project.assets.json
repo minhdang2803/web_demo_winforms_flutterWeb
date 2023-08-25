@@ -152,11 +152,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Downloads\\webDemo\\webDemo\\webDemo.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\web_demo_winforms_flutterWeb\\webDemo\\webDemo.csproj",
       "projectName": "webDemo",
-      "projectPath": "C:\\Users\\Admin\\Downloads\\webDemo\\webDemo\\webDemo.csproj",
+      "projectPath": "C:\\Users\\Admin\\web_demo_winforms_flutterWeb\\webDemo\\webDemo.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Downloads\\webDemo\\webDemo\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\web_demo_winforms_flutterWeb\\webDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7,62 +7,76 @@ using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-    public interface ISCAToFlutterWeb
+public interface ISCAToFlutterWeb
+{
+    public void RedirectToScreen();
+    public void SetToken();
+    public void ToNamed(string data);
+
+    public void applyToken(string token);
+}
+public class SCAToFlutterWeb : ISCAToFlutterWeb
+{
+    private Microsoft.Web.WebView2.WinForms.WebView2 _webview;
+    private string url;
+    private string token;
+    private string _json;
+    private Action<string> TokenExpiration;
+    private int reconectingLimitation = 5;
+    public SCAToFlutterWeb(string url, string token, Microsoft.Web.WebView2.WinForms.WebView2 webView, Action<string> TokenExpirationHandler)
     {
-        public void RedirectToScreen();
-        public void SetToken();
-        public void ToNamed(string data);
+        this.url = url;
+        this.token = token;
+        this._webview = webView;
+        this._json = "";
+        this.TokenExpiration = TokenExpirationHandler;
+        _webview.CoreWebView2.WebMessageReceived += FromFlutterWeb;
     }
-    public class SCAToFlutterWeb : ISCAToFlutterWeb
+    public void ToNamed(string data)
     {
-        private Microsoft.Web.WebView2.WinForms.WebView2 _webview;
-        private string url;
-        private string token;
-        private string json;
+        this._json = data;
+        _webview.CoreWebView2.Navigate(url);
+    }
+    public void applyToken(string token)
+    {
+        this.token = token;
+    }
+    public async void SetToken()
+    {
+        string script = "setToken('" + token + "')";
+        await _webview.CoreWebView2.ExecuteScriptAsync(script);
+    }
 
-        public SCAToFlutterWeb(string url, string token, Microsoft.Web.WebView2.WinForms.WebView2 webView)
-        {
-            this.url = url;
-            this.token = token;
-            this._webview = webView;
-            this.json = "";
-            _webview.CoreWebView2.WebMessageReceived += FromFlutterWeb;
-        }
-        public void ToNamed(string data)
-        {
-            this.json = data;
-            _webview.CoreWebView2.Navigate(url);
-        }
+    public async void RedirectToScreen()
+    {
+        string script = "redirectToScreen('" + _json + "')";
+        await _webview.CoreWebView2.ExecuteScriptAsync(script);
+    }
+    void FromFlutterWeb(object sender, CoreWebView2WebMessageReceivedEventArgs args)
+    {
 
-        public async void SetToken()
+        string messageFromFlutter = args.TryGetWebMessageAsString();
+        if (messageFromFlutter == "request_token")
         {
-            string script = "setToken('" + token + "')";
-            await _webview.CoreWebView2.ExecuteScriptAsync(script);
+            SetToken();
         }
-
-        public async void RedirectToScreen()
+        if (messageFromFlutter == "token_valid")
         {
-            string script = "redirectToScreen('" + json + "')";
-            await _webview.CoreWebView2.ExecuteScriptAsync(script);
+            Task.Delay(1000);
+            RedirectToScreen();
         }
-        void FromFlutterWeb(object sender, CoreWebView2WebMessageReceivedEventArgs args)
+        if (messageFromFlutter == "token_invalid")
         {
-
-            string messageFromFlutter = args.TryGetWebMessageAsString();
-            if (messageFromFlutter == "request_token")
+            if (reconectingLimitation <= 5)
             {
+                this.TokenExpiration(messageFromFlutter);
                 SetToken();
+                reconectingLimitation++;
             }
-            if (messageFromFlutter == "token_valid")
-            {
-                Task.Delay(1000);
-                RedirectToScreen();
-            }
-            if (messageFromFlutter == "token_invalid")
-            {
-            }
+
         }
     }
+}
 
 
 
