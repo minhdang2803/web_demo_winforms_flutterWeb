@@ -3,7 +3,6 @@ using System.Diagnostics;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 namespace webDemo
 {
     public partial class Form1 : Form
