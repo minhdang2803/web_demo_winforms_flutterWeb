@@ -173,7 +173,9 @@ function requestTokenFromSCA(message) {
 ## How Flutter listens to JavaScript returns?
 
 ![JSToDartFunciton](https://lh3.googleusercontent.com/drive-viewer/AITFw-xeQWKYQRGw4qXS3FGZ9ScL2G5ffW2RaT4dos07piMFqIIJUA9rQHSLw_NVvhBnbbRfdFCLZfd84kSXBMFERj1mPXFbqQ=s2560)
+
 In each screen directory, for an example: splash screen's directory - **"/Client/lib/presentation/splash/"**
+
 ![Splash screen directory in Flutter Web repository](https://lh3.googleusercontent.com/drive-viewer/AITFw-xD1UklWA-XdssNxVrnCp_5esYBTIiqOfhJYGDDF8JXOV7F7OPaJSUHl3ux47xE-AXHsWHnQIuqI-pIRoBKMallzslhiA=s2560)
 We should make a directory name **javascript**,which contains all the adapter that allow to use a function can be called in JavaScript, function must have the keyword **external**, external function is a function whose body is provided separately from its declaration.
 ```dart
