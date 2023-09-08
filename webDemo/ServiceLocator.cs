@@ -8,8 +8,8 @@ namespace webDemo
     public class ServiceLocator
     {
         private Dictionary<string, object> _services;
-        private static ServiceLocator locator;
-        private ServiceLocator() { _services = new Dictionary<string, object>(); }
+        private static ServiceLocator? locator;
+        private ServiceLocator() { _services = new Dictionary<string, object>();}
         public static ServiceLocator Instance
         {
             get

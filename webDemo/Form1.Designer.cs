@@ -84,7 +84,7 @@
             ButtonBDLT1.Location = new Point(861, 3);
             ButtonBDLT1.Name = "ButtonBDLT1";
             ButtonBDLT1.RightToLeft = RightToLeft.No;
-            ButtonBDLT1.Size = new Size(113, 23);
+            ButtonBDLT1.Size = new Size(78, 23);
             ButtonBDLT1.TabIndex = 5;
             ButtonBDLT1.Text = "Go BDLT1";
             ButtonBDLT1.UseVisualStyleBackColor = true;
@@ -92,12 +92,12 @@
             // 
             // button3
             // 
-            button3.Location = new Point(980, 3);
+            button3.Location = new Point(945, 3);
             button3.Name = "button3";
             button3.RightToLeft = RightToLeft.No;
-            button3.Size = new Size(98, 23);
+            button3.Size = new Size(121, 23);
             button3.TabIndex = 6;
-            button3.Text = "clear cache";
+            button3.Text = "Go QRPayment";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
